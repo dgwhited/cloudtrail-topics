@@ -1,0 +1,34 @@
+name: crawl
+
+on:
+  schedule:
+    - cron: '38 * * * *'
+  workflow_dispatch:
+
+jobs:
+  get-kernels:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{secrets.PAT}}
+
+      - name: INSTALL - python@3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - id: get-topics
+        run: |
+          pip install -r requirements.txt
+          python3 ./scrape.py
+
+      - name: Commit and Push
+        run: ./.github/commit-and-push.sh
+        env:
+          NAME: ${{ secrets.NAME }}
+          EMAIL: ${{ secrets.EMAIL }}

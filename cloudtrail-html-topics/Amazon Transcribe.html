@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Monitoring Amazon Transcribe with AWS CloudTrail - Amazon Transcribe
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="monitoring-transcribe-cloud-trail" name="target_state"/>
+  <meta content="monitoring-transcribe-cloud-trail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" rel="canonical"/>
+  <meta content="Amazon Transcribe is integrated with AWS CloudTrail, a service that provides a record of actions taken in Amazon Transcribe by an AWS Identity and Access Management (IAM) user or role, or by an AWS service. CloudTrail captures all API calls for Amazon Transcribe. That includes calls from the AWS Management Console and code calls to the Amazon Transcribe APIs, as events. By creating a trail, you can enable continuous delivery of CloudTrail events, including events for Amazon Transcribe, to an Amazon S3 bucket. If you don't create a trail, you can still view the most recent events in the CloudTrail AWS Management Console in" name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon Transcribe" name="product"/>
+  <meta content="Developer Guide" name="guide"/>
+  <meta content="Convert speech to text with Amazon Transcribe." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Transcribe" name="feedback-item"/>
+  <meta content="Amazon Transcribe" name="this_doc_product"/>
+  <meta content="Developer Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'transcribe'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="Developer Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Monitoring Amazon Transcribe with AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Monitoring Amazon Transcribe with AWS CloudTrail - Amazon Transcribe
+        </title>
+        <meta content="/pdfs/transcribe/latest/dg/transcribe-dg.pdf#monitoring-transcribe-cloud-trail" name="pdf"/>
+        <meta content="amazon-transcribe-document-history.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=278" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Transcribe&amp;topic_url=https://docs.aws.amazon.com/en_us/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" name="feedback-no"/>
+        <meta content="batch transcription,tagging,language identification,call analytics,redaction,transcript,subtitles,custom vocabulary,custom language model,HIPAA,personally identifiable information,PII,content identification,vocabulary filtering,channel identification,Amazon Transcribe,security,compliance,manage security,manage compliance,monitoring,performance,automatic actions,log file entry" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Transcribe",
+        "item" : "https://docs.aws.amazon.com/transcribe/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Developer Guide",
+        "item" : "https://docs.aws.amazon.com/transcribe/latest/dg"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Security in Amazon Transcribe",
+        "item" : "https://docs.aws.amazon.com/transcribe/latest/dg/security.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Monitoring Amazon Transcribe",
+        "item" : "https://docs.aws.amazon.com/transcribe/latest/dg/monitoring-transcribe.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
+        "name" : "Monitoring Amazon Transcribe with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/transcribe/latest/dg/monitoring-transcribe.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/transcribe/latest/dg/transcribe-dg.pdf#monitoring-transcribe-cloud-trail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/transcribe/index.html">
+           Transcribe
+          </a>
+          <a href="what-is.html">
+           Developer Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#transcribe-info-in-cloudtrail">
+           Amazon Transcribe and CloudTrail
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="monitoring-transcribe-cloud-trail">
+            Monitoring Amazon Transcribe
+            with AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Amazon Transcribe is integrated with AWS CloudTrail, a service that provides a
+   record of actions taken in Amazon Transcribe by an AWS Identity and Access Management (IAM)
+   user or role, or by an AWS service. CloudTrail captures all API calls for
+    Amazon Transcribe. That includes calls from the AWS Management Console and code calls to the
+    Amazon Transcribe APIs, as events. By creating a trail, you can enable continuous delivery of
+    CloudTrail events, including events for Amazon Transcribe, to an Amazon S3
+   bucket. If you don't create a trail, you can still view the most recent events in the CloudTrail
+   AWS Management Console in
+            <b>
+             Event history
+            </b>
+            . Using the information collected by
+    CloudTrail, you can see each request that is made to Amazon Transcribe, the IP address
+   from which the request is made, who made the request, when it is made, and additional
+   details.
+           </p>
+           <p>
+            To learn more about CloudTrail, refer to the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             <em>
+              AWS CloudTrail User Guide
+             </em>
+            </a>
+            .
+           </p>
+           <h2 id="transcribe-info-in-cloudtrail">
+            Amazon Transcribe and CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create
+         the account. When activity occurs in Amazon Transcribe, that activity is recorded in a 
+         CloudTrail event along with other AWS service events in the 
+         CloudTrail
+            <b>
+             Event history
+            </b>
+            . You can view, search, and 
+         download recent events in your AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing Events with 
+          CloudTrail Event History
+            </a>
+            .
+           </p>
+           <p>
+            To get an ongoing record of events in your AWS account, including 
+        events for Amazon Transcribe, create a trail. A
+            <em>
+             trail
+            </em>
+            is a configuration that enables CloudTrail to deliver events as log files to a specified
+        Amazon S3 bucket. CloudTrail log files contain one or more log entries. An
+            <em>
+             event
+            </em>
+            represents a single request from any source. It
+        includes information about the requested action, the date and time of the action, request
+        parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public
+        API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            By default, when you create a trail in the AWS Management Console, the trail applies to all 
+        AWS Regions. The trail logs events from all AWS Regions in the 
+        AWS partition and delivers the log files to the Amazon S3 bucket that you
+        specify. Additionally, you can configure other AWS services to further analyze and 
+        act upon the event data collected in CloudTrail logs. For more information, see:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for 
+            Creating a Trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail Supported Services and Integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring
+            Amazon SNS Notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving
+            CloudTrail Log Files from Multiple Regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving 
+             CloudTrail Log Files from Multiple Accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            CloudTrail logs all Amazon Transcribe actions, which are documented in the
+            <a href="https://docs.aws.amazon.com/transcribe/latest/APIReference/API_Reference.html">
+             API Reference
+            </a>
+            .
+       For example, the
+            <a href="https://docs.aws.amazon.com/transcribe/latest/APIReference/API_CreateVocabulary.html">
+             <code class="code">
+              CreateVocabulary
+             </code>
+            </a>
+            ,
+            <a href="https://docs.aws.amazon.com/transcribe/latest/APIReference/API_GetTranscriptionJob.html">
+             <code class="code">
+              GetTranscriptionJob
+             </code>
+            </a>
+            , and
+            <a href="https://docs.aws.amazon.com/transcribe/latest/APIReference/API_StartTranscriptionJob.html">
+             <code class="code">
+              StartTranscriptionJob
+             </code>
+            </a>
+            operations generate entries in the CloudTrail log files.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. This 
+       information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request is made with root or IAM user credentials
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request is made with temporary security credentials for an IAM 
+          role or federated user
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request is made by another AWS service
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail
+       userIdentity Element
+            </a>
+            .
+           </p>
+           <p>
+            You can also aggregate Amazon Transcribe log files from multiple AWS Regions and multiple
+      AWS accounts into a single Amazon S3 bucket. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+             Receiving CloudTrail Log Files from Multiple Regions
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+             Receiving
+        CloudTrail Log Files from Multiple Accounts
+            </a>
+            .
+           </p>
+           <h3 id="cloud-trail-log-entry">
+            Example: Amazon Transcribe log file entries
+           </h3>
+           <p>
+            A
+            <em>
+             trail
+            </em>
+            is a configuration that enables delivery of
+        events as log files to a specified Amazon S3 bucket. CloudTrail log files
+        contain one or more log entries. An
+            <em>
+             event
+            </em>
+            represents a
+        single request from any source. It includes such information about the requested action as
+        the date and time of the action, and request parameters. CloudTrail log files aren't
+        an ordered stack trace of the public API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            Calls to the
+            <a href="https://docs.aws.amazon.com/transcribe/latest/APIReference/API_StartTranscriptionJob.html">
+             <code class="code">
+              StartTranscriptionJob
+             </code>
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/transcribe/latest/APIReference/API_GetTranscriptionJob.html">
+             <code class="code">
+              GetTranscriptionJob
+             </code>
+            </a>
+            API operations 
+        create the following entry.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "Records": [
+        <span>{</span>
+            "eventVersion": "1.05",
+            "userIdentity": <span>{</span>
+                "type": "<code class="replaceable">IAMUser</code>",
+                "principalId": "<code class="replaceable">111122223333</code>",
+                "arn": "<code class="replaceable">arn:aws:iam:us-west-2:111122223333:user/my-user-name</code>",
+                "accountId": "<code class="replaceable">111122223333</code>",
+                "accessKeyId": "<code class="replaceable">AKIAIOSFODNN7EXAMPLE</code>",
+                "userName": "<code class="replaceable">my-user-name</code>"
+            },
+            "eventTime": "<code class="replaceable">2022-03-07T15:03:45Z</code>",
+            "eventSource": "transcribe.amazonaws.com",
+            "eventName": "StartTranscriptionJob",
+            "awsRegion": "<code class="replaceable">us-west-2</code>",
+            "sourceIPAddress": "<code class="replaceable">127.0.0.1</code>",
+            "userAgent": "<code class="replaceable">[]</code>",
+            "requestParameters": <span>{</span>
+                "mediaFormat": "<code class="replaceable">flac</code>",
+                "languageCode": "<code class="replaceable">en-US</code>",
+                "transcriptionJobName": "<code class="replaceable">my-first-transcription-job</code>",
+                "media": <span>{</span>
+                    "mediaFileUri": "s3://<code class="replaceable">DOC-EXAMPLE-BUCKET</code>/<code class="replaceable">my-media-file</code>.<code class="replaceable">flac</code>"
+                }
+            },
+            "responseElements": <span>{</span>
+                "transcriptionJob": <span>{</span>
+                    "transcriptionJobStatus": "IN_PROGRESS",
+                    "mediaFormat": "<code class="replaceable">flac</code>",
+                    "creationTime": "<code class="replaceable">2022-03-07T15:03:44.229000-08:00</code>",
+                    "transcriptionJobName": "<code class="replaceable">my-first-transcription-job</code>",
+                    "languageCode": "<code class="replaceable">en-US</code>",
+                    "media": <span>{</span>
+                        "mediaFileUri": "s3://<code class="replaceable">DOC-EXAMPLE-BUCKET</code>/<code class="replaceable">my-media-file</code>.<code class="replaceable">flac</code>"
+                    }
+                }
+            },
+            "requestID": "<code class="replaceable">47B8E8D397DCE7A6</code>",
+            "eventID": "<code class="replaceable">cdc4b7ed-e171-4cef-975a-ad829d4123e8</code>",
+            "eventType": "AwsApiCall",
+            "recipientAccountId": "<code class="replaceable">111122223333</code>"
+        },
+        <span>{</span>
+            "eventVersion": "1.05",
+            "userIdentity": <span>{</span>
+                "type": "<code class="replaceable">IAMUser</code>",
+                "principalId": "<code class="replaceable">111122223333</code>",
+                "arn": "<code class="replaceable"><code class="replaceable">arn:aws:iam:us-west-2:111122223333:user/my-user-name</code></code>",
+                "accountId": "<code class="replaceable">111122223333</code>",
+                "accessKeyId": "<code class="replaceable">AKIAIOSFODNN7EXAMPLE</code>",
+                "userName": "<code class="replaceable">my-user-name</code>"
+            },
+            "eventTime": "<code class="replaceable">2022-03-07T15:07:11Z</code>",
+            "eventSource": "transcribe.amazonaws.com",
+            "eventName": "GetTranscriptionJob",
+            "awsRegion": "<code class="replaceable">us-west-2</code>",
+            "sourceIPAddress": "<code class="replaceable">127.0.0.1</code>",
+            "userAgent": "<code class="replaceable">[]</code>",
+            "requestParameters": <span>{</span>
+                "transcriptionJobName": "<code class="replaceable">my-first-transcription-job</code>"
+            },
+            "responseElements": <span>{</span>
+                "transcriptionJob": <span>{</span>
+                    "settings": <span>{</span>
+                        
+                    },
+                    "transcriptionJobStatus": "<code class="replaceable">COMPLETED</code>",
+                    "mediaFormat": "<code class="replaceable">flac</code>",
+                    "creationTime": "<code class="replaceable">2022-03-07T15:03:44.229000-08:00</code>",
+                    "transcriptionJobName": "<code class="replaceable">my-first-transcription-job</code>",
+                    "languageCode": "<code class="replaceable">en-US</code>",
+                    "media": <span>{</span>
+                        "mediaFileUri": "s3://<code class="replaceable">DOC-EXAMPLE-BUCKET</code>/<code class="replaceable">my-media-file</code>.<code class="replaceable">flac</code>"
+                    },
+                    "transcript": <span>{</span>
+                        "transcriptFileUri": "s3://<code class="replaceable">DOC-EXAMPLE-BUCKET</code>/<code class="replaceable">my-first-transcription-job</code>.json"
+                    }
+                }
+            },
+            "requestID": "<code class="replaceable">BD8798EACDD16751</code>",
+            "eventID": "<code class="replaceable">607b9532-1423-41c7-b048-ec2641693c47</code>",
+            "eventType": "AwsApiCall",
+            "recipientAccountId": "<code class="replaceable">111122223333</code>"
+        }        
+    ]
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./monitoring-cloudwatch.html" id="previous">
+             Monitoring with CloudWatch
+            </div>
+            <div accesskey="n" class="next-link" href="./monitoring-events.html" id="next">
+             Using Amazon EventBridge with Amazon Transcribe
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Transcribe&amp;topic_url=https://docs.aws.amazon.com/en_us/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Transcribe&amp;topic_url=https://docs.aws.amazon.com/en_us/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

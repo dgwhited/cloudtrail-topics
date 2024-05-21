@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging Amplify API calls using AWS CloudTrail - AWS Amplify Hosting
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/amplify/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Learn about logging AWS Amplify API calls with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="AWS Amplify Hosting" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="AWS Amplify provides a continuous delivery and hosting service for cloud-powered mobile and web applications." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/amplify/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/amplify/latest/userguide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Amplify" name="feedback-item"/>
+  <meta content="AWS Amplify Hosting" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'amplify'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Amplify API calls using AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging Amplify API calls using AWS CloudTrail - AWS Amplify Hosting
+        </title>
+        <meta content="/pdfs/amplify/latest/userguide/amplify-console-ug.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="amplify-console-release-notes.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=314" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amplify&amp;topic_url=https://docs.aws.amazon.com/en_us/amplify/latest/userguide/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/amplify/latest/userguide/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/amplify/latest/userguide/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="amplify,hosting,studio,mobile web,reactjs,vuejs,jekyll,angular,aws,ios,android,next.js,ssr" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Amplify",
+        "item" : "https://docs.aws.amazon.com/amplify/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/amplify/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Logging Amplify API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/amplify/latest/userguide/logging-using-cloudtrail.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/amplify/latest/userguide/amplify-console-ug.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/amplify/index.html">
+           AWS Amplify
+          </a>
+          <a href="welcome.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#service-name-info-in-cloudtrail">
+           Amplify information in CloudTrail
+          </a>
+          <a href="#understanding-service-name-entries">
+           Understanding Amplify log file
+        entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging Amplify API calls using
+      AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            AWS Amplify is integrated with AWS CloudTrail, a service that provides a record of actions taken
+    by a user, role, or an AWS service in Amplify. CloudTrail captures all API calls for Amplify as
+    events. The calls captured include calls from the Amplify console and code calls to the
+    Amplify API operations. If you create a trail, you can enable continuous delivery of CloudTrail
+    events to an Amazon S3 bucket, including events for Amplify. If you don't configure a trail, you
+    can still view the most recent events in the CloudTrail console in
+            <b>
+             Event history
+            </b>
+            .
+    Using the information that CloudTrail collects, you can determine the request that was made to
+    Amplify, the IP address from which the request was made, who made the request, when it was
+    made, and additional details.
+           </p>
+           <p>
+            To learn more about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <h2 id="service-name-info-in-cloudtrail">
+            Amplify information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account by default. When activity occurs in
+      Amplify, that activity is recorded in a CloudTrail event along with other AWS service events in
+            <b>
+             Event history
+            </b>
+            . You can view, search, and download recent events in your
+      AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail Event history
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for Amplify,
+      create a trail. A
+            <em>
+             trail
+            </em>
+            enables CloudTrail to deliver log files to an Amazon S3
+      bucket. By default, when you create a trail in the console, the trail applies to all AWS
+      Regions. The trail logs events from all Regions in the AWS partition and delivers the log
+      files to the Amazon S3 bucket that you specify. Additionally, you can configure other AWS
+      services to further analyze and act upon the event data collected in CloudTrail logs. For more
+      information, see the following in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            :
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Creating a trail for your AWS account
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html">
+                CloudTrail supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
+                Configuring Amazon SNS notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log files from multiple regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail log files from multiple accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            All Amplify operations are logged by CloudTrail and are documented in the
+            <a href="https://docs.aws.amazon.com/amplify/latest/APIReference/Welcome.html">
+             AWS Amplify Console API
+        Reference
+            </a>
+            , the
+            <a href="https://docs.aws.amazon.com/amplify-admin-ui/latest/APIReference/what-is-admin-ui.html">
+             AWS Amplify Admin UI API Reference
+            </a>
+            , and the
+            <a href="https://docs.aws.amazon.com/amplifyuibuilder/latest/APIReference/Welcome.html">
+             Amplify UI Builder API
+                Reference
+            </a>
+            .
+      For example, calls to the
+            <code class="code">
+             CreateApp
+            </code>
+            ,
+            <code class="code">
+             DeleteApp
+            </code>
+            and
+            <code class="code">
+             DeleteBackendEnvironment
+            </code>
+            operations generate entries in the CloudTrail log files.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+      identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Was the request made with root or AWS Identity and Access Management (IAM) user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Was the request made with temporary security credentials for a role or
+          federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Was the request made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity element
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <h2 id="understanding-service-name-entries">
+            Understanding Amplify log file
+        entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
+      that you specify. CloudTrail log files contain one or more log entries. An event represents a single
+      request from any source and includes information about the requested action, the date and time
+      of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
+      the public API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the AWS Amplify Console API
+          Reference
+            <a href="https://docs.aws.amazon.com/amplify/latest/APIReference/API_ListApps.html">
+             <code class="code">
+              ListApps
+             </code>
+            </a>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE",
+        "arn": "arn:aws:iam::444455556666:user/Mary_Major",
+        "accountId": "444455556666",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "Mary_Major",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>},
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2021-01-12T05:48:10Z"
+            }
+        }
+    },
+    "eventTime": "2021-01-12T06:47:29Z",
+    "eventSource": "amplify.amazonaws.com",
+    "eventName": "ListApps",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "192.0.2.255",
+    "userAgent": "aws-internal/3 aws-sdk-java/1.11.898 Linux/4.9.230-0.1.ac.223.84.332.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.275-b01 java/1.8.0_275 vendor/Oracle_Corporation",
+    "requestParameters": <span>{</span>
+        "maxResults": "100"
+    },
+    "responseElements": null,
+    "requestID": "1c026d0b-3397-405a-95aa-aa43aexample",
+    "eventID": "c5fca3fb-d148-4fa1-ba22-5fa63example",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "eventCategory": "Management",
+    "recipientAccountId": "444455556666"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the AWS Amplify Admin UI API Reference
+            <a href="https://docs.aws.amazon.com/amplify-admin-ui/latest/APIReference/backend-appid-job-backendenvironmentname.html#backend-appid-job-backendenvironmentnamepost">
+             <code class="code">
+              ListBackendJobs
+             </code>
+            </a>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE",
+        "arn": "arn:aws:iam::444455556666:user/Mary_Major",
+        "accountId": "444455556666",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "Mary_Major",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>},
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2021-01-13T00:47:25Z"
+            }
+        }
+    },
+    "eventTime": "2021-01-13T01:15:43Z",
+    "eventSource": "amplifybackend.amazonaws.com",
+    "eventName": "ListBackendJobs",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "192.0.2.255",
+    "userAgent": "aws-internal/3 aws-sdk-java/1.11.898 Linux/4.9.230-0.1.ac.223.84.332.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.275-b01 java/1.8.0_275 vendor/Oracle_Corporation",
+    "requestParameters": <span>{</span>
+        "appId": "d23mv2oexample",
+        "backendEnvironmentName": "staging"
+    },
+    "responseElements": <span>{</span>
+        "jobs": [
+            <span>{</span>
+                "appId": "d23mv2oexample",
+                "backendEnvironmentName": "staging",
+                "jobId": "ed63e9b2-dd1b-4bf2-895b-3d5dcexample",
+                "operation": "CreateBackendAuth",
+                "status": "COMPLETED",
+                "createTime": "1610499932490",
+                "updateTime": "1610500140053"
+            },
+            <span>{</span>
+                "appId": "d23mv2oexample",
+                "backendEnvironmentName": "staging",
+                "jobId": "06904b10-a795-49c1-92b7-185dfexample",
+                "operation": "CreateBackend",
+                "status": "COMPLETED",
+                "createTime": "1610499657938",
+                "updateTime": "1610499704458"
+            }
+        ],
+        "appId": "d23mv2oexample",
+        "backendEnvironmentName": "staging"
+    },
+    "requestID": "7adfabd6-98d5-4b11-bd39-c7deaexample",
+    "eventID": "68769310-c96c-4789-a6bb-68b52example",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "eventCategory": "Management",
+    "recipientAccountId": "444455556666"
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./ttl.html" id="previous">
+             Managing app performance
+            </div>
+            <div accesskey="n" class="next-link" href="./security.html" id="next">
+             Security
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amplify&amp;topic_url=https://docs.aws.amazon.com/en_us/amplify/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amplify&amp;topic_url=https://docs.aws.amazon.com/en_us/amplify/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

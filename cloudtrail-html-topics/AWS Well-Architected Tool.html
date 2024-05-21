@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging AWS WA Tool API calls with AWS CloudTrail - AWS Well-Architected Tool
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Learn about logging AWS WA Tool with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="AWS Well-Architected Tool" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="Provides an overview of AWS Well-Architected Tool and includes instructions for measuring your workloads and tracking improvements to them over time." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="897c6ffe-3c12-4691-9c85-dc23b20eabd4" name="feedback-folder"/>
+  <meta content="AWS Well-Architected Tool" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'wellarchitected'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging AWS WA Tool API calls with AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging AWS WA Tool API calls with AWS CloudTrail - AWS Well-Architected Tool
+        </title>
+        <meta content="/pdfs/wellarchitected/latest/userguide/wellarchitected-ug.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="wellarchitected-ug.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=901" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?feedback_destination_id=897c6ffe-3c12-4691-9c85-dc23b20eabd4&amp;topic_url=https://docs.aws.amazon.com/en_us/wellarchitected/latest/userguide/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/wellarchitected/latest/userguide/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/wellarchitected/latest/userguide/logging-using-cloudtrail.html" name="feedback-no"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Well-Architected",
+        "item" : "https://docs.aws.amazon.com/wellarchitected/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/wellarchitected/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Logging AWS WA Tool API calls with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/wellarchitected/latest/userguide/wellarchitected-ug.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/wellarchitected/index.html">
+           AWS Well-Architected
+          </a>
+          <a href="intro.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#wat-info-in-cloudtrail">
+           AWS WA Tool information in CloudTrail
+          </a>
+          <a href="#understanding-wat-entries">
+           Understanding AWS WA Tool log file entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <awsui-alert class="awsdocs-page-banner awsui-util-mb-l">
+            <p>
+             You can use the AWS Well-Architected Tool Connector for Jira to link your Jira account with AWS Well-Architected Tool, and sync improvement items between your workloads and Jira projects.
+            </p>
+           </awsui-alert>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging AWS WA Tool API calls with AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            AWS Well-Architected Tool is integrated with AWS CloudTrail, a service that provides a record of actions taken
+    by a user, role, or an AWS service in AWS WA Tool. CloudTrail captures all API calls for
+    AWS WA Tool as events. The calls captured include calls from the AWS WA Tool console and
+    code calls to the AWS WA Tool API operations. If you create a trail, you can enable
+    continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS WA Tool. If you don't 
+    configure a trail, you can still view the most recent events in the CloudTrail console in
+            <b>
+             Event
+      history
+            </b>
+            .  Using the information collected by CloudTrail,
+    you can determine the request that was made to AWS WA Tool, the IP address from which the
+    request was made, who made the request, when it was made, and additional details.
+           </p>
+           <p>
+            To learn more about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <h2 id="wat-info-in-cloudtrail">
+            AWS WA Tool information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
+      AWS WA Tool, that activity is recorded in a CloudTrail event along with other AWS service
+      events in
+            <b>
+             Event history
+            </b>
+            . You can view, search, and download recent events 
+        in your AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing Events with CloudTrail Event
+        History
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for AWS WA Tool,
+      create a trail. A
+            <em>
+             trail
+            </em>
+            enables CloudTrail to deliver log files to an Amazon S3 bucket. 
+      By default, when you create a trail in the console, the trail applies to all AWS Regions. The trail logs events
+      from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you
+      specify.  Additionally, you can configure other AWS services to further analyze and act upon
+      the event data collected in CloudTrail logs. For more information, see the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for Creating a Trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail Supported Services and Integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring Amazon SNS Notifications
+          for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail Log
+          Files from Multiple Regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail Log
+            Files from Multiple Accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            All AWS WA Tool actions are logged by CloudTrail and are documented in
+            <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awswell-architectedtool.html#awswell-architectedtool-actions-as-permissions">
+             Actions Defined by AWS Well-Architected Tool
+            </a>
+            . For example, calls to the
+            <code class="code">
+             CreateWorkload
+            </code>
+            ,
+            <code class="code">
+             DeleteWorkload
+            </code>
+            , and
+            <code class="code">
+             CreateWorkloadShare
+            </code>
+            actions generate
+      entries in the CloudTrail log files.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+      identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with user or root user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+          federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity
+        Element
+            </a>
+            .
+           </p>
+           <h2 id="understanding-wat-entries">
+            Understanding AWS WA Tool log file entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
+      that you specify. CloudTrail log files contain one or more log entries. An event represents a single
+      request from any source and includes information about the requested action, the date and time
+      of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
+      the public API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             CreateWorkload
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json">
+   <span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE:dev-dsk-xiulan-2a-1111111c.us-west-2.amazon.com",
+        "arn": "arn:aws:sts::444455556666:assumed-role/well-architected-api-svc-integ-test-read-write/dev-dsk-xiulan-2a-1111111c.us-west-2.amazon.com",
+        "accountId": "444455556666",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDACKCEVSQ6C2EXAMPLE",
+                "arn": "arn:aws:iam::444455556666:role/well-architected-api-svc-integ-test-read-write",
+                "accountId": "444455556666",
+                "userName": "well-architected-api-svc-integ-test-read-write"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2020-10-14T03:41:39Z"
+            }
+        }
+    },
+    "eventTime": "2020-10-14T04:43:13Z",
+    "eventSource": "wellarchitected.amazonaws.com",
+    "eventName": "CreateWorkload",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "198.51.100.178",
+    "userAgent": "aws-internal/3 aws-sdk-java/1.11.848 Linux/4.9.217-0.1.ac.205.84.332.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.262-b10 java/1.8.0_262 vendor/Oracle_Corporation",
+    "requestParameters": <span>{</span>
+           "ClientRequestToken": "08af866a-0238-4070-89c2-b689ca8339f7",
+           "Description": "***",
+           "AwsRegions": [
+               "us-west-2"
+           ],
+           "ReviewOwner": "***",
+           "Environment": "PRODUCTION",
+           "Name": "***",
+           "Lenses": [
+               "wellarchitected",
+               "serverless"
+           ]
+    },
+    "responseElements": <span>{</span>
+         "Arn": "arn:aws:wellarchitected:us-west-2:444455556666:workload/8cdcdf7add10b181fdd3f686dacffdac",
+         "Id": "8cdcdf7add10b181fdd3f686dacffdac"
+    },
+    "requestID": "22bad4e3-aa51-4ff1-b480-712ee07cedbd",
+    "eventID": "50849dfd-36ed-418e-a901-49f6ac7087e8",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "444455556666"
+}
+    </code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./tagging.html" id="previous">
+             Tagging your resources
+            </div>
+            <div accesskey="n" class="next-link" href="./eventbridge.html" id="next">
+             EventBridge
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?feedback_destination_id=897c6ffe-3c12-4691-9c85-dc23b20eabd4&amp;topic_url=https://docs.aws.amazon.com/en_us/wellarchitected/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?feedback_destination_id=897c6ffe-3c12-4691-9c85-dc23b20eabd4&amp;topic_url=https://docs.aws.amazon.com/en_us/wellarchitected/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

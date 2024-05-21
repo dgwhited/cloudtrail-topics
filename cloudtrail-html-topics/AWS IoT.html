@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Monitoring AWS IoT - AWS IoT Core
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="monitoring_overview" name="target_state"/>
+  <meta content="monitoring_overview" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/iot/latest/developerguide/monitoring_overview.html" rel="canonical"/>
+  <meta content="Lists the items to monitor to maintain the reliability, availability, and performance of your AWS IoT." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="AWS IoT Core" name="product"/>
+  <meta content="Developer Guide" name="guide"/>
+  <meta content="AWS IoT provides secure, bi-directional communication between Internet-connected devices such as sensors, actuators, embedded micro-controllers, or smart appliances and the AWS Cloud. This enables you to collect telemetry data from multiple devices, and store and analyze the data. You can also create applications that enable your users to control these devices from their phones or tablets." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/iot/latest/developerguide/monitoring_overview.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/iot/latest/developerguide/monitoring_overview.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/iot/latest/developerguide/monitoring_overview.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/iot/latest/developerguide/monitoring_overview.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/iot/latest/developerguide/monitoring_overview.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/iot/latest/developerguide/monitoring_overview.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/iot/latest/developerguide/monitoring_overview.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/iot/latest/developerguide/monitoring_overview.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/iot/latest/developerguide/monitoring_overview.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/iot/latest/developerguide/monitoring_overview.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/iot/latest/developerguide/monitoring_overview.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/iot/latest/developerguide/monitoring_overview.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/iot/latest/developerguide/monitoring_overview.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/iot/latest/developerguide/monitoring_overview.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/iot/latest/developerguide/monitoring_overview.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/iot/latest/developerguide/monitoring_overview.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/iot/latest/developerguide/monitoring_overview.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/monitoring_overview.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/monitoring_overview.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/iot/latest/developerguide/monitoring_overview.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/iot/latest/developerguide/monitoring_overview.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/iot/latest/developerguide/monitoring_overview.html" hreflang="x-default" rel="alternative"/>
+  <meta content="IoT Docs" name="feedback-item"/>
+  <meta content="AWS IoT Core" name="this_doc_product"/>
+  <meta content="Developer Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'iot'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="Developer Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Monitoring AWS IoT"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Monitoring AWS IoT - AWS IoT Core
+        </title>
+        <meta content="/pdfs/iot/latest/developerguide/iot-dg.pdf#monitoring_overview" name="pdf"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=210" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=IoT%20Docs&amp;topic_url=https://docs.aws.amazon.com/en_us/iot/latest/developerguide/monitoring_overview.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/iot/latest/developerguide/monitoring_overview.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/iot/latest/developerguide/monitoring_overview.html" name="feedback-no"/>
+        <meta content="AWS IoT,IoT,Internet of Things" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS IoT Core",
+        "item" : "https://docs.aws.amazon.com/iot/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Developer Guide",
+        "item" : "https://docs.aws.amazon.com/iot/latest/developerguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Monitoring AWS IoT",
+        "item" : "https://docs.aws.amazon.com/iot/latest/developerguide/monitoring_overview.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/iot/latest/developerguide/iot-dg.pdf#monitoring_overview" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/iot/index.html">
+           AWS IoT Core
+          </a>
+          <a href="what-is-aws-iot.html">
+           Developer Guide
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="monitoring_overview">
+            Monitoring AWS IoT
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Monitoring is an important part of maintaining the reliability, availability, and
+    performance of AWS IoT and your AWS solutions.
+           </p>
+           <p>
+            We strongly encourage you to collect monitoring data from all parts of your AWS solution
+    to make it easier to debug a multi-point failure, if one occurs. Start by creating a monitoring
+    plan that answers the following questions. If you're not sure how to answer these, you can still
+    continue to
+            <a href="./configure-logging.html">
+             enable logging
+            </a>
+            and establish your
+    performance baselines.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               What are your monitoring goals?
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Which resources will you monitor?
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               How often will you monitor these resources?
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Which monitoring tools will you use?
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Who will perform the monitoring tasks?
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Who should be notified when something goes wrong?
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Your next step is to
+            <a href="./configure-logging.html">
+             enable logging
+            </a>
+            and establish a
+    baseline of normal AWS IoT performance in your environment by measuring performance at
+    various times and under different load conditions. As you monitor AWS IoT, keep historical
+    monitoring data so that you can compare it with current performance data. This will help you
+    identify normal performance patterns and performance anomalies, and devise methods to address
+    issues.
+           </p>
+           <p>
+            To establish your baseline performance for AWS IoT, you should monitor these metrics to start.
+    You can always monitor more metrics later.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="./metrics_dimensions.html#message-broker-metrics">
+                PublishIn.Success
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./metrics_dimensions.html#message-broker-metrics">
+                PublishOut.Success
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./metrics_dimensions.html#message-broker-metrics">
+                Subscribe.Success
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./metrics_dimensions.html#message-broker-metrics">
+                Ping.Success
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./metrics_dimensions.html#message-broker-metrics">
+                Connect.Success
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./metrics_dimensions.html#shadow-metrics">
+                GetThingShadow.Accepted
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./metrics_dimensions.html#shadow-metrics">
+                UpdateThingShadow.Accepted
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./metrics_dimensions.html#shadow-metrics">
+                DeleteThingShadow.Accepted
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./metrics_dimensions.html#iot-metrics">
+                RulesExecuted
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            The topics in this section can help you start logging and monitoring AWS IoT.
+           </p>
+           <div class="highlights">
+            <h6>
+             Topics
+            </h6>
+            <ul>
+             <li>
+              <a href="./configure-logging.html">
+               Configure AWS IoT logging
+              </a>
+             </li>
+             <li>
+              <a href="./monitoring-cloudwatch.html">
+               Monitor AWS IoT alarms and metrics using
+        Amazon CloudWatch
+              </a>
+             </li>
+             <li>
+              <a href="./cloud-watch-logs.html">
+               Monitor AWS IoT using CloudWatch Logs
+              </a>
+             </li>
+             <li>
+              <a href="./upload-device-logs-to-cloudwatch.html">
+               Upload device-side logs to Amazon CloudWatch
+              </a>
+             </li>
+             <li>
+              <a href="./iot-using-cloudtrail.html">
+               Logging AWS IoT API calls using AWS CloudTrail
+              </a>
+             </li>
+            </ul>
+           </div>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./security-best-practices.html" id="previous">
+             Security best practices
+            </div>
+            <div accesskey="n" class="next-link" href="./configure-logging.html" id="next">
+             Configure AWS IoT logging
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=IoT Docs&amp;topic_url=https://docs.aws.amazon.com/en_us/iot/latest/developerguide/monitoring_overview.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=IoT Docs&amp;topic_url=https://docs.aws.amazon.com/en_us/iot/latest/developerguide/monitoring_overview.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging AWS Systems Manager API calls with AWS CloudTrail - AWS Systems Manager
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="monitoring-cloudtrail-logs" name="target_state"/>
+  <meta content="monitoring-cloudtrail-logs" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" rel="canonical"/>
+  <meta content="Log Systems Manager API calls with CloudTrail to provide a record of actions taken by a user, a role, or an AWS service in Systems Manager." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="AWS Systems Manager" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="AWS Systems Manager (formerly Amazon EC2 Systems Manager) is a unified interface that allows you to centralize operational data and automate tasks across your AWS resources. Systems Manager shortens the time to detect and resolve operational problems in your infrastructure. Systems Manager gives you a complete view of your infrastructure performance and configuration, simplifies resource and application management, and allows you to operate and manage your infrastructure at scale." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Systems Manager" name="feedback-item"/>
+  <meta content="AWS Systems Manager" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'systems-manager'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging AWS Systems Manager API calls with AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging AWS Systems Manager API calls with AWS CloudTrail - AWS Systems Manager
+        </title>
+        <meta content="/pdfs/systems-manager/latest/userguide/systems-manager-ug.pdf#monitoring-cloudtrail-logs" name="pdf"/>
+        <meta content="aws-systems-manager-user-guide-updates.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=185" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Systems%20Manager&amp;topic_url=https://docs.aws.amazon.com/en_us/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" name="feedback-no"/>
+        <meta content="EC2 Systems Manager,Simple Systems Manager,SSM,Patch Manager,Parameter Store,Maintenance Window,Run Command,State Manager,Session Manager,SSM Agent,SSM Documents,Systems Manager,AWS Resource Groups,AppConfig,OpsCenter,Explorer,Change Calendar,Quick Setup,Change Manager,Fleet Manager" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Systems Manager",
+        "item" : "https://docs.aws.amazon.com/systems-manager/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/systems-manager/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Monitoring AWS Systems Manager",
+        "item" : "https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging AWS Systems Manager API calls with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/systems-manager/latest/userguide/systems-manager-ug.pdf#monitoring-cloudtrail-logs" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/systems-manager/index.html">
+           AWS Systems Manager
+          </a>
+          <a href="what-is-systems-manager.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#cloudtrail-data-events">
+           Systems Manager data events in CloudTrail
+          </a>
+          <a href="#cloudtrail-management-events">
+           Systems Manager management events in CloudTrail
+          </a>
+          <a href="#monitoring-cloudtrail-logs-log-entries-example">
+           Systems Manager event examples
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="monitoring-cloudtrail-logs">
+            Logging AWS Systems Manager API calls with AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            AWS Systems Manager is integrated with
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail
+            </a>
+            , a service
+    that provides a record of actions taken by a user, role, or an AWS service. CloudTrail captures API
+    calls for Systems Manager as events. The calls captured include calls from the Systems Manager console and code
+    calls to the Systems Manager API operations. Using the information collected by CloudTrail, you can determine
+    the request that was made to Systems Manager, the IP address from which the request was made, when it was
+    made, and additional details.
+           </p>
+           <p>
+            Every event or log entry contains information that helps you determine who made the
+    request.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               AWS account root user
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Temporary security credentials from an AWS Identity and Access Management (IAM) role or federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Long-term security credentials from an IAM user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Requests made on behalf of an IAM Identity Center user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail
+      userIdentity Element
+            </a>
+            .
+           </p>
+           <p>
+            CloudTrail is active in your AWS account when you create the account and you automatically have
+    access to the CloudTrail
+            <b>
+             Event history
+            </b>
+            . The CloudTrail
+            <b>
+             Event
+      history
+            </b>
+            provides a viewable, searchable, downloadable, and immutable record of the
+    past 90 days of recorded management events in an AWS Region. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Working
+      with CloudTrail Event history
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            . There are no CloudTrail
+    charges for viewing the
+            <b>
+             Event history
+            </b>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account past 90 days, create a trail or a
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+             CloudTrail
+      Lake
+            </a>
+            event data store.
+           </p>
+           <div class="variablelist">
+            <dl>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail trails
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               A
+               <em>
+                trail
+               </em>
+               enables CloudTrail to deliver log files to an Amazon S3 bucket. All trails created using the AWS Management Console are multi-Region. You can create a single-Region or a multi-Region trail by using the AWS CLI. Creating a multi-Region trail is recommended because you capture activity in all AWS Regions in your account. If you create a single-Region trail, you can view only the events logged in the trail's AWS Region. For more information about trails, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Creating a trail for your AWS account
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html">
+                Creating a trail for an organization
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               You can deliver one copy of your ongoing management events to your Amazon S3 bucket at no charge from CloudTrail by creating a trail, however, there are Amazon S3 storage charges. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               . For information about Amazon S3 pricing, see
+               <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Amazon S3 Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail Lake event data stores
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               <em>
+                CloudTrail Lake
+               </em>
+               lets you run SQL-based queries on your events. CloudTrail Lake converts existing events in row-based JSON format to
+               <a href="https://orc.apache.org/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Apache ORC
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into
+               <em>
+                event data stores
+               </em>
+               , which are immutable collections of events based on criteria that you select by applying
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-concepts.html#adv-event-selectors">
+                advanced event selectors
+               </a>
+               . The selectors that you apply to an event data store control which events persist and are available for you to query. For more information about CloudTrail Lake, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+                Working with AWS CloudTrail Lake
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               CloudTrail Lake event data stores and queries incur costs. When you create an event data store, you choose the
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html#cloudtrail-lake-manage-costs-pricing-option">
+                pricing option
+               </a>
+               you want to use for the event data store. The pricing option determines the cost for ingesting and storing events, and the default and maximum retention period for the event data store. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+            </dl>
+           </div>
+           <h2 id="cloudtrail-data-events">
+            Systems Manager data events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            provide information about the resource operations performed on or in a
+      resource (for example, creating or opening a control channel). These are also known as data
+      plane operations. Data events are often high-volume activities. By default, CloudTrail doesnât log
+      data events. The CloudTrail
+            <b>
+             Event history
+            </b>
+            doesn't record data events.
+           </p>
+           <p>
+            Additional charges apply for data events. For more information about CloudTrail pricing, see
+            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+             <span>
+              AWS CloudTrail Pricing
+             </span>
+             <awsui-icon class="awsdocs-link-icon" name="external">
+             </awsui-icon>
+            </a>
+            .
+           </p>
+           <p>
+            You can log data events for the Systems Manager resource types by using the CloudTrail console, AWS CLI, or
+      CloudTrail API operations. For more information about how to log data events, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-console">
+             Logging data events with the AWS Management Console
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-with-the-AWS-CLI">
+             Logging data events with the AWS Command Line Interface
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <p>
+            The following table lists the Systems Manager resource types for which you can log data events. The
+            <b>
+             Data event type (console)
+            </b>
+            column shows the value to choose
+      from the
+            <b>
+             Data event type
+            </b>
+            list on the CloudTrail console. The
+            <b>
+             resources.type value
+            </b>
+            column shows the
+            <code class="code">
+             resources.type
+            </code>
+            value, which you would specify when configuring advanced event selectors using the AWS CLI or
+      CloudTrail APIs. The
+            <b>
+             Data APIs logged to CloudTrail
+            </b>
+            column shows the API
+      calls logged to CloudTrail for the resource type.
+           </p>
+           <div class="table-container" id="data-events-table">
+            <div class="table-contents disable-scroll">
+             <table id="w882aac44c29c17c11">
+              <thead>
+               <tr>
+                <th>
+                 Data event type (console)
+                </th>
+                <th>
+                 resources.type value
+                </th>
+                <th>
+                 Data APIs logged to CloudTrail
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 Systems Manager
+                </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::SSMMessages::ControlChannel
+                </code>
+               </td>
+               <td tabindex="-1">
+                <div class="itemizedlist">
+                 <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <code class="code">
+                     CreateControlChannel
+                    </code>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <code class="code">
+                     OpenControlChannel
+                    </code>
+                   </p>
+                  </li>
+                 </ul>
+                </div>
+                <p>
+                 For more information about these operations, see
+                 <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonsessionmanagermessagegatewayservice.html#amazonsessionmanagermessagegatewayservice-actions-as-permissions">
+                  Actions defined by Amazon Message Gateway Service
+                 </a>
+                 in the
+                 <em>
+                  Service Authorization Reference
+                 </em>
+                 .
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 Systems Manager managed node
+                </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::SSM::ManagedNode
+                </code>
+               </td>
+               <td tabindex="-1">
+                <div class="itemizedlist">
+                 <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <code class="code">
+                     RequestManagedInstanceRoleToken
+                    </code>
+                    â This event is
+                    generated when the Systems Manager Agent (SSM Agent) running on a node managed by Systems Manager
+                    requests credentials from the Systems Manager credential service.
+                   </p>
+                  </li>
+                 </ul>
+                </div>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <p>
+            You can configure advanced event selectors to filter on the
+            <code class="code">
+             eventName
+            </code>
+            ,
+            <code class="code">
+             readOnly
+            </code>
+            , and
+            <code class="code">
+             resources.ARN
+            </code>
+            fields to log only those events that
+      are important to you. For more information about these fields, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
+             AdvancedFieldSelector
+            </a>
+            in the
+            <em>
+             AWS CloudTrail API Reference
+            </em>
+            .
+           </p>
+           <h2 id="cloudtrail-management-events">
+            Systems Manager management events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
+            </a>
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
+           </p>
+           <p>
+            Systems Manager logs all control plane operations to CloudTrail as management events. Systems Manager API operations
+      are documented in the
+            <a href="https://docs.aws.amazon.com/systems-manager/latest/APIReference/Welcome.html">
+             AWS Systems Manager API Reference
+            </a>
+            . For example, calls to the
+            <code class="code">
+             CreateMaintenanceWindows
+            </code>
+            ,
+            <code class="code">
+             PutInventory
+            </code>
+            ,
+            <code class="code">
+             SendCommand
+            </code>
+            ,
+      and
+            <code class="code">
+             StartSession
+            </code>
+            actions generate entries in the CloudTrail log files. For an example
+      of setting up CloudTrail to monitor a Systems Manager API call, see
+            <a href="./session-manager-auditing.html#session-manager-auditing-eventbridge-events">
+             Monitoring session
+                    activity using Amazon EventBridge (console)
+            </a>
+            .
+           </p>
+           <h2 id="monitoring-cloudtrail-logs-log-entries-example">
+            Systems Manager event examples
+           </h2>
+           <p>
+            An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
+           </p>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Examples:
+            </h6>
+            <ul>
+             <li>
+              <a href="#monitoring-cloudtrail-logs-log-entries-example-mgmt">
+               Management event examples
+              </a>
+             </li>
+             <li>
+              <a href="#monitoring-cloudtrail-logs-log-entries-example-data">
+               Data event examples
+              </a>
+             </li>
+            </ul>
+           </div>
+           <h3 id="monitoring-cloudtrail-logs-log-entries-example-mgmt">
+            Management event examples
+           </h3>
+           <h6>
+            Example 1:
+            <code class="code">
+             DeleteDocument
+            </code>
+           </h6>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             DeleteDocument
+            </code>
+            operation on a document named
+            <code class="code">
+             example-Document
+            </code>
+            in
+        the US East (Ohio) Region (us-east-2).
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.04",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AKIAI44QH8DHBEXAMPLE:203.0.113.11",
+        "arn": "arn:aws:sts::123456789012:assumed-role/example-role/203.0.113.11",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2018-03-06T20:19:16Z"
+            },
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AKIAI44QH8DHBEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/example-role",
+                "accountId": "123456789012",
+                "userName": "example-role"
+            }
+        }
+    },
+    "eventTime": "2018-03-06T20:30:12Z",
+    "eventSource": "ssm.amazonaws.com",
+    "eventName": "DeleteDocument",
+    "awsRegion": "us-east-2",
+    "sourceIPAddress": "203.0.113.11",
+    "userAgent": "example-user-agent-string",
+    "requestParameters": <span>{</span>
+        "name": "example-Document"
+    },
+    "responseElements": null,
+    "requestID": "86168559-75e9-11e4-8cf8-75d18EXAMPLE",
+    "eventID": "832b82d5-d474-44e8-a51d-093ccEXAMPLE",
+    "resources": [
+        <span>{</span>
+            "ARN": "arn:aws:ssm:us-east-2:123456789012:document/example-Document",
+            "accountId": "123456789012"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+           <h6>
+            Example 2:
+            <code class="code">
+             StartConnection
+            </code>
+           </h6>
+           <p>
+            The following example shows a CloudTrail event for a user who starts an RDP connection using
+        Fleet Manager in the US East (Ohio) Region (us-east-2). The underlying API action is
+            <code class="code">
+             StartConnection
+            </code>
+            .
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:sts::123456789012:assumed-role/exampleRole",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AKIAI44QH8DHBEXAMPLE",
+                "arn": "arn:aws:sts::123456789012:assumed-role/exampleRole",
+                "accountId": "123456789012",
+                "userName": "exampleRole"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2021-12-13T14:57:05Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2021-12-13T16:50:41Z",
+    "eventSource": "ssm-guiconnect.amazonaws.com",
+    "eventName": "StartConnection",
+    "awsRegion": "us-east-2",
+    "sourceIPAddress": "34.230.45.60",
+    "userAgent": "example-user-agent-string",
+    "requestParameters": <span>{</span>
+        "AuthType": "Credentials",
+        "Protocol": "RDP",
+        "ConnectionType": "SessionManager",
+        "InstanceId": "i-02573cafcfEXAMPLE"
+    },
+    "responseElements": <span>{</span>
+        "ConnectionArn": "arn:aws:ssm-guiconnect:us-east-2:123456789012:connection/fcb810cd-241f-4aae-9ee4-02d59EXAMPLE",
+        "ConnectionKey": "71f9629f-0f9a-4b35-92f2-2d253EXAMPLE",
+        "ClientToken": "49af0f92-d637-4d47-9c54-ea51aEXAMPLE",
+        "requestId": "d466710f-2adf-4e87-9464-055b2EXAMPLE"
+    },
+    "requestID": "d466710f-2adf-4e87-9464-055b2EXAMPLE",
+    "eventID": "fc514f57-ba19-4e8b-9079-c2913EXAMPLE",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+           <h3 id="monitoring-cloudtrail-logs-log-entries-example-data">
+            Data event examples
+           </h3>
+           <h6>
+            Example 1:
+            <code class="code">
+             CreateControlChannel
+            </code>
+           </h6>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             CreateControlChannel
+            </code>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><span>{</span>
+  "eventVersion":"1.08",
+  "userIdentity":<span>{</span>
+    "type":"AssumedRole",
+    "principalId":"AKIAI44QH8DHBEXAMPLE",
+    "arn":"arn:aws:sts::123456789012:assumed-role/exampleRole",
+    "accountId":"123456789012",
+    "accessKeyId":"AKIAI44QH8DHBEXAMPLE",
+    "sessionContext":<span>{</span>
+      "sessionIssuer":<span>{</span>
+        "type":"Role",
+        "principalId":"AKIAI44QH8DHBEXAMPLE",
+        "arn":"arn:aws:iam::123456789012:role/exampleRole",
+        "accountId":"123456789012",
+        "userName":"exampleRole"
+      },
+      "attributes":<span>{</span>
+        "creationDate":"2023-05-04T23:14:50Z",
+        "mfaAuthenticated":"false"
+      }
+    }
+  },
+  "eventTime":"2023-05-04T23:53:55Z",
+  "eventSource":"ssm.amazonaws.com",
+  "eventName":"CreateControlChannel",
+  "awsRegion":"us-east-1",
+  "sourceIPAddress":"192.0.2.0",
+  "userAgent":"example-agent",
+  "requestParameters":<span>{</span>
+    "channelId":"44295c1f-49d2-48b6-b218-96823EXAMPLE",
+    "messageSchemaVersion":"1.0",
+    "requestId":"54993150-0e8f-4142-aa54-3438EXAMPLE",
+    "userAgent":"example-agent"
+  },
+  "responseElements":<span>{</span>
+    "messageSchemaVersion":"1.0",
+    "tokenValue":"Value hidden due to security reasons.",
+    "url":"example-url"
+  },
+  "requestID":"54993150-0e8f-4142-aa54-3438EXAMPLE",
+  "eventID":"a48a28de-7996-4ca1-a3a0-a51fEXAMPLE",
+  "readOnly":false,
+  "resources":[
+    <span>{</span>
+      "accountId":"123456789012",
+      "type":"AWS::SSMMessages::ControlChannel",
+      "ARN":"arn:aws:ssmmessages:us-east-1:123456789012:control-channel/44295c1f-49d2-48b6-b218-96823EXAMPLE"
+    }
+  ],
+  "eventType":"AwsApiCall",
+  "managementEvent":false,
+  "recipientAccountId":"123456789012",
+  "eventCategory":"Data"
+}</code></pre>
+           <h6>
+            Example 2:
+            <code class="code">
+             RequestManagedInstanceRoleToken
+            </code>
+           </h6>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             RequestManagedInstanceRoleToken
+            </code>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "123456789012:aws:ec2-instance:i-02854e4bEXAMPLE",
+        "arn": "arn:aws:sts::123456789012:assumed-role/aws:ec2-instance/i-02854e4bEXAMPLE",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "123456789012:aws:ec2-instance",
+                "arn": "arn:aws:iam::123456789012:role/aws:ec2-instance",
+                "accountId": "123456789012",
+                "userName": "aws:ec2-instance"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2023-08-27T03:34:46Z",
+                "mfaAuthenticated": "false"
+            },
+            "ec2RoleDelivery": "2.0"
+        }
+    },
+    "eventTime": "2023-08-27T03:37:15Z",
+    "eventSource": "ssm.amazonaws.com",
+    "eventName": "RequestManagedInstanceRoleToken",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "Apache-HttpClient/UNAVAILABLE (Java/1.8.0_362)",
+    "requestParameters": <span>{</span>
+        "fingerprint": "i-02854e4bf85EXAMPLE"
+    },
+    "responseElements": null,
+    "requestID": "2582cced-455b-4189-9b82-7b48EXAMPLE",
+    "eventID": "7f200508-e547-4c27-982d-4da0EXAMLE",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+            "accountId": "123456789012",
+            "type": "AWS::SSM::ManagedNode",
+            "ARN": "arn:aws:ec2:us-east-1:123456789012:instance/i-02854e4bEXAMPLE"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Data"
+}</code></pre>
+           <p>
+            For information about CloudTrail record contents, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail
+        record contents
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./monitoring-cloudwatch-metrics.html" id="previous">
+             Monitoring Run Command metrics using
+                Amazon CloudWatch
+            </div>
+            <div accesskey="n" class="next-link" href="./automation-action-logging.html" id="next">
+             Logging Automation action output with
+                CloudWatch Logs
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Systems Manager&amp;topic_url=https://docs.aws.amazon.com/en_us/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Systems Manager&amp;topic_url=https://docs.aws.amazon.com/en_us/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

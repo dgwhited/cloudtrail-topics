@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Monitoring Amazon Lex API Calls with AWS CloudTrail Logs - Amazon Lex V1
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="monitoring-aws-lex-cloudtrail" name="target_state"/>
+  <meta content="monitoring-aws-lex-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" rel="canonical"/>
+  <meta content="Amazon Lex is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in Amazon Lex. CloudTrail captures a subset of API calls for Amazon Lex as events, including calls from the Amazon Lex console and from code calls to the Amazon Lex APIs. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Amazon Lex. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in" name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon Lex V1" name="product"/>
+  <meta content="Developer Guide" name="guide"/>
+  <meta content="This is the official Amazon Web Services (AWS) documentation for Amazon Lex. Amazon Lex is an AWS service for building conversational interfaces for applications using voice and text. Amazon Lex provides the deep functionality and flexibility of natural language processing and automatic speech recognition so that you can build highly engaging user experiences with lifeline, conversational interactions. This documentation is offered for free here as a Kindle book or you can read it online or in PDF format at https://aws.amazon.com/documentation/lex/." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Lex" name="feedback-item"/>
+  <meta content="Amazon Lex V1" name="this_doc_product"/>
+  <meta content="Developer Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'lex'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="Developer Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Monitoring Amazon Lex API Calls with AWS CloudTrail Logs"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Monitoring Amazon Lex API Calls with AWS CloudTrail Logs - Amazon Lex V1
+        </title>
+        <meta content="/pdfs/lex/latest/dg/lex-dg.pdf#monitoring-aws-lex-cloudtrail" name="pdf"/>
+        <meta content="amazon-lex-document-history.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=251" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Lex&amp;topic_url=https://docs.aws.amazon.com/en_us/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" name="feedback-no"/>
+        <meta content="Lex,Amazon Lex,chatbot,natural language processing,automatic speect recognition,conversational,conversation" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon Lex V1",
+        "item" : "https://docs.aws.amazon.com/lex/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Developer Guide",
+        "item" : "https://docs.aws.amazon.com/lex/latest/dg"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Security in Amazon Lex",
+        "item" : "https://docs.aws.amazon.com/lex/latest/dg/security.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Monitoring in Amazon Lex",
+        "item" : "https://docs.aws.amazon.com/lex/latest/dg/monitoring-aws-lex.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
+        "name" : "Monitoring Amazon Lex API Calls with AWS CloudTrail Logs",
+        "item" : "https://docs.aws.amazon.com/lex/latest/dg/monitoring-aws-lex.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/lex/latest/dg/lex-dg.pdf#monitoring-aws-lex-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/lex/index.html">
+           Amazon Lex V1
+          </a>
+          <a href="what-is.html">
+           Developer Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#service-name-info-in-cloudtrail">
+           Amazon Lex
+                    Information in CloudTrail
+          </a>
+          <a href="#understanding-aws-lex-entries">
+           Example: Amazon Lex
+                    Log File Entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <awsui-alert class="awsdocs-page-banner awsui-util-mb-l">
+            <p>
+             If you are using Amazon Lex V2, refer to the
+             <a href="https://docs.aws.amazon.com/lexv2/latest/dg/what-is.html">
+              Amazon Lex V2 guide
+             </a>
+             instead.
+            </p>
+            <p>
+             Â
+            </p>
+            <p>
+             If you are using Amazon Lex V1, we recommend
+             <a href="https://docs.aws.amazon.com/lexv2/latest/dg/migration.html">
+              upgrading your bots to Amazon Lex V2
+             </a>
+             . We are no longer adding new features to V1 and strongly recommend using V2 for all new bots.
+            </p>
+           </awsui-alert>
+           <h1 class="topictitle" id="monitoring-aws-lex-cloudtrail">
+            Monitoring Amazon Lex API
+                Calls with AWS CloudTrail Logs
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Amazon Lex is integrated with AWS CloudTrail, a service that provides
+            a record of actions taken by a user, role, or an AWS service in
+            Amazon Lex. CloudTrail captures a subset of API calls for Amazon Lex
+            as events, including calls from the Amazon Lex console and from
+            code calls to the Amazon Lex APIs. If you create a trail, you can
+            enable continuous delivery of CloudTrail events to an Amazon S3 bucket,
+            including events for Amazon Lex. If you don't configure a trail,
+            you can still view the most recent events in the CloudTrail console in
+            <b>
+             Event history
+            </b>
+            . Using the information
+            collected by CloudTrail, you can determine the request that was made to
+            Amazon Lex, the IP address from which the request was made, who
+            made the request, when it was made, and additional details.
+           </p>
+           <p>
+            To learn more about CloudTrail, including how to configure and enable
+            it, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <h2 id="service-name-info-in-cloudtrail">
+            Amazon Lex
+                    Information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the
+                account. When supported event activity occurs in Amazon Lex,
+                that activity is recorded in a CloudTrail event along with other AWS
+                service events in
+            <b>
+             Event history
+            </b>
+            . You can
+                view, search, and download recent events in your AWS account.
+                For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing
+                    Events with CloudTrail Event History
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account,
+                including events for Amazon Lex, create a trail. A trail
+                enables CloudTrail to deliver log files to an Amazon Simple Storage Service (Amazon S3) bucket.
+                By default, when you create a trail in the console, the trail
+                applies to all AWS Regions. The trail logs events from all
+                Regions in the AWS partition and delivers the log files to the
+                S3 bucket that you specify. Additionally, you can configure
+                other AWS services to further analyze and act upon the event
+                data collected in CloudTrail logs. For more information, see:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for Creating a Trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail Supported Services and
+                        Integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring Amazon SNS Notifications for
+                            CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail Log Files from Multiple
+                            Regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail Log Files from Multiple
+                            Accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Amazon Lex supports logging the following operations as
+                events in CloudTrail log files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="./API_CreateBotVersion.html">
+                CreateBotVersion
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_CreateIntentVersion.html">
+                CreateIntentVersion
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_CreateSlotTypeVersion.html">
+                CreateSlotTypeVersion
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_DeleteBot.html">
+                DeleteBot
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_DeleteBotAlias.html">
+                DeleteBotAlias
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_DeleteBotChannelAssociation.html">
+                DeleteBotChannelAssociation
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_DeleteBotVersion.html">
+                DeleteBotVersion
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_DeleteIntent.html">
+                DeleteIntent
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_DeleteIntentVersion.html">
+                DeleteIntentVersion
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_DeleteSlotType.html">
+                DeleteSlotType
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_DeleteSlotTypeVersion.html">
+                DeleteSlotTypeVersion
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_DeleteUtterances.html">
+                DeleteUtterances
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBot.html">
+                GetBot
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBotAlias.html">
+                GetBotAlias
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBotAliases.html">
+                GetBotAliases
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBotChannelAssociation.html">
+                GetBotChannelAssociation
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBotChannelAssociations.html">
+                GetBotChannelAssociations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBots.html">
+                GetBots
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBotVersions.html">
+                GetBotVersions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBuiltinIntent.html">
+                GetBuiltinIntent
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBuiltinIntents.html">
+                GetBuiltinIntents
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetBuiltinSlotTypes.html">
+                GetBuiltinSlotTypes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetSlotTypeVersions.html">
+                GetSlotTypeVersions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_GetUtterancesView.html">
+                GetUtterancesView
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_PutBot.html">
+                PutBot
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_PutBotAlias.html">
+                PutBotAlias
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_PutIntent.html">
+                PutIntent
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="./API_PutSlotType.html">
+                PutSlotType
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Every event or log entry contains information about who
+                generated the request. This information helps you determine the
+                following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or user
+                        credentials
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security
+                        credentials for a role or federated user
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS
+                        service
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity Element
+            </a>
+            .
+           </p>
+           <p>
+            For information about the Amazon Lex actions that are logged in
+                CloudTrail logs, see
+            <a href="https://docs.aws.amazon.com/lex/latest/dg/API_Operations_Amazon_Lex_Model_Building_Service.html">
+             Amazon Lex Model Building Service
+            </a>
+            . For example,
+                calls to the
+            <a href="./API_PutBot.html">
+             PutBot
+            </a>
+            ,
+            <a href="./API_GetBot.html">
+             GetBot
+            </a>
+            , and
+            <a href="./API_DeleteBot.html">
+             DeleteBot
+            </a>
+            operations generate entries in the CloudTrail log. The actions
+                documented in
+            <a href="https://docs.aws.amazon.com/lex/latest/dg/API_Operations_Amazon_Lex_Runtime_Service.html">
+             Amazon Lex Runtime Service
+            </a>
+            ,
+            <a href="./API_runtime_PostContent.html">
+             PostContent
+            </a>
+            and
+            <a href="./API_runtime_PostText.html">
+             PostText
+            </a>
+            , are not logged.
+           </p>
+           <h2 id="understanding-aws-lex-entries">
+            Example: Amazon Lex
+                    Log File Entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as
+                log files to an S3 bucket that you specify. CloudTrail log files
+                contain one or more log entries. An event represents a single
+                request from any source and includes information about the
+                requested action, the date and time of the action, request
+                parameters, and so on. CloudTrail log files are not an ordered stack
+                trace of the public API calls, so they do not appear in any
+                specific order.
+           </p>
+           <p>
+            The following example CloudTrail log entry shows the result of a
+                call to the
+            <code class="code">
+             PutBot
+            </code>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">    <span>{</span>
+                "eventVersion": "1.05",
+                "userIdentity": <span>{</span>
+                    "type": "<code class="replaceable">AssumedRole | FederatedUser | IAMUser | Root | SAMLUser | WebIdentityUser</code>",
+                    "principalId": "<code class="replaceable">principal ID</code>",
+                    "arn": "<code class="replaceable">ARN</code>",
+                    "accountId": "<code class="replaceable">account ID</code>",
+                    "accessKeyId": "<code class="replaceable">access key ID</code>",
+                    "userName": "<code class="replaceable">user name</code>"
+                },
+                "eventTime": "<code class="replaceable">timestamp</code>",
+                "eventSource": "lex.amazonaws.com",
+                "eventName": "PutBot",
+                "awsRegion": "<code class="replaceable">region</code>",
+                "sourceIPAddress": "<code class="replaceable">source IP address</code>",
+                "userAgent": "<code class="replaceable">user agent</code>",
+                "requestParameters": <span>{</span>
+                    "name": "CloudTrailBot",
+                    "intents": [
+                        <span>{</span>
+                            "intentVersion": "11",
+                            "intentName": "TestCloudTrail"
+                        }
+                    ],
+                    "voiceId": "Salli",
+                    "childDirected": false,
+                    "locale": "en-US",
+                    "idleSessionTTLInSeconds": 500,
+                    "processBehavior": "BUILD",
+                    "description": "CloudTrail test bot",
+                    "clarificationPrompt": <span>{</span>
+                        "messages": [
+                            <span>{</span>
+                                "contentType": "PlainText",
+                                "content": "I didn't understand you. What would you like to do?"
+                            }
+                        ],
+                        "maxAttempts": 2
+                    },
+                    "abortStatement": <span>{</span>
+                        "messages": [
+                            <span>{</span>
+                                "contentType": "PlainText",
+                                "content": "Sorry. I'm not able to assist at this time."
+                            }
+                        ]
+                    }
+                },
+                "responseElements": <span>{</span>
+                    "voiceId": "Salli",
+                    "locale": "en-US",
+                    "childDirected": false,
+                    "abortStatement": <span>{</span>
+                        "messages": [
+                            <span>{</span>
+                                "contentType": "PlainText",
+                                "content": "Sorry. I'm not able to assist at this time."
+                            }
+                        ]
+                    },
+                    "status": "BUILDING",
+                    "createdDate": "<code class="replaceable">timestamp</code>",
+                    "lastUpdatedDate": "<code class="replaceable">timestamp</code>",
+                    "idleSessionTTLInSeconds": 500,
+                    "intents": [
+                        <span>{</span>
+                            "intentVersion": "11",
+                            "intentName": "TestCloudTrail"
+                        }
+                    ],
+                    "clarificationPrompt": <span>{</span>
+                        "messages": [
+                            <span>{</span>
+                                "contentType": "PlainText",
+                                "content": "I didn't understand you. What would you like to do?"
+                            }
+                        ],
+                        "maxAttempts": 2
+                    },
+                    "version": "$LATEST",
+                    "description": "CloudTrail test bot",
+                    "checksum": "<code class="replaceable">checksum</code>",
+                    "name": "CloudTrailBot"
+                },
+                "requestID": "<code class="replaceable">request ID</code>",
+                "eventID": "<code class="replaceable">event ID</code>",
+                "eventType": "AwsApiCall",
+                "recipientAccountId": "<code class="replaceable">account ID</code>"
+            }
+        }
+      </code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./monitoring-aws-lex-cloudwatch.html" id="previous">
+             Monitoring Amazon Lex with CloudWatch
+            </div>
+            <div accesskey="n" class="next-link" href="./compliance.html" id="next">
+             Compliance Validation
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Lex&amp;topic_url=https://docs.aws.amazon.com/en_us/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Lex&amp;topic_url=https://docs.aws.amazon.com/en_us/lex/latest/dg/monitoring-aws-lex-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

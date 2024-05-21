@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Log AWS IoT OTA API calls with AWS CloudTrail - FreeRTOS
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="iot-using-cloudtrail-afr" name="target_state"/>
+  <meta content="iot-using-cloudtrail-afr" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/freertos/latest/userguide/iot-using-cloudtrail-afr.html" rel="canonical"/>
+  <meta content="FreeRTOS is integrated with CloudTrail, a service that captures AWS IoT OTA API calls and delivers the log files to an Amazon S3 bucket that you specify. CloudTrail captures API calls from your code to the AWS IoT OTA APIs. Using the information collected by CloudTrail, you can determine the request that was made to AWS IoT OTA, the source IP address from which the request was made, who made the request, when it was made, and so on." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="FreeRTOS" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="Provides detailed information about the microcontroller operating system that makes small, low-powered edge devices easy to program, deploy, secure, and maintain." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/freertos/latest/userguide/iot-using-cloudtrail-afr.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/freertos/latest/userguide/iot-using-cloudtrail-afr.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Amazon FreeRTOS" name="feedback-item"/>
+  <meta content="FreeRTOS" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'freertos'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Log AWS IoT OTA API calls with AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Log AWS IoT OTA API calls with AWS CloudTrail - FreeRTOS
+        </title>
+        <meta content="/pdfs/freertos/latest/userguide/freertos-ug.pdf#iot-using-cloudtrail-afr" name="pdf"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon%20FreeRTOS&amp;topic_url=https://docs.aws.amazon.com/en_us/freertos/latest/userguide/iot-using-cloudtrail-afr.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/freertos/latest/userguide/iot-using-cloudtrail-afr.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/freertos/latest/userguide/iot-using-cloudtrail-afr.html" name="feedback-no"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "FreeRTOS",
+        "item" : "https://docs.aws.amazon.com/freertos/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/freertos/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "FreeRTOS Archived documentation",
+        "item" : "https://docs.aws.amazon.com/freertos/latest/userguide/archive-all.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Previous FreeRTOS User Guide contents",
+        "item" : "https://docs.aws.amazon.com/freertos/latest/userguide/archive-previous.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
+        "name" : "FreeRTOS Over-the-Air Updates",
+        "item" : "https://docs.aws.amazon.com/freertos/latest/userguide/freertos-ota-dev.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 7,
+        "name" : "OTA troubleshooting",
+        "item" : "https://docs.aws.amazon.com/freertos/latest/userguide/ota-troubleshooting.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 8,
+        "name" : "Log AWS IoT OTA API calls with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/freertos/latest/userguide/ota-troubleshooting.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/freertos/latest/userguide/freertos-ug.pdf#iot-using-cloudtrail-afr" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/freertos/index.html">
+           FreeRTOS
+          </a>
+          <a href="what-is-freertos.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#aws-iot-info-in-cloudtrail-afr">
+           FreeRTOS information in CloudTrail
+          </a>
+          <a href="#understanding-aws-iot-entries-afr">
+           Understanding FreeRTOS log file entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="iot-using-cloudtrail-afr">
+            Log AWS IoT OTA API calls with AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            FreeRTOS is integrated with CloudTrail, a service that captures AWS IoT OTA API calls and delivers the log files to an Amazon S3 
+            bucket that you specify. CloudTrail captures API calls from your code to the AWS IoT OTA APIs. Using the information 
+            collected by CloudTrail, you can determine the request that was made to AWS IoT OTA, the source IP address from which the 
+            request was made, who made the request, when it was made, and so on.
+           </p>
+           <p>
+            For more information about CloudTrail, including how to configure and enable it, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             <em>
+              AWS CloudTrail User Guide
+             </em>
+            </a>
+            .
+           </p>
+           <h2 id="aws-iot-info-in-cloudtrail-afr">
+            FreeRTOS information in CloudTrail
+           </h2>
+           <p>
+            When CloudTrail logging is enabled in your AWS account, API calls made to AWS IoT OTA actions are tracked in CloudTrail 
+                log files where they are written with other AWS service records. CloudTrail determines when to create and write to 
+                a new file based on a time period and file size.
+           </p>
+           <p>
+            The following AWS IoT OTA control plane actions are logged by CloudTrail:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_CreateStream.html">
+                CreateStream
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_DescribeStream.html">
+                DescribeStream
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_ListStreams.html">
+                ListStreams
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_UpdateStream.html">
+                UpdateStream
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_DeleteStream.html">
+                DeleteStream
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_CreateOTAUpdate.html">
+                CreateOTAUpdate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_GetOTAUpdate.html">
+                GetOTAUpdate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_ListOTAUpdates.html">
+                ListOTAUpdates
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_DeleteOTAUpdate.html">
+                DeleteOTAUpdate
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              AWS IoT OTA data plane actions (device side) are not logged by CloudTrail. Use CloudWatch to monitor these.
+             </p>
+            </div>
+           </div>
+           <p>
+            Every log entry contains information about who generated the request. The user identity information in the 
+                log entry helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or IAM user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail 
+                userIdentity Element
+            </a>
+            . AWS IoT OTA actions are documented in the
+            <a href="https://docs.aws.amazon.com/iot/latest/apireference">
+             AWS IoT OTA API Reference
+            </a>
+            .
+           </p>
+           <p>
+            You can store your log files in your Amazon S3 bucket for as long as you want, but you can also define Amazon S3 
+                lifecycle rules to archive or delete log files automatically. By default, your log files are encrypted with 
+                Amazon S3 server-side encryption (SSE).
+           </p>
+           <p>
+            If you want to be notified when log files are delivered, you can configure CloudTrail to publish Amazon SNS 
+                notifications. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+             Configuring Amazon SNS Notifications for CloudTrail
+            </a>
+            .
+           </p>
+           <p>
+            You can also aggregate AWS IoT OTA log files from multiple AWS Regions and multiple AWS accounts 
+                into a single Amazon S3 bucket.
+           </p>
+           <p>
+            For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+             Receiving CloudTrail Log Files from Multiple Regions
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+             Receiving CloudTrail Log Files 
+                from Multiple Accounts
+            </a>
+            .
+           </p>
+           <h2 id="understanding-aws-iot-entries-afr">
+            Understanding FreeRTOS log file entries
+           </h2>
+           <p>
+            CloudTrail log files can contain one or more log entries. Each entry lists multiple JSON-formatted events. 
+                A log entry represents a single request from any source and includes information about the requested 
+                action, the date and time of the action, request parameters, and so on. Log entries are not an ordered 
+                stack trace of the public API calls, so they do not appear in any specific order.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the log from a call to
+            <code class="code">
+             CreateOTAUpdate
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "EXAMPLE",
+        "arn": "arn:aws:iam::<code class="replaceable">your_aws_account</code>:user/<code class="replaceable">your_user_id</code>",
+        "accountId": "<code class="replaceable">your_aws_account</code>",
+        "accessKeyId": "<code class="replaceable">your_access_key_id</code>",
+        "userName": "<code class="replaceable">your_username</code>",
+        "sessionContext": <span>{</span>
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2018-08-23T17:27:08Z"
+            }
+        },
+        "invokedBy": "apigateway.amazonaws.com"
+    },
+    "eventTime": "2018-08-23T17:27:19Z",
+    "eventSource": "iot.amazonaws.com",
+    "eventName": "CreateOTAUpdate",
+    "awsRegion": "<code class="replaceable">your_aws_region</code>",
+    "sourceIPAddress": "apigateway.amazonaws.com",
+    "userAgent": "apigateway.amazonaws.com",
+    "requestParameters": <span>{</span>
+        "targets": [
+            "arn:aws:iot:<code class="replaceable">your_aws_region</code>:<code class="replaceable">your_aws_account</code>:thing/Thing_CMH"
+        ],
+        "roleArn": "arn:aws:iam::<code class="replaceable">your_aws_account</code>:role/Role_FreeRTOSJob",
+        "files": [
+            <span>{</span>
+                "fileName": "/sys/mcuflashimg.bin",
+                "fileSource": <span>{</span>
+                    "fileId": 0,
+                    "streamId": "<code class="replaceable">your_stream_id</code>"
+                },
+                "codeSigning": <span>{</span>
+                    "awsSignerJobId": "<code class="replaceable">your_signer_job_id</code>"
+                }
+            }
+        ],
+        "targetSelection": "SNAPSHOT",
+        "otaUpdateId": "FreeRTOSJob_CMH-23-1535045232806-92"
+    },
+    "responseElements": <span>{</span>
+        "otaUpdateArn": "arn:aws:iot:<code class="replaceable">your_aws_region</code>:<code class="replaceable">your_aws_account</code>:otaupdate/FreeRTOSJob_CMH-23-1535045232806-92",
+        "otaUpdateStatus": "CREATE_PENDING",
+        "otaUpdateId": "FreeRTOSJob_CMH-23-1535045232806-92"
+    },
+    "requestID": "c9649630-a6f9-11e8-8f9c-e1cf2d0c9d8e",
+    "eventID": "ce9bf4d9-5770-4cee-acf4-0e5649b845c0",
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "<code class="replaceable">recipient_aws_account</code>"
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./ota-logging.html" id="previous">
+             Set up CloudWatch Logs for OTA updates
+            </div>
+            <div accesskey="n" class="next-link" href="./ota-create-failure.html" id="next">
+             Get CreateOTAUpdate failure details using the AWS CLI
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon FreeRTOS&amp;topic_url=https://docs.aws.amazon.com/en_us/freertos/latest/userguide/iot-using-cloudtrail-afr.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon FreeRTOS&amp;topic_url=https://docs.aws.amazon.com/en_us/freertos/latest/userguide/iot-using-cloudtrail-afr.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

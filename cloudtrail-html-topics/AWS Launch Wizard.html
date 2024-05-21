@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging AWS Launch Wizard API calls using AWS CloudTrail - AWS Launch Wizard
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/launchwizard/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Learn about logging AWS Launch Wizard with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="AWS Launch Wizard" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="AWS Launch Wizard reduces the time it takes to deploy application solutions to the cloud by providing easy step-by-step guidance. You input your application requirements, and AWS Launch Wizard identifies the right AWS resources to deploy and run your solution. AWS Launch Wizard provides an estimated cost of deployment, and gives you the ability to modify your resources and instantly view the updated cost assessment. When you approve, AWS Launch Wizard provisions and configures the selected resources in a few hours to create a fully-functioning, production-ready application. It also creates custom AWS CloudFormation templates, which can be reused and customized for subsequent deployments." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/launchwizard/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/launchwizard/latest/userguide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="AppWizard" name="feedback-item"/>
+  <meta content="AWS Launch Wizard" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'launchwizard'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging AWS Launch Wizard API calls using AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging AWS Launch Wizard API calls using AWS CloudTrail - AWS Launch Wizard
+        </title>
+        <meta content="/pdfs/launchwizard/latest/userguide/launch-wizard-user-guide.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="launch-wizard-release-notes.rss" name="rss"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AppWizard&amp;topic_url=https://docs.aws.amazon.com/en_us/launchwizard/latest/userguide/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/launchwizard/latest/userguide/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/launchwizard/latest/userguide/logging-using-cloudtrail.html" name="feedback-no"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Launch Wizard",
+        "item" : "https://docs.aws.amazon.com/launchwizard/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/launchwizard/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Logging AWS Launch Wizard API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/launchwizard/latest/userguide/logging-using-cloudtrail.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/launchwizard/latest/userguide/launch-wizard-user-guide.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/launchwizard/index.html">
+           AWS Launch Wizard
+          </a>
+          <a href="launch-wizard-active-directory-landing.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#service-name-info-in-cloudtrail">
+           Launch Wizard information in CloudTrail
+          </a>
+          <a href="#understanding-service-name-entries">
+           Understanding Launch Wizard log file entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging AWS Launch Wizard API calls using AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            AWS Launch Wizard is integrated with AWS CloudTrail, a service that provides a record of actions 
+    taken by a user, role, or an AWS service in Launch Wizard. CloudTrail captures all API calls for
+    Launch Wizard as events. The calls captured include calls from the Launch Wizard console and
+    code calls to the Launch Wizard API operations. If you create a trail, you can enable
+    continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Launch Wizard. If 
+    you don't configure a trail, you can still view the most recent events in the CloudTrail console 
+    in
+            <b>
+             Event history
+            </b>
+            .  Using the information collected by CloudTrail, you can
+    determine the request that was made to Launch Wizard, the IP address from which the request
+    was made, who made the request, when it was made, and additional details.
+           </p>
+           <p>
+            To learn more about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <h2 id="service-name-info-in-cloudtrail">
+            Launch Wizard information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the account. When activity occurs 
+      in Launch Wizard, that activity is recorded in a CloudTrail event along with other AWS service events
+      in
+            <b>
+             Event history
+            </b>
+            . You can view, search, and download recent events in 
+      your AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail Event
+        history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for Launch Wizard,
+      create a trail. A
+            <em>
+             trail
+            </em>
+            enables CloudTrail to deliver log files to an Amazon S3 bucket. 
+      By default, when you create a trail in the console, the trail applies to all AWS Regions. The trail 
+      logs events from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket 
+      that you specify. Additionally, you can configure other AWS services to further analyze and act
+      upon the event data collected in CloudTrail logs. For more information, see the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for creating a trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html">
+                CloudTrail supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
+                Configuring Amazon SNS notifications
+          for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log
+          files from multiple regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail log
+            files from multiple accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            All Launch Wizard actions are logged by CloudTrail and are documented in the
+            <a href="https://docs.aws.amazon.com/launchwizard/latest/APIReference/">
+             AWS Launch Wizard API Reference
+            </a>
+            . For example, 
+      calls to the
+            <code class="code">
+             CreateDeployment
+            </code>
+            ,
+            <code class="code">
+             ListDeployments
+            </code>
+            and
+            <code class="code">
+             GetWorkload
+            </code>
+            actions generate
+      entries in the CloudTrail log files.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+      identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or AWS Identity and Access Management (IAM) user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+          federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity
+      element
+            </a>
+            .
+           </p>
+           <h2 id="understanding-service-name-entries">
+            Understanding Launch Wizard log file entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
+      that you specify. CloudTrail log files contain one or more log entries. An event represents a single
+      request from any source and includes information about the requested action, the date and time
+      of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
+      the public API calls, so they don't appear in any specific order.
+           </p>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Examples
+            </h6>
+            <ul>
+             <li>
+              <a href="#cloudtrail-event-example-createdeployment">
+               Example: CreateDeployment
+              </a>
+             </li>
+             <li>
+              <a href="#cloudtrail-event-example-deletedeployment">
+               Example: DeleteDeployment
+              </a>
+             </li>
+             <li>
+              <a href="#cloudtrail-event-example-getdeployment">
+               Example: GetDeployment
+              </a>
+             </li>
+             <li>
+              <a href="#cloudtrail-event-example-getworkload">
+               Example: GetWorkload
+              </a>
+             </li>
+             <li>
+              <a href="#cloudtrail-event-example-listdeploymentevents">
+               Example: ListDeploymentEvents
+              </a>
+             </li>
+             <li>
+              <a href="#cloudtrail-event-example-listdeployments">
+               Example: ListDeployments
+              </a>
+             </li>
+             <li>
+              <a href="#cloudtrail-event-example-listWorkloaddeploymentpattern">
+               Example: ListWorkloadDeploymentPattern
+              </a>
+             </li>
+             <li>
+              <a href="#cloudtrail-event-example-listworkloads">
+               Example: ListWorkloads
+              </a>
+             </li>
+            </ul>
+           </div>
+           <h3 id="cloudtrail-event-example-createdeployment">
+            Example: CreateDeployment
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             CreateDeployment
+            </code>
+            operation.
+           </p>
+           <div class="minimized-block" data-minimized="true">
+            <div class="minimized-content">
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDAQRSTUVWXYZEXAMPLE:ExampleAssumedRoleSessionName",
+        "arn": "arn:aws:sts::123456789012:assumed-role/ExampleAssumedRole/ExampleRoleSessionName",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDAQRSTUVWXYZEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/ExampleAssumedRole",
+                "accountId": "123456789012",
+                "userName": "ExampleAssumedRole"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2023-09-05T17:45:15Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-09-05T17:45:27Z",
+    "eventSource": "launchwizard.amazonaws.com",
+    "eventName": "CreateDeployment",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.2.17 Python/3.8.8 Darwin/21.6.0 exe/x86_64 prompt/off command/example",
+    "errorCode": "InternalServerException",
+    "requestParameters": <span>{</span>
+        "workloadName": "SAP",
+        "name": "Example",
+        "specifications": "Example",
+        "deploymentPatternName": "SapHanaSingle"
+    },
+    "responseElements": $null,
+    "requestID": "86168559-75e9-11e4-8cf8-75d18EXAMPLE",
+    "eventID": "832b82d5-d474-44e8-a51d-093ccEXAMPLE",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+             <div class="minimized-fader">
+             </div>
+            </div>
+            <div class="show-more-btn">
+             <a href="#">
+              <awsui-icon class="show-more-text" name="caret-right-filled" variant="link">
+              </awsui-icon>
+              <span class="show-more-text">
+               Show more
+              </span>
+              <awsui-icon class="show-less-text" name="caret-up-filled" variant="link">
+              </awsui-icon>
+              <span class="show-less-text">
+               Show less
+              </span>
+             </a>
+            </div>
+           </div>
+           <h3 id="cloudtrail-event-example-deletedeployment">
+            Example: DeleteDeployment
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             DeleteDeployment
+            </code>
+            operation.
+           </p>
+           <div class="minimized-block" data-minimized="true">
+            <div class="minimized-content">
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDAQRSTUVWXYZEXAMPLE:ExampleAssumedRoleSessionName",
+        "arn": "arn:aws:sts::123456789012:assumed-role/ExampleAssumedRole/ExampleRoleSessionName",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDAQRSTUVWXYZEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/ExampleAssumedRole",
+                "accountId": "123456789012",
+                "userName": "ExampleAssumedRole"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2023-09-05T17:45:15Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-09-06T16:42:53Z",
+    "eventSource": "launchwizard.amazonaws.com",
+    "eventName": "DeleteDeployment",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.2.17 Python/3.8.8 Darwin/21.6.0 exe/x86_64 prompt/off command/lw.delete-deployment",
+    "errorCode": "ValidationException",
+    "requestParameters": <span>{</span>
+        "deploymentId": "DeploymentIdExample"
+    },
+    "responseElements": <span>{</span>
+        "message": "Example Message."
+    },
+    "requestID": "86168559-75e9-11e4-8cf8-75d18EXAMPLE",
+    "eventID": "832b82d5-d474-44e8-a51d-093ccEXAMPLE",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+             <div class="minimized-fader">
+             </div>
+            </div>
+            <div class="show-more-btn">
+             <a href="#">
+              <awsui-icon class="show-more-text" name="caret-right-filled" variant="link">
+              </awsui-icon>
+              <span class="show-more-text">
+               Show more
+              </span>
+              <awsui-icon class="show-less-text" name="caret-up-filled" variant="link">
+              </awsui-icon>
+              <span class="show-less-text">
+               Show less
+              </span>
+             </a>
+            </div>
+           </div>
+           <h3 id="cloudtrail-event-example-getdeployment">
+            Example: GetDeployment
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             GetDeployment
+            </code>
+            operation.
+           </p>
+           <div class="minimized-block" data-minimized="true">
+            <div class="minimized-content">
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDAQRSTUVWXYZEXAMPLE:ExampleAssumedRoleSessionName",
+        "arn": "arn:aws:sts::123456789012:assumed-role/ExampleAssumedRole/ExampleRoleSessionName",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDAQRSTUVWXYZEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/ExampleAssumedRole",
+                "accountId": "123456789012",
+                "userName": "ExampleAssumedRole"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2023-09-05T17:45:15Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-09-06T03:39:02Z",
+    "eventSource": "launchwizard.amazonaws.com",
+    "eventName": "GetDeployment",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.2.17 Python/3.8.8 Darwin/21.6.0 exe/x86_64 prompt/off command/example",
+    "requestParameters": <span>{</span>
+        "deploymentId": "DeploymentIdExample"
+    },
+    "responseElements": null,
+    "requestID": "86168559-75e9-11e4-8cf8-75d18EXAMPLE",
+    "eventID": "832b82d5-d474-44e8-a51d-093ccEXAMPLE",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+             <div class="minimized-fader">
+             </div>
+            </div>
+            <div class="show-more-btn">
+             <a href="#">
+              <awsui-icon class="show-more-text" name="caret-right-filled" variant="link">
+              </awsui-icon>
+              <span class="show-more-text">
+               Show more
+              </span>
+              <awsui-icon class="show-less-text" name="caret-up-filled" variant="link">
+              </awsui-icon>
+              <span class="show-less-text">
+               Show less
+              </span>
+             </a>
+            </div>
+           </div>
+           <h3 id="cloudtrail-event-example-getworkload">
+            Example: GetWorkload
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             GetWorkload
+            </code>
+            operation.
+           </p>
+           <div class="minimized-block" data-minimized="true">
+            <div class="minimized-content">
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDAQRSTUVWXYZEXAMPLE:ExampleAssumedRoleSessionName",
+        "arn": "arn:aws:sts::123456789012:assumed-role/ExampleAssumedRole/ExampleRoleSessionName",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDAQRSTUVWXYZEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/ExampleAssumedRole",
+                "accountId": "123456789012",
+                "userName": "ExampleAssumedRole"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2023-09-05T17:45:15Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-09-06T03:59:32Z",
+    "eventSource": "launchwizard.amazonaws.com",
+    "eventName": "GetWorkload",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.2.17 Python/3.8.8 Darwin/21.6.0 exe/x86_64 prompt/off command/example",
+    "requestParameters": <span>{</span>
+        "workloadName": "SAP"
+    },
+    "responseElements": null,
+    "requestID": "86168559-75e9-11e4-8cf8-75d18EXAMPLE",
+    "eventID": "832b82d5-d474-44e8-a51d-093ccEXAMPLE",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+             <div class="minimized-fader">
+             </div>
+            </div>
+            <div class="show-more-btn">
+             <a href="#">
+              <awsui-icon class="show-more-text" name="caret-right-filled" variant="link">
+              </awsui-icon>
+              <span class="show-more-text">
+               Show more
+              </span>
+              <awsui-icon class="show-less-text" name="caret-up-filled" variant="link">
+              </awsui-icon>
+              <span class="show-less-text">
+               Show less
+              </span>
+             </a>
+            </div>
+           </div>
+           <h3 id="cloudtrail-event-example-listdeploymentevents">
+            Example: ListDeploymentEvents
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             ListDeploymentEvents
+            </code>
+            operation.
+           </p>
+           <div class="minimized-block" data-minimized="true">
+            <div class="minimized-content">
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDAQRSTUVWXYZEXAMPLE:ExampleAssumedRoleSessionName",
+        "arn": "arn:aws:sts::123456789012:assumed-role/ExampleAssumedRole/ExampleRoleSessionName",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDAQRSTUVWXYZEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/ExampleAssumedRole",
+                "accountId": "123456789012",
+                "userName": "ExampleAssumedRole"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2023-09-05T17:45:15Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-09-06T03:38:02Z",
+    "eventSource": "launchwizard.amazonaws.com",
+    "eventName": "ListDeploymentEvents",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.2.17 Python/3.8.8 Darwin/21.6.0 exe/x86_64 prompt/off command/example",
+    "requestParameters": <span>{</span>
+        "deploymentId": "DeploymentIdExample"
+    },
+    "responseElements": null,
+    "requestID": "86168559-75e9-11e4-8cf8-75d18EXAMPLE",
+    "eventID": "832b82d5-d474-44e8-a51d-093ccEXAMPLE",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+             <div class="minimized-fader">
+             </div>
+            </div>
+            <div class="show-more-btn">
+             <a href="#">
+              <awsui-icon class="show-more-text" name="caret-right-filled" variant="link">
+              </awsui-icon>
+              <span class="show-more-text">
+               Show more
+              </span>
+              <awsui-icon class="show-less-text" name="caret-up-filled" variant="link">
+              </awsui-icon>
+              <span class="show-less-text">
+               Show less
+              </span>
+             </a>
+            </div>
+           </div>
+           <h3 id="cloudtrail-event-example-listdeployments">
+            Example: ListDeployments
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             ListDeployments
+            </code>
+            operation.
+           </p>
+           <div class="minimized-block" data-minimized="true">
+            <div class="minimized-content">
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDAQRSTUVWXYZEXAMPLE:ExampleAssumedRoleSessionName",
+        "arn": "arn:aws:sts::123456789012:assumed-role/ExampleAssumedRole/ExampleRoleSessionName",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDAQRSTUVWXYZEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/ExampleAssumedRole",
+                "accountId": "123456789012",
+                "userName": "ExampleAssumedRole"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2023-09-05T17:45:15Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-09-06T03:38:02Z",
+    "eventSource": "launchwizard.amazonaws.com",
+    "eventName": "ListDeployments",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.2.17 Python/3.8.8 Darwin/21.6.0 exe/x86_64 prompt/off command/example",
+    "requestParameters": <span>{</span>
+        "maxResults": 100
+    },
+    "responseElements": null,
+    "requestID": "86168559-75e9-11e4-8cf8-75d18EXAMPLE",
+    "eventID": "832b82d5-d474-44e8-a51d-093ccEXAMPLE",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+             <div class="minimized-fader">
+             </div>
+            </div>
+            <div class="show-more-btn">
+             <a href="#">
+              <awsui-icon class="show-more-text" name="caret-right-filled" variant="link">
+              </awsui-icon>
+              <span class="show-more-text">
+               Show more
+              </span>
+              <awsui-icon class="show-less-text" name="caret-up-filled" variant="link">
+              </awsui-icon>
+              <span class="show-less-text">
+               Show less
+              </span>
+             </a>
+            </div>
+           </div>
+           <h3 id="cloudtrail-event-example-listWorkloaddeploymentpattern">
+            Example: ListWorkloadDeploymentPattern
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             ListWorkloadDeploymentPattern
+            </code>
+            operation.
+           </p>
+           <div class="minimized-block" data-minimized="true">
+            <div class="minimized-content">
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDAQRSTUVWXYZEXAMPLE:ExampleAssumedRoleSessionName",
+        "arn": "arn:aws:sts::123456789012:assumed-role/ExampleAssumedRole/ExampleRoleSessionName",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDAQRSTUVWXYZEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/ExampleAssumedRole",
+                "accountId": "123456789012",
+                "userName": "ExampleAssumedRole"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2023-09-05T17:45:15Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-09-06T03:59:32Z",
+    "eventSource": "launchwizard.amazonaws.com",
+    "eventName": "ListWorkloadDeploymentPatterns",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.2.17 Python/3.8.8 Darwin/21.6.0 exe/x86_64 prompt/off command/example",
+    "requestParameters": <span>{</span>
+        "workloadName": "SAP",
+        "maxResults": 10
+    },
+    "responseElements": null,
+    "requestID": "86168559-75e9-11e4-8cf8-75d18EXAMPLE",
+    "eventID": "832b82d5-d474-44e8-a51d-093ccEXAMPLE",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+             <div class="minimized-fader">
+             </div>
+            </div>
+            <div class="show-more-btn">
+             <a href="#">
+              <awsui-icon class="show-more-text" name="caret-right-filled" variant="link">
+              </awsui-icon>
+              <span class="show-more-text">
+               Show more
+              </span>
+              <awsui-icon class="show-less-text" name="caret-up-filled" variant="link">
+              </awsui-icon>
+              <span class="show-less-text">
+               Show less
+              </span>
+             </a>
+            </div>
+           </div>
+           <h3 id="cloudtrail-event-example-listworkloads">
+            Example: ListWorkloads
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             ListWorkloads
+            </code>
+            operation.
+           </p>
+           <div class="minimized-block" data-minimized="true">
+            <div class="minimized-content">
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDAQRSTUVWXYZEXAMPLE:ExampleAssumedRoleSessionName",
+        "arn": "arn:aws:sts::123456789012:assumed-role/ExampleAssumedRole/ExampleRoleSessionName",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDAQRSTUVWXYZEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/ExampleAssumedRole",
+                "accountId": "123456789012",
+                "userName": "ExampleAssumedRole"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2023-09-05T17:45:15Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2023-09-06T03:59:32Z",
+    "eventSource": "launchwizard.amazonaws.com",
+    "eventName": "ListWorkloads",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.2.17 Python/3.8.8 Darwin/21.6.0 exe/x86_64 prompt/off command/example",
+    "requestParameters": null,
+    "responseElements": null,
+    "requestID": "86168559-75e9-11e4-8cf8-75d18EXAMPLE",
+    "eventID": "832b82d5-d474-44e8-a51d-093ccEXAMPLE",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+             <div class="minimized-fader">
+             </div>
+            </div>
+            <div class="show-more-btn">
+             <a href="#">
+              <awsui-icon class="show-more-text" name="caret-right-filled" variant="link">
+              </awsui-icon>
+              <span class="show-more-text">
+               Show more
+              </span>
+              <awsui-icon class="show-less-text" name="caret-up-filled" variant="link">
+              </awsui-icon>
+              <span class="show-less-text">
+               Show less
+              </span>
+             </a>
+            </div>
+           </div>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./security-iam-awsmanpol.html" id="previous">
+             AWS managed policies
+            </div>
+            <div accesskey="n" class="next-link" href="./doc-history.html" id="next">
+             Document History
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AppWizard&amp;topic_url=https://docs.aws.amazon.com/en_us/launchwizard/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AppWizard&amp;topic_url=https://docs.aws.amazon.com/en_us/launchwizard/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

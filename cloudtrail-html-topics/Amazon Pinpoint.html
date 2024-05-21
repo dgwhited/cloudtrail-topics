@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging Amazon Pinpoint API calls with AWS CloudTrail - Amazon Pinpoint
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Use AWS CloudTrail to log calls from the Amazon Pinpoint console and code calls to Amazon Pinpoint API operations." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon Pinpoint" name="product"/>
+  <meta content="Developer Guide" name="guide"/>
+  <meta content="This is the official Amazon Web Services (AWS) developer documentation for Amazon Pinpoint. This documentation shows you how to integrate the features of Amazon Pinpoint into your apps. It also includes information about interacting with Amazon Pinpoint programmatically by using the Amazon Pinpoint REST API. Amazon Pinpoint is a customer engagement service that you can use to engage with your customers. When you use Amazon Pinpoint, you create segments that define targeted groups of customers. Next, you create campaigns that target your segments. Campaigns contain content that Amazon Pinpoint delivers to your customers using their preferred channels (such as email, SMS, or push notifications). Finally, Amazon Pinpoint provides engagement metrics that help you to track the success of your campaigns, as well as usage metrics that help you understand how customers use your apps. This documentation is offered here as a free Kindle book. You can also read it online or in PDF format at https://aws.amazon.com/documentation/pinpoint/." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Pinpoint" name="feedback-item"/>
+  <meta content="Amazon Pinpoint" name="this_doc_product"/>
+  <meta content="Developer Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'pinpoint'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="Developer Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Amazon Pinpoint API calls with AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging Amazon Pinpoint API calls with AWS CloudTrail - Amazon Pinpoint
+        </title>
+        <meta content="/pdfs/pinpoint/latest/developerguide/pinpoint-dg.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="amazon-pinpoint-dev-guide-rss-updates.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=225" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=https://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="Pinpoint,Amazon Pinpoint,Customer engagement,Segmentation,Campaigns,Metrics" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon Pinpoint",
+        "item" : "https://docs.aws.amazon.com/pinpoint/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Developer Guide",
+        "item" : "https://docs.aws.amazon.com/pinpoint/latest/developerguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Logging Amazon Pinpoint API calls with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/pinpoint/latest/developerguide/logging-using-cloudtrail.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/pinpoint/latest/developerguide/pinpoint-dg.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/pinpoint/index.html">
+           Amazon Pinpoint
+          </a>
+          <a href="welcome.html">
+           Developer Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#pinpoint-info-in-cloudtrail">
+           Amazon Pinpoint information in CloudTrail
+          </a>
+          <a href="#pinpoint-cloudtrail-actions">
+           Amazon Pinpoint API actions that can be logged by
+                CloudTrail
+          </a>
+          <a href="#pinpoint-email-cloudtrail-actions">
+           Amazon Pinpoint email API actions that can be
+                logged by CloudTrail
+          </a>
+          <a href="#pinpoint-sms-voice-cloudtrail-actions">
+           Amazon Pinpoint SMS and voice API version
+                1 actions that can be logged by CloudTrail
+          </a>
+          <a href="#pinpoint-sms-voice-v2-cloudtrail-actions">
+           Amazon Pinpoint SMS and voice API version 2 actions
+                that can be logged by CloudTrail
+          </a>
+          <a href="#understanding-pinpoint-entries">
+           Examples: Amazon Pinpoint log file entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging Amazon Pinpoint API calls with AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Amazon Pinpoint is integrated with AWS CloudTrail, which is a service that provides a record of actions
+        taken by a user, role, or AWS service in Amazon Pinpoint. CloudTrail captures API calls for Amazon Pinpoint as
+        events. The calls that are captured include calls from the Amazon Pinpoint console and code calls to
+        Amazon Pinpoint API operations.
+           </p>
+           <p>
+            If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon Simple Storage Service
+        (Amazon S3) bucket, including events for Amazon Pinpoint. If you don't configure a trail, you can still
+        view the most recent events by using
+            <b>
+             Event history
+            </b>
+            on the CloudTrail console.
+        Using the information collected by CloudTrail, you can determine the request that was made to
+        Amazon Pinpoint, the IP address that the request was made from, who made the request, when it was
+        made, and additional details.
+           </p>
+           <p>
+            To learn more about CloudTrail, including how to configure and enable it, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <h2 id="pinpoint-info-in-cloudtrail">
+            Amazon Pinpoint information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the account. When supported
+            event activity occurs in Amazon Pinpoint, that activity is recorded in a CloudTrail event along with
+            other AWS service events in
+            <b>
+             Event history
+            </b>
+            . You can view, search,
+            and download recent events in your AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail event
+                history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for Amazon Pinpoint,
+            create a trail. A
+            <em>
+             trail
+            </em>
+            enables CloudTrail to deliver log files to an
+            Amazon S3 bucket. By default, when you create a trail in the console, the trail applies to
+            all AWS Regions. The trail logs events from all Regions in the AWS partition and
+            delivers the log files to the Amazon S3 bucket that you specify. Additionally, you can
+            configure other AWS services to further analyze and act upon the event data collected
+            in CloudTrail logs. For more information, see the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview
+                        for creating a trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring
+                        Amazon SNS notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log files from multiple regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail log files from multiple accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+            identity information helps you determine:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or AWS Identity and Access Management user
+                    credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+                    federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity
+                element
+            </a>
+            .
+           </p>
+           <p>
+            You can create a trail and store your log files in your Amazon S3 bucket for as long as you
+            want. Also, you can define Amazon S3 lifecycle rules to archive or delete log files
+            automatically. By default, your log files are encrypted with Amazon S3 server-side encryption
+            (SSE).
+           </p>
+           <p>
+            To be notified of log file delivery, configure CloudTrail to publish Amazon SNS notifications
+            when new log files are delivered. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+             Configuring Amazon SNS
+                notifications for CloudTrail
+            </a>
+            .
+           </p>
+           <p>
+            You can also aggregate Amazon Pinpoint log files from multiple AWS Regions and multiple AWS
+            accounts into a single Amazon S3 bucket. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+             Receiving
+                CloudTrail log files from multiple regions
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+             Receiving
+                CloudTrail log files from multiple accounts
+            </a>
+            .
+           </p>
+           <p>
+            You can use CloudTrail to log actions for the following Amazon Pinpoint APIs:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="#pinpoint-cloudtrail-actions">
+                Amazon Pinpoint API
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="#pinpoint-sms-voice-cloudtrail-actions">
+                Amazon Pinpoint SMS and Voice
+                        API
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h2 id="pinpoint-cloudtrail-actions">
+            Amazon Pinpoint API actions that can be logged by
+                CloudTrail
+           </h2>
+           <p>
+            The Amazon Pinpoint API supports logging the following actions as events in CloudTrail log
+            files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apps.html#rest-api-apps-methods-post">
+                CreateApp
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html#rest-api-campaigns-methods-post">
+                CreateCampaign
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html">
+                CreateEmailTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-export.html#CreateExportJob">
+                CreateExportJob
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html#rest-api-import-jobs-methods-post">
+                CreateImportJob
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys.html">
+                CreateJourney
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html">
+                CreatePushTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders.html">
+                CreateRecommenderConfiguration
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html#rest-api-segments-methods-post">
+                CreateSegment
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html">
+                CreateSmsTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html">
+                CreateVoiceTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-adm-channel.html#rest-api-adm-channel-methods-delete">
+                DeleteAdmChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-channel.html#rest-api-apns-channel-methods-delete">
+                DeleteApnsChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-sandbox-channel.html#rest-api-apns-sandbox-channel-methods-delete">
+                DeleteApnsSandboxChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-channel.html#rest-api-apns-voip-channel-methods-delete">
+                DeleteApnsVoipChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-delete">
+                DeleteApnsVoipSandboxChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-app.html#rest-api-app-methods-delete">
+                DeleteApp
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-baidu-channel.html#rest-api-baidu-channel-methods-delete">
+                DeleteBaiduChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-methods-delete">
+                DeleteCampaign
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-email-channel.html#rest-api-email-channel-methods-delete">
+                DeleteEmailChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html">
+                DeleteEmailTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#DeleteEndpoint">
+                DeleteEndpoint
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-event-stream.html#rest-api-event-stream-methods-delete">
+                DeleteEventStream
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-delete">
+                DeleteGcmChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id.html">
+                DeleteJourney
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html">
+                DeletePushTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html">
+                DeleteRecommenderConfiguration
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment.html#rest-api-segment-methods-delete">
+                DeleteSegment
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-delete">
+                DeleteSmsChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html">
+                DeleteSmsTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-users-user-id.html#DeleteUserEndpoints">
+                DeleteUserEndpoints
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#DeleteVoiceChannel">
+                DeleteVoiceChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html">
+                DeleteVoiceTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-adm-channel.html#rest-api-adm-channel-methods-get">
+                GetAdmChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-channel.html#rest-api-apns-channel-methods-get">
+                GetApnsChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-sandbox-channel.html#rest-api-apns-sandbox-channel-methods-get">
+                GetApnsSandboxChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-channel.html#rest-api-apns-voip-channel-methods-get">
+                GetApnsVoipChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-get">
+                GetApnsVoipSandboxChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-app.html#rest-api-app-methods-get">
+                GetApp
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html">
+                GetApplicationDateRangeKpi
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html#rest-api-settings-methods-get">
+                GetApplicationSettings
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apps.html#rest-api-apps-methods-get">
+                GetApps
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-baidu-channel.html#rest-api-baidu-channel-methods-get">
+                GetBaiduChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-methods-get">
+                GetCampaign
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign-activities.html#rest-api-campaign-activities-methods-get">
+                GetCampaignActivities
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html">
+                GetCampaignDateRangeKpi
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign-version.html#rest-api-campaign-version-methods-get">
+                GetCampaignVersion
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign-versions.html#rest-api-campaign-versions-methods-get">
+                GetCampaignVersions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html#rest-api-campaigns-methods-get">
+                GetCampaigns
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels.html#GetChannels">
+                GetChannels
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-email-channel.html#rest-api-email-channel-methods-get">
+                GetEmailChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html">
+                GetEmailTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/">
+                GetEndpoint
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-event-stream.html#rest-api-event-stream-methods-get">
+                GetEventStream
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-export-job-id.html#GetExportJob">
+                GetExportJob
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-export.html#GetExportJobs">
+                GetExportJobs
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-get">
+                GetGcmChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-job.html#rest-api-import-job-methods-get">
+                GetImportJob
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html#rest-api-import-jobs-methods-get">
+                GetImportJobs
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id.html">
+                GetJourney
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-kpis-daterange-kpi-name.html">
+                GetJourneyDateRangeKpi
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-activities-journey-activity-id-execution-metrics.html">
+                GetJourneyExecutionActivityMetrics
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-execution-metrics.html">
+                GetJourneyExecutionMetrics
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html">
+                GetPushTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html">
+                GetRecommenderConfiguration
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders.html">
+                GetRecommenderConfigurations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment.html#rest-api-segment-methods-get">
+                GetSegment
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-segments-segment-id-jobs-export.html#GetSegmentExportJobs">
+                GetSegmentExportJobs
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment-import-jobs.html#rest-api-segment-import-jobs-methods-get">
+                GetSegmentImportJobs
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment-version.html#rest-api-segment-version-methods-get">
+                GetSegmentVersion
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment-versions.html#rest-api-segment-versions-methods-get">
+                GetSegmentVersions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html#rest-api-segments-methods-get">
+                GetSegments
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-get">
+                GetSmsChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html">
+                GetSmsTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-users-user-id.html#GetUserEndpoints">
+                GetUserEndpoints
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#GetVoiceChannel">
+                GetVoiceChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html">
+                GetVoiceTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys.html">
+                ListJourneys
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">
+                ListTagsForResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates.html">
+                ListTemplates
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-versions.html">
+                ListTemplateVersions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/phone-number-validate.html">
+                PhoneNumberValidate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-event-stream.html#rest-api-event-stream-methods-post">
+                PutEventStream
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-attributes-attribute-type.html#RemoveAttributes">
+                RemoveAttributes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">
+                TagResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html">
+                UntagResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-adm-channel.html#rest-api-adm-channel-methods-put">
+                UpdateAdmChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-channel.html#rest-api-apns-channel-methods-put">
+                UpdateApnsChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-sandbox-channel.html#rest-api-apns-sandbox-channel-methods-put">
+                UpdateApnsSandboxChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-channel.html#rest-api-apns-voip-channel-methods-put">
+                UpdateApnsVoipChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-put">
+                UpdateApnsVoipSandboxChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html#rest-api-settings-methods-put">
+                UpdateApplicationSettings
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-baidu-channel.html#rest-api-baidu-channel-methods-put">
+                UpdateBaiduChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-methods-put">
+                UpdateCampaign
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-email-channel.html#rest-api-email-channel-methods-put">
+                UpdateEmailChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html">
+                UpdateEmailTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#UpdateEndpoint">
+                UpdateEndpoint
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints.html#UpdateEndpointsBatch">
+                UpdateEndpointsBatch
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-put">
+                UpdateGcmChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id.html">
+                UpdateJourney
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-state.html">
+                UpdateJourneyState
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html">
+                UpdatePushTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html">
+                UpdateRecommenderConfiguration
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment.html#rest-api-segment-methods-put">
+                UpdateSegment
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-put">
+                UpdateSmsChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html">
+                UpdateSmsTemplate
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-active-version.html">
+                UpdateTemplateActiveVersion
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#UpdateVoiceChannel">
+                UpdateVoiceChannel
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html">
+                UpdateVoiceTemplate
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            The following Amazon Pinpoint API actions
+            <b>
+             aren't
+            </b>
+            logged in
+            CloudTrail:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               PutEvents
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               SendMessages
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               SendUsersMessages
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h2 id="pinpoint-email-cloudtrail-actions">
+            Amazon Pinpoint email API actions that can be
+                logged by CloudTrail
+           </h2>
+           <p>
+            The Amazon Pinpoint Email API supports logging the following actions as events in CloudTrail log
+            files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_CreateConfigurationSet.html">
+                CreateConfigurationSet
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_CreateConfigurationSetEventDestination.html">
+                CreateConfigurationSetEventDestination
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_CreateDedicatedIpPool.html">
+                CreateDedicatedIpPool
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_CreateEmailIdentity.html">
+                CreateEmailIdentity
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_DeleteConfigurationSet.html">
+                DeleteConfigurationSet
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_DeleteConfigurationSetEventDestination.html">
+                DeleteConfigurationSetEventDestination
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_DeleteDedicatedIpPool.html">
+                DeleteDedicatedIpPool
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_DeleteEmailIdentity.html">
+                DeleteEmailIdentity
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetAccount.html">
+                GetAccount
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetConfigurationSet.html">
+                GetConfigurationSet
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetConfigurationSetEventDestinations.html">
+                GetConfigurationSetEventDestinations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetDedicatedIp.html">
+                GetDedicatedIp
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetDedicatedIps.html">
+                GetDedicatedIps
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetEmailIdentity.html">
+                GetEmailIdentity
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_ListConfigurationSets.html">
+                ListConfigurationSets
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_ListDedicatedIpPools.html">
+                ListDedicatedIpPools
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_ListEmailIdentities.html">
+                ListEmailIdentities
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutAccountDedicatedIpWarmupAttributes.html">
+                PutAccountDedicatedIpWarmupAttributes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutAccountSendingAttributes.html">
+                PutAccountSendingAttributes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutConfigurationSetDeliveryOptions.html">
+                PutConfigurationSetDeliveryOptions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutConfigurationSetReputationOptions.html">
+                PutConfigurationSetReputationOptions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutConfigurationSetSendingOptions.html">
+                PutConfigurationSetSendingOptions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutConfigurationSetTrackingOptions.html">
+                PutConfigurationSetTrackingOptions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutDedicatedIpInPool.html">
+                PutDedicatedIpInPool
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutDedicatedIpWarmupAttributes.html">
+                PutDedicatedIpWarmupAttributes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutEmailIdentityDkimAttributes.html">
+                PutEmailIdentityDkimAttributes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutEmailIdentityFeedbackAttributes.html">
+                PutEmailIdentityFeedbackAttributes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutEmailIdentityMailFromAttributes.html">
+                PutEmailIdentityMailFromAttributes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_UpdateConfigurationSetEventDestination.html">
+                UpdateConfigurationSetEventDestination
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            The following Amazon Pinpoint Email API action
+            <b>
+             isn't
+            </b>
+            logged in
+            CloudTrail:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               SendEmail
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h2 id="pinpoint-sms-voice-cloudtrail-actions">
+            Amazon Pinpoint SMS and voice API version
+                1 actions that can be logged by CloudTrail
+           </h2>
+           <p>
+            The Amazon Pinpoint SMS and Voice version 1 API supports logging the following actions as events
+            in CloudTrail log files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets.html#v1-sms-voice-configuration-setspost">
+                CreateConfigurationSet
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinationspost">
+                CreateConfigurationSetEventDestination
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname.html#v1-sms-voice-configuration-sets-configurationsetnamedelete">
+                DeleteConfigurationSet
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationname.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationnamedelete">
+                DeleteConfigurationSetEventDestination
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinationsget">
+                GetConfigurationSetEventDestinations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationname.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationnameput">
+                UpdateConfigurationSetEventDestination
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            The following Amazon Pinpoint SMS and Voice version 1 API action
+            <b>
+             isn't
+            </b>
+            logged in CloudTrail:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               SendVoiceMessage
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h2 id="pinpoint-sms-voice-v2-cloudtrail-actions">
+            Amazon Pinpoint SMS and voice API version 2 actions
+                that can be logged by CloudTrail
+           </h2>
+           <p>
+            The Amazon Pinpoint SMS and Voice API version 2 supports logging the following actions as events
+            in CloudTrail log files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_AssociateOriginationIdentity.html">
+                AssociateOriginationIdentity
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreateConfigurationSet.html">
+                CreateConfigurationSet
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreateEventDestination.html">
+                CreateEventDestination
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreateOptOutList.html">
+                CreateOptOutList
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreatePool.html">
+                CreatePool
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteConfigurationSety.html">
+                DeleteConfigurationSet
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteDefaultMessageType.html">
+                DeleteDefaultMessageType
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteDefaultSenderId.html">
+                DeleteDefaultSenderId
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteEventDestination.html">
+                DeleteEventDestination
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteKeyword.html">
+                DeleteKeyword
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteOptedOutNumber.html">
+                DeleteOptedOutNumber
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteOptOutList.html">
+                DeleteOptOutList
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeletePool.html">
+                DeletePool
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteTextMessageSpendLimitOverride.html">
+                DeleteTextMessageSpendLimitOverride
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteVoiceMessageSpendLimitOverride.html">
+                DeleteVoiceMessageSpendLimitOverride
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeAccountAttributes.html">
+                DescribeAccountAttributes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeAccountLimits.html">
+                DescribeAccountLimits
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeConfigurationSets.html">
+                DescribeConfigurationSets
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeKeywords.html">
+                DescribeKeywords
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeOptedOutNumbers.html">
+                DescribeOptedOutNumbers
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeOptOutLists.html">
+                DescribeOptOutLists
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribePhoneNumbers.html">
+                DescribePhoneNumbers
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribePools.html">
+                DescribePools
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeSenderIds.html">
+                DescribeSenderIds
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeSpendLimits.html">
+                DescribeSpendLimits
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DisassociateOriginationIdentity.html">
+                DisassociateOriginationIdentity
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_ListPoolOriginationIdentities.html">
+                ListPoolOriginationIdentities
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_ListTagsForResource.html">
+                ListTagsForResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_PutKeyword.html">
+                PutKeyword
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_PutOptedOutNumber.html">
+                PutOptedOutNumber
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_ReleasePhoneNumber.html">
+                ReleasePhoneNumber
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_RequestPhoneNumber.html">
+                RequestPhoneNumber
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SetDefaultMessageType.html">
+                SetDefaultMessageType
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SetDefaultSenderId.html">
+                SetDefaultSenderId
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SetTextMessageSpendLimitOverride.html">
+                SetTextMessageSpendLimitOverride
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SetVoiceMessageSpendLimitOverride.html">
+                SetVoiceMessageSpendLimitOverride
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_TagResource.html">
+                TagResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_UntagResource.html">
+                UntagResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_UpdateEventDestination.html">
+                UpdateEventDestination
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_UpdatePhoneNumber.html">
+                UpdatePhoneNumber
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_UpdatePool.html">
+                UpdatePool
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            The following Amazon Pinpoint SMS and Voice version 2 API actions
+            <b>
+             aren't
+            </b>
+            logged in CloudTrail:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SendTextMessage.html">
+                SendTextMessage
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SendTextMessage.html">
+                SendVoiceMessage
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h2 id="understanding-pinpoint-entries">
+            Examples: Amazon Pinpoint log file entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3
+            bucket that you specify. CloudTrail log files contain one or more log entries. An event
+            represents a single request from any source. It includes information about the requested
+            action, the date and time of the action, request parameters, and so on. CloudTrail log files
+            aren't an ordered stack trace of the public API calls, so they don't appear in any
+            specific order.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             GetCampaigns
+            </code>
+            and
+            <code class="code">
+             CreateCampaign
+            </code>
+            actions of the Amazon Pinpoint
+            API.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><code class="json"><span>{</span>
+  "Records": [
+    <span>{</span>
+      "awsRegion": "us-east-1",
+      "eventID": "example0-09a3-47d6-a810-c5f9fd2534fe",
+      "eventName": "GetCampaigns",
+      "eventSource": "pinpoint.amazonaws.com",
+      "eventTime": "2018-02-03T00:56:48Z",
+      "eventType": "AwsApiCall",
+      "eventVersion": "1.05",
+      "readOnly": true,
+      "recipientAccountId": "123456789012",
+      "requestID": "example1-b9bb-50fa-abdb-80f274981d60",
+      "requestParameters": <span>{</span>
+        "application-id": "example71dfa4c1aab66332a5839798f",
+        "page-size": "1000"
+      },
+      "responseElements": null,
+      "sourceIPAddress": "192.0.2.0",
+      "userAgent": "Jersey/$<span>{</span>project.version} (HttpUrlConnection 1.8.0_144)",
+      "userIdentity": <span>{</span>
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "accountId": "123456789012",
+        "arn": "arn:aws:iam::123456789012:root",
+        "principalId": "123456789012",
+        "sessionContext": <span>{</span>
+          "attributes": <span>{</span>
+            "creationDate": "2018-02-02T16:55:29Z",
+            "mfaAuthenticated": "false"
+          }
+        },
+        "type": "Root"
+      }
+    },
+    <span>{</span>
+      "awsRegion": "us-east-1",
+      "eventID": "example0-09a3-47d6-a810-c5f9fd2534fe",
+      "eventName": "CreateCampaign",
+      "eventSource": "pinpoint.amazonaws.com",
+      "eventTime": "2018-02-03T01:05:16Z",
+      "eventType": "AwsApiCall",
+      "eventVersion": "1.05",
+      "readOnly": false,
+      "recipientAccountId": "123456789012",
+      "requestID": "example1-b9bb-50fa-abdb-80f274981d60",
+      "requestParameters": <span>{</span>
+        "Description": "***",
+        "HoldoutPercent": 0,
+        "IsPaused": false,
+        "MessageConfiguration": "***",
+        "Name": "***",
+        "Schedule": <span>{</span>
+          "Frequency": "ONCE",
+          "IsLocalTime": true,
+          "StartTime": "2018-02-03T00:00:00-08:00",
+          "Timezone": "utc-08"
+        },
+        "SegmentId": "exampleda204adf991a80281aa0e591",
+        "SegmentVersion": 1,
+        "application-id": "example71dfa4c1aab66332a5839798f"
+      },
+      "responseElements": <span>{</span>
+        "ApplicationId": "example71dfa4c1aab66332a5839798f",
+        "CreationDate": "2018-02-03T01:05:16.425Z",
+        "Description": "***",
+        "HoldoutPercent": 0,
+        "Id": "example54a654f80948680cbba240ede",
+        "IsPaused": false,
+        "LastModifiedDate": "2018-02-03T01:05:16.425Z",
+        "MessageConfiguration": "***",
+        "Name": "***",
+        "Schedule": <span>{</span>
+          "Frequency": "ONCE",
+          "IsLocalTime": true,
+          "StartTime": "2018-02-03T00:00:00-08:00",
+          "Timezone": "utc-08"
+        },
+        "SegmentId": "example4da204adf991a80281example",
+        "SegmentVersion": 1,
+        "State": <span>{</span>
+          "CampaignStatus": "SCHEDULED"
+        },
+        "Version": 1
+      },
+      "sourceIPAddress": "192.0.2.0",
+      "userAgent": "aws-cli/1.14.9 Python/3.4.3 Linux/3.4.0+ botocore/1.8.34",
+      "userIdentity": <span>{</span>
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "accountId": "123456789012",
+        "arn": "arn:aws:iam::123456789012:user/userName",
+        "principalId": "AIDAIHTHRCDA62EXAMPLE",
+        "type": "IAMUser",
+        "userName": "userName"
+      }
+    }
+  ]
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             CreateConfigurationSet
+            </code>
+            and
+            <code class="code">
+             CreateConfigurationSetEventDestination
+            </code>
+            actions in the Amazon Pinpoint SMS and
+            Voice API.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><code class="json"><span>{</span>
+  "Records": [
+    <span>{</span>
+      "eventVersion":"1.05",
+      "userIdentity":<span>{</span>
+        "type":"IAMUser",
+        "principalId":"AIDAIHTHRCDA62EXAMPLE",
+        "arn":"arn:aws:iam::111122223333:user/SampleUser",
+        "accountId":"111122223333",
+        "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+        "userName":"SampleUser"
+      },
+      "eventTime":"2018-11-06T21:45:55Z",
+      "eventSource":"sms-voice.amazonaws.com",
+      "eventName":"CreateConfigurationSet",
+      "awsRegion":"us-east-1",
+      "sourceIPAddress":"192.0.0.1",
+      "userAgent":"PostmanRuntime/7.3.0",
+      "requestParameters":<span>{</span>
+        "ConfigurationSetName":"MyConfigurationSet"
+      },
+      "responseElements":null,
+      "requestID":"56dcc091-e20d-11e8-87d2-9994aexample",
+      "eventID":"725843fc-8846-41f4-871a-7c52dexample",
+      "readOnly":false,
+      "eventType":"AwsApiCall",
+      "recipientAccountId":"123456789012"
+    },
+    <span>{</span>
+      "eventVersion":"1.05",
+      "userIdentity":<span>{</span>
+        "type":"IAMUser",
+        "principalId":"AIDAIHTHRCDA62EXAMPLE",
+        "arn":"arn:aws:iam::111122223333:user/SampleUser",
+        "accountId":"111122223333",
+        "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+        "userName":"SampleUser"
+      },
+      "eventTime":"2018-11-06T21:47:08Z",
+      "eventSource":"sms-voice.amazonaws.com",
+      "eventName":"CreateConfigurationSetEventDestination",
+      "awsRegion":"us-east-1",
+      "sourceIPAddress":"192.0.0.1",
+      "userAgent":"PostmanRuntime/7.3.0",
+      "requestParameters":<span>{</span>
+        "EventDestinationName":"CloudWatchEventDestination",
+        "ConfigurationSetName":"MyConfigurationSet",
+        "EventDestination":<span>{</span>
+          "Enabled":true,
+          "MatchingEventTypes":[
+            "INITIATED_CALL",
+            "INITIATED_CALL"
+          ],
+          "CloudWatchLogsDestination":<span>{</span>
+            "IamRoleArn":"arn:aws:iam::111122223333:role/iamrole-01",
+            "LogGroupArn":"arn:aws:logs:us-east-1:111122223333:log-group:clientloggroup-01"
+          }
+        }
+      },
+      "responseElements":null,
+      "requestID":"81de1e73-e20d-11e8-b158-d5536example",
+      "eventID":"fcafc21f-7c93-4a3f-9e72-fca2dexample",
+      "readOnly":false,
+      "eventType":"AwsApiCall",
+      "recipientAccountId":"111122223333"
+    }
+  ]
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./analytics-query-results.html" id="previous">
+             Using query results
+            </div>
+            <div accesskey="n" class="next-link" href="./tagging-resources.html" id="next">
+             Tagging resources
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=https://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=https://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

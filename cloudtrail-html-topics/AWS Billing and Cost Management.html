@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging Billing and Cost Management API calls with AWS CloudTrail - AWS Billing
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Use AWS CloudTrail to log API actions for your AWS account." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="AWS Billing" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="AWS Billing and Cost Management gives basic information about how you pay and receive your bill and provides tools you can use to track and monitor your AWS costs." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="AWS Account Billing" name="feedback-item"/>
+  <meta content="AWS Billing" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'account-billing'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Billing and Cost Management API calls with AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging Billing and Cost Management API calls with AWS CloudTrail - AWS Billing
+        </title>
+        <meta content="/pdfs/awsaccountbilling/latest/aboutv2/awsaccountbilling-aboutv2.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="aws-billing-release-notes.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=8" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Account%20Billing&amp;topic_url=https://docs.aws.amazon.com/en_us/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="Billing,AWS Cost Management,Consolidated Billing,AWS payment,payment methods,AWS bills,Price list,AWS Price List API,cost allocation tag,Customer carbon footprint tool" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Billing and Cost Management",
+        "item" : "https://docs.aws.amazon.com/account-billing/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Security in AWS Billing",
+        "item" : "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/security.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging and monitoring in AWS Billing and Cost Management",
+        "item" : "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-security-logging.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
+        "name" : "Logging Billing and Cost Management API calls with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-security-logging.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/awsaccountbilling/latest/aboutv2/awsaccountbilling-aboutv2.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/account-billing/index.html">
+           AWS Billing and Cost Management
+          </a>
+          <a href="billing-what-is.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#billing-cloudtrail-events">
+           Billing CloudTrail events
+          </a>
+          <a href="#service-name-info-in-cloudtrail">
+           Billing and Cost Management information in CloudTrail
+          </a>
+          <a href="#CT-examples">
+           CloudTrail log entry examples
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging Billing and Cost Management API calls with AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Billing and Cost Management is integrated with AWS CloudTrail, a service that provides a record of actions taken by a
+    user, role, or an AWS service in Billing and Cost Management. CloudTrail captures API calls for Billing and Cost Management as events,
+    including calls from the Billing and Cost Management console and from code calls to the Billing and Cost Management APIs. For a full list of CloudTrail events related to Billing, see
+            <a href="#billing-cloudtrail-events">
+             Billing CloudTrail events
+            </a>
+            .
+           </p>
+           <p>
+            If you create a
+    trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for
+    Billing and Cost Management. If you don't configure a trail, you can still view the most recent events in the CloudTrail
+    console in
+            <b>
+             Event history
+            </b>
+            . Using the information collected by CloudTrail, you can
+    determine the request that was made to Billing and Cost Management, the IP address from which the request was made, who
+    made the request, when it was made, and additional details.
+           </p>
+           <p>
+            To learn more about CloudTrail, including how to configure and enable it, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <h2 id="billing-cloudtrail-events">
+            Billing CloudTrail events
+           </h2>
+           <p>
+            This section shows a full list of the CloudTrail events related to Billing and Cost Management.
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Notes
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              The following CloudTrail events use a different event source instead of
+              <code class="code">
+               billingconsole.amazonaws.com
+              </code>
+              :
+             </p>
+             <div class="itemizedlist">
+              <ul class="itemizedlist">
+               <li class="listitem">
+                <p>
+                 <code class="code">
+                  CreateCustomerCase
+                 </code>
+                 ,
+                 <code class="code">
+                  GetTaxExemptionTypes
+                 </code>
+                 , and
+                 <code class="code">
+                  BatchGetTaxExemptions
+                 </code>
+                 use
+                 <code class="code">
+                  taxconsole.amazonaws.com
+                 </code>
+                 .
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <code class="code">
+                  CreateCustomerVerificationDetails
+                 </code>
+                 ,
+                 <code class="code">
+                  GetCustomerVerificationDetails
+                 </code>
+                 <code class="code">
+                  GetCustomerVerificationEligibility
+                 </code>
+                 , and
+                 <code class="code">
+                  UpdateCustomerVerificationDetails
+                 </code>
+                 use
+                 <code class="code">
+                  customer-verification.amazonaws.com
+                 </code>
+                 .
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <code class="code">
+                  AddPurchaseOrder
+                 </code>
+                 ,
+                 <code class="code">
+                  DeletePurchaseOrder
+                 </code>
+                 ,
+                 <code class="code">
+                  ListPurchaseOrders
+                 </code>
+                 ,
+                 <code class="code">
+                  GetPurchaseOrder
+                 </code>
+                 ,
+                 <code class="code">
+                  ListPurchaseOrderInvoices
+                 </code>
+                 ,
+                 <code class="code">
+                  UpdatePurchaseOrderStatus
+                 </code>
+                 ,
+                 <code class="code">
+                  UpdatePurchaseOrder
+                 </code>
+                 ,
+                 <code class="code">
+                  TagResource
+                 </code>
+                 ,
+                 <code class="code">
+                  UntagResource
+                 </code>
+                 , and
+                 <code class="code">
+                  ListTagsForResource
+                 </code>
+                 use
+                 <code class="code">
+                  purchase-orders.amazonaws.com
+                 </code>
+                 .
+                </p>
+               </li>
+              </ul>
+             </div>
+            </div>
+           </div>
+           <div class="table-container">
+            <div class="table-contents disable-scroll">
+             <table id="w519aac48c20c10b9b7">
+              <thead>
+               <tr>
+                <th>
+                 Event name
+                </th>
+                <th>
+                 Definition
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AddPurchaseOrder
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the creation of a purchase order.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AcceptFxPaymentCurrencyTermsAndConditions
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the acceptance of the terms and conditions of paying in a currency other
+              than USD.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  BatchGetTaxExemptions
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to US tax exemptions of an account, and any linked accounts.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CloseAccount
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the closing of an account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CreateCustomerCase
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation of a customer support case to validate US tax exemption for an
+              account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CreateCustomerVerificationDetails
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 (For customers with an India billing or contact address only)
+                </p>
+                <p>
+                 Logs the creation of the customer verification details of the account.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CreateOrigamiReportPreference
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation of the cost and usage report; management account only.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DeletePurchaseOrder
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the deletion of a purchase order.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DeleteOrigamiReportPreferences
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the deletion of the cost and usage report; management account only.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DownloadCommercialInvoice
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the download of a commercial invoice.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DownloadECSVForBillingPeriod
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the download of the eCSV file (monthly usage report) for a specific billing
+              period.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DownloadRegistrationDocument
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the download of the tax registration document.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DownloadTaxInvoice
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the download of a tax invoice.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  EnableBillingAlerts
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the opt-in of receiving CloudWatch billing alerts for estimated charges.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  FindECSVForBillingPeriod
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval of the ECSV file for a specific billing period.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetAccountEDPStatus
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval of the accountâs EDP status.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetAddresses
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to tax address, billing address, and contact address of an
+              account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetAllAccounts
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to all member account numbers of the management account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetAllAccountDetails
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to tax registration details of all member accounts of the
+              management account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetBillsForBillingPeriod
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of the account's usage and charges for a specific billing
+              period.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetBillsForLinkedAccount
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of a management account retrieving the usage and charges of one
+              of the member accounts in the consolidated billing family for a specific billing
+              period.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetCommercialInvoicesForBillingPeriod
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to the account's commercial invoices metadata for the specific
+              billing period.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetConsolidatedBillingFamilySummary
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of the management account retrieving the summary of the entire
+              consolidated billing family.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetCustomerVerificationEligibility
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 (For customers with an India billing or contact address only)
+                </p>
+                <p>
+                 Logs the retrieval of the customer verification eligibility of the
+                account.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetCustomerVerificationDetails
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 (For customers with an India billing or contact address only)
+                </p>
+                <p>
+                 Logs the retrieval of the customer verification details of the account.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetLinkedAccountNames
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval from a management account of the member account names
+              belonging to its consolidated billing family for a specific billing period.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetPurchaseOrder
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the retrieval of a purchase order.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetSupportedCountryCodes
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to all country codes supported by tax console.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTaxExemptionTypes
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to all supported US exemption types by tax console.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTaxInheritance
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to tax inheritance preference (turning on or off) of an
+              account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTaxInvoicesMetadata
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval of tax invoices metadata.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTaxRegistration
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to the tax registration number of an account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTotal
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval of the accountâs total charges.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTotalAmountForForecast
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to the forecasted charges for the specific billing
+              period.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListCostAllocationTags
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval and listing of cost allocation tags.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListPurchaseOrders
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the retrieval and listing of purchase orders.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListPurchaseOrderInvoices
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs of the retrieval and list of invoices associated to a purchase
+                order.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListTagsForResource
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Lists the tags associated with a resource for a purchase order.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  PreviewTaxRegistrationChange
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the preview of tax registration changes before confirmation.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  RedeemPromoCode
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the redemption of promotional credits for an account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetAccountContractMetadata
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation, deletion, or update of the necessary contract information for
+              public sector customers.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetAccountPreferences
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the updates of the account name, email, and password.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetAdditionalContacts
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation, deletion, or update of the alternate contacts for billing,
+              operations, and security communications.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetContactAddress
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation, deletion, or update of the account owner contact information,
+              including the address and phone number.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetCreatedByOptIn
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the opt-in of the
+                <code class="code">
+                 awscreatedby
+                </code>
+                cost allocation tag
+              preference.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetCreditSharing
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the history of the credit sharing preference for the management
+              account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetFreetierBudgetsPreference
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the preference (opt-in or opt-out) of receiving Free Tier usage
+              alerts.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetFxPaymentCurrency
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation, deletion, or update of the preferred currency used to pay your
+              invoice.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetIAMAccessPreference
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation, deletion, or update of the IAM users ability to access to
+              the billing console. This setting is only for customers with root access.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetPANInformation
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creating, deletion, or update of PAN information under AWS India.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetPayInformation
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the payment method history (invoice or credit/debit card) for the
+              account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetRISharing
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the history of the RI/Savings Plans sharing preference for the management
+              account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetSecurityQuestions
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation, deletion, or update of the security challenge questions to
+              help AWS identify you as the owner of the account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetTagKeysState
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the active or inactive state of a particular cost allocation tag.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetTaxInheritance
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the preference (opt-in or opt-out) of tax inheritance.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SetTaxRegistration
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation, deletion, or update of the tax registration number for an
+              account.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  TagResource
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the tagging of a resource for a purchase order.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UntagResource
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the deletion of tags from a resource for a purchase order.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UpdateCustomerVerificationDetails
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 (For customers with an India billing or contact address only)
+                </p>
+                <p>
+                 Logs the update of the customer verification details of the account.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UpdateOrigamiReportPreference
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the update of the cost and usage report; management account only.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UpdatePurchaseOrder
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the update of a purchase order.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UpdatePurchaseOrderStatus
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the update of a purchase order status.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ValidateAddress
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the validation of the tax address of an account.
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <h2 id="service-name-info-in-cloudtrail">
+            Billing and Cost Management information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the account. When supported event
+      activity occurs in Billing and Cost Management, that activity is recorded in a CloudTrail event along with other AWS
+      service events in
+            <b>
+             Event history
+            </b>
+            . You can view, search, and download
+      recent events in your AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing Events with CloudTrail Event
+        History
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for Billing and Cost Management, create a
+      trail. A trail enables CloudTrail to deliver log files to an Amazon S3 bucket. By default, when you
+      create a trail in the console, the trail applies to all AWS Regions. The trail logs events
+      from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you
+      specify. Additionally, you can configure other AWS services to further analyze and act upon
+      the event data collected in CloudTrail logs.
+           </p>
+           <p>
+            For more information, see the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for
+            Creating a Trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail Supported Services and Integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring Amazon SNS
+            Notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail Log Files from Multiple Regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail
+            Log Files from Multiple Accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+      identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or IAM user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+          federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity
+        Element
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <h2 id="CT-examples">
+            CloudTrail log entry examples
+           </h2>
+           <p>
+            The following examples are provided for specific Billing and Cost Management CloudTrail log entry scenarios.
+           </p>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Topics
+            </h6>
+            <ul>
+             <li>
+              <a href="#understanding-service-name-entries">
+               Billing and Cost Management log file entries
+              </a>
+             </li>
+             <li>
+              <a href="#CT-example-tax">
+               Tax console
+              </a>
+             </li>
+            </ul>
+           </div>
+           <h3 id="understanding-service-name-entries">
+            Billing and Cost Management log file entries
+           </h3>
+           <p>
+            A
+            <em>
+             trail
+            </em>
+            is a configuration that enables delivery of events as log
+      files to an Amazon S3 bucket that you specify. CloudTrail log files contain one or more log entries. An
+      event represents a single request from any source and includes information about the requested
+      action, the date and time of the action, request parameters, and so on. CloudTrail log files are not
+      an ordered stack trace of the public API calls, so they don't appear in any specific
+      order.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             SetContactAddress
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+        "eventVersion": "1.05",
+        "userIdentity": <span>{</span>
+            "accountId": "111122223333",
+            "accessKeyId": "AIDACKCEVSQ6C2EXAMPLE"
+        },
+        "eventTime": "2018-05-30T16:44:04Z",
+        "eventSource": "billingconsole.amazonaws.com",
+        "eventName": "SetContactAddress",
+        "awsRegion": "us-east-1",
+        "sourceIPAddress": "100.100.10.10",
+        "requestParameters": <span>{</span>
+            "website": "https://amazon.com",
+            "city": "Seattle",
+            "postalCode": "98108",
+            "fullName": "Jane Doe",
+            "districtOrCounty": null,
+            "phoneNumber": "206-555-0100",
+            "countryCode": "US",
+            "addressLine1": "Nowhere Estates",
+            "addressLine2": "100 Main Street",
+            "company": "AnyCompany",
+            "state": "Washington",
+            "addressLine3": "Anytown, USA",
+            "secondaryPhone": "206-555-0101"
+        },
+        "responseElements": null,
+        "eventID": "5923c499-063e-44ac-80fb-b40example9f",
+        "readOnly": false,
+        "eventType": "AwsConsoleAction",
+        "recipientAccountId": "1111-2222-3333"
+    }</code></pre>
+           <h3 id="CT-example-tax">
+            Tax console
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that uses the
+            <code class="code">
+             CreateCustomerCase
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+   "eventVersion":"1.05",
+   "userIdentity":<span>{</span>
+      "accountId":"111122223333",
+      "accessKeyId":"AIDACKCEVSQ6C2EXAMPLE"
+   },
+   "eventTime":"2018-05-30T16:44:04Z",
+   "eventSource":"taxconsole.amazonaws.com",
+   "eventName":"CreateCustomerCase",
+   "awsRegion":"us-east-1",
+   "sourceIPAddress":"100.100.10.10",
+   "requestParameters":<span>{</span>
+      "state":"NJ",
+      "exemptionType":"501C",
+      "exemptionCertificateList":[
+         <span>{</span>
+            "documentName":"ExemptionCertificate.png"
+         }
+      ]
+   },
+   "responseElements":<span>{</span>
+      "caseId":"case-111122223333-iris-2022-3cd52e8dbf262242"
+   },
+   "eventID":"5923c499-063e-44ac-80fb-b40example9f",
+   "readOnly":false,
+   "eventType":"AwsConsoleAction",
+   "recipientAccountId":"1111-2222-3333"
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./billing-security-logging.html" id="previous">
+             Logging and monitoring
+            </div>
+            <div accesskey="n" class="next-link" href="./Billing-compliance.html" id="next">
+             Compliance validation
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS Account Billing&amp;topic_url=https://docs.aws.amazon.com/en_us/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS Account Billing&amp;topic_url=https://docs.aws.amazon.com/en_us/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

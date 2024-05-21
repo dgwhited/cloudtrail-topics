@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Log AWS Outposts API calls using AWS CloudTrail - AWS Outposts
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Log AWS Outposts API calls by using AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="AWS Outposts" name="product"/>
+  <meta content="User Guide for racks" name="guide"/>
+  <meta content="AWS Outposts is a fully-managed service that extends AWS infrastructure, APIs, and tools to customer premises. By providing local access to AWS-managed infrastructure, AWS Outposts enables customers to build and run applications on premises using the same programming interfaces as in AWS Regions, while using local compute and storage resources for lower latency and local data processing needs." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Outposts" name="feedback-item"/>
+  <meta content="AWS Outposts" name="this_doc_product"/>
+  <meta content="User Guide for racks" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'outposts'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide for racks"/>
+  <meta id="panorama-serviceConsolePage" value="Log AWS Outposts API calls using AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Log AWS Outposts API calls using AWS CloudTrail - AWS Outposts
+        </title>
+        <meta content="/pdfs/outposts/latest/userguide/outposts-rack.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="outposts.rss" name="rss"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Outposts&amp;topic_url=https://docs.aws.amazon.com/en_us/outposts/latest/userguide/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/outposts/latest/userguide/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/outposts/latest/userguide/logging-using-cloudtrail.html" name="feedback-no"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS Outposts",
+        "item" : "https://docs.aws.amazon.com/outposts/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide for racks",
+        "item" : "https://docs.aws.amazon.com/outposts/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Monitor your Outpost",
+        "item" : "https://docs.aws.amazon.com/outposts/latest/userguide/monitor-outposts.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Log AWS Outposts API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/outposts/latest/userguide/monitor-outposts.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/outposts/latest/userguide/outposts-rack.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/outposts/index.html">
+           AWS Outposts
+          </a>
+          <a href="what-is-outposts.html">
+           User Guide for racks
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#outposts-info-in-cloudtrail">
+           AWS Outposts information in CloudTrail
+          </a>
+          <a href="#understanding-outposts-entries">
+           Understanding AWS Outposts log file
+          entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Log AWS Outposts API calls using AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            AWS Outposts is integrated with AWS CloudTrail, a service that provides a record of actions taken
+      by a user, role, or an AWS service in AWS Outposts. CloudTrail captures all API calls for AWS Outposts as
+      events. The calls captured include calls from the AWS Outposts console and code calls to the AWS Outposts
+      API operations. If you create a trail, you can enable continuous delivery of CloudTrail events to an
+      S3 bucket, including events for AWS Outposts. If you don't configure a trail, you can still view the
+      most recent events in the CloudTrail console in
+            <b>
+             Event history
+            </b>
+            . Using the
+      information collected by CloudTrail, you can determine the request that was made to AWS Outposts, the IP
+      address from which the request was made, who made the request, when it was made, and
+      additional details.
+           </p>
+           <p>
+            For more information about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <h2 id="outposts-info-in-cloudtrail">
+            AWS Outposts information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the account. When activity occurs
+        in AWS Outposts, that activity is recorded in a CloudTrail event along with other AWS service events in
+            <b>
+             Event history
+            </b>
+            . You can view, search, and download recent events in
+        your AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail event
+          history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for AWS Outposts,
+        create a trail. A
+            <em>
+             trail
+            </em>
+            enables CloudTrail to deliver log files to an S3
+        bucket in the parent AWS Region. By default, when you create a trail in the console, the
+        trail applies to all AWS Regions. The trail logs events from all Regions in the AWS
+        partition and delivers the log files to the S3 bucket that you specify. Additionally, you
+        can configure other AWS services to further analyze and act upon the event data collected
+        in CloudTrail logs. For more information, see the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for
+              creating a trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail Supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring Amazon
+              SNS notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log files from multiple Regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail
+              log files from multiple accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            All AWS Outposts actions are logged by CloudTrail. They are documented in the
+            <a href="https://docs.aws.amazon.com/outposts/latest/APIReference/Welcome.html">
+             <em>
+              AWS Outposts API
+            Reference
+             </em>
+            </a>
+            . For example, calls to the
+            <code class="code">
+             CreateOutpost
+            </code>
+            ,
+            <code class="code">
+             GetOutpostInstanceTypes
+            </code>
+            , and
+            <code class="code">
+             ListSites
+            </code>
+            actions generate entries
+        in the CloudTrail log files.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+        identity information helps you determine whether the request was made:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               With root or user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               With temporary security credentials for a role or federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               By another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity
+          element
+            </a>
+            .
+           </p>
+           <h2 id="understanding-outposts-entries">
+            Understanding AWS Outposts log file
+          entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an S3 bucket
+        that you specify. CloudTrail log files contain one or more log entries. An event represents a
+        single request from any source. It includes information about the requested action, the date
+        and time of the action, request parameters, and so on. CloudTrail log files aren't an ordered
+        stack trace of the public API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             CreateOutpost
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><code class="json"><span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AKIAIOSFODNN7EXAMPLE:jdoe",
+        "arn": "arn:aws:sts::111122223333:assumed-role/example/jdoe",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AKIAIOSFODNN7EXAMPLE",
+                "arn": "arn:aws:iam::111122223333:role/example",
+                "accountId": "111122223333",
+                "userName": "example"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2020-08-14T16:28:16Z"
+            }
+        }
+    },
+    "eventTime": "2020-08-14T16:32:23Z",
+    "eventSource": "outposts.amazonaws.com",
+    "eventName": "SetSiteAddress",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "XXX.XXX.XXX.XXX",
+    "userAgent": "userAgent",
+    "requestParameters": <span>{</span>
+        "SiteId": "os-123ab4c56789de01f",
+        "Address": "***"
+    },
+    "responseElements": <span>{</span>
+        "Address": "***",
+        "SiteId": "os-123ab4c56789de01f"
+    },
+    "requestID": "1abcd23e-f4gh-567j-klm8-9np01q234r56",
+    "eventID": "1234a56b-c78d-9e0f-g1h2-34jk56m7n890",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "111122223333"
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./outposts-cloudwatch-metrics.html" id="previous">
+             CloudWatch metrics
+            </div>
+            <div accesskey="n" class="next-link" href="./outpost-maintenance.html" id="next">
+             Maintenance
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Outposts&amp;topic_url=https://docs.aws.amazon.com/en_us/outposts/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Outposts&amp;topic_url=https://docs.aws.amazon.com/en_us/outposts/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging Amazon CloudWatch API calls with AWS CloudTrail - Amazon CloudWatch
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging_cw_api_calls" name="target_state"/>
+  <meta content="logging_cw_api_calls" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" rel="canonical"/>
+  <meta content="Learn about logging CloudWatch with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon CloudWatch" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="Monitor your AWS services, collect and track metrics from AWS services and your own applications, and set alarms based on data from those metrics." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" hreflang="x-default" rel="alternative"/>
+  <meta content="CloudWatch" name="feedback-item"/>
+  <meta content="Amazon CloudWatch" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudwatch'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Amazon CloudWatch API calls with AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging Amazon CloudWatch API calls with AWS CloudTrail - Amazon CloudWatch
+        </title>
+        <meta content="/pdfs/AmazonCloudWatch/latest/monitoring/acw-ug.pdf#logging_cw_api_calls" name="pdf"/>
+        <meta content="amazon-cloudwatch-document-history.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=138" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudWatch&amp;topic_url=https://docs.aws.amazon.com/en_us/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" name="feedback-no"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon CloudWatch",
+        "item" : "https://docs.aws.amazon.com/cloudwatch/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Logging Amazon CloudWatch API calls with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/AmazonCloudWatch/latest/monitoring/acw-ug.pdf#logging_cw_api_calls" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/cloudwatch/index.html">
+           Amazon CloudWatch
+          </a>
+          <a href="WhatIsCloudWatch.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#cw_info_in_ct">
+           CloudWatch information in CloudTrail
+          </a>
+          <a href="#cw_im_info_in_ct">
+           CloudWatch Internet Monitor in CloudTrail
+          </a>
+          <a href="#cw_synthetics_info_in_ct">
+           CloudWatch Synthetics information in CloudTrail
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging_cw_api_calls">
+            Logging Amazon CloudWatch API calls with AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Amazon CloudWatch and CloudWatch Synthetics are integrated with AWS CloudTrail, a service that provides a record
+        of actions taken by a user, role, or an AWS service. CloudTrail captures API calls made by or on
+        behalf of your AWS account. The captured calls include calls from the console and code calls
+        to API operations.
+           </p>
+           <p>
+            If you create a
+            <em>
+             trail
+            </em>
+            , you can enable continuous delivery of CloudTrail
+        events to an S3 bucket, including events for CloudWatch. If you don't configure a trail, you can
+        still view the most recent events in the CloudTrail console in
+            <b>
+             Event history
+            </b>
+            .
+        Using the information collected by CloudTrail, you can determine the request that was made to
+        CloudWatch, the IP address from which the request was made, who made the request, when it was
+        made, and other details.
+           </p>
+           <p>
+            To learn more about CloudTrail, including how to configure and enable it, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+        identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or AWS Identity and Access Management (IAM) user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+                federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity
+        Element
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for CloudWatch and CloudWatch
+        Synthetics, create a trail. A trail enables CloudTrail to deliver log files to an S3 bucket. By
+        default, when you create a trail in the console, the trail applies to all AWS Regions. The
+        trail logs events from all Regions in the AWS partition and delivers the log files to the
+        S3 bucket that you specify. You can configure other AWS services to further analyze and
+        act on the event data collected in CloudTrail logs. For more information, see the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for
+                Creating a Trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail Supported Services and Integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring Amazon SNS
+                Notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail Log Files from Multiple Regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail
+                    Log Files from Multiple Accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              For information about CloudWatch Logs API calls that are logged in CloudTrail, see
+              <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/logging_cw_api_calls_cwl.html#cwl_info_in_ct">
+               CloudWatch Logs information in CloudTrail
+              </a>
+              .
+             </p>
+            </div>
+           </div>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Topics
+            </h6>
+            <ul>
+             <li>
+              <a href="#cw_info_in_ct">
+               CloudWatch information in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#cw_im_info_in_ct">
+               CloudWatch Internet Monitor in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#cw_synthetics_info_in_ct">
+               CloudWatch Synthetics information in CloudTrail
+              </a>
+             </li>
+            </ul>
+           </div>
+           <h2 id="cw_info_in_ct">
+            CloudWatch information in CloudTrail
+           </h2>
+           <p>
+            CloudWatch supports logging the following actions as events in CloudTrail log files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DeleteAlarms.html">
+                DeleteAlarms
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DeleteAnomalyDetector.html">
+                DeleteAnomalyDetector
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DeleteDashboards.html">
+                DeleteDashboards
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmHistory.html">
+                DescribeAlarmHistory
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html">
+                DescribeAlarms
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmsForMetric.html">
+                DescribeAlarmsForMetric
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAnomalyDetectors.html">
+                DescribeAnomalyDetectors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DisableAlarmActions.html">
+                DisableAlarmActions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_EnableAlarmActions.html">
+                EnableAlarmActions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetDashboard.html">
+                GetDashboard
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListDashboards.html">
+                ListDashboards
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutAnomalyDetector.html">
+                PutAnomalyDetector
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutDashboard.html">
+                PutDashboard
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutMetricAlarm.html">
+                PutMetricAlarm
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_SetAlarmState.html">
+                SetAlarmState
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h3 id="understanding-CloudWatch-entries-in-CloudTrail">
+            Example: CloudWatch log file
+                    entries
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             PutMetricAlarm
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "Records": [<span>{</span>
+        "eventVersion": "1.01",
+        "userIdentity": <span>{</span>
+            "type": "Root",
+            "principalId": "EX_PRINCIPAL_ID",
+            "arn": "arn:aws:iam::123456789012:root",
+            "accountId": "123456789012",
+            "accessKeyId": "EXAMPLE_KEY_ID"
+        },
+        "eventTime": "2014-03-23T21:50:34Z",
+        "eventSource": "monitoring.amazonaws.com",
+        "eventName": "PutMetricAlarm",
+        "awsRegion": "us-east-1",
+        "sourceIPAddress": "127.0.0.1",
+        "userAgent": "aws-sdk-ruby2/2.0.0.rc4 ruby/1.9.3 x86_64-linux Seahorse/0.1.0",
+        "requestParameters": <span>{</span>
+            "threshold": 50.0,
+            "period": 60,
+            "metricName": "CloudTrail Test",
+            "evaluationPeriods": 3,
+            "comparisonOperator": "GreaterThanThreshold",
+            "namespace": "AWS/CloudWatch",
+            "alarmName": "CloudTrail Test Alarm",
+            "statistic": "Sum"
+        },
+        "responseElements": null,
+        "requestID": "29184022-b2d5-11e3-a63d-9b463e6d0ff0",
+        "eventID": "b096d5b7-dcf2-4399-998b-5a53eca76a27"
+    },
+    ..additional entries
+  ]
+  }</code></pre>
+           <p>
+            The following log file entry shows that a user called the CloudWatch Events
+            <code class="code">
+             PutRule
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+         "eventVersion":"1.03",
+         "userIdentity":<span>{</span>
+            "type":"Root",
+            "principalId":"123456789012",
+            "arn":"arn:aws:iam::123456789012:root",
+            "accountId":"123456789012",
+            "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+            "sessionContext":<span>{</span>
+               "attributes":<span>{</span>
+                  "mfaAuthenticated":"false",
+                  "creationDate":"2015-11-17T23:56:15Z"
+               }
+            }
+         },
+         "eventTime":"2015-11-18T00:11:28Z",
+         "eventSource":"events.amazonaws.com",
+         "eventName":"PutRule",
+         "awsRegion":"us-east-1",
+         "sourceIPAddress":"AWS Internal",
+         "userAgent":"AWS CloudWatch Console",
+         "requestParameters":<span>{</span>
+            "description":"",
+            "name":"cttest2",
+            "state":"ENABLED",
+            "eventPattern":"<span>{</span>\"source\":[\"aws.ec2\"],\"detail-type\":[\"EC2 Instance State-change Notification\"]}",
+            "scheduleExpression":""
+         },
+         "responseElements":<span>{</span>
+            "ruleArn":"arn:aws:events:us-east-1:123456789012:rule/cttest2"
+         },
+         "requestID":"e9caf887-8d88-11e5-a331-3332aa445952",
+         "eventID":"49d14f36-6450-44a5-a501-b0fdcdfaeb98",
+         "eventType":"AwsApiCall",
+         "apiVersion":"2015-10-07",
+         "recipientAccountId":"123456789012"
+}</code></pre>
+           <p>
+            The following log file entry shows that a user called the CloudWatch Logs
+            <code class="code">
+             CreateExportTask
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+        "eventVersion": "1.03",
+        "userIdentity": <span>{</span>
+            "type": "IAMUser",
+            "principalId": "EX_PRINCIPAL_ID",
+            "arn": "arn:aws:iam::123456789012:user/someuser",
+            "accountId": "123456789012",
+            "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+            "userName": "someuser"
+        },
+        "eventTime": "2016-02-08T06:35:14Z",
+        "eventSource": "logs.amazonaws.com",
+        "eventName": "CreateExportTask",
+        "awsRegion": "us-east-1",
+        "sourceIPAddress": "127.0.0.1",
+        "userAgent": "aws-sdk-ruby2/2.0.0.rc4 ruby/1.9.3 x86_64-linux Seahorse/0.1.0",
+        "requestParameters": <span>{</span>
+            "destination": "yourdestination",
+            "logGroupName": "yourloggroup",
+            "to": 123456789012,
+            "from": 0,
+            "taskName": "yourtask"
+        },
+        "responseElements": <span>{</span>
+            "taskId": "15e5e534-9548-44ab-a221-64d9d2b27b9b"
+        },
+        "requestID": "1cd74c1c-ce2e-12e6-99a9-8dbb26bd06c9",
+        "eventID": "fd072859-bd7c-4865-9e76-8e364e89307c",
+        "eventType": "AwsApiCall",
+        "apiVersion": "20140328",
+        "recipientAccountId": "123456789012"
+}</code></pre>
+           <h2 id="cw_im_info_in_ct">
+            CloudWatch Internet Monitor in CloudTrail
+           </h2>
+           <p>
+            CloudWatch Internet Monitor supports logging the following actions as events in CloudTrail log files.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_CreateMonitor.html">
+                CreateMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_DeleteMonitor.html">
+                DeleteMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_GetHealthEvent.html">
+                GetHealthEvent
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_GetMonitor.html">
+                GetMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_GetQueryResults.html">
+                GetQueryResults
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_GetQueryStatus.html">
+                GetQueryStatus
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_ListHealthEvents.html">
+                ListHealthEvents
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_ListMonitors.html">
+                ListMonitors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_ListTagsForResource.html">
+                ListTagsForResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_StartQuery.html">
+                StartQuery
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_StopQuery.html">
+                StopQuery
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/internet-monitor/latest/api/API_UpdateMonitor.html">
+                UpdateMonitor
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h3 id="understanding-CloudWatch-IM-entries-in-CloudTrail">
+            Example: CloudWatch Internet Monitor
+				log file entries
+           </h3>
+           <p>
+            The following example shows a CloudTrail Internet Monitor log entry that demonstrates the
+            <code class="code">
+             ListMonitors
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+        "eventVersion": "1.08",
+        "userIdentity": <span>{</span>
+            "type": "AssumedRole",
+            "principalId": "EX_PRINCIPAL_ID",
+            "arn": "arn:aws:iam::000000000000:assumed-role/role_name",
+            "accountId":"123456789012",
+            "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+            "sessionContext": <span>{</span>
+                "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EX_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::000000000000:role/Admin",
+                "accountId":"123456789012",
+                "userName": "SAMPLE_NAME"
+                },
+                "webIdFederationData": <span>{</span>},
+                "attributes": <span>{</span>
+                    "creationDate": "2022-10-11T17:25:41Z",
+                    "mfaAuthenticated": "false"
+                }
+            }
+        },
+        "eventTime": "2022-10-11T17:30:18Z",
+        "eventSource": "internetmonitor.amazonaws.com",
+        "eventName": "ListMonitors",
+        "awsRegion": "us-east-2",
+        "sourceIPAddress": "192.0.2.0",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+        "requestParameters": null,
+        "responseElements": null,
+        "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLEbbbbb",
+        "readOnly": true,
+        "eventType": "AwsApiCall",
+        "managementEvent": true,
+        "recipientAccountId": "111122223333",
+        "eventCategory": "Management"
+    }</code></pre>
+           <p>
+            The following example shows a CloudTrail Internet Monitor log entry that demonstrates the
+            <code class="code">
+             CreateMonitor
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+        "eventVersion": "1.08",
+        "userIdentity": <span>{</span>
+            "type": "AssumedRole",
+            "principalId": "EX_PRINCIPAL_ID",
+            "arn": "arn:aws:iam::000000000000:assumed-role/role_name",
+            "accountId":"123456789012",
+            "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+            "sessionContext": <span>{</span>
+                "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EX_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::000000000000:role/Admin",
+                "accountId":"123456789012",
+                "userName": "SAMPLE_NAME"
+                },
+                "webIdFederationData": <span>{</span>},
+                "attributes": <span>{</span>
+                    "creationDate": "2022-10-11T17:25:41Z",
+                    "mfaAuthenticated": "false"
+                }
+            }
+        },
+        "eventTime": "2022-10-11T17:30:08Z",
+        "eventSource": "internetmonitor.amazonaws.com",
+        "eventName": "CreateMonitor",
+        "awsRegion": "us-east-2",
+        "sourceIPAddress": "192.0.2.0",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+        "requestParameters": <span>{</span>
+            "MonitorName": "TestMonitor",
+            "Resources": ["arn:aws:ec2:us-east-2:444455556666:vpc/vpc-febc0b95"],
+            "ClientToken": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333"
+        },
+        "responseElements": <span>{</span>
+            "Arn": "arn:aws:internetmonitor:us-east-2:444455556666:monitor/ct-onboarding-test",
+            "Status": "PENDING"
+        },
+        "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLEbbbbb",
+        "readOnly": false,
+        "eventType": "AwsApiCall",
+        "managementEvent": true,
+        "recipientAccountId": "111122223333",
+        "eventCategory": "Management"
+    }</code></pre>
+           <h2 id="cw_synthetics_info_in_ct">
+            CloudWatch Synthetics information in CloudTrail
+           </h2>
+           <p>
+            CloudWatch Synthetics supports logging the following actions as events in CloudTrail log files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CreateCanary.html">
+                CreateCanary
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DeleteCanary.html">
+                DeleteCanary
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html">
+                DescribeCanaries
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanariesLastRun.html">
+                DescribeCanariesLastRun
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeRuntimeVersions.html">
+                DescribeRuntimeVersions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanary.html">
+                GetCanary
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanaryRuns.html">
+                GetCanaryRuns
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_ListTagsForResource.html">
+                ListTagsForResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_StartCanary.html">
+                StartCanary
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_StopCanary.html">
+                StopCanary
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html">
+                TagResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_UntagResource.html">
+                UntagResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_UpdateCanary.html">
+                UpdateCanary
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h3 id="understanding-CloudWatch-Synthetics-entries-in-CloudTrail">
+            Example: CloudWatch Synthetics
+                    log file entries
+           </h3>
+           <p>
+            The following example shows a CloudTrail Synthetics log entry that demonstrates the
+            <code class="code">
+             DescribeCanaries
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:assumed-role/role_name",
+        "accountId":"123456789012",
+        "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EX_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::111222333444:role/Administrator",
+                "accountId":"123456789012",
+                "userName": "SAMPLE_NAME"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2020-04-08T21:43:24Z"
+            }
+        }
+    },
+    "eventTime": "2020-04-08T23:06:47Z",
+    "eventSource": "synthetics.amazonaws.com",
+    "eventName": "DescribeCanaries",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "127.0.0.1",
+    "userAgent": "aws-internal/3 aws-sdk-java/1.11.590 Linux/4.9.184-0.1.ac.235.83.329.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.212-b03 java/1.8.0_212 vendor/Oracle_Corporation",
+    "requestParameters": null,
+    "responseElements": null,
+    "requestID": "201ed5f3-15db-4f87-94a4-123456789",
+    "eventID": "73ddbd81-3dd0-4ada-b246-123456789",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "111122223333"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail Synthetics log entry that demonstrates the
+            <code class="code">
+             UpdateCanary
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:assumed-role/role_name",
+        "accountId":"123456789012",
+        "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+               "type": "Role",
+                "principalId": "EX_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::111222333444:role/Administrator",
+       "accountId":"123456789012",
+                "userName": "SAMPLE_NAME"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2020-04-08T21:43:24Z"
+            }
+        }
+    },
+    "eventTime": "2020-04-08T23:06:47Z",
+    "eventSource": "synthetics.amazonaws.com",
+    "eventName": "UpdateCanary",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-internal/3 aws-sdk-java/1.11.590 Linux/4.9.184-0.1.ac.235.83.329.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.212-b03 java/1.8.0_212 vendor/Oracle_Corporation",
+    "requestParameters": <span>{</span>
+        "Schedule": <span>{</span>
+            "Expression": "rate(1 minute)"
+        },
+        "name": "sample_canary_name",
+        "Code": <span>{</span>
+            "Handler": "myOwnScript.handler",
+            "ZipFile": "SAMPLE_ZIP_FILE"
+        }
+    },
+    "responseElements": null,
+    "requestID": "fe4759b0-0849-4e0e-be71-1234567890",
+    "eventID": "9dc60c83-c3c8-4fa5-bd02-1234567890",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "111122223333"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail Synthetics log entry that demonstrates the
+            <code class="code">
+             GetCanaryRuns
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:assumed-role/role_name",
+        "accountId":"123456789012",
+        "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EX_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::111222333444:role/Administrator",
+       "accountId":"123456789012",
+                "userName": "SAMPLE_NAME"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2020-04-08T21:43:24Z"
+            }
+        }
+    },
+    "eventTime": "2020-04-08T23:06:30Z",
+    "eventSource": "synthetics.amazonaws.com",
+    "eventName": "GetCanaryRuns",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "127.0.0.1",
+    "userAgent": "aws-internal/3 aws-sdk-java/1.11.590 Linux/4.9.184-0.1.ac.235.83.329.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.212-b03 java/1.8.0_212 vendor/Oracle_Corporation",
+    "requestParameters": <span>{</span>
+        "Filter": "TIME_RANGE",
+        "name": "sample_canary_name",
+        "FilterValues": [
+            "2020-04-08T23:00:00.000Z",
+            "2020-04-08T23:10:00.000Z"
+        ]
+    },
+    "responseElements": null,
+    "requestID": "2f56318c-cfbd-4b60-9d93-1234567890",
+    "eventID": "52723fd9-4a54-478c-ac55-1234567890",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "111122223333"
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./servicelens_canaries_security.html" id="previous">
+             Security considerations for Synthetics
+        canaries
+            </div>
+            <div accesskey="n" class="next-link" href="./CloudWatch-Tagging.html" id="next">
+             Tagging your CloudWatch resources
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudWatch&amp;topic_url=https://docs.aws.amazon.com/en_us/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudWatch&amp;topic_url=https://docs.aws.amazon.com/en_us/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

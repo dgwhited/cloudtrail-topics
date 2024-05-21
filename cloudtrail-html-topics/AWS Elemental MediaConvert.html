@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging AWS Elemental MediaConvert API calls using AWS CloudTrail - MediaConvert
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/mediaconvert/latest/ug/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Learn about using AWS Elemental MediaConvert with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="MediaConvert" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="Use MediaConvert to format and compress offline video content for delivery to televisions or connected devices. High-quality video transcoding makes it possible to create on-demand video assets for virtually any device. This documentation is offered here as a free Kindle book, or you can read it online or in PDF format at https://aws.amazon.com/documentation/mediaconvert/." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/mediaconvert/latest/ug/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/mediaconvert/latest/ug/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="MediaConvert" name="feedback-item"/>
+  <meta content="MediaConvert" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'mediaconvert'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging AWS Elemental MediaConvert API calls using AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging AWS Elemental MediaConvert API calls using AWS CloudTrail - MediaConvert
+        </title>
+        <meta content="/pdfs/mediaconvert/latest/ug/mediaconvert-guide.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="mediaconvert-documentatation-updates.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=266" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=MediaConvert&amp;topic_url=https://docs.aws.amazon.com/en_us/mediaconvert/latest/ug/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/mediaconvert/latest/ug/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/mediaconvert/latest/ug/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="MediaConvert,AWS Elemental MediaConvert,offline video content,video,video compression,video file,media service,Monitor MediaConvert job progress,monitor job progress,monitor job results" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "MediaConvert",
+        "item" : "https://docs.aws.amazon.com/mediaconvert/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/mediaconvert/latest/ug"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Monitoring AWS Elemental MediaConvert",
+        "item" : "https://docs.aws.amazon.com/mediaconvert/latest/ug/monitoring-overview.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging AWS Elemental MediaConvert API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/mediaconvert/latest/ug/monitoring-overview.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/mediaconvert/latest/ug/mediaconvert-guide.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/mediaconvert/index.html">
+           MediaConvert
+          </a>
+          <a href="what-is.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#service-name-info-in-cloudtrail">
+           Finding information about MediaConvert in
+                CloudTrail
+          </a>
+          <a href="#understanding-service-name-entries">
+           Understanding CloudTrail management
+                events for MediaConvert
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging AWS Elemental MediaConvert API calls using
+            AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            AWS Elemental MediaConvert integrates with AWS CloudTrail, a service that provides a record of operations taken
+        by a user, role, or an AWS service. CloudTrail captures all operations (API calls) you perform,
+        including those from the MediaConvert Console, as events. Events contain information about requests
+        to MediaConvert, including the IP address, who made the request, when it was made, the MediaConvert
+        operation, and additional details. For more information about CloudTrail events, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-events">
+             What are CloudTrail events?
+            </a>
+           </p>
+           <p>
+            A few examples of what CloudTrail can help you find include: when you submitted a create job
+        request, who deleted a queue, or what tags were added to a resource.
+           </p>
+           <p>
+            For a complete list of all MediaConvert operations you can perform, see the
+            <a href="https://docs.aws.amazon.com/mediaconvert/latest/apireference/resources.html">
+             MediaConvert API Reference
+            </a>
+            .
+           </p>
+           <p>
+            To learn more about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Topics
+            </h6>
+            <ul>
+             <li>
+              <a href="#service-name-info-in-cloudtrail">
+               Finding information about MediaConvert in
+                CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-service-name-entries">
+               Understanding CloudTrail management
+                events for MediaConvert
+              </a>
+             </li>
+            </ul>
+           </div>
+           <h2 id="service-name-info-in-cloudtrail">
+            Finding information about MediaConvert in
+                CloudTrail
+           </h2>
+           <p>
+            You can view, search, and download events from the last 90 days in
+            <a href="https://console.aws.amazon.com/cloudtrailv2/home?region=us-west-2#/events" rel="noopener noreferrer" target="_blank">
+             <span>
+              Event
+                history
+             </span>
+             <awsui-icon class="awsdocs-link-icon" name="external">
+             </awsui-icon>
+            </a>
+            in the CloudTrail console. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Working with CloudTrail Event history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of CloudTrail events beyond the last 90 days, you must create a CloudTrail
+            <em>
+             trail
+            </em>
+            or CloudTrail Lake event data store.
+           </p>
+           <div class="variablelist">
+            <dl>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail trails
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               With CloudTrail trails, CloudTrail delivers log files for events to an Amazon S3 bucket.
+                        Additionally, you can configure other AWS services to
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
+                further analyze and act upon the event data
+               </a>
+               collected. When you
+                        create a trail, CloudTrail
+               <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event.html">
+                also emits each event to Amazon EventBridge
+               </a>
+               . For more
+                        information about CloudTrail trails, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-getting-started.html">
+                Working with CloudTrail trails
+               </a>
+               .
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail Lake event data stores
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               With CloudTrail Lake event data stores, CloudTrail provides a searchable store of
+                        event data. For more information, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+                Working with
+                            CloudTrail Lake
+               </a>
+               .
+              </p>
+             </dd>
+            </dl>
+           </div>
+           <h2 id="understanding-service-name-entries">
+            Understanding CloudTrail management
+                events for MediaConvert
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
+            </a>
+            provide information about management operations that are
+            performed on resources in your AWS account. These are also known as control plane
+            operations, or MediaConvert operations. By default, CloudTrail logs all management events.
+           </p>
+           <p>
+            CloudTrail management events represent a single request from any source. They include
+            information about where a request originated, who made the request, when the request was
+            made, the MediaConvert operation, and other important details.
+           </p>
+           <p>
+            For details about the contents of these events, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail record contents
+            </a>
+            .
+           </p>
+           <div class="variablelist">
+            <dl>
+             <dt>
+              <b>
+               <span class="term">
+                Origin
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               Events include the source IP address under
+               <code class="code">
+                sourceIPAddress
+               </code>
+               ,
+                        AWS Region under
+               <code class="code">
+                awsRegion
+               </code>
+               , and user agent (browser or client
+                        info) under
+               <code class="code">
+                userAgent
+               </code>
+               to help you find where a request
+                        originated.
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                Identity
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               Events include identity information, under
+               <code class="code">
+                userIdentity
+               </code>
+               , to
+                        help you find who made the request. You can use this information to
+                        determine the following:
+              </p>
+              <div class="itemizedlist">
+               <ul class="itemizedlist">
+                <li class="listitem">
+                 <p>
+                  Whether the request was made with root user or user
+                                credentials.
+                 </p>
+                </li>
+                <li class="listitem">
+                 <p>
+                  Whether the request was made on behalf of an IAM Identity Center user.
+                 </p>
+                </li>
+                <li class="listitem">
+                 <p>
+                  Whether the request was made with temporary security credentials
+                                for a role or federated user.
+                 </p>
+                </li>
+                <li class="listitem">
+                 <p>
+                  Whether the request was made by another AWS service.
+                 </p>
+                </li>
+               </ul>
+              </div>
+              <p>
+               For more information, including a list of relevant fields, see the
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+                CloudTrail userIdentity element
+               </a>
+               .
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                Time
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               Events include a time stamp, under
+               <code class="code">
+                eventTime
+               </code>
+               .
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                MediaConvert operation
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               Events include the MediaConvert operation under
+               <code class="code">
+                eventName
+               </code>
+               . For
+                        example,
+               <code class="code">
+                CreateJob
+               </code>
+               when you submit a new job, or
+               <code class="code">
+                CreateQueue
+               </code>
+               when you request a new Queue.
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                Other important details
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               Some events include specific details about your MediaConvert request under
+               <code class="code">
+                requestParameters
+               </code>
+               , as well as MediaConvert's response under
+               <code class="code">
+                responseElements
+               </code>
+               .
+              </p>
+              <p>
+               For example, if you submit a
+               <code class="code">
+                CreateJob
+               </code>
+               request, the
+               <code class="code">
+                requestParameters
+               </code>
+               field will include the JSON for the job
+                        settings that you submitted. If successful, the event also includes the
+                        complete and validated job settings JSON, as well as the job ID, under
+               <code class="code">
+                responseElements
+               </code>
+               .
+              </p>
+              <p>
+               For another example, if you submit a
+               <code class="code">
+                CreateQueue
+               </code>
+               request, the
+               <code class="code">
+                requestParameters
+               </code>
+               field will include the the queue settings
+                        that you submitted. If successful, the event will also include the queue ARN
+                        under
+               <code class="code">
+                responseElements
+               </code>
+               .
+              </p>
+             </dd>
+            </dl>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              MediaConvert only supports recording management events in CloudTrail, it does not support data
+                events. For details about these event types, and their differences, see
+              <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html">
+               CloudTrail
+                    concepts
+              </a>
+              .
+             </p>
+            </div>
+           </div>
+           <h3 id="example-cloudtrail-events">
+            Example events
+           </h3>
+           <p>
+            The following examples show a CloudTrail event for the
+            <code class="code">
+             CreateJob
+            </code>
+            ,
+            <code class="code">
+             CreateQueue
+            </code>
+            ,
+            <code class="code">
+             DeleteQueue
+            </code>
+            , and
+            <code class="code">
+             TagResource
+            </code>
+            operations. CloudTrail also records all other
+            <a href="https://docs.aws.amazon.com/mediaconvert/latest/apireference/resources.html">
+             MediaConvert operations
+            </a>
+            , though they are not shown here.
+           </p>
+           <p>
+            <b>
+             Example event: CreateJob
+            </b>
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AKIAIOSFODNN7EXAMPLE:example-admin",
+        "arn": "arn:aws:sts::111122223333:assumed-role/admin/example-admin",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AKIAIOSFODNN7EXAMPLE",
+                "arn": "arn:aws:iam::111122223333:role/admin",
+                "accountId": "111122223333",
+                "userName": "admin"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2024-04-04T17:30:19Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2024-04-04T17:45:26Z",
+    "eventSource": "mediaconvert.amazonaws.com",
+    "eventName": "CreateJob",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "203.0.113.100",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+    "requestParameters": <span>{</span>
+        "settings": <span>{</span>...},
+        "accelerationSettings": <span>{</span>
+            "mode": "DISABLED"
+        },
+        "role": "arn:aws:iam::111122223333:role/service-role/MediaConvert_Default_Role",
+        "clientRequestToken": "1712252705233-zyxwvut",
+        "statusUpdateInterval": "SECONDS_60",
+        "billingTagsSource": "JOB",
+        "priority": 0,
+        "queue": "arn:aws:mediaconvert:us-west-2:111122223333:queues/Default"
+    },
+    "responseElements": <span>{</span>
+        "job": <span>{</span>
+            "arn": "arn:aws:mediaconvert:us-west-2:111122223333:jobs/1712252725875-defhgi",
+            "id": "1712252725875-defhgi",
+            "createdAt": 1712252726,
+            "queue": "arn:aws:mediaconvert:us-west-2:111122223333:queues/Default",
+            "role": "arn:aws:iam::111122223333:role/service-role/MediaConvert_Default_Role",
+            "settings": <span>{</span>...},
+            "status": "SUBMITTED",
+            "timing": <span>{</span>
+                "submitTime": 1712252726
+            },
+            "billingTagsSource": "JOB",
+            "accelerationSettings": <span>{</span>
+                "mode": "DISABLED"
+            },
+            "statusUpdateInterval": "SECONDS_60",
+            "priority": 0,
+            "accelerationStatus": "NOT_APPLICABLE",
+            "messages": <span>{</span>
+                "info": [],
+                "warning": []
+            },
+            "clientRequestToken": "1712252705233-abcDEF"
+        }
+    },
+    "requestID": "1234abcd-12ab-34cd-56ef-1234567890ab",
+    "eventID": "0987dcba-09fe-87dc-65ba-ab0987654321",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Management"
+}</code></pre>
+           <p>
+            <b>
+             Example event: CreateQueue
+            </b>
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AKIAIOSFODNN7EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:user/testuser",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "testUser",
+        "sessionContext": <span>{</span>
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2018-07-10T14:01:57Z"
+            }
+        },
+        "invokedBy": "signin.amazonaws.com"
+    },
+    "eventTime": "2018-07-10T16:49:13Z",
+    "eventSource": "mediaconvert.amazonaws.com",
+    "eventName": "CreateQueue",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "203.0.113.100",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+    "requestParameters": <span>{</span>
+        "name": "QueueName",
+        "description": "Example queue description.",
+        "tags": <span>{</span>}
+    },
+    "responseElements": <span>{</span>
+        "queue": <span>{</span>
+            "arn": "arn:aws:mediaconvert:eu-west-1:111122223333:queues/QueueName",
+            "createdAt": 1531241353,
+            "lastUpdated": 1531241353,
+            "type": "CUSTOM",
+            "status": "ACTIVE",
+            "description": "",
+            "name": "QueueName",
+            "submittedJobsCount": 0,
+            "progressingJobsCount": 0
+        }
+    },
+    "requestID": "1234abcd-12ab-34cd-56ef-1234567890ab",
+    "eventID": "0987dcba-09fe-87dc-65ba-ab0987654321",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "111122223333"
+}</code></pre>
+           <p>
+            <b>
+             Example event: DeleteQueue
+            </b>
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AKIAIOSFODNN7EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:user/testuser",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "testuser",
+        "sessionContext": <span>{</span>
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2018-07-10T14:01:57Z"
+            }
+        },
+        "invokedBy": "signin.amazonaws.com"
+    },
+    "eventTime": "2018-07-10T15:36:29Z",
+    "eventSource": "mediaconvert.amazonaws.com",
+    "eventName": "DeleteQueue",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "203.0.113.100",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+    "requestParameters": <span>{</span>
+        "name": "QueueName"
+    },
+    "responseElements": null,
+    "requestID": "1234abcd-12ab-34cd-56ef-1234567890ab",
+    "eventID": "0987dcba-09fe-87dc-65ba-ab0987654321",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "111122223333"
+}</code></pre>
+           <p>
+            <b>
+             Example event: TagResource
+            </b>
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AKIAIOSFODNN7EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:user/testuser",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "testuser"
+    },
+    "eventTime": "2018-07-10T18:44:27Z",
+    "eventSource": "mediaconvert.amazonaws.com",
+    "eventName": "TagResource",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "203.0.113.100",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+    "requestParameters": <span>{</span>
+        "arn": "arn:aws:mediaconvert:eu-west-1:111122223333:queues/ExampleQueue",
+        "Tags": <span>{</span>
+            "CostCenter": "Example-Tag"
+        }
+    },
+    "responseElements": null,
+    "requestID": "1234abcd-12ab-34cd-56ef-1234567890ab",
+    "eventID": "0987dcba-09fe-87dc-65ba-ab0987654321",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "111122223333"
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./metrics.html" id="previous">
+             List of MediaConvert CloudWatch metrics
+            </div>
+            <div accesskey="n" class="next-link" href="./tagging-mediaconvert-resources.html" id="next">
+             Tagging
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=MediaConvert&amp;topic_url=https://docs.aws.amazon.com/en_us/mediaconvert/latest/ug/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=MediaConvert&amp;topic_url=https://docs.aws.amazon.com/en_us/mediaconvert/latest/ug/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

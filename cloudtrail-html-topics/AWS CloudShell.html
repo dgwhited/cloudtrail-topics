@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging and monitoring in AWS CloudShell - AWS CloudShell
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-and-monitoring" name="target_state"/>
+  <meta content="logging-and-monitoring" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/cloudshell/latest/userguide/logging-and-monitoring.html" rel="canonical"/>
+  <meta content="Learn how you can log and monitor AWS CloudShell activity and performance." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="AWS CloudShell" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="This is official Amazon Web Services (AWS) documentation for AWS CloudShell. AWS CloudShell is a browser-based, pre-authenticated shell that you can launch directly from the AWS Management Console. You can run AWS CLI commands against AWS services using your preferred shell (Bash, PowerShell, or Z shell). And you can do this without needing to download or install command line tools. This guide explains how to use AWS CloudShell. This documentation is offered for free here as a Kindle book, or you can read it online or in PDF format at https://aws.amazon.com/documentation/cloud9/." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/cloudshell/latest/userguide/logging-and-monitoring.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/cloudshell/latest/userguide/logging-and-monitoring.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Cloudshell" name="feedback-item"/>
+  <meta content="AWS CloudShell" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudshell'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging and monitoring in AWS CloudShell"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging and monitoring in AWS CloudShell - AWS CloudShell
+        </title>
+        <meta content="/pdfs/cloudshell/latest/userguide/awscloudshell.pdf#logging-and-monitoring" name="pdf"/>
+        <meta content="awscloudshell.pdf.rss" name="rss"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Cloudshell&amp;topic_url=https://docs.aws.amazon.com/en_us/cloudshell/latest/userguide/logging-and-monitoring.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/cloudshell/latest/userguide/logging-and-monitoring.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/cloudshell/latest/userguide/logging-and-monitoring.html" name="feedback-no"/>
+        <meta content="AWS CloudShell,CloudShell" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS CloudShell",
+        "item" : "https://docs.aws.amazon.com/cloudshell/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/cloudshell/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Security for AWS CloudShell",
+        "item" : "https://docs.aws.amazon.com/cloudshell/latest/userguide/security.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging and monitoring in AWS CloudShell",
+        "item" : "https://docs.aws.amazon.com/cloudshell/latest/userguide/security.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/cloudshell/latest/userguide/awscloudshell.pdf#logging-and-monitoring" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/cloudshell/index.html">
+           AWS CloudShell
+          </a>
+          <a href="welcome.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#cloudtrail-activity">
+           Monitoring activity with CloudTrail
+          </a>
+          <a href="#cloudtrail-cshell">
+           AWS CloudShell in CloudTrail
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-and-monitoring">
+            Logging and monitoring in AWS CloudShell
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            This topic describes how you can log and monitor AWS CloudShell activity and performance with
+    CloudTrail.
+           </p>
+           <h2 id="cloudtrail-activity">
+            Monitoring activity with CloudTrail
+           </h2>
+           <p>
+            AWS CloudShell is integrated with AWS CloudTrail, a service that provides a record of actions taken by
+      a user, role, or AWS service in AWS CloudShell. CloudTrail captures all API calls for AWS CloudShell as
+      events. The calls captured include calls from the AWS CloudShell console and code calls to the
+      AWS CloudShell API.
+           </p>
+           <p>
+            If you create a trail, you can enable the continuous delivery of CloudTrail events to an
+      Amazon Simple Storage Service (Amazon S3) bucket. This includes events for AWS CloudShell.
+           </p>
+           <p>
+            If you don't configure a trail, you can still view the most recent events in the CloudTrail
+      console in
+            <b>
+             Event history
+            </b>
+            . Using the information collected by CloudTrail, you
+      can discover a variety of information about a request. For example, you can determine the
+      request that was made to AWS CloudShell, you can learn the IP address that the request was
+      made from, who made the request, and when it was made.
+           </p>
+           <h2 id="cloudtrail-cshell">
+            AWS CloudShell in CloudTrail
+           </h2>
+           <p>
+            The following table lists the AWS CloudShell events that are saved in the CloudTrail  log file.
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <div class="itemizedlist">
+              <p>
+               AWS CloudShell event that includes:
+              </p>
+              <ul class="itemizedlist">
+               <li class="listitem">
+                <p>
+                 <code class="code">
+                  *
+                 </code>
+                 indicates that it is a non-mutating (read-only) API call.
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 The word
+                 <code class="code">
+                  Environment
+                 </code>
+                 relates to the lifecycle of the compute
+            environment that hosts the shell experience.
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 The word
+                 <code class="code">
+                  Layout
+                 </code>
+                 restores all the browser tabs in the CloudShell
+            terminal.
+                </p>
+               </li>
+              </ul>
+             </div>
+             <p>
+             </p>
+            </div>
+           </div>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w959aac22c21b7b7">
+              <thead>
+               <tr>
+                <th class="table-header" colspan="100">
+                 <div class="title">
+                  CloudShell Events in CloudTrail
+                 </div>
+                </th>
+               </tr>
+               <tr>
+                <th>
+                 Event name
+                </th>
+                <th>
+                 Description
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 createEnvironment
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs when a CloudShell environment is created.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 createSession
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs when a CloudShell environment is connected from the AWS Management Console.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 deleteEnvironment
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs when a CloudShell environment is deleted.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 deleteSession
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs when the session in the CloudShell tab that is running in the current
+              browser tab is deleted.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 getEnvironmentStatus*
+                </code>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Occurs when the status of a CloudShell environment is retrieved.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 getFileDownloadUrls*
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs when pre-signed Amazon S3 URLs that are used to download files through
+              CloudShell using the CloudShell web interface are generated.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 getFileUploadUrls*
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs when pre-signed Amazon S3 URLs that are used to upload files through
+              CloudShell using the CloudShell web interface are generated.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 getLayout*
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs when the CloudShell layout at the start of the session is
+              retrieved.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 putCredentials
+                </code>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Occurs when the credentials used to log in to the AWS Management Console to CloudShell are
+                forwarded.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 redeemCode*
+                </code>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Occurs when the workflow to retrieve refresh token in the CloudShell
+                environment begins. You can later use this token in the
+                 <code class="code">
+                  putCredentials
+                 </code>
+                 command to access the CloudShell environment.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 sendHeartBeat
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs to confirm that the CloudShell session is active.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 startEnvironment
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs when a CloudShell environment is started.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 stopEnvironment
+                </code>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Occurs when a running CloudShell environment is stopped.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 updateLayout
+                </code>
+               </td>
+               <td tabindex="-1">
+                Occurs when the current layout from the web application in the backend is
+              saved.
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <p>
+           </p>
+           <p>
+            Events that include the word "Layout" restore all the browser tabs in the CloudShell
+      terminal.
+           </p>
+           <p>
+            <b>
+             EventBridge rules for AWS CloudShell actions
+            </b>
+           </p>
+           <p>
+            With EventBridge rules, you specify a target action to take when EventBridge receives an event that
+      matches the rule. You can define a rule that specifies a target action to take based on an
+      AWS CloudShell action that's recorded as an event in a CloudTrail log file.
+           </p>
+           <p>
+            For example, you can
+            <a href="https://docs.aws.amazon.com/cli/latest/reference/events/put-rule.html">
+             create EventBridge rules with
+        AWS CLI
+            </a>
+            using the
+            <code class="code">
+             put-rule
+            </code>
+            command. A
+            <code class="code">
+             put-rule
+            </code>
+            call must
+      contain at least an EventPattern or ScheduleExpression. Rules with EventPatterns are triggered
+      when a matching event is observed. The EventPattern for AWS CloudShell events:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span> "source": [ "aws.cloudshell" ], "detail-type": [ "AWS API Call via CloudTrail" ], "detail": <span>{</span> "eventSource": [ "cloudshell.amazonaws.com" ] } }</code></pre>
+           <p>
+            For more information, see
+            <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html">
+             Events and Event Patterns in EventBridge
+            </a>
+            in the
+            <em>
+             Amazon EventBridge User Guide
+            </em>
+            .
+           </p>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./sec-auth-with-identities.html" id="previous">
+             Managing AWS CloudShell access and usage with IAM
+        policies
+            </div>
+            <div accesskey="n" class="next-link" href="./compliance-validation.html" id="next">
+             Compliance validation
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Cloudshell&amp;topic_url=https://docs.aws.amazon.com/en_us/cloudshell/latest/userguide/logging-and-monitoring.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Cloudshell&amp;topic_url=https://docs.aws.amazon.com/en_us/cloudshell/latest/userguide/logging-and-monitoring.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Using AWS CloudTrail to log Amazon WorkDocs API calls - Amazon WorkDocs
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="cloudtrail_logging" name="target_state"/>
+  <meta content="cloudtrail_logging" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/workdocs/latest/adminguide/cloudtrail_logging.html" rel="canonical"/>
+  <meta content="Learn how to use CloudTrail to log Amazon WorkDocs API calls." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon WorkDocs" name="product"/>
+  <meta content="Administration Guide" name="guide"/>
+  <meta content="Use Amazon WorkDocs to perform several administrative tasks, such as creating a new directory in the cloud and setting user privileges, with this Administration Guide." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/workdocs/latest/adminguide/cloudtrail_logging.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/workdocs/latest/adminguide/cloudtrail_logging.html" hreflang="x-default" rel="alternative"/>
+  <meta content="WDDocs" name="feedback-item"/>
+  <meta content="Amazon WorkDocs" name="this_doc_product"/>
+  <meta content="Administration Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'workdocs'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="Administration Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Using AWS CloudTrail to log Amazon WorkDocs API calls"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Using AWS CloudTrail to log Amazon WorkDocs API calls - Amazon WorkDocs
+        </title>
+        <meta content="/pdfs/workdocs/latest/adminguide/workdocs-ag.pdf#cloudtrail_logging" name="pdf"/>
+        <meta content="amazon-workdocs-release-notes.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=172" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=WDDocs&amp;topic_url=https://docs.aws.amazon.com/en_us/workdocs/latest/adminguide/cloudtrail_logging.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/workdocs/latest/adminguide/cloudtrail_logging.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/workdocs/latest/adminguide/cloudtrail_logging.html" name="feedback-no"/>
+        <meta content="Amazon WorkDocs,admin control panel,Amazon WorkDocs administrator guide,Amazon WorkDocs domain" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon WorkDocs",
+        "item" : "https://docs.aws.amazon.com/workdocs/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Administration Guide",
+        "item" : "https://docs.aws.amazon.com/workdocs/latest/adminguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Security in Amazon WorkDocs",
+        "item" : "https://docs.aws.amazon.com/workdocs/latest/adminguide/security.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging and monitoring in Amazon WorkDocs",
+        "item" : "https://docs.aws.amazon.com/workdocs/latest/adminguide/monitoring.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
+        "name" : "Using AWS CloudTrail to log Amazon WorkDocs API calls",
+        "item" : "https://docs.aws.amazon.com/workdocs/latest/adminguide/monitoring.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/workdocs/latest/adminguide/workdocs-ag.pdf#cloudtrail_logging" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/workdocs/index.html">
+           Amazon WorkDocs
+          </a>
+          <a href="what_is.html">
+           Administration Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#service-name-info-in-cloudtrail">
+           Amazon WorkDocs information in
+            CloudTrail
+          </a>
+          <a href="#understanding-service-name-entries">
+           Understanding Amazon WorkDocs log file entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <awsui-alert class="awsdocs-page-banner awsui-util-mb-l">
+            <p>
+             <b>
+              Notice
+             </b>
+             : New customer sign-ups and account upgrades are no longer available for Amazon WorkDocs. Learn about migration steps here:
+             <a href="https://aws.amazon.com/blogs/business-productivity/how-to-migrate-content-from-amazon-workdocs" rel="noopener noreferrer" target="_blank">
+              <span>
+               How to migrate data from Amazon WorkDocs
+              </span>
+              <awsui-icon class="awsdocs-link-icon" name="external">
+              </awsui-icon>
+             </a>
+             .
+            </p>
+           </awsui-alert>
+           <h1 class="topictitle" id="cloudtrail_logging">
+            Using AWS CloudTrail to log Amazon WorkDocs API calls
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            You can use AWS CloudTrail; to log Amazon WorkDocs API calls. CloudTrail provides a record of actions taken
+            by a user, role, or an AWS service in Amazon WorkDocs. CloudTrail captures all API calls for Amazon WorkDocs as events, including calls from 
+            the Amazon WorkDocs console and from code calls to the Amazon WorkDocs APIs.
+           </p>
+           <p>
+            If you create a trail, you can enable
+            continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Amazon WorkDocs. If you don't create a trail, 
+            you can still view the most recent events in the CloudTrail console in
+            <b>
+             Event
+                history
+            </b>
+            .
+           </p>
+           <p>
+            The information collected by CloudTrail includes requests, the IP addresses from which the
+            requests were made, the users who made the requests, and the request dates.
+           </p>
+           <p>
+            For more information about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <h2 id="service-name-info-in-cloudtrail">
+            Amazon WorkDocs information in
+            CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
+                Amazon WorkDocs, that activity is recorded in a CloudTrail event along with other AWS service
+                events in
+            <b>
+             Event history
+            </b>
+            . You can view, search, and download recent events 
+                in your AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail event
+                    history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for Amazon WorkDocs,
+                create a trail. A trail enables CloudTrail to deliver log files to an Amazon S3 bucket. By default, when
+                you create a trail in the console, the trail applies to all regions. The trail logs events
+                from all regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you
+                specify. Additionally, you can configure other AWS services to further analyze and act upon
+                the event data collected in CloudTrail logs. For more information, see:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for creating a trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring Amazon SNS notifications
+                        for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log
+                        files from multiple Regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail log
+                            files from multiple accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            All Amazon WorkDocs actions are logged by CloudTrail and are documented in the
+            <a href="https://docs.aws.amazon.com/workdocs/latest/APIReference/">
+             Amazon WorkDocs API Reference
+            </a>
+            . For example, calls to the
+            <code class="code">
+             CreateFolder
+            </code>
+            ,
+            <code class="code">
+             DeactivateUser
+            </code>
+            and
+            <code class="code">
+             UpdateDocument
+            </code>
+            sections generate entries in the CloudTrail log files.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+                identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or IAM user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+                        federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity
+                element
+            </a>
+            .
+           </p>
+           <h2 id="understanding-service-name-entries">
+            Understanding Amazon WorkDocs log file entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
+                that you specify. CloudTrail log files contain one or more log entries. An event represents a single
+                request from any source and includes information about the requested action, the date and time
+                of the action, request parameters, and so on. CloudTrail log files are not an ordered stack trace of
+                the public API calls, so they do not appear in any specific order.
+           </p>
+           <p>
+            Amazon WorkDocs generates different types of CloudTrail entries , those from the
+                control plane and those from the data plane. The important difference between the
+                two is that the user identity for control plane entries is an IAM user. The user
+                identity for data plane entries is the Amazon WorkDocs directory user.
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              For greater security, create federated users instead of IAM users whenever possible.
+             </p>
+            </div>
+           </div>
+           <p>
+            Sensitive information, such as passwords, authentication tokens, file comments, and file contents are redacted in the log entries. 
+                These show up as HIDDEN_DUE_TO_SECURITY_REASONS in the CloudTrail logs. These show up as HIDDEN_DUE_TO_SECURITY_REASONS in the CloudTrail logs.
+           </p>
+           <p>
+            The following example shows two CloudTrail log entries for Amazon WorkDocs: the first record is for a
+                control plane action and the second is for a data plane action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><span>{</span>
+  Records : [
+    <span>{</span>
+      "eventVersion" : "1.01",
+      "userIdentity" :
+      <span>{</span>
+        "type" : "IAMUser",
+        "principalId" : "<code class="replaceable">user_id</code>",
+        "arn" : "<code class="replaceable">user_arn</code>",
+        "accountId" : "<code class="replaceable">account_id</code>",
+        "accessKeyId" : "<code class="replaceable">access_key_id</code>",
+        "userName" : "<code class="replaceable">user_name</code>"
+      },
+      "eventTime" : "<code class="replaceable">event_time</code>",
+      "eventSource" : "workdocs.amazonaws.com",
+      "eventName" : "RemoveUserFromGroup",
+      "awsRegion" : "<code class="replaceable">region</code>",
+      "sourceIPAddress" : "<code class="replaceable">ip_address</code>",
+      "userAgent" : "<code class="replaceable">user_agent</code>",
+      "requestParameters" :
+      <span>{</span>
+        "directoryId" : "<code class="replaceable">directory_id</code>",
+        "userSid" : "<code class="replaceable">user_sid</code>",
+        "group" : "<code class="replaceable">group</code>"
+      },
+      "responseElements" : null,
+      "requestID" : "<code class="replaceable">request_id</code>",
+      "eventID" : "<code class="replaceable">event_id</code>"
+    },
+    <span>{</span>
+      "eventVersion" : "1.01",
+      "userIdentity" :
+      <span>{</span>
+        "type" : "Unknown",
+        "principalId" : "<code class="replaceable">user_id</code>",
+        "accountId" : "<code class="replaceable">account_id</code>",
+        "userName" : "<code class="replaceable">user_name</code>"
+      },
+      "eventTime" : "<code class="replaceable">event_time</code>",
+      "eventSource" : "workdocs.amazonaws.com",      
+      "awsRegion" : "<code class="replaceable">region</code>",
+      "sourceIPAddress" : "<code class="replaceable">ip_address</code>",
+      "userAgent" : "<code class="replaceable">user_agent</code>",
+      "requestParameters" :
+      <span>{</span>
+        "AuthenticationToken" : "**-redacted-**"
+      },
+      "responseElements" : null,
+      "requestID" : "<code class="replaceable">request_id</code>",
+      "eventID" : "<code class="replaceable">event_id</code>"
+    }
+  ]
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./site-activity.html" id="previous">
+             Exporting the site-wide activity feed
+            </div>
+            <div accesskey="n" class="next-link" href="./compliance.html" id="next">
+             Compliance validation
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=WDDocs&amp;topic_url=https://docs.aws.amazon.com/en_us/workdocs/latest/adminguide/cloudtrail_logging.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=WDDocs&amp;topic_url=https://docs.aws.amazon.com/en_us/workdocs/latest/adminguide/cloudtrail_logging.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

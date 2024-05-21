@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging Amazon MQ API calls using AWS CloudTrail - Amazon MQ
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="security-logging-monitoring-cloudtrail" name="target_state"/>
+  <meta content="security-logging-monitoring-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" rel="canonical"/>
+  <meta content="This section provides information about logging Amazon MQ API calls using CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon MQ" name="product"/>
+  <meta content="Developer Guide" name="guide"/>
+  <meta content="Use Amazon MQ to set up and operate message brokers in the cloud." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="AMQ" name="feedback-item"/>
+  <meta content="Amazon MQ" name="this_doc_product"/>
+  <meta content="Developer Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'amazon-mq'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="Developer Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Amazon MQ API calls using AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging Amazon MQ API calls using AWS CloudTrail - Amazon MQ
+        </title>
+        <meta content="/pdfs/amazon-mq/latest/developer-guide/amazon-mq-dg.pdf#security-logging-monitoring-cloudtrail" name="pdf"/>
+        <meta content="recent-updates.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=279" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AMQ&amp;topic_url=https://docs.aws.amazon.com/en_us/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" name="feedback-no"/>
+        <meta content="Amazon MQ,message,queue,topic,producer,consumer,on-premises" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon MQ",
+        "item" : "https://docs.aws.amazon.com/amazon-mq/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Developer Guide",
+        "item" : "https://docs.aws.amazon.com/amazon-mq/latest/developer-guide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Logging and monitoring Amazon MQ brokers",
+        "item" : "https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/security-logging-monitoring.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging Amazon MQ API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/security-logging-monitoring.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/amazon-mq/latest/developer-guide/amazon-mq-dg.pdf#security-logging-monitoring-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/amazon-mq/index.html">
+           Amazon MQ
+          </a>
+          <a href="welcome.html">
+           Developer Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#security-logging-monitoring-cloudtrail-info">
+           Amazon MQ Information in
+                    CloudTrail
+          </a>
+          <a href="#security-logging-monitoring-cloudtrail-example-log">
+           Example Amazon MQ
+                    Log File Entry
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="security-logging-monitoring-cloudtrail">
+            Logging Amazon MQ API calls using
+                AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Amazon MQ is integrated with AWS CloudTrail, a service that provides a record of the Amazon MQ calls
+            that a user, role, or AWS service makes. CloudTrail captures API calls related to Amazon MQ
+            brokers and configurations as events, including calls from the Amazon MQ console and code
+            calls from Amazon MQ APIs. For more information about CloudTrail, see the
+            <em>
+             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+              AWS CloudTrail User Guide
+             </a>
+            </em>
+            .
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              CloudTrail doesn't log API calls related to ActiveMQ operations (for example, sending
+                and receiving messages) or to the ActiveMQ Web Console. To log information related
+                to ActiveMQ operations, you can
+              <a href="./security-logging-monitoring-configure-cloudwatch.html">
+               configure Amazon MQ to publish
+                    general and audit logs to Amazon CloudWatch Logs
+              </a>
+              .
+             </p>
+            </div>
+           </div>
+           <p>
+            Using the information that CloudTrail collects, you can identify a specific request to an
+            Amazon MQ API, the IP address of the requester, the requester's identity, the date and time
+            of the request, and so on. If you configure a
+            <em>
+             trail
+            </em>
+            , you can enable
+            continuous delivery of CloudTrail events to an Amazon S3 bucket. If you don't configure a trail,
+            you can view the most recent events in the event history in the CloudTrail console. For more
+            information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+             Overview for Creating a Trail
+            </a>
+            in the
+            <em>
+             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+              AWS CloudTrail User Guide
+             </a>
+            </em>
+            .
+           </p>
+           <h2 id="security-logging-monitoring-cloudtrail-info">
+            Amazon MQ Information in
+                    CloudTrail
+           </h2>
+           <p>
+            When you create your AWS account, CloudTrail is enabled. When a supported Amazon MQ event
+                activity occurs, it is recorded in a CloudTrail event with other AWS service events in
+                the event history. You can view, search, and download recent events for your AWS
+                account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing Events with CloudTrail Event
+                    History
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <p>
+            A trail allows CloudTrail to deliver log files to an Amazon S3 bucket. You can create a trail
+                to keep an ongoing record of events in your AWS account. By default, when you
+                create a trail using the AWS Management Console, the trail applies to all AWS Regions. The trail
+                logs events from all AWS Regions and delivers log files to the specified Amazon S3
+                bucket. You can also configure other AWS services to further analyze and act on
+                the event data collected in CloudTrail logs. For more information, see the following
+                topics in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            :
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail Supported Services and Integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring
+                            Amazon SNS Notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail Log Files from Multiple Regions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail Log Files from Multiple Accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Amazon MQ supports logging both the request parameters and the responses for the
+                following APIs as events in CloudTrail log files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-configurations.html#rest-api-configurations-methods-post">
+                <code class="code">
+                 CreateConfiguration
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-broker.html#rest-api-broker-methods-delete">
+                <code class="code">
+                 DeleteBroker
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-user.html#rest-api-user-methods-delete">
+                <code class="code">
+                 DeleteUser
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-broker-reboot.html#rest-api-broker-reboot-methods-post">
+                <code class="code">
+                 RebootBroker
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-broker.html#rest-api-broker-methods-put">
+                <code class="code">
+                 UpdateBroker
+                </code>
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              RebootBroker log files are logged when you reboot the broker. 
+                    During the maintenance window, the service automatically reboots, and RebootBroker log files are not logged.
+             </p>
+            </div>
+           </div>
+           <div class="awsdocs-note awsdocs-important">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-warning" variant="error">
+             </awsui-icon>
+             <h6>
+              Important
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              For the
+              <code class="code">
+               GET
+              </code>
+              methods of the following APIs, the request parameters
+                    are logged, but the responses are redacted:
+             </p>
+             <div class="itemizedlist">
+              <ul class="itemizedlist">
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-broker.html#rest-api-broker-methods-get">
+                  <code class="code">
+                   DescribeBroker
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-configuration.html#rest-api-configuration-methods-get">
+                  <code class="code">
+                   DescribeConfiguration
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-configuration-revision.html#rest-api-configuration-revision-methods-get">
+                  <code class="code">
+                   DescribeConfigurationRevision
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-user.html#rest-api-user-methods-get">
+                  <code class="code">
+                   DescribeUser
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-brokers.html#rest-api-brokers-methods-get">
+                  <code class="code">
+                   ListBrokers
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-configuration-revisions.html#rest-api-configuration-revisions-methods-get">
+                  <code class="code">
+                   ListConfigurationRevisions
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-configurations.html#rest-api-configurations-methods-get">
+                  <code class="code">
+                   ListConfigurations
+                  </code>
+                 </a>
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-users.html#rest-api-users-methods-get">
+                  <code class="code">
+                   ListUsers
+                  </code>
+                 </a>
+                </p>
+               </li>
+              </ul>
+             </div>
+             <p>
+              For the following APIs, the
+              <code class="code">
+               data
+              </code>
+              and
+              <code class="code">
+               password
+              </code>
+              request parameters are hidden by asterisks (
+              <code class="code">
+               ***
+              </code>
+              ):
+             </p>
+             <div class="itemizedlist">
+              <ul class="itemizedlist">
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-brokers.html#rest-api-brokers-methods-post">
+                  <code class="code">
+                   CreateBroker
+                  </code>
+                 </a>
+                 (
+                 <code class="code">
+                  POST
+                 </code>
+                 )
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-user.html#rest-api-user-methods-post">
+                  <code class="code">
+                   CreateUser
+                  </code>
+                 </a>
+                 (
+                 <code class="code">
+                  POST
+                 </code>
+                 )
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-configuration.html#rest-api-configuration-methods-put">
+                  <code class="code">
+                   UpdateConfiguration
+                  </code>
+                 </a>
+                 (
+                 <code class="code">
+                  PUT
+                 </code>
+                 )
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-user.html#rest-api-user-methods-put">
+                  <code class="code">
+                   UpdateUser
+                  </code>
+                 </a>
+                 (
+                 <code class="code">
+                  PUT
+                 </code>
+                 )
+                </p>
+               </li>
+              </ul>
+             </div>
+            </div>
+           </div>
+           <p>
+            Every event or log entry contains information about the requester. This
+                information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Was the request made with root or user credentials?
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Was the request made with temporary security credentials for a role or a
+                        federated user?
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Was the request made by another AWS service?
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail
+                    userIdentity Element
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <h2 id="security-logging-monitoring-cloudtrail-example-log">
+            Example Amazon MQ
+                    Log File Entry
+           </h2>
+           <p>
+            A
+            <em>
+             trail
+            </em>
+            is a configuration that allows the delivery of events
+                as log files to the specified Amazon S3 bucket. CloudTrail log files contain one or more log
+                entries.
+           </p>
+           <p>
+            An
+            <em>
+             event
+            </em>
+            represents a single request from any source and
+                includes information about the request to an Amazon MQ API, the IP address of the
+                requester, the requester's identity, the date and time of the request, and so
+                on.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <a href="https://docs.aws.amazon.com/amazon-mq/latest/api-reference/rest-api-brokers.html#rest-api-brokers-methods-post">
+             <code class="code">
+              CreateBroker
+             </code>
+            </a>
+            API call.
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              Because CloudTrail log files aren't an ordered stack trace of public APIs, they
+                    don't list information in any specific order.
+             </p>
+            </div>
+           </div>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.06",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AKIAIOSFODNN7EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:user/AmazonMqConsole",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+        "userName": "AmazonMqConsole"
+    },
+    "eventTime": "2018-06-28T22:23:46Z",
+    "eventSource": "amazonmq.amazonaws.com",
+    "eventName": "CreateBroker",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "203.0.113.0",
+    "userAgent": "PostmanRuntime/7.1.5",
+    "requestParameters": <span>{</span>
+        "engineVersion": "5.15.9",
+        "deploymentMode": "ACTIVE_STANDBY_MULTI_AZ",
+        "maintenanceWindowStartTime": <span>{</span>
+            "dayOfWeek": "THURSDAY",
+            "timeOfDay": "22:45",
+            "timeZone": "America/Los_Angeles"
+        },
+        "engineType": "ActiveMQ",
+        "hostInstanceType": "mq.m5.large",
+        "users": [
+            <span>{</span>
+                "username": "MyUsername123",
+                "password": "***",
+                "consoleAccess": true,
+                "groups": [
+                    "admins",
+                    "support"
+                ]
+            },
+            <span>{</span>
+                "username": "MyUsername456",
+                "password": "***",
+                "groups": [
+                    "admins"
+                ]
+            }
+        ],
+        "creatorRequestId": "1",
+        "publiclyAccessible": true,
+        "securityGroups": [
+            "sg-a1b234cd"
+        ],
+        "brokerName": "MyBroker",
+        "autoMinorVersionUpgrade": false,
+        "subnetIds": [
+            "subnet-12a3b45c",
+            "subnet-67d8e90f"
+        ]
+    },
+    "responseElements": <span>{</span>
+        "brokerId": "b-1234a5b6-78cd-901e-2fgh-3i45j6k178l9",
+        "brokerArn": "arn:aws:mq:us-east-2:123456789012:broker:MyBroker:b-1234a5b6-78cd-901e-2fgh-3i45j6k178l9"
+    },
+    "requestID": "a1b2c345-6d78-90e1-f2g3-4hi56jk7l890",
+    "eventID": "a12bcd3e-fg45-67h8-ij90-12k34d5l16mn",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "111122223333"
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./security-logging-monitoring-cloudwatch.html" id="previous">
+             Monitoring brokers using CloudWatch
+            </div>
+            <div accesskey="n" class="next-link" href="./security-logging-monitoring-configure-cloudwatch.html" id="next">
+             Configuring Amazon MQ to publish logs to CloudWatch Logs
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AMQ&amp;topic_url=https://docs.aws.amazon.com/en_us/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AMQ&amp;topic_url=https://docs.aws.amazon.com/en_us/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

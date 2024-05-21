@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   CloudTrail logs for VPC Lattice - Amazon VPC Lattice
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="monitoring-cloudtrail" name="target_state"/>
+  <meta content="monitoring-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-cloudtrail.html" rel="canonical"/>
+  <meta content="AWS CloudTrail is an AWS service that provides a record of actions taken by a user, role, or an AWS service. CloudTrail captures API calls for VPC Lattice as events. CloudTrail is enabled on your AWS account when you create it. When activity occurs in VPC Lattice, that activity is recorded as a CloudTrail event along with other AWS service events in" name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon VPC Lattice" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="Insert abstract text" name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="VPC Lattice" name="feedback-item"/>
+  <meta content="Amazon VPC Lattice" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'vpc-lattice'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="CloudTrail logs for VPC Lattice"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         CloudTrail logs for VPC Lattice - Amazon VPC Lattice
+        </title>
+        <meta content="/pdfs/vpc-lattice/latest/ug/vpc-lattice.pdf#monitoring-cloudtrail" name="pdf"/>
+        <meta content="lattice.rss" name="rss"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=VPC%20Lattice&amp;topic_url=https://docs.aws.amazon.com/en_us/vpc-lattice/latest/ug/monitoring-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/vpc-lattice/latest/ug/monitoring-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/vpc-lattice/latest/ug/monitoring-cloudtrail.html" name="feedback-no"/>
+        <meta content="Amazon VPC Lattice,Amazon VPC Lattice" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "VPC Lattice",
+        "item" : "https://docs.aws.amazon.com/vpc-lattice/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/vpc-lattice/latest/ug"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Monitoring Amazon VPC Lattice",
+        "item" : "https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-overview.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "CloudTrail logs for VPC Lattice",
+        "item" : "https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-overview.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/vpc-lattice/latest/ug/vpc-lattice.pdf#monitoring-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/vpc-lattice/index.html">
+           VPC Lattice
+          </a>
+          <a href="what-is-vpc-lattice.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#understanding-vpc-lattice-entries">
+           Understand VPC Lattice log file entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="monitoring-cloudtrail">
+            CloudTrail logs for VPC Lattice
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            AWS CloudTrail is an AWS service that provides a record of actions taken by a user, role, or
+        an AWS service. CloudTrail captures API calls for VPC Lattice as events. CloudTrail is enabled on
+        your AWS account when you create it. When activity occurs in VPC Lattice, that
+        activity is recorded as a CloudTrail event along with other AWS service events in
+            <b>
+             Event history
+            </b>
+            . The calls captured include calls from the
+        VPC Lattice console and code calls to VPC Lattice API operations. For more information about
+        CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <p>
+            CloudTrail log files contain one or more log entries. An event represents a single request from
+        any source and includes information about the requested action, the date and time of the
+        action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the
+        public API calls, so they don't appear in any specific order. A trail is a CloudTrail
+        configuration that enables delivery of events as log files to an S3 bucket that you specify.
+           </p>
+           <p>
+            To monitor additional actions, use access logs. For more information, see
+            <a href="./monitoring-access-logs.html">
+             Access logs
+            </a>
+            .
+           </p>
+           <h2 id="understanding-vpc-lattice-entries">
+            Understand VPC Lattice log file entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
+            that you specify. CloudTrail log files contain one or more log entries. An event represents a single
+            request from any source and includes information about the requested action, the date and time
+            of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
+            the public API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            For information related to key-value pairs in the logs, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail record contents
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User
+                Guide
+            </em>
+            .
+           </p>
+           <p>
+            The following is an example log entry for a call to the
+            <a href="https://docs.aws.amazon.com/vpc-lattice/latest/APIReference/API_CreateService.html">
+             CreateService
+            </a>
+            API action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "abcdef01234567890",
+    "arn": "arn:abcdef01234567890",
+    "accountId": "abcdef01234567890",
+    "accessKeyId": "abcdef01234567890",
+    "sessionContext": <span>{</span>
+        "sessionIssuer": <span>{</span>
+            "type": "Role",
+            "principalId": "abcdef01234567890",
+            "arn": "arn:abcdef01234567890",
+            "accountId": "abcdef01234567890",
+            "userName": "abcdef01234567890"
+        },
+        "webIdFederationData": <span>{</span>},
+        "attributes": <span>{</span>
+            "creationDate": "2022-08-16T03:34:54Z",
+            "mfaAuthenticated": "false"
+        }
+    }
+  },
+  "eventTime": "2022-08-16T03:36:12Z",
+  "eventSource": "vpc-lattice.amazonaws.com",
+  "eventName": "CreateService",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "abcdef01234567890",
+  "userAgent": "abcdef01234567890",
+  "requestParameters": <span>{</span>
+    "name": "rates-service"
+  },
+  "responseElements": <span>{</span>
+    "name": "rates-service",
+    "id": "abcdef01234567890",
+    "arn": "arn:abcdef01234567890",
+    "status": "CREATE_IN_PROGRESS"
+  },
+  "requestID": "abcdef01234567890",
+  "eventID": "abcdef01234567890",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "abcdef01234567890",
+  "eventCategory": "Management"
+}</code></pre>
+           <p>
+            The following is an example log entry for a call to the
+            <a href="https://docs.aws.amazon.com/vpc-lattice/latest/APIReference/API_DeleteService.html">
+             DeleteService
+            </a>
+            API action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "abcdef01234567890",
+    "arn": "arn:ABCXYZ123456",
+    "accountId": "abcdef01234567890",
+    "accessKeyId": "abcdef01234567890",
+    "sessionContext": <span>{</span>
+        "sessionIssuer": <span>{</span>
+            "type": "Role",
+            "principalId": "abcdef01234567890",
+            "arn": "arn:aws:iam::AIDACKCEVSQ6C2EXAMPLE:role/Admin",
+            "accountId": "abcdef01234567890",
+            "userName": "Admin"
+        },
+        "webIdFederationData": <span>{</span>},
+        "attributes": <span>{</span>
+            "creationDate": "2022-10-27T17:42:36Z",
+            "mfaAuthenticated": "false"
+        }
+    }
+  },
+  "eventTime": "2022-10-27T17:56:41Z",
+  "eventSource": "vpc-lattice.amazonaws.com",
+  "eventName": "DeleteService",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "72.21.198.64",
+  "userAgent": "abcdef01234567890",
+  "requestParameters": <span>{</span>
+    "serviceIdentifier": "abcdef01234567890"
+  },
+  "responseElements": <span>{</span>
+    "name": "test",
+    "id": "abcdef01234567890",
+    "arn": "arn:abcdef01234567890",
+    "status": "DELETE_IN_PROGRESS"
+  },
+  "requestID": "abcdef01234567890",
+  "eventID": "abcdef01234567890",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "abcdef01234567890",
+  "eventCategory": "Management"       
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./monitoring-access-logs.html" id="previous">
+             Access logs
+            </div>
+            <div accesskey="n" class="next-link" href="./quotas.html" id="next">
+             Quotas
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=VPC Lattice&amp;topic_url=https://docs.aws.amazon.com/en_us/vpc-lattice/latest/ug/monitoring-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=VPC Lattice&amp;topic_url=https://docs.aws.amazon.com/en_us/vpc-lattice/latest/ug/monitoring-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

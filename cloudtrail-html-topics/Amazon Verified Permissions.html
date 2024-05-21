@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging Amazon Verified Permissions API calls using AWS CloudTrail - Amazon Verified Permissions
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="cloudtrail" name="target_state"/>
+  <meta content="cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/cloudtrail.html" rel="canonical"/>
+  <meta content="Learn about logging Amazon Verified Permissions with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon Verified Permissions" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="Insert abstract text" name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Verified Permissions" name="feedback-item"/>
+  <meta content="Amazon Verified Permissions" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'verifiedpermissions'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Amazon Verified Permissions API calls using AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging Amazon Verified Permissions API calls using AWS CloudTrail - Amazon Verified Permissions
+        </title>
+        <meta content="/pdfs/verifiedpermissions/latest/userguide/amazon-verified-permissions-user-guide.pdf#cloudtrail" name="pdf"/>
+        <meta content="amazon-verified-permissions-user-guide.rss" name="rss"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Verified%20Permissions&amp;topic_url=https://docs.aws.amazon.com/en_us/verifiedpermissions/latest/userguide/cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/verifiedpermissions/latest/userguide/cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/verifiedpermissions/latest/userguide/cloudtrail.html" name="feedback-no"/>
+        <meta content="Amazon Verified Permissions,verified-permissions" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon Verified Permissions",
+        "item" : "https://docs.aws.amazon.com/verifiedpermissions/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/verifiedpermissions/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Monitoring Amazon Verified Permissions",
+        "item" : "https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/monitoring-overview.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging Amazon Verified Permissions API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/monitoring-overview.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/verifiedpermissions/latest/userguide/amazon-verified-permissions-user-guide.pdf#cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/verifiedpermissions/index.html">
+           Amazon Verified Permissions
+          </a>
+          <a href="what-is-avp.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#verified-permissions-info-in-cloudtrail">
+           Verified Permissions information in CloudTrail
+          </a>
+          <a href="#understanding-verified-permissions-entries">
+           Understanding Verified Permissions log file
+        entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="cloudtrail">
+            Logging Amazon Verified Permissions API calls using AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Amazon Verified Permissions is integrated with AWS CloudTrail, a service that provides a record of actions taken by
+    a user, role, or an AWS service in Verified Permissions. CloudTrail captures all API calls for Verified Permissions as events. The
+    calls captured include calls from the Verified Permissions console and code calls to the Verified Permissions API operations.
+    If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket,
+    including events for Verified Permissions. If you don't configure a trail, you can still view the most recent
+    events in the CloudTrail console in
+            <b>
+             Event history
+            </b>
+            . Using the information
+    collected by CloudTrail, you can determine the request that was made to Verified Permissions, the IP address from
+    which the request was made, who made the request, when it was made, and additional
+    details.
+           </p>
+           <p>
+            To learn more about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <h2 id="verified-permissions-info-in-cloudtrail">
+            Verified Permissions information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
+      Verified Permissions, that activity is recorded in a CloudTrail event along with other AWS service events in
+            <b>
+             Event history
+            </b>
+            . You can view, search, and download recent events in your
+      AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail Event history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for Verified Permissions, create
+      a trail. A
+            <em>
+             trail
+            </em>
+            enables CloudTrail to deliver log files to an Amazon S3 bucket. By
+      default, when you create a trail in the console, the trail applies to all AWS Regions. The
+      trail logs events from all Regions in the AWS partition and delivers the log files to the
+      Amazon S3 bucket that you specify. Additionally, you can configure other AWS services to further
+      analyze and act upon the event data collected in CloudTrail logs. For more information, see the
+      following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for creating a trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html">
+                CloudTrail supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
+                Configuring Amazon SNS notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log files from multiple regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail log files from multiple accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            All Verified Permissions actions are logged by CloudTrail and are documented in the
+            <a href="https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/">
+             Amazon Verified Permissions API Reference Guide
+            </a>
+            . For
+      example, calls to the
+            <code class="code">
+             CreateIdentitySource
+            </code>
+            ,
+            <code class="code">
+             DeletePolicy
+            </code>
+            , and
+            <code class="code">
+             ListPolicyStores
+            </code>
+            actions generate entries in the CloudTrail log files.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+      identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or AWS Identity and Access Management (IAM) user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+          federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity element
+            </a>
+            .
+           </p>
+           <p>
+            Data events like
+            <a href="https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorized.html">
+             IsAuthorized
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorizedWithToken.html">
+             IsAuthorizedWithToken
+            </a>
+            are not
+      logged by default when you create a trail or event data store. To record CloudTrail data events, you
+      must explicitly add the supported resources or resource types for which you want to collect
+      activity. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <h2 id="understanding-verified-permissions-entries">
+            Understanding Verified Permissions log file
+        entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
+      that you specify. CloudTrail log files contain one or more log entries. An event represents a single
+      request from any source and includes information about the requested action, the date and time
+      of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
+      the public API calls, so they don't appear in any specific order.
+           </p>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Topics
+            </h6>
+            <ul>
+             <li>
+              <a href="#understanding-verified-permissions-entries-isauthorized">
+               IsAuthorized
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-batchisauthorized">
+               BatchIsAuthorized
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-createpolicystore">
+               CreatePolicyStore
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-listpolicystores">
+               ListPolicyStores
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-deletepolicystore">
+               DeletePolicyStore
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-putschema">
+               PutSchema
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-getschema">
+               GetSchema
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-createpolicytemplate">
+               CreatePolicyTemplate
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-deletepolicytemplate">
+               DeletePolicyTemplate
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-createpolicy">
+               CreatePolicy
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-getpolicy">
+               GetPolicy
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-createidentitysource">
+               CreateIdentitySource
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-getidentitysource">
+               GetIdentitySource
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-listidentitysources">
+               ListIdentitySources
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-verified-permissions-entries-deleteidentitysource">
+               DeleteIdentitySource
+              </a>
+             </li>
+            </ul>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              Some fields have been redacted from the examples for data privacy.
+             </p>
+            </div>
+           </div>
+           <h3 id="understanding-verified-permissions-entries-isauthorized">
+            IsAuthorized
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+		"type": "AssumedRole",
+		"principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+		"arn": "arn:aws:iam::123456789012:role/ExampleRole",
+		"accountId": "123456789012",
+		"accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+    },
+    "eventTime": "2023-11-20T22:55:03Z",
+    "eventSource": "verifiedpermissions.amazonaws.com",
+    "eventName": "IsAuthorized",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+    "userAgent": "aws-cli/2.11.18 Python/3.11.3 Linux/5.4.241-160.348.amzn2int.x86_64 exe/x86_64.amzn.2 prompt/off command/verifiedpermissions.is-authorized",
+    "requestParameters": <span>{</span>
+        "principal": <span>{</span>
+            "entityType": "PhotoFlash::User",
+            "entityId": "alice"
+        },
+        "action": <span>{</span>
+            "actionType": "PhotoFlash::Action",
+            "actionId": "ViewPhoto"
+        },
+        "resource": <span>{</span>
+            "entityType": "PhotoFlash::Photo",
+            "entityId": "VacationPhoto94.jpg"
+        },
+        "policyStoreId": "PSEXAMPLEabcdefg111111"
+    },
+    "responseElements": null,
+    "additionalEventData": <span>{</span>
+        "decision": "ALLOW"
+    },
+    "requestID": "346c4b6a-d12f-46b6-bc06-6c857bd3b28e",
+    "eventID": "8a4fed32-9605-45dd-a09a-5ebbf0715bbc",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+		  "accountId": "123456789012",
+		  "type": "AWS::VerifiedPermissions::PolicyStore",
+		  "ARN": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Data"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-batchisauthorized">
+            BatchIsAuthorized
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+		"type": "AssumedRole",
+		"principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+		"arn": "arn:aws:iam::123456789012:role/ExampleRole",
+		"accountId": "123456789012",
+		"accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+    },
+    "eventTime": "2023-11-20T23:02:33Z",
+    "eventSource": "verifiedpermissions.amazonaws.com",
+    "eventName": "BatchIsAuthorized",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+    "userAgent": "aws-cli/2.11.18 Python/3.11.3 Linux/5.4.241-160.348.amzn2int.x86_64 exe/x86_64.amzn.2 prompt/off command/verifiedpermissions.is-authorized",
+    "requestParameters": <span>{</span>
+        "requests": [
+            <span>{</span>
+                "principal": <span>{</span>
+                    "entityType": "PhotoFlash::User",
+                    "entityId": "alice"
+                },
+                "action": <span>{</span>
+                    "actionType": "PhotoFlash::Action",
+                    "actionId": "ViewPhoto"
+                },
+                "resource": <span>{</span>
+                    "entityType": "PhotoFlash::Photo",
+                    "entityId": "VacationPhoto94.jpg"
+                }
+            },
+            <span>{</span>
+                "principal": <span>{</span>
+                    "entityType": "PhotoFlash::User",
+                    "entityId": "annalisa"
+                },
+                "action": <span>{</span>
+                    "actionType": "PhotoFlash::Action",
+                    "actionId": "DeletePhoto"
+                },
+                "resource": <span>{</span>
+                    "entityType": "PhotoFlash::Photo",
+                    "entityId": "VacationPhoto94.jpg"
+                }
+            }
+        ],
+        "policyStoreId": "PSEXAMPLEabcdefg111111"
+    },
+    "responseElements": null,
+    "additionalEventData": <span>{</span>
+        "results": [
+            <span>{</span>
+                "request": <span>{</span>
+                    "principal": <span>{</span>
+                        "entityType": "PhotoFlash::User",
+                        "entityId": "alice"
+                    },
+                    "action": <span>{</span>
+                        "actionType": "PhotoFlash::Action",
+                        "actionId": "ViewPhoto"
+                    },
+                    "resource": <span>{</span>
+                        "entityType": "PhotoFlash::Photo",
+                        "entityId": "VacationPhoto94.jpg"
+                    }
+                },
+                "decision": "ALLOW"
+            },
+            <span>{</span>
+                "request": <span>{</span>
+                    "principal": <span>{</span>
+                        "entityType": "PhotoFlash::User",
+                        "entityId": "annalisa"
+                    },
+                    "action": <span>{</span>
+                        "actionType": "PhotoFlash::Action",
+                        "actionId": "DeletePhoto"
+                    },
+                    "resource": <span>{</span>
+                        "entityType": "PhotoFlash::Photo",
+                        "entityId": "VacationPhoto94.jpg"
+                    }
+                },
+                "decision": "DENY"
+            }
+        ]
+    },
+    "requestID": "a8a5caf3-78bd-4139-924c-7101a8339c3b",
+    "eventID": "7d81232f-f3d1-4102-b9c9-15157c70487b",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+		  "accountId": "123456789012",
+		  "type": "AWS::VerifiedPermissions::PolicyStore",
+		  "ARN": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Data"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-createpolicystore">
+            CreatePolicyStore
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::123456789012:role/ExampleRole",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-22T07:43:33Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "CreatePolicyStore",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "clientToken": "a1b2c3d4-e5f6-a1b2-c3d4-TOKEN1111111",
+    "validationSettings": <span>{</span>
+      "mode": "OFF"
+    }
+  },
+  "responseElements": <span>{</span>
+    "policyStoreId": "PSEXAMPLEabcdefg111111",
+    "arn": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111",
+    "createdDate": "2023-05-22T07:43:33.962794Z",
+    "lastUpdatedDate": "2023-05-22T07:43:33.962794Z"
+  },
+  "requestID": "1dd9360e-e2dc-4554-ab65-b46d2cf45c29",
+  "eventID": "b6edaeee-3584-4b4e-a48e-311de46d7532",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-listpolicystores">
+            ListPolicyStores
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::123456789012:role/ExampleRole",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-22T07:43:33Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "ListPolicyStores",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "maxResults": 10
+  },
+  "responseElements": null,
+  "requestID": "5ef238db-9f87-4f37-ab7b-6cf0ba5df891",
+  "eventID": "b0430fb0-12c3-4cca-8d05-84c37f99c51f",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-deletepolicystore">
+            DeletePolicyStore
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::123456789012:role/ExampleRole",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-22T07:43:32Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "DeletePolicyStore",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "policyStoreId": "PSEXAMPLEabcdefg111111"
+  },
+  "responseElements": null,
+  "requestID": "1368e8f9-130d-45a5-b96d-99097ca3077f",
+  "eventID": "ac482022-b2f6-4069-879a-dd509123d8d7",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "arn": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-putschema">
+            PutSchema
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::123456789012:role/ExampleRole",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-16T12:58:57Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "PutSchema",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "policyStoreId": "PSEXAMPLEabcdefg111111"
+  },
+  "responseElements": <span>{</span>
+    "lastUpdatedDate": "2023-05-16T12:58:57.513442Z",
+    "namespaces": "[<code class="replaceable">some_namespace</code>]",
+    "createdDate": "2023-05-16T12:58:57.513442Z",
+    "policyStoreId": "PSEXAMPLEabcdefg111111",
+  },
+  "requestID": "631fbfa1-a959-4988-b9f8-f1a43ff5df0d",
+  "eventID": "7cd0c677-733f-4602-bc03-248bae581fe5",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "ARN": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-getschema">
+            GetSchema
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::222222222222:role/<code class="replaceable">ExampleRole</code>",
+    "accountId": "222222222222",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-25T01:12:07Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "GetSchema",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "policyStoreId": "PSEXAMPLEabcdefg111111"
+  },
+  "responseElements": null,
+  "requestID": "a1f4d4cd-6156-480a-a9b8-e85a71dcc7c2",
+  "eventID": "0b3b8e3d-155c-46f3-a303-7e9e8b5f606b",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "222222222222",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "ARN": "arn:aws:verifiedpermissions::222222222222:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "222222222222",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-createpolicytemplate">
+            CreatePolicyTemplate
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::123456789012:role/ExampleRole",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-16T13:00:24Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "CreatePolicyTemplate",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "policyStoreId": "PSEXAMPLEabcdefg111111"
+  },
+  "responseElements": <span>{</span>
+    "lastUpdatedDate": "2023-05-16T13:00:23.444404Z",
+    "createdDate": "2023-05-16T13:00:23.444404Z",
+    "policyTemplateId": "PTEXAMPLEabcdefg111111",
+    "policyStoreId": "PSEXAMPLEabcdefg111111",
+  },
+  "requestID": "73953bda-af5e-4854-afe2-7660b492a6d0",
+  "eventID": "7425de77-ed84-4f91-a4b9-b669181cc57b",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "arn": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-deletepolicytemplate">
+            DeletePolicyTemplate
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::222222222222:role/<code class="replaceable">ExampleRole</code>",
+    "accountId": "222222222222",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-25T01:11:48Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "DeletePolicyTemplate",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "policyStoreId": "PSEXAMPLEabcdefg111111",
+    "policyTemplateId": "PTEXAMPLEabcdefg111111"
+  },
+  "responseElements": null,
+  "requestID": "5ff0f22e-6bbd-4b85-a400-4fb74aa05dc6",
+  "eventID": "c0e0c689-369e-4e95-a9cd-8de113d47ffa",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "222222222222",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "ARN": "arn:aws:verifiedpermissions::222222222222:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "222222222222",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-createpolicy">
+            CreatePolicy
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::123456789012:role/ExampleRole",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-22T07:42:30Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "CreatePolicy",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "clientToken": "a1b2c3d4-e5f6-a1b2-c3d4-TOKEN1111111",
+    "policyStoreId": "PSEXAMPLEabcdefg111111"
+  },
+  "responseElements": <span>{</span>
+    "policyStoreId": "PSEXAMPLEabcdefg111111",
+    "policyId": "SPEXAMPLEabcdefg111111",
+    "policyType": "STATIC",
+    "principal": <span>{</span>
+        "entityType": "PhotoApp::Role",
+        "entityId": "PhotoJudge"
+    },
+    "resource": <span>{</span>
+        "entityType": "PhotoApp::Application",
+        "entityId": "PhotoApp"
+    },
+    "lastUpdatedDate": "2023-05-22T07:42:30.70852Z",
+    "createdDate": "2023-05-22T07:42:30.70852Z"
+  },
+  "requestID": "93ffa151-3841-4960-9af6-30a7f817ef93",
+  "eventID": "30ab405f-3dff-43ff-8af9-f513829e8bde",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "arn": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-getpolicy">
+            GetPolicy
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::123456789012:role/ExampleRole",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-22T07:43:29Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "GetPolicy",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "policyStoreId": "PSEXAMPLEabcdefg111111",
+    "policyId": "SPEXAMPLEabcdefg111111"
+  },
+  "responseElements": null,
+  "requestID": "23022a9e-2f5c-4dac-b653-59e6987f2fac",
+  "eventID": "9b4d5037-bafa-4d57-b197-f46af83fc684",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "arn": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-createidentitysource">
+            CreateIdentitySource
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::333333333333:role/<code class="replaceable">ExampleRole</code>",
+    "accountId": "333333333333",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-19T01:27:44Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "CreateIdentitySource",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "clientToken": "a1b2c3d4-e5f6-a1b2-c3d4-TOKEN1111111",
+    "configuration": <span>{</span>
+      "cognitoUserPoolConfiguration": <span>{</span>
+        "userPoolArn": "arn:aws:cognito-idp:000011112222:us-east-1:userpool/us-east-1_aaaaaaaaaa"
+      }
+    },
+    "policyStoreId": "PSEXAMPLEabcdefg111111",
+    "principalEntityType": "User"
+  },
+  "responseElements": <span>{</span>
+    "createdDate": "2023-07-14T15:05:01.599534Z",
+    "identitySourceId": "ISEXAMPLEabcdefg111111",
+    "lastUpdatedDate": "2023-07-14T15:05:01.599534Z",
+    "policyStoreId": "PSEXAMPLEabcdefg111111"
+    },
+  "requestID": "afcc1e67-d5a4-4a9b-a74c-cdc2f719391c",
+  "eventID": "f13a41dc-4496-4517-aeb8-a389eb379860",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "333333333333",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "arn": "arn:aws:verifiedpermissions::333333333333:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "333333333333",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-getidentitysource">
+            GetIdentitySource
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::333333333333:role/<code class="replaceable">ExampleRole</code>",
+    "accountId": "333333333333",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-24T19:55:31Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "GetIdentitySource",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "identitySourceId": "ISEXAMPLEabcdefg111111",
+    "policyStoreId": "PSEXAMPLEabcdefg111111"
+  },
+  "responseElements": null,
+  "requestID": "7a6ecf79-c489-4516-bb57-9ded970279c9",
+  "eventID": "fa158e6c-f705-4a15-a731-2cdb4bd9a427",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "333333333333",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "arn": "arn:aws:verifiedpermissions::333333333333:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "333333333333",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-listidentitysources">
+            ListIdentitySources
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::333333333333:role/<code class="replaceable">ExampleRole</code>",
+    "accountId": "333333333333",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-24T20:05:32Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "ListIdentitySources",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "policyStoreId": "PSEXAMPLEabcdefg111111"
+  },
+  "responseElements": null,
+  "requestID": "95d2a7bc-7e9a-4efe-918e-97e558aacaf7",
+  "eventID": "d3dc53f6-1432-40c8-9d1d-b9eeb75c6193",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "333333333333",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "arn": "arn:aws:verifiedpermissions::333333333333:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "333333333333",
+  "eventCategory": "Management"
+}</code></pre>
+           <h3 id="understanding-verified-permissions-entries-deleteidentitysource">
+            DeleteIdentitySource
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+  "eventVersion": "1.08",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+    "arn": "arn:aws:iam::333333333333:role/<code class="replaceable">ExampleRole</code>",
+    "accountId": "333333333333",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+  },
+  "eventTime": "2023-05-24T19:55:32Z",
+  "eventSource": "verifiedpermissions.amazonaws.com",
+  "eventName": "DeleteIdentitySource",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+  "userAgent": "aws-sdk-rust/0.55.2 os/linux lang/rust/1.69.0",
+  "requestParameters": <span>{</span>
+    "identitySourceId": "ISEXAMPLEabcdefg111111",
+    "policyStoreId": "PSEXAMPLEabcdefg111111"
+  },
+  "responseElements": null,
+  "requestID": "d554d964-0957-4834-a421-c417bd293086",
+  "eventID": "fe4d867c-88ee-4e5d-8d30-2fbc208c9260",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "333333333333",
+      "type": "AWS::VerifiedPermissions::PolicyStore",
+      "arn": "arn:aws:verifiedpermissions::333333333333:policy-store/PSEXAMPLEabcdefg111111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "333333333333",
+  "eventCategory": "Management"
+}</code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./monitoring-overview.html" id="previous">
+             Monitoring
+            </div>
+            <div accesskey="n" class="next-link" href="./cloudformation-verified-permissions.html" id="next">
+             AWS CloudFormation resources
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Verified Permissions&amp;topic_url=https://docs.aws.amazon.com/en_us/verifiedpermissions/latest/userguide/cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Verified Permissions&amp;topic_url=https://docs.aws.amazon.com/en_us/verifiedpermissions/latest/userguide/cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

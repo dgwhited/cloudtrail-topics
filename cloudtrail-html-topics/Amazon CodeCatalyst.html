@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Monitoring API calls by AWS accounts using AWS CloudTrail logging - Amazon CodeCatalyst
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="ipa-logging-connections" name="target_state"/>
+  <meta content="ipa-logging-connections" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-logging-connections.html" rel="canonical"/>
+  <meta content="Learn about logging Amazon CodeCatalyst with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon CodeCatalyst" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="Amazon CodeCatalyst is a cloud-based collaboration space for software development teams which provides one place where you can plan work, collaborate on code, and build, test, and deploy applications with continuous integration/continuous delivery (CI/CD) tools." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-logging-connections.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-logging-connections.html" hreflang="x-default" rel="alternative"/>
+  <meta content="CodeCatalyst" name="feedback-item"/>
+  <meta content="Amazon CodeCatalyst" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'codecatalyst'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Monitoring API calls by AWS accounts using AWS CloudTrail logging"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Monitoring API calls by AWS accounts using AWS CloudTrail logging - Amazon CodeCatalyst
+        </title>
+        <meta content="/pdfs/codecatalyst/latest/userguide/codecatalyst-ug.pdf#ipa-logging-connections" name="pdf"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CodeCatalyst&amp;topic_url=https://docs.aws.amazon.com/en_us/codecatalyst/latest/userguide/ipa-logging-connections.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/codecatalyst/latest/userguide/ipa-logging-connections.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/codecatalyst/latest/userguide/ipa-logging-connections.html" name="feedback-no"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon CodeCatalyst",
+        "item" : "https://docs.aws.amazon.com/codecatalyst/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/codecatalyst/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Configure identity, permissions, and access in CodeCatalyst",
+        "item" : "https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Monitoring events and API calls using logging",
+        "item" : "https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-monitoring.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
+        "name" : "Monitoring API calls by AWS accounts using AWS CloudTrail logging",
+        "item" : "https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-monitoring.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/codecatalyst/latest/userguide/codecatalyst-ug.pdf#ipa-logging-connections" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/codecatalyst/index.html">
+           Amazon CodeCatalyst
+          </a>
+          <a href="welcome.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#cloudtrail-logs-spaces-projects">
+           CodeCatalyst space events
+          </a>
+          <a href="#cloudtrail-logs-connections">
+           CodeCatalyst account connections and billing
+                events
+          </a>
+          <a href="#info-in-cloudtrail">
+           CodeCatalyst information in CloudTrail
+          </a>
+          <a href="#ipa-logging-connections-view">
+           Accessing CloudTrail events
+          </a>
+          <a href="#understanding-cloudtrail-entries">
+           Example CodeCatalyst account connections
+                event in AWS
+          </a>
+          <a href="#understanding-cloudtrail-resource-example">
+           Example CodeCatalyst project
+                resource event in AWS
+          </a>
+          <a href="#ipa-logging-connections-query">
+           Querying your CodeCatalyst event
+                trails
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="ipa-logging-connections">
+            Monitoring API calls by AWS accounts using AWS CloudTrail logging
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Amazon CodeCatalyst is integrated with AWS CloudTrail, a service that provides a record of actions taken
+        by a user, role, or an AWS service. CloudTrail captures API calls made on behalf of CodeCatalyst in
+        connected AWS accounts as events. If you create a trail, you can enable continuous
+        delivery of CloudTrail events to an S3 bucket, including events for CodeCatalyst. If you don't configure
+        a trail, you can still view the most recent events in the CloudTrail console in
+            <b>
+             Event
+            history
+            </b>
+            .
+           </p>
+           <p>
+            CodeCatalyst supports logging the following actions as events in CloudTrail log files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Management events for CodeCatalyst spaces will be logged in the AWS account that is
+                the designated billing account for the space. For more information, see
+               <a href="#cloudtrail-logs-spaces-projects">
+                CodeCatalyst space events
+               </a>
+               .
+              </p>
+              <div class="awsdocs-note">
+               <div class="awsdocs-note-title">
+                <awsui-icon name="status-info" variant="link">
+                </awsui-icon>
+                <h6>
+                 Note
+                </h6>
+               </div>
+               <div class="awsdocs-note-text">
+                <p>
+                 Data events for CodeCatalyst spaces are accessible by using the CLI as detailed in
+                 <a href="./ipa-logs.html">
+                  Accessing logged events using event logging
+                 </a>
+                 .
+                </p>
+               </div>
+              </div>
+             </li>
+             <li class="listitem">
+              <p>
+               Events for resources that are used in CodeCatalyst workflow actions that occur in a
+                connected AWS account will be logged as events in that AWS account. For more
+                information, see
+               <a href="#cloudtrail-logs-connections">
+                CodeCatalyst account connections and billing
+                events
+               </a>
+               .
+              </p>
+             </li>
+            </ul>
+           </div>
+           <div class="awsdocs-note awsdocs-important">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-warning" variant="error">
+             </awsui-icon>
+             <h6>
+              Important
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              While multiple accounts can be associated with a space, CloudTrail logging for events
+            in CodeCatalyst spaces and projects apply only for the billing account.
+             </p>
+            </div>
+           </div>
+           <p>
+            The space billing account is your AWS account that is charged for CodeCatalyst resources
+        beyond the AWS
+        Free
+        tier. Multiple accounts can be connected to a space, while only one account can be the
+        designated billing account. The billing account or additional connected accounts for the
+        space can have IAM roles that are used for deploying AWS resources and
+        infrastructure, such as an Amazon ECS cluster or S3 bucket, from CodeCatalyst workflows. You can use
+        the workflow YAML to identify the AWS account that you deployed to.
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              AWS resources that are deployed into connected accounts for CodeCatalyst workflows, are
+            not logged as part of CloudTrail logging for the CodeCatalyst space. For example, CodeCatalyst
+            resources include a space or project. AWS resources include an Amazon ECS service or
+            Lambda function. CloudTrail logging must be configured separately for each AWS account where
+            resources are deployed into.
+             </p>
+            </div>
+           </div>
+           <p>
+            CodeCatalyst logging in connected accounts includes the following considerations:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Access to CloudTrail events is managed with IAM in the connected account and not in
+                CodeCatalyst.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Third-party connections, such as linking to a GitHub repository, will result in
+                third-party resource names being recorded in CloudTrail logs.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              CloudTrail logging for CodeCatalyst events is at the space level and does not isolate events by
+            project boundaries.
+             </p>
+            </div>
+           </div>
+           <p>
+            For more information about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              This section describes CloudTrail logging for all events logged in a  logged in a CodeCatalyst
+            space and the AWS accounts that are connected to CodeCatalyst. Additionally, to review
+            all events logged in a CodeCatalyst space, you can also use the AWS CLI and the
+              <b>
+               aws codecatalyst list-event-logs
+              </b>
+              command. For more
+            information, see
+              <a href="./ipa-logs.html">
+               Accessing logged events using event logging
+              </a>
+              .
+             </p>
+            </div>
+           </div>
+           <h2 id="cloudtrail-logs-spaces-projects">
+            CodeCatalyst space events
+           </h2>
+           <p>
+            Actions in CodeCatalyst for managing space-level and project-level resources are logged
+            in the billing account for the space. For CloudTrail logging for a CodeCatalyst space,
+            events are logged with the following considerations.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               CloudTrail events apply across the entire space and are not scoped to any
+                    single project.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               When you connect an AWS account to a CodeCatalyst space, loggable events for
+                    account connections will be logged in that AWS account. After you enable this
+                    connection, you cannot disable it.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               When you connect an AWS account to a CodeCatalyst space and designate it as
+                    the billing account for the space, events will be logged in that
+                    AWS account. After you enable this connection, you cannot disable it.
+              </p>
+              <p>
+               Events for space-level and project-level resources are logged only in the
+                    billing account. To change the CloudTrail destination account, update the billing
+                    account in CodeCatalyst. At the beginning of the next monthly billing cycle, the
+                    change takes effect for the new billing account in CodeCatalyst. After that, the CloudTrail
+                    destination account is updated.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            The following are examples of events in AWS that are related to actions in CodeCatalyst
+            for managing space-level and project-level resources. The following APIs are
+            released through the SDK and CLI. Events will be logged in the AWS account specified
+            as the billing account for the CodeCatalyst space.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_CreateDevEnvironment.html">
+                 CreateDevEnvironment
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_CreateProject.html">
+                 CreateProject
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_DeleteDevEnvironment.html">
+                 DeleteDevEnvironment
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_GetDevEnvironment.html">
+                 GetDevEnvironment
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_GetProject.html">
+                 GetProject
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_GetSpace.html">
+                 GetSpace
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_GetSubscription.html">
+                 GetSubscription
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_ListDevEnvironments.html">
+                 ListDevEnvironments
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_ListDevEnvironmentSessions.html">
+                 ListDevEnvironmentSessions
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_ListEventLogs.html">
+                 ListEventLogs
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_ListProjects.html">
+                 ListProjects
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_ListSourceRepositories.html">
+                 ListSourceRepositories
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_StartDevEnvironment.html">
+                 StartDevEnvironment
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_StartDevEnvironmentSession.html">
+                 StartDevEnvironmentSession
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_StopDevEnvironment.html">
+                 StopDevEnvironment
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_StopDevEnvironmentSession.html">
+                 StopDevEnvironmentSession
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_UpdateDevEnvironment.html">
+                 UpdateDevEnvironment
+                </a>
+               </code>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h2 id="cloudtrail-logs-connections">
+            CodeCatalyst account connections and billing
+                events
+           </h2>
+           <p>
+            The following are examples of events in AWS that are related to actions in CodeCatalyst
+            for account connections or billing:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                AcceptConnection
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                AssociateIAMRoletoConnection
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                DeleteConnection
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                DissassociateIAMRolefromConnection
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                GetBillingAuthorization
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                GetConnection
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                GetPendingConnection
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListConnections
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListIAMRolesforConnection
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                PutBillingAuthorization
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                RejectConnection
+               </code>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h2 id="info-in-cloudtrail">
+            CodeCatalyst information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on an AWS account when you create that account. When you connect
+            that AWS account to a CodeCatalyst space, events for that space that occur in that
+            AWS account are logged in CloudTrail logs
+            in
+            that AWS account.
+            Loggable
+            events in CodeCatalyst are recorded as CloudTrail events in CloudTrail logs in the connected account and
+            in
+            <b>
+             Event history
+            </b>
+            in the CloudTrail console, along with other loggable
+            AWS events in that account.
+           </p>
+           <p>
+           </p>
+           <p>
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+            identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made by a user with their AWS Builder ID.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or AWS Identity and Access Management (IAM) user
+                    credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+                    federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity element
+            </a>
+            .
+           </p>
+           <h2 id="ipa-logging-connections-view">
+            Accessing CloudTrail events
+           </h2>
+           <p>
+            For an ongoing record of events in your AWS account, including events for CodeCatalyst
+            activity in the AWS account, create a trail. A
+            <em>
+             trail
+            </em>
+            enables CloudTrail
+            to deliver log files to an S3 bucket. By default, when you create a trail in the
+            console, the trail applies to all AWS Regions. The trail logs events from all Regions
+            in the AWS partition and delivers the log files to the S3 bucket that you specify.
+            Additionally, you can configure other AWS services to further analyze and act upon the
+            event data collected in CloudTrail logs. For more information, see the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for creating a trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html">
+                CloudTrail supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
+                Configuring Amazon SNS notifications for
+                    CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log files from multiple regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail log files from multiple
+                    accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an S3
+            bucket that you specify. CloudTrail log files contain one or more log entries. An event
+            represents a single request from any source and includes information about the requested
+            action, the date and time of the action, request parameters, and so on. CloudTrail log files
+            aren't an ordered stack trace of the public API calls, so they don't appear in any
+            specific order.
+           </p>
+           <h2 id="understanding-cloudtrail-entries">
+            Example CodeCatalyst account connections
+                event in AWS
+           </h2>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             ListConnections
+            </code>
+            action. For an AWS account that is connected to the space,
+            <code class="code">
+             ListConnections
+            </code>
+            is used to view all account connections to CodeCatalyst for
+            this AWS account. The event will be logged in the AWS account specified in
+            <code class="code">
+             accountId
+            </code>
+            , and the value of the
+            <code class="code">
+             arn
+            </code>
+            will be the Amazon
+            Resource Name (ARN) of the role used for the action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "<code class="replaceable">role-ARN</code>",
+        "accountId": "<code class="replaceable">account-ID</code>",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AKIAI44QH8DHBEXAMPLE",
+                "arn": "<code class="replaceable">role-ARN</code>",
+                "accountId": "<code class="replaceable">account-ID</code>",
+                "userName": "user-name"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2022-09-06T15:04:31Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2022-09-06T15:08:43Z",
+    "eventSource": "<code class="replaceable">account-ID</code>",
+    "eventName": "<b>ListConnections</b>",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "192.168.0.1",
+    "userAgent": "aws-cli/1.18.147 Python/2.7.18 Linux/5.4.207-126.363.amzn2int.x86_64 botocore/1.18.6",
+    "requestParameters": null,
+    "responseElements": null,
+    "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 ",
+    "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 ",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "<code class="replaceable">account-ID</code>",
+    "eventCategory": "Management"
+}
+      </code></pre>
+           <h2 id="understanding-cloudtrail-resource-example">
+            Example CodeCatalyst project
+                resource event in AWS
+           </h2>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             CreateDevEnvironment
+            </code>
+            action. An AWS account that is connected to the space and is the designated billing
+            account for the space is used for project-level events in the space, such as creating a
+            Dev Environment.
+           </p>
+           <p>
+            Under
+            <code class="code">
+             userIdentity
+            </code>
+            , in the
+            <code class="code">
+             accountId
+            </code>
+            field, this is the
+            IAM Identity Center account ID (
+            <code class="code">
+             432677196278
+            </code>
+            ) that hosts the identity
+            pool for all AWS Builder ID identities. This account ID contains the following information
+            about the CodeCatalyst user for the event.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               The
+               <code class="code">
+                type
+               </code>
+               field indicates the type of IAM entity for the
+                    request. For CodeCatalyst events for space and project resources, this value is
+               <code class="code">
+                IdentityCenterUser
+               </code>
+               . The
+               <code class="code">
+                accountId
+               </code>
+               field specifies
+                    the account that owns the entity that was used to get credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               The
+               <code class="code">
+                userId
+               </code>
+               field contains the AWS Builder ID identifier for the
+                    user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               The
+               <code class="code">
+                identityStoreArn
+               </code>
+               field contains the role ARN for the identity
+                    store account and user.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            The
+            <code class="code">
+             recipientAccountId
+            </code>
+            field contains the account ID for the billing
+            account for the space, with an example value here of 111122223333.
+           </p>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity element
+            </a>
+            .
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+	"eventVersion": "1.09",
+	"userIdentity": <span>{</span>
+		"type": "IdentityCenterUser",
+		"accountId": "<code class="replaceable">432677196278</code>",
+		"onBehalfOf": <span>{</span>
+			"userId": "<code class="replaceable">user-ID</code>",
+			"identityStoreArn": "<code class="replaceable">arn:aws:identitystore::432677196278:identitystore/d-9067642ac7</code>"
+		},
+		"credentialId": "ABCDefGhiJKLMn11Lmn_1AbCDEFgHijk-AaBCdEFGHIjKLmnOPqrs11abEXAMPLE"
+	},
+	"eventTime": "2023-05-18T17:10:50Z",
+	"eventSource": "codecatalyst.amazonaws.com",
+	"eventName": "CreateDevEnvironment",
+	"awsRegion": "us-west-2",
+	"sourceIPAddress": "192.168.0.1",
+	"userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
+	"requestParameters": <span>{</span>
+		"spaceName": "MySpace",
+		"projectName": "MyProject",
+		"ides": [<span>{</span>
+			"runtime": "public.ecr.aws/q6e8p2q0/cloud9-ide-runtime:2.5.1",
+			"name": "Cloud9"
+		}],
+		"instanceType": "dev.standard1.small",
+		"inactivityTimeoutMinutes": 15,
+		"persistentStorage": <span>{</span>
+			"sizeInGiB": 16
+		}
+	},
+	"responseElements": <span>{</span>
+		"spaceName": "MySpace",
+		"projectName": "MyProject",
+		"id": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 "
+	},
+	"requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+	"eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+	"readOnly": false,
+	"eventType": "AwsApiCall",
+	"managementEvent": true,
+	"recipientAccountId": "<code class="replaceable">111122223333</code>",
+	"sharedEventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+	"eventCategory": "Management"
+}
+</code></pre>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              In certain events, the user agent may not be known. In this case, CodeCatalyst will
+                provide a value of
+              <code class="code">
+               Unknown
+              </code>
+              in the
+              <code class="code">
+               userAgent
+              </code>
+              field in the
+                CloudTrail event.
+             </p>
+            </div>
+           </div>
+           <h2 id="ipa-logging-connections-query">
+            Querying your CodeCatalyst event
+                trails
+           </h2>
+           <p>
+            You can create and manage queries for your CloudTrail logs using a query table in Amazon Athena.
+            For more information about creating a query, see
+            <a href="https://docs.aws.amazon.com/athena/latest/ug/cloudtrail-logs.html">
+             Querying
+                AWS CloudTrail logs
+            </a>
+            in the
+            <em>
+             Amazon Athena User
+            Guide
+            </em>
+            .
+           </p>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./ipa-monitoring.html" id="previous">
+             Monitoring events and API calls using logging
+            </div>
+            <div accesskey="n" class="next-link" href="./ipa-logs.html" id="next">
+             Accessing logged events using event logging
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CodeCatalyst&amp;topic_url=https://docs.aws.amazon.com/en_us/codecatalyst/latest/userguide/ipa-logging-connections.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CodeCatalyst&amp;topic_url=https://docs.aws.amazon.com/en_us/codecatalyst/latest/userguide/ipa-logging-connections.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging API calls for your Classic Load Balancer using AWS CloudTrail - Elastic Load Balancing
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="ELB-API-Logs" name="target_state"/>
+  <meta content="ELB-API-Logs" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ELB-API-Logs.html" rel="canonical"/>
+  <meta content="Learn about logging API calls for your Classic Load Balancer using AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Elastic Load Balancing" name="product"/>
+  <meta content="Classic Load Balancers" name="guide"/>
+  <meta content="Use Elastic Load Balancing to distribute your incoming application traffic across multiple EC2 instances." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ELB-API-Logs.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ELB-API-Logs.html" hreflang="x-default" rel="alternative"/>
+  <meta content="ELB" name="feedback-item"/>
+  <meta content="Elastic Load Balancing" name="this_doc_product"/>
+  <meta content="Classic Load Balancers" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'elasticloadbalancing'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="Classic Load Balancers"/>
+  <meta id="panorama-serviceConsolePage" value="Logging API calls for your Classic Load Balancer using AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging API calls for your Classic Load Balancer using AWS CloudTrail - Elastic Load Balancing
+        </title>
+        <meta content="/pdfs/elasticloadbalancing/latest/classic/elb-classic.pdf#ELB-API-Logs" name="pdf"/>
+        <meta content="classic-load-balancer-release-notes.rss" name="rss"/>
+        <meta content="http://forums.aws.amazon.com/forum.jspa?forumID=30" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=ELB&amp;topic_url=https://docs.aws.amazon.com/en_us/elasticloadbalancing/latest/classic/ELB-API-Logs.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/elasticloadbalancing/latest/classic/ELB-API-Logs.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/elasticloadbalancing/latest/classic/ELB-API-Logs.html" name="feedback-no"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Elastic Load Balancing",
+        "item" : "https://docs.aws.amazon.com/elasticloadbalancing/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Classic Load Balancers",
+        "item" : "https://docs.aws.amazon.com/elasticloadbalancing/latest/classic"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Monitor your Classic Load Balancer",
+        "item" : "https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-monitor-logs.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging API calls for your Classic Load Balancer using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-monitor-logs.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/elasticloadbalancing/latest/classic/elb-classic.pdf#ELB-API-Logs" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/elasticloadbalancing/index.html">
+           Elastic Load Balancing
+          </a>
+          <a href="introduction.html">
+           Classic Load Balancers
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#elb-info-in-cloudtrail">
+           Elastic Load Balancing information in CloudTrail
+          </a>
+          <a href="#understanding-elb-entries">
+           Understanding Elastic Load Balancing log file entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="ELB-API-Logs">
+            Logging API calls for your Classic Load Balancer using AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Elastic Load Balancing is integrated with AWS CloudTrail, a service that provides a record of actions taken
+			by a user, role, or an AWS service in Elastic Load Balancing. CloudTrail captures all API calls for
+			Elastic Load Balancing as events. The calls captured include calls from the AWS Management Console and
+			code calls to the Elastic Load Balancing API operations. If you create a trail, you can enable
+			continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Elastic Load Balancing. If you don't 
+			configure a trail, you can still view the most recent events in the CloudTrail console in
+            <b>
+             Event
+            history
+            </b>
+            . Using the information collected by CloudTrail, you can determine the request that 
+			was made to Elastic Load Balancing, the IP address from which the request was made, who made the request, 
+			when it was made, and additional details.
+           </p>
+           <p>
+            To learn more about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <p>
+            To monitor other actions for your load balancer, such as when a client makes a request to your load balancer, use access logs. 
+			For more information, see
+            <a href="./access-log-collection.html">
+             Access logs for your Classic Load Balancer
+            </a>
+            .
+           </p>
+           <h2 id="elb-info-in-cloudtrail">
+            Elastic Load Balancing information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
+				Elastic Load Balancing, that activity is recorded in a CloudTrail event along with other AWS service events
+				in
+            <b>
+             Event history
+            </b>
+            . You can view, search, and download recent events in your 
+				AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail event history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for Elastic Load Balancing,
+				create a trail. A
+            <em>
+             trail
+            </em>
+            enables CloudTrail to deliver log files to an Amazon S3 bucket. 
+				By default, when you create a trail in the console, the trail applies to all AWS Regions. The 
+				trail logs events from all Regions in the AWS partition and delivers the log files to the Amazon S3 
+				bucket that you specify. Additionally, you can configure other AWS services to further analyze 
+				and act upon the event data collected in CloudTrail logs. For more information, see the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for creating a trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring Amazon SNS notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log files from
+						multiple Regions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving 
+							CloudTrail log files from multiple accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            All Elastic Load Balancing actions for Classic Load Balancers are logged by CloudTrail and are documented in the
+            <a href="https://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/">
+             Elastic Load Balancing API Reference version 2012-06-01
+            </a>
+            . 
+				For example, calls to the
+            <code class="code">
+             CreateLoadBalancer
+            </code>
+            and
+            <code class="code">
+             DeleteLoadBalancer
+            </code>
+            actions 
+				generate entries in the CloudTrail log files.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+				identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+						federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail 
+				userIdentity element
+            </a>
+            .
+           </p>
+           <h2 id="understanding-elb-entries">
+            Understanding Elastic Load Balancing log file entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
+				that you specify. CloudTrail log files contain one or more log entries. An event represents a single
+				request from any source and includes information about the requested action, the date and time
+				of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
+				the public API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            The log files include events for all AWS API calls for your AWS account, not just Elastic Load Balancing API calls.
+				You can locate calls to the Elastic Load Balancing API by checking for
+            <code class="code">
+             eventSource
+            </code>
+            elements with the  
+				value
+            <code class="code">
+             elasticloadbalancing.amazonaws.com
+            </code>
+            . To view a record for a specific action, such  
+				as
+            <code class="code">
+             CreateLoadBalancer
+            </code>
+            , check for
+            <code class="code">
+             eventName
+            </code>
+            elements with the action name.
+           </p>
+           <p>
+            The following are example CloudTrail log records for Elastic Load Balancing for a user who created a Classic Load Balancer
+				and then deleted it using the AWS CLI. You can identify the CLI using the
+            <code class="code">
+             userAgent
+            </code>
+            elements. 
+				You can identify the requested API calls using the
+            <code class="code">
+             eventName
+            </code>
+            elements.
+				Information about the user (
+            <code class="code">
+             Alice
+            </code>
+            ) can be found in the
+            <code class="code">
+             userIdentity
+            </code>
+            element.
+           </p>
+           <div class="example">
+            <h6>
+             Example: CreateLoadBalancer
+            </h6>
+            <div class="example-contents">
+             <pre class="programlisting"><div class="code-btn-container"></div><code class="json"><span>{</span>
+    "eventVersion": "1.03",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AIDAJDPLRKLG7UEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:user/Alice",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "Alice"
+    },
+    "eventTime": "2016-04-01T15:31:48Z",
+    "eventSource": "elasticloadbalancing.amazonaws.com",
+    "eventName": "CreateLoadBalancer",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "198.51.100.1",
+    "userAgent": "aws-cli/1.10.10 Python/2.7.9 Windows/7 botocore/1.4.1",
+    "requestParameters": <span>{</span>
+        "subnets": ["subnet-12345678","subnet-76543210"],
+        "loadBalancerName": "my-load-balancer",
+        "listeners": [<span>{</span>
+           "protocol": "HTTP",
+           "loadBalancerPort": 80,
+           "instanceProtocol": "HTTP",
+           "instancePort": 80
+        }]
+    },
+    "responseElements": <span>{</span>
+        "dNSName": "my-loadbalancer-1234567890.elb.amazonaws.com"
+    },
+    "requestID": "b9960276-b9b2-11e3-8a13-f1ef1EXAMPLE",
+    "eventID": "6f4ab5bd-2daa-4d00-be14-d92efEXAMPLE",
+    "eventType": "AwsApiCall",
+    "apiVersion": "2012-06-01",
+    "recipientAccountId": "123456789012"
+}</code></pre>
+            </div>
+           </div>
+           <div class="example">
+            <h6>
+             Example: DeleteLoadBalancer
+            </h6>
+            <div class="example-contents">
+             <pre class="programlisting"><div class="code-btn-container"></div><code class="json"><span>{</span>
+    "eventVersion": "1.03",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AIDAJDPLRKLG7UEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:user/Alice",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "Alice"
+    },
+    "eventTime": "2016-04-08T12:39:25Z",
+    "eventSource": "elasticloadbalancing.amazonaws.com",
+    "eventName": "DeleteLoadBalancer",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "198.51.100.1",
+    "userAgent": "aws-cli/1.10.10 Python/2.7.9 Windows/7 botocore/1.4.1",
+    "requestParameters": <span>{</span>
+        "loadBalancerName": "my-load-balancer"
+    },
+    "responseElements": null,
+    "requestID": "f0f17bb6-b9ba-11e3-9b20-999fdEXAMPLE",
+    "eventID": "4f99f0e8-5cf8-4c30-b6da-3b69fEXAMPLE"
+    "eventType": "AwsApiCall",
+    "apiVersion": "2012-06-01",
+    "recipientAccountId": "123456789012"
+}</code></pre>
+            </div>
+           </div>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./disable-access-logs.html" id="previous">
+             Disable access logs
+            </div>
+            <div accesskey="n" class="next-link" href="./elb-troubleshooting.html" id="next">
+             Troubleshoot your load balancer
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=ELB&amp;topic_url=https://docs.aws.amazon.com/en_us/elasticloadbalancing/latest/classic/ELB-API-Logs.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=ELB&amp;topic_url=https://docs.aws.amazon.com/en_us/elasticloadbalancing/latest/classic/ELB-API-Logs.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

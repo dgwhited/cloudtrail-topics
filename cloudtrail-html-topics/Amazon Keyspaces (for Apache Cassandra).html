@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging Amazon Keyspaces API calls with AWS CloudTrail - Amazon Keyspaces (for Apache Cassandra)
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Learn about logging Amazon Keyspaces with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon Keyspaces (for Apache Cassandra)" name="product"/>
+  <meta content="Developer Guide" name="guide"/>
+  <meta content="Provides a conceptual overview of Amazon Keyspaces and includes detailed development instructions for using the various features." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Helenus" name="feedback-item"/>
+  <meta content="Amazon Keyspaces (for Apache Cassandra)" name="this_doc_product"/>
+  <meta content="Developer Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
+  </script>
+  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
+  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'keyspaces'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="Developer Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Amazon Keyspaces API calls with AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging Amazon Keyspaces API calls with AWS CloudTrail - Amazon Keyspaces (for Apache Cassandra)
+        </title>
+        <meta content="/pdfs/keyspaces/latest/devguide/AmazonKeyspaces.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="amazon-keyspaces-release-notes.rss" name="rss"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Helenus&amp;topic_url=https://docs.aws.amazon.com/en_us/keyspaces/latest/devguide/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/keyspaces/latest/devguide/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/keyspaces/latest/devguide/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="Amazon Keyspaces (for Apache Cassandra),Amazon Keyspaces,Keyspaces,Cassandra,monitoring,logging,AWS,CloudTrail" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon Keyspaces",
+        "item" : "https://docs.aws.amazon.com/keyspaces/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Developer Guide",
+        "item" : "https://docs.aws.amazon.com/keyspaces/latest/devguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Monitoring Amazon Keyspaces (for Apache Cassandra)",
+        "item" : "https://docs.aws.amazon.com/keyspaces/latest/devguide/monitoring-overview.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging Amazon Keyspaces API calls with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/keyspaces/latest/devguide/monitoring-overview.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/keyspaces/latest/devguide/AmazonKeyspaces.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="https://aws.amazon.com">
+           AWS
+          </a>
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/keyspaces/index.html">
+           Amazon Keyspaces
+          </a>
+          <a href="what-is-keyspaces.html">
+           Developer Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#configuring-ct-entries">
+           Configuring log file entries in CloudTrail
+          </a>
+          <a href="#keyspaces-in-cloudtrail-ddl">
+           DDL information in CloudTrail
+          </a>
+          <a href="#keyspaces-in-cloudtrail-dml">
+           DML information in CloudTrail
+          </a>
+          <a href="#understanding-ct-entries">
+           Understanding log file entries
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging Amazon Keyspaces API calls with AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Amazon Keyspaces is integrated with AWS CloudTrail, a service that provides a record of actions taken by a
+    user, role, or an AWS service in Amazon Keyspaces. CloudTrail captures Data Definition Language (DDL) API calls
+    and Data Manipulation Language (DML) API calls for Amazon Keyspaces as events. The calls that are captured 
+    include calls from the Amazon Keyspaces console and programmatic calls to the Amazon Keyspaces API operations.
+           </p>
+           <p>
+            If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon Simple Storage Service
+    (Amazon S3) bucket, including events for Amazon Keyspaces.
+           </p>
+           <p>
+            If you don't configure a trail, you can still view the most recent supported events on the CloudTrail
+    console in
+            <b>
+             Event history
+            </b>
+            . Using the information collected by CloudTrail, you can
+    determine the request that was made to Amazon Keyspaces, the IP address from which the request was made,
+    who made the request, when it was made, and additional details.
+           </p>
+           <p>
+            To learn more about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+             AWS CloudTrail User Guide
+            </a>
+            .
+           </p>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Topics
+            </h6>
+            <ul>
+             <li>
+              <a href="#configuring-ct-entries">
+               Configuring Amazon Keyspaces log file entries in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#keyspaces-in-cloudtrail-ddl">
+               Amazon Keyspaces Data Definition Language (DDL) information in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#keyspaces-in-cloudtrail-dml">
+               Amazon Keyspaces Data Manipulation Language (DML) information in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-ct-entries">
+               Understanding Amazon Keyspaces log file entries
+              </a>
+             </li>
+            </ul>
+           </div>
+           <h2 id="configuring-ct-entries">
+            Configuring Amazon Keyspaces log file entries in CloudTrail
+           </h2>
+           <p>
+            Each Amazon Keyspaces API action logged in CloudTrail includes request parameters that are expressed in CQL
+      query language. For more information, see the
+            <a href="./cql.html">
+             CQL language reference for Amazon Keyspaces (for Apache Cassandra)
+            </a>
+            .
+           </p>
+           <p>
+            You can view, search, and download recent events in your
+      AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail event history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for Amazon Keyspaces, create
+      a trail. A
+            <em>
+             trail
+            </em>
+            enables CloudTrail to deliver log files to an Amazon S3 bucket. By
+      default, when you create a trail in the console, the trail applies to all AWS Regions. The
+      trail logs events from all Regions in the AWS partition and delivers the log files to the
+      Amazon S3 bucket that you specify. Additionally, you can configure other AWS services to further
+      analyze and act upon the event data collected in CloudTrail logs.
+           </p>
+           <p>
+            For more information, see the following topics in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            :
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for
+          creating a trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
+                CloudTrail supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
+                Configuring Amazon SNS
+          notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log files from multiple Regions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail log files from multiple accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+      identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or AWS Identity and Access Management (IAM) user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+          federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity
+      element
+            </a>
+            .
+           </p>
+           <h2 id="keyspaces-in-cloudtrail-ddl">
+            Amazon Keyspaces Data Definition Language (DDL) information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create the account. When a DDL activity
+      occurs in Amazon Keyspaces, that activity is automatically recorded as a CloudTrail event along with other AWS service
+      events in
+            <b>
+             Event history
+            </b>
+            . The following table shows the DDL statements
+      that are logged for Amazon Keyspaces.
+           </p>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w384aac57c18c15b5">
+              <thead>
+               <tr>
+                <th>
+                 CloudTrail
+                 <code class="code">
+                  eventName
+                 </code>
+                </th>
+                <th>
+                 Statement
+                </th>
+                <th>
+                 CQL action
+                </th>
+                <th>
+                 AWS SDK action
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 CreateKeyspace
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 DDL
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CREATE KEYSPACE
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CreateKeyspace
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 DropKeyspace
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 DDL
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DROP KEYSPACE
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DeleteKeyspace
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 CreateTable
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 DDL
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CREATE TABLE
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CreateTable
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 DropTable
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 DDL
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DROP TABLE
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DeleteTable
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 AlterTable
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 DDL
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ALTER TABLE
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UpdateTable
+                 </code>
+                 ,
+                 <code class="code">
+                  TagResource
+                 </code>
+                 ,
+                 <code class="code">
+                  UntagResource
+                 </code>
+                </p>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <h2 id="keyspaces-in-cloudtrail-dml">
+            Amazon Keyspaces Data Manipulation Language (DML) information in CloudTrail
+           </h2>
+           <p>
+            To enable logging of Amazon Keyspaces DML statements with CloudTrail, you have to first enable logging of
+      data plane API activity in CloudTrail. You can start logging Amazon Keyspaces DML events in new or existing
+      trails by choosing to log activity for the
+            <b>
+             data event type
+            </b>
+            <b>
+             Cassandra table
+            </b>
+            using the CloudTrail console, or by setting the
+            <code class="code">
+             resources.type
+            </code>
+            value to
+            <code class="code">
+             AWS::Cassandra::Table
+            </code>
+            using the AWS CLI,
+      or CloudTrail API operations. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+             Logging data
+      events
+            </a>
+            .
+           </p>
+           <p>
+            The following table shows the data events that are logged by CloudTrail for
+            <code class="code">
+             Cassandra table
+            </code>
+            .
+           </p>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w384aac57c18c17b7">
+              <thead>
+               <tr>
+                <th>
+                 CloudTrail
+                 <code class="code">
+                  eventName
+                 </code>
+                </th>
+                <th>
+                 Statement
+                </th>
+                <th>
+                 CQL action
+                </th>
+                <th>
+                 AWS SDK action
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 Select
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 DML
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  SELECT
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetKeyspace
+                 </code>
+                 ,
+                 <code class="code">
+                  GetTable
+                 </code>
+                 ,
+                 <code class="code">
+                  ListKeyspaces
+                 </code>
+                 ,
+                 <code class="code">
+                  ListTables
+                 </code>
+                 <code class="code">
+                  ListTagsForResource
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 Insert
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 DML
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  INSERT
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 no AWS SDK actions available
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 Update
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 DML
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UPDATE
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 no AWS SDK actions available
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 Delete
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 DML
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DELETE
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 no AWS SDK actions available
+                </p>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <h2 id="understanding-ct-entries">
+            Understanding Amazon Keyspaces log file entries
+           </h2>
+           <p>
+            CloudTrail log files contain one or more log entries. An event represents a single
+      request from any source and includes information about the requested action, the date and time
+      of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
+      the public API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <code class="code">
+             CreateKeyspace
+            </code>
+            ,
+            <code class="code">
+             DropKeyspace
+            </code>
+            ,
+            <code class="code">
+             CreateTable
+            </code>
+            , and
+            <code class="code">
+             DropTable
+            </code>
+            actions:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><code class="computeroutput" copy="false"><span>{</span>
+  "Records": [
+    <span>{</span>
+      "eventVersion": "1.05",
+      "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AKIAIOSFODNN7EXAMPLE:alice",
+        "arn": "arn:aws:sts::111122223333:assumed-role/users/alice",
+        "accountId": "111122223333",
+        "sessionContext": <span>{</span>
+          "sessionIssuer": <span>{</span>
+            "type": "Role",
+            "principalId": "AKIAIOSFODNN7EXAMPLE",
+            "arn": "arn:aws:iam::111122223333:role/Admin",
+            "accountId": "111122223333",
+            "userName": "Admin"
+          },
+          "webIdFederationData": <span>{</span>},
+          "attributes": <span>{</span>
+            "mfaAuthenticated": "false",
+            "creationDate": "2020-01-15T18:47:56Z"
+          }
+        }
+      },
+      "eventTime": "2020-01-15T18:53:04Z",
+      "eventSource": "cassandra.amazonaws.com",
+      "eventName": "CreateKeyspace",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "10.24.34.01",
+      "userAgent": "Cassandra Client/ProtocolV4",
+      "requestParameters": <span>{</span>
+        "rawQuery": "\n\tCREATE KEYSPACE \"mykeyspace\"\n\tWITH\n\t\tREPLICATION = <span>{</span>'class': 'SingleRegionStrategy'}\n\t\t",
+        "keyspaceName": "mykeyspace"
+      },
+      "responseElements": null,
+      "requestID": "bfa3e75d-bf4d-4fc0-be5e-89d15850eb41",
+      "eventID": "d25beae8-f611-4229-877a-921557a07bb9",
+      "readOnly": false,
+      "resources": [
+        <span>{</span>
+          "accountId": "111122223333",
+          "type": "AWS::Cassandra::Keyspace",
+          "ARN": "arn:aws:cassandra:us-east-1:111122223333:/keyspace/mykeyspace/"
+        }
+      ],
+      "eventType": "AwsApiCall",
+      "apiVersion": "3.4.4",
+      "recipientAccountId": "111122223333",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "tlsDetails": <span>{</span>
+          "tlsVersion": "TLSv1.2",
+          "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+          "clientProvidedHostHeader": "cassandra.us-east-1.amazonaws.com"
+    },
+    <span>{</span>
+      "eventVersion": "1.05",
+      "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AKIAIOSFODNN7EXAMPLE:alice",
+        "arn": "arn:aws:sts::111122223333:assumed-role/users/alice",
+        "accountId": "111122223333",
+        "sessionContext": <span>{</span>
+          "sessionIssuer": <span>{</span>
+            "type": "Role",
+            "principalId": "AKIAIOSFODNN7EXAMPLE",
+            "arn": "arn:aws:iam::111122223333:role/Admin",
+            "accountId": "111122223333",
+            "userName": "Admin"
+          },
+          "webIdFederationData": <span>{</span>},
+          "attributes": <span>{</span>
+            "mfaAuthenticated": "false",
+            "creationDate": "2020-01-15T18:47:56Z"
+          }
+        }
+      },
+      "eventTime": "2020-01-15T19:28:39Z",
+      "eventSource": "cassandra.amazonaws.com",
+      "eventName": "DropKeyspace",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "10.24.34.01",
+      "userAgent": "Cassandra Client/ProtocolV4",
+      "requestParameters": <span>{</span>
+        "rawQuery": "DROP KEYSPACE \"mykeyspace\"",
+        "keyspaceName": "mykeyspace"
+      },
+      "responseElements": null,
+      "requestID": "66f3d86a-56ae-4c29-b46f-abcd489ed86b",
+      "eventID": "e5aebeac-e1dd-41e3-a515-84fe6aaabd7b",
+      "readOnly": false,
+      "resources": [
+        <span>{</span>
+          "accountId": "111122223333",
+          "type": "AWS::Cassandra::Keyspace",
+          "ARN": "arn:aws:cassandra:us-east-1:111122223333:/keyspace/mykeyspace/"
+        }
+      ],
+      "eventType": "AwsApiCall",
+      "apiVersion": "3.4.4",
+      "recipientAccountId": "111122223333",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "tlsDetails": <span>{</span>
+          "tlsVersion": "TLSv1.2",
+          "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+          "clientProvidedHostHeader": "cassandra.us-east-1.amazonaws.com"
+    },
+    <span>{</span>
+      "eventVersion": "1.05",
+      "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AKIAIOSFODNN7EXAMPLE:alice",
+        "arn": "arn:aws:sts::111122223333:assumed-role/users/alice",
+        "accountId": "111122223333",
+        "sessionContext": <span>{</span>
+          "sessionIssuer": <span>{</span>
+            "type": "Role",
+            "principalId": "AKIAIOSFODNN7EXAMPLE",
+            "arn": "arn:aws:iam::111122223333:role/Admin",
+            "accountId": "111122223333",
+            "userName": "Admin"
+          },
+          "webIdFederationData": <span>{</span>},
+          "attributes": <span>{</span>
+            "mfaAuthenticated": "false",
+            "creationDate": "2020-01-15T18:47:56Z"
+          }
+        }
+      },
+      "eventTime": "2020-01-15T18:55:24Z",
+      "eventSource": "cassandra.amazonaws.com",
+      "eventName": "CreateTable",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "10.24.34.01",
+      "userAgent": "Cassandra Client/ProtocolV4",
+      "requestParameters": <span>{</span>
+        "rawQuery": "\n\tCREATE TABLE \"mykeyspace\".\"mytable\"(\n\t\t\"ID\" int,\n\t\t\"username\" text,\n\t\t\"email\" text,\n\t\t\"post_type\" text,\n\t\tPRIMARY KEY((\"ID\", \"username\", \"email\")))",
+        "keyspaceName": "mykeyspace",
+        "tableName": "mytable"
+      },
+      "responseElements": null,
+      "requestID": "5f845963-70ea-4988-8a7a-2e66d061aacb",
+      "eventID": "fe0dbd2b-7b34-4675-a30c-740f9d8d73f9",
+      "readOnly": false,
+      "resources": [
+        <span>{</span>
+          "accountId": "111122223333",
+          "type": "AWS::Cassandra::Table",
+          "ARN": "arn:aws:cassandra:us-east-1:111122223333:/keyspace/mykeyspace/table/mytable"
+        }
+      ],
+      "eventType": "AwsApiCall",
+      "apiVersion": "3.4.4",
+      "recipientAccountId": "111122223333",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "tlsDetails": <span>{</span>
+          "tlsVersion": "TLSv1.2",
+          "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+          "clientProvidedHostHeader": "cassandra.us-east-1.amazonaws.com"
+    },
+    <span>{</span>
+      "eventVersion": "1.05",
+      "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AKIAIOSFODNN7EXAMPLE:alice",
+        "arn": "arn:aws:sts::111122223333:assumed-role/users/alice",
+        "accountId": "111122223333",
+        "sessionContext": <span>{</span>
+          "sessionIssuer": <span>{</span>
+            "type": "Role",
+            "principalId": "AKIAIOSFODNN7EXAMPLE",
+            "arn": "arn:aws:iam::111122223333:role/Admin",
+            "accountId": "111122223333",
+            "userName": "Admin"
+          },
+          "webIdFederationData": <span>{</span>},
+          "attributes": <span>{</span>
+            "mfaAuthenticated": "false",
+            "creationDate": "2020-01-15T18:47:56Z"
+          }
+        }
+      },
+      "eventTime": "2020-01-15T19:27:59Z",
+      "eventSource": "cassandra.amazonaws.com",
+      "eventName": "DropTable",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "10.24.34.01",
+      "userAgent": "Cassandra Client/ProtocolV4",
+      "requestParameters": <span>{</span>
+        "rawQuery": "DROP TABLE \"mykeyspace\".\"mytable\"",
+        "keyspaceName": "mykeyspace",
+        "tableName": "mytable"
+      },
+      "responseElements": null,
+      "requestID": "025501b0-3582-437e-9d18-8939e9ef262f",
+      "eventID": "1a5cbedc-4e38-4889-8475-3eab98de0ffd",
+      "readOnly": false,
+      "resources": [
+        <span>{</span>
+          "accountId": "111122223333",
+          "type": "AWS::Cassandra::Table",
+          "ARN": "arn:aws:cassandra:us-east-1:111122223333:/keyspace/mykeyspace/table/mytable"
+        }
+      ],
+      "eventType": "AwsApiCall",
+      "apiVersion": "3.4.4",
+      "recipientAccountId": "111122223333",
+      "managementEvent": true,
+      "eventCategory": "Management",
+      "tlsDetails": <span>{</span>
+          "tlsVersion": "TLSv1.2",
+          "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+          "clientProvidedHostHeader": "cassandra.us-east-1.amazonaws.com"
+    }
+  ]
+}</code></code></pre>
+           <p>
+            The following log file shows an example of a
+            <code class="code">
+             SELECT
+            </code>
+            statement.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><code class="computeroutput" copy="false"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AKIAIOSFODNN7EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+    },
+    "eventTime": "2023-11-17T10:38:04Z",
+    "eventSource": "cassandra.amazonaws.com",
+    "eventName": "Select",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "10.24.34.01",
+    "userAgent": "Cassandra Client/ProtocolV4",
+    "requestParameters": <span>{</span>
+          "keyspaceName": "my_keyspace",
+          "tableName": "my_table",
+          "conditions": [
+              "pk = **(Redacted)",
+              "ck &lt; 3**(Redacted)0",
+              "region = 't**(Redacted)t'"
+          ],
+          "select": [
+              "pk",
+              "ck",
+              "region"
+          ],
+          "allowFiltering": true
+    },
+    "responseElements": null,
+    "requestID": "6d83bbf0-a3d0-4d49-b1d9-e31779a28628",
+    "eventID": "e00552d3-34e9-4092-931a-912c4e08ba17",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::Cassandra::Table",
+            "ARN": "arn:aws:cassandra:us-east-1:111122223333:/keyspace/my_keyspace/table/my_table"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "apiVersion": "3.4.4",
+    "managementEvent": false,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Data",
+    "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "cassandra.us-east-1.amazonaws.com"
+    }
+}</code></code></pre>
+           <p>
+            The following log file shows an example of an
+            <code class="code">
+             INSERT
+            </code>
+            statement.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><code class="computeroutput" copy="false"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AKIAIOSFODNN7EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+    },
+    "eventTime": "2023-12-01T22:11:43Z",
+    "eventSource": "cassandra.amazonaws.com",
+    "eventName": "Insert",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "10.24.34.01",
+    "userAgent": "Cassandra Client/ProtocolV4",
+    "requestParameters": <span>{</span>
+          "keyspaceName": "my_keyspace",
+          "tableName": "my_table",
+          "primaryKeys": <span>{</span>
+              "pk": "**(Redacted)",
+              "ck": "1**(Redacted)8"
+          },
+          "columnNames": [
+              "pk",
+              "ck",
+              "region"
+          ],
+          "updateParameters": <span>{</span>
+              "TTL": "2**(Redacted)0"
+          }
+      }
+    },
+    "responseElements": null,
+    "requestID": "edf8af47-2f87-4432-864d-a960ac35e471",
+    "eventID": "81b56a1c-9bdd-4c92-bb8e-92776b5a3bf1",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+          "accountId": "111122223333",
+          "type": "AWS::Cassandra::Table",
+          "ARN": "arn:aws:cassandra:us-east-1:111122223333:/keyspace/my_keyspace/table/my_table"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "apiVersion": "3.4.4",
+    "managementEvent": false,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Data",
+    "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "cassandra.us-east-1.amazonaws.com"
+    }
+}</code></code></pre>
+           <p>
+            The following log file shows an example of an
+            <code class="code">
+             UPDATE
+            </code>
+            statement.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><code class="computeroutput" copy="false"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+          "type": "IAMUser",
+          "principalId": "AKIAIOSFODNN7EXAMPLE",
+          "arn": "arn:aws:iam::111122223333:user/alice",
+          "accountId": "111122223333",
+          "userName": "alice"
+    },
+    "eventTime": "2023-12-01T22:11:43Z",
+    "eventSource": "cassandra.amazonaws.com",
+    "eventName": "Update",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "10.24.34.01",
+    "userAgent": "Cassandra Client/ProtocolV4",
+    "requestParameters": <span>{</span>
+          "keyspaceName": "my_keyspace",
+          "tableName": "my_table",
+          "primaryKeys": <span>{</span>
+              "pk": "'t**(Redacted)t'",
+              "ck": "'s**(Redacted)g'"
+          },
+          "assignmentColumnNames": [
+             "nonkey"
+          ],
+          "conditions": [
+              "nonkey &lt; 1**(Redacted)7"
+          ]
+    },
+    "responseElements": null,
+    "requestID": "edf8af47-2f87-4432-864d-a960ac35e471",
+    "eventID": "81b56a1c-9bdd-4c92-bb8e-92776b5a3bf1",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+          "accountId": "111122223333",
+          "type": "AWS::Cassandra::Table",
+          "ARN": "arn:aws:cassandra:us-east-1:111122223333:/keyspace/my_keyspace/table/my_table"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "apiVersion": "3.4.4",
+    "managementEvent": false,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Data",
+    "tlsDetails": <span>{</span>
+          "tlsVersion": "TLSv1.3",
+          "cipherSuite": "TLS_AES_128_GCM_SHA256",
+          "clientProvidedHostHeader": "cassandra.us-east-1.amazonaws.com"
+    }
+}</code></code></pre>
+           <p>
+            The following log file shows an example of a
+            <code class="code">
+             DELETE
+            </code>
+            statement.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><code class="computeroutput" copy="false"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AKIAIOSFODNN7EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice",
+    },
+    "eventTime": "2023-10-23T13:59:05Z",
+    "eventSource": "cassandra.amazonaws.com",
+    "eventName": "Delete",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "10.24.34.01",
+    "userAgent": "Cassandra Client/ProtocolV4",
+    "requestParameters": <span>{</span>
+        "keyspaceName": "my_keyspace",
+        "tableName": "my_table",
+        "primaryKeys": <span>{</span>
+            "pk": "**(Redacted)",
+            "ck": "**(Redacted)"
+        },
+        "conditions": [],
+        "deleteColumnNames": [
+            "m",
+            "s"
+        ],
+        "updateParameters": <span>{</span>}
+    },
+    "responseElements": null,
+    "requestID": "3d45e63b-c0c8-48e2-bc64-31afc5b4f49d",
+    "eventID": "499da055-c642-4762-8775-d91757f06512",
+    "readOnly": false,
+    "resources": [
+      <span>{</span>
+        "accountId": "111122223333",
+        "type": "AWS::Cassandra::Table",
+        "ARN": "arn:aws:cassandra:us-east-1:111122223333:/keyspace/my_keyspace/table/my_table"
+      }
+    ],
+    "eventType": "AwsApiCall",
+    "apiVersion": "3.4.4",
+    "managementEvent": false,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Data",
+    "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "cassandra.us-east-1.amazonaws.com"
+    }
+}</code></code></pre>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./creating-alarms.html" id="previous">
+             Creating alarms
+            </div>
+            <div accesskey="n" class="next-link" href="./security.html" id="next">
+             Security
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Helenus&amp;topic_url=https://docs.aws.amazon.com/en_us/keyspaces/latest/devguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Helenus&amp;topic_url=https://docs.aws.amazon.com/en_us/keyspaces/latest/devguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

@@ -1313,17 +1313,23 @@
     "Support began": "12/01/2016",
     "Link": "https://docs.aws.amazon.com/step-functions/latest/dg/procedure-cloud-trail.html"
   },
-  "Storage Gateway": {
-    "AWS Service": "Storage Gateway",
+  "AWS Storage Gateway": {
+    "AWS Service": "AWS Storage Gateway",
     "CloudTrail Topics": "Logging Storage Gateway API Calls by Using AWS CloudTrail",
     "Support began": "12/16/2014",
     "Link": "https://docs.aws.amazon.com/filegateway/latest/files3/logging-using-cloudtrail.html"
   },
   "AWS Support": {
     "AWS Service": "AWS Support",
-    "CloudTrail Topics": "Logging and monitoring in AWS Storage Gateway",
+    "CloudTrail Topics": "Logging AWS Support API calls with AWS CloudTrail",
     "Support began": "04/21/2016",
     "Link": "https://docs.aws.amazon.com/awssupport/latest/user/logging-using-cloudtrail.html"
+  },
+  "AWS Support Recommendations (Preview)": {
+    "AWS Service": "AWS Support Recommendations (Preview)",
+    "CloudTrail Topics": "Logging AWS Support Recommendations API calls with AWS CloudTrail",
+    "Support began": "05/22/2024",
+    "Link": "https://docs.aws.amazon.com/awssupport/latest/user/cloudtrail-logging-support-recommendations.html"
   },
   "AWS Systems Manager": {
     "AWS Service": "AWS Systems Manager",

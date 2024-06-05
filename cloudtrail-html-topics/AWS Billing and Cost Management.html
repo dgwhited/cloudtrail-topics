@@ -152,7 +152,7 @@
          </div>
          <div id="page-toc-src">
           <a href="#billing-cloudtrail-events">
-           Billing CloudTrail events
+           AWS Billing CloudTrail events
           </a>
           <a href="#service-name-info-in-cloudtrail">
            Billing and Cost Management information in CloudTrail
@@ -179,7 +179,7 @@
     user, role, or an AWS service in Billing and Cost Management. CloudTrail captures API calls for Billing and Cost Management as events,
     including calls from the Billing and Cost Management console and from code calls to the Billing and Cost Management APIs. For a full list of CloudTrail events related to Billing, see
             <a href="#billing-cloudtrail-events">
-             Billing CloudTrail events
+             AWS Billing CloudTrail events
             </a>
             .
            </p>
@@ -203,10 +203,18 @@
             .
            </p>
            <h2 id="billing-cloudtrail-events">
-            Billing CloudTrail events
+            AWS Billing CloudTrail events
            </h2>
            <p>
-            This section shows a full list of the CloudTrail events related to Billing and Cost Management.
+            This section shows a full list of the CloudTrail events related to Billing and Cost Management. For a CloudTrail list for
+            <b>
+             Payments
+            </b>
+            events, see
+            <a href="#billing-payments-cloudtrail-events">
+             Payments CloudTrail events
+            </a>
+            .
            </p>
            <div class="awsdocs-note">
             <div class="awsdocs-note-title">
@@ -322,8 +330,8 @@
             </div>
            </div>
            <div class="table-container">
-            <div class="table-contents disable-scroll">
-             <table id="w525aac48c20c10b9b7">
+            <div class="table-contents">
+             <table id="w526aac48c21c10b9b7">
               <thead>
                <tr>
                 <th>
@@ -828,7 +836,15 @@
                </td>
                <td tabindex="-1">
                 <p>
-                 Lists the tags associated with a resource for a purchase order.
+                 Lists the tags associated with a resource. For
+                 <code class="code">
+                  payments
+                 </code>
+                 , this action refers to a payment method. For
+                 <code class="code">
+                  purchase-orders
+                 </code>
+                 , this action refers to a purchase order.
                 </p>
                </td>
               </tr>
@@ -1074,7 +1090,15 @@
                </td>
                <td tabindex="-1">
                 <p>
-                 Logs the tagging of a resource for a purchase order.
+                 Logs the tagging of a resource. For
+                 <code class="code">
+                  payments
+                 </code>
+                 , this action refers to a payment method. For
+                 <code class="code">
+                  purchase-orders
+                 </code>
+                 , this action refers to a purchase order.
                 </p>
                </td>
               </tr>
@@ -1088,7 +1112,15 @@
                </td>
                <td tabindex="-1">
                 <p>
-                 Logs the deletion of tags from a resource for a purchase order.
+                 Logs the deletion of tags from a resource. For
+                 <code class="code">
+                  payments
+                 </code>
+                 , this action refers to a payment method. For
+                 <code class="code">
+                  purchase-orders
+                 </code>
+                 , this action refers to a purchase order.
                 </p>
                </td>
               </tr>
@@ -1159,6 +1191,272 @@
                </td>
                <td tabindex="-1">
                 Logs the validation of the tax address of an account.
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <h3 id="billing-payments-cloudtrail-events">
+            Payments CloudTrail events
+           </h3>
+           <p>
+            This section shows a full list of the CloudTrail events for the
+            <b>
+             Payments
+            </b>
+            feature in the AWS Billing console. These CloudTrail events use
+            <code class="code">
+             payments.amazonaws.com
+            </code>
+            instead of
+            <code class="code">
+             billingconsole.amazonaws.com
+            </code>
+            .
+           </p>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w526aac48c21c10b9b9b7">
+              <thead>
+               <tr>
+                <th>
+                 Event name
+                </th>
+                <th>
+                 Definition
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Instruments_Authenticate
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the payment instrument authentication.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Instruments_Create
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation of payment instruments.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Instruments_Delete
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the deletion of payment instruments.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Instruments_Get
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of payment instruments.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Instruments_List
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the list of payment instrument metadata.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Instruments_StartCreate
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the operations before payment instrument creation.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Instruments_Update
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the update of payment instruments.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListTagsForResource
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the list of tags associated with a payments resource.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Policy_GetPaymentInstrumentEligibility
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of payment instrument eligibility.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Preferences_BatchGetPaymentProfiles
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of payment profiles.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Preferences_CreatePaymentProfile
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation of payment profiles.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Preferences_DeletePaymentProfile
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the deletion of payment profiles.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Preferences_ListPaymentProfiles
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the list of payment profiles metadata.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  Preferences_UpdatePaymentProfile
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the update of payment profiles.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  TagResource
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the tagging of a payments resource.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  TermsAndConditions_AcceptTermsAndConditionsForProgramByAccountId
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the accepted payments terms and conditions.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  TermsAndConditions_GetAcceptedTermsAndConditionsForProgramByAccountId
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of accepted terms and conditions.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  TermsAndConditions_GetRecommendedTermsAndConditionsForProgram
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of recommended terms and conditions.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UntagResource
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the deletion of tags from a payments resource.
                </td>
               </tr>
              </table>
@@ -1293,6 +1591,11 @@
                Tax console
               </a>
              </li>
+             <li>
+              <a href="#CT-example-payments-create">
+               Payments
+              </a>
+             </li>
             </ul>
            </div>
            <h3 id="understanding-service-name-entries">
@@ -1386,6 +1689,74 @@
    "readOnly":false,
    "eventType":"AwsConsoleAction",
    "recipientAccountId":"1111-2222-3333"
+}</code></pre>
+           <h3 id="CT-example-payments-create">
+            Payments
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry that uses the
+            <code class="code">
+             Instruments_Create
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "Root",
+        "principalId": "111122223333",
+        "arn": "arn:aws:iam::111122223333:&lt;iam&gt;",
+        "accountId": "111122223333",
+        "accessKeyId": "AIDACKCEVSQ6C2EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>},
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2024-05-01T00:00:00Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2024-05-01T00:00:00Z",
+    "eventSource": "payments.amazonaws.com",
+    "eventName": "Instruments_Create",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "100.100.10.10",
+    "userAgent": "AWS",
+    "requestParameters": <span>{</span>
+        "accountId": "111122223333",
+        "paymentMethod": "CreditCard",
+        "address": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "accountHolderName": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "cardNumber": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "cvv2": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "expirationMonth": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "expirationYear": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "tags": <span>{</span>
+            "Department": "Finance"
+        }
+    },
+    "responseElements": <span>{</span>
+        "paymentInstrumentArn": "arn:aws:payments::111122223333:payment-instrument:4251d66c-1b05-46ea-890c-6b4acf6b24ab",
+        "paymentInstrumentId": "111122223333",
+        "paymentMethod": "CreditCard",
+        "consent": "NotProvided",
+        "creationDate": "2024-05-01T00:00:00Z",
+        "address": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "accountHolderName": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "expirationMonth": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "expirationYear": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "issuer": "Visa",
+        "tail": "HIDDEN_DUE_TO_SECURITY_REASONS"
+    },
+    "requestID": "7c7df9c2-c381-4880-a879-2b9037ce0573",
+    "eventID": "c251942f-6559-43d2-9dcd-2053d2a77de3",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Management",
+    "sessionCredentialFromConsole": "true"
 }</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>

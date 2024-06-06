@@ -141,6 +141,10 @@
           <a href="#cw_info_in_ct">
            CloudWatch information in CloudTrail
           </a>
+          <a href="#CloudWatch-data-plane-events">
+           CloudWatch data plane
+        events in CloudTrail
+          </a>
           <a href="#cw_im_info_in_ct">
            CloudWatch Internet Monitor in CloudTrail
           </a>
@@ -295,6 +299,12 @@
              <li>
               <a href="#cw_info_in_ct">
                CloudWatch information in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#CloudWatch-data-plane-events">
+               CloudWatch data plane
+        events in CloudTrail
               </a>
              </li>
              <li>
@@ -550,6 +560,180 @@
         "eventType": "AwsApiCall",
         "apiVersion": "20140328",
         "recipientAccountId": "123456789012"
+}</code></pre>
+           <h2 id="CloudWatch-data-plane-events">
+            CloudWatch data plane
+        events in CloudTrail
+           </h2>
+           <p>
+            CloudTrail can capture API activities related to the CloudWatch data plane operations
+            <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html">
+             GetMetricData
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricWidgetImage.html">
+             GetMetricWidgetImage
+            </a>
+            .
+           </p>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            , also know as data plane operations, give you insight into the resource operations performed 
+            on or within a resource. Data events are often high-volume activities.
+           </p>
+           <p>
+            To enable logging of the
+            <b>
+             GetMetricData
+            </b>
+            and
+            <b>
+             GetMetricWidgetImage
+            </b>
+            data events in CloudTrail files, you'll need to enable 
+                the logging of data plane API activity in CloudTrail. See
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+             Logging data events for trails
+            </a>
+            for more information.
+           </p>
+           <p>
+            Data plane events can be filtered by resource type. Because there are additional costs for using 
+                data events in CloudTrail, filtering by resource allows you to have more control over what you log and pay for.
+           </p>
+           <p>
+            Using the information that CloudTrail collects, you can identify a specific request to the CloudWatch GetMetricData or 
+            GetMetricWidgetImage APIs, the IP address of the requester, the requester's identity, and the date and time of the 
+            request. Logging the
+            <b>
+             GetMetricData
+            </b>
+            and
+            <b>
+             GetMetricWidgetImage
+            </b>
+            APIs using CloudTrail helps you enable operational and 
+            risk auditing, governance, and compliance of your AWS account.
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              When you view the
+              <b>
+               GetMetricData
+              </b>
+              events in CloudTrail, you might see more calls than the calls that you initiated. 
+            This is because CloudWatch logs events to CloudTrail for
+              <b>
+               GetMetricData
+              </b>
+              actions that are initiated by internal components. For example, you'll 
+            see
+              <b>
+               GetMetricData
+              </b>
+              calls initiated by CloudWatch dashboards to refresh widget data, and
+              <b>
+               GetMetricData
+              </b>
+              calls initiated by a 
+            monitoring account to retrieve data from a source account, 
+            in cross-account observability. These internally-initiated calls don't incur CloudWatch charges, but they do count toward the number of events
+        logged in CloudTrail, and CloudTrail charges according to the number of events logged.
+             </p>
+            </div>
+           </div>
+           <p>
+            The following is an example of a CloudTrail event for a
+            <b>
+             GetMetricData
+            </b>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AIDA2NYTR2EPCTNY7AF3L",
+        "arn": "arn:aws:iam::111122223333:user/admin",
+        "accountId": "111122223333",
+        "accessKeyId": "EXAMPLE1234567890",
+        "userName": "admin"
+    },
+    "eventTime": "2024-05-08T16:20:34Z",
+    "eventSource": "monitoring.amazonaws.com",
+    "eventName": "GetMetricData",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "99.45.3.7",
+    "userAgent": "aws-cli/2.13.23 Python/3.11.5 Darwin/23.4.0 exe/x86_64 prompt/off command/cloudwatch.get-metric-data",
+    "requestParameters": <span>{</span>
+        "metricDataQueries": [<span>{</span>
+                "id": "e1",
+                "expression": "m1 / m2",
+                "label": "ErrorRate"
+            },
+            <span>{</span>
+                "id": "m1",
+                "metricStat": <span>{</span>
+                    "metric": <span>{</span>
+                        "namespace": "CWAgent",
+                        "metricName": "disk_used_percent",
+                        "dimensions": [<span>{</span>
+                            "name": "LoadBalancerName",
+                            "value": "EXAMPLE4623a5cb6a7384c5229"
+                        }]
+                    },
+                    "period": 300,
+                    "stat": "Sum",
+                    "unit": "Count"
+                },
+                "returnData": false
+            },
+            <span>{</span>
+                "id": "m2",
+                "metricStat": <span>{</span>
+                    "metric": <span>{</span>
+                        "namespace": "CWAgent",
+                        "metricName": "disk_used_percent",
+                        "dimensions": [<span>{</span>
+                            "name": "LoadBalancerName",
+                            "value": "EXAMPLE4623a5cb6a7384c5229"
+                        }]
+                    },
+                    "period": 300,
+                    "stat": "Sum"
+                },
+                "returnData": true
+            }
+        ],
+        "startTime": "Apr 19, 2024, 4:00:00 AM",
+        "endTime": "May 8, 2024, 4:30:00 AM"
+    },
+    "responseElements": null,
+    "requestID": "EXAMPLE-57ac-47d5-938c-f5917c6799d5",
+    "eventID": "EXAMPLE-211c-404b-b13d-36d93c8b4fbf",
+    "readOnly": true,
+    "resources": [<span>{</span>
+        "type": "AWS::CloudWatch::Metric"
+    }],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Data",
+    "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "monitoring.us-east-1.amazonaws.com"
+    }
 }</code></pre>
            <h2 id="cw_im_info_in_ct">
             CloudWatch Internet Monitor in CloudTrail

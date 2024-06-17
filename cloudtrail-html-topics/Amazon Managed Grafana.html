@@ -147,10 +147,12 @@
            Amazon Managed Grafana information in CloudTrail
           </a>
           <a href="#understanding-AMG-entries">
-           Understanding Amazon Managed Grafana log file entries
+           Understanding Amazon Managed Grafana log file
+                entries
           </a>
           <a href="#understanding-GrafanaApi-entries-in-AMG">
-           Understanding Grafana API log file entries
+           Understanding Grafana API log
+                file entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -158,7 +160,8 @@
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="logging-using-cloudtrail">
-            Logging Amazon Managed Grafana API calls using AWS CloudTrail
+            Logging Amazon Managed Grafana API calls using
+            AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -167,8 +170,8 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon Managed Grafana is integrated with AWS CloudTrail, a service that provides a record of actions taken
-        by a user, a role, or an AWS service in Amazon Managed Grafana. CloudTrail captures all API calls for
+            Amazon Managed Grafana is integrated with AWS CloudTrail, a service that provides a record of actions
+        taken by a user, a role, or an AWS service in Amazon Managed Grafana. CloudTrail captures all API calls for
         Amazon Managed Grafana as events. The calls that are captured include calls from the Amazon Managed Grafana console
         and code calls to the Amazon Managed Grafana API operations. If you create a trail, you can enable
         continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Amazon Managed Grafana. If you
@@ -181,9 +184,9 @@
         address that the request was made from, who made the request, and when it was made.
            </p>
            <p>
-            Amazon Managed Grafana also captures some calls that use Grafana APIs. The calls captured are those that
-        change data, such as calls that create, update, or delete resources. For more information
-        about Grafana APIs that are supported in Amazon Managed Grafana, see
+            Amazon Managed Grafana also captures some calls that use Grafana APIs. The calls captured are those
+        that change data, such as calls that create, update, or delete resources. For more
+        information about Grafana APIs that are supported in Amazon Managed Grafana, see
             <a href="./Using-Grafana-APIs.html">
              Using Grafana HTTP APIs
             </a>
@@ -200,32 +203,31 @@
             Amazon Managed Grafana information in CloudTrail
            </h2>
            <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs 
-      in Amazon Managed Grafana, that activity is recorded in a CloudTrail event along with other AWS service events
-      in
+            CloudTrail is enabled on your AWS account when you create the account. When activity
+            occurs in Amazon Managed Grafana, that activity is recorded in a CloudTrail event along with other AWS
+            service events in
             <b>
              Event history
             </b>
-            . You can view, search, and download recent events in 
-      your AWS account. For more information, see
+            . You can view, search, and download
+            recent events in your AWS account. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing events with CloudTrail Event
-        history
+             Viewing events with CloudTrail Event history
             </a>
             .
            </p>
            <p>
             For an ongoing record of events in your AWS account, including events for Amazon Managed Grafana,
-      create a trail. A
+            create a trail. A
             <em>
              trail
             </em>
-            enables CloudTrail to deliver log files to an Amazon S3
-      bucket. By default, when you create a trail in the console, the trail applies to all AWS
-      Regions. The trail logs events from all Regions in the AWS partition, and delivers the log
-      files to the Amazon S3 bucket that you specify. Additionally, you can configure other AWS
-      services to further analyze and act upon the event data that's collected in CloudTrail logs. For
-      more information, see the following:
+            enables CloudTrail to deliver log files to an
+            Amazon S3 bucket. By default, when you create a trail in the console, the trail applies to
+            all AWS Regions. The trail logs events from all Regions in the AWS partition, and
+            delivers the log files to the Amazon S3 bucket that you specify. Additionally, you can
+            configure other AWS services to further analyze and act upon the event data that's
+            collected in CloudTrail logs. For more information, see the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -246,30 +248,28 @@
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
-                Configuring Amazon SNS notifications
-          for CloudTrail
+                Configuring Amazon SNS notifications for
+                    CloudTrail
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail log
-          files from multiple regions
+                Receiving CloudTrail log files from multiple regions
                </a>
                and
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail log
-            files from multiple accounts
+                Receiving CloudTrail log files from multiple
+                    accounts
                </a>
               </p>
              </li>
             </ul>
            </div>
            <p>
-            All Amazon Managed Grafana actions in the following list are logged by CloudTrail. 
-           CloudTrail logs the following API actions that 
-          result from actions that you take in the Amazon Managed Grafana console.
+            All Amazon Managed Grafana actions in the following list are logged by CloudTrail. CloudTrail logs the
+            following API actions that result from actions that you take in the Amazon Managed Grafana console.
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -322,20 +322,20 @@
            </div>
            <p>
             Every event or log entry contains information about who generated the request. The
-      identity information helps you determine the following:
+            identity information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               Whether the request was made with AWS account root user credentials or AWS Identity and Access Management (IAM) user
-                    credentials.
+               Whether the request was made with AWS account root user credentials or AWS Identity and Access Management (IAM)
+                    user credentials.
               </p>
              </li>
              <li class="listitem">
               <p>
                Whether the request was made with temporary security credentials for a role or
-          federated user.
+                    federated user.
               </p>
              </li>
              <li class="listitem">
@@ -348,20 +348,21 @@
            <p>
             For more information, see the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity
-      element
+             CloudTrail userIdentity element
             </a>
             .
            </p>
            <h2 id="understanding-AMG-entries">
-            Understanding Amazon Managed Grafana log file entries
+            Understanding Amazon Managed Grafana log file
+                entries
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
-      that you specify. CloudTrail log files contain one or more log entries. An event represents a single
-      request from any source and includes information about the requested action, the date and time
-      of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
-      the public API calls, so they don't appear in any specific order.
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3
+            bucket that you specify. CloudTrail log files contain one or more log entries. An event
+            represents a single request from any source and includes information about the requested
+            action, the date and time of the action, request parameters, and so on. CloudTrail log files
+            aren't an ordered stack trace of the public API calls, so they don't appear in any
+            specific order.
            </p>
            <p>
             The following example shows a CloudTrail log entry for a CreateWorkspace action.
@@ -370,8 +371,8 @@
     "eventVersion": "1.08",
     "userIdentity": <span>{</span>
         "type": "AssumedRole",
-        "principalId": "ANPAJ2UCCR6DPCEXAMPLE:sdbt-Isengard",
-        "arn": "arn:aws:sts::123456789012:assumed-role/Admin/sdbt-Isengard",
+        "principalId": "ANPAJ2UCCR6DPCEXAMPLE:sdbt-example",
+        "arn": "arn:aws:sts::123456789012:assumed-role/Admin/sdbt-example",
         "accountId": "123456789012",
         "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
         "sessionContext": <span>{</span>
@@ -449,7 +450,8 @@
     "recipientAccountId": "123456789012"
 }</code></pre>
            <p>
-            The following example shows a CloudTrail log entry for an UpdateWorkspaceAuthentication action.
+            The following example shows a CloudTrail log entry for an UpdateWorkspaceAuthentication
+            action.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
     "eventVersion": "1.08",
@@ -521,23 +523,26 @@
     "eventCategory": "Management"
 }</code></pre>
            <h2 id="understanding-GrafanaApi-entries-in-AMG">
-            Understanding Grafana API log file entries
+            Understanding Grafana API log
+                file entries
            </h2>
            <p>
-            Amazon Managed Grafana also logs some Grafana API calls in CloudTrail. The calls captured are those that change
-            data, such as calls that create, update, or delete resources. For more information about
-            Grafana APIs that are supported in Amazon Managed Grafana, see
+            Amazon Managed Grafana also logs some Grafana API calls in CloudTrail. The calls captured are those that
+            change data, such as calls that create, update, or delete resources. For more
+            information about Grafana APIs that are supported in Amazon Managed Grafana, see
             <a href="./Using-Grafana-APIs.html">
              Using Grafana HTTP APIs
             </a>
             .
            </p>
            <h3 id="understanding-GrafanaApi-entries-in-AMG-examples">
-            Example CloudTrail entries from Grafana APIs
+            Example CloudTrail
+                    entries from Grafana APIs
            </h3>
            <p>
             <b>
-             User signs in to Amazon Managed Grafana workspace using AWS IAM Identity Center
+             User signs in to Amazon Managed Grafana workspace using
+                    AWS IAM Identity Center
             </b>
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
@@ -899,7 +904,8 @@
 }</code></pre>
            <p>
             <b>
-             Grafana API PUT /api/alert-notifications/uid/:uid
+             Grafana API PUT
+                /api/alert-notifications/uid/:uid
             </b>
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
@@ -1020,7 +1026,8 @@
 }</code></pre>
            <p>
             <b>
-             Grafana API DELETE /api/dashboards/uid/:uid
+             Grafana API DELETE
+                /api/dashboards/uid/:uid
             </b>
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
@@ -1081,7 +1088,8 @@
 }</code></pre>
            <p>
             <b>
-             Grafana API PUT /api/datasources/:datasourceId
+             Grafana API PUT
+                /api/datasources/:datasourceId
             </b>
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
@@ -1143,7 +1151,8 @@
 }</code></pre>
            <p>
             <b>
-             Grafana API DELETE /api/teams/:teamId/groups/:groupId
+             Grafana API DELETE
+                    /api/teams/:teamId/groups/:groupId
             </b>
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>

@@ -2,7 +2,7 @@ name: crawl
 
 on:
   schedule:
-    - cron: '38 * * * *'
+    - cron: '43 */8 * * *'
   workflow_dispatch:
 
 jobs:

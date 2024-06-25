@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging Amazon CloudWatch Logs API calls in AWS CloudTrail - Amazon CloudWatch Logs
+   Logging CloudWatch Logs API and console operations in AWS CloudTrail - Amazon CloudWatch Logs
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/logging_cw_api_calls_cwl.html" rel="canonical"/>
-  <meta content="Contains CloudWatch Logs example logs made by using CloudTrail." name="description"/>
+  <meta content="Learn about how CloudTrail logs operations and actions in Amazon CloudWatch Logs, and which operations are logged." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon CloudWatch Logs" name="product"/>
   <meta content="User Guide" name="guide"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudwatch'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="User Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging Amazon CloudWatch Logs API calls in AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Logging CloudWatch Logs API and console operations in AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,7 +76,7 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging Amazon CloudWatch Logs API calls in AWS CloudTrail - Amazon CloudWatch Logs
+         Logging CloudWatch Logs API and console operations in AWS CloudTrail - Amazon CloudWatch Logs
         </title>
         <meta content="/pdfs/AmazonCloudWatch/latest/logs/cwl-ug.pdf#logging_cw_api_calls_cwl" name="pdf"/>
         <meta content="amazon-cloudwatch-logs-document-history.rss" name="rss"/>
@@ -110,7 +110,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Logging Amazon CloudWatch Logs API calls in AWS CloudTrail",
+        "name" : "Logging CloudWatch Logs API and console operations in AWS CloudTrail",
         "item" : "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/logging_cw_api_calls_cwl.html"
       }
     ]
@@ -141,6 +141,9 @@
           <a href="#cwl_info_in_ct">
            CloudWatch Logs information in CloudTrail
           </a>
+          <a href="#cwl_query-generation-cloudtrail">
+           Query generation information in CloudTrail
+          </a>
           <a href="#understanding_cw_log_file_entries_cwl">
            Understanding log file entries
           </a>
@@ -150,7 +153,7 @@
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="logging_cw_api_calls_cwl">
-            Logging Amazon CloudWatch Logs API calls in AWS CloudTrail
+            Logging CloudWatch Logs API and console operations in AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -188,6 +191,11 @@
              <li>
               <a href="#cwl_info_in_ct">
                CloudWatch Logs information in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#cwl_query-generation-cloudtrail">
+               Query generation information in CloudTrail
               </a>
              </li>
              <li>
@@ -536,6 +544,75 @@
             </a>
             .
            </p>
+           <h2 id="cwl_query-generation-cloudtrail">
+            Query generation information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail logging for Query generator console events is also supported. Query generator is currently supported for CloudWatch Logs Insights and 
+            CloudWatch Metric Insights. In these CloudTrail events, the
+            <code class="code">
+             eventSource
+            </code>
+            is
+            <code class="code">
+             monitoring.amazonaws.com
+            </code>
+            .
+           </p>
+           <p>
+            The following example shows a 
+            CloudTrail log entry that demonstrates the
+            <b>
+             GenerateQuery
+            </b>
+            action in CloudWatch Logs Insights.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:assumed-role/role_name",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EX_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::111222333444:role/Administrator",
+                "accountId": "123456789012",
+                "userName": "SAMPLE_NAME"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2020-04-08T21:43:24Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2020-04-08T23:06:30Z",
+    "eventSource": "monitoring.amazonaws.com",
+    "eventName": "GenerateQuery",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "127.0.0.1",
+    "userAgent": "exampleUserAgent",
+    "requestParameters": <span>{</span>
+        "query_ask": "***",
+        "query_type": "LogsInsights",
+        "logs_insights": <span>{</span>
+            "fields": "***",
+            "log_group_names": ["yourloggroup"]
+        },
+        "include_description": true
+    },
+    "responseElements": null,
+    "requestID": "2f56318c-cfbd-4b60-9d93-1234567890",
+    "eventID": "52723fd9-4a54-478c-ac55-1234567890",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333", 
+    "eventCategory": "Management"
+}</code></pre>
            <h2 id="understanding_cw_log_file_entries_cwl">
             Understanding log file entries
            </h2>

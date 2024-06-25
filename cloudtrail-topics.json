@@ -1,1 +1,1412 @@
-{}
+{
+  "Amazon API Gateway": {
+    "AWS Service": "Amazon API Gateway",
+    "CloudTrail Topics": "Log API management calls to Amazon API Gateway Using AWS CloudTrail",
+    "Support began": "07/09/2015",
+    "Link": "https://docs.aws.amazon.com/apigateway/latest/developerguide/cloudtrail.html"
+  },
+  "Amazon AppFlow": {
+    "AWS Service": "Amazon AppFlow",
+    "CloudTrail Topics": "Logging Amazon AppFlow API calls with AWS CloudTrail",
+    "Support began": "04/22/2020",
+    "Link": "https://docs.aws.amazon.com/appflow/latest/userguide/appflow-cloudtrail-logs.html"
+  },
+  "Amazon AppStream 2.0": {
+    "AWS Service": "Amazon AppStream 2.0",
+    "CloudTrail Topics": "Logging Amazon AppStream 2.0 API Calls with AWS CloudTrail",
+    "Support began": "04/25/2019",
+    "Link": "https://docs.aws.amazon.com/appstream2/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Athena": {
+    "AWS Service": "Amazon Athena",
+    "CloudTrail Topics": "Logging Amazon Athena API Calls with AWS CloudTrail",
+    "Support began": "05/19/2017",
+    "Link": "https://docs.aws.amazon.com/athena/latest/ug/monitor-with-cloudtrail.html"
+  },
+  "Amazon Aurora": {
+    "AWS Service": "Amazon Aurora",
+    "CloudTrail Topics": "Monitoring Amazon Aurora API calls in AWS CloudTrail",
+    "Support began": "08/31/2018",
+    "Link": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/logging-using-cloudtrail.html"
+  },
+  "Amazon Bedrock": {
+    "AWS Service": "Amazon Bedrock",
+    "CloudTrail Topics": "Log Amazon Bedrock API calls using AWS CloudTrail",
+    "Support began": "10/23/2023",
+    "Link": "https://docs.aws.amazon.com/bedrock/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Braket": {
+    "AWS Service": "Amazon Braket",
+    "CloudTrail Topics": "Amazon Braket API logging with CloudTrail",
+    "Support began": "08/12/2020",
+    "Link": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-ctlogs.html"
+  },
+  "Amazon Chime": {
+    "AWS Service": "Amazon Chime",
+    "CloudTrail Topics": "Log Amazon Chime Administration Calls Using AWS CloudTrail",
+    "Support began": "09/27/2017",
+    "Link": "https://docs.aws.amazon.com/chime/latest/ag/cloudtrail.html"
+  },
+  "Amazon Cloud Directory": {
+    "AWS Service": "Amazon Cloud Directory",
+    "CloudTrail Topics": "Logging Cloud Directory API Calls Using AWS CloudTrail",
+    "Support began": "01/26/2017",
+    "Link": "https://docs.aws.amazon.com/clouddirectory/latest/APIReference/cloudtrail_logging.html"
+  },
+  "Amazon CloudFront": {
+    "AWS Service": "Amazon CloudFront",
+    "CloudTrail Topics": "Using AWS CloudTrail to Capture Requests Sent to the CloudFront API",
+    "Support began": "05/28/2014",
+    "Link": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/logging_using_cloudtrail.html"
+  },
+  "Amazon CloudSearch": {
+    "AWS Service": "Amazon CloudSearch",
+    "CloudTrail Topics": "Logging Amazon CloudSearch Configuration Service Calls Using AWS CloudTrail",
+    "Support began": "10/16/2014",
+    "Link": "https://docs.aws.amazon.com/cloudsearch/latest/developerguide/logging-config-api-calls.html"
+  },
+  "Amazon CloudWatch": {
+    "AWS Service": "Amazon CloudWatch",
+    "CloudTrail Topics": "Logging Amazon CloudWatch API Calls in AWS CloudTrail",
+    "Support began": "04/30/2014",
+    "Link": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html"
+  },
+  "Amazon CloudWatch Logs": {
+    "AWS Service": "Amazon CloudWatch Logs",
+    "CloudTrail Topics": "Logging Amazon CloudWatch Logs API Calls in AWS CloudTrail",
+    "Support began": "03/10/2016",
+    "Link": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/logging_cw_api_calls_cwl.html"
+  },
+  "Amazon CodeCatalyst": {
+    "AWS Service": "Amazon CodeCatalyst",
+    "CloudTrail Topics": "Logging CodeCatalyst API calls in connected AWS accounts using AWS CloudTrail",
+    "Support began": "12/01/2022",
+    "Link": "https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-logging-connections.html"
+  },
+  "Amazon CodeGuru Reviewer": {
+    "AWS Service": "Amazon CodeGuru Reviewer",
+    "CloudTrail Topics": "Logging Amazon CodeGuru Reviewer API Calls with AWS CloudTrail",
+    "Support began": "12/02/2019",
+    "Link": "https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/logging-using-cloudtrail.html"
+  },
+  "Amazon CodeWhisperer": {
+    "AWS Service": "Amazon CodeWhisperer",
+    "CloudTrail Topics": "AWS CloudTrail and CodeWhisperer APIs",
+    "Support began": "04/13/2023",
+    "Link": "https://docs.aws.amazon.com/codewhisperer/latest/userguide/whisper-data-protection.html"
+  },
+  "Amazon Cognito": {
+    "AWS Service": "Amazon Cognito",
+    "CloudTrail Topics": "Logging Amazon Cognito API Calls with AWS CloudTrail",
+    "Support began": "02/18/2016",
+    "Link": "https://docs.aws.amazon.com/cognito/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Comprehend": {
+    "AWS Service": "Amazon Comprehend",
+    "CloudTrail Topics": "Logging Amazon Comprehend API Calls with AWS CloudTrail",
+    "Support began": "01/17/2018",
+    "Link": "https://docs.aws.amazon.com/comprehend/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Comprehend Medical": {
+    "AWS Service": "Amazon Comprehend Medical",
+    "CloudTrail Topics": "Logging Amazon Comprehend Medical API Calls by Using AWS CloudTrail",
+    "Support began": "11/27/2018",
+    "Link": "https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-cloudtrail.html"
+  },
+  "Amazon Connect": {
+    "AWS Service": "Amazon Connect",
+    "CloudTrail Topics": "Logging Amazon Connect API Calls with AWS CloudTrail",
+    "Support began": "12/11/2019",
+    "Link": "https://docs.aws.amazon.com/connect/latest/adminguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Data Firehose": {
+    "AWS Service": "Amazon Data Firehose",
+    "CloudTrail Topics": "Monitoring Amazon Data Firehose API Calls with AWS CloudTrail",
+    "Support began": "03/17/2016",
+    "Link": "https://docs.aws.amazon.com/firehose/latest/dev/monitoring-using-cloudtrail.html"
+  },
+  "Amazon Data Lifecycle Manager": {
+    "AWS Service": "Amazon Data Lifecycle Manager",
+    "CloudTrail Topics": "Logging Amazon Data Lifecycle Manager API Calls Using AWS CloudTrail",
+    "Support began": "07/24/2018",
+    "Link": "https://docs.aws.amazon.com/dlm/latest/APIReference/logging-using-cloudtrail.html"
+  },
+  "Amazon Detective": {
+    "AWS Service": "Amazon Detective",
+    "CloudTrail Topics": "Logging Amazon Detective API calls with AWS CloudTrail",
+    "Support began": "03/31/2020",
+    "Link": "https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html"
+  },
+  "Amazon DevOps Guru": {
+    "AWS Service": "Amazon DevOps Guru",
+    "CloudTrail Topics": "Logging Amazon DevOps Guru API calls with AWS CloudTrail",
+    "Support began": "05/04/2021",
+    "Link": "https://docs.aws.amazon.com/devops-guru/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon DocumentDB (with MongoDB compatibility)": {
+    "AWS Service": "Amazon DocumentDB (with MongoDB compatibility)",
+    "CloudTrail Topics": "Logging Amazon DocumentDB API Calls with AWS CloudTrail",
+    "Support began": "01/09/2019",
+    "Link": "https://docs.aws.amazon.com/documentdb/latest/developerguide/logging-with-cloudtrail.html"
+  },
+  "Amazon DynamoDB": {
+    "AWS Service": "Amazon DynamoDB",
+    "CloudTrail Topics": "Logging DynamoDB Operations By Using AWS CloudTrail",
+    "Support began": "05/28/2015",
+    "Link": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon EC2": {
+    "AWS Service": "Amazon EC2",
+    "CloudTrail Topics": "Log Amazon EC2 API calls using AWS CloudTrail",
+    "Support began": "11/13/2013",
+    "Link": "https://docs.aws.amazon.com/ec2/latest/devguide/using-cloudtrail.html"
+  },
+  "Amazon EC2 Auto Scaling": {
+    "AWS Service": "Amazon EC2 Auto Scaling",
+    "CloudTrail Topics": "Logging Auto Scaling API Calls By Using CloudTrail",
+    "Support began": "07/16/2014",
+    "Link": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon EC2 Capacity Blocks": {
+    "AWS Service": "Amazon EC2 Capacity Blocks",
+    "CloudTrail Topics": "Logging Capacity Blocks API calls with AWS CloudTrail",
+    "Support began": "10/31/2023",
+    "Link": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-blocks-monitor.html#capacity-blocks-logging-using-cloudtrail"
+  },
+  "Amazon EC2 Image Builder": {
+    "AWS Service": "Amazon EC2 Image Builder",
+    "CloudTrail Topics": "Logging EC2 Image Builder API calls using CloudTrail",
+    "Support began": "12/02/2019",
+    "Link": "https://docs.aws.amazon.com/imagebuilder/latest/userguide/log-cloudtrail.html"
+  },
+  "Amazon Elastic Block Store (Amazon EBS) EBS direct APIs": {
+    "AWS Service": "Amazon Elastic Block Store (Amazon EBS) EBS direct APIs",
+    "CloudTrail Topics": "Logging API Calls Using AWS CloudTrail",
+    "Support began": "Amazon EBS: 11/13/2013 EBS direct APIs: 06/30/2020",
+    "Link": "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/using-cloudtrail.html"
+  },
+  "Amazon Elastic Container Registry (Amazon ECR)": {
+    "AWS Service": "Amazon Elastic Container Registry (Amazon ECR)",
+    "CloudTrail Topics": "Logging Amazon ECR API Calls By Using AWS CloudTrail",
+    "Support began": "12/21/2015",
+    "Link": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Elastic Container Service (Amazon ECS)": {
+    "AWS Service": "Amazon Elastic Container Service (Amazon ECS)",
+    "CloudTrail Topics": "Logging Amazon ECS API Calls By Using AWS CloudTrail",
+    "Support began": "04/09/2015",
+    "Link": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Elastic File System (Amazon EFS)": {
+    "AWS Service": "Amazon Elastic File System (Amazon EFS)",
+    "CloudTrail Topics": "Logging Amazon EFS API Calls with AWS CloudTrail",
+    "Support began": "06/28/2016",
+    "Link": "https://docs.aws.amazon.com/efs/latest/ug/logging-using-cloudtrail.html"
+  },
+  "Amazon Elastic Kubernetes Service (Amazon EKS)": {
+    "AWS Service": "Amazon Elastic Kubernetes Service (Amazon EKS)",
+    "CloudTrail Topics": "Logging Amazon EKS API Calls with AWS CloudTrail",
+    "Support began": "06/05/2018",
+    "Link": "https://docs.aws.amazon.com/eks/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Elastic Transcoder": {
+    "AWS Service": "Amazon Elastic Transcoder",
+    "CloudTrail Topics": "Logging Amazon Elastic Transcoder API Calls with AWS CloudTrail",
+    "Support began": "10/27/2014",
+    "Link": "https://docs.aws.amazon.com/elastictranscoder/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon ElastiCache": {
+    "AWS Service": "Amazon ElastiCache",
+    "CloudTrail Topics": "Logging Amazon ElastiCache API Calls Using AWS CloudTrail",
+    "Support began": "09/15/2014",
+    "Link": "https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/logging-using-cloudtrail.html"
+  },
+  "Amazon EMR": {
+    "AWS Service": "Amazon EMR",
+    "CloudTrail Topics": "Logging Amazon EMR API Calls in AWS CloudTrail",
+    "Support began": "04/04/2014",
+    "Link": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/logging_emr_api_calls.html"
+  },
+  "Amazon EMR on EKS": {
+    "AWS Service": "Amazon EMR on EKS",
+    "CloudTrail Topics": "Logging Amazon EMR on EKS API calls using AWS CloudTrail",
+    "Support began": "12/09/2020",
+    "Link": "https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/logging-using-cloudtrail.html"
+  },
+  "Amazon EventBridge": {
+    "AWS Service": "Amazon EventBridge",
+    "CloudTrail Topics": "Logging Amazon EventBridge API calls using AWS CloudTrail",
+    "Support began": "07/11/2019",
+    "Link": "https://docs.aws.amazon.com/eventbridge/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon FinSpace": {
+    "AWS Service": "Amazon FinSpace",
+    "CloudTrail Topics": "Querying AWS CloudTrail logs",
+    "Support began": "10/18/2022",
+    "Link": "https://docs.aws.amazon.com/finspace/latest/userguide/logging-cloudtrail-events.html"
+  },
+  "Amazon Forecast": {
+    "AWS Service": "Amazon Forecast",
+    "CloudTrail Topics": "Logging Amazon Forecast API Calls with AWS CloudTrail",
+    "Support began": "11/28/2018",
+    "Link": "https://docs.aws.amazon.com/forecast/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Fraud Detector": {
+    "AWS Service": "Amazon Fraud Detector",
+    "CloudTrail Topics": "Logging Amazon Fraud Detector API Calls with AWS CloudTrail",
+    "Support began": "01/09/2020",
+    "Link": "https://docs.aws.amazon.com/frauddetector/latest/ug/logging-using-cloudtrail.html"
+  },
+  "Amazon FSx for Lustre": {
+    "AWS Service": "Amazon FSx for Lustre",
+    "CloudTrail Topics": "Logging Amazon FSx for Lustre API Calls with AWS CloudTrail",
+    "Support began": "01/11/2019",
+    "Link": "https://docs.aws.amazon.com/fsx/latest/LustreGuide/logging-using-cloudtrail.html"
+  },
+  "Amazon FSx for Windows File Server": {
+    "AWS Service": "Amazon FSx for Windows File Server",
+    "CloudTrail Topics": "Monitoring with AWS CloudTrail",
+    "Support began": "11/28/2018",
+    "Link": "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/logging-using-cloudtrail.html"
+  },
+  "Amazon GameLift": {
+    "AWS Service": "Amazon GameLift",
+    "CloudTrail Topics": "Logging Amazon GameLift API Calls with AWS CloudTrail",
+    "Support began": "01/27/2016",
+    "Link": "https://docs.aws.amazon.com/gamelift/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon GuardDuty": {
+    "AWS Service": "Amazon GuardDuty",
+    "CloudTrail Topics": "Logging Amazon GuardDuty API Calls with AWS CloudTrail",
+    "Support began": "02/12/2018",
+    "Link": "https://docs.aws.amazon.com/guardduty/latest/ug/logging-using-cloudtrail.html"
+  },
+  "Amazon Inspector": {
+    "AWS Service": "Amazon Inspector",
+    "CloudTrail Topics": "Logging Amazon Inspector API calls using AWS CloudTrail",
+    "Support began": "11/29/2021",
+    "Link": "https://docs.aws.amazon.com/inspector/latest/user/logging-using-cloudtrail.html"
+  },
+  "Amazon Inspector Classic": {
+    "AWS Service": "Amazon Inspector Classic",
+    "CloudTrail Topics": "Logging Amazon Inspector Classic API calls with AWS CloudTrail",
+    "Support began": "04/20/2016",
+    "Link": "https://docs.aws.amazon.com/inspector/v1/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Inspector Scan": {
+    "AWS Service": "Amazon Inspector Scan",
+    "CloudTrail Topics": "Amazon Inspector Scan information in CloudTrail",
+    "Support began": "11/27/2023",
+    "Link": "https://docs.aws.amazon.com/inspector/latest/user/logging-using-cloudtrail.html#inspector-scan-in-cloudtrail"
+  },
+  "Amazon Interactive Video Service": {
+    "AWS Service": "Amazon Interactive Video Service",
+    "CloudTrail Topics": "Logging Amazon IVS API Calls with AWS CloudTrail",
+    "Support began": "07/15/2020",
+    "Link": "https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/cloudtrail.html"
+  },
+  "Amazon Kendra": {
+    "AWS Service": "Amazon Kendra",
+    "CloudTrail Topics": "Logging Amazon Kendra API calls with AWS CloudTrail",
+    "Support began": "05/11/2020",
+    "Link": "https://docs.aws.amazon.com/kendra/latest/dg/cloudtrail.html"
+  },
+  "Amazon Keyspaces (for Apache Cassandra)": {
+    "AWS Service": "Amazon Keyspaces (for Apache Cassandra)",
+    "CloudTrail Topics": "Logging Amazon Keyspaces API calls with AWS CloudTrail",
+    "Support began": "01/13/2020",
+    "Link": "https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Managed Service for Apache Flink": {
+    "AWS Service": "Amazon Managed Service for Apache Flink",
+    "CloudTrail Topics": "Logging Managed Service for Apache Flink API calls with AWS CloudTrail",
+    "Support began": "03/22/2019",
+    "Link": "https://docs.aws.amazon.com/managed-flink/latest/java/logging-using-cloudtrail.html"
+  },
+  "Amazon Kinesis Data Streams": {
+    "AWS Service": "Amazon Kinesis Data Streams",
+    "CloudTrail Topics": "Logging Amazon Kinesis Data Streams API Calls Using AWS CloudTrail",
+    "Support began": "04/25/2014",
+    "Link": "https://docs.aws.amazon.com/streams/latest/dev/logging-using-cloudtrail.html"
+  },
+  "Amazon Kinesis Video Streams": {
+    "AWS Service": "Amazon Kinesis Video Streams",
+    "CloudTrail Topics": "Logging Kinesis Video Streams API Calls with AWS CloudTrail",
+    "Support began": "05/24/2018",
+    "Link": "https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring-cloudtrail.html"
+  },
+  "Amazon Lex": {
+    "AWS Service": "Amazon Lex",
+    "CloudTrail Topics": "Logging Amazon Lex API Calls with CloudTrail",
+    "Support began": "08/15/2017",
+    "Link": "https://docs.aws.amazon.com/lex/latest/dg/monitoring-aws-lex-cloudtrail.html"
+  },
+  "Amazon Lightsail": {
+    "AWS Service": "Amazon Lightsail",
+    "CloudTrail Topics": "Logging Lightsail API Calls with AWS CloudTrail",
+    "Support began": "12/23/2016",
+    "Link": "https://docs.aws.amazon.com/lightsail/latest/userguide/logging-lightsail-api-calls-using-aws-cloudtrail.html"
+  },
+  "Amazon Location Service": {
+    "AWS Service": "Amazon Location Service",
+    "CloudTrail Topics": "Logging and monitoring with AWS CloudTrail",
+    "Support began": "12/15/2020",
+    "Link": "https://docs.aws.amazon.com/location/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Lookout for Equipment": {
+    "AWS Service": "Amazon Lookout for Equipment",
+    "CloudTrail Topics": "Monitoring Amazon Lookout for Equipment",
+    "Support began": "12/01/2020",
+    "Link": "https://docs.aws.amazon.com/lookout-for-equipment/latest/ug/monitoring-overview.html"
+  },
+  "Amazon Lookout for Metrics": {
+    "AWS Service": "Amazon Lookout for Metrics",
+    "CloudTrail Topics": "Viewing Amazon Lookout for Metrics API activity in AWS CloudTrail",
+    "Support began": "12/08/2020",
+    "Link": "https://docs.aws.amazon.com/lookoutmetrics/latest/dev/monitoring-cloudtrail.html"
+  },
+  "Amazon Lookout for Vision": {
+    "AWS Service": "Amazon Lookout for Vision",
+    "CloudTrail Topics": "Logging Amazon Lookout for Vision calls with AWS CloudTrail",
+    "Support began": "12/01/2020",
+    "Link": "https://docs.aws.amazon.com/lookout-for-vision/latest/developer-guide/logging-using-cloudtrail.html"
+  },
+  "Amazon Machine Learning": {
+    "AWS Service": "Amazon Machine Learning",
+    "CloudTrail Topics": "Logging Amazon ML API Calls By Using AWS CloudTrail",
+    "Support began": "12/10/2015",
+    "Link": "https://docs.aws.amazon.com/machine-learning/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Macie": {
+    "AWS Service": "Amazon Macie",
+    "CloudTrail Topics": "Log Amazon Macie API calls using AWS CloudTrail",
+    "Support began": "05/13/2020",
+    "Link": "https://docs.aws.amazon.com/macie/latest/user/macie-cloudtrail.html"
+  },
+  "Amazon Managed Blockchain": {
+    "AWS Service": "Amazon Managed Blockchain",
+    "CloudTrail Topics": "Logging Amazon Managed Blockchain API calls using AWS CloudTrail",
+    "Support began": "04/01/2019",
+    "Link": "https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/logging-using-cloudtrail.html"
+  },
+  "Amazon Managed Grafana": {
+    "AWS Service": "Amazon Managed Grafana",
+    "CloudTrail Topics": "Logging Amazon Managed Grafana API calls using AWS CloudTrail",
+    "Support began": "12/15/2020",
+    "Link": "https://docs.aws.amazon.com/grafana/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Managed Service for Prometheus": {
+    "AWS Service": "Amazon Managed Service for Prometheus",
+    "CloudTrail Topics": "Logging Amazon Managed Service for Prometheus API calls using AWS CloudTrail",
+    "Support began": "12/15/2020",
+    "Link": "https://docs.aws.amazon.com/prometheus/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Managed Streaming for Apache Kafka": {
+    "AWS Service": "Amazon Managed Streaming for Apache Kafka",
+    "CloudTrail Topics": "Logging API Calls with AWS CloudTrail",
+    "Support began": "12/11/2018",
+    "Link": "https://docs.aws.amazon.com/msk/latest/developerguide/msk-logging.html#logging-using-cloudtrail"
+  },
+  "Amazon Managed Workflows for Apache Airflow": {
+    "AWS Service": "Amazon Managed Workflows for Apache Airflow",
+    "CloudTrail Topics": "Viewing audit logs in AWS CloudTrail",
+    "Support began": "11/24/2020",
+    "Link": "https://docs.aws.amazon.com/mwaa/latest/userguide/monitoring-cloudtrail.html"
+  },
+  "Amazon MemoryDB for Redis": {
+    "AWS Service": "Amazon MemoryDB for Redis",
+    "CloudTrail Topics": "Logging Amazon MemoryDB for Redis API calls with AWS CloudTrail",
+    "Support began": "08/19/2021",
+    "Link": "https://docs.aws.amazon.com/memorydb/latest/devguide/logging-using-cloudtrail.html"
+  },
+  "Amazon MQ": {
+    "AWS Service": "Amazon MQ",
+    "CloudTrail Topics": "Logging Amazon MQ API Calls Using AWS CloudTrail",
+    "Support began": "07/19/2018",
+    "Link": "https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html"
+  },
+  "Amazon Neptune": {
+    "AWS Service": "Amazon Neptune",
+    "CloudTrail Topics": "Logging Amazon Neptune API Calls Using AWS CloudTrail",
+    "Support began": "05/30/2018",
+    "Link": "https://docs.aws.amazon.com/neptune/latest/userguide/cloudtrail.html"
+  },
+  "Amazon Nimble Studio": {
+    "AWS Service": "Amazon Nimble Studio",
+    "CloudTrail Topics": "Logging Nimble Studio calls using AWS CloudTrail",
+    "Support began": "06/19/2023",
+    "Link": "https://docs.aws.amazon.com/nimble-studio/latest/userguide/security-monitoring-logging.html#cloudtrail"
+  },
+  "Amazon One Enterprise": {
+    "AWS Service": "Amazon One Enterprise",
+    "CloudTrail Topics": "Logging Amazon One Enterprise API calls using AWS CloudTrail",
+    "Support began": "11/27/2023",
+    "Link": "https://docs.aws.amazon.com/one-enterprise/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "Amazon OpenSearch Service": {
+    "AWS Service": "Amazon OpenSearch Service",
+    "CloudTrail Topics": "Monitoring Amazon OpenSearch Service API calls with AWS CloudTrail",
+    "Support began": "10/01/2015",
+    "Link": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-cloudtrailauditing.html"
+  },
+  "Amazon Personalize": {
+    "AWS Service": "Amazon Personalize",
+    "CloudTrail Topics": "Logging Amazon Personalize API Calls with AWS CloudTrail",
+    "Support began": "11/28/2018",
+    "Link": "https://docs.aws.amazon.com/personalize/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Pinpoint": {
+    "AWS Service": "Amazon Pinpoint",
+    "CloudTrail Topics": "Logging Amazon Pinpoint API Calls with AWS CloudTrail",
+    "Support began": "02/06/2018",
+    "Link": "https://docs.aws.amazon.com/pinpoint/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Pinpoint SMS and Voice API": {
+    "AWS Service": "Amazon Pinpoint SMS and Voice API",
+    "CloudTrail Topics": "Logging Amazon Pinpoint API Calls with AWS CloudTrail",
+    "Support began": "11/16/2018",
+    "Link": "https://docs.aws.amazon.com/pinpoint/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Polly": {
+    "AWS Service": "Amazon Polly",
+    "CloudTrail Topics": "Logging Amazon Polly API Calls with AWS CloudTrail",
+    "Support began": "11/30/2016",
+    "Link": "https://docs.aws.amazon.com/polly/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Q (For Business Use)": {
+    "AWS Service": "Amazon Q (For Business Use)",
+    "CloudTrail Topics": "Logging Amazon Q API calls using AWS CloudTrail",
+    "Support began": "11/28/2023",
+    "Link": "https://docs.aws.amazon.com/amazonq/latest/business-use-dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Q (For AWS Builder Use)": {
+    "AWS Service": "Amazon Q (For AWS Builder Use)",
+    "CloudTrail Topics": "Logging Amazon Q API calls using AWS CloudTrail",
+    "Support began": "11/28/2023",
+    "Link": "https://docs.aws.amazon.com/amazonq/latest/aws-builder-use-ug/logging-using-cloudtrail.html"
+  },
+  "Amazon Quantum Ledger Database (Amazon QLDB)": {
+    "AWS Service": "Amazon Quantum Ledger Database (Amazon QLDB)",
+    "CloudTrail Topics": "Logging Amazon QLDB API Calls with AWS CloudTrail",
+    "Support began": "09/10/2019",
+    "Link": "https://docs.aws.amazon.com/qldb/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon QuickSight": {
+    "AWS Service": "Amazon QuickSight",
+    "CloudTrail Topics": "Logging Operations with CloudTrail",
+    "Support began": "04/28/2017",
+    "Link": "https://docs.aws.amazon.com/quicksight/latest/user/logging-using-cloudtrail.html"
+  },
+  "Amazon Relational Database Service (Amazon RDS)": {
+    "AWS Service": "Amazon Relational Database Service (Amazon RDS)",
+    "CloudTrail Topics": "Logging Amazon RDS API Calls Using AWS CloudTrail",
+    "Support began": "11/13/2013",
+    "Link": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/logging-using-cloudtrail.html"
+  },
+  "Amazon RDS Performance Insights": {
+    "AWS Service": "Amazon RDS Performance Insights",
+    "CloudTrail Topics": "Logging Amazon RDS API Calls Using AWS CloudTrail",
+    "Support began": "06/21/2018",
+    "Link": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/logging-using-cloudtrail.html"
+  },
+  "Amazon Redshift": {
+    "AWS Service": "Amazon Redshift",
+    "CloudTrail Topics": "Logging Amazon Redshift API Calls with AWS CloudTrail",
+    "Support began": "06/10/2014",
+    "Link": "https://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#rs-db-auditing-cloud-trail"
+  },
+  "Amazon Rekognition": {
+    "AWS Service": "Amazon Rekognition",
+    "CloudTrail Topics": "Logging Amazon Rekognition API Calls Using AWS CloudTrail",
+    "Support began": "04/6/2018",
+    "Link": "https://docs.aws.amazon.com/rekognition/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Route 53": {
+    "AWS Service": "Amazon Route 53",
+    "CloudTrail Topics": "Using AWS CloudTrail to Capture Requests Sent to the Route 53 API",
+    "Support began": "02/11/2015",
+    "Link": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/logging-using-cloudtrail.html"
+  },
+  "Amazon Route 53 Application Recovery Controller": {
+    "AWS Service": "Amazon Route 53 Application Recovery Controller",
+    "CloudTrail Topics": "Logging Amazon Route 53 Application Recovery Controller API calls using AWS CloudTrail",
+    "Support began": "07/27/2021",
+    "Link": "https://docs.aws.amazon.com/r53recovery/latest/dg/cloudtrail.html"
+  },
+  "Amazon S3": {
+    "AWS Service": "Amazon S3",
+    "CloudTrail Topics": "Logging Amazon S3 API Calls By Using AWS CloudTrail",
+    "Support began": "Management events: 09/01/2015 Data events: 11/21/2016",
+    "Link": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/cloudtrail-logging.html"
+  },
+  "Amazon S3 Glacier": {
+    "AWS Service": "Amazon S3 Glacier",
+    "CloudTrail Topics": "Logging S3 Glacier API Calls By Using AWS CloudTrail",
+    "Support began": "12/11/2014",
+    "Link": "https://docs.aws.amazon.com/amazonglacier/latest/dev/audit-logging.html"
+  },
+  "Amazon SageMaker": {
+    "AWS Service": "Amazon SageMaker",
+    "CloudTrail Topics": "Logging Amazon SageMaker API Calls with AWS CloudTrail",
+    "Support began": "01/11/2018",
+    "Link": "https://docs.aws.amazon.com/sagemaker/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Security Lake": {
+    "AWS Service": "Amazon Security Lake",
+    "CloudTrail Topics": "Logging Amazon Security Lake API calls using CloudTrail",
+    "Support began": "05/30/2023",
+    "Link": "https://docs.aws.amazon.com/security-lake/latest/userguide/securitylake-cloudtrail.html"
+  },
+  "Amazon Simple Email Service (Amazon SES)": {
+    "AWS Service": "Amazon Simple Email Service (Amazon SES)",
+    "CloudTrail Topics": "Logging Amazon SES API Calls By Using AWS CloudTrail",
+    "Support began": "05/07/2015",
+    "Link": "https://docs.aws.amazon.com/ses/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Simple Notification Service (Amazon SNS)": {
+    "AWS Service": "Amazon Simple Notification Service (Amazon SNS)",
+    "CloudTrail Topics": "Logging Amazon SNS API Calls using AWS CloudTrail",
+    "Support began": "10/09/2014",
+    "Link": "https://docs.aws.amazon.com/sns/latest/dg/sns-logging-using-cloudtrail.html"
+  },
+  "Amazon Simple Queue Service (Amazon SQS)": {
+    "AWS Service": "Amazon Simple Queue Service (Amazon SQS)",
+    "CloudTrail Topics": "Logging Amazon SQS API Actions Using AWS CloudTrail",
+    "Support began": "07/16/2014",
+    "Link": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html"
+  },
+  "Amazon Simple Workflow Service (Amazon SWF)": {
+    "AWS Service": "Amazon Simple Workflow Service (Amazon SWF)",
+    "CloudTrail Topics": "Recording API calls with AWS CloudTrail",
+    "Support began": "Management events: 05/13/2014 Data events: 02/14/2024",
+    "Link": "https://docs.aws.amazon.com/amazonswf/latest/developerguide/ct-logging.html"
+  },
+  "Amazon Textract": {
+    "AWS Service": "Amazon Textract",
+    "CloudTrail Topics": "Logging Amazon Textract API Calls with AWS CloudTrail",
+    "Support began": "05/29/2019",
+    "Link": "https://docs.aws.amazon.com/textract/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Timestream": {
+    "AWS Service": "Amazon Timestream",
+    "CloudTrail Topics": "Logging Timestream API calls with AWS CloudTrail",
+    "Support began": "09/30/2020",
+    "Link": "https://docs.aws.amazon.com/timestream/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "Amazon Transcribe": {
+    "AWS Service": "Amazon Transcribe",
+    "CloudTrail Topics": "Logging Amazon Transcribe API Calls with AWS CloudTrail",
+    "Support began": "06/28/2018",
+    "Link": "https://docs.aws.amazon.com/transcribe/latest/dg/monitoring-transcribe-cloud-trail.html"
+  },
+  "Amazon Translate": {
+    "AWS Service": "Amazon Translate",
+    "CloudTrail Topics": "Logging Amazon Translate API Calls with AWS CloudTrail",
+    "Support began": "04/04/2018",
+    "Link": "https://docs.aws.amazon.com/translate/latest/dg/logging-using-cloudtrail.html"
+  },
+  "Amazon Verified Permissions": {
+    "AWS Service": "Amazon Verified Permissions",
+    "CloudTrail Topics": "Logging Amazon Verified Permissions API calls using AWS CloudTrail",
+    "Support began": "06/13/2023",
+    "Link": "https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/cloudtrail.html"
+  },
+  "Amazon Virtual Private Cloud (Amazon VPC)": {
+    "AWS Service": "Amazon Virtual Private Cloud (Amazon VPC)",
+    "CloudTrail Topics": "Logging API Calls Using AWS CloudTrail",
+    "Support began": "11/13/2013",
+    "Link": "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/using-cloudtrail.html"
+  },
+  "Amazon VPC Lattice": {
+    "AWS Service": "Amazon VPC Lattice",
+    "CloudTrail Topics": "CloudTrail logs",
+    "Support began": "03/31/2023",
+    "Link": "https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-cloudtrail.html"
+  },
+  "Amazon VPC Reachability Analyzer": {
+    "AWS Service": "Amazon VPC Reachability Analyzer",
+    "CloudTrail Topics": "Logging Reachability Analyzer API calls using AWS CloudTrail",
+    "Support began": "11/27/2023",
+    "Link": "https://docs.aws.amazon.com/vpc/latest/reachability/logging-using-cloudtrail.html"
+  },
+  "Amazon WorkDocs": {
+    "AWS Service": "Amazon WorkDocs",
+    "CloudTrail Topics": "Logging Amazon WorkDocs API Calls By Using AWS CloudTrail",
+    "Support began": "08/27/2014",
+    "Link": "https://docs.aws.amazon.com/workdocs/latest/adminguide/cloudtrail_logging.html"
+  },
+  "Amazon WorkMail": {
+    "AWS Service": "Amazon WorkMail",
+    "CloudTrail Topics": "Logging Amazon WorkMail API Calls Using AWS CloudTrail",
+    "Support began": "12/12/2017",
+    "Link": "https://docs.aws.amazon.com/workmail/latest/adminguide/logging-using-cloudtrail.html"
+  },
+  "Amazon WorkSpaces": {
+    "AWS Service": "Amazon WorkSpaces",
+    "CloudTrail Topics": "Logging Amazon WorkSpaces API Calls by Using CloudTrail",
+    "Support began": "04/09/2015",
+    "Link": "https://docs.aws.amazon.com/workspaces/latest/api/cloudtrail_logging.html"
+  },
+  "Amazon WorkSpaces Thin Client": {
+    "AWS Service": "Amazon WorkSpaces Thin Client",
+    "CloudTrail Topics": "Logging Amazon WorkSpaces Thin Client API calls using AWS CloudTrail",
+    "Support began": "11/26/2023",
+    "Link": "https://docs.aws.amazon.com/workspaces-thin-client/latest/ag/logging-using-cloudtrail.html"
+  },
+  "Amazon WorkSpaces Web": {
+    "AWS Service": "Amazon WorkSpaces Web",
+    "CloudTrail Topics": "Logging Amazon WorkSpaces Web API calls using AWS CloudTrail",
+    "Support began": "11/30/2021",
+    "Link": "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/logging-using-cloudtrail.html"
+  },
+  "Application Auto Scaling": {
+    "AWS Service": "Application Auto Scaling",
+    "CloudTrail Topics": "Logging Application Auto Scaling API calls with AWS CloudTrail",
+    "Support began": "10/31/2016",
+    "Link": "https://docs.aws.amazon.com/autoscaling/application/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Amplify": {
+    "AWS Service": "AWS Amplify",
+    "CloudTrail Topics": "Logging Amplify API calls using AWS CloudTrail",
+    "Support began": "11/30/2020",
+    "Link": "https://docs.aws.amazon.com/amplify/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS App Mesh": {
+    "AWS Service": "AWS App Mesh",
+    "CloudTrail Topics": "Logging App Mesh API Calls with AWS CloudTrail",
+    "Support began": "AWS App Mesh 10/30/2019 App Mesh Envoy Management Service 03/18/2022",
+    "Link": "https://docs.aws.amazon.com/app-mesh/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS App Runner": {
+    "AWS Service": "AWS App Runner",
+    "CloudTrail Topics": "Logging App Runner API calls with AWS CloudTrail",
+    "Support began": "05/18/2021",
+    "Link": "https://docs.aws.amazon.com/apprunner/latest/dg/monitor-ct.html"
+  },
+  "AWS AppConfig": {
+    "AWS Service": "AWS AppConfig",
+    "CloudTrail Topics": "Logging AWS AppConfig API calls using AWS CloudTrail",
+    "Support began": "Management events: 07/31/2020 Data events: 01/04/2024",
+    "Link": "https://docs.aws.amazon.com/appconfig/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS AppFabric": {
+    "AWS Service": "AWS AppFabric",
+    "CloudTrail Topics": "Logging AWS AppFabric API calls using AWS CloudTrail",
+    "Support began": "06/27/2023",
+    "Link": "https://docs.aws.amazon.com/appfabric/latest/adminguide/logging-using-cloudtrail.html"
+  },
+  "AWS Application Cost Profiler": {
+    "AWS Service": "AWS Application Cost Profiler",
+    "CloudTrail Topics": "AWS Application Cost Profiler API Reference",
+    "Support began": "05/13/2021",
+    "Link": "https://docs.aws.amazon.com/application-cost-profiler/latest/APIReference/API_Operations.html"
+  },
+  "AWS Application Discovery Service": {
+    "AWS Service": "AWS Application Discovery Service",
+    "CloudTrail Topics": "Logging Application Discovery Service API Calls with AWS CloudTrail",
+    "Support began": "05/12/2016",
+    "Link": "https://docs.aws.amazon.com/application-discovery/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Application Transformation Service": {
+    "AWS Service": "AWS Application Transformation Service",
+    "CloudTrail Topics": "(Backend service used by AWS tools, such as AWS Microservice Extractor for .NET)",
+    "Support began": "08/26/2023",
+    "Link": ""
+  },
+  "AWS AppSync": {
+    "AWS Service": "AWS AppSync",
+    "CloudTrail Topics": "Logging AWS AppSync API Calls with AWS CloudTrail",
+    "Support began": "02/13/2018",
+    "Link": "https://docs.aws.amazon.com/appsync/latest/devguide/cloudtrail-logging.html"
+  },
+  "AWS Artifact": {
+    "AWS Service": "AWS Artifact",
+    "CloudTrail Topics": "Logging AWS Artifact API calls with AWS CloudTrail",
+    "Support began": "01/27/2023",
+    "Link": "https://docs.aws.amazon.com/artifact/latest/ug/cloudtrail-logging.html"
+  },
+  "AWS Audit Manager": {
+    "AWS Service": "AWS Audit Manager",
+    "CloudTrail Topics": "Logging AWS Audit Manager API calls with AWS CloudTrail",
+    "Support began": "12/07/2020",
+    "Link": "https://docs.aws.amazon.com/audit-manager/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Auto Scaling": {
+    "AWS Service": "AWS Auto Scaling",
+    "CloudTrail Topics": "Logging AWS Auto Scaling API Calls By Using CloudTrail",
+    "Support began": "08/15/2018",
+    "Link": "https://docs.aws.amazon.com/autoscaling/plans/APIReference/logging-using-cloudtrail.html"
+  },
+  "AWS B2B Data Interchange": {
+    "AWS Service": "AWS B2B Data Interchange",
+    "CloudTrail Topics": "Logging AWS B2B Data Interchange API calls using AWS CloudTrail",
+    "Support began": "12/01/2023",
+    "Link": "https://docs.aws.amazon.com/b2bi/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Backup": {
+    "AWS Service": "AWS Backup",
+    "CloudTrail Topics": "Logging AWS Backup API Calls with AWS CloudTrail",
+    "Support began": "02/04/2019",
+    "Link": "https://docs.aws.amazon.com/aws-backup/latest/devguide/logging-using-cloudtrail.html"
+  },
+  "AWS Batch": {
+    "AWS Service": "AWS Batch",
+    "CloudTrail Topics": "Logging AWS Batch API Calls with AWS CloudTrail",
+    "Support began": "1/10/2018",
+    "Link": "https://docs.aws.amazon.com/batch/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Billing and Cost Management": {
+    "AWS Service": "AWS Billing and Cost Management",
+    "CloudTrail Topics": "Logging AWS Billing and Cost Management API Calls with AWS CloudTrail",
+    "Support began": "06/07/2018",
+    "Link": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/logging-using-cloudtrail.html"
+  },
+  "AWS Billing Conductor": {
+    "AWS Service": "AWS Billing Conductor",
+    "CloudTrail Topics": "Logging AWS Billing Conductor API calls using AWS CloudTrail",
+    "Support began": "03/12/2024",
+    "Link": "https://docs.aws.amazon.com/billingconductor/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS BugBust": {
+    "AWS Service": "AWS BugBust",
+    "CloudTrail Topics": "Logging BugBust API calls using CloudTrail",
+    "Support began": "06/24/2021",
+    "Link": "https://docs.aws.amazon.com/codeguru/latest/bugbust-ug/logging-using-cloudtrail.html"
+  },
+  "AWS Certificate Manager": {
+    "AWS Service": "AWS Certificate Manager",
+    "CloudTrail Topics": "Using AWS CloudTrail",
+    "Support began": "03/25/2016",
+    "Link": "https://docs.aws.amazon.com/acm/latest/userguide/cloudtrail.html"
+  },
+  "AWS Clean Rooms": {
+    "AWS Service": "AWS Clean Rooms",
+    "CloudTrail Topics": "Logging AWS Clean Rooms API calls using AWS CloudTrail",
+    "Support began": "03/21/2023",
+    "Link": "https://docs.aws.amazon.com/clean-rooms/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Cloud Map": {
+    "AWS Service": "AWS Cloud Map",
+    "CloudTrail Topics": "Logging AWS Cloud Map API Calls with AWS CloudTrail",
+    "Support began": "11/28/2018",
+    "Link": "https://docs.aws.amazon.com/cloud-map/latest/dg/logging-using-cloudtrail.html"
+  },
+  "AWS Cloud9": {
+    "AWS Service": "AWS Cloud9",
+    "CloudTrail Topics": "Logging AWS Cloud9 API Calls with AWS CloudTrail",
+    "Support began": "01/21/2019",
+    "Link": "https://docs.aws.amazon.com/cloud9/latest/user-guide/cloudtrail.html"
+  },
+  "AWS CloudFormation": {
+    "AWS Service": "AWS CloudFormation",
+    "CloudTrail Topics": "Logging AWS CloudFormation API Calls in AWS CloudTrail",
+    "Support began": "04/02/2014",
+    "Link": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-api-logging-cloudtrail.html"
+  },
+  "AWS CloudHSM": {
+    "AWS Service": "AWS CloudHSM",
+    "CloudTrail Topics": "Logging AWS CloudHSM API Calls By Using AWS CloudTrail",
+    "Support began": "01/08/2015",
+    "Link": "https://docs.aws.amazon.com/cloudhsm/latest/userguide/get-api-logs-using-cloudtrail.html"
+  },
+  "AWS CloudShell": {
+    "AWS Service": "AWS CloudShell",
+    "CloudTrail Topics": "Logging and monitoring in AWS CloudShell",
+    "Support began": "12/15/2020",
+    "Link": "https://docs.aws.amazon.com/cloudshell/latest/userguide/logging-and-monitoring.html"
+  },
+  "AWS CloudTrail": {
+    "AWS Service": "AWS CloudTrail",
+    "CloudTrail Topics": "AWS CloudTrail API Reference",
+    "Support began": "11/13/2013",
+    "Link": "https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/"
+  },
+  "AWS CodeArtifact": {
+    "AWS Service": "AWS CodeArtifact",
+    "CloudTrail Topics": "Logging CodeArtifact API calls with AWS CloudTrail",
+    "Support began": "06/10/2020",
+    "Link": "https://docs.aws.amazon.com/codeartifact/latest/ug/codeartifact-information-in-cloudtrail.html"
+  },
+  "AWS CodeBuild": {
+    "AWS Service": "AWS CodeBuild",
+    "CloudTrail Topics": "Logging AWS CodeBuild API Calls with AWS CloudTrail",
+    "Support began": "12/01/2016",
+    "Link": "https://docs.aws.amazon.com/codebuild/latest/userguide/cloudtrail.html"
+  },
+  "AWS CodeCommit": {
+    "AWS Service": "AWS CodeCommit",
+    "CloudTrail Topics": "Logging AWS CodeCommit API Calls with AWS CloudTrail",
+    "Support began": "01/11/2017",
+    "Link": "https://docs.aws.amazon.com/codecommit/latest/userguide/integ-cloudtrail.html"
+  },
+  "AWS CodeDeploy": {
+    "AWS Service": "AWS CodeDeploy",
+    "CloudTrail Topics": "Monitoring Deployments with AWS CloudTrail",
+    "Support began": "12/16/2014",
+    "Link": "https://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-cloudtrail.html"
+  },
+  "AWS CodePipeline": {
+    "AWS Service": "AWS CodePipeline",
+    "CloudTrail Topics": "Logging CodePipeline API calls with AWS CloudTrail",
+    "Support began": "07/09/2015",
+    "Link": "https://docs.aws.amazon.com/codepipeline/latest/userguide/monitoring-cloudtrail-logs.html"
+  },
+  "AWS CodeStar": {
+    "AWS Service": "AWS CodeStar",
+    "CloudTrail Topics": "Logging AWS CodeStar API Calls with AWS CloudTrail",
+    "Support began": "06/14/2017",
+    "Link": "https://docs.aws.amazon.com/dtconsole/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS CodeStar Notifications": {
+    "AWS Service": "AWS CodeStar Notifications",
+    "CloudTrail Topics": "Logging AWS CodeStar Notifications API Calls with AWS CloudTrail",
+    "Support began": "11/05/2019",
+    "Link": "https://docs.aws.amazon.com/codestar-notifications/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Config": {
+    "AWS Service": "AWS Config",
+    "CloudTrail Topics": "Logging AWS Config API Calls By with AWS CloudTrail",
+    "Support began": "02/10/2015",
+    "Link": "https://docs.aws.amazon.com/config/latest/developerguide/log-api-calls.html"
+  },
+  "AWS Control Catalog": {
+    "AWS Service": "AWS Control Catalog",
+    "CloudTrail Topics": "Logging AWS Control Catalog API calls using AWS CloudTrail",
+    "Support began": "04/08/2024",
+    "Link": "https://docs.aws.amazon.com/controlcatalog/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Control Tower": {
+    "AWS Service": "AWS Control Tower",
+    "CloudTrail Topics": "Logging AWS Control Tower Actions with AWS CloudTrail",
+    "Support began": "08/12/2019",
+    "Link": "https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Data Pipeline": {
+    "AWS Service": "AWS Data Pipeline",
+    "CloudTrail Topics": "Logging AWS Data Pipeline API Calls by using AWS CloudTrail",
+    "Support began": "12/02/2014",
+    "Link": "https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-cloudtrail-logging.html"
+  },
+  "AWS Database Migration Service (AWS DMS)": {
+    "AWS Service": "AWS Database Migration Service (AWS DMS)",
+    "CloudTrail Topics": "Logging AWS Database Migration Service API Calls Using AWS CloudTrail",
+    "Support began": "02/04/2016",
+    "Link": "https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Monitoring.html#logging-using-cloudtrail"
+  },
+  "AWS DataSync": {
+    "AWS Service": "AWS DataSync",
+    "CloudTrail Topics": "Logging AWS DataSync API Calls with AWS CloudTrail",
+    "Support began": "11/26/2018",
+    "Link": "https://docs.aws.amazon.com/datasync/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Deadline Cloud": {
+    "AWS Service": "AWS Deadline Cloud",
+    "CloudTrail Topics": "Logging calls with CloudTrail",
+    "Support began": "04/02/2024",
+    "Link": "https://docs.aws.amazon.com/deadline-cloud/latest/userguide/cloudtrail.html"
+  },
+  "AWS Device Farm": {
+    "AWS Service": "AWS Device Farm",
+    "CloudTrail Topics": "Logging AWS Device Farm API Calls By Using AWS CloudTrail",
+    "Support began": "07/13/2015",
+    "Link": "https://docs.aws.amazon.com/devicefarm/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "AWS Direct Connect": {
+    "AWS Service": "AWS Direct Connect",
+    "CloudTrail Topics": "Logging AWS Direct Connect API Calls in AWS CloudTrail",
+    "Support began": "03/08/2014",
+    "Link": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/logging_dc_api_calls.html"
+  },
+  "AWS Directory Service": {
+    "AWS Service": "AWS Directory Service",
+    "CloudTrail Topics": "Logging AWS Directory Service API Calls by Using CloudTrail",
+    "Support began": "05/14/2015",
+    "Link": "https://docs.aws.amazon.com/directoryservice/latest/devguide/cloudtrail_logging.html"
+  },
+  "AWS Elastic Beanstalk (Elastic Beanstalk)": {
+    "AWS Service": "AWS Elastic Beanstalk (Elastic Beanstalk)",
+    "CloudTrail Topics": "Using Elastic Beanstalk API Calls with AWS CloudTrail",
+    "Support began": "03/31/2014",
+    "Link": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.cloudtrail.html"
+  },
+  "AWS Elastic Disaster Recovery": {
+    "AWS Service": "AWS Elastic Disaster Recovery",
+    "CloudTrail Topics": "Logging AWS Elastic Disaster Recovery API calls using AWS CloudTrail",
+    "Support began": "11/17/2021",
+    "Link": "https://docs.aws.amazon.com/drs/latest/userguide/logging-using-cloudtrail-.html"
+  },
+  "AWS Elemental MediaConnect": {
+    "AWS Service": "AWS Elemental MediaConnect",
+    "CloudTrail Topics": "Logging AWS Elemental MediaConnect API Calls with AWS CloudTrail",
+    "Support began": "11/27/2018",
+    "Link": "https://docs.aws.amazon.com/mediaconnect/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS Elemental MediaConvert": {
+    "AWS Service": "AWS Elemental MediaConvert",
+    "CloudTrail Topics": "Logging AWS Elemental MediaConvert API Calls with CloudTrail",
+    "Support began": "11/27/2017",
+    "Link": "http://docs.aws.amazon.com/mediaconvert/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS Elemental MediaLive": {
+    "AWS Service": "AWS Elemental MediaLive",
+    "CloudTrail Topics": "Logging MediaLive API Calls with AWS CloudTrail",
+    "Support began": "01/19/2019",
+    "Link": "https://docs.aws.amazon.com/medialive/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS Elemental MediaPackage": {
+    "AWS Service": "AWS Elemental MediaPackage",
+    "CloudTrail Topics": "Logging AWS Elemental MediaPackage API Calls with AWS CloudTrail",
+    "Support began": "12/21/2018",
+    "Link": "https://docs.aws.amazon.com/mediapackage/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS Elemental MediaStore": {
+    "AWS Service": "AWS Elemental MediaStore",
+    "CloudTrail Topics": "Logging AWS Elemental MediaStore API Calls with CloudTrail",
+    "Support began": "11/27/2017",
+    "Link": "https://docs.aws.amazon.com/mediastore/latest/ug/monitoring-service-info-in-cloudtrail.html"
+  },
+  "AWS Elemental MediaTailor": {
+    "AWS Service": "AWS Elemental MediaTailor",
+    "CloudTrail Topics": "Logging AWS Elemental MediaTailor API Calls with AWS CloudTrail",
+    "Support began": "02/11/2019",
+    "Link": "https://docs.aws.amazon.com/mediatailor/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS Entity Resolution": {
+    "AWS Service": "AWS Entity Resolution",
+    "CloudTrail Topics": "Logging AWS Entity Resolution API calls using AAWS CloudTrail",
+    "Support began": "07/26/2023",
+    "Link": "https://docs.aws.amazon.com/entityresolution/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Fault Injection Service": {
+    "AWS Service": "AWS Fault Injection Service",
+    "CloudTrail Topics": "Log API calls with AWS CloudTrail",
+    "Support began": "03/15/2021",
+    "Link": "https://docs.aws.amazon.com/fis/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Firewall Manager": {
+    "AWS Service": "AWS Firewall Manager",
+    "CloudTrail Topics": "Logging AWS Firewall Manager API Calls with AWS CloudTrail",
+    "Support began": "04/05/2018",
+    "Link": "https://docs.aws.amazon.com/waf/latest/developerguide/logging-using-cloudtrail.html#cloudtrail-fms"
+  },
+  "AWS Global Accelerator": {
+    "AWS Service": "AWS Global Accelerator",
+    "CloudTrail Topics": "Logging AWS Global Accelerator API Calls with AWS CloudTrail",
+    "Support began": "11/26/2018",
+    "Link": "https://docs.aws.amazon.com/global-accelerator/latest/dg/logging-using-cloudtrail.html"
+  },
+  "AWS Glue": {
+    "AWS Service": "AWS Glue",
+    "CloudTrail Topics": "Logging AWS Glue Operations Using AWS CloudTrail",
+    "Support began": "11/07/2017",
+    "Link": "https://docs.aws.amazon.com/glue/latest/dg/monitor-cloudtrail.html"
+  },
+  "AWS Ground Station": {
+    "AWS Service": "AWS Ground Station",
+    "CloudTrail Topics": "Logging AWS Ground Station API Calls with AWS CloudTrail",
+    "Support began": "05/31/2019",
+    "Link": "https://docs.aws.amazon.com/ground-station/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS Health": {
+    "AWS Service": "AWS Health",
+    "CloudTrail Topics": "Logging AWS Health API Calls with AWS CloudTrail",
+    "Support began": "11/21/2016",
+    "Link": "https://docs.aws.amazon.com/health/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS Health Dashboard": {
+    "AWS Service": "AWS Health Dashboard",
+    "CloudTrail Topics": "Logging AWS Health API Calls with AWS CloudTrail",
+    "Support began": "12/01/2016",
+    "Link": "https://docs.aws.amazon.com/health/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS HealthImaging": {
+    "AWS Service": "AWS HealthImaging",
+    "CloudTrail Topics": "Logging AWS HealthImaging API calls using AWS CloudTrail",
+    "Support began": "07/26/2023",
+    "Link": "https://docs.aws.amazon.com/healthimaging/latest/devguide/logging-using-cloudtrail.html"
+  },
+  "AWS HealthLake": {
+    "AWS Service": "AWS HealthLake",
+    "CloudTrail Topics": "Logging AWS HealthLake API calls with AWS CloudTrail",
+    "Support began": "12/07/2020",
+    "Link": "https://docs.aws.amazon.com/healthlake/latest/devguide/logging-using-cloudtrail.html"
+  },
+  "AWS HealthOmics": {
+    "AWS Service": "AWS HealthOmics",
+    "CloudTrail Topics": "Logging AWS HealthOmics API calls using AWS CloudTrail",
+    "Support began": "11/29/2022",
+    "Link": "https://docs.aws.amazon.com/omics/latest/dev/logging-using-cloudtrail.html"
+  },
+  "AWS IAM Identity Center": {
+    "AWS Service": "AWS IAM Identity Center",
+    "CloudTrail Topics": "Logging IAM Identity Center API Calls with AWS CloudTrail",
+    "Support began": "12/07/2017",
+    "Link": "https://docs.aws.amazon.com/singlesignon/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Identity and Access Management (IAM)": {
+    "AWS Service": "AWS Identity and Access Management (IAM)",
+    "CloudTrail Topics": "Logging IAM Events with AWS CloudTrail",
+    "Support began": "11/13/2013",
+    "Link": "https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html"
+  },
+  "AWS IoT": {
+    "AWS Service": "AWS IoT",
+    "CloudTrail Topics": "Logging AWS IoT API Calls with AWS CloudTrail",
+    "Support began": "04/11/2016",
+    "Link": "https://docs.aws.amazon.com/iot/latest/developerguide/monitoring_overview.html#iot-using-cloudtrail"
+  },
+  "AWS IoT 1-Click": {
+    "AWS Service": "AWS IoT 1-Click",
+    "CloudTrail Topics": "Logging AWS IoT 1-Click API Calls with AWS CloudTrail",
+    "Support began": "05/14/2018",
+    "Link": "https://docs.aws.amazon.com/iot-1-click/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "AWS IoT Analytics": {
+    "AWS Service": "AWS IoT Analytics",
+    "CloudTrail Topics": "Logging AWS IoT Analytics API calls with AWS CloudTrail",
+    "Support began": "04/23/2018",
+    "Link": "https://docs.aws.amazon.com/iotanalytics/latest/userguide/cloudtrail.html"
+  },
+  "AWS IoT Events": {
+    "AWS Service": "AWS IoT Events",
+    "CloudTrail Topics": "Logging AWS IoT Events API Calls with AWS CloudTrail",
+    "Support began": "06/11/2019",
+    "Link": "https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-using-cloudtrail.html"
+  },
+  "AWS IoT Greengrass": {
+    "AWS Service": "AWS IoT Greengrass",
+    "CloudTrail Topics": "Logging AWS IoT Greengrass API Calls with AWS CloudTrail",
+    "Support began": "10/29/2018",
+    "Link": "https://docs.aws.amazon.com/greengrass/v1/developerguide/logging-using-cloudtrail.html"
+  },
+  "AWS IoT Greengrass V2": {
+    "AWS Service": "AWS IoT Greengrass V2",
+    "CloudTrail Topics": "Log AWS IoT Greengrass V2 API calls with AWS CloudTrail",
+    "Support began": "12/14/2020",
+    "Link": "https://docs.aws.amazon.com/greengrass/v2/developerguide/logging-using-cloudtrail.html"
+  },
+  "AWS IoT SiteWise": {
+    "AWS Service": "AWS IoT SiteWise",
+    "CloudTrail Topics": "Logging AWS IoT SiteWise API calls with AWS CloudTrail",
+    "Support began": "04/29/2020",
+    "Link": "https://docs.aws.amazon.com/iot-sitewise/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Key Management Service (AWS KMS)": {
+    "AWS Service": "AWS Key Management Service (AWS KMS)",
+    "CloudTrail Topics": "Logging AWS KMS API Calls using AWS CloudTrail",
+    "Support began": "11/12/2014",
+    "Link": "https://docs.aws.amazon.com/kms/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "AWS Lake Formation": {
+    "AWS Service": "AWS Lake Formation",
+    "CloudTrail Topics": "Logging AWS Lake Formation API Calls Using AWS CloudTrail",
+    "Support began": "08/09/2019",
+    "Link": "https://docs.aws.amazon.com/lake-formation/latest/dg/logging-using-cloudtrail.html"
+  },
+  "AWS Lambda": {
+    "AWS Service": "AWS Lambda",
+    "CloudTrail Topics": "Logging AWS Lambda API Calls By Using AWS CloudTrail",
+    "Support began": "Management events: 04/09/2015 Data events: 11/30/2017",
+    "Link": "https://docs.aws.amazon.com/lambda/latest/dg/logging-using-cloudtrail.html"
+  },
+  "AWS Launch Wizard": {
+    "AWS Service": "AWS Launch Wizard",
+    "CloudTrail Topics": "Logging AWS Launch Wizard API calls using AWS CloudTrail",
+    "Support began": "11/08/2023",
+    "Link": "https://docs.aws.amazon.com/launchwizard/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS License Manager": {
+    "AWS Service": "AWS License Manager",
+    "CloudTrail Topics": "Logging AWS License Manager API Calls with AWS CloudTrail",
+    "Support began": "03/01/2019",
+    "Link": "https://docs.aws.amazon.com/license-manager/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Mainframe Modernization": {
+    "AWS Service": "AWS Mainframe Modernization",
+    "CloudTrail Topics": "Logging AWS Mainframe Modernization API calls using AWS CloudTrail",
+    "Support began": "06/08/2022",
+    "Link": "https://docs.aws.amazon.com/m2/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Managed Services": {
+    "AWS Service": "AWS Managed Services",
+    "CloudTrail Topics": "Log management in AMS Accelerate",
+    "Support began": "12/21/2016",
+    "Link": "https://docs.aws.amazon.com/managedservices/latest/accelerate-guide/acc-log-mgmt.html#acc-lm-cloudtrail"
+  },
+  "AWS Marketplace Agreements": {
+    "AWS Service": "AWS Marketplace Agreements",
+    "CloudTrail Topics": "Logging Agreements API Calls using AWS CloudTrail",
+    "Support began": "09/01/2023",
+    "Link": "https://docs.aws.amazon.com/marketplace-agreements/latest/api-reference/cloudtrail-logging.html"
+  },
+  "AWS Marketplace Deployment Service": {
+    "AWS Service": "AWS Marketplace Deployment Service",
+    "CloudTrail Topics": "Logging AWS Marketplace Deployment Service calls with CloudTrail",
+    "Support began": "11/29/2023",
+    "Link": "https://docs.aws.amazon.com/marketplace-deployment/latest/api-reference/cloudtrail-logging.html"
+  },
+  "AWS Marketplace Discovery": {
+    "AWS Service": "AWS Marketplace Discovery",
+    "CloudTrail Topics": "Logging AWS Marketplace Discovery API calls using AWS CloudTrail",
+    "Support began": "12/15/2022",
+    "Link": "https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/logging-using-cloudtrail.html"
+  },
+  "AWS Marketplace Metering Service": {
+    "AWS Service": "AWS Marketplace Metering Service",
+    "CloudTrail Topics": "Logging AWS Marketplace API Calls with AWS CloudTrail",
+    "Support began": "08/22/2018",
+    "Link": "https://docs.aws.amazon.com/marketplace/latest/userguide/logging-aws-marketplace-api-calls-with-aws-cloudtrail.html"
+  },
+  "AWS Migration Hub": {
+    "AWS Service": "AWS Migration Hub",
+    "CloudTrail Topics": "Logging AWS Migration Hub API Calls with AWS CloudTrail",
+    "Support began": "08/14/2017",
+    "Link": "https://docs.aws.amazon.com/migrationhub/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS Network Firewall": {
+    "AWS Service": "AWS Network Firewall",
+    "CloudTrail Topics": "Logging calls to the AWS Network Firewall API with AWS CloudTrail",
+    "Support began": "11/17/2020",
+    "Link": "https://docs.aws.amazon.com/network-firewall/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "AWS OpsWorks for Chef Automate": {
+    "AWS Service": "AWS OpsWorks for Chef Automate",
+    "CloudTrail Topics": "Logging AWS OpsWorks for Chef Automate API Calls with AWS CloudTrail",
+    "Support began": "07/16/2018",
+    "Link": "https://docs.aws.amazon.com/opsworks/latest/userguide/logging-opsca-using-cloudtrail.html"
+  },
+  "AWS OpsWorks for Puppet Enterprise": {
+    "AWS Service": "AWS OpsWorks for Puppet Enterprise",
+    "CloudTrail Topics": "Logging OpsWorks for Puppet Enterprise API Calls with AWS CloudTrail",
+    "Support began": "07/16/2018",
+    "Link": "https://docs.aws.amazon.com/opsworks/latest/userguide/logging-opspup-using-cloudtrail.html"
+  },
+  "AWS OpsWorks Stacks": {
+    "AWS Service": "AWS OpsWorks Stacks",
+    "CloudTrail Topics": "Logging AWS OpsWorks Stacks API Calls with AWS CloudTrail",
+    "Support began": "06/04/2014",
+    "Link": "https://docs.aws.amazon.com/opsworks/latest/userguide/monitoring-cloudtrail.html"
+  },
+  "AWS Organizations": {
+    "AWS Service": "AWS Organizations",
+    "CloudTrail Topics": "Logging AWS Organizations API calls with AWS CloudTrail",
+    "Support began": "02/27/2017",
+    "Link": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration"
+  },
+  "AWS Outposts": {
+    "AWS Service": "AWS Outposts",
+    "CloudTrail Topics": "Logging AWS Outposts API calls with AWS CloudTrail",
+    "Support began": "02/04/2020",
+    "Link": "https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Panorama": {
+    "AWS Service": "AWS Panorama",
+    "CloudTrail Topics": "AWS Panorama API Reference",
+    "Support began": "10/20/2021",
+    "Link": "https://docs.aws.amazon.com/panorama/latest/api/API_Operations.html"
+  },
+  "AWS Payment Cryptography": {
+    "AWS Service": "AWS Payment Cryptography",
+    "CloudTrail Topics": "Logging AWS Payment Cryptography API calls using AWS CloudTrail",
+    "Support began": "06/08/2023",
+    "Link": "https://docs.aws.amazon.com/payment-cryptography/latest/userguide/monitoring-cloudtrail.html"
+  },
+  "AWS Private 5G": {
+    "AWS Service": "AWS Private 5G",
+    "CloudTrail Topics": "Logging AWS Private 5G API calls using AWS CloudTrail",
+    "Support began": "08/11/2022",
+    "Link": "https://docs.aws.amazon.com/private-networks/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Private Certificate Authority (AWS Private CA)": {
+    "AWS Service": "AWS Private Certificate Authority (AWS Private CA)",
+    "CloudTrail Topics": "Using CloudTrail",
+    "Support began": "04/04/2018",
+    "Link": "https://docs.aws.amazon.com/privateca/latest/userguide/PcaCtIntro.html"
+  },
+  "AWS Proton": {
+    "AWS Service": "AWS Proton",
+    "CloudTrail Topics": "Logging and monitoring in AWS Proton",
+    "Support began": "06/09/2021",
+    "Link": "https://docs.aws.amazon.com/proton/latest/userguide/security-logging-and-monitoring.html"
+  },
+  "AWS re:Post Private": {
+    "AWS Service": "AWS re:Post Private",
+    "CloudTrail Topics": "Logging AWS re:Post Private API calls using AWS CloudTrail",
+    "Support began": "11/26/2023",
+    "Link": "https://docs.aws.amazon.com/repostprivate/latest/caguide/logging-using-cloudtrail.html"
+  },
+  "AWS Resilience Hub": {
+    "AWS Service": "AWS Resilience Hub",
+    "CloudTrail Topics": "AWS CloudTrail",
+    "Support began": "11/10/2021",
+    "Link": "https://docs.aws.amazon.com/resilience-hub/latest/userguide/integrate-cloudtrail.html"
+  },
+  "AWS Resource Access Manager (AWS RAM)": {
+    "AWS Service": "AWS Resource Access Manager (AWS RAM)",
+    "CloudTrail Topics": "Logging AWS RAM API Calls with AWS CloudTrail",
+    "Support began": "11/20/2018",
+    "Link": "https://docs.aws.amazon.com/ram/latest/userguide/cloudtrail-logging.html"
+  },
+  "AWS Resource Explorer": {
+    "AWS Service": "AWS Resource Explorer",
+    "CloudTrail Topics": "Logging AWS Resource Explorer API calls using AWS CloudTrail",
+    "Support began": "11/07/2022",
+    "Link": "https://docs.aws.amazon.com/resource-explorer/latest/userguide/monitoring-cloudtrail.html"
+  },
+  "AWS Resource Groups": {
+    "AWS Service": "AWS Resource Groups",
+    "CloudTrail Topics": "Logging and monitoring in Resource Groups",
+    "Support began": "06/29/2018",
+    "Link": "https://docs.aws.amazon.com/ARG/latest/userguide/security_logging-monitoring.html"
+  },
+  "AWS RoboMaker": {
+    "AWS Service": "AWS RoboMaker",
+    "CloudTrail Topics": "Logging AWS RoboMaker API Calls with AWS CloudTrail",
+    "Support began": "01/16/2019",
+    "Link": "https://docs.aws.amazon.com/robomaker/latest/dg/logging-using-cloudtrail.html"
+  },
+  "AWS Secrets Manager": {
+    "AWS Service": "AWS Secrets Manager",
+    "CloudTrail Topics": "Monitor the Use of Your AWS Secrets Manager Secrets",
+    "Support began": "04/05/2018",
+    "Link": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail"
+  },
+  "AWS Security Hub": {
+    "AWS Service": "AWS Security Hub",
+    "CloudTrail Topics": "Logging AWS Security Hub API Calls with AWS CloudTrail",
+    "Support began": "11/27/2018",
+    "Link": "https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-ct.html"
+  },
+  "AWS Security Token Service (AWS STS)": {
+    "AWS Service": "AWS Security Token Service (AWS STS)",
+    "CloudTrail Topics": "Logging IAM Events with AWS CloudTrail",
+    "Support began": "11/13/2013",
+    "Link": "https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html"
+  },
+  "AWS Serverless Application Repository": {
+    "AWS Service": "AWS Serverless Application Repository",
+    "CloudTrail Topics": "Logging AWS Serverless Application Repository API Calls with AWS CloudTrail",
+    "Support began": "02/20/2018",
+    "Link": "https://docs.aws.amazon.com/serverlessrepo/latest/devguide/logging-using-cloudtrail.html"
+  },
+  "AWS Service Catalog": {
+    "AWS Service": "AWS Service Catalog",
+    "CloudTrail Topics": "Logging Service Catalog API Calls with AWS CloudTrail",
+    "Support began": "07/06/2016",
+    "Link": "https://docs.aws.amazon.com/servicecatalog/latest/dg/logging-using-cloudtrail.html"
+  },
+  "AWS Shield": {
+    "AWS Service": "AWS Shield",
+    "CloudTrail Topics": "Logging Shield Advanced API Calls with AWS CloudTrail",
+    "Support began": "02/08/2018",
+    "Link": "https://docs.aws.amazon.com/waf/latest/developerguide/logging-using-cloudtrail.html#shield-info-in-cloudtrail"
+  },
+  "AWS Snowball Edge": {
+    "AWS Service": "AWS Snowball Edge",
+    "CloudTrail Topics": "Logging AWS Snowball Edge API Calls with AWS CloudTrail",
+    "Support began": "01/25/2019",
+    "Link": "https://docs.aws.amazon.com/snowball/latest/developer-guide/logging-using-cloudtrail.html"
+  },
+  "AWS Step Functions": {
+    "AWS Service": "AWS Step Functions",
+    "CloudTrail Topics": "Logging AWS Step Functions API Calls with AWS CloudTrail",
+    "Support began": "12/01/2016",
+    "Link": "https://docs.aws.amazon.com/step-functions/latest/dg/procedure-cloud-trail.html"
+  },
+  "AWS Storage Gateway": {
+    "AWS Service": "AWS Storage Gateway",
+    "CloudTrail Topics": "Logging Storage Gateway API Calls by Using AWS CloudTrail",
+    "Support began": "12/16/2014",
+    "Link": "https://docs.aws.amazon.com/filegateway/latest/files3/logging-using-cloudtrail.html"
+  },
+  "AWS Support": {
+    "AWS Service": "AWS Support",
+    "CloudTrail Topics": "Logging AWS Support API calls with AWS CloudTrail",
+    "Support began": "04/21/2016",
+    "Link": "https://docs.aws.amazon.com/awssupport/latest/user/logging-using-cloudtrail.html"
+  },
+  "AWS Support Recommendations (Preview)": {
+    "AWS Service": "AWS Support Recommendations (Preview)",
+    "CloudTrail Topics": "Logging AWS Support Recommendations API calls with AWS CloudTrail",
+    "Support began": "05/22/2024",
+    "Link": "https://docs.aws.amazon.com/awssupport/latest/user/cloudtrail-logging-support-recommendations.html"
+  },
+  "AWS Systems Manager": {
+    "AWS Service": "AWS Systems Manager",
+    "CloudTrail Topics": "Logging AWS Systems Manager API Calls with AWS CloudTrail",
+    "Support began": "11/29/2017",
+    "Link": "https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html"
+  },
+  "AWS Systems Manager Incident Manager": {
+    "AWS Service": "AWS Systems Manager Incident Manager",
+    "CloudTrail Topics": "Logging AWS Systems Manager Incident Manager API calls using AWS CloudTrail",
+    "Support began": "05/10/2021",
+    "Link": "https://docs.aws.amazon.com/incident-manager/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS Telco Network Builder (AWS TNB)": {
+    "AWS Service": "AWS Telco Network Builder (AWS TNB)",
+    "CloudTrail Topics": "Logging AWS Telco Network Builder API calls using AWS CloudTrail",
+    "Support began": "02/21/2023",
+    "Link": "https://docs.aws.amazon.com/tnb/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS Transfer for SFTP": {
+    "AWS Service": "AWS Transfer for SFTP",
+    "CloudTrail Topics": "Logging AWS Transfer for SFTP API Calls with AWS CloudTrail",
+    "Support began": "01/08/2019",
+    "Link": "https://docs.aws.amazon.com/transfer/latest/userguide/cloudtrail-logging.html"
+  },
+  "AWS Transit Gateway": {
+    "AWS Service": "AWS Transit Gateway",
+    "CloudTrail Topics": "Logging API Calls for Your Transit Gateway Using AWS CloudTrail",
+    "Support began": "11/26/2018",
+    "Link": "https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-cloudtrail-logs.html"
+  },
+  "AWS Trusted Advisor": {
+    "AWS Service": "AWS Trusted Advisor",
+    "CloudTrail Topics": "Logging AWS Trusted Advisor console actions with AWS CloudTrail",
+    "Support began": "10/22/2020",
+    "Link": "https://docs.aws.amazon.com/awssupport/latest/user/logging-using-cloudtrail-for-aws-trusted-advisor.html"
+  },
+  "AWS Verified Access": {
+    "AWS Service": "AWS Verified Access",
+    "CloudTrail Topics": "Log AWS Verified Access API calls using AWS CloudTrail",
+    "Support began": "04/27/2023",
+    "Link": "https://docs.aws.amazon.com/verified-access/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS WAF": {
+    "AWS Service": "AWS WAF",
+    "CloudTrail Topics": "Logging AWS WAF API Calls with AWS CloudTrail",
+    "Support began": "04/28/2016",
+    "Link": "https://docs.aws.amazon.com/waf/latest/developerguide/logging-using-cloudtrail.html"
+  },
+  "AWS Well-Architected Tool": {
+    "AWS Service": "AWS Well-Architected Tool",
+    "CloudTrail Topics": "Logging AWS Well-Architected Tool API Calls with AWS CloudTrail",
+    "Support began": "12/15/2020",
+    "Link": "https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "AWS X-Ray": {
+    "AWS Service": "AWS X-Ray",
+    "CloudTrail Topics": "Logging AWS X-Ray API Calls With CloudTrail",
+    "Support began": "04/25/2018",
+    "Link": "https://docs.aws.amazon.com/xray/latest/devguide/xray-api-cloudtrail.html"
+  },
+  "Elastic Load Balancing": {
+    "AWS Service": "Elastic Load Balancing",
+    "CloudTrail Topics": "AWS CloudTrail Logging for Your Classic Load Balancer",
+    "Support began": "04/04/2014",
+    "Link": "https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ELB-API-Logs.html"
+  },
+  "FreeRTOS Over-the-Air Updates (OTA)": {
+    "AWS Service": "FreeRTOS Over-the-Air Updates (OTA)",
+    "CloudTrail Topics": "Logging AWS IoT OTA API Calls with AWS CloudTrail",
+    "Support began": "05/22/2019",
+    "Link": "https://docs.aws.amazon.com/freertos/latest/userguide/iot-using-cloudtrail-afr.html"
+  },
+  "Service Quotas": {
+    "AWS Service": "Service Quotas",
+    "CloudTrail Topics": "Logging Service Quotas API calls using AWS CloudTrail",
+    "Support began": "06/24/2019",
+    "Link": "https://docs.aws.amazon.com/servicequotas/latest/userguide/logging-using-cloudtrail.html"
+  }
+}

@@ -145,7 +145,7 @@
          </div>
          <div id="page-toc-src">
           <a href="#service-name-info-in-cloudtrail">
-           Amazon Q information in
+           Amazon Q Business information in
         CloudTrail
           </a>
           <a href="#service-name-control-plane-events-cloudtrail">
@@ -155,11 +155,11 @@
            Data plane events in CloudTrail
           </a>
           <a href="#service-name-management-events-cloudtrail">
-           Amazon Q management
+           Amazon Q Business management
         events in CloudTrail
           </a>
           <a href="#understanding-service-name-entries">
-           Understanding Amazon Q log
+           Understanding Amazon Q Business log
         file entries
           </a>
          </div>
@@ -179,20 +179,20 @@
            </div>
            <p>
             Amazon Q Business is integrated with AWS CloudTrail, a service that provides a record of
-    actions taken by a user, role, or an AWS service in Amazon Q. CloudTrail captures all API
-    calls for Amazon Q as events. The calls captured include calls from the Amazon Q console and code calls to the Amazon Q API operations. A
+    actions taken by a user, role, or an AWS service in Amazon Q Business. CloudTrail captures all API
+    calls for Amazon Q Business as events. The calls captured include calls from the Amazon Q console and code calls to the Amazon Q Business API operations. A
             <em>
              trail
             </em>
             enables CloudTrail to deliver log files to an Amazon S3 bucket. If you create
     a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events
-    for Amazon Q. If you don't configure a trail, you can still view the most recent
+    for Amazon Q Business. If you don't configure a trail, you can still view the most recent
     events in the CloudTrail console in
             <b>
              Event history
             </b>
             . Using the information
-    collected by CloudTrail, you can determine the request that was made to Amazon Q, the IP
+    collected by CloudTrail, you can determine the request that was made to Amazon Q Business, the IP
     address from which the request was made, who made the request, when it was made, and additional
     details.
            </p>
@@ -204,12 +204,12 @@
             .
            </p>
            <h2 id="service-name-info-in-cloudtrail">
-            Amazon Q information in
+            Amazon Q Business information in
         CloudTrail
            </h2>
            <p>
             CloudTrail is activated on your AWS account when you create the account. When activity occurs
-      in Amazon Q, that activity is recorded in a CloudTrail event along with other
+      in Amazon Q Business, that activity is recorded in a CloudTrail event along with other
       AWS service events in
             <b>
              Event history
@@ -277,9 +277,9 @@
             Control plane events in CloudTrail
            </h2>
            <p>
-            CloudTrail supports logging the following Amazon Q actions documented in the
+            CloudTrail supports logging the following Amazon Q Business actions documented in the
             <a href="https://docs.aws.amazon.com/amazonq/latest/api-reference/Welcome.html">
-             Amazon Q API
+             Amazon Q Business API
         Reference
             </a>
             :
@@ -595,7 +595,7 @@
             </b>
             column shows the appropriate selection in the CloudTrail console. The
             <b>
-             Amazon Q resource types
+             Amazon Q Business resource types
             </b>
             column shows the
             <code class="code">
@@ -606,14 +606,14 @@
            </p>
            <div class="table-container">
             <div class="table-contents disable-scroll">
-             <table id="w158aac60c17c17b7">
+             <table id="w140aac53c17c17b7">
               <thead>
                <tr>
                 <th>
                  Data event type (console)
                 </th>
                 <th>
-                 Amazon Q resource types
+                 Amazon Q Business resource types
                 </th>
                 <th>
                  Supported data events
@@ -889,7 +889,7 @@
            </div>
            <p>
             You can log these API operations by configuring advanced event selectors to record data
-      events for the Amazon Q resource types:
+      events for the Amazon Q Business resource types:
             <code class="code">
              AWS::QBusiness::Application
             </code>
@@ -962,28 +962,28 @@
                .
               </p>
               <p>
-               The following example shows how to configure a trail to log all Amazon Q
-          data events for all Amazon Q resource types.
+               The following example shows how to configure a trail to log all Amazon Q Business
+          data events for all Amazon Q Business resource types.
               </p>
               <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">aws cloudtrail put-event-selectors --trail-name <code class="replaceable">trailName</code> \
 --advanced-event-selectors \
 '[
   <span>{</span>
-    "Name": "Log all data events on an Amazon Q application",
+    "Name": "Log all data events on an Amazon Q Business application",
     "FieldSelectors": [
       <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
       <span>{</span> "Field": "resources.type", "Equals": ["AWS::QBusiness::Application"] }
     ]
   },
   <span>{</span>
-    "Name": "Log all data events on an Amazon Q data source",
+    "Name": "Log all data events on an Amazon Q Business data source",
     "FieldSelectors": [
       <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
       <span>{</span> "Field": "resources.type", "Equals": ["AWS::QBusiness::DataSource"] }
     ]
   },
   <span>{</span>
-    "Name": "Log all data events on an Amazon Q index",
+    "Name": "Log all data events on an Amazon Q Business index",
     "FieldSelectors": [
       <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
       <span>{</span> "Field": "resources.type", "Equals": ["AWS::QBusiness::Index"] }
@@ -1026,7 +1026,7 @@
             .
            </p>
            <h2 id="service-name-management-events-cloudtrail">
-            Amazon Q management
+            Amazon Q Business management
         events in CloudTrail
            </h2>
            <p>
@@ -1042,16 +1042,16 @@
       operations by default.
            </p>
            <p>
-            Amazon Q Business logs the remainder of Amazon Q API operations as
+            Amazon Q Business logs the remainder of Amazon Q Business API operations as
       management events. For a list of the Amazon Q Business API operations that Amazon Q logs to CloudTrail, see the
             <a href="https://docs.aws.amazon.com/amazonq/latest/api-reference/Welcome.html">
-             Amazon Q API
+             Amazon Q Business API
       Reference
             </a>
             .
            </p>
            <h2 id="understanding-service-name-entries">
-            Understanding Amazon Q log
+            Understanding Amazon Q Business log
         file entries
            </h2>
            <p>

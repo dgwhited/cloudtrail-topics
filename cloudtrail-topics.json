@@ -89,12 +89,6 @@
     "Support began": "12/02/2019",
     "Link": "https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/logging-using-cloudtrail.html"
   },
-  "Amazon CodeWhisperer": {
-    "AWS Service": "Amazon CodeWhisperer",
-    "CloudTrail Topics": "AWS CloudTrail and CodeWhisperer APIs",
-    "Support began": "04/13/2023",
-    "Link": "https://docs.aws.amazon.com/codewhisperer/latest/userguide/whisper-data-protection.html"
-  },
   "Amazon Cognito": {
     "AWS Service": "Amazon Cognito",
     "CloudTrail Topics": "Logging Amazon Cognito API Calls with AWS CloudTrail",
@@ -473,15 +467,15 @@
     "Support began": "11/30/2016",
     "Link": "https://docs.aws.amazon.com/polly/latest/dg/logging-using-cloudtrail.html"
   },
-  "Amazon Q (For Business Use)": {
-    "AWS Service": "Amazon Q (For Business Use)",
-    "CloudTrail Topics": "Logging Amazon Q API calls using AWS CloudTrail",
+  "Amazon Q Business": {
+    "AWS Service": "Amazon Q Business",
+    "CloudTrail Topics": "Logging Amazon Q Business API calls using AWS CloudTrail",
     "Support began": "11/28/2023",
     "Link": "https://docs.aws.amazon.com/amazonq/latest/business-use-dg/logging-using-cloudtrail.html"
   },
-  "Amazon Q (For AWS Builder Use)": {
-    "AWS Service": "Amazon Q (For AWS Builder Use)",
-    "CloudTrail Topics": "Logging Amazon Q API calls using AWS CloudTrail",
+  "Amazon Q Developer": {
+    "AWS Service": "Amazon Q Developer",
+    "CloudTrail Topics": "Logging Amazon Q Developer API calls using AWS CloudTrail",
     "Support began": "11/28/2023",
     "Link": "https://docs.aws.amazon.com/amazonq/latest/aws-builder-use-ug/logging-using-cloudtrail.html"
   },

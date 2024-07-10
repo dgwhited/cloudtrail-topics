@@ -377,6 +377,19 @@
                resource type.
               </p>
              </li>
+             <li class="listitem">
+              <p>
+               To log
+               <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeFlow.html">
+                InvokeFlow
+               </a>
+               calls, configure advanced event selectors to record data events for the
+               <code class="code">
+                AWS::Bedrock::FlowAlias
+               </code>
+               resource type.
+              </p>
+             </li>
             </ul>
            </div>
            <p>
@@ -418,9 +431,13 @@
             <code class="code">
              AWS::Bedrock::AgentAlias
             </code>
-            or
+            ,
             <code class="code">
              AWS::Bedrock::KnowledgeBase
+            </code>
+            , or
+            <code class="code">
+             AWS::Bedrock::FlowAlias
             </code>
             and set the
             <code class="code">
@@ -444,17 +461,24 @@
 --advanced-event-selectors \
 '[
   <span>{</span>
-    "Name": "Log all data events on an Agents for Amazon Bedrock agent alias",
+    "Name": "Log all data events on an alias of an agent in Amazon Bedrock.",
     "FieldSelectors": [
       <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
       <span>{</span> "Field": "resources.type", "Equals": ["AWS::Bedrock::AgentAlias"] }
     ]
   },
   <span>{</span>
-    "Name": "Log all data events on an Agents for Amazon Bedrock knowledge base",
+    "Name": "Log all data events on a knowledge base in Amazon Bedrock.",
     "FieldSelectors": [
       <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
       <span>{</span> "Field": "resources.type", "Equals": ["AWS::Bedrock::KnowledgeBase"] }
+    ]
+  },
+  <span>{</span>
+    "Name": "Log all data events on a prompt flow in Amazon Bedrock.",
+    "FieldSelectors": [
+      <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
+      <span>{</span> "Field": "resources.type", "Equals": ["AWS::Bedrock::FlowAlias"] }
     ]
   }
 ]'</code></pre>

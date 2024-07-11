@@ -174,53 +174,42 @@
              AWS CloudTrail
             </a>
             , a service
-    that provides a record of actions taken by a user, role, or an AWS service. CloudTrail captures API
-    calls for Systems Manager as events. The calls captured include calls from the Systems Manager console and code
-    calls to the Systems Manager API operations. Using the information collected by CloudTrail, you can determine
-    the request that was made to Systems Manager, the IP address from which the request was made, when it was
-    made, and additional details.
+    that provides a record of actions taken by a user, role, or an AWS service. CloudTrail captures
+    all
+    API calls for Systems Manager as events. The calls captured include calls from the Systems Manager console
+    and code calls to the Systems Manager API operations. Using the information collected by CloudTrail, you can
+    determine the request that was made to Systems Manager, the IP address from which the request was
+    made, when it was made, and additional details.
            </p>
            <p>
-            Every event or log entry contains information that helps you determine who made the
-    request.
+            Every event or log entry contains information about who generated the request. The identity
+    information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               AWS account root user
+               Whether the request was made with root user or user credentials.
               </p>
              </li>
              <li class="listitem">
               <p>
-               Temporary security credentials from an AWS Identity and Access Management (IAM) role or federated user.
+               Whether the request was made on behalf of an IAM Identity Center user.
               </p>
              </li>
              <li class="listitem">
               <p>
-               Long-term security credentials from an IAM user.
+               Whether the request was made with temporary security credentials for a role or federated
+        user.
               </p>
              </li>
              <li class="listitem">
               <p>
-               Requests made on behalf of an IAM Identity Center user.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Another AWS service.
+               Whether the request was made by another AWS service.
               </p>
              </li>
             </ul>
            </div>
-           <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail
-      userIdentity Element
-            </a>
-            .
-           </p>
            <p>
             CloudTrail is active in your AWS account when you create the account and you automatically have
     access to the CloudTrail
@@ -433,7 +422,7 @@
            </p>
            <div class="table-container" id="data-events-table">
             <div class="table-contents disable-scroll">
-             <table id="w897aac43c29c17c11">
+             <table id="w897aac43c29c23c11">
               <thead>
                <tr>
                 <th>
@@ -516,6 +505,17 @@
                   </li>
                  </ul>
                 </div>
+                <p>
+                 For more information about the
+                 <code class="code">
+                  RequestManagedInstanceRoleToken
+                 </code>
+                 operation, see
+                 <a href="./ssm-agent-technical-details.html#fingerprint-validation">
+                  Validating hybrid-activated machines
+                        using a hardware fingerprint
+                 </a>
+                </p>
                </td>
               </tr>
              </table>
@@ -614,14 +614,12 @@
             Management event
           examples
            </h3>
-           <p>
-            <b>
-             Example 1:
-             <code class="code">
-              DeleteDocument
-             </code>
-            </b>
-           </p>
+           <h6>
+            Example 1:
+            <code class="code">
+             DeleteDocument
+            </code>
+           </h6>
            <p>
             The following example shows a CloudTrail event that demonstrates the
             <code class="code">
@@ -677,14 +675,12 @@
     "recipientAccountId": "123456789012",
     "eventCategory": "Management"
 }</code></pre>
-           <p>
-            <b>
-             Example 2:
-             <code class="code">
-              StartConnection
-             </code>
-            </b>
-           </p>
+           <h6>
+            Example 2:
+            <code class="code">
+             StartConnection
+            </code>
+           </h6>
            <p>
             The following example shows a CloudTrail event for a user who starts an RDP connection using
           Fleet Manager in the US East (Ohio) Region (us-east-2). The underlying API action is
@@ -746,14 +742,12 @@
             Data event
           examples
            </h3>
-           <p>
-            <b>
-             Example 1:
-             <code class="code">
-              CreateControlChannel
-             </code>
-            </b>
-           </p>
+           <h6>
+            Example 1:
+            <code class="code">
+             CreateControlChannel
+            </code>
+           </h6>
            <p>
             The following example shows a CloudTrail event that demonstrates the
             <code class="code">
@@ -815,14 +809,12 @@
   "recipientAccountId":"123456789012",
   "eventCategory":"Data"
 }</code></pre>
-           <p>
-            <b>
-             Example 2:
-             <code class="code">
-              RequestManagedInstanceRoleToken
-             </code>
-            </b>
-           </p>
+           <h6>
+            Example 2:
+            <code class="code">
+             RequestManagedInstanceRoleToken
+            </code>
+           </h6>
            <p>
             The following example shows a CloudTrail event that demonstrates the
             <code class="code">

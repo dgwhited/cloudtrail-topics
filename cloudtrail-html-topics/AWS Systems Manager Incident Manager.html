@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging Incident Manager API calls using AWS CloudTrail - Incident Manager
+   Logging AWS Systems Manager Incident Manager API calls using AWS CloudTrail - Incident Manager
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/incident-manager/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Learn about logging Incident Manager calls with AWS CloudTrail." name="description"/>
+  <meta content="Learn about logging AWS Systems Manager Incident Manager with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Incident Manager" name="product"/>
   <meta content="User Guide" name="guide"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'systems-manager'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="User Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging Incident Manager API calls using AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Logging AWS Systems Manager Incident Manager API calls using AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,7 +76,7 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging Incident Manager API calls using AWS CloudTrail - Incident Manager
+         Logging AWS Systems Manager Incident Manager API calls using AWS CloudTrail - Incident Manager
         </title>
         <meta content="/pdfs/incident-manager/latest/userguide/incident-manager-ug.pdf#logging-using-cloudtrail" name="pdf"/>
         <meta content="incident-manager-guide.rss" name="rss"/>
@@ -109,13 +109,13 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Logging and monitoring in Incident Manager",
+        "name" : "Monitoring in Incident Manager",
         "item" : "https://docs.aws.amazon.com/incident-manager/latest/userguide/monitoring.html"
       },
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "Logging Incident Manager API calls using AWS CloudTrail",
+        "name" : "Logging AWS Systems Manager Incident Manager API calls using AWS CloudTrail",
         "item" : "https://docs.aws.amazon.com/incident-manager/latest/userguide/monitoring.html"
       }
     ]
@@ -143,13 +143,11 @@
           </a>
          </div>
          <div id="page-toc-src">
-          <a href="#service-name-info-in-cloudtrail">
-           Incident Manager information in
-                CloudTrail
+          <a href="#cloudtrail-management-events">
+           Incident Manager management events in CloudTrail
           </a>
-          <a href="#understanding-service-name-entries">
-           Understanding Incident Manager log file
-                entries
+          <a href="#cloudtrail-event-examples">
+           Incident Manager event examples
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -157,8 +155,8 @@
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="logging-using-cloudtrail">
-            Logging Incident Manager API calls using
-            AWS CloudTrail
+            Logging AWS Systems Manager Incident Manager API calls using
+      AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -167,131 +165,38 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            AWS Systems Manager Incident Manager integrates with AWS CloudTrail, a service that provides a record of actions
-        taken by a user, role, or an AWS service in Incident Manager. CloudTrail captures all API calls for
-        Incident Manager as events. The calls captured include calls from the Incident Manager console and
-        code calls to the Incident Manager API operations. If you create a trail, you can turn on
-        continual delivery of CloudTrail events to an Amazon S3 bucket, including events for Incident Manager. If
-        you don't configure a trail, you can still view the most recent events in the CloudTrail console
-        in
-            <b>
-             Event history
-            </b>
-            . Using the information collected by CloudTrail, you can
-        determine the request that was made to Incident Manager, the IP address from which the request
-        was made, who made the request, when it was made, and additional details.
-           </p>
-           <p>
-            To learn more about CloudTrail, see the
+            AWS Systems Manager Incident Manager is integrated with
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
-             AWS CloudTrail User Guide
+             AWS CloudTrail
             </a>
-            .
-           </p>
-           <h2 id="service-name-info-in-cloudtrail">
-            Incident Manager information in
-                CloudTrail
-           </h2>
-           <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity
-            occurs in Incident Manager, that activity is recorded in a CloudTrail event along with other AWS
-            service events in
-            <b>
-             Event history
-            </b>
-            . You can view, search, and download
-            recent events in your AWS account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing events with CloudTrail Event history
-            </a>
-            .
+            , a service
+    that provides a record of actions taken by a user, role, or an AWS service. CloudTrail captures
+    all
+    API calls for Incident Manager as events. The calls captured include calls from the Incident Manager console
+    and code calls to the Incident Manager API operations. Using the information collected by CloudTrail, you can
+    determine the request that was made to Incident Manager, the IP address from which the request was
+    made, when it was made, and additional details.
            </p>
            <p>
-            For an ongoing record of events in your AWS account, including events for
-            Incident Manager, create a trail. A
-            <em>
-             trail
-            </em>
-            enables CloudTrail to deliver log
-            files to an Amazon S3 bucket. By default, when you create a trail in the console, the trail
-            applies to all AWS Regions. The trail logs events from all Regions in the AWS
-            partition and delivers the log files to the Amazon S3 bucket that you specify. Additionally,
-            you can configure other AWS services to further analyze and act upon the event data
-            collected in CloudTrail logs. For more information, see the following:
+            Every event or log entry contains information about who generated the request. The identity
+    information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for creating a trail
-               </a>
+               Whether the request was made with root user or user credentials.
               </p>
              </li>
              <li class="listitem">
               <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html">
-                CloudTrail supported services and integrations
-               </a>
+               Whether the request was made on behalf of an IAM Identity Center user.
               </p>
              </li>
              <li class="listitem">
               <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
-                Configuring Amazon SNS notifications for
-                    CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail log files from multiple regions
-               </a>
-               and
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail log files from multiple
-                    accounts
-               </a>
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            CloudTrail logs all Incident Manager actions and Incident Manager documents all actions in the
-            <a href="https://docs.aws.amazon.com/incident-manager/latest/APIReference/Welcome.html">
-             AWS Systems Manager Incident Manager API Reference
-            </a>
-            . For example, calls to the
-            <code class="code">
-             CreateResponsePlan
-            </code>
-            ,
-            <code class="code">
-             ActivateDevice
-            </code>
-            , and
-            <code class="code">
-             StartIncident
-            </code>
-            actions generate entries
-            in the CloudTrail log files.
-           </p>
-           <p>
-            Every event or log entry contains information about who generated the request. The
-            identity information helps you determine the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               Whether the request was made with root or IAM user credentials.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made with temporary security credentials for a role or
-                    federated user.
+               Whether the request was made with temporary security credentials for a role or federated
+        user.
               </p>
              </li>
              <li class="listitem">
@@ -302,23 +207,168 @@
             </ul>
            </div>
            <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail user identity element
+            CloudTrail is active in your AWS account when you create the account and you automatically have
+    access to the CloudTrail
+            <b>
+             Event history
+            </b>
+            . The CloudTrail
+            <b>
+             Event
+      history
+            </b>
+            provides a viewable, searchable, downloadable, and immutable record of the
+    past 90 days of recorded management events in an AWS Region. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Working
+      with CloudTrail Event history
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            . There are no CloudTrail
+    charges for viewing the
+            <b>
+             Event history
+            </b>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account past 90 days, create a trail or a
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+             CloudTrail
+      Lake
+            </a>
+            event data store.
+           </p>
+           <div class="variablelist">
+            <dl>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail trails
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               A
+               <em>
+                trail
+               </em>
+               enables CloudTrail to deliver log files to an Amazon S3 bucket. All trails created using the AWS Management Console are multi-Region. You can create a single-Region or a multi-Region trail by using the AWS CLI. Creating a multi-Region trail is recommended because you capture activity in all AWS Regions in your account. If you create a single-Region trail, you can view only the events logged in the trail's AWS Region. For more information about trails, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Creating a trail for your AWS account
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html">
+                Creating a trail for an organization
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               You can deliver one copy of your ongoing management events to your Amazon S3 bucket at no charge from CloudTrail by creating a trail, however, there are Amazon S3 storage charges. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               . For information about Amazon S3 pricing, see
+               <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Amazon S3 Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail Lake event data stores
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               <em>
+                CloudTrail Lake
+               </em>
+               lets you run SQL-based queries on your events. CloudTrail Lake converts existing events in row-based JSON format to
+               <a href="https://orc.apache.org/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Apache ORC
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into
+               <em>
+                event data stores
+               </em>
+               , which are immutable collections of events based on criteria that you select by applying
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-concepts.html#adv-event-selectors">
+                advanced event selectors
+               </a>
+               . The selectors that you apply to an event data store control which events persist and are available for you to query. For more information about CloudTrail Lake, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+                Working with AWS CloudTrail Lake
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               CloudTrail Lake event data stores and queries incur costs. When you create an event data store, you choose the
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html#cloudtrail-lake-manage-costs-pricing-option">
+                pricing option
+               </a>
+               you want to use for the event data store. The pricing option determines the cost for ingesting and storing events, and the default and maximum retention period for the event data store. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+            </dl>
+           </div>
+           <h2 id="cloudtrail-management-events">
+            Incident Manager management events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
+            </a>
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
+           </p>
+           <p>
+            AWS Systems Manager Incident Manager logs all Incident Manager control plane operations as management events. For a list
+      of the AWS Systems Manager Incident Manager control plane operations that Incident Manager logs to CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/incident-manager/latest/APIReference/">
+             AWS Systems Manager Incident Manager API Reference
             </a>
             .
            </p>
-           <h2 id="understanding-service-name-entries">
-            Understanding Incident Manager log file
-                entries
+           <h2 id="cloudtrail-event-examples">
+            Incident Manager event examples
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3
-            bucket that you specify. CloudTrail log files contain one or more log entries. An event
-            represents a single request from any source and includes information about the requested
-            action, the date and time of the action, request parameters, and so on. CloudTrail log files
-            aren't an ordered stack trace of the public API calls, so they don't appear in any
-            specific order.
+            An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
            </p>
            <p>
             The following example shows a CloudTrail log entry that demonstrates the
@@ -327,7 +377,7 @@
             </code>
             action.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json">     <span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
     "eventVersion": "1.08",
     "userIdentity": <span>{</span>
         "type": "IAMUser",
@@ -337,10 +387,10 @@
         "accessKeyId": "021345abcdef6789",
         "userName": "nikki_wolf"
     },
-    "eventTime": "2021-04-22T23:20:10Z",
-    "eventSource": "gamma-ssm-incidents.amazonaws.com",
+    "eventTime": "2024-04-22T23:20:10Z",
+    "eventSource": "ssm-incidents.amazonaws.com",
     "eventName": "StartIncident",
-    "awsRegion": "us-west-2",
+    "awsRegion": "us-east-2",
     "sourceIPAddress": "192.0.2.0",
     "userAgent": "aws-cli/2.0.58 Python/3.7.4 Darwin/19.6.0 exe/x86_64 command/ssmincidents.start-incident",
     "requestParameters": <span>{</span>
@@ -365,34 +415,46 @@
             </code>
             action.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">    <span>{</span>
-    "eventVersion":"1.08",
-    "userIdentity":<span>{</span>
-        "type":"IAMUser",
-        "principalId":"1234567890abcdef0",
-        "arn":"arn:aws:iam::246873129580111122223333:user/nikki_wolf",
-        "accountId":"abcdef01234567890",
-        "accessKeyId":"021345abcdef6789",
-        "userName":"nikki_wolf"
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "1234567890abcdef0",
+        "arn": "arn:aws:iam::246873129580111122223333:user/nikki_wolf",
+        "accountId": "abcdef01234567890",
+        "accessKeyId": "021345abcdef6789",
+        "userName": "nikki_wolf"
     },
-    "eventTime":"2021-04-08T02:27:21Z",
-    "eventSource":"ssm-contacts.amazonaws.com",
-    "eventName":"DeleteContactChannel",
-    "awsRegion":"us-east-1",
-    "sourceIPAddress":"192.0.2.0",
-    "userAgent":"Apache-HttpClient/UNAVAILABLE (Java/1.8.0_282)",
-    "requestParameters":<span>{</span>
-        "contactChannelId":"arn:aws:ssm-contacts:us-west-2:555555555555:device/bnuomysohc/abcdefgh-abcd-1234-1234-1234567890"
+    "eventTime": "2024-04-08T02:27:21Z",
+    "eventSource": "ssm-contacts.amazonaws.com",
+    "eventName": "DeleteContactChannel",
+    "awsRegion": "us-east-2",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "Apache-HttpClient/UNAVAILABLE (Java/1.8.0_282)",
+    "requestParameters": <span>{</span>
+        "contactChannelId": "arn:aws:ssm-contacts:us-west-2:555555555555:device/bnuomysohc/abcdefgh-abcd-1234-1234-1234567890"
     },
-    "responseElements":null,
-    "requestID":"abcdefgh-1234-abcd-1234-1234567abcdef",
-    "eventID":"12345678-1234-1234-abcd-abcdef1234567",
-    "readOnly":true,
-    "eventType":"AwsApiCall",
-    "managementEvent":true,
-    "eventCategory":"Management",
-    "recipientAccountId":"12345678901234567"
+    "responseElements": null,
+    "requestID": "abcdefgh-1234-abcd-1234-1234567abcdef",
+    "eventID": "12345678-1234-1234-abcd-abcdef1234567",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "eventCategory": "Management",
+    "recipientAccountId": "12345678901234567"
 }</code></pre>
+           <p>
+            For information about CloudTrail record contents, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail
+        record contents
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -425,7 +487,7 @@
            </div>
            <div class="prev-next">
             <div accesskey="p" class="prev-link" href="./incident-manager-metrics.html" id="previous">
-             Amazon CloudWatch metrics
+             Amazon CloudWatch metrics in Incident Manager
             </div>
             <div accesskey="n" class="next-link" href="./integration.html" id="next">
              Product and service integrations

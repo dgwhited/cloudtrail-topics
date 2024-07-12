@@ -83,7 +83,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWS%20Payment%20Cryptography&amp;topic_url=https://docs.aws.amazon.com/en_us/payment-cryptography/latest/userguide/monitoring-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/payment-cryptography/latest/userguide/monitoring-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/payment-cryptography/latest/userguide/monitoring-cloudtrail.html" name="feedback-no"/>
-        <meta content="AWS Payment Cryptography,Payment Cryptography" name="keywords"/>
+        <meta content="AWS Payment Cryptography,Payment Cryptography,CloudTrail,Management events,API actions,Logging" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -147,8 +147,17 @@
           <a href="#service-name-info-in-cloudtrail">
            AWS Payment Cryptography information in CloudTrail
           </a>
-          <a href="#understanding-service-name-entries">
-           Understanding AWS Payment Cryptography log file entries
+          <a href="#management-events-in-cloud-trail">
+           Control plane events in CloudTrail
+          </a>
+          <a href="#data-events-in-cloud-trail">
+           Data events in CloudTrail
+          </a>
+          <a href="#understanding-controlplane-entries">
+           Understanding AWS Payment Cryptography Control Plane log file entries
+          </a>
+          <a href="#understanding-dataplane-entries">
+           Understanding AWS Payment Cryptography Data Plane log file entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -167,10 +176,10 @@
            <p>
             AWS Payment Cryptography is integrated with AWS CloudTrail, a service that provides a record of actions 
     taken by a user, role, or an AWS service in AWS Payment Cryptography. CloudTrail captures all API calls for
-    AWS Payment Cryptography as events. The calls captured include calls from the AWS Payment Cryptography console and
-    code calls to the AWS Payment Cryptography API operations. If you create a trail, you can enable
+    AWS Payment Cryptography as events. The calls captured include calls from the console and
+    code calls to the API operations. If you create a trail, you can enable
     continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS Payment Cryptography. If 
-    you don't configure a trail, you can still view the most recent events in the CloudTrail console 
+    you don't configure a trail, you can still view the most recent management (Control Plane) events in the CloudTrail console 
     in
             <b>
              Event history
@@ -186,19 +195,37 @@
             </a>
             .
            </p>
-           <div class="awsdocs-note">
-            <div class="awsdocs-note-title">
-             <awsui-icon name="status-info" variant="link">
-             </awsui-icon>
-             <h6>
-              Note
-             </h6>
-            </div>
-            <div class="awsdocs-note-text">
-             <p>
-              Cloudtrail integration is currently supported for control plane operations only.
-             </p>
-            </div>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Topics
+            </h6>
+            <ul>
+             <li>
+              <a href="#service-name-info-in-cloudtrail">
+               AWS Payment Cryptography information in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#management-events-in-cloud-trail">
+               Control plane events in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#data-events-in-cloud-trail">
+               Data events in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-controlplane-entries">
+               Understanding AWS Payment Cryptography Control Plane log file entries
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-dataplane-entries">
+               Understanding AWS Payment Cryptography Data Plane log file entries
+              </a>
+             </li>
+            </ul>
            </div>
            <h2 id="service-name-info-in-cloudtrail">
             AWS Payment Cryptography information in CloudTrail
@@ -271,29 +298,6 @@
             </ul>
            </div>
            <p>
-            CloudTrail logs AWS Payment Cryptography operations, such as
-            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html">
-             CreateKey
-            </a>
-            ,
-            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html">
-             ImportKey
-            </a>
-            ,
-            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html">
-             DeleteKey
-            </a>
-            ,
-            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListKeys.html">
-             ListKeys
-            </a>
-            ,
-            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_TagResource.html">
-             TagResource
-            </a>
-            , and all other control plane operations.
-           </p>
-           <p>
             Every event or log entry contains information about who generated the request. The
       identity information helps you determine the following:
            </p>
@@ -324,8 +328,224 @@
             </a>
             .
            </p>
-           <h2 id="understanding-service-name-entries">
-            Understanding AWS Payment Cryptography log file entries
+           <h2 id="management-events-in-cloud-trail">
+            Control plane events in CloudTrail
+           </h2>
+           <p>
+            CloudTrail logs AWS Payment Cryptography operations, such as
+            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html">
+             CreateKey
+            </a>
+            ,
+            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html">
+             ImportKey
+            </a>
+            ,
+            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html">
+             DeleteKey
+            </a>
+            ,
+            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListKeys.html">
+             ListKeys
+            </a>
+            ,
+            <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_TagResource.html">
+             TagResource
+            </a>
+            , 
+           and all other control plane operations.
+           </p>
+           <h2 id="data-events-in-cloud-trail">
+            Data events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events.html">
+             Data events
+            </a>
+            provide information about the resource operations
+    performed on or in a resource, such as encrypting a payload or translating a pin. Data events are high-volume activities that CloudTrail does not log
+    by default. You can enable data events API action logging for AWS Payment Cryptography dataplane events by
+    using CloudTrail APIs or console. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+             Logging data
+      events
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <p>
+            With CloudTrail, you can use advanced event selectors to decide which AWS Payment Cryptography API
+    activities are logged and recorded. To log AWS Payment Cryptography dataplane events, you must include the
+    resource type
+            <code class="code">
+             AWS Payment Cryptography key
+            </code>
+            and
+            <code class="code">
+             AWS Payment Cryptography alias
+            </code>
+            . Once this is set, you can refine your
+    logging preferences further by selecting specific data events for recording, such as
+    using the
+            <code class="code">
+             eventName
+            </code>
+            filter to track
+            <code class="code">
+             EncryptData
+            </code>
+            events.
+    For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html">
+             <code class="code">
+              AdvancedEventSelector
+             </code>
+            </a>
+            in the
+            <em>
+             AWS CloudTrail API Reference
+            </em>
+            .
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              You can select to monitor both key and alias-based events.  We recommend subscribing to either key or key AND alias to ensure that you receive all applicable events.
+             </p>
+            </div>
+           </div>
+           <p>
+            <b>
+             data events:
+            </b>
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_DecryptData.html">
+                 DecryptData
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_EncryptData.html">
+                 EncryptData
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_GenerateCardValidationData.html">
+                 GenerateCardValidationData
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_GenerateMac.html">
+                 GenerateMac
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_GeneratePinData.html">
+                 GeneratePinData
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_ReEncryptData.html">
+                 ReEncryptData
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_TranslatePinData.html">
+                 TranslatePinData
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_VerifyAuthRequestCryptogram.html">
+                 VerifyAuthRequestCryptogram
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_VerifyCardValidationData.html">
+                 VerifyCardValidationData
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_VerifyMac.html">
+                 VerifyMac
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/API_VerifyPinData.html">
+                 VerifyPinData
+                </a>
+               </code>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Additional charges apply for data events. For more information, see
+            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+             <span>
+              AWS CloudTrail
+      Pricing
+             </span>
+             <awsui-icon class="awsdocs-link-icon" name="external">
+             </awsui-icon>
+            </a>
+            .
+           </p>
+           <h2 id="understanding-controlplane-entries">
+            Understanding AWS Payment Cryptography Control Plane log file entries
            </h2>
            <p>
             A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
@@ -408,7 +628,7 @@
           UserIdentity: <span>{</span>
             arn=arn:aws:sts::111122223333:assumed-role/TestAssumeRole-us-west-2-PDX80/ControlPlane-IntegTest-68211a2a-3e9d-42b7-86ac-c682520e0410, 
             invokedBy=null, 
-            accessKeyId=, 
+            accessKeyId=TESTXECZ5U2ZULLHHMJG, 
             type=AssumedRole, 
             sessionContext=<span>{</span>
               SessionContext: <span>{</span>
@@ -417,7 +637,7 @@
                   type=Role, 
                   accountId=111122223333, 
                   userName=TestAssumeRole-us-west-2-PDX80, 
-                  principalId=}
+                  principalId=TESTXECZ5U9M4LGF2N6Y5}
                 }, 
                 attributes=<span>{</span>
                   SessionContextAttributes: <span>{</span>
@@ -448,6 +668,85 @@
     }
   }
 }</code>
+      </code></pre>
+           <h2 id="understanding-dataplane-entries">
+            Understanding AWS Payment Cryptography Data Plane log file entries
+           </h2>
+           <p>
+            Dataplane events can optionally be configured and function similarly to Controlplane logs but are typically much higher volumes.  Given the sensitive nature of some inputs and outputs to AWS Payment Cryptography
+       dataplane operations, you may find certain fields with the message "*** Sensitive Data Redacted ***". This is not configurable and is intended to prevent sensitive data from appearing in logs or trails.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the AWS Payment Cryptography
+            <code class="code">
+             EncryptData
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">
+      <code class="computeroutput" copy="false"><span>{</span>
+        "Records": [
+            <span>{</span>
+                "eventVersion": "1.09",
+                "userIdentity": <span>{</span>
+                    "type": "AssumedRole",
+                    "principalId": "TESTXECZ5U2ZULLHHMJG:DataPlane-User",
+                    "arn": "arn:aws:sts::111122223333:assumed-role/Admin/DataPlane-User",
+                    "accountId": "111122223333",
+                    "accessKeyId": "TESTXECZ5U2ZULLHHMJG",
+                    "userName": "",
+                    "sessionContext": <span>{</span>
+                        "sessionIssuer": <span>{</span>
+                            "type": "Role",
+                            "principalId": "TESTXECZ5U9M4LGF2N6Y5",
+                            "arn": "arn:aws:iam::111122223333:role/Admin",
+                            "accountId": "111122223333",
+                            "userName": "Admin"
+                        },
+                        "attributes": <span>{</span>
+                            "creationDate": "2024-07-09T14:23:05Z",
+                            "mfaAuthenticated": "false"
+                        }
+                    }
+                },
+                "eventTime": "2024-07-09T14:24:02Z",
+                "eventSource": "payment-cryptography.amazonaws.com",
+                "eventName": "GenerateCardValidationData",
+                "awsRegion": "us-east-2",
+                "sourceIPAddress": "192.158.1.38",
+                "userAgent": "aws-cli/2.17.6 md/awscrt#0.20.11 ua/2.0 os/macos#23.4.0 md/arch#x86_64 lang/python#3.11.8 md/pyimpl#CPython cfg/retry-mode#standard md/installer#exe md/prompt#off md/command#payment-cryptography-data.generate-card-validation-data",
+                "requestParameters": <span>{</span>
+                    "key_identifier": "arn:aws:payment-cryptography:us-east-2:111122223333:key/5rplquuwozodpwsp",
+                    "primary_account_number": "*** Sensitive Data Redacted ***",
+                    "generation_attributes": <span>{</span>
+                        "CardVerificationValue2": <span>{</span>
+                            "card_expiry_date": "*** Sensitive Data Redacted ***"
+                        }
+                    }
+                },
+                "responseElements": null,
+                "requestID": "f2a99da8-91e2-47a9-b9d2-1706e733991e",
+                "eventID": "e4eb3785-ac6a-4589-97a1-babdd3d4dd95",
+                "readOnly": true,
+                "resources": [
+                    <span>{</span>
+                        "accountId": "111122223333",
+                        "type": "AWS::PaymentCryptography::Key",
+                        "ARN": "arn:aws:payment-cryptography:us-east-2:111122223333:key/5rplquuwozodpwsp"
+                    }
+                ],
+                "eventType": "AwsApiCall",
+                "managementEvent": false,
+                "recipientAccountId": "111122223333",
+                "eventCategory": "Data",
+                "tlsDetails": <span>{</span>
+                    "tlsVersion": "TLSv1.3",
+                    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+                    "clientProvidedHostHeader": "dataplane.payment-cryptography.us-east-2.amazonaws.com"
+                }
+            }
+        ]
+    }</code>
       </code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>

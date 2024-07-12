@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/efs/latest/ug/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Amazon EFS is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in Amazon EFS. CloudTrail captures all API calls for Amazon EFS as events, including calls from the Amazon EFS console and from code calls to Amazon EFS API operations." name="description"/>
+  <meta content="Use AWS CloudTrail to record actions taken by a user, role, or an AWS service in Amazon EFS. CloudTrail captures all API calls for Amazon EFS as events. Learn about the information that CloudTrail collects for Amazon EFS." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon Elastic File System" name="product"/>
   <meta content="User Guide" name="guide"/>
@@ -84,7 +84,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=EFS&amp;topic_url=https://docs.aws.amazon.com/en_us/efs/latest/ug/logging-using-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/efs/latest/ug/logging-using-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/efs/latest/ug/logging-using-cloudtrail.html" name="feedback-no"/>
-        <meta content="EFS,Elastic File System,elastic,storage service,monitoring,monitor performance,measure,log,logging API calls,AWS CloudTrail,history,event,trail,entries,entry,identity,service-linked roles,authentication,NFS client,encryption,at rest" name="keywords"/>
+        <meta content="EFS,Elastic File System,elastic,storage service,monitor performance,measure usage,logging API calls,CloudTrail,logging entries service-linked roles,log entries for authentication,NFS client,log at rest" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -204,9 +204,9 @@
              Event history
             </b>
             . You can view, search, and download recent events in your
-   AWS account. For more information, see
+    AWS account. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing Events with CloudTrail Event History
+             Working with CloudTrail Event history
             </a>
             .
            </p>
@@ -226,35 +226,35 @@
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for Creating
-      a Trail
+                Creating
+      a trail for your AWS account
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
-                CloudTrail Supported Services and Integrations
+                AWS service integrations with CloudTrail logs
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
                 Configuring Amazon SNS
-      Notifications for CloudTrail
+      notifications for CloudTrail
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail Log Files from Multiple Regions
+                Receiving CloudTrail log files from multiple Regions
                </a>
                and
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail Log
-      Files from Multiple Accounts
+                Receiving CloudTrail log
+      files from multiple accounts
                </a>
               </p>
              </li>
@@ -305,10 +305,10 @@
             </ul>
            </div>
            <p>
-            For more information, see the
+            For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
              CloudTrail userIdentity
-   Element
+   element
             </a>
             in the
             <em>
@@ -681,14 +681,14 @@
             Amazon EFS gives you the option of using encryption at rest, encryption in transit, or both, for
    your file systems. For more information, see
             <a href="./encryption.html">
-             Data encryption in Amazon EFS
+             Encrypting data in Amazon EFS
             </a>
             .
            </p>
            <p>
             Amazon EFS sends
-            <a href="https://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">
-             encryption context
+            <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context">
+             Encryption context
             </a>
             when making AWS KMS API requests to generate data keys and decrypt Amazon EFS data. The file system ID
    is the encryption context for all file systems that are encrypted at rest. In the

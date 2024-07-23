@@ -377,7 +377,7 @@
             .
            </p>
            <p>
-            With CloudTrail, you can use advanced event selectors to decide which AWS Payment Cryptography API
+            With CloudTrail, you must use advanced event selectors to decide which AWS Payment Cryptography API
     activities are logged and recorded. To log AWS Payment Cryptography dataplane events, you must include the
     resource type
             <code class="code">
@@ -420,7 +420,7 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              You can select to monitor both key and alias-based events.  We recommend subscribing to either key or key AND alias to ensure that you receive all applicable events.
+              To subscribe to AWS Payment Cryptography data events, you must utilize advanced event selectors.  We recommend subscribing to key and alias events to ensure that you receive all events.
              </p>
             </div>
            </div>
@@ -568,7 +568,7 @@
         TlsDetails: <span>{</span>
           cipherSuite=TLS_AES_128_GCM_SHA256, 
           tlsVersion=TLSv1.3, 
-          clientProvidedHostHeader=pdx80.controlplane.paymentcryptography.us-west-2.amazonaws.com
+          clientProvidedHostHeader=controlplane.paymentcryptography.us-west-2.amazonaws.com
         }
       }, 
     requestParameters=CreateKeyInput (
@@ -626,17 +626,17 @@
       sourceIPAddress=192.158.1.38, 
         userIdentity=<span>{</span>
           UserIdentity: <span>{</span>
-            arn=arn:aws:sts::111122223333:assumed-role/TestAssumeRole-us-west-2-PDX80/ControlPlane-IntegTest-68211a2a-3e9d-42b7-86ac-c682520e0410, 
+            arn=arn:aws:sts::111122223333:assumed-role/TestAssumeRole-us-west-2/ControlPlane-IntegTest-68211a2a-3e9d-42b7-86ac-c682520e0410, 
             invokedBy=null, 
             accessKeyId=TESTXECZ5U2ZULLHHMJG, 
             type=AssumedRole, 
             sessionContext=<span>{</span>
               SessionContext: <span>{</span>
                 sessionIssuer=<span>{</span>
-                  SessionIssuer: <span>{</span>arn=arn:aws:iam::111122223333:role/TestAssumeRole-us-west-2-PDX80, 
+                  SessionIssuer: <span>{</span>arn=arn:aws:iam::111122223333:role/TestAssumeRole-us-west-2, 
                   type=Role, 
                   accountId=111122223333, 
-                  userName=TestAssumeRole-us-west-2-PDX80, 
+                  userName=TestAssumeRole-us-west-2, 
                   principalId=TESTXECZ5U9M4LGF2N6Y5}
                 }, 
                 attributes=<span>{</span>

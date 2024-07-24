@@ -152,7 +152,10 @@
            CloudWatch Internet Monitor in CloudTrail
           </a>
           <a href="#cw_synthetics_info_in_ct">
-           CloudWatch Synthetics information in CloudTrail
+           Log CloudWatch Synthetics actions in CloudTrail
+          </a>
+          <a href="#RUM-CloudTrail">
+           Log CloudWatch RUM actions in CloudTrail
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -169,7 +172,7 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon CloudWatch and CloudWatch Synthetics are integrated with AWS CloudTrail, a service that provides a record
+            Amazon CloudWatch, CloudWatch Synthetics, CloudWatch RUM, and CloudWatch Internet Montitor are integrated with AWS CloudTrail, a service that provides a record
         of actions taken by a user, role, or an AWS service. CloudTrail captures API calls made by or on
         behalf of your AWS account. The captured calls include calls from the console and code calls
         to API operations.
@@ -322,7 +325,12 @@
              </li>
              <li>
               <a href="#cw_synthetics_info_in_ct">
-               CloudWatch Synthetics information in CloudTrail
+               Log CloudWatch Synthetics actions in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#RUM-CloudTrail">
+               Log CloudWatch RUM actions in CloudTrail
               </a>
              </li>
             </ul>
@@ -1013,7 +1021,7 @@
         "eventCategory": "Management"
     }</code></pre>
            <h2 id="cw_synthetics_info_in_ct">
-            CloudWatch Synthetics information in CloudTrail
+            Log CloudWatch Synthetics actions in CloudTrail
            </h2>
            <p>
             CloudWatch Synthetics supports logging the following actions as events in CloudTrail log files:
@@ -1264,6 +1272,321 @@
     "readOnly": true,
     "eventType": "AwsApiCall",
     "recipientAccountId": "111122223333"
+}</code></pre>
+           <h2 id="RUM-CloudTrail">
+            Log CloudWatch RUM actions in CloudTrail
+           </h2>
+           <p>
+            CloudWatch RUM supports logging the following actions as events in CloudTrail log files:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_BatchCreateRumMetricDefinitions.html">
+                BatchCreateRumMetricDefinitions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_BatchDeleteRumMetricDefinitions.html">
+                BatchDeleteRumMetricDefinitions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_BatchGetRumMetricDefinitions.html">
+                BatchGetRumMetricDefinitions
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_CreateAppMonitor.html">
+                CreateAppMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_DeleteAppMonitor.html">
+                DeleteAppMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_DeleteRumMetricsDestination.html">
+                DeleteRumMetricsDestination
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_GetAppMonitor.html">
+                GetAppMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_GetAppMonitorData.html">
+                GetAppMonitorData
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_ListAppMonitors.html">
+                ListAppMonitors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_ListRumMetricsDestinations.html">
+                ListRumMetricsDestinations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_ListTagsForResource.html">
+                ListTagsForResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumMetricsDestination.html">
+                PutRumMetricsDestination
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_TagResource.html">
+                TagResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_UntagResource.html">
+                UntagResource
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_UpdateAppMonitor.html">
+                UpdateAppMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_UpdateRumMetricDefinition.html">
+                UpdateRumMetricDefinition
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h3 id="Example-CloudWatch-RUM-entries-in-CloudTrail">
+            Example entries
+           </h3>
+           <p>
+            This section contains example CloudTrail entries for some CloudWatch RUM APIs.
+           </p>
+           <p>
+            The following example shows a CloudTrail
+            <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_CreateAppMonitor.html">
+             CreateAppMonitor
+            </a>
+            log entry.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "EXAMPLE_PRINCIPAL_ID",
+        "arn": "arn:aws:sts::777777777777:assumed-role/EXAMPLE",
+        "accountId": "777777777777",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EXAMPLE_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::777777777777:role/EXAMPLE",
+                "accountId": "777777777777",
+                "userName": "USERNAME_EXAMPLE"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2024-07-23T16:48:47Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2024-07-23T18:02:57Z",
+    "eventSource": "rum.amazonaws.com",
+    "eventName": "CreateAppMonitor",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "54.240.198.39",
+    "userAgent": "aws-internal/3 aws-sdk-java/1.12.641 Linux/5.10.219-186.866.amzn2int.x86_64 OpenJDK_64-Bit_Server_VM/25.402-b08 java/1.8.0_402 vendor/Oracle_Corporation cfg/retry-mode/standard",
+    "requestParameters": <span>{</span>
+        "CustomEvents": <span>{</span>
+            "Status": "ENABLED"
+        },
+        "CwLogEnabled": true,
+        "Domain": "*.github.io",
+        "AppMonitorConfiguration": <span>{</span>
+            "SessionSampleRate": 1,
+            "IncludedPages": [],
+            "ExcludedPages": [],
+            "Telemetries": [
+                "performance",
+                "errors",
+                "http"
+            ],
+            "EnableXRay": false,
+            "AllowCookies": true,
+            "IdentityPoolId": "us-east-1:c81b9a1c-a5c9-4de5-8585-eb8df04e66f0"
+        },
+        "Tags": <span>{</span>
+            "TestAppMonitor": ""
+        },
+        "Name": "TestAppMonitor"
+    },
+    "responseElements": <span>{</span>
+        "Id": "65a8cc63-4ae8-4f2c-b5fc-4a54ef43af51"
+    },
+    "requestID": "cf7c30ad-25d3-4274-bab1-39c95a558007",
+    "eventID": "2d43cc69-7f89-4f1a-95ae-0fc7e9b9fb3b",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "777777777777",
+    "eventCategory": "Management"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail
+            <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumMetricsDestination.html">
+             PutRumMetricsDestination
+            </a>
+            log entry.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "EXAMPLE_PRINCIPAL_ID",
+        "arn": "arn:aws:sts::777777777777:assumed-role/EXAMPLE",
+        "accountId": "777777777777",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EXAMPLE_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::777777777777:role/EXAMPLE",
+                "accountId": "777777777777",
+                "userName": "USERNAME_EXAMPLE"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2024-07-23T16:48:47Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2024-07-23T18:22:22Z",
+    "eventSource": "rum.amazonaws.com",
+    "eventName": "PutRumMetricsDestination",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "52.94.133.142",
+    "userAgent": "aws-cli/2.13.25 Python/3.11.5 Linux/5.10.219-186.866.amzn2int.x86_64 exe/x86_64.amzn.2 prompt/off command/rum.put-rum-metrics-destination",
+    "requestParameters": <span>{</span>
+        "Destination": "CloudWatch",
+        "AppMonitorName": "TestAppMonitor"
+    },
+    "responseElements": null,
+    "requestID": "9b03fcce-b3a2-44fc-b771-900e1702998a",
+    "eventID": "6250f9b7-0505-4f96-9668-feb64f82de5b",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "777777777777",
+    "eventCategory": "Management"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail
+            <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_BatchCreateRumMetricsDefinitions.html">
+             BatchCreateRumMetricsDefinitions
+            </a>
+            log entry.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "EXAMPLE_PRINCIPAL_ID",
+        "arn": "arn:aws:sts::777777777777:assumed-role/EXAMPLE",
+        "accountId": "777777777777",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EXAMPLE_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::777777777777:role/EXAMPLE",
+                "accountId": "777777777777",
+                "userName": "USERNAME_EXAMPLE"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2024-07-23T16:48:47Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2024-07-23T18:23:11Z",
+    "eventSource": "rum.amazonaws.com",
+    "eventName": "BatchCreateRumMetricDefinitions",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "52.94.133.142",
+    "userAgent": "aws-cli/2.13.25 Python/3.11.5 Linux/5.10.219-186.866.amzn2int.x86_64 exe/x86_64.amzn.2 prompt/off command/rum.batch-create-rum-metric-definitions",
+    "requestParameters": <span>{</span>
+        "Destination": "CloudWatch",
+        "MetricDefinitions": [
+            <span>{</span>
+                "Name": "NavigationToleratedTransaction",
+                "Namespace": "AWS/RUM",
+                "DimensionKeys": <span>{</span>
+                    "metadata.browserName": "BrowserName"
+                },
+                "EventPattern": "<span>{</span>\"metadata\":<span>{</span>\"browserName\":[\"Chrome\"]},\"event_type\":[\"com.amazon.rum.performance_navigation_event\"],\"event_details\": <span>{</span>\"duration\": [<span>{</span>\"numeric\": [\"&lt;=\",2000,\"&lt;\",8000]}]}}"
+            },
+            <span>{</span>
+                "Name": "HttpErrorCount",
+                "DimensionKeys": <span>{</span>
+                    "metadata.browserName": "BrowserName",
+                    "metadata.countryCode": "CountryCode"
+                },
+                "EventPattern": "<span>{</span>\"metadata\":<span>{</span>\"browserName\":[\"Chrome\"], \"countryCode\":[\"US\"]},\"event_type\":[\"com.amazon.rum.http_event\"]}"
+            }
+        ],
+        "AppMonitorName": "TestAppMonitor"
+    },
+    "responseElements": <span>{</span>
+        "Errors": [],
+        "MetricDefinitions": []
+    },
+    "requestID": "b14c5eda-f107-48e5-afae-1ac20d0962a8",
+    "eventID": "001b55c6-1de1-48c0-a236-31096dffe249",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "777777777777",
+    "eventCategory": "Management"
 }</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>

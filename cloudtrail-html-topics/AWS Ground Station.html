@@ -3,44 +3,44 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging AWS Ground Station API Calls with AWS CloudTrail - AWS Ground Station
+   Logging AWS Ground Station API calls with AWS CloudTrail - AWS Ground Station
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
-  <meta content="logging-using-cloudtrail" name="target_state"/>
-  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <meta content="monitoring.cloudtrail" name="target_state"/>
+  <meta content="monitoring.cloudtrail" name="default_state"/>
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
-  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/monitoring.cloudtrail.html" rel="canonical"/>
   <meta content="Learn about logging AWS Ground Station with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="AWS Ground Station" name="product"/>
   <meta content="User Guide" name="guide"/>
-  <meta content="Describes the conceptual framework of AWS Ground Station and includes instructions on managing satellite operations with the AWS Ground Station console." name="abstract"/>
+  <meta content="Provides a conceptual overview of AWS Ground Station and includes instructions for using the various features, and managing satellite operations." name="abstract"/>
   <meta content="en_us" name="guide-locale"/>
   <meta content="toc-contents.json" name="tocs"/>
-  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/logging-using-cloudtrail.html" rel="canonical"/>
-  <link href="https://docs.aws.amazon.com/id_id/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/id_id/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_cn/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_tw/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/monitoring.cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ground-station/latest/ug/monitoring.cloudtrail.html" hreflang="x-default" rel="alternative"/>
   <meta content="Ground Station" name="feedback-item"/>
   <meta content="AWS Ground Station" name="this_doc_product"/>
   <meta content="User Guide" name="this_doc_guide"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'ground-station'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="User Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging AWS Ground Station API Calls with AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Logging AWS Ground Station API calls with AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,12 +76,13 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging AWS Ground Station API Calls with AWS CloudTrail - AWS Ground Station
+         Logging AWS Ground Station API calls with AWS CloudTrail - AWS Ground Station
         </title>
-        <meta content="/pdfs/ground-station/latest/ug/groundstation-ug.pdf#logging-using-cloudtrail" name="pdf"/>
-        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Ground%20Station&amp;topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/logging-using-cloudtrail.html" name="feedback"/>
-        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/logging-using-cloudtrail.html" name="feedback-yes"/>
-        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="/pdfs/ground-station/latest/ug/groundstation-ug.pdf#monitoring.cloudtrail" name="pdf"/>
+        <meta content="ground-station.rss" name="rss"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Ground%20Station&amp;topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/monitoring.cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/monitoring.cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/monitoring.cloudtrail.html" name="feedback-no"/>
         <meta content="Ground Station,AWS Ground Station,satellite,antenna,data" name="keywords"/>
         <script type="application/ld+json">
          {
@@ -109,14 +110,14 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Monitoring AWS Ground Station",
-        "item" : "https://docs.aws.amazon.com/ground-station/latest/ug/monitoring-overview.html"
+        "name" : "Monitoring",
+        "item" : "https://docs.aws.amazon.com/ground-station/latest/ug/monitoring.html"
       },
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "Logging AWS Ground Station API Calls with AWS CloudTrail",
-        "item" : "https://docs.aws.amazon.com/ground-station/latest/ug/monitoring-overview.html"
+        "name" : "Logging AWS Ground Station API calls with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/ground-station/latest/ug/monitoring.html"
       }
     ]
 }
@@ -125,7 +126,7 @@
        <body>
         <div id="main">
          <div style="display: none">
-          <a href="/pdfs/ground-station/latest/ug/groundstation-ug.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          <a href="/pdfs/ground-station/latest/ug/groundstation-ug.pdf#monitoring.cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
           </a>
          </div>
          <div class="breadcrumb" id="breadcrumbs">
@@ -138,15 +139,15 @@
           <a href="/ground-station/index.html">
            AWS Ground Station
           </a>
-          <a href="what-is-aws-ground-station.html">
+          <a href="what-is.html">
            User Guide
           </a>
          </div>
          <div id="page-toc-src">
-          <a href="#service-name-info-in-cloudtrail">
+          <a href="#monitoring.cloudtrail.service-name-info-in-cloudtrail">
            AWS Ground Station Information in CloudTrail
           </a>
-          <a href="#understanding-service-name-entries">
+          <a href="#monitoring.cloudtrail.understanding-service-name-entries">
            Understanding AWS Ground Station Log File
     Entries
           </a>
@@ -155,8 +156,8 @@
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
-           <h1 class="topictitle" id="logging-using-cloudtrail">
-            Logging AWS Ground Station API Calls with AWS CloudTrail
+           <h1 class="topictitle" id="monitoring.cloudtrail">
+            Logging AWS Ground Station API calls with AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -186,7 +187,7 @@
             </a>
             .
            </p>
-           <h2 id="service-name-info-in-cloudtrail">
+           <h2 id="monitoring.cloudtrail.service-name-info-in-cloudtrail">
             AWS Ground Station Information in CloudTrail
            </h2>
            <p>
@@ -257,7 +258,7 @@
            </div>
            <p>
             All AWS Ground Station actions are logged by CloudTrail and are documented in the
-            <a href="https://docs.aws.amazon.com/ground-station/latest/APIReference/Welcome.html">
+            <a href="Welcome.html" rel="noopener noreferrer" target="_blank">
              AWS Ground Station API Reference
             </a>
             . For example, calls to the
@@ -307,7 +308,7 @@
             </a>
             .
            </p>
-           <h2 id="understanding-service-name-entries">
+           <h2 id="monitoring.cloudtrail.understanding-service-name-entries">
             Understanding AWS Ground Station Log File
     Entries
            </h2>
@@ -335,7 +336,7 @@
     "eventVersion": "1.05",
     "userIdentity": <span>{</span>
         "type": "IAMUser",
-        "principalId": "EX_PRINICIPLE_ID",
+        "principalId": "EX_PRINCIPAL_ID",
         "arn": "arn:aws:sts::123456789012:user/Alice",
         "accountId": "123456789012",
         "accessKeyId": "EXAMPLE_KEY_ID",
@@ -346,7 +347,7 @@
             },
             "sessionIssuer": <span>{</span>
                 "type": "Role",
-                "principalId": "EX_PRINICIPLE_ID",
+                "principalId": "EX_PRINCIPAL_ID",
                 "arn": "arn:aws:iam::123456789012:role/Alice",
                 "accountId": "123456789012",
                 "userName": "Alice"
@@ -358,7 +359,7 @@
     "eventName": "ReserveContact",
     "awsRegion": "us-east-2",
     "sourceIPAddress": "127.0.0.1",
-    "userAgent": "Coral/Jakarta",
+    "userAgent": "Mozilla/5.0 Gecko/20100101 Firefox/123.0",
     "requestParameters": <span>{</span>
         "satelliteArn": "arn:aws:groundstation::123456789012:satellite/11111111-2222-3333-4444-555555555555",
         "groundStation": "Ohio 1",
@@ -407,10 +408,10 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./automating-events.html" id="previous">
+            <div accesskey="p" class="prev-link" href="./monitoring.automating-events.html" id="previous">
              Automating with Events
             </div>
-            <div accesskey="n" class="next-link" href="./metrics.html" id="next">
+            <div accesskey="n" class="next-link" href="./monitoring.metrics.html" id="next">
              Metrics with Amazon CloudWatch
             </div>
            </div>
@@ -430,7 +431,7 @@
             If you've got a moment, please tell us what we did right so we can do more of it.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Ground Station&amp;topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Ground Station&amp;topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/monitoring.cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>
@@ -447,7 +448,7 @@
             If you've got a moment, please tell us how we can make the documentation better.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Ground Station&amp;topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Ground Station&amp;topic_url=https://docs.aws.amazon.com/en_us/ground-station/latest/ug/monitoring.cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>

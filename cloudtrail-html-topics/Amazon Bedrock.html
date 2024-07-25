@@ -152,8 +152,7 @@
            Amazon Bedrock data events in CloudTrail
           </a>
           <a href="#bedrock-management-events-cloudtrail">
-           Amazon Bedrock management events in
-        CloudTrail
+           Amazon Bedrock management events in CloudTrail
           </a>
           <a href="#understanding-bedrock-entries">
            Understanding Amazon Bedrock log file entries
@@ -302,8 +301,7 @@
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
              Data events
             </a>
-            provide information about the resource operations performed on or in a resource (for example, reading or writing to an Amazon S3 object). These are also 
-      known as data plane operations. Data events are often high-volume activities that CloudTrail doesnât log by default.
+            provide information about the resource operations performed on or in a resource (for example, reading or writing to an Amazon S3 object). These are also known as data plane operations. Data events are often high-volume activities that CloudTrail doesnât log by default.
            </p>
            <p>
             Amazon Bedrock  logs
@@ -403,8 +401,7 @@
             </b>
             for the
             <b>
-             Data
-      event type
+             Data event type
             </b>
             . You can additionally filter on the
             <code class="code">
@@ -414,11 +411,9 @@
             <code class="code">
              resources.ARN
             </code>
-            fields by choosing a custom log selector template. For more
-      information, see
+            fields by choosing a custom log selector template. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
-             Logging
-        data events with the AWS Management Console
+             Logging data events with the AWS Management Console
             </a>
             .
            </p>
@@ -454,8 +449,7 @@
             .
            </p>
            <p>
-            The following example shows how to configure a trail to log all
-          Amazon Bedrock data events for all Amazon Bedrock resource types in the AWS CLI.
+            The following example shows how to configure a trail to log all Amazon Bedrock data events for all Amazon Bedrock resource types in the AWS CLI.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="bash">aws cloudtrail put-event-selectors --trail-name <code class="replaceable">trailName</code> \
 --advanced-event-selectors \
@@ -509,21 +503,82 @@
             .
            </p>
            <h2 id="bedrock-management-events-cloudtrail">
-            Amazon Bedrock management events in
-        CloudTrail
+            Amazon Bedrock management events in CloudTrail
            </h2>
            <p>
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
              Management events
             </a>
-            provide information about management operations that are
-      performed on resources in your AWS account. These are also known as control plane
-      operations. CloudTrail logs management event API operations by default.
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. CloudTrail logs management event API operations by default.
+           </p>
+           <p>
+            Amazon Bedrock  logs
+            <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_Operations_Amazon_Bedrock_Runtime.html">
+             Amazon Bedrock Runtime API operations
+            </a>
+            (
+            <code class="code">
+             InvokeModel
+            </code>
+            ,
+            <code class="code">
+             InvokeModelWithResponseStream
+            </code>
+            ,
+            <code class="code">
+             Converse
+            </code>
+            ,
+      and
+            <code class="code">
+             ConverseStream
+            </code>
+            ) as
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             management events
+            </a>
+            .
            </p>
            <p>
             Amazon Bedrock logs the remainder of Amazon Bedrock API operations as management events. For a list of the
       Amazon Bedrock API operations that Amazon Bedrock logs to CloudTrail, see the following pages in the Amazon Bedrock API reference.
            </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_Operations_Amazon_Bedrock.html">
+                Amazon Bedrock
+               </a>
+               .
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_Operations_Agents_for_Amazon_Bedrock.html">
+                Agents for Amazon Bedrock
+               </a>
+               .
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_Operations_Agents_for_Amazon_Bedrock_Runtime.html">
+                Agents for Amazon Bedrock Runtime
+               </a>
+               .
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_Operations_Amazon_Bedrock_Runtime.html">
+                Amazon Bedrock Runtime
+               </a>
+               .
+              </p>
+             </li>
+            </ul>
+           </div>
            <p>
             All
             <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_Operations_Amazon_Bedrock.html">

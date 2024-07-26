@@ -157,6 +157,10 @@
           <a href="#RUM-CloudTrail">
            CloudWatch RUM information in CloudTrail
           </a>
+          <a href="#RUM-data-plane-events">
+           CloudWatch RUM data plane
+        events in CloudTrail
+          </a>
          </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
@@ -331,6 +335,12 @@
              <li>
               <a href="#RUM-CloudTrail">
                CloudWatch RUM information in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#RUM-data-plane-events">
+               CloudWatch RUM data plane
+        events in CloudTrail
               </a>
              </li>
             </ul>
@@ -596,7 +606,7 @@
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
              Data events
             </a>
-            , also know as data plane operations, give you insight into the resource operations performed 
+            , also known as data plane operations, give you insight into the resource operations performed 
             on or within a resource. Data events are often high-volume activities.
            </p>
            <p>
@@ -1587,6 +1597,131 @@
     "managementEvent": true,
     "recipientAccountId": "777777777777",
     "eventCategory": "Management"
+}</code></pre>
+           <h2 id="RUM-data-plane-events">
+            CloudWatch RUM data plane
+        events in CloudTrail
+           </h2>
+           <p>
+            CloudTrail can capture API activities related to the CloudWatch RUM data plane operation
+            <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumEvents.html">
+             PutRumEvents
+            </a>
+            .
+           </p>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            , also known as data plane operations, give you insight into the resource operations performed 
+            on or within a resource. Data events are often high-volume activities.
+           </p>
+           <p>
+            To enable logging of the
+            <b>
+             PutRumEvents
+            </b>
+            data events in CloudTrail files, you'll need to enable 
+            the logging of data plane API activity in CloudTrail. See
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+             Logging data events for trails
+            </a>
+            for more information.
+           </p>
+           <p>
+            Data plane events can be filtered by resource type. Because there are additional costs for using 
+            data events in CloudTrail, filtering by resource allows you to have more control over what you log and pay for.
+           </p>
+           <p>
+            Using the information that CloudTrail collects, you can identify a specific request to the CloudWatch RUM
+            <b>
+             PutRumEvents
+            </b>
+            API, the IP address of the requester, the requester's identity, and the date and time of the 
+            request. Logging the
+            <b>
+             PutRumEvents
+            </b>
+            API using CloudTrail helps you enable operational and 
+            risk auditing, governance, and compliance of your AWS account.
+           </p>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <a href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumEvents.html">
+             PutRumEvents
+            </a>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+ "Records": [
+     <span>{</span>
+         "eventVersion": "1.09",
+         "userIdentity": <span>{</span>
+             "type": "AssumedRole",
+             "principalId": "EXAMPLE_PRINCIPAL_ID",
+             "arn": "arn:aws:sts::777777777777:assumed-role/EXAMPLE",
+             "accountId": "777777777777",
+             "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+             "sessionContext": <span>{</span>
+                 "sessionIssuer": <span>{</span>
+                     "type": "Role",
+                     "principalId": "EXAMPLE_PRINCIPAL_ID",
+                     "arn": "arn:aws:iam::777777777777:role/EXAMPLE",
+                     "accountId": "777777777777",
+                     "userName": "USERNAME_EXAMPLE"
+                 },
+                 "attributes": <span>{</span>
+                     "creationDate": "2024-05-16T20:32:39Z",
+                     "mfaAuthenticated": "false"
+                 }
+             },
+             "invokedBy": "AWS Internal"
+         },
+         "eventTime": "2024-05-16T20:32:42Z",
+         "eventSource": "rum.amazonaws.com",
+         "eventName": "PutRumEvents",
+         "awsRegion": "us-east-1",
+         "sourceIPAddress": "AWS Internal",
+         "userAgent": "AWS Internal",
+         "requestParameters": <span>{</span>
+             "id": "73ddbd81-1234-5678-b246-123456789",
+             "batchId": "123456-3dd0-4ada-b246-123456789",
+             "appMonitorDetails": <span>{</span>
+                 "name": "APP-MONITOR-NAME",
+                 "id": "123456-3dd0-4ada-b246-123456789",
+                 "version": "1.0.0"
+             },
+             "userDetails": <span>{</span>
+                 "userId": "73ddbd81-1111-9999-b246-123456789",
+                 "sessionId": "a1b2c3456-15db-4f87-6789-123456789"
+             },
+             "rumEvents": [
+                 <span>{</span>
+                     "id": "201f367a-15db-1234-94a4-123456789",
+                     "timestamp": "May 16, 2024, 8:32:20 PM",
+                     "type": "com.amazon.rum.dom_event",
+                     "metadata": "<span>{</span>}",
+                     "details": "<span>{</span>}"
+                 }
+             ]
+         },
+         "responseElements": null,
+         "requestID": "201ed5f3-15db-4f87-94a4-123456789",
+         "eventID": "73ddbd81-3dd0-4ada-b246-123456789",
+         "readOnly": false,
+         "resources": [
+             <span>{</span>
+                 "accountId": "777777777777",
+                 "type": "AWS::RUM::AppMonitor",
+                 "ARN": "arn:aws:rum:us-east-1:777777777777:appmonitor/APPMONITOR_NAME_EXAMPLE"
+             }
+         ],
+         "eventType": "AwsApiCall",
+         "managementEvent": false,
+         "recipientAccountId": "777777777777",
+         "eventCategory": "Data"
+     }
+ ]
 }</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>

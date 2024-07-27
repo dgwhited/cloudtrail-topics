@@ -160,7 +160,7 @@
            </awsdocs-language-banner>
            <awsui-alert class="awsdocs-page-banner awsui-util-mb-l">
             <p>
-             Amazon Data Firehose was previously known as Amazon Kinesis Data Firehose
+             Delivering Amazon Data Firehose streams to Apache Iceberg Tables in Amazon S3 is in preview and is subject to change.
             </p>
            </awsui-alert>
            <h1 class="topictitle" id="monitoring-using-cloudtrail">
@@ -381,11 +381,11 @@
            </h2>
            <p>
             A trail is a configuration that enables delivery of events as log files to an
-                    Amazon S3 bucket that you specify. CloudTrail log files contain one or more log entries. An
-                    event represents a single request from any source and includes information about
-                    the requested action, the date and time of the action, request parameters, and
-                    so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so
-                    they don't appear in any specific order.
+                Amazon S3 bucket that you specify. CloudTrail log files contain one or more log entries. An
+                event represents a single request from any source and includes information about the
+                requested action, the date and time of the action, request parameters, and so on.
+                CloudTrail log files aren't an ordered stack trace of the public API calls, so they don't
+                appear in any specific order.
            </p>
            <p>
             The following example shows a CloudTrail log entry that demonstrates the
@@ -434,7 +434,7 @@
                 "s3Configuration":<span>{</span>
                     "compressionFormat":"GZIP",
                     "prefix":"prefix",
-                    "bucketARN":"arn:aws:s3:::firehose-cloudtrail-test-bucket",
+                    "bucketARN":"arn:aws:s3:::firehose-cloudtrail-DOC-EXAMPLE-BUCKET",
                     "roleARN":"arn:aws:iam::111122223333:role/Firehose",
                     "bufferingHints":<span>{</span>
                         "sizeInMBs":3,
@@ -544,7 +544,7 @@
                     "dataTableName":"dataTable"
                 },
                 "s3Update":<span>{</span>
-                    "bucketARN":"arn:aws:s3:::firehose-cloudtrail-test-bucket-update",
+                    "bucketARN":"arn:aws:s3:::firehose-cloudtrail-DOC-EXAMPLE-BUCKET-update",
                     "roleARN":"arn:aws:iam::111122223333:role/Firehose",
                     "compressionFormat":"GZIP",
                     "bufferingHints":<span>{</span>
@@ -556,7 +556,7 @@
                             "aWSKMSKeyARN":"arn:aws:kms:us-east-1:key"
                         }
                     },
-                    "prefix":"arn:aws:s3:::firehose-cloudtrail-test-bucket"
+                    "prefix":"arn:aws:s3:::firehose-cloudtrail-DOC-EXAMPLE-BUCKET"
                 }
             }
         },

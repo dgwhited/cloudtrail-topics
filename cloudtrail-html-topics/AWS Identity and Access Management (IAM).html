@@ -885,9 +885,9 @@
             </code>
             in account 777788889999 calls the
         AWS STS
-            <code class="code">
+            <a href="https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html">
              AssumeRole
-            </code>
+            </a>
             action to assume the role
             <code class="code">
              EC2-dev
@@ -1176,9 +1176,9 @@
            </h3>
            <p>
             The following example shows a CloudTrail log entry for a request made for the AWS STS
-            <code class="code">
+            <a href="https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithSAML.html">
              AssumeRoleWithSAML
-            </code>
+            </a>
             action. The request includes the SAML attributes
             <code class="code">
              CostCenter
@@ -1299,9 +1299,9 @@
            </h3>
            <p>
             The following example shows a CloudTrail log entry for a request made for the AWS STS
-            <code class="code">
+            <a href="https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html">
              AssumeRoleWithWebIdentity
-            </code>
+            </a>
             action. The request includes the attributes
             <code class="code">
              CostCenter
@@ -1310,80 +1310,123 @@
             <code class="code">
              Project
             </code>
-            that are passed through the identity
-        provider token as
+            that are passed through the OpenID
+        Connect (OIDC) identity provider (IdP) token as
             <a href="./id_session-tags.html">
-             session tags
+             session
+          tags
             </a>
-            . Those tags are set as
-        transitive so that they
+            . Those tags are set as transitive so that they
             <a href="./id_session-tags.html#id_session-tags_role-chaining">
-             persist in role
-          chaining
+             persist in role chaining
             </a>
-            . The request includes the
+            . The request
+        includes the
             <code class="code">
              sourceIdentity
             </code>
-            attribute from the
-        identity provider token. If someone uses the resulting role session credentials to assume
-        another role, this source identity persists.
+            attribute from the identity provider token. If
+        someone uses the resulting role session credentials to assume another role, this source
+        identity persists.
+           </p>
+           <p>
+            The CloudTrail log entry also contains an
+            <code class="code">
+             additionalEventData
+            </code>
+            field with an
+            <code class="code">
+             identityProviderConnectionVerificationMethod
+            </code>
+            attribute. This attribute
+        indicates the method AWS used to verify the connection with the OIDC provider. The
+        attribute value will be either
+            <code class="code">
+             IAMTrustStore
+            </code>
+            or
+            <code class="code">
+             Thumbprint
+            </code>
+            . The
+            <code class="code">
+             IAMTrustStore
+            </code>
+            value indicates that AWS successfully verified the connection
+        with the OIDC IdP using our library of trusted root certificate authorities (CAs). The
+            <code class="code">
+             Thumbprint
+            </code>
+            value indicates that AWS used a certificate thumbprint set in
+        the IdP configuration to verify the OIDC IdP server certificate.
            </p>
            <pre class="programlisting"><div class="code-btn-container"></div><code class="json"><span>{</span>
-  "eventVersion": "1.05",
+  "eventVersion": "1.08",
   "userIdentity": <span>{</span>
     "type": "WebIdentityUser",
-    "principalId": "accounts.google.com:<code class="replaceable">&lt;id-of-application&gt;</code>.apps.googleusercontent.com:<code class="replaceable">&lt;id-of-user&gt;</code>",
+    "principalId": "arn:aws:iam::444455556666:oidc-provider/<code class="replaceable">&lt;issuer url of OIDC provider&gt;</code>:<code class="replaceable">&lt;id of application&gt;</code>:<code class="replaceable">&lt;id of user&gt;</code>",
     "userName": "<code class="replaceable">&lt;id of user&gt;</code>",
-    "identityProvider": "accounts.google.com"
+    "identityProvider": "arn:aws:iam::444455556666:oidc-provider/<code class="replaceable">&lt;issuer url of OIDC provider&gt;</code>"
   },
-  "eventTime": "2016-03-23T01:39:51Z",
+  "eventTime": "2024-07-09T15:41:37Z",
   "eventSource": "sts.amazonaws.com",
   "eventName": "AssumeRoleWithWebIdentity",
   "awsRegion": "us-east-2",
   "sourceIPAddress": "192.0.2.101",
-  "userAgent": "aws-cli/1.3.23 Python/2.7.6 Linux/2.6.18-164.el5",
+  "userAgent": "aws-cli/2.13.29 Python/3.11.6 Windows/10 exe/AMD64 prompt/off command/sts.assume-role-with-web-identity",
   "requestParameters": <span>{</span>
-    "sourceIdentity": "MyWebIdentityUser", 
-    "durationSeconds": 3600,
     "roleArn": "arn:aws:iam::444455556666:role/FederatedWebIdentityRole",
-    "roleSessionName": "MyAssignedRoleSessionName"
-        "principalTags": <span>{</span>
-            "CostCenter": "24680",
-            "Project": "Pegasus"
-        },
-        "transitiveTagKeys": [
-            "CostCenter",
-            "Project"
-        ],
+    "roleSessionName": "<code class="replaceable">&lt;assigned role session name&gt;</code>",
+    "sourceIdentity": "MyWebIdentityUser",
+    "durationSeconds": 3600,
+    "principalTags": <span>{</span>
+      "CostCenter": "24680",
+      "Project": "Pegasus"
+    },
+    "transitiveTagKeys": [
+      "CostCenter",
+      "Project"
+    ]
   },
   "responseElements": <span>{</span>
-    "provider": "accounts.google.com",
-    "subjectFromWebIdentityToken": "<code class="replaceable">&lt;id of user&gt;</code>",
-    "sourceIdentity": "MyWebIdentityUser",    
-    "audience": "<code class="replaceable">&lt;id of application&gt;</code>.apps.googleusercontent.com",
     "credentials": <span>{</span>
       "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
-      "expiration": "Mar 23, 2016, 2:39:51 AM",
-      "sessionToken": "<code class="replaceable">&lt;encoded session token blob&gt;</code>"
+      "sessionToken": "<code class="replaceable">&lt;encoded session token blob&gt;</code>",
+      "expiration": "Jul 9, 2024, 4:41:37 PM"
     },
+    "subjectFromWebIdentityToken": "<code class="replaceable">&lt;id of user&gt;</code>",
+    "sourceIdentity": "MyWebIdentityUser",
     "assumedRoleUser": <span>{</span>
-      "assumedRoleId": "AROACQRSTUVWRAOEXAMPLE:MyAssignedRoleSessionName",
-      "arn": "arn:aws:sts::444455556666:assumed-role/FederatedWebIdentityRole/MyAssignedRoleSessionName"
-    }
+      "assumedRoleId": "AROA123456789EXAMPLE:<code class="replaceable">&lt;assigned role session name&gt;</code>",
+      "arn": "arn:aws:sts::444455556666:assumed-role/FederatedWebIdentityRole/<code class="replaceable">&lt;assigned role session name&gt;</code>"
+    },
+    "provider": "arn:aws:iam::444455556666:oidc-provider/<code class="replaceable">&lt;issuer url of OIDC provider&gt;</code>",
+    "audience": "<code class="replaceable">&lt;id of application&gt;</code>"
   },
+  "additionalEventData": <span>{</span>
+    "identityProviderConnectionVerificationMethod": "IAMTrustStore"
+  },
+  "requestID": "aEXAMPLE-0b26-40df-8973-c7012EXAMPLE",
+  "eventID": "aEXAMPLE-ee29-4ac0-a0ed-3f5c5EXAMPLE",
+  "readOnly": true,
   "resources": [
     <span>{</span>
-      "ARN": "arn:aws:iam::444455556666:role/FederatedWebIdentityRole",
       "accountId": "444455556666",
-      "type": "AWS::IAM::Role" 
+      "type": "AWS::IAM::Role",
+      "ARN": "arn:aws:iam::444455556666:role/FederatedWebIdentityRole"
     }
   ],
-  "requestID": "6EXAMPLE-e595-11e5-b2c7-c974fEXAMPLE",
-  "eventID": "bEXAMPLE-0b30-4246-b28c-e3da3EXAMPLE",
   "eventType": "AwsApiCall",
-  "recipientAccountId": "444455556666"
-}</code></pre>
+  "managementEvent": true,
+  "recipientAccountId": "444455556666",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "sts.us-east-2.amazonaws.com"
+  }
+}
+</code></pre>
            <h2 id="cloudtrail-integration_examples-signin">
             Example sign-in events in CloudTrail
         log

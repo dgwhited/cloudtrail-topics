@@ -245,7 +245,7 @@
             If you enabled server-side encryption for your S3 bucket using AWS KMS-managed keys (SSE-KMS) with a customer managed key, 
                 add the following to the key policy for your KMS key so that Amazon MSK can write broker files to the bucket.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash (JSON)--><code class="JSON"><span>{</span>
   "Sid": "Allow Amazon MSK to use the key.",
   "Effect": "Allow",
   "Principal": <span>{</span>
@@ -315,7 +315,7 @@
                 pass to it a JSON structure like the following example. In this JSON, all three
                 destination types are optional.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash (JSON)--><code class="JSON"><span>{</span>
   "BrokerLogs": <span>{</span>
     "S3": <span>{</span>
       "Bucket": "ExampleBucketName",
@@ -633,7 +633,7 @@
             </code>
             Amazon MSK actions.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="JSON"><span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash (JSON)--><code class="JSON"><span>{</span>
   "Records": [
     <span>{</span>
       "eventVersion": "1.05",
@@ -699,7 +699,7 @@
             </code>
             action.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
     "type": "IAMUser",

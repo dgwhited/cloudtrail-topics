@@ -451,7 +451,7 @@
            <p>
             The following example shows how to configure a trail to log all Amazon Bedrock data events for all Amazon Bedrock resource types in the AWS CLI.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="bash">aws cloudtrail put-event-selectors --trail-name <code class="replaceable">trailName</code> \
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash (bash)--><code class="bash" data-source="content">aws cloudtrail put-event-selectors --trail-name <code class="replaceable">trailName</code> \
 --advanced-event-selectors \
 '[
   <span>{</span>
@@ -473,6 +473,13 @@
     "FieldSelectors": [
       <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
       <span>{</span> "Field": "resources.type", "Equals": ["AWS::Bedrock::FlowAlias"] }
+    ]
+  }
+  <span>{</span>
+    "Name": "Log all data events on a guardrail in Amazon Bedrock.",
+    "FieldSelectors": [
+      <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
+      <span>{</span> "Field": "resources.type", "Equals": ["AWS::Bedrock::Guardrail"] }
     ]
   }
 ]'</code></pre>
@@ -640,7 +647,7 @@
             </code>
             action.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json"><span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash (json)--><code class="json"><span>{</span>
     "eventVersion": "1.08",
     "userIdentity": <span>{</span>
         "type": "IAMUser",

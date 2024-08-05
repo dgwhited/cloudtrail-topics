@@ -687,7 +687,7 @@
             , as
         shown in the following example.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash ()--><code class=""><span>{</span>
     "ReplicationTasks": [
         <span>{</span>
             "ReplicationTaskIdentifier": "moveit2",
@@ -1926,14 +1926,14 @@
             For example, the following AWS CLI command shows the task log metadata in JSON
         format.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash ()--><code class="">
 $ aws dms describe-replication-instance-task-logs \
    --replication-instance-arn arn:aws:dms:us-east-1:237565436:rep:CDSFSFSFFFSSUFCAY
         </code></pre>
            <p>
             A sample response from the command is as follows.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash ()--><code class="">
 <span>{</span>
     "ReplicationInstanceTaskLogs": [
         <span>{</span>
@@ -1984,7 +1984,7 @@ $ aws dms describe-replication-instance-task-logs \
             </code>
             action.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash ()--><code class="">
 <span>{</span>
    "Logging": <span>{</span>
        "DeleteTaskLogs":true
@@ -2164,7 +2164,7 @@ $ aws dms describe-replication-instance-task-logs \
             </code>
             action.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json">
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash (json)--><code class="json">
     <span>{</span>
     "eventVersion": "1.05",
     "userIdentity": <span>{</span>
@@ -2478,7 +2478,7 @@ $ aws dms describe-replication-instance-task-logs \
            <p>
             This section contains log samples that include connection IDs.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">2023-02-22T10:09:29 [SOURCE_CAPTURE  ]I:  Capture record 1 to internal queue from Source  <span>{</span>operation:START_REGULAR (43), <code class="replaceable">connectionId:27598</code>, streamPosition:0000124A/6800A778.NOW}  (streamcomponent.c:2920)
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash ()--><code class="nohighlight">2023-02-22T10:09:29 [SOURCE_CAPTURE  ]I:  Capture record 1 to internal queue from Source  <span>{</span>operation:START_REGULAR (43), <code class="replaceable">connectionId:27598</code>, streamPosition:0000124A/6800A778.NOW}  (streamcomponent.c:2920)
             
 2023-02-22T10:12:30 [SOURCE_CAPTURE  ]I:  Capture record 0 to internal queue from Source  <span>{</span>operation:IDLE (51), <code class="replaceable">connectionId:27598</code>}  (streamcomponent.c:2920)
 
@@ -2508,7 +2508,7 @@ $ aws dms describe-replication-instance-task-logs \
                 AWS DMS CDC components to apply to the target database. These events also contain previously applied
                 event-related context details.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">2023-02-22T11:23:24 [SOURCE_CAPTURE  ]I:  No Event fetched from wal log  (postgres_endpoint_wal_engine.c:1369)
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash ()--><code class="">2023-02-22T11:23:24 [SOURCE_CAPTURE  ]I:  No Event fetched from wal log  (postgres_endpoint_wal_engine.c:1369)
 2023-02-22T11:24:29 [TARGET_APPLY    ]I:  No records received to load or apply on target , waiting for data from upstream. The last context is  <span>{</span>operation:INSERT (1), tableName:sales_11, schemaName:public, txnId:18662441, connectionId:17855, statement:INSERT INTO "public"."sales_11"("sales_no","dept_name","sale_amount","sale_date","region") values (?,?,?,?,?), </code></pre>
            <h4 id="datarep_Monitoring_ContextLogging_examples_sql">
             SQL statement log examples
@@ -2525,7 +2525,7 @@ $ aws dms describe-replication-instance-task-logs \
             </code>
             statement that ran on the target.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">2023-02-22T11:26:07 [TARGET_APPLY    ]I:  Applied record 2193305 to target  <span>{</span>operation:INSERT (1), tableName:sales_111, schemaName:public, txnId:18761543, connectionId:17855, statement:INSERT INTO "public"."sales_111"("sales_no","dept_name","sale_amount","sale_date","region") values (?,?,?,?,?), </code></pre>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash ()--><code class="">2023-02-22T11:26:07 [TARGET_APPLY    ]I:  Applied record 2193305 to target  <span>{</span>operation:INSERT (1), tableName:sales_111, schemaName:public, txnId:18761543, connectionId:17855, statement:INSERT INTO "public"."sales_111"("sales_no","dept_name","sale_amount","sale_date","region") values (?,?,?,?,?), </code></pre>
            <h3 id="datarep_Monitoring_ContextLogging_limitations">
             Limitations
            </h3>

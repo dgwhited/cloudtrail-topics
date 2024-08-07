@@ -410,7 +410,7 @@
             </code>
             actions.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli;bash (json)--><code class="json"><span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "Records":[
         <span>{</span>
             "eventVersion":"1.02",
@@ -434,7 +434,7 @@
                 "s3Configuration":<span>{</span>
                     "compressionFormat":"GZIP",
                     "prefix":"prefix",
-                    "bucketARN":"arn:aws:s3:::firehose-cloudtrail-DOC-EXAMPLE-BUCKET",
+                    "bucketARN":"arn:aws:s3:::firehose-cloudtrail-amzn-s3-demo-bucket",
                     "roleARN":"arn:aws:iam::111122223333:role/Firehose",
                     "bufferingHints":<span>{</span>
                         "sizeInMBs":3,
@@ -544,7 +544,7 @@
                     "dataTableName":"dataTable"
                 },
                 "s3Update":<span>{</span>
-                    "bucketARN":"arn:aws:s3:::firehose-cloudtrail-DOC-EXAMPLE-BUCKET-update",
+                    "bucketARN":"arn:aws:s3:::firehose-cloudtrail-amzn-s3-demo-bucket-update",
                     "roleARN":"arn:aws:iam::111122223333:role/Firehose",
                     "compressionFormat":"GZIP",
                     "bufferingHints":<span>{</span>
@@ -556,7 +556,7 @@
                             "aWSKMSKeyARN":"arn:aws:kms:us-east-1:key"
                         }
                     },
-                    "prefix":"arn:aws:s3:::firehose-cloudtrail-DOC-EXAMPLE-BUCKET"
+                    "prefix":"arn:aws:s3:::firehose-cloudtrail-amzn-s3-demo-bucket"
                 }
             }
         },

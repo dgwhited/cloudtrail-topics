@@ -521,9 +521,9 @@
     "Support began": "02/11/2015",
     "Link": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/logging-using-cloudtrail.html"
   },
-  "Amazon Route 53 Application Recovery Controller": {
-    "AWS Service": "Amazon Route 53 Application Recovery Controller",
-    "CloudTrail Topics": "Logging Amazon Route 53 Application Recovery Controller API calls using AWS CloudTrail",
+  "Application Recovery Controller (ARC)": {
+    "AWS Service": "Application Recovery Controller (ARC)",
+    "CloudTrail Topics": "Logging Application Recovery Controller (ARC) API calls using AWS CloudTrail",
     "Support began": "07/27/2021",
     "Link": "https://docs.aws.amazon.com/r53recovery/latest/dg/cloudtrail.html"
   },

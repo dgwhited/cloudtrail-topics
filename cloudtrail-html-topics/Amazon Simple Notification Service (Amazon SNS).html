@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/sns/latest/dg/sns-logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Amazon SNS is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in Amazon SNS. CloudTrail captures API calls for Amazon SNS as events. The calls captured include calls from the Amazon SNS console and code calls to the Amazon SNS API operations. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Amazon SNS. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in" name="description"/>
+  <meta content="Learn how Amazon SNS events are recorded and managed in CloudTrail, including how to create a trail for continuous logging and integration with other AWS services for deeper analysis." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon Simple Notification Service" name="product"/>
   <meta content="Developer Guide" name="guide"/>
@@ -84,6 +84,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SNS&amp;topic_url=https://docs.aws.amazon.com/en_us/sns/latest/dg/sns-logging-using-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/sns/latest/dg/sns-logging-using-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/sns/latest/dg/sns-logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="Amazon SNS security,Data protection,Access control,Logging and monitoring,Amazon SNS best practices,CloudTrail integration,Amazon SNS logging,API monitoring,Security auditing,Amazon SNS events,CloudTrail logging,CloudTrail,Event history,Log management,CloudTrail events,Identity tracking,AWS monitoring,Amazon SNS actions,Data plane events,Amazon SNS API logging,CloudTrail data plane,Advanced event selectors,Amazon SNS publish logging,CloudTrail logs,Amazon SNS API calls,Event logging,Log file entries,API call tracking" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -805,9 +806,9 @@
                     entries
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an
-                Amazon S3 bucket that you specify. CloudTrail log files contain one or more log entries. An
-                event represents a single request from any source and includes information about the
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3
+                bucket that you specify. CloudTrail log files contain one or more log entries. An event
+                represents a single request from any source and includes information about the
                 requested action, the date and time of the action, request parameters, and so on.
                 CloudTrail log files aren't an ordered stack trace of the public API calls, so they don't
                 appear in any specific order.

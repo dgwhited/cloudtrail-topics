@@ -158,16 +158,19 @@
            Enabling logging
           </a>
           <a href="#db-auditing-cloudwatch-provisioned">
-           Sending audit logs to Amazon CloudWatch
+           Sending audit logs to
+                Amazon CloudWatch
           </a>
           <a href="#db-auditing-manage-log-files">
            Managing log files in Amazon S3
           </a>
           <a href="#db-auditing-failures">
-           Troubleshooting Amazon Redshift audit logging in Amazon S3
+           Troubleshooting Amazon Redshift audit logging in
+                Amazon S3
           </a>
           <a href="#rs-db-auditing-cloud-trail">
-           Logging Amazon Redshift API calls with AWS CloudTrail
+           Logging Amazon Redshift API calls with
+                AWS CloudTrail
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -184,13 +187,14 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon Redshift logs information about connections and user activities in your database.
-        These logs help you to monitor the database for security and troubleshooting purposes, a
-        process called
+            Amazon Redshift logs information about connections and user activities in your database. These
+        logs help you to monitor the database for security and troubleshooting purposes, a process
+        called
             <em>
              database auditing
             </em>
-            . The logs can be stored in:
+            . The logs can be stored
+        in:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -199,8 +203,9 @@
                <em>
                 Amazon S3 buckets
                </em>
-               - This provides access with data-security features for users who are
-            responsible for monitoring activities in the database.
+               - This provides access with data-security
+                features for users who are responsible for monitoring activities in the
+                database.
               </p>
              </li>
              <li class="listitem">
@@ -208,8 +213,8 @@
                <em>
                 Amazon CloudWatch
                </em>
-               - You can view audit-logging data using the features built into CloudWatch, such as visualization
-            features and setting actions.
+               - You can view audit-logging data using the features
+                built into CloudWatch, such as visualization features and setting actions.
               </p>
              </li>
             </ul>
@@ -227,9 +232,9 @@
               <a href="https://docs.aws.amazon.com/redshift/latest/dg/SYS_CONNECTION_LOG.html">
                SYS_CONNECTION_LOG
               </a>
-              collects 
-        connection log data for Amazon Redshift Serverless. Note that when you collect audit logging data for Amazon Redshift Serverless, it 
-        can't be sent to log files, only to CloudWatch.
+              collects
+            connection log data for Amazon Redshift Serverless. Note that when you collect audit logging data
+            for Amazon Redshift Serverless, it can't be sent to log files, only to CloudWatch.
              </p>
             </div>
            </div>
@@ -250,7 +255,8 @@
              </li>
              <li>
               <a href="#db-auditing-cloudwatch-provisioned">
-               Sending audit logs to Amazon CloudWatch
+               Sending audit logs to
+                Amazon CloudWatch
               </a>
              </li>
              <li>
@@ -260,22 +266,19 @@
              </li>
              <li>
               <a href="#db-auditing-failures">
-               Troubleshooting Amazon Redshift audit logging in Amazon S3
+               Troubleshooting Amazon Redshift audit logging in
+                Amazon S3
               </a>
              </li>
              <li>
               <a href="#rs-db-auditing-cloud-trail">
-               Logging Amazon Redshift API calls with AWS CloudTrail
+               Logging Amazon Redshift API calls with
+                AWS CloudTrail
               </a>
              </li>
              <li>
               <a href="./db-auditing-console.html">
                Configuring auditing using the console
-              </a>
-             </li>
-             <li>
-              <a href="./db-auditing-cli-api.html">
-               Configuring logging by using the AWS CLI and Amazon Redshift API
               </a>
              </li>
             </ul>
@@ -311,18 +314,18 @@
                <em>
                 User activity log
                </em>
-               â Logs each query before it's
-                    run on the database.
+               â Logs each query before
+                    it's run on the database.
               </p>
              </li>
             </ul>
            </div>
            <p>
             The connection and user logs are useful primarily for security purposes. You can use
-            the connection log to monitor information about users connecting to the
-            database and related connection information. This information might be their IP
-            address, when they made the request, what type of authentication they used, and so on.
-            You can use the user log to monitor changes to the definitions of database users.
+            the connection log to monitor information about users connecting to the database and
+            related connection information. This information might be their IP address, when they
+            made the request, what type of authentication they used, and so on. You can use the user
+            log to monitor changes to the definitions of database users.
            </p>
            <p>
             The user activity log is useful primarily for troubleshooting purposes. It tracks
@@ -356,8 +359,9 @@
               <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_STL_CONNECTION_LOG.html">
                STL_CONNECTION_LOG
               </a>
-              . Records that are older than, but not including, the latest
-                record are copied to log files.
+              . Records
+                that are older than, but not including, the latest record are copied to log
+                files.
              </p>
             </div>
            </div>
@@ -375,8 +379,9 @@
               <a href="https://docs.aws.amazon.com/redshift/latest/dg/SYS_CONNECTION_LOG.html">
                SYS_CONNECTION_LOG
               </a>
-              collects 
-            connection-log data. When you collect audit logging data for Amazon Redshift Serverless, it can't be sent to log files, only to CloudWatch.
+              collects connection-log data. When you collect audit
+                logging data for Amazon Redshift Serverless, it can't be sent to log files, only to
+                CloudWatch.
              </p>
             </div>
            </div>
@@ -385,17 +390,18 @@
            </h3>
            <p>
             Logs authentication attempts, and connections and disconnections. The following
-                table describes the information in the connection log.
-                For more information about these fields, see
+                table describes the information in the connection log. For more information about
+                these fields, see
             <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_STL_CONNECTION_LOG.html">
              STL_CONNECTION_LOG
             </a>
-            in the
+            in
+                the
             <em>
              Amazon Redshift Database Developer Guide
             </em>
-            . For more information 
-                about the collected connection log data for Amazon Redshift Serverless, see
+            . For more information about the collected
+                connection log data for Amazon Redshift Serverless, see
             <a href="https://docs.aws.amazon.com/redshift/latest/dg/SYS_CONNECTION_LOG.html">
              SYS_CONNECTION_LOG
             </a>
@@ -403,7 +409,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w222aac33c32c10c11c16b4">
+             <table id="w223aac33c32b9c11c17b5">
               <thead>
                <tr>
                 <th>
@@ -531,13 +537,13 @@
                 iamauthguid
                </td>
                <td tabindex="-1">
-                The AWS Identity and Access Management (IAM) authentication ID for the AWS CloudTrail 
-                                request. This is the identifier for 
-                                the
+                The AWS Identity and Access Management (IAM) authentication ID for the
+                                AWS CloudTrail request. This is the identifier for the
                 <a href="https://docs.aws.amazon.com/redshift/latest/APIReference/API_GetClusterCredentials.html">
                  GetClusterCredentials
                 </a>
-                API call to create the credentials being used for a given connection.
+                API call to create the
+                                credentials being used for a given connection.
                </td>
               </tr>
               <tr>
@@ -545,7 +551,8 @@
                 application_name
                </td>
                <td tabindex="-1">
-                The initial or updated name of the application for a session.
+                The initial or updated name of the application for
+                                a session.
                </td>
               </tr>
               <tr>
@@ -562,7 +569,8 @@
                 driver_version
                </td>
                <td tabindex="-1">
-                The version of ODBC or JDBC driver that connects to your Amazon Redshift cluster from your third-party SQL client tools.
+                The version of ODBC or JDBC driver that connects
+                                to your Amazon Redshift cluster from your third-party SQL client tools.
                </td>
               </tr>
               <tr>
@@ -570,7 +578,8 @@
                 plugin_name
                </td>
                <td tabindex="-1">
-                The name of the plugin used to connect to your Amazon Redshift cluster.
+                The name of the plugin used to connect to your
+                                Amazon Redshift cluster.
                </td>
               </tr>
               <tr>
@@ -587,7 +596,8 @@
                 sessionid
                </td>
                <td tabindex="-1">
-                The globally unique identifier for the current session.
+                The globally unique identifier for the current
+                                session.
                </td>
               </tr>
               <tr>
@@ -595,7 +605,8 @@
                 compression
                </td>
                <td tabindex="-1">
-                The compression algorithm in use for the connection.
+                The compression algorithm in use for the
+                                connection.
                </td>
               </tr>
              </table>
@@ -633,7 +644,7 @@
            </div>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w222aac33c32c10c11c18b6">
+             <table id="w223aac33c32b9c11c19b7">
               <thead>
                <tr>
                 <th>
@@ -769,8 +780,9 @@
             <a href="https://docs.aws.amazon.com/redshift/latest/dg/SYS_USERLOG.html">
              SYS_USERLOG
             </a>
-            system view to find additional information about changes to users. This view includes 
-                log data from Amazon Redshift Serverless.
+            system
+                view to find additional information about changes to users. This view includes log
+                data from Amazon Redshift Serverless.
            </p>
            <h3 id="db-auditing-user-activity-log">
             User activity log
@@ -780,7 +792,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w222aac33c32c10c11c20b4">
+             <table id="w223aac33c32b9c11c21b5">
               <thead>
                <tr>
                 <th>
@@ -855,17 +867,18 @@
             Enabling logging
            </h2>
            <p>
-            Audit logging is not turned on by default in Amazon Redshift. When you turn on logging on your
-            cluster, Amazon Redshift exports logs to Amazon CloudWatch, or creates and uploads logs to Amazon S3, that capture data from the time audit logging is enabled
-            to the present time. Each logging update is a continuation of the
-            previous logs.
+            Audit logging is not turned on by default in Amazon Redshift. When you turn on logging on
+            your cluster, Amazon Redshift exports logs to Amazon CloudWatch, or creates and uploads logs to Amazon S3,
+            that capture data from the time audit logging is enabled to the present time. Each
+            logging update is a continuation of the previous logs.
            </p>
            <p>
-            Audit logging to CloudWatch or to Amazon S3 is an optional process. Logging to system tables is not
-                optional and happens automatically. For more information about
-                logging to system tables, see
+            Audit logging to CloudWatch or to Amazon S3 is an optional process. Logging to system tables is
+            not optional and happens automatically. For more information about logging to system
+            tables, see
             <a href="https://docs.aws.amazon.com/redshift/latest/dg/cm_chap_system-tables.html">
-             System Tables Reference
+             System Tables
+                Reference
             </a>
             in the Amazon Redshift Database Developer Guide.
            </p>
@@ -898,14 +911,15 @@
             .
            </p>
            <h2 id="db-auditing-cloudwatch-provisioned">
-            Sending audit logs to Amazon CloudWatch
+            Sending audit logs to
+                Amazon CloudWatch
            </h2>
            <p>
             When you enable logging to CloudWatch, Amazon Redshift exports cluster connection, user, and
             user-activity log data to an Amazon CloudWatch Logs log group. The log data doesn't change, in terms
-            of schema. CloudWatch is built for monitoring applications, and you can use it to perform real-time
-            analysis or set it to take actions. You can also use Amazon CloudWatch Logs to store your log records
-            in durable storage.
+            of schema. CloudWatch is built for monitoring applications, and you can use it to perform
+            real-time analysis or set it to take actions. You can also use Amazon CloudWatch Logs to store your
+            log records in durable storage.
            </p>
            <p>
             Using CloudWatch to view logs is a recommended alternative to storing log files in Amazon S3. It
@@ -913,11 +927,13 @@
             especially if you use it already to monitor other services and applications.
            </p>
            <h3 id="db-auditing-cloudwatch-provisioned-log-group">
-            Log groups and log events in Amazon CloudWatch
+            Log groups and log
+                    events in Amazon CloudWatch
            </h3>
            <p>
-            After selecting which Amazon Redshift logs to export, you can monitor log events in Amazon CloudWatch Logs. A new log group
-                is automatically created for Amazon Redshift Serverless, under the following prefix, in which
+            After selecting which Amazon Redshift logs to export, you can monitor log events in
+                Amazon CloudWatch Logs. A new log group is automatically created for Amazon Redshift Serverless, under the
+                following prefix, in which
             <code class="code">
              log_type
             </code>
@@ -925,42 +941,48 @@
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">/aws/redshift/cluster/&lt;cluster_name&gt;/&lt;log_type&gt;</code></pre>
            <p>
-            For example, if you choose to export the connection log, log data is stored in the following log group.
+            For example, if you choose to export the connection log, log data is stored in the
+                following log group.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">/aws/redshift/cluster/cluster1/connectionlog</code></pre>
            <p>
-            Log events are exported to a log group using the log stream. To search for information within log events
-                for your serverless endpoint, use the Amazon CloudWatch Logs console, the AWS CLI, or the Amazon CloudWatch Logs API. For information about searching
-                and filtering log data, see
+            Log events are exported to a log group using the log stream. To search for
+                information within log events for your serverless endpoint, use the Amazon CloudWatch Logs console, the
+                AWS CLI, or the Amazon CloudWatch Logs API. For information about searching and filtering log data,
+                see
             <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/MonitoringLogData.html">
-             Creating metrics from log events using filters
+             Creating metrics from log
+                    events using filters
             </a>
             .
            </p>
            <p>
-            In CloudWatch, you can search your log data with a query syntax that provides for granularity and flexibility. For more information,
-                see
+            In CloudWatch, you can search your log data with a query syntax that provides for
+                granularity and flexibility. For more information, see
             <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html">
-             CloudWatch Logs Insights query syntax
+             CloudWatch Logs Insights query
+                syntax
             </a>
             .
            </p>
            <h3 id="db-auditing-cloudwatch-provisioned-migration">
-            Migrating to Amazon CloudWatch audit logging
+            Migrating to Amazon CloudWatch
+                    audit logging
            </h3>
            <p>
-            In any case where you are sending logs to Amazon S3 and you change the configuration, for example to send logs to CloudWatch, logs
-                that remain in Amazon S3 are unaffected. You can still query the log data in the Amazon S3 buckets where it resides.
+            In any case where you are sending logs to Amazon S3 and you change the configuration,
+                for example to send logs to CloudWatch, logs that remain in Amazon S3 are unaffected. You can
+                still query the log data in the Amazon S3 buckets where it resides.
            </p>
            <h2 id="db-auditing-manage-log-files">
             Managing log files in Amazon S3
            </h2>
            <p>
-            The number and size of Amazon Redshift log files in Amazon S3 depends heavily on the activity
-            in your cluster. If you have an active cluster that is generating a large number of
-            logs, Amazon Redshift might generate the log files more frequently. You might have a series of
-            log files for the same type of activity, such as having multiple connection logs within
-            the same hour.
+            The number and size of Amazon Redshift log files in Amazon S3 depends heavily on the activity in
+            your cluster. If you have an active cluster that is generating a large number of logs,
+            Amazon Redshift might generate the log files more frequently. You might have a series of log
+            files for the same type of activity, such as having multiple connection logs within the
+            same hour.
            </p>
            <p>
             When Amazon Redshift uses Amazon S3 to store logs, you incur charges for the storage that you use
@@ -979,7 +1001,8 @@
             .
            </p>
            <h3 id="db-auditing-enable-logging-limitations">
-            Limitations when you enable logging to Amazon S3
+            Limitations when you enable
+                    logging to Amazon S3
            </h3>
            <p>
             Audit logging has the following constraints:
@@ -999,13 +1022,13 @@
             </ul>
            </div>
            <h3 id="db-auditing-bucket-permissions">
-            Bucket permissions for Amazon Redshift audit
-                    logging
+            Bucket permissions for Amazon Redshift
+                    audit logging
            </h3>
            <p>
-            When you turn on logging to Amazon S3, Amazon Redshift collects logging information and uploads it to
-                log files stored in Amazon S3. You can use an existing bucket or a new bucket. Amazon Redshift
-                requires the following IAM permissions to the bucket:
+            When you turn on logging to Amazon S3, Amazon Redshift collects logging information and
+                uploads it to log files stored in Amazon S3. You can use an existing bucket or a new
+                bucket. Amazon Redshift requires the following IAM permissions to the bucket:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -1014,8 +1037,8 @@
                <code class="code">
                 s3:GetBucketAcl
                </code>
-               The service requires read permissions
-                        to the Amazon S3 bucket so it can identify the bucket owner.
+               The service requires read permissions to the
+                        Amazon S3 bucket so it can identify the bucket owner.
               </p>
              </li>
              <li class="listitem">
@@ -1023,9 +1046,9 @@
                <code class="code">
                 s3:PutObject
                </code>
-               The service requires put object
-                        permissions to upload the logs. Also, the
-                        user or IAM role that turns on logging must have
+               The service requires put object permissions to
+                        upload the logs. Also, the user or IAM role that turns on logging must
+                        have
                <code class="code">
                 s3:PutObject
                </code>
@@ -1038,12 +1061,11 @@
             </ul>
            </div>
            <p>
-            If, when you enable audit logging, you select the option to create a new bucket, correct
-                permissions are applied to it. However, if you create your own bucket in
+            If, when you enable audit logging, you select the option to create a new bucket,
+                correct permissions are applied to it. However, if you create your own bucket in
                 Amazon S3, or use an existing bucket, make sure to add a bucket policy that includes the
-                bucket name. Logs
-                are delivered using service-principal credentials. For most AWS Regions, you add
-                the Redshift service-principal name,
+                bucket name. Logs are delivered using service-principal credentials. For most
+                AWS Regions, you add the Redshift service-principal name,
             <code class="replaceable">
              redshift.amazonaws.com
             </code>
@@ -1058,9 +1080,8 @@
             <code class="replaceable">
              BucketName
             </code>
-            are placeholders for your own values.
-                
-                Also specify the associated actions and resources in the bucket policy.
+            are placeholders for your own values. Also specify the associated actions and
+                resources in the bucket policy.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
     "Version": "2012-10-17",
@@ -1146,13 +1167,14 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              The Region-specific service-principal name corresponds to the Region where the cluster is
-        located.
+              The Region-specific service-principal name corresponds to the Region where the
+                    cluster is located.
              </p>
             </div>
            </div>
            <h4 id="db-auditing-bucket-permissions-confused-deputy">
-            Best practices for log files
+            Best practices
+                        for log files
            </h4>
            <p>
             When Redshift uploads log files to Amazon S3, large files can be uploaded in
@@ -1167,7 +1189,7 @@
             and
             <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/abort-mpu.html">
              Aborting
-                            a multipart upload
+                        a multipart upload
             </a>
             .
            </p>
@@ -1179,7 +1201,7 @@
             and
             <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/EditingBucketPermissions.html">
              Editing Bucket
-                        Permissions
+                    Permissions
             </a>
             in the
             <em>
@@ -1188,7 +1210,8 @@
             .
            </p>
            <h3 id="db-auditing-bucket-structure">
-            Bucket structure for Amazon Redshift audit logging
+            Bucket structure for Amazon Redshift audit
+                    logging
            </h3>
            <p>
             By default, Amazon Redshift organizes the log files in the Amazon S3 bucket by using the
@@ -1279,7 +1302,8 @@
             </ul>
            </div>
            <h2 id="db-auditing-failures">
-            Troubleshooting Amazon Redshift audit logging in Amazon S3
+            Troubleshooting Amazon Redshift audit logging in
+                Amazon S3
            </h2>
            <p>
             Amazon Redshift audit logging can be interrupted for the following reasons:
@@ -1288,48 +1312,49 @@
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               Amazon Redshift does not have permission to upload logs to the Amazon S3 bucket.
-                        Verify that the bucket is configured with the correct IAM policy. For more
-                        information, see
+               Amazon Redshift does not have permission to upload logs to the Amazon S3 bucket. Verify
+                    that the bucket is configured with the correct IAM policy. For more
+                    information, see
                <a href="#db-auditing-bucket-permissions">
-                Bucket permissions for Amazon Redshift audit
-                    logging
+                Bucket permissions for Amazon Redshift
+                    audit logging
                </a>
                .
               </p>
              </li>
              <li class="listitem">
               <p>
-               The bucket owner changed. When Amazon Redshift uploads logs, it verifies that
-                        the bucket owner is the same as when logging was enabled. If the bucket
-                        owner has changed, Amazon Redshift cannot upload logs until you configure another bucket to use for audit logging.
+               The bucket owner changed. When Amazon Redshift uploads logs, it verifies that the
+                    bucket owner is the same as when logging was enabled. If the bucket owner has
+                    changed, Amazon Redshift cannot upload logs until you configure another bucket to use
+                    for audit logging.
               </p>
              </li>
              <li class="listitem">
               <p>
-               The bucket cannot be found. If the bucket is deleted in Amazon S3, Amazon Redshift
-                        cannot upload logs. You either must recreate the bucket or configure Amazon Redshift to
-                        upload logs to a different bucket.
+               The bucket cannot be found. If the bucket is deleted in Amazon S3, Amazon Redshift cannot
+                    upload logs. You either must recreate the bucket or configure Amazon Redshift to upload
+                    logs to a different bucket.
               </p>
              </li>
             </ul>
            </div>
            <h2 id="rs-db-auditing-cloud-trail">
-            Logging Amazon Redshift API calls with AWS CloudTrail
+            Logging Amazon Redshift API calls with
+                AWS CloudTrail
            </h2>
            <p>
             Amazon Redshift is integrated with AWS CloudTrail, a service that provides a record of actions taken by
             a user, role, or an AWS service in Amazon Redshift. CloudTrail captures all API calls for Amazon Redshift as
-            events. For more information
-            about Amazon Redshift integration with AWS CloudTrail, see
+            events. For more information about Amazon Redshift integration with AWS CloudTrail, see
             <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/logging-with-cloudtrail.html">
-             Logging with CloudTrail
+             Logging
+                with CloudTrail
             </a>
             .
            </p>
            <p>
-            You can use CloudTrail independently from or in addition to Amazon Redshift database
-            audit logging.
+            You can use CloudTrail independently from or in addition to Amazon Redshift database audit logging.
            </p>
            <p>
             To learn more about CloudTrail, see the

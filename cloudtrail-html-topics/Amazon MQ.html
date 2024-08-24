@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" rel="canonical"/>
-  <meta content="This section provides information about logging Amazon MQ API calls using CloudTrail." name="description"/>
+  <meta content="This section provides information about logging Amazon MQ API calls using CloudTrail. There are trails and events and you can use them to debug your application. CloudTrail captures API calls related to Amazon MQ brokers and configurations as events, including calls from the Amazon MQ console and code calls from Amazon MQ APIs." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon MQ" name="product"/>
   <meta content="Developer Guide" name="guide"/>
@@ -84,7 +84,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AMQ&amp;topic_url=https://docs.aws.amazon.com/en_us/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/amazon-mq/latest/developer-guide/security-logging-monitoring-cloudtrail.html" name="feedback-no"/>
-        <meta content="Amazon MQ,message,queue,topic,producer,consumer,on-premises" name="keywords"/>
+        <meta content="Amazon MQ,message,queue,topic,producer,consumer,on-premises,CloudWatch,CloudTrail,logging and monitoring,trails and events,ActiveMQ and RabbitMQ,events,trails,example log file,API cals" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -193,7 +193,7 @@
               CloudTrail doesn't log API calls related to ActiveMQ operations (for example, sending
                 and receiving messages) or to the ActiveMQ Web Console. To log information related
                 to ActiveMQ operations, you can
-              <a href="./security-logging-monitoring-configure-cloudwatch.html">
+              <a href="./security-logging-monitoring.html">
                configure Amazon MQ to publish
                     general and audit logs to Amazon CloudWatch Logs
               </a>
@@ -706,11 +706,11 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./security-logging-monitoring-cloudwatch.html" id="previous">
-             Monitoring brokers using CloudWatch
+            <div accesskey="p" class="prev-link" href="./rabbitmq-logging-monitoring.html" id="previous">
+             Metrics for RabbitMQ
             </div>
-            <div accesskey="n" class="next-link" href="./security-logging-monitoring-configure-cloudwatch.html" id="next">
-             Configuring Amazon MQ to publish logs to CloudWatch Logs
+            <div accesskey="n" class="next-link" href="./configure-logging-monitoring-activemq.html" id="next">
+             Configuring Amazon MQ for ActiveMQ logs
             </div>
            </div>
           </div>

@@ -154,23 +154,8 @@
           <a href="#db-auditing-logs">
            Amazon Redshift logs
           </a>
-          <a href="#db-auditing-enable-logging">
-           Enabling logging
-          </a>
           <a href="#db-auditing-cloudwatch-provisioned">
-           Sending audit logs to
-                Amazon CloudWatch
-          </a>
-          <a href="#db-auditing-manage-log-files">
-           Managing log files in Amazon S3
-          </a>
-          <a href="#db-auditing-failures">
-           Troubleshooting Amazon Redshift audit logging in
-                Amazon S3
-          </a>
-          <a href="#rs-db-auditing-cloud-trail">
-           Logging Amazon Redshift API calls with
-                AWS CloudTrail
+           Audit logs and Amazon CloudWatch
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -249,36 +234,13 @@
               </a>
              </li>
              <li>
-              <a href="#db-auditing-enable-logging">
-               Enabling logging
-              </a>
-             </li>
-             <li>
               <a href="#db-auditing-cloudwatch-provisioned">
-               Sending audit logs to
-                Amazon CloudWatch
-              </a>
-             </li>
-             <li>
-              <a href="#db-auditing-manage-log-files">
-               Managing log files in Amazon S3
-              </a>
-             </li>
-             <li>
-              <a href="#db-auditing-failures">
-               Troubleshooting Amazon Redshift audit logging in
-                Amazon S3
-              </a>
-             </li>
-             <li>
-              <a href="#rs-db-auditing-cloud-trail">
-               Logging Amazon Redshift API calls with
-                AWS CloudTrail
+               Audit logs and Amazon CloudWatch
               </a>
              </li>
              <li>
               <a href="./db-auditing-console.html">
-               Configuring auditing using the console
+               Enabling audit logging
               </a>
              </li>
             </ul>
@@ -409,7 +371,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w223aac33c32b9c11c17b5">
+             <table id="w222aac33c32b9c11c17b5">
               <thead>
                <tr>
                 <th>
@@ -644,7 +606,7 @@
            </div>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w223aac33c32b9c11c19b7">
+             <table id="w222aac33c32b9c11c19b7">
               <thead>
                <tr>
                 <th>
@@ -792,7 +754,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w223aac33c32b9c11c21b5">
+             <table id="w222aac33c32b9c11c21b5">
               <thead>
                <tr>
                 <th>
@@ -863,8 +825,8 @@
              </table>
             </div>
            </div>
-           <h2 id="db-auditing-enable-logging">
-            Enabling logging
+           <h2 id="db-auditing-cloudwatch-provisioned">
+            Audit logs and Amazon CloudWatch
            </h2>
            <p>
             Audit logging is not turned on by default in Amazon Redshift. When you turn on logging on
@@ -910,10 +872,6 @@
             </a>
             .
            </p>
-           <h2 id="db-auditing-cloudwatch-provisioned">
-            Sending audit logs to
-                Amazon CloudWatch
-           </h2>
            <p>
             When you enable logging to CloudWatch, Amazon Redshift exports cluster connection, user, and
             user-activity log data to an Amazon CloudWatch Logs log group. The log data doesn't change, in terms
@@ -974,23 +932,23 @@
                 for example to send logs to CloudWatch, logs that remain in Amazon S3 are unaffected. You can
                 still query the log data in the Amazon S3 buckets where it resides.
            </p>
-           <h2 id="db-auditing-manage-log-files">
-            Managing log files in Amazon S3
-           </h2>
+           <h3 id="db-auditing-manage-log-files">
+            Log files in Amazon S3
+           </h3>
            <p>
-            The number and size of Amazon Redshift log files in Amazon S3 depends heavily on the activity in
-            your cluster. If you have an active cluster that is generating a large number of logs,
-            Amazon Redshift might generate the log files more frequently. You might have a series of log
-            files for the same type of activity, such as having multiple connection logs within the
-            same hour.
+            The number and size of Amazon Redshift log files in Amazon S3 depends heavily on the activity
+                in your cluster. If you have an active cluster that is generating a large number of
+                logs, Amazon Redshift might generate the log files more frequently. You might have a series
+                of log files for the same type of activity, such as having multiple connection logs
+                within the same hour.
            </p>
            <p>
-            When Amazon Redshift uses Amazon S3 to store logs, you incur charges for the storage that you use
-            in Amazon S3. Before you configure logging to Amazon S3, plan for how long you need to store the
-            log files. As part of this, determine when the log files can either be deleted or
-            archived, based on your auditing needs. The plan that you create depends heavily on the
-            type of data that you store, such as data subject to compliance or regulatory
-            requirements. For more information about Amazon S3 pricing, go to
+            When Amazon Redshift uses Amazon S3 to store logs, you incur charges for the storage that you
+                use in Amazon S3. Before you configure logging to Amazon S3, plan for how long you need to
+                store the log files. As part of this, determine when the log files can either be
+                deleted or archived, based on your auditing needs. The plan that you create depends
+                heavily on the type of data that you store, such as data subject to compliance or
+                regulatory requirements. For more information about Amazon S3 pricing, go to
             <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank">
              <span>
               Amazon Simple Storage Service (S3) Pricing
@@ -1000,10 +958,10 @@
             </a>
             .
            </p>
-           <h3 id="db-auditing-enable-logging-limitations">
-            Limitations when you enable
-                    logging to Amazon S3
-           </h3>
+           <h4 id="db-auditing-enable-logging-limitations">
+            Limitations when you
+                        enable logging to Amazon S3
+           </h4>
            <p>
             Audit logging has the following constraints:
            </p>
@@ -1011,24 +969,26 @@
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               You can use only Amazon S3-managed keys (SSE-S3) encryption (AES-256).
+               You can use only Amazon S3-managed keys (SSE-S3) encryption
+                            (AES-256).
               </p>
              </li>
              <li class="listitem">
               <p>
-               The Amazon S3 buckets must have the S3 Object Lock feature turned off.
+               The Amazon S3 buckets must have the S3 Object Lock feature turned
+                            off.
               </p>
              </li>
             </ul>
            </div>
-           <h3 id="db-auditing-bucket-permissions">
+           <h4 id="db-auditing-bucket-permissions">
             Bucket permissions for Amazon Redshift
-                    audit logging
-           </h3>
+                        audit logging
+           </h4>
            <p>
             When you turn on logging to Amazon S3, Amazon Redshift collects logging information and
-                uploads it to log files stored in Amazon S3. You can use an existing bucket or a new
-                bucket. Amazon Redshift requires the following IAM permissions to the bucket:
+                    uploads it to log files stored in Amazon S3. You can use an existing bucket or a new
+                    bucket. Amazon Redshift requires the following IAM permissions to the bucket:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -1037,8 +997,8 @@
                <code class="code">
                 s3:GetBucketAcl
                </code>
-               The service requires read permissions to the
-                        Amazon S3 bucket so it can identify the bucket owner.
+               The service requires read permissions to
+                            the Amazon S3 bucket so it can identify the bucket owner.
               </p>
              </li>
              <li class="listitem">
@@ -1046,26 +1006,27 @@
                <code class="code">
                 s3:PutObject
                </code>
-               The service requires put object permissions to
-                        upload the logs. Also, the user or IAM role that turns on logging must
-                        have
+               The service requires put object permissions
+                            to upload the logs. Also, the user or IAM role that turns on logging
+                            must have
                <code class="code">
                 s3:PutObject
                </code>
-               permission to the Amazon S3 bucket. Each time logs
-                        are uploaded, the service determines whether the current bucket owner
-                        matches the bucket owner at the time logging was enabled. If these owners
-                        don't match, you receive an error.
+               permission to the Amazon S3 bucket. Each
+                            time logs are uploaded, the service determines whether the current
+                            bucket owner matches the bucket owner at the time logging was enabled.
+                            If these owners don't match, you receive an error.
               </p>
              </li>
             </ul>
            </div>
            <p>
-            If, when you enable audit logging, you select the option to create a new bucket,
-                correct permissions are applied to it. However, if you create your own bucket in
-                Amazon S3, or use an existing bucket, make sure to add a bucket policy that includes the
-                bucket name. Logs are delivered using service-principal credentials. For most
-                AWS Regions, you add the Redshift service-principal name,
+            If, when you enable audit logging, you select the option to create a new
+                    bucket, correct permissions are applied to it. However, if you create your own
+                    bucket in Amazon S3, or use an existing bucket, make sure to add a bucket policy that
+                    includes the bucket name. Logs are delivered using service-principal
+                    credentials. For most AWS Regions, you add the Redshift service-principal
+                    name,
             <code class="replaceable">
              redshift.amazonaws.com
             </code>
@@ -1080,8 +1041,8 @@
             <code class="replaceable">
              BucketName
             </code>
-            are placeholders for your own values. Also specify the associated actions and
-                resources in the bucket policy.
+            are placeholders for your own values.
+                    Also specify the associated actions and resources in the bucket policy.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
     "Version": "2012-10-17",
@@ -1104,7 +1065,8 @@
     ]
 }</code></pre>
            <p>
-            The following example is a bucket policy for the US East (N. Virginia) Region and a bucket named
+            The following example is a bucket policy for the US East (N. Virginia) Region and a bucket
+                    named
             <code class="code">
              AuditLogs
             </code>
@@ -1131,9 +1093,9 @@
     ]
 }</code></pre>
            <p>
-            Regions that aren't enabled by default, also known as "opt-in" Regions, require a
-                Region-specific service principal name. For these, the service-principal name
-                includes the region, in the format
+            Regions that aren't enabled by default, also known as "opt-in" Regions,
+                    require a Region-specific service principal name. For these, the
+                    service-principal name includes the region, in the format
             <code class="code">
              redshift.
              <code class="replaceable">
@@ -1141,13 +1103,13 @@
              </code>
              .amazonaws.com
             </code>
-            . For
-                example,
+            .
+                    For example,
             <code class="replaceable">
              redshift.ap-east-1.amazonaws.com
             </code>
             for the
-                Asia Pacific (Hong Kong) Region. For a list of the Regions that aren't enabled by default, see
+                    Asia Pacific (Hong Kong) Region. For a list of the Regions that aren't enabled by default, see
             <a href="https://docs.aws.amazon.com/general/latest/gr/rande-manage.html">
              Managing AWS Regions
             </a>
@@ -1167,29 +1129,29 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              The Region-specific service-principal name corresponds to the Region where the
-                    cluster is located.
+              The Region-specific service-principal name corresponds to the Region where
+                        the cluster is located.
              </p>
             </div>
            </div>
-           <h4 id="db-auditing-bucket-permissions-confused-deputy">
-            Best practices
-                        for log files
-           </h4>
+           <h5 id="db-auditing-bucket-permissions-confused-deputy">
+            Best
+                            practices for log files
+           </h5>
            <p>
             When Redshift uploads log files to Amazon S3, large files can be uploaded in
-                    parts. If a multipart upload isn't successful, it's possible for parts of a file
-                    to remain in the Amazon S3 bucket. This can result in additional storage costs, so
-                    it's important to understand what occurs when a multipart upload fails. For a
-                    detailed explanation about multipart upload for audit logs, see
+                        parts. If a multipart upload isn't successful, it's possible for parts of a
+                        file to remain in the Amazon S3 bucket. This can result in additional storage
+                        costs, so it's important to understand what occurs when a multipart upload
+                        fails. For a detailed explanation about multipart upload for audit logs, see
             <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html">
-             Uploading and copying objects using
-                        multipart upload
+             Uploading and copying objects
+                            using multipart upload
             </a>
             and
             <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/abort-mpu.html">
-             Aborting
-                        a multipart upload
+             Aborting a multipart
+                        upload
             </a>
             .
            </p>
@@ -1201,7 +1163,7 @@
             and
             <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/EditingBucketPermissions.html">
              Editing Bucket
-                    Permissions
+                        Permissions
             </a>
             in the
             <em>
@@ -1209,13 +1171,13 @@
             </em>
             .
            </p>
-           <h3 id="db-auditing-bucket-structure">
-            Bucket structure for Amazon Redshift audit
-                    logging
-           </h3>
+           <h4 id="db-auditing-bucket-structure">
+            Bucket structure for Amazon Redshift
+                        audit logging
+           </h4>
            <p>
             By default, Amazon Redshift organizes the log files in the Amazon S3 bucket by using the
-                following bucket and object structure:
+                    following bucket and object structure:
             <code>
             </code>
            </p>
@@ -1258,7 +1220,8 @@
             </code>
            </p>
            <p>
-            If you provide an Amazon S3 key prefix, put the prefix at the start of the key.
+            If you provide an Amazon S3 key prefix, put the prefix at the start of the
+                    key.
            </p>
            <p>
             For example, if you specify a prefix of myprefix:
@@ -1267,10 +1230,11 @@
             </code>
            </p>
            <p>
-            The Amazon S3 key prefix can't exceed 512 characters. It can't contain spaces
-                ( ), double quotation marks (â), single quotation marks (â), a backslash (\). There
-                is also a number of special characters and control characters that aren't
-                allowed. The hexadecimal codes for these characters are as follows:
+            The Amazon S3 key prefix can't exceed 512 characters. It can't contain
+                    spaces ( ), double quotation marks (â), single quotation marks (â), a backslash
+                    (\). There is also a number of special characters and control characters that
+                    aren't allowed. The hexadecimal codes for these characters are as
+                    follows:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -1301,10 +1265,9 @@
              </li>
             </ul>
            </div>
-           <h2 id="db-auditing-failures">
-            Troubleshooting Amazon Redshift audit logging in
-                Amazon S3
-           </h2>
+           <h3 id="db-auditing-failures">
+            Audit logging in Amazon S3 considerations
+           </h3>
            <p>
             Amazon Redshift audit logging can be interrupted for the following reasons:
            </p>
@@ -1312,44 +1275,43 @@
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               Amazon Redshift does not have permission to upload logs to the Amazon S3 bucket. Verify
-                    that the bucket is configured with the correct IAM policy. For more
-                    information, see
+               Amazon Redshift does not have permission to upload logs to the Amazon S3 bucket.
+                        Verify that the bucket is configured with the correct IAM policy. For more
+                        information, see
                <a href="#db-auditing-bucket-permissions">
                 Bucket permissions for Amazon Redshift
-                    audit logging
+                        audit logging
                </a>
                .
               </p>
              </li>
              <li class="listitem">
               <p>
-               The bucket owner changed. When Amazon Redshift uploads logs, it verifies that the
-                    bucket owner is the same as when logging was enabled. If the bucket owner has
-                    changed, Amazon Redshift cannot upload logs until you configure another bucket to use
-                    for audit logging.
+               The bucket owner changed. When Amazon Redshift uploads logs, it verifies that
+                        the bucket owner is the same as when logging was enabled. If the bucket
+                        owner has changed, Amazon Redshift cannot upload logs until you configure another
+                        bucket to use for audit logging.
               </p>
              </li>
              <li class="listitem">
               <p>
-               The bucket cannot be found. If the bucket is deleted in Amazon S3, Amazon Redshift cannot
-                    upload logs. You either must recreate the bucket or configure Amazon Redshift to upload
-                    logs to a different bucket.
+               The bucket cannot be found. If the bucket is deleted in Amazon S3, Amazon Redshift
+                        cannot upload logs. You either must recreate the bucket or configure
+                        Amazon Redshift to upload logs to a different bucket.
               </p>
              </li>
             </ul>
            </div>
-           <h2 id="rs-db-auditing-cloud-trail">
-            Logging Amazon Redshift API calls with
-                AWS CloudTrail
-           </h2>
+           <h3 id="rs-db-auditing-cloud-trail">
+            API calls with AWS CloudTrail
+           </h3>
            <p>
-            Amazon Redshift is integrated with AWS CloudTrail, a service that provides a record of actions taken by
-            a user, role, or an AWS service in Amazon Redshift. CloudTrail captures all API calls for Amazon Redshift as
-            events. For more information about Amazon Redshift integration with AWS CloudTrail, see
+            Amazon Redshift is integrated with AWS CloudTrail, a service that provides a record of actions
+                taken by a user, role, or an AWS service in Amazon Redshift. CloudTrail captures all API calls for
+                Amazon Redshift as events. For more information about Amazon Redshift integration with AWS CloudTrail, see
             <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/logging-with-cloudtrail.html">
-             Logging
-                with CloudTrail
+             Logging with
+                    CloudTrail
             </a>
             .
            </p>
@@ -1398,7 +1360,7 @@
              Logging and monitoring
             </div>
             <div accesskey="n" class="next-link" href="./db-auditing-console.html" id="next">
-             Configuring auditing using the console
+             Enabling audit logging
             </div>
            </div>
           </div>

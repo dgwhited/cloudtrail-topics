@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging AWS License Manager API calls using AWS CloudTrail - AWS License Manager
+   Logging License Manager API calls using CloudTrail - AWS License Manager
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'license-manager'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="User Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging AWS License Manager API calls using AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Logging License Manager API calls using CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,13 +76,14 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging AWS License Manager API calls using AWS CloudTrail - AWS License Manager
+         Logging License Manager API calls using CloudTrail - AWS License Manager
         </title>
         <meta content="/pdfs/license-manager/latest/userguide/license-manager.pdf#logging-using-cloudtrail" name="pdf"/>
         <meta content="https://repost.aws/tags/TAJbY1GoetTrSHkqrYpf9RkQ" name="forums"/>
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=License%20Manager&amp;topic_url=https://docs.aws.amazon.com/en_us/license-manager/latest/userguide/logging-using-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/license-manager/latest/userguide/logging-using-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/license-manager/latest/userguide/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="monitor License Manager,logging License Manager API calls,using CloudTrail with License Manager" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -109,13 +110,13 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Monitoring AWS License Manager",
+        "name" : "Monitoring License Manager",
         "item" : "https://docs.aws.amazon.com/license-manager/latest/userguide/monitoring-overview.html"
       },
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "Logging AWS License Manager API calls using AWS CloudTrail",
+        "name" : "Logging License Manager API calls using CloudTrail",
         "item" : "https://docs.aws.amazon.com/license-manager/latest/userguide/monitoring-overview.html"
       }
     ]
@@ -142,21 +143,12 @@
            User Guide
           </a>
          </div>
-         <div id="page-toc-src">
-          <a href="#license-manager-info-in-cloudtrail">
-           License Manager information in CloudTrail
-          </a>
-          <a href="#understanding-license-manager-entries">
-           Understanding License Manager log file
-            entries
-          </a>
-         </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="logging-using-cloudtrail">
-            Logging AWS License Manager API calls using AWS CloudTrail
+            Logging License Manager API calls using CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -186,171 +178,24 @@
             </a>
             .
            </p>
-           <h2 id="license-manager-info-in-cloudtrail">
-            License Manager information in CloudTrail
-           </h2>
-           <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
-            License Manager, that activity is recorded in a CloudTrail event along with other AWS service
-            events in
-            <b>
-             Event history
-            </b>
-            . You can view, search, and download recent events 
-            in your AWS account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing Events with CloudTrail Event
-                History
-            </a>
-            .
-           </p>
-           <p>
-            For an ongoing record of events in your AWS account, including events for License Manager,
-            create a trail. A
-            <em>
-             trail
-            </em>
-            enables CloudTrail to deliver log files to an Amazon S3 bucket. 
-            By default, when you create a trail in the console, the trail applies to all AWS Regions. The trail logs events
-            from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you
-            specify.  Additionally, you can configure other AWS services to further analyze and act upon
-            the event data collected in CloudTrail logs. For more information, see the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for Creating a Trail
-               </a>
-              </p>
+           <div class="highlights">
+            <h6>
+             Topics
+            </h6>
+            <ul>
+             <li>
+              <a href="./license-manager-info-in-cloudtrail.html">
+               License Manager information in CloudTrail
+              </a>
              </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
-                CloudTrail Supported Services and Integrations
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
-                Configuring Amazon SNS Notifications
-                    for CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail Log
-                    Files from Multiple Regions
-               </a>
-               and
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail Log
-                        Files from Multiple Accounts
-               </a>
-              </p>
+             <li>
+              <a href="./understanding-license-manager-entries.html">
+               Understanding License Manager log file
+                entries
+              </a>
              </li>
             </ul>
            </div>
-           <p>
-            All License Manager actions are logged by CloudTrail and are documented in the
-            <a href="https://docs.aws.amazon.com/license-manager/latest/APIReference/">
-             License Manager API Reference
-            </a>
-            . For example, calls to
-            the
-            <code class="code">
-             CreateLicenseConfiguration
-            </code>
-            ,
-            <code class="code">
-             ListResourceInventory
-            </code>
-            and
-            <code class="code">
-             DeleteLicenseConfiguration
-            </code>
-            actions generate entries in the CloudTrail log
-            files.
-           </p>
-           <p>
-            Every event or log entry contains information about who generated the request. The
-            identity information helps you determine the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               Whether the request was made with root or AWS Identity and Access Management (IAM) user credentials.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made with temporary security credentials for a role or
-                    federated user.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made by another AWS service.
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity
-            Element
-            </a>
-            .
-           </p>
-           <h2 id="understanding-license-manager-entries">
-            Understanding License Manager log file
-            entries
-           </h2>
-           <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
-            that you specify. CloudTrail log files contain one or more log entries. An event represents a single
-            request from any source and includes information about the requested action, the date and time
-            of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
-            the public API calls, so they don't appear in any specific order.
-           </p>
-           <p>
-            The following example shows a CloudTrail log entry that demonstrates the
-            <code class="code">
-             DeleteLicenseConfiguration
-            </code>
-            action.
-           </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-   "eventVersion":"1.05",
-   "userIdentity":<span>{</span>
-      "type":"IAMUser",
-      "principalId":"AIDAIF2U5EXAMPLEH5AP6",
-      "arn":"arn:aws:iam::123456789012:user/Administrator",
-      "accountId":"O12345678901",
-      "accessKeyId":"AKIDEXAMPLE",
-      "userName":"Administrator"
-   },
-   "eventTime":"2019-02-15T06:48:37Z",
-   "eventSource":"license-manager.amazonaws.com",
-   "eventName":"DeleteLicenseConfiguration",
-   "awsRegion":"us-east-1",
-   "sourceIPAddress":"203.0.113.83",
-   "userAgent":"aws-cli/2.4.6 Python/3.8.8 Linux",
-   "requestParameters":<span>{</span>
-      "licenseConfigurationArn":"arn:aws:license-manager:us-east-1:123456789012:license-configuration:lic-9ab477f4bEXAMPLE55f3ec08a5423f77"
-   },
-   "responseElements":null,
-   "requestID":"3366df5f-4166-415f-9437-c38EXAMPLE48",
-   "eventID":"6c2c949b-1a81-406a-a0d7-52EXAMPLE5bd",
-   "eventType":"AwsApiCall",
-   "recipientAccountId":"O12345678901"
-}</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -385,8 +230,8 @@
             <div accesskey="p" class="prev-link" href="./monitoring-cloudwatch.html" id="previous">
              Monitoring with CloudWatch
             </div>
-            <div accesskey="n" class="next-link" href="./security.html" id="next">
-             Security
+            <div accesskey="n" class="next-link" href="./license-manager-info-in-cloudtrail.html" id="next">
+             License Manager information in CloudTrail
             </div>
            </div>
           </div>

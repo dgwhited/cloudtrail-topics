@@ -144,14 +144,6 @@
            Administration Guide
           </a>
          </div>
-         <div id="page-toc-src">
-          <a href="#service-name-info-in-cloudtrail">
-           WorkSpaces Secure Browser information in CloudTrail
-          </a>
-          <a href="#understanding-service-name-entries">
-           Understanding WorkSpaces Secure Browser log file entries
-          </a>
-         </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
@@ -187,215 +179,23 @@
             </a>
             .
            </p>
-           <h2 id="service-name-info-in-cloudtrail">
-            WorkSpaces Secure Browser information in CloudTrail
-           </h2>
-           <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
-      Amazon WorkSpaces Secure Browser, that activity is recorded in a CloudTrail event along with other AWS service events in
-            <b>
-             Event history
-            </b>
-            . In
-            <b>
-             Event history
-            </b>
-            , you can view,
-      search, and download recent events in your AWS account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing events with CloudTrail Event history
-            </a>
-            .
-           </p>
-           <p>
-            For an ongoing record of events in your AWS account, including events for Amazon WorkSpaces Secure Browser, you
-      can create a trail. A
-            <em>
-             trail
-            </em>
-            enables CloudTrail to deliver log files to an Amazon S3
-      bucket. By default, when you create a trail in the console, the trail applies to all
-      AWSRegions. The trail logs events from all Regions in the AWS partition and delivers the
-      log files to the Amazon S3 bucket that you specify. Additionally, you can configure other AWS
-      services to further analyze and act upon the event data collected in CloudTrail logs. For more
-      information, see the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for creating a trail
-               </a>
-              </p>
+           <div class="highlights">
+            <h6>
+             Topics
+            </h6>
+            <ul>
+             <li>
+              <a href="./service-name-info-in-cloudtrail.html">
+               WorkSpaces Secure Browser information in CloudTrail
+              </a>
              </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html">
-                CloudTrail supported services and integrations
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
-                Configuring Amazon SNS notifications
-          for CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail log
-          files from multiple regions
-               </a>
-               and
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail log
-            files from multiple accounts
-               </a>
-              </p>
+             <li>
+              <a href="./understanding-service-name-entries.html">
+               Understanding WorkSpaces Secure Browser log file entries
+              </a>
              </li>
             </ul>
            </div>
-           <p>
-            All Amazon WorkSpaces Secure Browser actions are logged by CloudTrail and are documented in the
-            <em>
-             Amazon WorkSpaces API
-        Reference
-            </em>
-            . For example, calls to the
-            <code class="code">
-             CreatePortal
-            </code>
-            ,
-            <code class="code">
-             DeleteUserSettings
-            </code>
-            and
-            <code class="code">
-             ListBrowserSettings
-            </code>
-            actions generate entries in the CloudTrail log files.
-           </p>
-           <p>
-            Every event or log entry contains information about who generated the request. The
-      identity information helps you determine the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               Whether the request was made with root or IAM user credentials.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made with temporary security credentials for a role or
-          federated user.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made by another AWS service.
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity
-      element
-            </a>
-            .
-           </p>
-           <h2 id="understanding-service-name-entries">
-            Understanding WorkSpaces Secure Browser log file entries
-           </h2>
-           <p>
-            A
-            <em>
-             trail
-            </em>
-            is a configuration that enables delivery of events as log
-      files to an Amazon S3 bucket that you specify. CloudTrail log files contain one or more log entries. An
-      event represents a single request from any source and includes information about the requested
-      action, the date and time of the action, request parameters, and other details. CloudTrail log files
-      aren't an ordered stack trace of the public API calls, so they don't appear in any specific
-      order.
-           </p>
-           <p>
-            The following example shows a CloudTrail log entry that demonstrates the
-            <code class="code">
-             ListBrowserSettings
-            </code>
-            action.
-           </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json">  
- <span>{</span>
-    "Records": [<span>{</span>
-        "eventVersion": "1.08",
-        "userIdentity": <span>{</span>
-            "type": "IAMUser",
-            "principalId": "111122223333",
-            "arn": "arn:aws:iam::111122223333:user/myUserName",
-            "accountId": "111122223333",
-            "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-            "userName": "myUserName"
-        },
-        "eventTime": "2021-11-17T23:44:51Z",
-        "eventSource": "workspaces-web.amazonaws.com",
-        "eventName": "ListBrowserSettings",
-        "awsRegion": "us-west-2",
-        "sourceIPAddress": "127.0.0.1",
-        "userAgent": "[]",
-        "requestParameters": null,
-        "responseElements": null,
-        "requestID": "159d5c4f-c8c8-41f1-9aee-b5b1b632e8b2",
-        "eventID": "d8237248-0090-4c1e-b8f0-a6e8b18d63cb",
-        "readOnly": true,
-        "eventType": "AwsApiCall",
-        "managementEvent": true,
-        "recipientAccountId": "111122223333",
-        "eventCategory": "Management"
-    },
-    <span>{</span>
-        "eventVersion": "1.08",
-        "userIdentity": <span>{</span>
-            "type": "IAMUser",
-            "principalId": "111122223333",
-            "arn": "arn:aws:iam::111122223333:user/myUserName",
-            "accountId": "111122223333",
-            "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-            "userName": "myUserName"
-        },
-        "eventTime": "2021-11-17T23:55:51Z",
-        "eventSource": "workspaces-web.amazonaws.com",
-        "eventName": "CreateUserSettings",
-        "awsRegion": "us-west-2",
-        "sourceIPAddress": "5127.0.0.1",
-        "userAgent": "[]",
-        "requestParameters": <span>{</span>
-            "clientToken": "some-token",
-            "copyAllowed": "Enabled",
-            "downloadAllowed": "Enabled",
-            "pasteAllowed": "Enabled",
-            "printAllowed": "Enabled",
-            "uploadAllowed": "Enabled"
-        },
-        "responseElements": "arn:aws:workspaces-web:us-west-2:111122223333:userSettings/04a35a2d-f7f9-4b22-af08-8ec72da9c2e2",
-        "requestID": "6a4aa162-7c1b-4cf9-a7ac-e0c8c4622117",
-        "eventID": "56f1fbee-6a1d-4fc6-bf35-a3a71f016fcb",
-        "readOnly": false,
-        "eventType": "AwsApiCall",
-        "managementEvent": true,
-        "recipientAccountId": "111122223333",
-        "eventCategory": "Management"
-    }]
-}   
-    </code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -430,8 +230,8 @@
             <div accesskey="p" class="prev-link" href="./monitoring-cloudwatch.html" id="previous">
              Monitoring with CloudWatch
             </div>
-            <div accesskey="n" class="next-link" href="./monitoring-logging.html" id="next">
-             User access logging
+            <div accesskey="n" class="next-link" href="./service-name-info-in-cloudtrail.html" id="next">
+             Information in CloudTrail
             </div>
            </div>
           </div>

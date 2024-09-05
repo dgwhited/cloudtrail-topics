@@ -84,6 +84,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=VPC&amp;topic_url=https://docs.aws.amazon.com/en_us/vpc/latest/reachability/logging-using-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/vpc/latest/reachability/logging-using-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/vpc/latest/reachability/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="log Reachability Analyzer API calls with CloudTrail" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -151,8 +152,7 @@
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="logging-using-cloudtrail">
-            Logging Reachability Analyzer API calls using
-      AWS CloudTrail
+            Logging Reachability Analyzer API calls using AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -161,19 +161,19 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Reachability Analyzer is integrated with AWS CloudTrail, a service that provides a record of actions taken
-    by a user, a role, or an AWS service in Reachability Analyzer. CloudTrail captures all API calls for Reachability Analyzer
-    as events. The calls captured include calls from the Reachability Analyzer console and code calls to the
-    Reachability Analyzer API operations. If you create a trail, you can enable continuous delivery of CloudTrail
-    events to an Amazon S3 bucket, including events for Reachability Analyzer. If you don't configure a trail, you
-    can still view the most recent events in the CloudTrail console in
+            Reachability Analyzer is integrated with AWS CloudTrail, a service that provides a record of actions taken by a
+    user, a role, or an AWS service in Reachability Analyzer. CloudTrail captures all API calls for Reachability Analyzer as events. The
+    calls captured include calls from the Reachability Analyzer console and code calls to the Reachability Analyzer API operations. If
+    you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket,
+    including events for Reachability Analyzer. If you don't configure a trail, you can still view the most recent
+    events in the CloudTrail console in
             <b>
              Event history
             </b>
-            .
-    Using the information collected by CloudTrail, you can determine the request that was made to
-    Reachability Analyzer, the IP address from which the request was made, who made the request, when it was
-    made, and additional details.
+            . Using the information
+    collected by CloudTrail, you can determine the request that was made to Reachability Analyzer, the IP address from
+    which the request was made, who made the request, when it was made, and additional
+    details.
            </p>
            <p>
             To learn more about CloudTrail, see the
@@ -201,17 +201,17 @@
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account, including events for Reachability Analyzer,
-      create a trail. A
+            For an ongoing record of events in your AWS account, including events for Reachability Analyzer, create a
+      trail. A
             <em>
              trail
             </em>
-            enables CloudTrail to deliver log files to an Amazon S3
-      bucket. By default, when you create a trail in the console, the trail applies to all
-      AWS Regions. The trail logs events from all Regions in the AWS partition and delivers the
-      log files to the Amazon S3 bucket that you specify. Additionally, you can configure other AWS
-      services to further analyze and act upon the event data collected in CloudTrail logs. For more
-      information, see the following:
+            enables CloudTrail to deliver log files to an Amazon S3 bucket. By
+      default, when you create a trail in the console, the trail applies to all AWS Regions. The
+      trail logs events from all Regions in the AWS partition and delivers the log files to the
+      Amazon S3 bucket that you specify. Additionally, you can configure other AWS services to further
+      analyze and act upon the event data collected in CloudTrail logs. For more information, see the
+      following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -262,9 +262,9 @@
                <span class="topcom">
                 Reachability Analyzer API calls
                </span>
-               â All API calls used to
-            create, read/describe, update, delete, and list (CRUDL) Reachability Analyzer resources are logged
-            by CloudTrail and are documented in the
+               â All API calls used to create,
+            read/describe, update, delete, and list (CRUDL) Reachability Analyzer resources are logged by CloudTrail and
+            are documented in the
                <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/">
                 Amazon EC2 API Reference
                </a>
@@ -282,7 +282,7 @@
                </span>
                â CloudTrail also records all
             Network Manager Chat API calls as events. The Network Manager Chat API provides an interface and methods with which
-            users can interact and have conversations with Reachability Analyzer through . Calls to the
+            users can interact and have conversations with Reachability Analyzer through Amazon Q. Calls to the
             following API methods generate entries in the CloudTrail log files:
               </p>
               <div class="itemizedlist">
@@ -547,7 +547,8 @@
            </div>
            <div class="prev-next">
             <div accesskey="p" class="prev-link" href="./cross-account-access-roles.html" id="previous">
-             Cross-account access roles
+             Cross-account access
+        roles
             </div>
             <div accesskey="n" class="next-link" href="./reachability-analyzer-limits.html" id="next">
              Quotas

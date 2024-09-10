@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Learn about logging Amazon EC2 Auto Scaling with CloudTrail." name="description"/>
+  <meta content="Learn about logging Amazon EC2 Auto Scaling with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon EC2 Auto Scaling" name="product"/>
   <meta content="User Guide" name="guide"/>
@@ -145,15 +145,11 @@
           </a>
          </div>
          <div id="page-toc-src">
-          <a href="#service-name-info-in-cloudtrail">
-           Amazon EC2 Auto Scaling information in CloudTrail
+          <a href="#cloudtrail-management-events">
+           Auto Scaling management events in CloudTrail
           </a>
-          <a href="#understanding-service-name-entries">
-           Understand Amazon EC2 Auto Scaling log file
-                entries
-          </a>
-          <a href="#cloudtrail-related-resources">
-           Related resources
+          <a href="#cloudtrail-event-examples">
+           Auto Scaling event examples
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -170,173 +166,157 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon EC2 Auto Scaling is integrated with AWS CloudTrail, a service that provides a record of actions taken by
-        a user, role, or a service using Amazon EC2 Auto Scaling. CloudTrail captures all API calls for Amazon EC2 Auto Scaling as
-        events. The calls captured include calls from the Amazon EC2 Auto Scaling console and code calls to the
-        Amazon EC2 Auto Scaling API.
-           </p>
-           <p>
-            If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3
-        bucket, including events for Amazon EC2 Auto Scaling. If you don't configure a trail, you can still view
-        the most recent events in the CloudTrail console in
-            <b>
-             Event history
-            </b>
-            . Using the
-        information collected by CloudTrail, you can determine the request that was made to Amazon EC2 Auto Scaling, the
-        IP address from which the request was made, who made the request, when it was made, and
-        additional details.
-           </p>
-           <p>
-            To learn more about CloudTrail, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
-             AWS CloudTrail User Guide
+            Amazon EC2 Auto Scaling is integrated with
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail
             </a>
-            .
-           </p>
-           <h2 id="service-name-info-in-cloudtrail">
-            Amazon EC2 Auto Scaling information in CloudTrail
-           </h2>
-           <p>
-            CloudTrail is enabled on your Amazon Web Services account when you create the account. When activity
-            occurs in Amazon EC2 Auto Scaling, that activity is recorded in a CloudTrail event along with other Amazon Web Services
-            events in
-            <b>
-             Event history
-            </b>
-            . You can view, search, and download recent
-            events in your Amazon Web Services account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing events with CloudTrail event
-                history
-            </a>
-            .
+            , a service that provides a record of actions taken by a user, role, or an
+        AWS service. CloudTrail captures API calls for Auto Scaling as events.
+         The calls captured include calls from the AWS Management Console
+        and code calls to the Auto Scaling API operations. Using the information collected by CloudTrail, you can
+        determine the request that was made to Auto Scaling, the IP address from which the request was
+        made, when it was made, and additional details.
            </p>
            <p>
-            For an ongoing record of events in your Amazon Web Services account, including events for
-            Amazon EC2 Auto Scaling, create a trail. A
-            <em>
-             trail
-            </em>
-            enables CloudTrail to deliver log files
-            to an Amazon S3 bucket. By default, when you create a trail in the console, the trail applies
-            to all Regions. The trail logs events from all Regions in the Amazon Web Services partition and
-            delivers the log files to the Amazon S3 bucket that you specify. Additionally, you can
-            configure other Amazon Web Services to further analyze and act upon the event data collected in
-            CloudTrail logs. For more information, see the following:
+            Every event or log entry contains information about who generated the request. The identity
+        information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
+               Whether the request was made with root user or user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made on behalf of an IAM Identity Center user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or federated
+                user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            CloudTrail is active in your AWS account when you create the account and you automatically have
+        access to the CloudTrail
+            <b>
+             Event history
+            </b>
+            . The CloudTrail
+            <b>
+             Event
+            history
+            </b>
+            provides a viewable, searchable, downloadable, and immutable record of the
+        past 90 days of recorded management events in an AWS Region. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Working
+            with CloudTrail Event history
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            . There are no CloudTrail
+        charges for viewing the
+            <b>
+             Event history
+            </b>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account past 90 days, create a trail.
+           </p>
+           <div class="variablelist">
+            <dl>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail trails
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               A
+               <em>
+                trail
+               </em>
+               enables CloudTrail to deliver log files to an Amazon S3 bucket. All trails created using the AWS Management Console are multi-Region. You can create a single-Region or a multi-Region trail by using the AWS CLI. Creating a multi-Region trail is recommended because you capture activity in all AWS Regions in your account. If you create a single-Region trail, you can view only the events logged in the trail's AWS Region. For more information about trails, see
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview
-                        for creating a trail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
-                CloudTrail supported services and integrations
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
-                Configuring Amazon SNS notifications for CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail log files from multiple regions
+                Creating a trail for your AWS account
                </a>
                and
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail log files from multiple accounts
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html">
+                Creating a trail for an organization
                </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
               </p>
-             </li>
-            </ul>
+              <p>
+               You can deliver one copy of your ongoing management events to your Amazon S3 bucket at no charge from CloudTrail by creating a trail, however, there are Amazon S3 storage charges. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               . For information about Amazon S3 pricing, see
+               <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Amazon S3 Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+            </dl>
            </div>
+           <h2 id="cloudtrail-management-events">
+            Auto Scaling management events in CloudTrail
+           </h2>
            <p>
-            All Amazon EC2 Auto Scaling actions are logged by CloudTrail and are documented in the
-            <a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/">
-             Amazon EC2 Auto Scaling API Reference
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
             </a>
-            . For
-            example, calls to the
-            <b>
-             CreateLaunchConfiguration
-            </b>
-            ,
-            <b>
-             DescribeAutoScalingGroup
-            </b>
-            , and
-            <b>
-             UpdateAutoScalingGroup
-            </b>
-            actions generate entries in the CloudTrail log
-            files.
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
            </p>
            <p>
-            Every event or log entry contains information about who generated the request. The
-            identity information helps you determine the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               Whether the request was made with root or AWS Identity and Access Management (IAM) user
-                    credentials.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made with temporary security credentials for a role or
-                    federated user.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made by another service.
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail
-             <code class="code">
-              userIdentity
-             </code>
-             element
+            Amazon EC2 Auto Scaling logs all Auto Scaling control plane operations as management events. For a list
+            of the Amazon EC2 Auto Scaling control plane operations that Auto Scaling logs to CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.html">
+             Amazon EC2 Auto Scaling API Reference
             </a>
             .
            </p>
-           <h2 id="understanding-service-name-entries">
-            Understand Amazon EC2 Auto Scaling log file
-                entries
+           <h2 id="cloudtrail-event-examples">
+            Auto Scaling event examples
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3
-            bucket that you specify. CloudTrail log files contain one or more log entries. An event
-            represents a single request from any source and includes information about the requested
-            action, the date and time of the action, request parameters, and so on. CloudTrail log files
-            aren't an ordered stack trace of the public API calls, so they don't appear in any
-            specific order.
+            An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
            </p>
            <p>
-            The following example shows a CloudTrail log entry that demonstrates the
-            <b>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
              CreateLaunchConfiguration
-            </b>
-            action.
+            </code>
+            operation.
            </p>
            <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
     "eventVersion": "1.05",
@@ -389,25 +369,13 @@
     "eventType": "AwsApiCall",
     "recipientAccountId": "123456789012"
 }</code></pre>
-           <h2 id="cloudtrail-related-resources">
-            Related resources
-           </h2>
            <p>
-            With CloudWatch Logs, you can monitor and receive alerts for specific events captured by CloudTrail.
-            The events sent to CloudWatch Logs are those configured to be logged by your trail, so make sure
-            you have configured your trail or trails to log the event types that you are interested
-            in monitoring. CloudWatch Logs can monitor information in the log files and notify you when
-            certain thresholds are met. You can also archive your log data in highly durable
-            storage. For more information, see the
-            <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/">
-             Amazon CloudWatch Logs User Guide
+            For information about CloudTrail record contents, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail
+            record contents
             </a>
-            and the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/monitor-cloudtrail-log-files-with-cloudwatch-logs.html">
-             Monitoring
-                CloudTrail log files with Amazon CloudWatch Logs
-            </a>
-            topic in the
+            in the
             <em>
              AWS CloudTrail User Guide
             </em>

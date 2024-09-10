@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging Amazon Cognito API calls with AWS CloudTrail - Amazon Cognito
+   Amazon Cognito logging in AWS CloudTrail - Amazon Cognito
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/cognito/latest/developerguide/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Amazon Cognito is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in Amazon Cognito. CloudTrail captures a subset of API calls for Amazon Cognito as events, including calls from the Amazon Cognito console and from code calls to the Amazon Cognito API operations. If you create a trail, you can choose to deliver CloudTrail events to an Amazon S3 bucket, including events for Amazon Cognito. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in" name="description"/>
+  <meta content="Amazon Cognito integrates with AWS CloudTrail, capturing API calls and endpoint requests as events that are recorded as CloudTrail events. These logs contain a detailed audit trail of user and administrator activity in user pools and identity pools, including which actions were taken, who performed them, and when." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon Cognito" name="product"/>
   <meta content="Developer Guide" name="guide"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cognito'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="Developer Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging Amazon Cognito API calls with AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Amazon Cognito logging in AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,14 +76,14 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging Amazon Cognito API calls with AWS CloudTrail - Amazon Cognito
+         Amazon Cognito logging in AWS CloudTrail - Amazon Cognito
         </title>
         <meta content="/pdfs/cognito/latest/developerguide/cognito-dg.pdf#logging-using-cloudtrail" name="pdf"/>
         <meta content="https://repost.aws/tags/TAkhAE7QaGSoKZwd6utGhGDA" name="forums"/>
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Cognito&amp;topic_url=https://docs.aws.amazon.com/en_us/cognito/latest/developerguide/logging-using-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/cognito/latest/developerguide/logging-using-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/cognito/latest/developerguide/logging-using-cloudtrail.html" name="feedback-no"/>
-        <meta content="Cognito,Amazon Cognito" name="keywords"/>
+        <meta content="Cognito,Amazon Cognito,CloudTrail,event logs,audit trail,API calls,endpoint requests,management events,data events" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -122,7 +122,7 @@
       {
         "@type" : "ListItem",
         "position" : 6,
-        "name" : "Logging Amazon Cognito API calls with AWS CloudTrail",
+        "name" : "Amazon Cognito logging in AWS CloudTrail",
         "item" : "https://docs.aws.amazon.com/cognito/latest/developerguide/monitoring.html"
       }
     ]
@@ -149,12 +149,22 @@
            Developer Guide
           </a>
          </div>
+         <div id="page-toc-src">
+          <a href="#amazon-cognito-info-in-cloudtrail">
+           Information that Amazon Cognito sends to
+          CloudTrail
+          </a>
+          <a href="#analyzingcteventscwinsight">
+           Analyzing Amazon Cognito CloudTrail events with Amazon CloudWatch Logs
+          Insights
+          </a>
+         </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="logging-using-cloudtrail">
-            Logging Amazon Cognito API calls with AWS CloudTrail
+            Amazon Cognito logging in AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -199,24 +209,812 @@
             </h6>
             <ul>
              <li>
-              <a href="./amazon-cognito-info-in-cloudtrail.html">
-               Amazon Cognito information in CloudTrail
+              <a href="#amazon-cognito-info-in-cloudtrail">
+               Information that Amazon Cognito sends to
+          CloudTrail
               </a>
              </li>
              <li>
-              <a href="./understanding-amazon-cognito-entries.html">
-               Understanding Amazon Cognito sign-in
-          events
-              </a>
-             </li>
-             <li>
-              <a href="./analyzingcteventscwinsight.html">
+              <a href="#analyzingcteventscwinsight">
                Analyzing Amazon Cognito CloudTrail events with Amazon CloudWatch Logs
           Insights
               </a>
              </li>
+             <li>
+              <a href="./understanding-amazon-cognito-entries.html">
+               Example Amazon Cognito events
+              </a>
+             </li>
             </ul>
            </div>
+           <h2 id="amazon-cognito-info-in-cloudtrail">
+            Information that Amazon Cognito sends to
+          CloudTrail
+           </h2>
+           <p>
+            CloudTrail is turned on when you create your AWS account. When supported event activity
+        occurs in Amazon Cognito, that activity is recorded in a CloudTrail event along with other AWS service
+        events in
+            <b>
+             Event history
+            </b>
+            . You can view, search, and download recent
+        events in your AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail event
+          history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including events for Amazon Cognito,
+        create a trail. A CloudTrail trail delivers log files to an Amazon S3 bucket. By default, when you
+        create a trail in the console, the trail applies to all Regions. The trail logs events from
+        all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you
+        specify. Additionally, you can configure other AWS services to further analyze and act
+        upon the event data collected in CloudTrail logs. For more information, see:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Overview for
+              creating a trail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-list">
+                CloudTrail supported services and integrations
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
+                Configuring amazon
+              SNS notifications for CloudTrail
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+                Receiving CloudTrail log files from multiple regions
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+                Receiving CloudTrail
+              log files from multiple accounts
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Every event or log entry contains information about who generated the request. The
+        identity information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root or IAM user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or
+            federated user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            For more information, see the
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail userIdentity element
+            </a>
+            .
+           </p>
+           <h6>
+            Confidential data in AWS CloudTrail
+           </h6>
+           <p>
+            Because user pools and identity pools process user data, Amazon Cognito obscures some private
+          fields in your CloudTrail events with the value
+            <code class="code">
+             HIDDEN_FOR_SECURITY_REASONS
+            </code>
+            . For
+          examples of fields that Amazon Cognito doesn't populate to events, see
+            <a href="./understanding-amazon-cognito-entries.html">
+             Example Amazon Cognito events
+            </a>
+            . Amazon Cognito only obscures some fields that
+          commonly contain user information, like passwords and tokens. Amazon Cognito doesn't perform any
+          automatic detection or masking of personally-identifying information that you populate to
+          non-private fields in your API requests.
+           </p>
+           <h3 id="user-pools-cloudtrail-events">
+            User pools events
+           </h3>
+           <p>
+            Amazon Cognito supports logging for all of the actions listed on the
+            <a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_Operations.html">
+             User pool actions
+            </a>
+            page as events in CloudTrail log files. Amazon Cognito logs user pool events
+          to CloudTrail as
+            <em>
+             management events
+            </em>
+            .
+           </p>
+           <p>
+            The
+            <code class="code">
+             eventType
+            </code>
+            field in a Amazon Cognito user pools CloudTrail entry tells you whether your app
+          made the request to the
+            <a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/Welcome.html">
+             Amazon Cognito user pools API
+            </a>
+            or to an
+            <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html">
+             endpoint that serves resources for OpenID Connect, SAML 2.0, or the hosted UI
+            </a>
+            .
+          API requests have an
+            <code class="code">
+             eventType
+            </code>
+            of
+            <code class="code">
+             AwsApiCall
+            </code>
+            and endpoint
+          requests have an
+            <code class="code">
+             eventType
+            </code>
+            of
+            <code class="code">
+             AwsServiceEvent
+            </code>
+            .
+           </p>
+           <p>
+            Amazon Cognito logs the following hosted UI requests to your hosted UI as events in
+          CloudTrail.
+           </p>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w112aac35c18c15c11c17b9">
+              <thead>
+               <tr>
+                <th class="table-header" colspan="100">
+                 <div class="title">
+                  Hosted UI operations in CloudTrail
+                 </div>
+                </th>
+               </tr>
+               <tr>
+                <th>
+                 Operation
+                </th>
+                <th>
+                 Description
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Login_GET
+                </code>
+                ,
+                <code class="code">
+                 CognitoAuthentication
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user views or submits credentials to your
+                <a href="./login-endpoint.html">
+                 Login endpoint
+                </a>
+                .
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 OAuth2_Authorize_GET
+                </code>
+                ,
+                <code class="code">
+                 Beta_Authorize_GET
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user views your
+                <a href="./authorization-endpoint.html">
+                 Authorize endpoint
+                </a>
+                .
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 OAuth2Response_GET
+                </code>
+                ,
+                <code class="code">
+                 OAuth2Response_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits an IdP token to your
+                <code class="code">
+                 /oauth2/idpresponse
+                </code>
+                endpoint.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 SAML2Response_POST
+                </code>
+                ,
+                <code class="code">
+                 Beta_SAML2Response_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits an IdP SAML assertion to your
+                <code class="code">
+                 /saml2/idpresponse
+                </code>
+                endpoint.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Login_OIDC_SAML_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user enters a username at your
+                <a href="./login-endpoint.html">
+                 Login endpoint
+                </a>
+                and matches with an
+                <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-integrating-3rd-party-saml-providers.html">
+                 IdP identifier
+                </a>
+                .
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Token_POST
+                </code>
+                ,
+                <code class="code">
+                 Beta_Token_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits an authorization code to your
+                <a href="./token-endpoint.html">
+                 Token endpoint
+                </a>
+                .
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Signup_GET
+                </code>
+                ,
+                <code class="code">
+                 Signup_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits sign-up information to your
+                <code class="code">
+                 /signup
+                </code>
+                endpoint.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Confirm_GET
+                </code>
+                ,
+                <code class="code">
+                 Confirm_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a confirmation code in the hosted UI.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 ResendCode_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a request to resend a confirmation code in the hosted
+                  UI.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 ForgotPassword_GET
+                </code>
+                ,
+                <code class="code">
+                 ForgotPassword_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a request to reset their password to your
+                <code class="code">
+                 /forgotPassword
+                </code>
+                endpoint.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 ConfirmForgotPassword_GET
+                </code>
+                ,
+                <code class="code">
+                 ConfirmForgotPassword_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a code to your
+                <code class="code">
+                 /confirmForgotPassword
+                </code>
+                endpoint
+                  that confirms their
+                <code class="code">
+                 ForgotPassword
+                </code>
+                request.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 ResetPassword_GET
+                </code>
+                ,
+                <code class="code">
+                 ResetPassword_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a new password in the hosted UI.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Mfa_GET
+                </code>
+                ,
+                <code class="code">
+                 Mfa_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a multi-factor authentication (MFA) code in the hosted
+                  UI.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 MfaOption_GET
+                </code>
+                ,
+                <code class="code">
+                 MfaOption_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user chooses their preferred method for MFA in the hosted UI.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 MfaRegister_GET
+                </code>
+                ,
+                <code class="code">
+                 MfaRegister_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a multi-factor authentication (MFA) code in the hosted UI when
+                  registering the MFA.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Logout
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user signs out at your
+                <code class="code">
+                 /logout
+                </code>
+                endpoint.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 SAML2Logout_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user signs out at your
+                <code class="code">
+                 /saml2/logout
+                </code>
+                endpoint.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Error_GET
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user views an error page in the hosted UI.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 UserInfo_GET
+                </code>
+                ,
+                <code class="code">
+                 UserInfo_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user or IdP exchanges information with your
+                <a href="./userinfo-endpoint.html">
+                 userInfo endpoint
+                </a>
+                .
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Confirm_With_Link_GET
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a confirmation based on a link that Amazon Cognito sent in an email
+                  message.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 Event_Feedback_GET
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits feedback to Amazon Cognito about an
+                <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html">
+                 advanced security features
+                </a>
+                event.
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              Amazon Cognito records
+              <code class="code">
+               UserSub
+              </code>
+              but not
+              <code class="code">
+               UserName
+              </code>
+              in CloudTrail logs
+            for requests that are specific to a user. You can find a user for a given
+              <code class="code">
+               UserSub
+              </code>
+              by calling the
+              <code class="code">
+               ListUsers
+              </code>
+              API, and using a filter for
+            sub.
+             </p>
+            </div>
+           </div>
+           <h3 id="identity-pools-cloudtrail-events">
+            Identity pools events
+           </h3>
+           <p>
+            <b>
+             Data events
+            </b>
+           </p>
+           <p>
+            Amazon Cognito logs the following Amazon Cognito Identity events to CloudTrail as
+            <em>
+             data
+            events
+            </em>
+            .
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            are high-volume data-plane API operations that
+          CloudTrail doesnât log by default. Additional charges apply for data events.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html">
+                GetCredentialsForIdentity
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html">
+                GetId
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetOpenIdToken.html">
+                GetOpenIdToken
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetOpenIdTokenForDeveloperIdentity.html">
+                GetOpenIdTokenForDeveloperIdentity
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_UnlinkIdentity.html">
+                UnlinkIdentity
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            To generate CloudTrail logs for these API operations, you must activate data events in your
+          trail and choose event selectors for
+            <b>
+             Cognito identity pools
+            </b>
+            . For more
+          information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+             Logging
+            data events for trails
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User
+            Guide
+            </em>
+            .
+           </p>
+           <p>
+            You can also add identity pools event selectors to your trail with the following CLI
+          command.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (sh)--><code class="sh">aws cloudtrail put-event-selectors --trail-name <code class="replaceable">&lt;trail name&gt;</code> --advanced-event-selectors \
+"<span>{</span>\
+   \"Name\": \"Cognito Selector\",\
+   \"FieldSelectors\": [\
+      <span>{</span>\
+         \"Field\": \"eventCategory\",\
+         \"Equals\": [\
+            \"Data\"\
+         ]\
+      },\
+      <span>{</span>\
+         \"Field\": \"resources.type\",\
+         \"Equals\": [\
+            \"AWS::Cognito::IdentityPool\"\
+         ]\
+      }\
+   ]\
+}"</code></pre>
+           <p>
+            <b>
+             Management events
+            </b>
+           </p>
+           <p>
+            Amazon Cognito logs the remainder of Amazon Cognito identity pools API operations as
+            <em>
+             management events
+            </em>
+            . CloudTrail logs management event API operations by
+          default.
+           </p>
+           <p>
+            For a list of the Amazon Cognito identity pools API operations that Amazon Cognito logs to CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_Operations.html">
+             Amazon Cognito identity pools API
+            Reference
+            </a>
+            .
+           </p>
+           <p>
+            <b>
+             Amazon Cognito Sync
+            </b>
+           </p>
+           <p>
+            Amazon Cognito logs all Amazon Cognito Sync API operations as management events. For a list of the
+          Amazon Cognito Sync API operations that Amazon Cognito logs to CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/cognitosync/latest/APIReference/API_Operations.html">
+             Amazon Cognito Sync API
+            Reference
+            </a>
+            .
+           </p>
+           <h2 id="analyzingcteventscwinsight">
+            Analyzing Amazon Cognito CloudTrail events with Amazon CloudWatch Logs
+          Insights
+           </h2>
+           <p>
+            You can search and analyze your Amazon Cognito CloudTrail events with Amazon CloudWatch Logs Insights. When you
+        configure your trail to send events to CloudWatch Logs, CloudTrail sends only the events that match your
+        trail settings.
+           </p>
+           <p>
+            To query or research your Amazon Cognito CloudTrail events, in the CloudTrail console, make sure that you
+        select the
+            <b>
+             Management events
+            </b>
+            option in your trail settings so that
+        you can monitor the management operations performed on your AWS resources. You can
+        optionally select the
+            <b>
+             Insights events
+            </b>
+            option in your trail settings
+        when you want to identify errors, unusual activity, or unusual user behavior in your
+        account.
+           </p>
+           <h3 id="analyzingcteventscwinsight-samplequeries">
+            Sample Amazon Cognito queries
+           </h3>
+           <p>
+            You can use the following queries in the Amazon CloudWatch console.
+           </p>
+           <p>
+            <b>
+             General queries
+            </b>
+           </p>
+           <p>
+            Find the 25 most recently added log events.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">fields @timestamp, @message | sort @timestamp desc | limit 25
+| filter eventSource = "cognito-idp.amazonaws.com"</code></pre>
+           <p>
+            Get a list of the 25 most recently added log events that include exceptions.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">fields @timestamp, @message | sort @timestamp desc | limit 25
+| filter eventSource = "cognito-idp.amazonaws.com" and @message like /Exception/</code></pre>
+           <p>
+            <b>
+             Exception and Error Queries
+            </b>
+           </p>
+           <p>
+            Find the 25 most recently added log events with error code
+            <code class="code">
+             NotAuthorizedException
+            </code>
+            along with Amazon Cognito user pool
+            <code class="code">
+             sub
+            </code>
+            .
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">fields @timestamp, additionalEventData.sub as user | sort @timestamp desc | limit 25
+| filter eventSource = "cognito-idp.amazonaws.com" and errorCode= "NotAuthorizedException"</code></pre>
+           <p>
+            Find the number of records with
+            <code class="code">
+             sourceIPAddress
+            </code>
+            and corresponding
+            <code class="code">
+             eventName
+            </code>
+            .
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">filter eventSource = "cognito-idp.amazonaws.com"
+| stats count(*) by sourceIPAddress, eventName</code></pre>
+           <p>
+            Find the top 25 IP addresses that triggered a
+            <code class="code">
+             NotAuthorizedException
+            </code>
+            error.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">filter eventSource = "cognito-idp.amazonaws.com" and errorCode= "NotAuthorizedException"
+| stats count(*) as count by sourceIPAddress, eventName
+| sort count desc | limit 25</code></pre>
+           <p>
+            Find the top 25 IP addresses that called the
+            <code class="code">
+             ForgotPassword
+            </code>
+            API.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">filter eventSource = "cognito-idp.amazonaws.com" and eventName = 'ForgotPassword'
+| stats count(*) as count by sourceIPAddress
+| sort count desc | limit 25</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -248,11 +1046,11 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./create-a-cloud-watch-alarm.html" id="previous">
-             Create a CloudWatch alarm for a quota
+            <div accesskey="p" class="prev-link" href="./use-the-service-quota-console-to-track-metrics.html" id="previous">
+             Metrics in Service Quotas
             </div>
-            <div accesskey="n" class="next-link" href="./amazon-cognito-info-in-cloudtrail.html" id="next">
-             Amazon Cognito information in CloudTrail
+            <div accesskey="n" class="next-link" href="./understanding-amazon-cognito-entries.html" id="next">
+             Example events
             </div>
            </div>
           </div>

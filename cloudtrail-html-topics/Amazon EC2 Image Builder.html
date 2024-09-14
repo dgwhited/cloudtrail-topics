@@ -145,7 +145,7 @@
           </a>
          </div>
          <div id="page-toc-src">
-          <a href="#service-name-info-in-cloudtrail">
+          <a href="#imagebuilder-info-in-cloudtrail">
            Image Builder information in CloudTrail
           </a>
          </div>
@@ -164,21 +164,18 @@
            </div>
            <p>
             EC2 Image Builder is integrated with AWS CloudTrail, a service that provides a record of actions 
-		all API calls for taken by a user, role, or an AWS service through the Image Builder API. 
-		CloudTrail captures Image Builder as events. The calls captured include calls from the Image Builder 
-		console and code calls to the Image Builder API operations.
-           </p>
-           <p>
-            If you create a trail, you can enable continuous delivery of CloudTrail events to an S3 bucket, 
-		including events for Image Builder. If you don't configure a trail, you can still view the most 
-		recent events in the CloudTrail console in
+		taken by a user, role, or an AWS service in Image Builder. CloudTrail captures all API calls for
+		Image Builder as events. The calls captured include calls from the Image Builder console and
+		code calls to the Image Builder API operations. If you create a trail, you can enable
+		continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Image Builder. If 
+		you don't configure a trail, you can still view the most recent events in the CloudTrail console 
+		in
             <b>
              Event history
             </b>
-            .  Using the 
-		information collected by CloudTrail, you can determine the request that was made to Image Builder, 
-		the IP address from which the request was made, who made the request, when it was made, 
-		and additional details.
+            .  Using the information collected by CloudTrail, you can
+		determine the request that was made to Image Builder, the IP address from which the request
+		was made, who made the request, when it was made, and additional details.
            </p>
            <p>
             To learn more about CloudTrail, see the
@@ -187,7 +184,7 @@
             </a>
             .
            </p>
-           <h2 id="service-name-info-in-cloudtrail">
+           <h2 id="imagebuilder-info-in-cloudtrail">
             Image Builder information in CloudTrail
            </h2>
            <p>
@@ -200,8 +197,7 @@
             . You can view, search, and download recent events in 
 			your AWS account. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing events 
-				with CloudTrail Event history
+             Viewing events with CloudTrail Event history
             </a>
             .
            </p>
@@ -211,9 +207,10 @@
             <em>
              trail
             </em>
-            enables CloudTrail to deliver log files to an S3 bucket. 
-			By default, when you create a trail in the console, the trail applies to all AWS Regions. The trail 
-			logs events from all Regions in the AWS partition and delivers the log files to the S3 bucket 
+            enables CloudTrail to deliver log files to an Amazon S3 bucket. 
+			By default, when you create a trail in the console, the trail applies to all AWS Regions. 
+			The trail 
+			logs events from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket 
 			that you specify. Additionally, you can configure other AWS services to further analyze and act
 			upon the event data collected in CloudTrail logs. For more information, see the following:
            </p>
@@ -222,28 +219,23 @@
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for creating a 
-					trail
+                Overview for creating a trail
                </a>
-               .
               </p>
              </li>
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html">
-                CloudTrail supported 
-					services and integrations
+                CloudTrail supported services and integrations
                </a>
-               .
               </p>
              </li>
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
-                Configuring 
-					Amazon SNS notifications for CloudTrail
+                Configuring Amazon SNS notifications
+					for CloudTrail
                </a>
-               .
               </p>
              </li>
              <li class="listitem">
@@ -252,27 +244,22 @@
                 Receiving CloudTrail log
 					files from multiple regions
                </a>
-               .
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
+               and
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving 
-					CloudTrail log files from multiple accounts
+                Receiving CloudTrail log
+						files from multiple accounts
                </a>
-               .
               </p>
              </li>
             </ul>
            </div>
            <p>
-            CloudTrail logs all Image Builder actions that are documented in the
+            All Image Builder actions are logged by CloudTrail and are documented in the
             <a href="https://docs.aws.amazon.com/imagebuilder/latest/APIReference/">
-             EC2 Image Builder 
-			API Reference
+             EC2 Image Builder API Reference
             </a>
-            . For example, calls to the
+            . 
+			For example, calls to the
             <code class="code">
              CreateImagePipeline
             </code>
@@ -294,7 +281,7 @@
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               Whether the request was made with root or IAM user credentials.
+               Whether the request was made with root or AWS Identity and Access Management (IAM) user credentials.
               </p>
              </li>
              <li class="listitem">
@@ -311,7 +298,7 @@
             </ul>
            </div>
            <p>
-            For more information about determining who requested an event, see the
+            For more information, see the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
              CloudTrail userIdentity
 			element

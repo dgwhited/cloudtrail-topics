@@ -110,7 +110,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Logging and Monitoring",
+        "name" : "Logging and monitoring",
         "item" : "https://docs.aws.amazon.com/braket/latest/developerguide/braket-monitor-tasks.html"
       },
       {
@@ -185,6 +185,23 @@
             </a>
             .
            </p>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             In this section:
+            </h6>
+            <ul>
+             <li>
+              <a href="#braket-ct-logs-info">
+               Amazon Braket information in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#understanding-braket-entries">
+               Understanding Amazon Braket log file entries
+              </a>
+             </li>
+            </ul>
+           </div>
            <h2 id="braket-ct-logs-info">
             Amazon Braket information in CloudTrail
            </h2>
@@ -289,14 +306,19 @@
             Understanding Amazon Braket log file entries
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket that you specify. CloudTrail log files contain one or more log entries. An event represents a single request from any source and includes information about the requested action, the date and time of the action, request parameters, and so on. CloudTrail log files are not an ordered stack trace of the public API calls, so they donât appear in any specific order.
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket that 
+    you specify. CloudTrail log files contain one or more log entries. An event represents a single request 
+    from any source and includes information about the requested action, the date and time of the action, 
+    request parameters, and so on. CloudTrail log files are not an ordered stack trace of the public 
+    API calls, so they donât appear in any specific order.
            </p>
            <p>
             The following example is a log entry for the
             <code class="code">
              GetQuantumTask
             </code>
-            action, which gets the details of a quantum task.
+            action, which gets the 
+    details of a quantum task.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.05",

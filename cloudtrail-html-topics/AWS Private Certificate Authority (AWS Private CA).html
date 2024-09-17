@@ -3,44 +3,44 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Log AWS Private CA API calls with AWS CloudTrail - AWS Private Certificate Authority
+   Monitor AWS Private CA resources - AWS Private Certificate Authority
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
-  <meta content="PcaCtIntro" name="target_state"/>
-  <meta content="PcaCtIntro" name="default_state"/>
+  <meta content="logging-and-monitoring" name="target_state"/>
+  <meta content="logging-and-monitoring" name="default_state"/>
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
-  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaCtIntro.html" rel="canonical"/>
-  <meta content="Learn how to use AWS CloudTrail to log AWS Private CA API calls and events related to AWS Private CA." name="description"/>
+  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/logging-and-monitoring.html" rel="canonical"/>
+  <meta content="Learn how to use AWS tools to monitor the use and performance of your AWS Private CA solution." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="AWS Private Certificate Authority" name="product"/>
   <meta content="User Guide" name="guide"/>
   <meta content="AWS Private CA handles the complexity of creating and managing private certificate authorities (CAs) that you can use to issue and revoke private certificates inside of your organization." name="abstract"/>
   <meta content="en_us" name="guide-locale"/>
   <meta content="toc-contents.json" name="tocs"/>
-  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaCtIntro.html" rel="canonical"/>
-  <link href="https://docs.aws.amazon.com/id_id/privateca/latest/userguide/PcaCtIntro.html" hreflang="id-id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/id_id/privateca/latest/userguide/PcaCtIntro.html" hreflang="id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/privateca/latest/userguide/PcaCtIntro.html" hreflang="de-de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/privateca/latest/userguide/PcaCtIntro.html" hreflang="de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaCtIntro.html" hreflang="en-us" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaCtIntro.html" hreflang="en" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/privateca/latest/userguide/PcaCtIntro.html" hreflang="es-es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/privateca/latest/userguide/PcaCtIntro.html" hreflang="es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/privateca/latest/userguide/PcaCtIntro.html" hreflang="fr-fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/privateca/latest/userguide/PcaCtIntro.html" hreflang="fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/privateca/latest/userguide/PcaCtIntro.html" hreflang="it-it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/privateca/latest/userguide/PcaCtIntro.html" hreflang="it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/privateca/latest/userguide/PcaCtIntro.html" hreflang="ja-jp" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/privateca/latest/userguide/PcaCtIntro.html" hreflang="ja" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/privateca/latest/userguide/PcaCtIntro.html" hreflang="ko-kr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/privateca/latest/userguide/PcaCtIntro.html" hreflang="ko" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/privateca/latest/userguide/PcaCtIntro.html" hreflang="pt-br" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/privateca/latest/userguide/PcaCtIntro.html" hreflang="pt" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_cn/privateca/latest/userguide/PcaCtIntro.html" hreflang="zh-cn" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_tw/privateca/latest/userguide/PcaCtIntro.html" hreflang="zh-tw" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/PcaCtIntro.html" hreflang="x-default" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/logging-and-monitoring.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/privateca/latest/userguide/logging-and-monitoring.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/privateca/latest/userguide/logging-and-monitoring.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/privateca/latest/userguide/logging-and-monitoring.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/privateca/latest/userguide/logging-and-monitoring.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/logging-and-monitoring.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/logging-and-monitoring.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/privateca/latest/userguide/logging-and-monitoring.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/privateca/latest/userguide/logging-and-monitoring.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/privateca/latest/userguide/logging-and-monitoring.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/privateca/latest/userguide/logging-and-monitoring.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/privateca/latest/userguide/logging-and-monitoring.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/privateca/latest/userguide/logging-and-monitoring.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/privateca/latest/userguide/logging-and-monitoring.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/privateca/latest/userguide/logging-and-monitoring.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/privateca/latest/userguide/logging-and-monitoring.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/privateca/latest/userguide/logging-and-monitoring.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/privateca/latest/userguide/logging-and-monitoring.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/privateca/latest/userguide/logging-and-monitoring.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/privateca/latest/userguide/logging-and-monitoring.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/privateca/latest/userguide/logging-and-monitoring.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/privateca/latest/userguide/logging-and-monitoring.html" hreflang="x-default" rel="alternative"/>
   <meta content="PCA" name="feedback-item"/>
   <meta content="AWS Private Certificate Authority" name="this_doc_product"/>
   <meta content="User Guide" name="this_doc_guide"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'privateca'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="User Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Log AWS Private CA API calls with AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Monitor AWS Private CA resources"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,14 +76,14 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Log AWS Private CA API calls with AWS CloudTrail - AWS Private Certificate Authority
+         Monitor AWS Private CA resources - AWS Private Certificate Authority
         </title>
-        <meta content="/pdfs/privateca/latest/userguide/privateca-ug.pdf#PcaCtIntro" name="pdf"/>
+        <meta content="/pdfs/privateca/latest/userguide/privateca-ug.pdf#logging-and-monitoring" name="pdf"/>
         <meta content="amazon-privateca-release-notes.rss" name="rss"/>
         <meta content="https://repost.aws/tags/TAJ7zd4vjzSfC_8JNlsbq2tA" name="forums"/>
-        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=PCA&amp;topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/PcaCtIntro.html" name="feedback"/>
-        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/PcaCtIntro.html" name="feedback-yes"/>
-        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/PcaCtIntro.html" name="feedback-no"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=PCA&amp;topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/logging-and-monitoring.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/logging-and-monitoring.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/logging-and-monitoring.html" name="feedback-no"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -110,13 +110,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Log and monitor AWS Private Certificate Authority",
-        "item" : "https://docs.aws.amazon.com/privateca/latest/userguide/logging-and-monitoring.html"
-      },
-      {
-        "@type" : "ListItem",
-        "position" : 5,
-        "name" : "Log AWS Private CA API calls with AWS CloudTrail",
+        "name" : "Monitor AWS Private CA resources",
         "item" : "https://docs.aws.amazon.com/privateca/latest/userguide/logging-and-monitoring.html"
       }
     ]
@@ -126,7 +120,7 @@
        <body>
         <div id="main">
          <div style="display: none">
-          <a href="/pdfs/privateca/latest/userguide/privateca-ug.pdf#PcaCtIntro" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          <a href="/pdfs/privateca/latest/userguide/privateca-ug.pdf#logging-and-monitoring" rel="noopener noreferrer" target="_blank" title="Open PDF">
           </a>
          </div>
          <div class="breadcrumb" id="breadcrumbs">
@@ -147,8 +141,8 @@
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
-           <h1 class="topictitle" id="PcaCtIntro">
-            Log AWS Private CA API calls with AWS CloudTrail
+           <h1 class="topictitle" id="logging-and-monitoring">
+            Monitor AWS Private CA resources
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -157,129 +151,80 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            You can use
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
-             AWS CloudTrail
-            </a>
-            to record API calls that are
-            made by AWS Private Certificate Authority. The following examples show CloudTrail entries logged in response to AWS Private CA API calls.
+            Monitoring is an important part of maintaining the reliability, availability, and performance of
+      AWS Private CA and your other AWS solutions. AWS provides the following monitoring tools to
+      watch AWS Private CA, report when something is wrong, and take automatic actions when
+      appropriate:
            </p>
-           <div class="highlights">
-            <h6>
-             Topics
-            </h6>
-            <ul>
-             <li>
-              <a href="./PutPolicy.html">
-               Creating a policy
-              </a>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <em>
+                Amazon CloudWatch
+               </em>
+               monitors your AWS resources and the applications you run on AWS in real
+            time. You can collect and track metrics, create customized dashboards, and set alarms that notify you or take
+            actions when a specified metric reaches a threshold that you specify. For example, you can have CloudWatch track CPU usage
+            or other metrics of your Amazon EC2 instances and automatically launch new instances when needed. For more information,
+            see the
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/">
+                Amazon CloudWatch User Guide
+               </a>
+               .
+              </p>
              </li>
-             <li>
-              <a href="./GetPolicy.html">
-               Retrieving a policy
-              </a>
+             <li class="listitem">
+              <p>
+               <em>
+                Amazon CloudWatch Logs
+               </em>
+               enables you to monitor, store, and access your log files from Amazon EC2 instances,
+            CloudTrail, and other sources. CloudWatch Logs can monitor information in the log files and notify you when certain thresholds are
+            met. You can also archive your log data in highly durable storage. For more information, see the
+               <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/">
+                Amazon CloudWatch Logs User Guide
+               </a>
+               .
+              </p>
              </li>
-             <li>
-              <a href="./DeletePolicy.html">
-               Deleting a policy
-              </a>
+             <li class="listitem">
+              <p>
+               <em>
+                AWS CloudTrail
+               </em>
+               captures API calls and related events made by or on behalf of your AWS account
+            and delivers the log files to an Amazon S3 bucket that you specify. You can identify which users and accounts called
+            AWS, the source IP address from which the calls were made, and when the calls occurred. For more information, see
+            the
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
+                AWS CloudTrail User Guide
+               </a>
+               .
+              </p>
              </li>
-             <li>
-              <a href="./CT-CreateCA.html">
-               Creating a certificate authority
-              </a>
-             </li>
-             <li>
-              <a href="./CT-GenerateCRL.html">
-               GenerateCRL
-              </a>
-             </li>
-             <li>
-              <a href="./CT-GenerateOCSPResponse.html">
-               GenerateOCSPResponse
-              </a>
-             </li>
-             <li>
-              <a href="./CT-CreateAuditReport.html">
-               Creating an audit report
-              </a>
-             </li>
-             <li>
-              <a href="./CT-DeleteCA.html">
-               Deleting a certificate authority
-              </a>
-             </li>
-             <li>
-              <a href="./CT-RestoreCA.html">
-               Restoring a certificate authority
-              </a>
-             </li>
-             <li>
-              <a href="./CT-DescribeCA.html">
-               Describing a certificate authority
-              </a>
-             </li>
-             <li>
-              <a href="./CT-GetCACertificate.html">
-               Retrieving a certificate authority
-                  certificate
-              </a>
-             </li>
-             <li>
-              <a href="./CT-GetCACsr.html">
-               Retrieving the certificate authority signing
-                  request
-              </a>
-             </li>
-             <li>
-              <a href="./CT-GetCertificate.html">
-               Retrieving a certificate
-              </a>
-             </li>
-             <li>
-              <a href="./CT-ImportCACertificate.html">
-               Importing a certificate authority
-                  certificate
-              </a>
-             </li>
-             <li>
-              <a href="./CT-IssueCertificate.html">
-               Issuing a certificate
-              </a>
-             </li>
-             <li>
-              <a href="./CT-ListCAs.html">
-               Listing certificate authorities
-              </a>
-             </li>
-             <li>
-              <a href="./CT-ListTags.html">
-               Listing tags
-              </a>
-             </li>
-             <li>
-              <a href="./CT-RevokeCertificate.html">
-               Revoking a certificate
-              </a>
-             </li>
-             <li>
-              <a href="./CT-TagPCA.html">
-               Tagging private certificate authorities
-              </a>
-             </li>
-             <li>
-              <a href="./CT-UntagPCA.html">
-               Removing tags from a private certificate
-                  authority
-              </a>
-             </li>
-             <li>
-              <a href="./CT-UpdateCA.html">
-               Updating a certificate authority
-              </a>
+             <li class="listitem">
+              <p>
+               <em>
+                Amazon EventBridge
+               </em>
+               is a serverless event bus service that makes it easy to connect your 
+         applications with data from a variety of sources. EventBridge delivers a stream of real-time data from your 
+         own applications, Software-as-a-Service (SaaS) applications, and AWS services and routes that
+         data to targets such as Lambda. This enables you to monitor events that happen in services, and build
+         event-driven architectures. For more information, see the
+               <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/">
+                Amazon EventBridge User Guide
+               </a>
+               .
+              </p>
              </li>
             </ul>
            </div>
+           <p>
+            The following topics describe AWS cloud-monitoring tools available for use with
+         AWS Private CA.
+           </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -311,11 +256,11 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./CloudWatchEvents.html" id="previous">
-             Monitor AWS Private CA with CloudWatch Events
+            <div accesskey="p" class="prev-link" href="./vpc-endpoints.html" id="previous">
+             VPC Endpoints (AWS PrivateLink)
             </div>
-            <div accesskey="n" class="next-link" href="./PutPolicy.html" id="next">
-             Creating a policy
+            <div accesskey="n" class="next-link" href="./PcaCloudWatch.html" id="next">
+             AWS Private CA CloudWatch metrics
             </div>
            </div>
           </div>
@@ -334,7 +279,7 @@
             If you've got a moment, please tell us what we did right so we can do more of it.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=PCA&amp;topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/PcaCtIntro.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=PCA&amp;topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/logging-and-monitoring.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>
@@ -351,7 +296,7 @@
             If you've got a moment, please tell us how we can make the documentation better.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=PCA&amp;topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/PcaCtIntro.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=PCA&amp;topic_url=https://docs.aws.amazon.com/en_us/privateca/latest/userguide/logging-and-monitoring.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>

@@ -217,9 +217,9 @@
   },
   "Amazon EMR": {
     "AWS Service": "Amazon EMR",
-    "CloudTrail Topics": "Logging Amazon EMR API Calls in AWS CloudTrail",
+    "CloudTrail Topics": "Logging Amazon EMR API Calls using AWS CloudTrail",
     "Support began": "04/04/2014",
-    "Link": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/logging_emr_api_calls.html"
+    "Link": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/logging-using-cloudtrail.html"
   },
   "Amazon EMR on EKS": {
     "AWS Service": "Amazon EMR on EKS",

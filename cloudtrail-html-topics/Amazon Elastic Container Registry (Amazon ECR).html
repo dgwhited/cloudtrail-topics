@@ -394,21 +394,32 @@
            <p>
             The following are CloudTrail log entry examples for a few common Amazon ECR tasks.
            </p>
-           <div class="awsdocs-note">
+           <p>
+            These examples have been formatted for improved readability. In a CloudTrail log
+                        file, all entries and events are concatenated into a single line. In
+                        addition, this example has been limited to a single Amazon ECR entry. In a real
+                        CloudTrail log file, you see entries and events from multiple AWS services.
+           </p>
+           <div class="awsdocs-note awsdocs-important">
             <div class="awsdocs-note-title">
-             <awsui-icon name="status-info" variant="link">
+             <awsui-icon name="status-warning" variant="error">
              </awsui-icon>
              <h6>
-              Note
+              Important
              </h6>
             </div>
             <div class="awsdocs-note-text">
              <p>
-              These examples have been formatted for improved readability. In a CloudTrail log
-                        file, all entries and events are concatenated into a single line. In
-                        addition, this example has been limited to a single Amazon ECR entry. In a real
-                        CloudTrail log file, you see entries and events from multiple AWS
-                        services.
+              The
+              <b>
+               sourceIPAddress
+              </b>
+              is the IP address that the request
+                    was made from. For actions that originate from the service console, the
+                    address reported is for your underlying resource, not the console web
+                    server. For services in AWS, only the DNS name is displayed. We still
+                    evaluate the auth with the client source IP even if it's redacted to AWS
+                    service DNS name.
              </p>
             </div>
            </div>

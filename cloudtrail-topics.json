@@ -921,7 +921,13 @@
     "AWS Service": "AWS Directory Service",
     "CloudTrail Topics": "Logging AWS Directory Service API Calls by Using CloudTrail",
     "Support began": "05/14/2015",
-    "Link": "https://docs.aws.amazon.com/directoryservice/latest/devguide/cloudtrail_logging.html"
+    "Link": "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/logging-using-cloudtrail-ads.html"
+  },
+  "AWS Directory Service Data": {
+    "AWS Service": "AWS Directory Service Data",
+    "CloudTrail Topics": "Logging AWS Directory Service Data API calls using AWS CloudTrail",
+    "Support began": "09/18/2024",
+    "Link": "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/logging-using-cloudtrail.html"
   },
   "AWS Elastic Beanstalk (Elastic Beanstalk)": {
     "AWS Service": "AWS Elastic Beanstalk (Elastic Beanstalk)",

@@ -172,14 +172,18 @@
     calls captured include calls from the Verified Permissions console and code calls to the Verified Permissions API operations.
     If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket,
     including events for Verified Permissions. If you don't configure a trail, you can still view the most recent
-    events in the CloudTrail console in
+    management action events in the CloudTrail console in
             <b>
              Event history
             </b>
-            . Using the information
-    collected by CloudTrail, you can determine the request that was made to Verified Permissions, the IP address from
-    which the request was made, who made the request, when it was made, and additional
-    details.
+            , but not
+    events for API calls such as
+            <code class="code">
+             isAuthorized
+            </code>
+            . Using the information collected by CloudTrail,
+    you can determine the request that was made to Verified Permissions, the IP address from which the request was
+    made, who made the request, when it was made, and additional details.
            </p>
            <p>
             To learn more about CloudTrail, see the
@@ -336,6 +340,17 @@
       request from any source and includes information about the requested action, the date and time
       of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
       the public API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            For authorization API calls, the response elements, such as the decision, are included under
+            <code class="code">
+             additionalEventData
+            </code>
+            rather than
+            <code class="code">
+             responseElements
+            </code>
+            .
            </p>
            <div class="highlights" id="inline-topiclist">
             <h6>

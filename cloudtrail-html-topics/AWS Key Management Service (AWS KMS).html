@@ -111,18 +111,12 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Managing keys",
-        "item" : "https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html"
-      },
-      {
-        "@type" : "ListItem",
-        "position" : 5,
-        "name" : "Monitoring AWS KMS keys",
+        "name" : "Monitor AWS KMS keys",
         "item" : "https://docs.aws.amazon.com/kms/latest/developerguide/monitoring-overview.html"
       },
       {
         "@type" : "ListItem",
-        "position" : 6,
+        "position" : 5,
         "name" : "Logging AWS KMS API calls with AWS CloudTrail",
         "item" : "https://docs.aws.amazon.com/kms/latest/developerguide/monitoring-overview.html"
       }
@@ -151,11 +145,8 @@
           </a>
          </div>
          <div id="page-toc-src">
-          <a href="#kms-info-in-cloudtrail">
-           Logging events in CloudTrail
-          </a>
           <a href="#searching-kms-ct">
-           Searching events in CloudTrail
+           Finding AWS KMS log entries in CloudTrail
           </a>
           <a href="#filtering-kms-events">
            Excluding AWS KMS events from a trail
@@ -202,7 +193,7 @@
              PutKeyPolicy
             </a>
             , and
-            <a href="./concepts.html#cryptographic-operations">
+            <a href="./kms-cryptography.html#cryptographic-operations">
              cryptographic
       operations
             </a>
@@ -301,13 +292,8 @@
             </h6>
             <ul>
              <li>
-              <a href="#kms-info-in-cloudtrail">
-               Logging events in CloudTrail
-              </a>
-             </li>
-             <li>
               <a href="#searching-kms-ct">
-               Searching events in CloudTrail
+               Finding AWS KMS log entries in CloudTrail
               </a>
              </li>
              <li>
@@ -322,116 +308,8 @@
              </li>
             </ul>
            </div>
-           <h2 id="kms-info-in-cloudtrail">
-            Logging events in CloudTrail
-           </h2>
-           <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
-      AWS KMS, that activity is recorded in a CloudTrail event along with other AWS service events in
-            <b>
-             Event history
-            </b>
-            . You can view, search, and download recent events in your
-      AWS account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing Events with CloudTrail Event History
-            </a>
-            .
-           </p>
-           <p>
-            For an ongoing record of events in your AWS account, including events for AWS KMS, create
-      a trail. A trail enables CloudTrail to deliver log files to an Amazon S3 bucket. By default, when you
-      create a trail in the console, the trail applies to all AWS Regions. The trail logs events
-      from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you
-      specify. Additionally, you can configure other AWS services to further analyze and act upon
-      the event data collected in CloudTrail logs. For more information, see:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for
-            creating a trail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
-                CloudTrail supported services and integrations
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
-                Configuring Amazon SNS
-            notifications for CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail log files from multiple Regions
-               </a>
-               and
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail
-            log files from multiple accounts
-               </a>
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            To learn more about CloudTrail, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
-             AWS CloudTrail User Guide
-            </a>
-            . To
-      learn about other ways to monitor the use of your KMS keys, see
-            <a href="./monitoring-overview.html">
-             Monitoring AWS KMS keys
-            </a>
-            .
-           </p>
-           <p>
-            Every event or log entry contains information about who generated the request. The
-      identity information helps you determine the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               If the request was made with root credentials or the credentials of an
-          IAM user.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               If the request was made with temporary security credentials for a role or federated
-          user.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               If the request was made by another AWS service.
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity
-        Element
-            </a>
-            .
-           </p>
            <h2 id="searching-kms-ct">
-            Searching events in CloudTrail
+            Finding AWS KMS log entries in CloudTrail
            </h2>
            <p>
             To search CloudTrail log entries, use the
@@ -519,7 +397,7 @@
            </div>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w276aab7c29c17c21b9">
+             <table id="w202aac39c17c21b9">
               <thead>
                <tr>
                 <th>
@@ -702,7 +580,7 @@
       critical events, such as creating, disabling, and deleting AWS KMS keys, changing key
       policy, and the use of your KMS keys by AWS services on your behalf. In some cases, the
       metadata in a CloudTrail log entry, such as the
-            <a href="./concepts.html#encrypt_context">
+            <a href="./encrypt_context.html">
              encryption
         context
             </a>
@@ -845,7 +723,7 @@
            </div>
            <div class="prev-next">
             <div accesskey="p" class="prev-link" href="./monitoring-overview.html" id="previous">
-             Monitoring keys
+             Monitor keys
             </div>
             <div accesskey="n" class="next-link" href="./understanding-kms-entries.html" id="next">
              Examples of AWS KMS log entries

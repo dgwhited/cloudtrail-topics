@@ -84,7 +84,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Neptune&amp;topic_url=https://docs.aws.amazon.com/en_us/neptune/latest/userguide/cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/neptune/latest/userguide/cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/neptune/latest/userguide/cloudtrail.html" name="feedback-no"/>
-        <meta content="Neptune Graph database,Amazon Neptune Graph database,Graph,Graph database,Database,SPARQL,Gremlin,Cypher,openCypher,Audit,Auditing,Log,Logging" name="keywords"/>
+        <meta content="Neptune Graph database,Amazon Neptune Graph database,Graph,Graph database,Database,SPARQL,Gremlin,Cypher,openCypher,monitoring Neptune,monitoring Neptune instance status,using CloudWatch with Neptune,Neptune audit logs,Neptune slow query logs,logging Neptune API calls,Neptune event notifications,tagging Neptune resources,Audit,Auditing,Log,Logging" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -111,7 +111,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Monitoring Amazon Neptune Resources",
+        "name" : "Monitoring Amazon Neptune resources",
         "item" : "https://docs.aws.amazon.com/neptune/latest/userguide/monitoring.html"
       },
       {
@@ -142,15 +142,6 @@
           </a>
           <a href="intro.html">
            User Guide
-          </a>
-         </div>
-         <div id="page-toc-src">
-          <a href="#cloudtrail.CloudTrail">
-           Neptune Information in CloudTrail
-          </a>
-          <a href="#cloudtrail.CloudTrail_Events">
-           Understanding Neptune Log File
-            Entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -214,240 +205,6 @@
             </a>
             .
            </p>
-           <h2 id="cloudtrail.CloudTrail">
-            Neptune Information in CloudTrail
-           </h2>
-           <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
-            Amazon Neptune, that activity is recorded in a CloudTrail event along with other AWS service events
-            in
-            <b>
-             Event history
-            </b>
-            . You can view, search, and download recent events in
-            your AWS account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing Events with CloudTrail Event
-                History
-            </a>
-            .
-           </p>
-           <p>
-            For an ongoing record of events in your AWS account, including events for
-            Neptune, create a trail. A trail enables CloudTrail to deliver log files to an Amazon S3
-            bucket. By default, when you create a trail in the console, the trail applies to all
-            Regions. The trail logs events from all Regions in the AWS partition and delivers the
-            log files to the Amazon S3 bucket that you specify. Additionally, you can configure other
-            AWS services to further analyze and act upon the event data collected in CloudTrail logs.
-            For more information, see:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for Creating a Trail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
-                CloudTrail Supported Services and Integrations
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
-                Configuring Amazon SNS Notifications
-                    for CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail Log
-                    Files from Multiple Regions
-               </a>
-               and
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail Log
-                        Files from Multiple Accounts
-               </a>
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            If an action is taken on behalf of your AWS account using the Neptune console, the
-            Neptune command line interface, or the Neptune SDK APIs, AWS CloudTrail logs the action as
-            calls made to the Amazon RDS API. For example, if you use the Neptune console to modify a
-            DB instance or call the AWS CLI
-            <a href="https://docs.aws.amazon.com/cli/latest/reference/neptune/modify-db-instance.html">
-             modify-db-instance
-            </a>
-            command, the AWS CloudTrail log shows a call to the Amazon RDS API
-            <a href="API_ModifyDBInstance.html" rel="noopener noreferrer" target="_blank">
-             ModifyDBInstance
-            </a>
-            action. For a list
-            of the Neptune API actions that are logged by AWS CloudTrail, see the
-            <a href="neptune-api-reference.html" rel="noopener noreferrer" target="_blank">
-             Neptune API Reference
-            </a>
-            .
-           </p>
-           <div class="awsdocs-note">
-            <div class="awsdocs-note-title">
-             <awsui-icon name="status-info" variant="link">
-             </awsui-icon>
-             <h6>
-              Note
-             </h6>
-            </div>
-            <div class="awsdocs-note-text">
-             <p>
-              AWS CloudTrail only logs events for Neptune Management API calls, such as creating an
-                instance or cluster. If you want to audit changes to your graph, you can use audit
-                logs. For more information, see
-              <a href="./auditing.html">
-               Using Audit Logs with Amazon Neptune Clusters
-              </a>
-              .
-             </p>
-            </div>
-           </div>
-           <p>
-            Every event or log entry contains information about who generated the request. The
-            identity information helps you determine the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               Whether the request was made with root or IAM user credentials.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made with temporary security credentials for a role or
-                    federated user.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made by another AWS service.
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity
-            Element
-            </a>
-            .
-           </p>
-           <h2 id="cloudtrail.CloudTrail_Events">
-            Understanding Neptune Log File
-            Entries
-           </h2>
-           <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
-            that you specify. CloudTrail log files contain one or more log entries. An event represents a single
-            request from any source and includes information about the requested action, the date and time
-            of the action, request parameters, and so on. CloudTrail log files are not an ordered stack trace of
-            the public API calls, so they do not appear in any specific order.
-           </p>
-           <p>
-            The following example shows a CloudTrail log for a user that created a snapshot of a DB instance
-            and then deleted that instance using the Neptune console. The console is identified by the
-            <code class="code">
-             userAgent
-            </code>
-            element. The requested API calls made by the console
-            (
-            <code class="code">
-             CreateDBSnapshot
-            </code>
-            and
-            <code class="code">
-             DeleteDBInstance
-            </code>
-            ) are found in the
-            <code class="code">
-             eventName
-            </code>
-            element for each record. Information about the user
-            (
-            <code class="code">
-             Alice
-            </code>
-            ) can be found in the
-            <code class="code">
-             userIdentity
-            </code>
-            element.
-           </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
-  Records:[
-  <span>{</span>
-    "awsRegion":"us-west-2",
-    "eventName":"CreateDBSnapshot",
-    "eventSource":"",
-    "eventTime":"2014-01-14T16:23:49Z",
-    "eventVersion":"1.0",
-    "sourceIPAddress":"192.0.2.01",
-    "userAgent":"AWS Console, aws-sdk-java\/unknown-version Linux\/2.6.18-kaos_fleet-1108-prod.2 Java_HotSpot(TM)_64-Bit_Server_VM\/24.45-b08",
-    "userIdentity":
-    <span>{</span>
-      "accessKeyId":"",
-      "accountId":"123456789012",
-      "arn":"arn:aws:iam::123456789012:user/Alice",
-      "principalId":"AIDAI2JXM4FBZZEXAMPLE",
-      "sessionContext":
-      <span>{</span>
-        "attributes":
-        <span>{</span>
-          "creationDate":"2014-01-14T15:55:59Z",
-          "mfaAuthenticated":false
-        }
-      },
-      "type":"IAMUser",
-      "userName":"Alice"
-    }
-  },
-  <span>{</span>
-    "awsRegion":"us-west-2",
-    "eventName":"DeleteDBInstance",
-    "eventSource":"",
-    "eventTime":"2014-01-14T16:28:27Z",
-    "eventVersion":"1.0",
-    "sourceIPAddress":"192.0.2.01",
-    "userAgent":"AWS Console, aws-sdk-java\/unknown-version Linux\/2.6.18-kaos_fleet-1108-prod.2 Java_HotSpot(TM)_64-Bit_Server_VM\/24.45-b08",
-    "userIdentity":
-    <span>{</span>
-      "accessKeyId":"",
-      "accountId":"123456789012",
-      "arn":"arn:aws:iam::123456789012:user/Alice",
-      "principalId":"AIDAI2JXM4FBZZEXAMPLE",
-      "sessionContext":
-      <span>{</span>
-        "attributes":
-        <span>{</span>
-          "creationDate":"2014-01-14T15:55:59Z",
-          "mfaAuthenticated":false
-        }
-      },
-      "type":"IAMUser",
-      "userName":"Alice"
-    }
-  }
-  ]
-}</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -482,8 +239,8 @@
             <div accesskey="p" class="prev-link" href="./slow-query-logs.html" id="previous">
              Slow-query logs
             </div>
-            <div accesskey="n" class="next-link" href="./events.html" id="next">
-             Event Notifications
+            <div accesskey="n" class="next-link" href="./cloudtrail.CloudTrail.html" id="next">
+             Neptune Information in CloudTrail
             </div>
            </div>
           </div>

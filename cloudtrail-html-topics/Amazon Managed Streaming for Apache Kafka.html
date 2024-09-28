@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging - Amazon Managed Streaming for Apache Kafka
+   Amazon MSK logging - Amazon Managed Streaming for Apache Kafka
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'msk'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="Developer Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging"/>
+  <meta id="panorama-serviceConsolePage" value="Amazon MSK logging"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,7 +76,7 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging - Amazon Managed Streaming for Apache Kafka
+         Amazon MSK logging - Amazon Managed Streaming for Apache Kafka
         </title>
         <meta content="/pdfs/msk/latest/developerguide/MSKDevGuide.pdf#msk-logging" name="pdf"/>
         <meta content="amazon-msk-release-notes.rss" name="rss"/>
@@ -117,7 +117,7 @@
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "Logging",
+        "name" : "Amazon MSK logging",
         "item" : "https://docs.aws.amazon.com/msk/latest/developerguide/security.html"
       }
     ]
@@ -148,16 +148,13 @@
           <a href="#broker-logs">
            Broker logs
           </a>
-          <a href="#logging-using-cloudtrail">
-           CloudTrail events
-          </a>
          </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="msk-logging">
-            Logging
+            Amazon MSK logging
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -214,7 +211,7 @@
            <p>
             To configure a destination for Amazon MSK broker logs, the IAM identity that you use
                 for Amazon MSK actions must have the permissions described in the
-            <a href="./security-iam-awsmanpol.html#security-iam-awsmanpol-AmazonMSKFullAccess">
+            <a href="./security-iam-awsmanpol-AmazonMSKFullAccess.html">
              AWS managed policy:
             AmazonMSKFullAccess
             </a>
@@ -263,7 +260,7 @@
   "Resource": "*"
 }</code></pre>
            <h3 id="broker-logs-console">
-            Configuring broker logs using the AWS Management Console
+            Configure broker logs using the AWS Management Console
            </h3>
            <p>
             If you are creating a new cluster, look for the
@@ -296,7 +293,7 @@
                 you want Amazon MSK to deliver your broker logs.
            </p>
            <h3 id="broker-logs-cli">
-            Configuring broker logs using the AWS CLI
+            Configure broker logs using the AWS CLI
            </h3>
            <p>
             When you use the
@@ -333,7 +330,7 @@
   }
 }</code></pre>
            <h3 id="broker-logs-api">
-            Configuring broker logs using the API
+            Configure broker logs using the API
            </h3>
            <p>
             You can specify the optional
@@ -411,323 +408,6 @@
              </p>
             </div>
            </div>
-           <h2 id="logging-using-cloudtrail">
-            Logging API calls with AWS CloudTrail
-           </h2>
-           <p>
-           </p>
-           <div class="awsdocs-note">
-            <div class="awsdocs-note-title">
-             <awsui-icon name="status-info" variant="link">
-             </awsui-icon>
-             <h6>
-              Note
-             </h6>
-            </div>
-            <div class="awsdocs-note-text">
-             <p>
-              AWS CloudTrail logs are available for Amazon MSK only when you use
-              <a href="./iam-access-control.html">
-               IAM access control
-              </a>
-              .
-             </p>
-            </div>
-           </div>
-           <p>
-            Amazon MSK is integrated with AWS CloudTrail, a service that provides a record of actions
-            taken by a user, role, or an AWS service in Amazon MSK. CloudTrail captures API calls for
-            as events. The calls captured include calls from the Amazon MSK console and code
-            calls to the Amazon MSK API operations. It also captures Apache Kafka actions such as
-            creating and altering topics and groups.
-           </p>
-           <p>
-            If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3
-            bucket, including events for Amazon MSK. If you don't configure a trail, you can
-            still view the most recent events in the CloudTrail console in
-            <b>
-             Event
-                history
-            </b>
-            . Using the information collected by CloudTrail, you can determine the
-            request that was made to Amazon MSK or the Apache Kafka action, the IP address from
-            which the request was made, who made the request, when it was made, and additional
-            details.
-           </p>
-           <p>
-            To learn more about CloudTrail, including how to configure and enable it, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
-             AWS CloudTrail User Guide
-            </a>
-            .
-           </p>
-           <h3 id="msk-info-in-cloudtrail">
-            Amazon MSK information in CloudTrail
-           </h3>
-           <p>
-            CloudTrail is enabled on your Amazon Web Services account when you create the account. When supported
-                event activity occurs in an MSK cluster, that activity is recorded in a CloudTrail event along with
-                other AWS service events in
-            <b>
-             Event history
-            </b>
-            . You can view,
-                search, and download recent events in your Amazon Web Services account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing Events with CloudTrail
-                    Event History
-            </a>
-            .
-           </p>
-           <p>
-            For an ongoing record of events in your Amazon Web Services account, including events for
-                Amazon MSK, create a trail. A
-            <em>
-             trail
-            </em>
-            enables CloudTrail to deliver log
-                files to an Amazon S3 bucket. By default, when you create a trail in the console, the trail
-                applies to all Regions. The trail logs events from all Regions in the AWS
-                partition and delivers the log files to the Amazon S3 bucket that you specify. Additionally,
-                you can configure other Amazon services to further analyze and act upon the event data
-                collected in CloudTrail logs. For more information, see the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview
-                        for Creating a Trail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
-                CloudTrail Supported Services and Integrations
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
-                Configuring
-                        Amazon SNS Notifications for CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail Log Files from Multiple Regions
-               </a>
-               and
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail Log Files from Multiple Accounts
-               </a>
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            Amazon MSK logs all
-            <a href="https://docs.aws.amazon.com//msk/1.0/apireference/operations.html">
-             Amazon MSK operations
-            </a>
-            as events in CloudTrail log files. In addition, it logs the following Apache Kafka
-                actions.
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               kafka-cluster:DescribeClusterDynamicConfiguration
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               kafka-cluster:AlterClusterDynamicConfiguration
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               kafka-cluster:CreateTopic
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               kafka-cluster:DescribeTopicDynamicConfiguration
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               kafka-cluster:AlterTopic
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               kafka-cluster:AlterTopicDynamicConfiguration
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               kafka-cluster:DeleteTopic
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            Every event or log entry contains information about who generated the request. The
-                identity information helps you determine the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               Whether the request was made with root user or AWS Identity and Access Management (IAM) user
-                        credentials.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made with temporary security credentials for a role or
-                        federated user.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made by another AWS service.
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity
-                Element
-            </a>
-            .
-           </p>
-           <h3 id="understanding-msk-entries">
-            Example: Amazon MSK log file
-                    entries
-           </h3>
-           <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3
-                bucket that you specify. CloudTrail log files contain one or more log entries. An event
-                represents a single request from any source and includes information about the
-                requested action, the date and time of the action, request parameters, and so on.
-                CloudTrail log files aren't an ordered stack trace of the public API calls and Apache
-                Kafka actions, so they don't appear in any specific order.
-           </p>
-           <p>
-            The following example shows CloudTrail log entries that demonstrate the
-            <code class="code">
-             DescribeCluster
-            </code>
-            and
-            <code class="code">
-             DeleteCluster
-            </code>
-            Amazon MSK actions.
-           </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
-  "Records": [
-    <span>{</span>
-      "eventVersion": "1.05",
-      "userIdentity": <span>{</span>
-        "type": "IAMUser",
-        "principalId": "ABCDEF0123456789ABCDE",
-        "arn": "arn:aws:iam::012345678901:user/Joe",
-        "accountId": "012345678901",
-        "accessKeyId": "AIDACKCEVSQ6C2EXAMPLE",
-        "userName": "Joe"
-      },
-      "eventTime": "2018-12-12T02:29:24Z",
-      "eventSource": "kafka.amazonaws.com",
-      "eventName": "DescribeCluster",
-      "awsRegion": "us-east-1",
-      "sourceIPAddress": "192.0.2.0",
-      "userAgent": "aws-cli/1.14.67 Python/3.6.0 Windows/10 botocore/1.9.20",
-      "requestParameters": <span>{</span>
-        "clusterArn": "arn%3Aaws%3Akafka%3Aus-east-1%3A012345678901%3Acluster%2Fexamplecluster%2F01234567-abcd-0123-abcd-abcd0123efa-2"
-      },
-      "responseElements": null,
-      "requestID": "bd83f636-fdb5-abcd-0123-157e2fbf2bde",
-      "eventID": "60052aba-0123-4511-bcde-3e18dbd42aa4",
-      "readOnly": true,
-      "eventType": "AwsApiCall",
-      "recipientAccountId": "012345678901"
-    },
-    <span>{</span>
-      "eventVersion": "1.05",
-      "userIdentity": <span>{</span>
-        "type": "IAMUser",
-        "principalId": "ABCDEF0123456789ABCDE",
-        "arn": "arn:aws:iam::012345678901:user/Joe",
-        "accountId": "012345678901",
-        "accessKeyId": "AIDACKCEVSQ6C2EXAMPLE",
-        "userName": "Joe"
-      },
-      "eventTime": "2018-12-12T02:29:40Z",
-      "eventSource": "kafka.amazonaws.com",
-      "eventName": "DeleteCluster",
-      "awsRegion": "us-east-1",
-      "sourceIPAddress": "192.0.2.0",
-      "userAgent": "aws-cli/1.14.67 Python/3.6.0 Windows/10 botocore/1.9.20",
-      "requestParameters": <span>{</span>
-        "clusterArn": "arn%3Aaws%3Akafka%3Aus-east-1%3A012345678901%3Acluster%2Fexamplecluster%2F01234567-abcd-0123-abcd-abcd0123efa-2"
-      },
-      "responseElements": <span>{</span>
-        "clusterArn": "arn:aws:kafka:us-east-1:012345678901:cluster/examplecluster/01234567-abcd-0123-abcd-abcd0123efa-2",
-        "state": "DELETING"
-      },
-      "requestID": "c6bfb3f7-abcd-0123-afa5-293519897703",
-      "eventID": "8a7f1fcf-0123-abcd-9bdb-1ebf0663a75c",
-      "readOnly": false,
-      "eventType": "AwsApiCall",
-      "recipientAccountId": "012345678901"
-    }
-  ]
-}</code></pre>
-           <p>
-            The following example shows a CloudTrail log entry that demonstrates the
-            <code class="code">
-             kafka-cluster:CreateTopic
-            </code>
-            action.
-           </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-  "eventVersion": "1.08",
-  "userIdentity": <span>{</span>
-    "type": "IAMUser",
-    "principalId": "ABCDEFGH1IJKLMN2P34Q5",
-    "arn": "arn:aws:iam::111122223333:user/Admin",
-    "accountId": "111122223333",
-    "accessKeyId": "CDEFAB1C2UUUUU3AB4TT",
-    "userName": "Admin"
-  },
-  "eventTime": "2021-03-01T12:51:19Z",
-  "eventSource": "kafka-cluster.amazonaws.com",
-  "eventName": "CreateTopic",
-  "awsRegion": "us-east-1",
-  "sourceIPAddress": "198.51.100.0/24",
-  "userAgent": "aws-msk-iam-auth/unknown-version/aws-internal/3 aws-sdk-java/1.11.970 Linux/4.14.214-160.339.amzn2.x86_64 OpenJDK_64-Bit_Server_VM/25.272-b10 java/1.8.0_272 scala/2.12.8 vendor/Red_Hat,_Inc.",
-  "requestParameters": <span>{</span>
-    "kafkaAPI": "CreateTopics",
-    "resourceARN": "arn:aws:kafka:us-east-1:111122223333:topic/IamAuthCluster/3ebafd8e-dae9-440d-85db-4ef52679674d-1/Topic9"
-  },
-  "responseElements": null,
-  "requestID": "e7c5e49f-6aac-4c9a-a1d1-c2c46599f5e4",
-  "eventID": "be1f93fd-4f14-4634-ab02-b5a79cb833d2",
-  "readOnly": false,
-  "eventType": "AwsApiCall",
-  "managementEvent": true,
-  "eventCategory": "Management",
-  "recipientAccountId": "111122223333"
-}</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -759,11 +439,11 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./zookeeper-security.html" id="previous">
-             Controlling access to Apache ZooKeeper
+            <div accesskey="p" class="prev-link" href="./zookeeper-security-tls.html" id="previous">
+             Using TLS security with Apache ZooKeeper
             </div>
-            <div accesskey="n" class="next-link" href="./MSK-compliance.html" id="next">
-             Compliance validation
+            <div accesskey="n" class="next-link" href="./logging-using-cloudtrail.html" id="next">
+             CloudTrail events
             </div>
            </div>
           </div>

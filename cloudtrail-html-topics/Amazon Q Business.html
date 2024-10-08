@@ -180,8 +180,9 @@
            </div>
            <p>
             Amazon Q Business is integrated with AWS CloudTrail, a service that provides a record of
-    actions taken by a user, role, or an AWS service in Amazon Q Business. CloudTrail captures all API
-    calls for Amazon Q Business as events. The calls captured include calls from the Amazon Q console and code calls to the Amazon Q Business API operations. A
+    actions taken by a user, role, or an AWS service in Amazon Q Business. CloudTrail captures all
+    API calls for Amazon Q Business as events. The calls captured include calls from the
+      Amazon Q console and code calls to the Amazon Q Business API operations. A
             <em>
              trail
             </em>
@@ -193,9 +194,9 @@
              Event history
             </b>
             . Using the information
-    collected by CloudTrail, you can determine the request that was made to Amazon Q Business, the IP
-    address from which the request was made, who made the request, when it was made, and additional
-    details.
+    collected by CloudTrail, you can determine the request that was made to Amazon Q Business, the
+    IP address from which the request was made, who made the request, when it was made, and
+    additional details.
            </p>
            <p>
             For more information about CloudTrail, including how to configure and activate it, see the
@@ -280,8 +281,7 @@
            <p>
             CloudTrail supports logging the following Amazon Q Business actions documented in the
             <a href="https://docs.aws.amazon.com/amazonq/latest/api-reference/Welcome.html">
-             Amazon Q Business API
-        Reference
+             Amazon Q Business API Reference
             </a>
             :
            </p>
@@ -607,7 +607,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents disable-scroll">
-             <table id="w160aac37c17c17b7">
+             <table id="w161aac37c17c17b7">
               <thead>
                <tr>
                 <th>
@@ -902,8 +902,8 @@
             <code class="code">
              AWS::QBusiness::Index
             </code>
-            . To
-      configure advanced event selectors, you can use either the CloudTrail console or the AWS CLI:
+            . To configure advanced event selectors, you can use
+      either the CloudTrail console or the AWS CLI:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -963,8 +963,7 @@
                .
               </p>
               <p>
-               The following example shows how to configure a trail to log all Amazon Q Business
-          data events for all Amazon Q Business resource types.
+               The following example shows how to configure a trail to log all Amazon Q Business data events for all Amazon Q Business resource types.
               </p>
               <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="nohighlight">aws cloudtrail put-event-selectors --trail-name <code class="replaceable">trailName</code> \
 --advanced-event-selectors \
@@ -1047,7 +1046,7 @@
       management events. For a list of the Amazon Q Business API operations that Amazon Q logs to CloudTrail, see the
             <a href="https://docs.aws.amazon.com/amazonq/latest/api-reference/Welcome.html">
              Amazon Q Business API
-      Reference
+        Reference
             </a>
             .
            </p>

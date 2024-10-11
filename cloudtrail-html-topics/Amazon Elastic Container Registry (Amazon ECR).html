@@ -335,7 +335,13 @@
              BatchGetImage
             </code>
             sections are
-                generated. For examples of these common tasks, see
+                generated. When OCI clients that support the OCI 1.1
+                specification fetch the list of referrers, or reference artifacts, for an image
+                using the Referrers API, a
+            <code class="code">
+             ListImageReferrers
+            </code>
+            CloudTrail event is emitted. For examples of these common tasks, see
             <a href="#cloudtrail-examples">
              CloudTrail log entry examples
             </a>
@@ -396,9 +402,9 @@
            </p>
            <p>
             These examples have been formatted for improved readability. In a CloudTrail log
-                        file, all entries and events are concatenated into a single line. In
-                        addition, this example has been limited to a single Amazon ECR entry. In a real
-                        CloudTrail log file, you see entries and events from multiple AWS services.
+                    file, all entries and events are concatenated into a single line. In addition,
+                    this example has been limited to a single Amazon ECR entry. In a real CloudTrail log file,
+                    you see entries and events from multiple AWS services.
            </p>
            <div class="awsdocs-note awsdocs-important">
             <div class="awsdocs-note-title">
@@ -414,12 +420,12 @@
               <b>
                sourceIPAddress
               </b>
-              is the IP address that the request
-                    was made from. For actions that originate from the service console, the
-                    address reported is for your underlying resource, not the console web
-                    server. For services in AWS, only the DNS name is displayed. We still
-                    evaluate the auth with the client source IP even if it's redacted to AWS
-                    service DNS name.
+              is the IP address that the
+                        request was made from. For actions that originate from the service console,
+                        the address reported is for your underlying resource, not the console web
+                        server. For services in AWS, only the DNS name is displayed. We still
+                        evaluate the auth with the client source IP even if it's redacted to AWS
+                        service DNS name.
              </p>
             </div>
            </div>
@@ -456,6 +462,12 @@
               <a href="#cloudtrail-examples-lcp">
                Example: Image lifecycle policy
                             action
+              </a>
+             </li>
+             <li>
+              <a href="#cloudtrail-examples-image-referrers-action">
+               Example: Image
+                            referrers action
               </a>
              </li>
             </ul>
@@ -649,8 +661,8 @@
 	"eventSource": "ecr.amazonaws.com",
 	"eventName": "PutImage",
 	"awsRegion": "us-east-2",
-	"sourceIPAddress": "ecr.amazonaws.com",
-	"userAgent": "ecr.amazonaws.com",
+	"sourceIPAddress": "AWS Internal",
+	"userAgent": "AWS Internal",
 	"requestParameters": <span>{</span>
 		"repositoryName": "testrepo",
 		"imageTag": "latest",
@@ -857,6 +869,73 @@
             }
         ]
     }
+}</code></pre>
+           <h4 id="cloudtrail-examples-image-referrers-action">
+            Example: Image
+                            referrers action
+           </h4>
+           <p>
+            The following example shows a AWS CloudTrail log entry that
+                        demonstrates when an OCI 1.1 compliant client fetches a list
+                        of referrers, or reference artifacts, for an image using the
+            <code class="code">
+             Referrers
+            </code>
+            API.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE:account_name",
+        "arn": "arn:aws:sts::123456789012:user/Mary_Major",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDACKCEVSQ6C2EXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/Admin",
+                "accountId": "123456789012",
+                "userName": "Admin"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2024-10-08T16:38:39Z",
+                "mfaAuthenticated": "false"
+            },
+            "ec2RoleDelivery": "2.0"
+        },
+        "invokedBy": "ecr.amazonaws.com"
+    },
+    "eventTime": "2024-10-08T17:22:51Z",
+    "eventSource": "ecr.amazonaws.com",
+    "eventName": "ListImageReferrers",
+    "awsRegion": "us-east-2",
+    "sourceIPAddress": "ecr.amazonaws.com",
+    "userAgent": "ecr.amazonaws.com",
+    "requestParameters": <span>{</span>
+        "registryId": "123456789012",
+        "repositoryName": "testrepo",
+        "subjectId": <span>{</span>
+            "imageDigest": "sha256:000b9b805af1cdb60628898c9f411996301a1c13afd3dbef1d8a16ac6dbf503a"
+        },
+        "nextToken": "urD72mdD/mC8b5-EXAMPLE"
+    },
+    "responseElements": null,
+    "requestID": "cb8c167e-EXAMPLE",
+    "eventID": "e3c6f4ce-EXAMPLE",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+            "accountId": "123456789012",
+            "ARN": "arn:aws:ecr:us-east-2:123456789012:repository/testrepo"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
 }</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>

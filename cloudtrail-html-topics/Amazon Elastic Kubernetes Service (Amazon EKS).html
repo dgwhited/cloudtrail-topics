@@ -79,13 +79,13 @@
          Log API calls as AWS CloudTrail events - Amazon EKS
         </title>
         <meta content="/pdfs/eks/latest/userguide/eks-ug.pdf#logging-using-cloudtrail" name="pdf"/>
-        <meta content="https://github.com/awsdocs/amazon-eks-user-guide/tree/main/doc_source/logging-using-cloudtrail.md" name="github"/>
+        <meta content="https://github.com/awsdocs/amazon-eks-user-guide/tree/main/doc_source/observability/logging-using-cloudtrail.adoc" name="github"/>
         <meta content="doc-history.rss" name="rss"/>
         <meta content="https://repost.aws/tags/TA4IvCeWI1TE66q4jEj4Z9zg" name="forums"/>
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Amazon%20EKS&amp;topic_url=https://docs.aws.amazon.com/en_us/eks/latest/userguide/logging-using-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/eks/latest/userguide/logging-using-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/eks/latest/userguide/logging-using-cloudtrail.html" name="feedback-no"/>
-        <meta content="EKS,Amazon EKS,Kubernetes,K8s,Cluster,Pod,observability,monitoring,logging,logs,data,API calls,AWS CloudTrail" name="keywords"/>
+        <meta content="EKS,Amazon EKS,Kubernetes,K8s,Cluster,Pod,observability,monitoring,logging,logs,data,logging,API calls,AWS CloudTrail" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -130,7 +130,7 @@
          <div style="display: none">
           <a href="/pdfs/eks/latest/userguide/eks-ug.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
           </a>
-          <a href="https://github.com/awsdocs/amazon-eks-user-guide/tree/main/doc_source/logging-using-cloudtrail.md" rel="noopener noreferrer" target="_blank" title="Edit this page on GitHub">
+          <a href="https://github.com/awsdocs/amazon-eks-user-guide/tree/main/doc_source/observability/logging-using-cloudtrail.adoc" rel="noopener noreferrer" target="_blank" title="Edit this page on GitHub">
           </a>
          </div>
          <div class="breadcrumb" id="breadcrumbs">
@@ -153,18 +153,16 @@
            </awsdocs-language-banner>
            <awsui-alert class="awsdocs-page-banner awsui-util-mb-l">
             <p>
-             <b>
+             <strong>
               Help improve this page
-             </b>
+             </strong>
             </p>
             <p>
-             Want to contribute to this user guide? Scroll to the bottom of this page
-   and select
-             <b>
+             Want to contribute to this user guide? Scroll to the bottom of this page and select
+             <strong>
               Edit this page on GitHub
-             </b>
-             . Your contributions will help make our
-   user guide better for everyone.
+             </strong>
+             . Your contributions will help make our user guide better for everyone.
             </p>
            </awsui-alert>
            <h1 class="topictitle" id="logging-using-cloudtrail">
@@ -177,22 +175,14 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon EKS is integrated with AWS CloudTrail. CloudTrail is a service that provides a record of actions by
-        a user, role, or an AWS service in Amazon EKS. CloudTrail captures all API calls for Amazon EKS as events.
-        This includes calls from the Amazon EKS console and from code calls to the Amazon EKS API
-        operations.
+            Amazon EKS is integrated with AWS CloudTrail. CloudTrail is a service that provides a record of actions by a user, role, or an AWS service in Amazon EKS. CloudTrail captures all API calls for Amazon EKS as events. This includes calls from the Amazon EKS console and from code calls to the Amazon EKS API operations.
            </p>
            <p>
-            If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3
-        bucket. This includes events for Amazon EKS. If you don't configure a trail, you can still view
-        the most recent events in the CloudTrail console in
-            <b>
+            If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket. This includes events for Amazon EKS. If you donât configure a trail, you can still view the most recent events in the CloudTrail console in
+            <strong>
              Event history
-            </b>
-            . Using the
-        information that CloudTrail collects, you can determine several details about a request. For
-        example, you can determine when the request was made to Amazon EKS, the IP address where the
-        request was made from, and who made the request.
+            </strong>
+            . Using the information that CloudTrail collects, you can determine several details about a request. For example, you can determine when the request was made to Amazon EKS, the IP address where the request was made from, and who made the request.
            </p>
            <p>
             To learn more about CloudTrail, see the

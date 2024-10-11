@@ -271,78 +271,8 @@
              SES API v2 Reference
             </a>
             as events in
-      CloudTrail log files, except for those listed in the note box below:
+      CloudTrail log files.
            </p>
-           <div class="awsdocs-note">
-            <div class="awsdocs-note-title">
-             <awsui-icon name="status-info" variant="link">
-             </awsui-icon>
-             <h6>
-              Note
-             </h6>
-            </div>
-            <div class="awsdocs-note-text">
-             <p>
-              Amazon SES delivers
-              <em>
-               management events
-              </em>
-              to CloudTrail. Management events include
-        actions that are related to creating and managing resources within your AWS account. In
-        Amazon SES, management events include actions such as creating and deleting identities or receipt
-        rules.
-             </p>
-             <p>
-              Management events are different from
-              <em>
-               data events
-              </em>
-              . Data events are
-        events that are related to accessing and interacting with data within your AWS account. In
-        Amazon SES, data events include actions such as sending emails.
-             </p>
-             <p>
-              Because Amazon SES only delivers management events to CloudTrail, the following events
-              <b>
-               aren't
-              </b>
-              recorded in CloudTrail:
-             </p>
-             <div class="itemizedlist">
-              <ul class="itemizedlist">
-               <li class="listitem">
-                <p>
-                 SendEmail
-                </p>
-               </li>
-               <li class="listitem">
-                <p>
-                 SendRawEmail
-                </p>
-               </li>
-               <li class="listitem">
-                <p>
-                 SendTemplatedEmail
-                </p>
-               </li>
-               <li class="listitem">
-                <p>
-                 SendBulkTemplatedEmail
-                </p>
-               </li>
-              </ul>
-             </div>
-             <p>
-              You can use event publishing to record events related to email sending. For more
-        information, see
-              <a href="./monitor-using-event-publishing.html">
-               Monitor email sending using Amazon SES event
-            publishing
-              </a>
-              .
-             </p>
-            </div>
-           </div>
            <p>
             Every event or log entry contains information about who generated the request. The
       identity information helps you determine the following:

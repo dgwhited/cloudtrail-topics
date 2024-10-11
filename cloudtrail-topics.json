@@ -977,12 +977,6 @@
     "Support began": "02/11/2019",
     "Link": "https://docs.aws.amazon.com/mediatailor/latest/ug/logging-using-cloudtrail.html"
   },
-  "AWS End User Messaging SMS": {
-    "AWS Service": "AWS End User Messaging SMS",
-    "CloudTrail Topics": "Logging AWS End User Messaging SMS API calls using AWS CloudTrail",
-    "Support began": "10/10/2024",
-    "Link": "https://docs.aws.amazon.com/sms-voice/latest/userguide/logging-using-cloudtrail.html"
-  },
   "AWS End User Messaging Social": {
     "AWS Service": "AWS End User Messaging Social",
     "CloudTrail Topics": "Logging AWS End User Messaging Social API calls using AWS CloudTrail",

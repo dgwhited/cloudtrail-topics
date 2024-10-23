@@ -901,9 +901,9 @@
   },
   "AWS Deadline Cloud": {
     "AWS Service": "AWS Deadline Cloud",
-    "CloudTrail Topics": "Logging calls with CloudTrail",
+    "CloudTrail Topics": "Logging Deadline Cloud API calls using AWS CloudTrail",
     "Support began": "04/02/2024",
-    "Link": "https://docs.aws.amazon.com/deadline-cloud/latest/userguide/cloudtrail.html"
+    "Link": "https://docs.aws.amazon.com/deadline-cloud/latest/userguide/logging-using-cloudtrail.html"
   },
   "AWS Device Farm": {
     "AWS Service": "AWS Device Farm",
@@ -976,6 +976,12 @@
     "CloudTrail Topics": "Logging AWS Elemental MediaTailor API Calls with AWS CloudTrail",
     "Support began": "02/11/2019",
     "Link": "https://docs.aws.amazon.com/mediatailor/latest/ug/logging-using-cloudtrail.html"
+  },
+  "AWS End User Messaging SMS": {
+    "AWS Service": "AWS End User Messaging SMS",
+    "CloudTrail Topics": "Logging AWS End User Messaging SMS API calls using AWS CloudTrail",
+    "Support began": "10/10/2024",
+    "Link": "https://docs.aws.amazon.com/sms-voice/latest/userguide/logging-using-cloudtrail.html"
   },
   "AWS End User Messaging Social": {
     "AWS Service": "AWS End User Messaging Social",

@@ -425,12 +425,6 @@
     "Support began": "05/30/2018",
     "Link": "https://docs.aws.amazon.com/neptune/latest/userguide/cloudtrail.html"
   },
-  "Amazon Nimble Studio": {
-    "AWS Service": "Amazon Nimble Studio",
-    "CloudTrail Topics": "Logging Nimble Studio calls using AWS CloudTrail",
-    "Support began": "06/19/2023",
-    "Link": "https://docs.aws.amazon.com/nimble-studio/latest/userguide/security-monitoring-logging.html#cloudtrail"
-  },
   "Amazon One Enterprise": {
     "AWS Service": "Amazon One Enterprise",
     "CloudTrail Topics": "Logging Amazon One Enterprise API calls using AWS CloudTrail",

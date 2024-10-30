@@ -151,6 +151,10 @@
           <a href="#understanding-service-name-entries">
            Application Auto Scaling event examples
           </a>
+          <a href="#delete-step-scaling-policy-cloudtrail-log">
+           Application Auto Scaling RemoveAction calls on
+          CloudWatch
+          </a>
          </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
@@ -365,6 +369,18 @@
              AWS CloudTrail User Guide
             </em>
             .
+           </p>
+           <h2 id="delete-step-scaling-policy-cloudtrail-log">
+            Application Auto Scaling RemoveAction calls on
+          CloudWatch
+           </h2>
+           <p>
+            Your AWS CloudTrail log might show that Application Auto Scaling calls the CloudWatch
+            <code class="code">
+             RemoveAction
+            </code>
+            API when Application Auto Scaling instructs CloudWatch to remove the auto scaling action from an alarm. 
+        This could happen if you deregister a scalable target, delete a scaling policy, or if an alarm invokes a nonexistent scaling policy.
            </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>

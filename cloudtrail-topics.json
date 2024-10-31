@@ -1055,6 +1055,12 @@
     "Support began": "12/07/2017",
     "Link": "https://docs.aws.amazon.com/singlesignon/latest/userguide/logging-using-cloudtrail.html"
   },
+  "AWS IAM Identity Center \u2013 SCIM": {
+    "AWS Service": "AWS IAM Identity Center \u2013 SCIM",
+    "CloudTrail Topics": "Logging IAM Identity Center API Calls with AWS CloudTrail",
+    "Support began": "10/28/2024",
+    "Link": "https://docs.aws.amazon.com/singlesignon/latest/userguide/logging-using-cloudtrail.html"
+  },
   "AWS Identity and Access Management (IAM)": {
     "AWS Service": "AWS Identity and Access Management (IAM)",
     "CloudTrail Topics": "Logging IAM Events with AWS CloudTrail",

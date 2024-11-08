@@ -185,25 +185,197 @@
             </a>
             .
            </p>
+           <p>
+            The following table summarizes the CloudTrail events of IAM Identity Center, their CloudTrail event sources, and matching APIs. 
+      Refer to the
+            <a href="https://docs.aws.amazon.com/singlesignon/">
+             IAM Identity Center API references
+            </a>
+            to learn more about the APIs.
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              There's an additional group of CloudTrail events, referred to as Sign-in, which AWS emits for signing in to AWS as an IAM Identity Center user. These events have no matching public APIs, 
+      and therefore aren't listed in the API references.
+             </p>
+            </div>
+           </div>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w231aac26c19b7c11">
+              <caption>
+              </caption>
+              <thead>
+               <tr>
+                <th>
+                 CloudTrail events
+                </th>
+                <th>
+                 APIs
+                </th>
+                <th>
+                 Description
+                </th>
+                <th>
+                 CloudTrail event sources
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                IAM Identity Center
+               </td>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/singlesignon/latest/APIReference/welcome.html">
+                 IAM Identity Center
+                </a>
+               </td>
+               <td tabindex="-1">
+                The IAM Identity Center APIs enable the management of permission sets, applications, trusted token issuers, account and application assignments, IAM Identity Center instances, and tags.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 sso.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                Identity Store
+               </td>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html">
+                 Identity Store
+                </a>
+               </td>
+               <td tabindex="-1">
+                The Identity Store APIs enable the management of the life cycle of your workforce's users and groups, and the users' group memberships. Also, they support the management of users' MFA devices.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 sso-directory.amazonaws.com
+                </code>
+                ,
+                <code class="code">
+                 identitystore.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                OIDC
+               </td>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html">
+                 OIDC
+                </a>
+               </td>
+               <td tabindex="-1">
+                The OIDC APIs support trusted identity propagation, and sign-in to AWS CLI and IDE toolkits as an already authenticated IAM Identity Center user.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 sso.amazonaws.com
+                </code>
+                ,
+                <code class="code">
+                 sso-oauth.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                AWS access portal
+               </td>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/Welcome.html">
+                 AWS access portal
+                </a>
+               </td>
+               <td tabindex="-1">
+                The AWS access portal APIs support the operations of the AWS access portal and users getting account credentials through the AWS CLI.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 sso.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                Identity Store
+               </td>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/singlesignon/latest/developerguide/what-is-scim.html">
+                 SCIM
+                </a>
+               </td>
+               <td tabindex="-1">
+                The Identity Store APIs support the provisioning of users, groups, and group memberships through the SCIM protocol. SCIM APIs emit the same CloudTrail events that the Identity Store APIs emit.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 sso-directory.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                AWS Sign-In
+               </td>
+               <td tabindex="-1">
+                No public API
+               </td>
+               <td tabindex="-1">
+                AWS emits Sign-in CloudTrail events for user authentication and federation flows into IAM Identity Center.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 signin.amazon.com
+                </code>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
            <div class="highlights">
             <h6>
              Topics
             </h6>
             <ul>
              <li>
+              <a href="./sso-cloudtrail-use-cases.html">
+               CloudTrail use cases for IAM Identity Center
+              </a>
+             </li>
+             <li>
               <a href="./sso-info-in-cloudtrail.html">
                IAM Identity Center information in CloudTrail
               </a>
              </li>
              <li>
-              <a href="./understanding-sso-entries.html">
-               Understanding CloudTrail log file entries for
-          IAM Identity Center
+              <a href="./scim-logging-using-cloudtrail.html">
+               Logging IAM Identity Center SCIM API calls with
+        AWS CloudTrail
               </a>
              </li>
              <li>
-              <a href="./understanding-sign-in-events.html">
-               Understanding IAM Identity Center sign-in events
+              <a href="./eventbridge-integration.html">
+               Connect application components with Amazon EventBridge
+              </a>
+             </li>
+             <li>
+              <a href="./logging-ad-sync-errors.html">
+               Logging AD sync and configurable AD sync
+        errors
               </a>
              </li>
             </ul>
@@ -242,8 +414,8 @@
             <div accesskey="p" class="prev-link" href="./security-logging-and-monitoring.html" id="previous">
              Logging and monitoring
             </div>
-            <div accesskey="n" class="next-link" href="./sso-info-in-cloudtrail.html" id="next">
-             IAM Identity Center information in CloudTrail
+            <div accesskey="n" class="next-link" href="./sso-cloudtrail-use-cases.html" id="next">
+             CloudTrail use cases for IAM Identity Center
             </div>
            </div>
           </div>

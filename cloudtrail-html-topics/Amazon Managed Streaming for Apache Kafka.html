@@ -111,14 +111,20 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Security in Amazon Managed Streaming for Apache Kafka",
-        "item" : "https://docs.aws.amazon.com/msk/latest/developerguide/security.html"
+        "name" : "MSK Provisioned",
+        "item" : "https://docs.aws.amazon.com/msk/latest/developerguide/msk-provisioned.html"
       },
       {
         "@type" : "ListItem",
         "position" : 5,
+        "name" : "Amazon MSK key features and concepts",
+        "item" : "https://docs.aws.amazon.com/msk/latest/developerguide/operations.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
         "name" : "Amazon MSK logging",
-        "item" : "https://docs.aws.amazon.com/msk/latest/developerguide/security.html"
+        "item" : "https://docs.aws.amazon.com/msk/latest/developerguide/operations.html"
       }
     ]
 }
@@ -166,6 +172,20 @@
             You can deliver Apache Kafka broker logs to one or more of the following destination
         types: Amazon CloudWatch Logs, Amazon S3, Amazon Data Firehose. You can also log Amazon MSK API calls with AWS CloudTrail.
            </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              Broker logs are not available on Express brokers.
+             </p>
+            </div>
+           </div>
            <h2 id="broker-logs">
             Broker logs
            </h2>
@@ -439,10 +459,10 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./zookeeper-security-tls.html" id="previous">
-             Using TLS security with Apache ZooKeeper
+            <div accesskey="p" class="prev-link" href="./troubleshooting-offlinebroker-clientfailover.html" id="previous">
+             Broker offline and client failover
             </div>
-            <div accesskey="n" class="next-link" href="./logging-using-cloudtrail.html" id="next">
+            <div accesskey="n" class="next-link" href="./logging-API-using-cloudtrail.html" id="next">
              CloudTrail events
             </div>
            </div>

@@ -144,6 +144,9 @@
           <a href="#aws-appsync-information-in-cloudtrail">
            AWS AppSync information in CloudTrail
           </a>
+          <a href="#cloudtrail-data-events">
+           AWS AppSync data events in CloudTrail
+          </a>
           <a href="#understanding-your-service-name-entries">
            Understanding AWS AppSync log file
         entries
@@ -179,21 +182,6 @@
     an Amazon Simple Storage Service (Amazon S3) bucket, including events for AWS AppSync. If you don't configure a trail, you can
     still view the most recent events in the CloudTrail console.
            </p>
-           <div class="awsdocs-note awsdocs-important">
-            <div class="awsdocs-note-title">
-             <awsui-icon name="status-warning" variant="error">
-             </awsui-icon>
-             <h6>
-              Important
-             </h6>
-            </div>
-            <div class="awsdocs-note-text">
-             <p>
-              Not all GraphQL actions are currently logged. AppSync does not log Query and Mutation
-      actions to CloudTrail.
-             </p>
-            </div>
-           </div>
            <p>
             For more information about CloudTrail, see the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
@@ -328,6 +316,170 @@
             </em>
             .
            </p>
+           <h2 id="cloudtrail-data-events">
+            AWS AppSync data events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            provide information about the resource operations performed on or in a
+      resource (for example, reading or writing to an Amazon S3
+      object). These are also known as data
+      plane operations. Data events are often high-volume activities. By default, CloudTrail doesnât log
+      data events. The CloudTrail
+            <b>
+             Event history
+            </b>
+            doesn't record data events.
+           </p>
+           <p>
+            Additional charges apply for data events. For more information about CloudTrail pricing, see
+            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+             <span>
+              AWS CloudTrail Pricing
+             </span>
+             <awsui-icon class="awsdocs-link-icon" name="external">
+             </awsui-icon>
+            </a>
+            .
+           </p>
+           <p>
+            You can log data events for the
+            <code class="code">
+             AWS::AppSync::GraphQL
+            </code>
+            resource type by using
+      the CloudTrail console, AWS CLI, or CloudTrail API operations (these include query, mutation, and
+      subscription operations, connect operations to your real-time WebSocket endpoint, but not
+      messages sent over your real-time WebSocket endpoint.) For more information about how to log
+      data events, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-console">
+             Logging data events with the AWS Management Console
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-with-the-AWS-CLI">
+             Logging data events with the AWS Command Line Interface
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <p>
+            The following table lists the AWS AppSync resource type for which you can log data events. The
+            <b>
+             Data event type (console)
+            </b>
+            column shows the value to choose
+      from the
+            <b>
+             Data event type
+            </b>
+            list in the CloudTrail console. The
+            <b>
+             resources.type value
+            </b>
+            column shows the
+            <code class="code">
+             resources.type
+            </code>
+            value, which you would specify when configuring advanced event selectors using the AWS CLI or
+      CloudTrail APIs. The
+            <b>
+             Data APIs logged to CloudTrail
+            </b>
+            column shows the API
+      calls logged to CloudTrail for the resource type.
+           </p>
+           <div class="table-container" id="data-events-table">
+            <div class="table-contents disable-scroll">
+             <table id="w379aac19c22c11c11">
+              <thead>
+               <tr>
+                <th>
+                 Data event type (console)
+                </th>
+                <th>
+                 resources.type value
+                </th>
+                <th>
+                 Data APIs logged to CloudTrail
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 AppSync GraphQL
+                </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::AppSync::GraphQL
+                </code>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <a href="https://docs.aws.amazon.com/appsync/latest/APIReference/API_GraphqlApi.html">
+                  GraphQL
+                 </a>
+                </p>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <p>
+            You can configure advanced event selectors to filter on the
+            <code class="code">
+             eventName
+            </code>
+            ,
+            <code class="code">
+             readOnly
+            </code>
+            , and
+            <code class="code">
+             resources.ARN
+            </code>
+            fields to log only those events that
+      are important to you. For more information about these fields, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
+             AdvancedFieldSelector
+            </a>
+            in the
+            <em>
+             AWS CloudTrail API Reference
+            </em>
+            .
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">[
+  <span>{</span>
+    "name": "Only 1 AppSync API",
+    "fieldSelectors": [
+      <span>{</span>
+        "field": "eventCategory",
+        "equals": [
+          "Data"
+        ]
+      },
+      <span>{</span>
+        "field": "resources.type",
+        "equals": [
+          "AWS::AppSync::GraphQL"
+        ]
+      },
+      <span>{</span>
+        "field": "resources.ARN",
+        "equals": [
+          "arn:aws:appsync:us-east-1:111122223333:apis/YourGraphQLApiId"
+        ]
+      }
+    ]
+  }
+]</code></pre>
            <h2 id="understanding-your-service-name-entries">
             Understanding AWS AppSync log file
         entries
@@ -355,7 +507,7 @@
       "arn": "arn:aws:iam::111122223333:user/Alice",
       "accountId": "111122223333",
       "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-      "userName": "Alice"
+      "userName": "diego_ramirez"
     },
     "eventTime": "2018-01-31T21:49:09Z",
     "eventSource": "appsync.amazonaws.com",
@@ -393,10 +545,10 @@
     "userIdentity": <span>{</span>
       "type": "IAMUser",
       "principalId": "A1B2C3D4E5F6G7EXAMPLE",
-      "arn": "arn:aws:iam::111122223333:user/Alice",
+      "arn": "arn:aws:iam::111122223333:user/diego_ramirez",
       "accountId": "111122223333",
       "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-      "userName": "Alice"
+      "userName": "diego_ramirez"
     },
     "eventTime": "2018-01-31T21:49:09Z",
     "eventSource": "appsync.amazonaws.com",
@@ -440,10 +592,10 @@
     "userIdentity": <span>{</span>
       "type": "IAMUser",
       "principalId": "A1B2C3D4E5F6G7EXAMPLE",
-      "arn": "arn:aws:iam::111122223333:user/Alice",
+      "arn": "arn:aws:iam::111122223333:user/diego_ramirez",
       "accountId": "111122223333",
       "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-      "userName": "Alice"
+      "userName": "diego_ramirez"
     },
     "eventTime": "2018-01-31T21:49:09Z",
     "eventSource": "appsync.amazonaws.com",
@@ -463,6 +615,189 @@
     "recipientAccountId": "111122223333"
     }
   ]
+}</code></pre>
+           <p>
+            The following example CloudTrail log entry demonstrates a successful GraphQL mutation authorized with a custom Lambda function authorizer.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+  "eventVersion": "1.10",
+    "userIdentity": <span>{</span>
+      "type": "Unknown"
+    },
+    "eventTime": "2024-11-06T15:42:30Z",
+    "eventSource": "appsync.amazonaws.com",
+    "eventName": "GraphQL",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "15.248.1.214",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:131.0) Gecko/20100101 Firefox/131.0",
+    "requestParameters": null,
+    "responseElements": null,
+    "additionalEventData": <span>{</span>
+      "operationName": "MyMutation",
+      "authType": [
+        "AWS_LAMBDA"
+      ],
+      "fieldAuthorizationResults": <span>{</span>
+        "deniedFields": []
+      }
+    },
+    "requestID": "c2d3768b-3446-40a1-bd95-8399fe776f96",
+    "eventID": "21568be1-a1a8-4f43-b978-63cb4cc02a96",
+    "readOnly": false,
+    "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::AppSync::GraphQLApi",
+      "ARN": "arn:aws:appsync:us-west-2:123456789012:apis/rxfqcxzi3nbvza2hsq4njqqq6u"
+    }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Data"
+}</code></pre>
+           <p>
+            The following example CloudTrail log entry demonstrates a partially successful GraphQL operation authorized with a custom Lambda function authorizer. Note the
+            <code class="code">
+             fieldAuthorizationResults.deniedFields
+            </code>
+            property that specifies the denied fields.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "Unknown"
+  },
+  "eventTime": "2024-11-06T16:11:49Z",
+  "eventSource": "appsync.amazonaws.com",
+  "eventName": "GraphQL",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "15.248.1.214",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:131.0) Gecko/20100101 Firefox/131.0",
+  "requestParameters": null,
+  "responseElements": null,
+  "additionalEventData": <span>{</span>
+    "operationName": "MyMutation",
+    "authType": [
+      "AWS_LAMBDA"
+    ],
+    "fieldAuthorizationResults": <span>{</span>
+      "deniedFields": [
+        "arn:aws:appsync:us-west-2:123456789012:apis/rxfqcxzi3nbvza2hsq4njqqq6u/types/Mutation/fields/createPost",
+        "arn:aws:appsync:us-west-2:123456789012:apis/rxfqcxzi3nbvza2hsq4njqqq6u/types/Subscription/fields/onCreatePost",
+        "arn:aws:appsync:us-west-2:123456789012:apis/rxfqcxzi3nbvza2hsq4njqqq6u/types/Post/fields/status"
+      ]
+    }
+  },
+  "requestID": "ae817c4c-66ba-4f64-92a5-ba9c9c341dcd",
+  "eventID": "30109698-7605-476a-9dff-b7ed78d134dc",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::AppSync::GraphQLApi",
+      "ARN": "arn:aws:appsync:us-west-2:123456789012:apis/rxfqcxzi3nbvza2hsq4njqqq6u"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Data"
+}</code></pre>
+           <p>
+            The following example CloudTrail log entry demonstrates a failed GraphQL operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "Unknown"
+  },
+  "eventTime": "2024-11-06T15:51:11Z",
+  "eventSource": "appsync.amazonaws.com",
+  "eventName": "GraphQL",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "15.248.1.214",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:131.0) Gecko/20100101 Firefox/131.0",
+  "errorCode": "AccessDenied",
+  "errorMessage": "<span>{</span>\n \"errors\" : [ <span>{</span>\n \"errorType\" : \"UnauthorizedException\",\n \"message\" : \"You are not authorized to make this call.\"\n } ]\n}",
+  "requestParameters": null,
+  "responseElements": null,
+  "additionalEventData": <span>{</span>
+    "operationName": "MyFullyDeniedLambdaMutation"
+  },
+  "requestID": "0bef3cf3-a48b-4de9-8b1f-038afb563516",
+  "eventID": "b738651f-4ec0-4548-8fec-200c6b42842b",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::AppSync::GraphQLApi",
+      "ARN": "arn:aws:appsync:us-west-2:123456789012:apis/rxfqcxzi3nbvza2hsq4njqqq6u"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Data"
+}</code></pre>
+           <p>
+            The following example demonstrates a successful GraphQL request.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AIDACKCEVSQ6C2EXAMPLE:jane_doe",
+    "arn": "arn:aws:sts::123456789012:assumed-role/admin/jane_doe",
+    "accountId": "123456789012",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/admin",
+        "accountId": "123456789012",
+        "userName": "jane_doe"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2024-11-06T15:40:09Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2024-11-06T16:03:43Z",
+  "eventSource": "appsync.amazonaws.com",
+  "eventName": "GraphQL",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "15.248.1.214",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:131.0) Gecko/20100101 Firefox/131.0",
+  "requestParameters": null,
+  "responseElements": null,
+  "additionalEventData": <span>{</span>
+    "operationName": "IamFullSuccess",
+    "authType": [
+      "AWS_IAM"
+    ],
+    "fieldAuthorizationResults": <span>{</span>
+      "allowedFields": [
+        "arn:aws:appsync:us-west-2:123456789012:apis/rxfqcxzi3nbvza2hsq4njqqq6u/types/Mutation/fields/createSecondPostAllowed"
+      ],
+      "deniedFields": []
+    }
+  },
+  "requestID": "edc6bbbf-6bf2-40f5-820f-ef444f12e0c1",
+  "eventID": "524656a5-0925-4370-9e7e-08888e9c299f",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::AppSync::GraphQLApi",
+      "ARN": "arn:aws:appsync:us-west-2:123456789012:apis/rxfqcxzi3nbvza2hsq4njqqq6u"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Data"
 }</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>

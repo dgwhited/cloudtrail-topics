@@ -541,7 +541,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents disable-scroll">
-             <table id="w450aac31c32c24c17b9">
+             <table id="w453aac31c32c24c17b9">
               <thead>
                <tr>
                 <th>
@@ -728,7 +728,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents disable-scroll">
-             <table id="w450aac31c32c24c17c15">
+             <table id="w453aac31c32c24c17c15">
               <thead>
                <tr>
                 <th>
@@ -835,36 +835,51 @@
             action.
            </p>
            <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-  "eventVersion": "1.05",
-  "userIdentity": <span>{</span>
-    "type": "IAMUser",
-    "principalId": "AIDACKCEVSQ6C2EXAMPLE",
-    "arn": "arn:aws:iam::444455556666:user/JaneDoe",
-    "accountId": "444455556666",
-    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
-    "userName": "JaneDoe",
-    "sessionContext": <span>{</span>
-      "attributes": <span>{</span><span>
-        "mfaAuthenticated": "false",</span>
-        "creationDate": "2014-07-15T21:39:40Z"
-      }
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE:Role-Session-Name",
+        "arn": "arn:aws:sts::111122223333:assumed-role/Role-Name/Role-Session-Name",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AIDACKCEVSQ6C2EXAMPLE",
+                "arn": "arn:aws:iam::111122223333:role/Admin",
+                "accountId": "111122223333",
+                "userName": "Admin"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2024-09-09T17:50:16Z",
+                "mfaAuthenticated": "false"
+            }
+        }
     },
-    "invokedBy": "signin.amazonaws.com"
-  },
-  "eventTime": "2014-07-15T21:40:14Z",
-  "eventSource": "iam.amazonaws.com",
-  "eventName": "GetUserPolicy",
-  "awsRegion": "us-east-2",
-  "sourceIPAddress": "signin.amazonaws.com",
-  "userAgent": "signin.amazonaws.com",
-  "requestParameters": <span>{</span>
-    "userName": "JaneDoe",
-    "policyName": "ReadOnlyAccess-JaneDoe-201407151307"
-  },
-  "responseElements": null,
-  "requestID": "9EXAMPLE-0c68-11e4-a24e-d5e16EXAMPLE",
-  "eventID": "cEXAMPLE-127e-4632-980d-505a4EXAMPLE"
-} </code></pre>
+    "eventTime": "2024-09-09T17:51:44Z",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "GetUserPolicy",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.101",
+    "userAgent": "aws-cli/1.16.96 Python/2.7.8 Linux/10 botocore/1.12.86",
+    "requestParameters": <span>{</span>
+        "userName": "ExampleIAMUserName",
+        "policyName": "ExamplePoliccyName"
+    },
+    "responseElements": null,
+    "requestID": "9EXAMPLE-0c68-11e4-a24e-d5e16EXAMPLE",
+    "eventID": "cEXAMPLE-127e-4632-980d-505a4EXAMPLE",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Management",
+    "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "iam.amazonaws.com"
+    }
+}</code></pre>
            <p>
             From this event information, you can determine that the request was made to get a user
         policy named

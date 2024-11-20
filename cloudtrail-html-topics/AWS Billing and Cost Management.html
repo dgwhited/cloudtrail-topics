@@ -1774,6 +1774,9 @@
            <div class="table-container">
             <div class="table-contents">
              <table id="w510aac42c20c10b9b9b5">
+              <caption>
+               CloudTrail events for Tax settings console
+              </caption>
               <thead>
                <tr>
                 <th>
@@ -1818,26 +1821,7 @@
                </td>
                <td tabindex="-1">
                 <code class="code">
-                 taxconsole.amazonaws.com
-                </code>
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <p>
-                 <code class="code">
-                  DeleteTaxRegistration
-                 </code>
-                </p>
-               </td>
-               <td tabindex="-1">
-                <p>
-                 Logs the deletion of the tax registration number for an account.
-                </p>
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 tax.amazonaws.com
+                 taxconsole.amazon.com
                 </code>
                </td>
               </tr>
@@ -1931,26 +1915,6 @@
                <td tabindex="-1">
                 <p>
                  <code class="code">
-                  ListTaxRegistrations
-                 </code>
-                </p>
-               </td>
-               <td tabindex="-1">
-                <p>
-                 Logs the access to tax registration details of all member accounts of the
-                  management account.
-                </p>
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 tax.amazonaws.com
-                </code>
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <p>
-                 <code class="code">
                   PreviewTaxRegistrationChange
                  </code>
                 </p>
@@ -1978,6 +1942,258 @@
                <td tabindex="-1">
                 <code class="code">
                  taxconsole.amazon.com
+                </code>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w510aac42c20c10b9b9b7">
+              <caption>
+               CloudTrail events for Tax settings API
+              </caption>
+              <thead>
+               <tr>
+                <th>
+                 Event name
+                </th>
+                <th>
+                 Definition
+                </th>
+                <th>
+                 Event source
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  BatchDeleteTaxRegistration
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the batch deletion of the tax registration for multiple accounts.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  BatchGetTaxExemptions
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to tax exemptions of one or multiple accounts.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  BatchPutTaxRegistration
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the settings of the tax registration of multiple accounts.
+                </p>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DeleteTaxRegistration
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the deletion of the tax registration number for an account.
+                </p>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTaxExemptionTypes
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to all supported tax exemption types by the tax console.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTaxInheritance
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to tax inheritance preference (turning on or off) of an account.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTaxRegistration
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to the tax registration of an account.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetTaxRegistrationDocument
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs retrieving the tax registration document of an account.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListTaxExemptions
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access to tax exemptions of the AWS organization accounts.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListTaxRegistrations
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the access to tax registration details of all member accounts of the
+                  management account.
+                </p>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  PutTaxExemption
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs setting tax exemption of one or multiple accounts.
+                </p>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  PutTaxInheritance
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs setting the preference (opt in or opt out) of tax inheritance.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  PutTaxRegistration
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the settings of the tax registration of an account.
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 tax.amazonaws.com
                 </code>
                </td>
               </tr>

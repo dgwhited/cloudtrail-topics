@@ -373,7 +373,8 @@
             , and logs information provided by the identity
       provider. However, some non-authenticated AWS STS requests might not be logged because they do
       not meet the minimum expectation of being sufficiently valid to be trusted as a legitimate
-      request.
+      request. For cross-account role assumption requests, CloudTrail does not log denied AWS STS requests
+      in the target account's CloudTrail.
            </p>
            <p>
             You can use the logged information to map calls made by a federated user with an assumed
@@ -1649,10 +1650,10 @@
       true.
            </p>
            <p>
-            Only a very small number of IAM roles are on the allow list for the legacy behavior, and
-      this field is only present in CloudTrail logs for these roles when they assume themselves. In most
-      cases, it is not necessary for an IAM role to assume itself. AWS recommends updating your
-      processes, code, or configurations to remove this behavior or updating your role trust
+            Only a very small number of IAM roles are on the allow list for the legacy behavior,
+      and this field is only present in CloudTrail logs for these roles when they assume themselves. In
+      most cases, it is not necessary for an IAM role to assume itself. AWS recommends updating
+      your processes, code, or configurations to remove this behavior or updating your role trust
       policies to explicitly allow for this behavior. For more information, see
             <a href="https://aws.amazon.com/blogs/security/announcing-an-update-to-iam-role-trust-policy-behavior/" rel="noopener noreferrer" target="_blank">
              <span>

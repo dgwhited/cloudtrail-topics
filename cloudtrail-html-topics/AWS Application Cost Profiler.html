@@ -1,295 +1,70 @@
-<!DOCTYPE html>
-<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html ng-app="AWSDocsPageApp" xmlns="http://www.w3.org/1999/xhtml">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-  <title>
-   Actions - Application Cost Profiler
-  </title>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="/assets" name="assets_root"/>
-  <meta content="API_Operations" name="target_state"/>
-  <meta content="API_Operations" name="default_state"/>
-  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
-  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
-  <link href="https://docs.aws.amazon.com/application-cost-profiler/latest/APIReference/API_Operations.html" rel="canonical"/>
-  <meta content="The following actions are supported:" name="description"/>
-  <meta content="IAD" name="deployment_region"/>
-  <meta content="Application Cost Profiler" name="product"/>
-  <meta content="API Reference" name="guide"/>
-  <meta content="This reference provides descriptions of the AWS Application Cost Profiler API." name="abstract"/>
-  <meta content="en_us" name="guide-locale"/>
-  <meta content="toc-contents.json" name="tocs"/>
-  <link href="https://docs.aws.amazon.com/application-cost-profiler/latest/APIReference/API_Operations.html" rel="canonical"/>
-  <link href="https://docs.aws.amazon.com/id_id/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="id-id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/id_id/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="de-de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="en-us" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="en" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="es-es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="fr-fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="it-it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="ja-jp" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="ja" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="ko-kr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="ko" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="pt-br" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="pt" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_cn/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="zh-cn" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_tw/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="zh-tw" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/application-cost-profiler/latest/APIReference/API_Operations.html" hreflang="x-default" rel="alternative"/>
-  <meta content="App Cost Profiler" name="feedback-item"/>
-  <meta content="Application Cost Profiler" name="this_doc_product"/>
-  <meta content="API Reference" name="this_doc_guide"/>
-  <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
-  </script>
-  <script defer="" src="/assets/r/vendor3.js?version=2021.12.02">
-  </script>
-  <script defer="" src="/assets/r/vendor1.js?version=2021.12.02">
-  </script>
-  <script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02">
-  </script>
-  <script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02">
-  </script>
-  <link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet"/>
-  <link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet"/>
-  <link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet"/>
-  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'application-cost-profiler'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
-  </script>
-  <meta id="panorama-serviceSubSection" value="API Reference"/>
-  <meta id="panorama-serviceConsolePage" value="Actions"/>
+  <meta content="hLU7AwdG+3iNmKu10kH5wweL2vTF1q8my+2MWWtMJ2A=" name="verify-v1"/>
+  <meta content="page-not-found" name="page-name"/>
+  <meta content="/assets/" name="assets_root"/>
+  <meta content="errorPage" name="page-type">
+   <title>
+    Amazon Web Services Documentation
+   </title>
+   <script defer="" src="/assets/r/vendor4.js">
+   </script>
+   <script defer="" src="/assets/r/vendor3.js">
+   </script>
+   <script defer="" src="/assets/r/vendor1.js">
+   </script>
+   <script defer="" src="/assets/r/awsdocs-common.js">
+   </script>
+   <script defer="" src="/assets/r/awsdocs-page.js">
+   </script>
+   <link href="/assets/r/vendor4.css" rel="stylesheet"/>
+   <link href="/assets/r/awsdocs-common.css" rel="stylesheet"/>
+   <link href="/assets/r/awsdocs-page.css" rel="stylesheet"/>
+  </meta>
  </head>
- <body class="awsdocs awsui">
+ <body class="awsdocs awsui" ng-csp="no-unsafe-eval">
   <div class="awsdocs-container">
-   <awsdocs-header>
-   </awsdocs-header>
-   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
-    <div dom-region="navigation" id="guide-toc">
-     <awsdocs-toc>
-     </awsdocs-toc>
-    </div>
-    <div dom-region="content" id="main-column" tabindex="-1">
-     <awsdocs-view class="awsdocs-view">
-      <div id="awsdocs-content">
-       <head>
-        <title>
-         Actions - Application Cost Profiler
-        </title>
-        <meta content="/pdfs/application-cost-profiler/latest/APIReference/app-cost-profiler-api.pdf#API_Operations" name="pdf"/>
-        <meta content="https://repost.aws/" name="forums"/>
-        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=App%20Cost%20Profiler&amp;topic_url=https://docs.aws.amazon.com/en_us/application-cost-profiler/latest/APIReference/API_Operations.html" name="feedback"/>
-        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/application-cost-profiler/latest/APIReference/API_Operations.html" name="feedback-yes"/>
-        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/application-cost-profiler/latest/APIReference/API_Operations.html" name="feedback-no"/>
-        <script type="application/ld+json">
-         {
-    "@context" : "https://schema.org",
-    "@type" : "BreadcrumbList",
-    "itemListElement" : [
-      {
-        "@type" : "ListItem",
-        "position" : 1,
-        "name" : "AWS",
-        "item" : "https://aws.amazon.com"
-      },
-      {
-        "@type" : "ListItem",
-        "position" : 2,
-        "name" : "Application Cost Profiler",
-        "item" : "https://docs.aws.amazon.com/application-cost-profiler/index.html"
-      },
-      {
-        "@type" : "ListItem",
-        "position" : 3,
-        "name" : "API Reference",
-        "item" : "https://docs.aws.amazon.com/application-cost-profiler/latest/APIReference"
-      },
-      {
-        "@type" : "ListItem",
-        "position" : 4,
-        "name" : "Actions",
-        "item" : "https://docs.aws.amazon.com/application-cost-profiler/latest/APIReference/API_Operations.html"
-      }
-    ]
-}
-        </script>
-       </head>
-       <body>
-        <div id="main">
-         <div style="display: none">
-          <a href="/pdfs/application-cost-profiler/latest/APIReference/app-cost-profiler-api.pdf#API_Operations" rel="noopener noreferrer" target="_blank" title="Open PDF">
-          </a>
-         </div>
-         <div class="breadcrumb" id="breadcrumbs">
-          <a href="https://aws.amazon.com">
-           AWS
-          </a>
-          <a href="/index.html">
-           Documentation
-          </a>
-          <a href="/application-cost-profiler/index.html">
-           Application Cost Profiler
-          </a>
-          <a href="Welcome.html">
-           API Reference
-          </a>
-         </div>
-         <div class="awsui-util-container" id="main-content">
-          <div id="main-col-body">
-           <awsdocs-language-banner data-service="$ctrl.pageService">
-           </awsdocs-language-banner>
-           <h1 class="topictitle" id="API_Operations">
-            Actions
-           </h1>
-           <div class="awsdocs-page-header-container">
-            <awsdocs-page-header>
-            </awsdocs-page-header>
-            <awsdocs-filter-selector id="awsdocs-filter-selector">
-            </awsdocs-filter-selector>
-           </div>
-           <p>
-            The following actions are supported:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <a href="./API_DeleteReportDefinition.html">
-                DeleteReportDefinition
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="./API_GetReportDefinition.html">
-                GetReportDefinition
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="./API_ImportApplicationUsage.html">
-                ImportApplicationUsage
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="./API_ListReportDefinitions.html">
-                ListReportDefinitions
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="./API_PutReportDefinition.html">
-                PutReportDefinition
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="./API_UpdateReportDefinition.html">
-                UpdateReportDefinition
-               </a>
-              </p>
-             </li>
-            </ul>
-           </div>
-           <awsdocs-copyright class="copyright-print">
-           </awsdocs-copyright>
-           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
-           </awsdocs-thumb-feedback>
-          </div>
-          <noscript>
-           <div>
-            <div>
-             <div>
-              <div id="js_error_message">
-               <p>
-                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
-                <strong>
-                 Javascript is disabled or is unavailable in your browser.
-                </strong>
-               </p>
-               <p>
-                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
-               </p>
-              </div>
-             </div>
-            </div>
-           </div>
-          </noscript>
-          <div class="awsui-util-font-size-0" id="main-col-footer">
-           <div id="doc-conventions">
-            <a href="/general/latest/gr/docconventions.html" target="_top">
-             Document Conventions
-            </a>
-           </div>
-           <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./Welcome.html" id="previous">
-             Welcome
-            </div>
-            <div accesskey="n" class="next-link" href="./API_DeleteReportDefinition.html" id="next">
-             DeleteReportDefinition
-            </div>
-           </div>
-          </div>
-          <awsdocs-page-utilities>
-          </awsdocs-page-utilities>
-         </div>
-         <div id="quick-feedback-yes" style="display: none;">
-          <div class="title">
-           Did this page help you? - Yes
-          </div>
-          <div class="content">
-           <p>
-            Thanks for letting us know we're doing a good job!
-           </p>
-           <p>
-            If you've got a moment, please tell us what we did right so we can do more of it.
-           </p>
-           <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=App Cost Profiler&amp;topic_url=https://docs.aws.amazon.com/en_us/application-cost-profiler/latest/APIReference/API_Operations.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
-            </awsui-button>
-           </p>
-          </div>
-         </div>
-         <div id="quick-feedback-no" style="display: none;">
-          <div class="title">
-           Did this page help you? - No
-          </div>
-          <div class="content">
-           <p>
-            Thanks for letting us know this page needs work. We're sorry we let you down.
-           </p>
-           <p>
-            If you've got a moment, please tell us how we can make the documentation better.
-           </p>
-           <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=App Cost Profiler&amp;topic_url=https://docs.aws.amazon.com/en_us/application-cost-profiler/latest/APIReference/API_Operations.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
-            </awsui-button>
-           </p>
-          </div>
-         </div>
-        </div>
-       </body>
+   <awsdocs-generic-header>
+   </awsdocs-generic-header>
+   <div class="awsdocs-content-container awsui-util-ml-l awsui-util-mr-l">
+    <div class="awsui-util-pl-l awsui-util-pr-l">
+     <h1>
+      Looking for Something?
+     </h1>
+     <div>
+      We're sorry. The web address you entered is not a functioning page on our site. Try one of the following
+        links
+        to find the information you're looking for:
+      <div>
+       <ul>
+        <li>
+         <a href="http://aws.amazon.com">
+          Amazon Web Services Home Page
+         </a>
+         : Product information for all our web
+            services.
+        </li>
+        <li>
+         <a href="http://aws.amazon.com/resources">
+          Resource Center
+         </a>
+         : Documentation, code samples, and other
+            resources
+            for building applications on Amazon Web Services.
+        </li>
+       </ul>
       </div>
-     </awsdocs-view>
-     <div class="page-loading-indicator" id="page-loading-indicator">
-      <awsui-spinner size="large">
-      </awsui-spinner>
+     </div>
+     <div>
+      -The Amazon Web Services Documentation Team
      </div>
     </div>
-    <div dom-region="tools" id="tools-panel">
-     <awsdocs-tools-panel id="awsdocs-tools-panel">
-     </awsdocs-tools-panel>
-    </div>
-   </awsui-app-layout>
-   <awsdocs-cookie-banner class="doc-cookie-banner">
-   </awsdocs-cookie-banner>
+   </div>
+   <awsdocs-generic-footer>
+   </awsdocs-generic-footer>
   </div>
  </body>
 </html>

@@ -689,12 +689,6 @@
     "Support began": "06/27/2023",
     "Link": "https://docs.aws.amazon.com/appfabric/latest/adminguide/logging-using-cloudtrail.html"
   },
-  "AWS Application Cost Profiler": {
-    "AWS Service": "AWS Application Cost Profiler",
-    "CloudTrail Topics": "AWS Application Cost Profiler API Reference",
-    "Support began": "05/13/2021",
-    "Link": "https://docs.aws.amazon.com/application-cost-profiler/latest/APIReference/API_Operations.html"
-  },
   "AWS Application Discovery Service": {
     "AWS Service": "AWS Application Discovery Service",
     "CloudTrail Topics": "Logging Application Discovery Service API Calls with AWS CloudTrail",

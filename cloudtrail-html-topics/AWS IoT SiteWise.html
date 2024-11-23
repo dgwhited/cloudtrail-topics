@@ -153,11 +153,11 @@
           </a>
           <a href="#service-name-management-events-cloudtrail">
            AWS IoT SiteWise management events in
-          CloudTrail
+        CloudTrail
           </a>
           <a href="#understanding-sitewise-entries">
            Example: AWS IoT SiteWise log file
-          entries
+        entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -174,18 +174,19 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            AWS IoT SiteWise is integrated with AWS CloudTrail, a service that provides a record of actions
-      taken by a user, role, or an AWS service in AWS IoT SiteWise. CloudTrail captures API calls for
-      AWS IoT SiteWise as events. The calls captured include calls from the AWS IoT SiteWise console and
-      code calls to the AWS IoT SiteWise API operations. If you create a trail, you can activate
-      continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS IoT SiteWise. If
-      you don't configure a trail, you can still view the most recent events in the CloudTrail console in
+            AWS IoT SiteWise is integrated with AWS CloudTrail, a service that provides a record of actions taken
+    by a user, role, or an AWS service in AWS IoT SiteWise. CloudTrail captures API calls for AWS IoT SiteWise
+    as events. The calls captured include calls from the AWS IoT SiteWise console and code calls to the
+    AWS IoT SiteWise API operations. If you create a trail, you can activate continuous delivery of
+    CloudTrail events to an Amazon S3 bucket, including events for AWS IoT SiteWise. If you don't configure a
+    trail, you can still view the most recent events in the CloudTrail console in
             <b>
-             Event history
+             Event
+      history
             </b>
-            . Using the information collected by CloudTrail, you can
-      determine the request that was made to AWS IoT SiteWise, the IP address from which the request
-      was made, who made the request, when it was made, and additional details.
+            . Using the information collected by CloudTrail, you can determine the request
+    that was made to AWS IoT SiteWise, the IP address from which the request was made, who made the
+    request, when it was made, and additional details.
            </p>
            <p>
             For more information about CloudTrail, see the
@@ -198,32 +199,32 @@
             AWS IoT SiteWise information in CloudTrail
            </h2>
            <p>
-            CloudTrail is activated on your AWS account when you create the account. When supported
-        event activity occurs in AWS IoT SiteWise, that activity is recorded in a CloudTrail event along with
-        other AWS service events in
+            CloudTrail is activated on your AWS account when you create the account. When supported event
+      activity occurs in AWS IoT SiteWise, that activity is recorded in a CloudTrail event along with other
+      AWS service events in
             <b>
              Event history
             </b>
-            . You can view, search, and
-        download recent events in your AWS account. For more information, see
+            . You can view, search, and download
+      recent events in your AWS account. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
              Viewing events with CloudTrail event
-          history
+        history
             </a>
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account, including events for
-        AWS IoT SiteWise, create a trail. A
+            For an ongoing record of events in your AWS account, including events for AWS IoT SiteWise,
+      create a trail. A
             <em>
              trail
             </em>
-            enables CloudTrail to deliver log
-        files to an Amazon S3 bucket. By default, when you create a trail in the console, the trail
-        applies to all AWS Regions. The trail logs events from all Regions in the AWS partition
-        and delivers the log files to the Amazon S3 bucket that you specify. Additionally, you can
-        configure other AWS services to further analyze and act upon the event data collected in
-        CloudTrail logs. For more information, see the following:
+            enables CloudTrail to deliver log files to an Amazon S3
+      bucket. By default, when you create a trail in the console, the trail applies to all AWS
+      Regions. The trail logs events from all Regions in the AWS partition and delivers the log
+      files to the Amazon S3 bucket that you specify. Additionally, you can configure other AWS
+      services to further analyze and act upon the event data collected in CloudTrail logs. For more
+      information, see the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -231,7 +232,7 @@
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
                 Overview for
-              creating a trail
+            creating a trail
                </a>
               </p>
              </li>
@@ -245,8 +246,7 @@
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
-                Configuring Amazon SNS
-              notifications for CloudTrail
+                Configuring Amazon SNS notifications for CloudTrail
                </a>
               </p>
              </li>
@@ -258,7 +258,7 @@
                and
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
                 Receiving CloudTrail
-              log files from multiple accounts
+            log files from multiple accounts
                </a>
               </p>
              </li>
@@ -266,7 +266,7 @@
            </div>
            <p>
             Every event or log entry contains information about who generated the request. The
-        identity information helps you determine the following:
+      identity information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -278,7 +278,7 @@
              <li class="listitem">
               <p>
                Whether the request was made with temporary security credentials for a role or
-            federated user.
+          federated user.
               </p>
              </li>
              <li class="listitem">
@@ -292,7 +292,7 @@
             For more information, see the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
              CloudTrail userIdentity
-          element
+        element
             </a>
             .
            </p>
@@ -303,8 +303,11 @@
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
              Data events
             </a>
-            provide information about the resource operations performed on or in a resource (for example, reading or writing to an Amazon S3 object). These are also 
-        known as data plane operations. Data events are often high-volume activities. By default, CloudTrail doesnât log data events. The CloudTrail
+            provide information about the resource operations performed on or in a
+      resource (for example, reading or writing to an Amazon S3
+      object). These are also known as data
+      plane operations. Data events are often high-volume activities. By default, CloudTrail doesnât log
+      data events. The CloudTrail
             <b>
              Event history
             </b>
@@ -322,12 +325,13 @@
             .
            </p>
            <p>
-            You can log data events for the AWS IoT SiteWise resource types by using the CloudTrail console, AWS CLI, or CloudTrail API operations. The
+            You can log data events for the AWS IoT SiteWise resource types by using the CloudTrail console, AWS CLI,
+      or CloudTrail API operations. The
             <a href="#data-events-table">
              table
             </a>
-            in this section shows the resource types available for
-        AWS IoT SiteWise.
+            in this section
+      shows the resource types available for AWS IoT SiteWise.
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -339,7 +343,8 @@
                </a>
                or
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-event-data-store-cloudtrail.html">
-                event data store
+                event data
+            store
                </a>
                to log data events, or
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-console">
@@ -364,12 +369,14 @@
                   <b>
                    Data event type
                   </b>
-                  list, choose the resource type for which you want to log data events.
+                  list, choose the resource type for
+              which you want to log data events.
                  </p>
                 </li>
                 <li>
                  <p>
-                  Choose the log selector template you want to use. You can log all data events for the resource type, log all
+                  Choose the log selector template you want to use. You can log all data events for
+              the resource type, log all
                   <code class="code">
                    readOnly
                   </code>
@@ -377,8 +384,8 @@
                   <code class="code">
                    writeOnly
                   </code>
-                  events, or create a custom 
-                log selector template to filter on the
+                  events, or create a custom log selector template to filter on
+              the
                   <code class="code">
                    readOnly
                   </code>
@@ -415,12 +422,12 @@
                 resources.type
                </code>
                field equal to the
-            resource type value (see
+          resource type value (see
                <a href="#data-events-table">
                 table
                </a>
-               ). You can add conditions to filter on the values of
-            the
+               ). You can add
+          conditions to filter on the values of the
                <code class="code">
                 readOnly
                </code>
@@ -428,7 +435,8 @@
                <code class="code">
                 eventName
                </code>
-               , and
+               ,
+          and
                <code class="code">
                 resources.ARN
                </code>
@@ -440,7 +448,8 @@
                  <p>
                   To configure a trail to log data events, run the
                   <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/put-event-selectors.html">
-                   AWS CloudTrail put-event-selectors
+                   AWS CloudTrail
+                put-event-selectors
                   </a>
                   command. For more information, see
                   <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-CLI-trail-examples">
@@ -453,15 +462,17 @@
                  <p>
                   To configure an event data store to log data events, run the
                   <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/create-event-data-store.html">
-                   AWS CloudTrail create-event-data-store
+                   AWS CloudTrail
+                create-event-data-store
                   </a>
-                  command to create a new event
-                data store to log data events, or run the
+                  command to create a new event data store to log data
+              events, or run the
                   <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/update-event-data-store.html">
-                   AWS CloudTrail update-event-data-store
+                   AWS CloudTrail
+                update-event-data-store
                   </a>
-                  command to update an existing
-                event data store. For more information, see
+                  command to update an existing event data store. For
+              more information, see
                   <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-CLI-eds-examples">
                    Logging data events for event data stores with the AWS CLI
                   </a>
@@ -476,27 +487,30 @@
            <p>
             The following table lists the AWS IoT SiteWise resource types. The
             <b>
-             Data event type (console)
+             Data
+        event type (console)
             </b>
             column shows the value to choose from the
             <b>
-             Data event type
+             Data
+        event type
             </b>
             list on the CloudTrail console. The
             <b>
-             resources.type value
+             resources.type
+        value
             </b>
             column shows the
             <code class="code">
              resources.type
             </code>
-            value, which you would specify when configuring advanced event selectors 
-        using the AWS CLI or CloudTrail APIs. The
+            value, which you would specify
+      when configuring advanced event selectors using the AWS CLI or CloudTrail APIs. The
             <b>
-             Data APIs
-          logged to CloudTrail
+             Data APIs logged to CloudTrail
             </b>
-            column shows the API calls logged to CloudTrail for the resource type.
+            column shows the API calls logged to CloudTrail
+      for the resource type.
            </p>
            <div class="table-container" id="data-events-table">
             <div class="table-contents disable-scroll">
@@ -662,6 +676,31 @@
                 </div>
                </td>
               </tr>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 AWS IoT SiteWise Assistant
+                </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::SitewiseAssistant::Conversation
+                </code>
+               </td>
+               <td tabindex="-1">
+                <div class="itemizedlist">
+                 <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_InvokeAssistant.html">
+                     InvokeAssistant
+                    </a>
+                   </p>
+                  </li>
+                 </ul>
+                </div>
+               </td>
+              </tr>
              </table>
             </div>
            </div>
@@ -675,9 +714,9 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              The resources.type logged in the Cloudtrail event depends on the identifier used in the API request. 
-          If an asset id is specified in the request then the Asset resources.type is logged, else the TimeSeries resources.type
-          is logged.
+              The resources.type logged in the Cloudtrail event depends on the identifier used in the
+        API request. If an asset id is specified in the request then the Asset resources.type is
+        logged, else the TimeSeries resources.type is logged.
              </p>
             </div>
            </div>
@@ -695,7 +734,7 @@
              resources.ARN
             </code>
             fields to log only those events that
-        are important to you. For more information about these fields, see
+      are important to you. For more information about these fields, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
              AdvancedFieldSelector
             </a>
@@ -703,19 +742,20 @@
            </p>
            <h2 id="service-name-management-events-cloudtrail">
             AWS IoT SiteWise management events in
-          CloudTrail
+        CloudTrail
            </h2>
            <p>
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html">
-             Logging management events
+             Logging
+        management events
             </a>
-            provide information about management operations that are
-        performed on resources in your AWS account. These are also known as control plane
-        operations. By default, CloudTrail logs management events.
+            provide information about management operations that are performed
+      on resources in your AWS account. These are also known as control plane operations. By
+      default, CloudTrail logs management events.
            </p>
            <p>
-            AWS IoT SiteWise logs all AWS IoT SiteWise control plane operations as management events. For a list of the
-        AWS IoT SiteWise control plane operations that AWS IoT SiteWise logs to CloudTrail, see the
+            AWS IoT SiteWise logs all AWS IoT SiteWise control plane operations as management events. For a list
+      of the AWS IoT SiteWise control plane operations that AWS IoT SiteWise logs to CloudTrail, see the
             <a href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_Operations.html">
              AWS IoT SiteWise API Reference
             </a>
@@ -723,15 +763,14 @@
            </p>
            <h2 id="understanding-sitewise-entries">
             Example: AWS IoT SiteWise log file
-          entries
+        entries
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3
-        bucket that you specify. CloudTrail log files contain one or more log entries. An event represents
-        a single request from any source and includes information about the requested operation, the
-        date and time of the operation, request parameters, and so on. CloudTrail log files aren't an
-        ordered stack trace of the public API calls, so they don't appear in any specific
-        order.
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
+      that you specify. CloudTrail log files contain one or more log entries. An event represents a single
+      request from any source and includes information about the requested operation, the date and
+      time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack
+      trace of the public API calls, so they don't appear in any specific order.
            </p>
            <p>
             The following example shows a CloudTrail log entry that demonstrates the

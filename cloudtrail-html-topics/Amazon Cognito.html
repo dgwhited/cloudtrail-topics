@@ -344,7 +344,7 @@
           non-private fields in your API requests.
            </p>
            <h3 id="user-pools-cloudtrail-events">
-            User pools events
+            User pool events
            </h3>
            <p>
             Amazon Cognito supports logging for all of the actions listed on the
@@ -369,11 +369,12 @@
              Amazon Cognito user pools API
             </a>
             or to an
-            <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html">
-             endpoint that serves resources for OpenID Connect, SAML 2.0, or the hosted UI
+            <a href="./cognito-userpools-server-contract-reference.html">
+             endpoint that serves
+            resources for OpenID Connect, SAML 2.0, or managed login pages
             </a>
-            .
-          API requests have an
+            . API requests have
+          an
             <code class="code">
              eventType
             </code>
@@ -381,8 +382,7 @@
             <code class="code">
              AwsApiCall
             </code>
-            and endpoint
-          requests have an
+            and endpoint requests have an
             <code class="code">
              eventType
             </code>
@@ -393,14 +393,14 @@
             .
            </p>
            <p>
-            Amazon Cognito logs the following hosted UI requests to your hosted UI as events in
+            Amazon Cognito logs the following requests to your managed login services as events in
           CloudTrail.
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w116aac35c18c15c11c17b9">
+             <table id="w117aac29c18c15c11c17b9">
               <caption>
-               Hosted UI operations in CloudTrail
+               Managed login events in CloudTrail
               </caption>
               <thead>
                <tr>
@@ -737,10 +737,191 @@
                </td>
                <td tabindex="-1">
                 A user submits feedback to Amazon Cognito about an
-                <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html">
+                <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html">
                  advanced security features
                 </a>
                 event.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 login_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits credentials to your
+                <a href="./login-endpoint.html">
+                 Login endpoint
+                </a>
+                .
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 login_continue_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user who has already signed in one time chooses to sign in again.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 selectChallenge_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user responds to an authentication challenge after they submit their
+                  username or credentials.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 confirmUser_GET
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user opens the link in a
+                <a href="./signing-up-users-in-your-app.html">
+                 confirmation or verification email message
+                </a>
+                .
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 mfa_back_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user chooses the
+                <b>
+                 Back
+                </b>
+                button after an MFA
+                  prompt.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 mfa_options_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user selects an MFA option.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 mfa_phone_register_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a phone number to register as a MFA factor. This operation
+                  causes Amazon Cognito to send an MFA code to their phone number.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 mfa_phone_verify_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits an MFA code sent to their phone number.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 mfa_phone_resendCode_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a request to resend a MFA code to their phone number.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 mfa_totp_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a TOTP MFA code.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 signup_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits information to your
+                <code class="code">
+                 /signup
+                </code>
+                managed login
+                  page.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 signup_confirm_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a confirmation code from an email or SMS message.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 verifyCode_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a one-time password (OTP) for passwordless
+                  authentication.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 passkeys_add_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user submits a request to register a new passkey credential.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 passkeys_add_GET
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user navigates to the page where they can register a passkey.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <code class="code">
+                 login_passkey_POST
+                </code>
+               </td>
+               <td tabindex="-1">
+                A user signs in with a passkey.
                </td>
               </tr>
              </table>

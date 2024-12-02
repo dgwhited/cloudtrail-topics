@@ -210,7 +210,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w509aac42c20c10b9b5">
+             <table id="w515aac44c20c10b9b5">
               <thead>
                <tr>
                 <th>
@@ -254,23 +254,6 @@
                <td tabindex="-1">
                 Logs the acceptance of the terms and conditions of paying in a currency other
               than USD.
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 billingconsole.amazonaws.com
-                </code>
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <p>
-                 <code class="code">
-                  BatchGetTaxExemptions
-                 </code>
-                </p>
-               </td>
-               <td tabindex="-1">
-                Logs the access to US tax exemptions of an account, and any linked accounts.
                </td>
                <td tabindex="-1">
                 <code class="code">
@@ -415,23 +398,6 @@
                </td>
                <td tabindex="-1">
                 Logs the download of the tax registration document.
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 billingconsole.amazonaws.com
-                </code>
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <p>
-                 <code class="code">
-                  DownloadTaxInvoice
-                 </code>
-                </p>
-               </td>
-               <td tabindex="-1">
-                Logs the download of a tax invoice.
                </td>
                <td tabindex="-1">
                 <code class="code">
@@ -690,40 +656,6 @@
                </td>
                <td tabindex="-1">
                 Logs the access to all country codes supported by tax console.
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 billingconsole.amazonaws.com
-                </code>
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <p>
-                 <code class="code">
-                  GetTaxInvoicesMetadata
-                 </code>
-                </p>
-               </td>
-               <td tabindex="-1">
-                Logs the retrieval of tax invoices metadata.
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 billingconsole.amazonaws.com
-                </code>
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <p>
-                 <code class="code">
-                  GetTaxRegistration
-                 </code>
-                </p>
-               </td>
-               <td tabindex="-1">
-                Logs the access to the tax registration number of an account.
                </td>
                <td tabindex="-1">
                 <code class="code">
@@ -1296,7 +1228,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w509aac42c20c10b9b7b7">
+             <table id="w515aac44c20c10b9b7b7">
               <thead>
                <tr>
                 <th>
@@ -1774,7 +1706,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w509aac42c20c10b9b9b5">
+             <table id="w515aac44c20c10b9b9b5">
               <caption>
                CloudTrail events for Tax settings console
               </caption>
@@ -1951,7 +1883,7 @@
            </div>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w509aac42c20c10b9b9b7">
+             <table id="w515aac44c20c10b9b9b7">
               <caption>
                CloudTrail events for Tax settings API
               </caption>
@@ -2196,6 +2128,110 @@
                 <code class="code">
                  tax.amazonaws.com
                 </code>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <h3 id="billing-invoice-cloudtrail-events">
+            Invoicing CloudTrail events
+           </h3>
+           <p>
+            This section shows a full list of the CloudTrail events for the
+            <b>
+             Invoicing
+            </b>
+            feature in the AWS Billing console. These CloudTrail events use
+            <code class="code">
+             invoicing.amazonaws.com
+            </code>
+            .
+           </p>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w515aac44c20c10b9c11b5">
+              <thead>
+               <tr>
+                <th>
+                 Event name
+                </th>
+                <th>
+                 Definition
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CreateInvoiceUnit
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation of an invoice unit.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DeleteInvoiceUnit
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the deletion of an invoice unit.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetInvoiceProfiles
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Logs the access of an account's invoice profile.
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetInvoiceUnit
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of an invoice unit.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListInvoiceUnits
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval and listing of invoice units.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UpdateInvoiceUnit
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the update of an invoice unit.
                </td>
               </tr>
              </table>

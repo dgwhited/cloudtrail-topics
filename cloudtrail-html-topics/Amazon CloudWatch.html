@@ -84,7 +84,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudWatch&amp;topic_url=https://docs.aws.amazon.com/en_us/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AmazonCloudWatch/latest/monitoring/logging_cw_api_calls.html" name="feedback-no"/>
-        <meta content="Amazon CloudWatch,CloudWatch Synthetics,CloudWatch Rum,CloudWatch Internet Monitor,integrate,AWS CloudTrail" name="keywords"/>
+        <meta content="Amazon CloudWatch,CloudWatch Synthetics,CloudWatch Rum,Internet Monitor,Network Flow Monitor,integrate,AWS CloudTrail" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -148,8 +148,15 @@
           <a href="#cwl_query-generation-cloudtrail">
            Query generation information in CloudTrail
           </a>
+          <a href="#CloudWatch-NetworkFlowMonitor-info-in-ct">
+           Network Flow Monitor in CloudTrail
+          </a>
+          <a href="#CloudWatch-NetworkFlowMonitor-data-plane-events">
+           Network Flow Monitor data plane
+		events in CloudTrail
+          </a>
           <a href="#cw_im_info_in_ct">
-           CloudWatch Internet Monitor in CloudTrail
+           Internet Monitor in CloudTrail
           </a>
           <a href="#cw_synthetics_info_in_ct">
            CloudWatch Synthetics information in CloudTrail
@@ -176,7 +183,7 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon CloudWatch, CloudWatch Synthetics, CloudWatch RUM, and CloudWatch Internet Monitor are integrated with AWS CloudTrail, a service that provides a record
+            Amazon CloudWatch, CloudWatch Synthetics, CloudWatch RUM, Network Flow Monitor, and Internet Monitor are integrated with AWS CloudTrail, a service that provides a record
         of actions taken by a user, role, or an AWS service. CloudTrail captures API calls made by or on
         behalf of your AWS account. The captured calls include calls from the CloudWatch console and code calls
         to CloudWatch API operations. Using the information collected by CloudTrail, you can
@@ -392,8 +399,19 @@
               </a>
              </li>
              <li>
+              <a href="#CloudWatch-NetworkFlowMonitor-info-in-ct">
+               Network Flow Monitor in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#CloudWatch-NetworkFlowMonitor-data-plane-events">
+               Network Flow Monitor data plane
+		events in CloudTrail
+              </a>
+             </li>
+             <li>
               <a href="#cw_im_info_in_ct">
-               CloudWatch Internet Monitor in CloudTrail
+               Internet Monitor in CloudTrail
               </a>
              </li>
              <li>
@@ -920,11 +938,450 @@
     "recipientAccountId": "111122223333", 
     "eventCategory": "Management"
 }</code></pre>
-           <h2 id="cw_im_info_in_ct">
-            CloudWatch Internet Monitor in CloudTrail
+           <h2 id="CloudWatch-NetworkFlowMonitor-info-in-ct">
+            Network Flow Monitor in CloudTrail
            </h2>
            <p>
-            CloudWatch Internet Monitor supports logging the following actions as events in CloudTrail log files.
+            Network Flow Monitor supports logging the following actions as events in CloudTrail log files.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_CreateMonitor.html">
+                CreateMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetMonitor.html">
+                GetMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_DeleteMonitor.html">
+                DeleteMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_ListMonitors.html">
+                ListMonitors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_UpdateMonitor.html">
+                UpdateMonitor
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_CreateScope.html">
+                CreateScope
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetScope.html">
+                GetScope
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_ListScopes.html">
+                ListScopes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_DeleteScope.html">
+                DeleteScope
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_UpdateScope.html">
+                UpdateScope
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h3 id="understanding-CloudWatch-NFM-entries-in-CloudTrail">
+            Example: Network Flow Monitor
+				log file entry
+           </h3>
+           <p>
+            The following example shows a Network Flow Monitor CloudTrail log file entry that demonstrates the
+            <code class="code">
+             CreateMonitor
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json">
+<span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::000000000000:assumed-role/role_name",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EX_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::000000000000:role/Admin",
+                "accountId": "123456789012",
+                "userName": "SAMPLE_NAME"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2024-11-03T15:43:27Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2024-11-03T15:58:11Z",
+    "eventSource": "networkflowmonitor.amazonaws.com",
+    "eventName": "CreateMonitor",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+    "requestParameters": <span>{</span>
+        "MonitorName": "TestMonitor",
+        "ClientToken": "33551db7-1618-4aab-cdef-EXAMPLE33333",
+        "LocalResources": [
+            <span>{</span>
+                "Type": "AWS::EC2::Subnet",
+                "Identifier": "subnet-cdef-EXAMPLEbbbbb"
+            },
+            <span>{</span>
+                "Type": "AWS::EC2::Subnet",
+                "Identifier": "subnet-cdef-EXAMPLEccccc"
+            },
+            <span>{</span>
+                "Type": "AWS::EC2::Subnet",
+                "Identifier": "subnet-cdef-EXAMPLEddddd"
+            },
+            <span>{</span>
+                "Type": "AWS::EC2::Subnet",
+                "Identifier": "subnet-cdef-EXAMPLEeeeee"
+            },
+            <span>{</span>
+                "Type": "AWS::EC2::Subnet",
+                "Identifier": "subnet-cdef-EXAMPLEfffff"
+            },
+            <span>{</span>
+                "Type": "AWS::EC2::Subnet",
+                "Identifier": "subnet-cdef-EXAMPLEggggg"
+            }
+        ]
+    },
+    "responseElements": <span>{</span>
+        "Access-Control-Expose-Headers": "*",
+        "MonitorArn": "arn:aws:networksonar:us-east-1:000000000000:monitor/TestMonitor",
+        "MonitorName": "TestMonitor",
+        "MonitorStatus": "ACTIVE"
+    },
+    "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLEbbbbb",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Management"
+}</code></pre>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+        "eventVersion": "1.08",
+        "userIdentity": <span>{</span>
+            "type": "AssumedRole",
+            "principalId": "EX_PRINCIPAL_ID",
+            "arn": "arn:aws:iam::000000000000:assumed-role/role_name",
+            "accountId":"123456789012",
+            "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+            "sessionContext": <span>{</span>
+                "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "EX_PRINCIPAL_ID",
+                "arn": "arn:aws:iam::000000000000:role/Admin",
+                "accountId":"123456789012",
+                "userName": "SAMPLE_NAME"
+                },
+                "webIdFederationData": <span>{</span>},
+                "attributes": <span>{</span>
+                    "creationDate": "2022-10-11T17:25:41Z",
+                    "mfaAuthenticated": "false"
+                }
+            }
+        },
+        "eventTime": "2022-10-11T17:30:18Z",
+        "eventSource": "internetmonitor.amazonaws.com",
+        "eventName": "ListMonitors",
+        "awsRegion": "us-east-2",
+        "sourceIPAddress": "192.0.2.0",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+        "requestParameters": null,
+        "responseElements": null,
+        "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLEbbbbb",
+        "readOnly": true,
+        "eventType": "AwsApiCall",
+        "managementEvent": true,
+        "recipientAccountId": "111122223333",
+        "eventCategory": "Management"
+    }</code></pre>
+           <h2 id="CloudWatch-NetworkFlowMonitor-data-plane-events">
+            Network Flow Monitor data plane
+		events in CloudTrail
+           </h2>
+           <p>
+            CloudTrail can capture API activities related to the CloudWatch-NetworkFlowMonitor data plane operations.
+           </p>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            , also known as data plane operations, give you insight into the resource operations performed 
+			on or within a resource. Data events are often high-volume activities.
+           </p>
+           <p>
+            To enable logging of Network Flow Monitor data events in CloudTrail files, you'll need to enable 
+			the logging of data plane API activity in CloudTrail. See
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+             Logging data events for trails
+            </a>
+            for more information.
+           </p>
+           <p>
+            Data plane events can be filtered by resource type. Because there are additional costs for using 
+			data events in CloudTrail, filtering by resource allows you to have more control over what you log and pay for.
+           </p>
+           <p>
+            Using the information that CloudTrail collects, you can identify a specific request to the CloudWatch-NetworkFlowMonitor 
+			data plane APIs, the IP address of the requester, the requester's identity, and the date and time of the 
+			request. Logging the data plane APIs using CloudTrail can help you with operational and 
+			risk auditing, governance, and compliance of your AWS account.
+           </p>
+           <p>
+            The following are data plane APIs in Network Flow Monitor.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_StartQueryWorkloadInsightsTopContributors.html">
+                StartQueryWorkloadInsightsTopContributors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_StopQueryWorkloadInsightsTopContributors.html">
+                StopQueryWorkloadInsightsTop Contributors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryStatusWorkloadInsightsTopContributors.html">
+                GetQueryStatusWorkloadInsightsTopContributors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryResultsWorkloadInsightsTopContributors.html">
+                GetQueryResultsWorkloadInsightsTopContributors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_StartQueryWorkloadInsightsTopContributorsData.html">
+                StartQueryWorkloadInsightsTopContributorsData
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_StopQueryWorkloadInsightsTopContributorsData.html">
+                StopQueryWorkloadInsightsTopContributorsData
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryStatusWorkloadInsightsTopContributorsData.html">
+                GetQueryStatusWorkloadInsightsTopContributorsData
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryResultsWorkloadInsightsTopContributorsData.html">
+                GetQueryResultsWorkloadInsightsTopContributorsData
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_StartQueryMonitorsTopContributors.html">
+                StartQueryMonitorsTopContributors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_StopQueryMonitorsTopContributors.html">
+                StopQueryMonitorsTopContributors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryStatusMonitorsTopContributors.html">
+                GetQueryStatusMonitorsTopContributors
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryResultsMonitorsTopContributors.html">
+                GetQueryResultsMonitorsTopContributors
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryResultsMonitorsTopContributors.html">
+             GetQueryResultsMonitorsTopContributors
+            </a>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "EX_PRINCIPAL_ID",
+    "arn": "arn:aws:iam::000000000000:assumed-role/role_name",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::000000000000:role/Admin",
+        "accountId": "123456789012",
+         "userName": "SAMPLE_NAME"
+      },
+      "attributes": <span>{</span>
+      "creationDate": "2024-11-03T15:43:27Z",
+      "mfaAuthenticated": "false"
+      }
+    }
+},
+  "eventTime": "2024-11-15T14:08:04Z",
+  "eventSource": "gamma-networkflowmonitor.amazonaws.com",
+  "eventName": "GetQueryResultsMonitorTopContributors",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+  "errorCode": "AccessDenied",
+  "requestParameters": <span>{</span>
+    "QueryId": "a1b2c3d4-5678-90ab-cdef-EXAMPLEQuery,
+    "MaxResults": "20",
+    "MonitorName": "TestMonitor"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLEbbbbb",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::NetworkFlowMonitor::Monitor",
+      "ARN": "arn:aws:networkflowmonitor:us-east-1:123456789012:monitor/TestMonitor"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "000000000000",
+  "eventCategory": "Data"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the
+            <a href="https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryResultsWorkloadInsightsTopContributors.html">
+             GetQueryResultsWorkloadInsightsTopContributors
+            </a>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "EX_PRINCIPAL_ID",
+    "arn": "arn:aws:iam::000000000000:assumed-role/role_name",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::000000000000:role/Admin",
+        "accountId": "123456789012",
+         "userName": "SAMPLE_NAME"
+      },
+      "attributes": <span>{</span>
+      "creationDate": "2024-11-03T15:43:27Z",
+      "mfaAuthenticated": "false"
+      }
+    }
+},
+  "eventTime": "2024-11-15T14:08:04Z",
+  "eventSource": "gamma-networkflowmonitor.amazonaws.com",
+  "eventName": "GetQueryResultsWorkloadInsightsTopContributorsData",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+  "errorCode": "AccessDenied",
+  "requestParameters": <span>{</span>
+    "QueryId": "a1b2c3d4-5678-90ab-cdef-EXAMPLEQuery",
+    "ScopeId": "a1b2c3d4-5678-90ab-cdef-EXAMPLEScope"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLEbbbbb",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "496383180932",
+      "type": "AWS::NetworkFlowMonitor::Scope",
+      "ARN": "arn:aws:networkflowmonitor:us-east-1:123456789012:scope/a1b2c3d4-5678-90ab-cdef-EXAMPLEScope"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "000000000000",
+  "eventCategory": "Data"
+}</code></pre>
+           <h2 id="cw_im_info_in_ct">
+            Internet Monitor in CloudTrail
+           </h2>
+           <p>
+            Internet Monitor supports logging the following actions as events in CloudTrail log files.
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -1015,7 +1472,7 @@
             </ul>
            </div>
            <h3 id="understanding-CloudWatch-IM-entries-in-CloudTrail">
-            Example: CloudWatch Internet Monitor
+            Example: Internet Monitor
 				log file entries
            </h3>
            <p>

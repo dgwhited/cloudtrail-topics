@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Log Amazon SageMaker API calls with AWS CloudTrail - Amazon SageMaker
+   Log Amazon SageMaker API calls with AWS CloudTrail - Amazon SageMaker AI
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -12,11 +12,11 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/sagemaker/latest/dg/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Learn about integrating Amazon SageMaker with AWS CloudTrail." name="description"/>
+  <meta content="Learn about integrating Amazon SageMaker AI with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
-  <meta content="Amazon SageMaker" name="product"/>
+  <meta content="Amazon SageMaker AI" name="product"/>
   <meta content="Developer Guide" name="guide"/>
-  <meta content="Use Internet Monitor to build, train, and host machine learning models in AWS." name="abstract"/>
+  <meta content="Use SageMaker AI to build, train, and host machine learning models in AWS." name="abstract"/>
   <meta content="en_us" name="guide-locale"/>
   <meta content="toc-contents.json" name="tocs"/>
   <link href="https://docs.aws.amazon.com/sagemaker/latest/dg/logging-using-cloudtrail.html" rel="canonical"/>
@@ -42,7 +42,7 @@
   <link href="https://docs.aws.amazon.com/zh_tw/sagemaker/latest/dg/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
   <link href="https://docs.aws.amazon.com/sagemaker/latest/dg/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
   <meta content="SageMaker" name="feedback-item"/>
-  <meta content="Amazon SageMaker" name="this_doc_product"/>
+  <meta content="Amazon SageMaker AI" name="this_doc_product"/>
   <meta content="Developer Guide" name="this_doc_guide"/>
   <script defer="" src="/assets/r/vendor4.js?version=2021.12.02">
   </script>
@@ -76,7 +76,7 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Log Amazon SageMaker API calls with AWS CloudTrail - Amazon SageMaker
+         Log Amazon SageMaker API calls with AWS CloudTrail - Amazon SageMaker AI
         </title>
         <meta content="/pdfs/sagemaker/latest/dg/sagemaker-dg.pdf#logging-using-cloudtrail" name="pdf"/>
         <meta content="amazon-sagemaker-release-notes.rss" name="rss"/>
@@ -111,7 +111,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Tools for monitoring the AWS resources provisioned while using Amazon SageMaker",
+        "name" : "Tools for monitoring the AWS resources provisioned while using Amazon SageMaker AI",
         "item" : "https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-overview.html"
       },
       {
@@ -146,7 +146,7 @@
          </div>
          <div id="page-toc-src">
           <a href="#sagemaker-info-in-cloudtrail">
-           SageMaker Information in CloudTrail
+           SageMaker AI Information in CloudTrail
           </a>
           <a href="#automatic-tuning-secondary">
            Operations Performed by Automatic Model
@@ -167,8 +167,8 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon SageMaker is integrated with AWS CloudTrail, a service that provides a record of actions taken by
-      a user, role, or an AWS service in SageMaker. CloudTrail captures all API calls for SageMaker, with the
+            Amazon SageMaker AI is integrated with AWS CloudTrail, a service that provides a record of actions taken by
+      a user, role, or an AWS service in SageMaker AI. CloudTrail captures all API calls for SageMaker AI, with the
       exception of
             <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html">
              InvokeEndpoint
@@ -177,15 +177,15 @@
             <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpointAsync.html">
              InvokeEndpointAsync
             </a>
-            , as events. The calls captured include calls from the SageMaker
+            , as events. The calls captured include calls from the SageMaker AI
       console and code calls to the SageMaker API operations. If you create a trail, you can enable
-      continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for SageMaker. If you don't
+      continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for SageMaker AI. If you don't
       configure a trail, you can still view the most recent events in the CloudTrail console in
             <b>
              Event history
             </b>
             . Using the information collected by CloudTrail, you can
-      determine the request that was made to SageMaker, the IP address from which the request was made,
+      determine the request that was made to SageMaker AI, the IP address from which the request was made,
       who made the request, when it was made, and additional details.
            </p>
            <p>
@@ -204,11 +204,11 @@
             .
            </p>
            <h2 id="sagemaker-info-in-cloudtrail">
-            SageMaker Information in CloudTrail
+            SageMaker AI Information in CloudTrail
            </h2>
            <p>
             CloudTrail is enabled on your AWS account when you create the account. When activity occurs
-        in Amazon SageMaker, that activity is recorded in a CloudTrail event along with other AWS service
+        in Amazon SageMaker AI, that activity is recorded in a CloudTrail event along with other AWS service
         events in
             <b>
              Event history
@@ -223,7 +223,7 @@
            </p>
            <p>
             For an ongoing record of events in your AWS account, including events for
-        Amazon SageMaker, create a trail. A
+        Amazon SageMaker AI, create a trail. A
             <em>
              trail
             </em>
@@ -274,7 +274,7 @@
             </ul>
            </div>
            <p>
-            All SageMaker actions, with the exception of
+            All SageMaker AI actions, with the exception of
             <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html">
              InvokeEndpoint
             </a>
@@ -340,7 +340,7 @@
           Tuning
            </h2>
            <p>
-            SageMaker supports logging non-API service events to your CloudTrail log files for automatic model
+            SageMaker AI supports logging non-API service events to your CloudTrail log files for automatic model
         tuning jobs. These events are related to your tuning jobs but, are not the direct result of
         a customer request to the public AWS API. For example, when you create a hyperparameter
         tuning job by calling
@@ -349,14 +349,14 @@
               CreateHyperParameterTuningJob
              </code>
             </a>
-            , SageMaker creates training jobs to evaluate
+            , SageMaker AI creates training jobs to evaluate
         various combinations of hyperparameters to find the best result. Similarly, when you call
             <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopHyperParameterTuningJob.html">
              <code class="code">
               StopHyperParameterTuningJob
              </code>
             </a>
-            to stop a hyperparameter tuning job, SageMaker
+            to stop a hyperparameter tuning job, SageMaker AI
         might stop any of the associated running training jobs. Non-API events for your tuning jobs
         are logged to CloudTrail to help you improve governance, compliance, and operational and risk
         auditing of your AWS account.
@@ -411,7 +411,7 @@
              Logging with CloudWatch
             </div>
             <div accesskey="n" class="next-link" href="./understanding-sagemaker-entries.html" id="next">
-             Understand SageMaker log file entries
+             Understand SageMaker AI log file entries
             </div>
            </div>
           </div>

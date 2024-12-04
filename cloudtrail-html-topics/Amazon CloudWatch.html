@@ -148,6 +148,9 @@
           <a href="#cwl_query-generation-cloudtrail">
            Query generation information in CloudTrail
           </a>
+          <a href="#Q-Developer-Investigations-Cloudtrail">
+           Amazon Q Developer operational investigations events in CloudTrail
+          </a>
           <a href="#CloudWatch-NetworkFlowMonitor-info-in-ct">
            Network Flow Monitor in CloudTrail
           </a>
@@ -183,7 +186,8 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon CloudWatch, CloudWatch Synthetics, CloudWatch RUM, Network Flow Monitor, and Internet Monitor are integrated with AWS CloudTrail, a service that provides a record
+            Amazon CloudWatch, CloudWatch Synthetics, CloudWatch RUM, Amazon Q Developer operational investigations, Network Flow Monitor, and Internet Monitor are integrated with AWS CloudTrail, a service that provides a record
+
         of actions taken by a user, role, or an AWS service. CloudTrail captures API calls made by or on
         behalf of your AWS account. The captured calls include calls from the CloudWatch console and code calls
         to CloudWatch API operations. Using the information collected by CloudTrail, you can
@@ -396,6 +400,11 @@
              <li>
               <a href="#cwl_query-generation-cloudtrail">
                Query generation information in CloudTrail
+              </a>
+             </li>
+             <li>
+              <a href="#Q-Developer-Investigations-Cloudtrail">
+               Amazon Q Developer operational investigations events in CloudTrail
               </a>
              </li>
              <li>
@@ -938,6 +947,294 @@
     "recipientAccountId": "111122223333", 
     "eventCategory": "Management"
 }</code></pre>
+           <h2 id="Q-Developer-Investigations-Cloudtrail">
+            Amazon Q Developer operational investigations events in CloudTrail
+           </h2>
+           <p>
+            Amazon Q Developer operational investigations supports logging the following actions as events in CloudTrail log files.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               CreateInvestigation
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               GetInvestigation
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               UpdateInvestigation
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               DeleteInvestigation
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               ListInvestigations
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               CreateInvestigationGroup
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               GetInvestigationGroup
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               UpdateInvestigationGroup
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               DeleteInvestigationGroup
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               ListInvestigationsGroup
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               PutInvestigationGroupPolicy
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               DeleteInvestigationGroupPolicy
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               ListTagsForResource
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               GetInvestigationGroupPolicy
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               TagResource
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               UntagResource
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               CreateInvestigationEvent
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               GetInvestigationEvent
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               UpdateInvestigationEvent
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               ListInvestigationEvents
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               CreateInvestigationResource
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               GetInvestigationResource
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h3 id="understanding-QDeveloper-Investigations-entries">
+            Example: Amazon Q Developer operational investigations
+                log file entries
+           </h3>
+           <p>
+            The following example shows a Amazon Q Developer operational investigations log entry that demonstrates the
+            <code class="code">
+             CreateInvestigationGroup
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+	"eventVersion": "1.09",
+	"userIdentity": <span>{</span>
+		"type": "AssumedRole",
+		"principalId": "EX_PRINCIPAL_ID",
+		"arn": "arn:aws:iam::123456789012:assumed-role/role_name",
+		"accountId": "123456789012",
+		"accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+		"sessionContext": <span>{</span>
+			"sessionIssuer": <span>{</span>
+				"type": "Role",
+				"principalId": "EX_PRINCIPAL_ID",
+				"arn": "arn:aws:iam::123456789012:role/role_name",
+				"accountId": "123456789012",
+				"userName": "SAMPLE_NAME"
+			},
+			"attributes": <span>{</span>
+				"creationDate": "2024-10-30T18:42:05Z",
+				"mfaAuthenticated": "false"
+			}
+		}
+	},
+	"eventTime": "2024-10-30T18:48:26Z",
+	"eventSource": "aiops.amazonaws.com",
+	"eventName": "CreateInvestigationGroup",
+	"awsRegion": "us-east-1",
+	"sourceIPAddress": "127.0.0.1",
+	"userAgent": "exampleUserAgent",
+	"requestParameters": <span>{</span>
+		"name": "exampleName",
+		"roleArn": "arn:aws:iam::123456789012:role/role_name"	},
+	"responseElements": <span>{</span>
+		"arn": "arn:aws:aiops:us-east-1:123456789012:investigation-group/021345abcdef67890"
+	},
+	"requestId": "e9caf887-8d88-11e5-a331-3332aa445952",
+	"requestId": "49d14f36-6450-44a5-a501-b0fdcdfaeb98",
+	"readOnly": false,
+	"eventType": "AwsApiCall",
+	"managementEvent": true,
+	"recipientAccountId": "123456789012",
+	"eventCategory": "Management"
+}</code></pre>
+           <p>
+            The following example shows a Amazon Q Developer operational investigations log entry that demonstrates the
+            <code class="code">
+             CreateInvestigationEvent
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+		"eventVersion": "1.09",
+		"userIdentity": <span>{</span>
+			"type": "AssumedRole",
+			"principalId": "EX_PRINCIPAL_ID",
+			"arn": "arn:aws:sts::123456789012:assumed-role/role_name",
+			"accountId": "123456789012",
+			"accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+			"sessionContext": <span>{</span>
+				"sessionIssuer": <span>{</span>
+					"type": "Role",
+					"principalId": "EX_PRINCIPAL_ID",
+					"arn": "arn:aws:iam::123456789012:role/role_name",
+					"accountId": "123456789012",
+					"userName": "SAMPLE_NAME"
+				},
+				"attributes": <span>{</span>
+					"creationDate": "2024-10-30T16:17:49Z",
+					"mfaAuthenticated": "false"
+				}
+			}
+		},
+		"eventTime": "2024-10-30T16:35:34Z",
+		"eventSource": "aiops.amazonaws.com",
+		"eventName": "CreateInvestigationEvent",
+		"awsRegion": "us-east-1",
+		"sourceIPAddress": "127.0.0.1",
+		"userAgent": "exampleUserAgent",
+		"requestParameters": <span>{</span>
+			"identifier": "arn:aws:aiops:us-east-1:123456789012:investigation-group/021345abcdef67890",
+			"investigationId": "bcdef01234567890",
+			"clientToken": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+			"type": "METRIC_OBSERVATION",
+			"body": "***"
+		},
+		"responseElements": <span>{</span>
+			"investigationGroupArn": "arn:aws:aiops:us-east-1:123456789012:investigation-group/021345abcdef67890",
+			"investigationId": "bcdef01234567890",
+			"investigationEventId": "14567890abcdef0g"
+		},
+		"requestId": "e9caf887-8d88-11e5-a331-3332aa445952",
+		"eventId": "49d14f36-6450-44a5-a501-b0fdcdfaeb98",
+		"readOnly": false,
+		"resources": [<span>{</span>
+			"accountId": "123456789012",
+			"type": "AWS::AIOps::InvestigationGroup",
+			"ARN": "arn:aws:aiops:us-east-1:123456789012:investigation-group/021345abcdef67890"
+		}],
+		"eventType": "AwsApiCall",
+		"managementEvent": false,
+		"recipientAccountId": "123456789012",
+		"eventCategory": "Data"
+	}</code></pre>
+           <p>
+            The following example shows a Amazon Q Developer operational investigations log entry that demonstrates the
+            <code class="code">
+             UpdateInvestigationEvent
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+	"eventVersion": "1.09",
+	"userIdentity": <span>{</span>
+		"type": "AssumedRole",
+		"principalId": "EX_PRINCIPAL_ID",
+		"arn": "arn:aws:sts::123456789012:assumed-role/role_name",
+		"accountId": "123456789012",
+		"accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+		"sessionContext": <span>{</span>
+			"sessionIssuer": <span>{</span>
+				"type": "Role",
+				"principalId": "EX_PRINCIPAL_ID",
+				"arn": "arn:aws:iam::123456789012:role/role_name",
+				"accountId": "123456789012",
+				"userName": "SAMPLE_NAME"
+			},
+			"attributes": <span>{</span>
+				"creationDate": "2024-10-30T16:17:49Z",
+				"mfaAuthenticated": "false"
+			}
+		}
+	},
+	"eventTime": "2024-10-30T16:24:48Z",
+	"eventSource": "aiops.amazonaws.com",
+	"eventName": "UpdateInvestigationEvent",
+	"awsRegion": "us-east-1",
+	"sourceIPAddress": "127.0.0.1",
+	"userAgent": "exampleUserAgent",
+	"requestParameters": <span>{</span>
+		"identifier": "arn:aws:aiops:us-east-1:123456789012:investigation-group/021345abcdef67890",
+		"investigationId": "bcdef01234567890",
+		"investigationEventId": "14567890abcdef0g",
+		"comment": "***"
+	},
+	"responseElements": null,
+	"requestId": "e9caf887-8d88-11e5-a331-3332aa445952",
+	"eventId": "49d14f36-6450-44a5-a501-b0fdcdfaeb98",
+	"readOnly": false,
+	"resources": [<span>{</span>
+		"accountId": "123456789012",
+		"type": "AWS::AIOps::InvestigationGroup",
+		"ARN": "arn:aws:aiops:us-east-1:123456789012:investigation-group/021345abcdef67890"
+	}],
+	"eventType": "AwsApiCall",
+	"managementEvent": false,
+	"recipientAccountId": "123456789012",
+	"eventCategory": "Data"
+}</code></pre>
            <h2 id="CloudWatch-NetworkFlowMonitor-info-in-ct">
             Network Flow Monitor in CloudTrail
            </h2>
@@ -1090,7 +1387,7 @@
     },
     "responseElements": <span>{</span>
         "Access-Control-Expose-Headers": "*",
-        "MonitorArn": "arn:aws:networksonar:us-east-1:000000000000:monitor/TestMonitor",
+        "MonitorArn": "arn:aws:networkflowmonitor:us-east-1:000000000000:monitor/TestMonitor",
         "MonitorName": "TestMonitor",
         "MonitorStatus": "ACTIVE"
     },
@@ -1126,7 +1423,7 @@
             }
         },
         "eventTime": "2022-10-11T17:30:18Z",
-        "eventSource": "internetmonitor.amazonaws.com",
+        "eventSource": "networkflowmonitor.amazonaws.com",
         "eventName": "ListMonitors",
         "awsRegion": "us-east-2",
         "sourceIPAddress": "192.0.2.0",
@@ -1294,7 +1591,7 @@
     }
 },
   "eventTime": "2024-11-15T14:08:04Z",
-  "eventSource": "gamma-networkflowmonitor.amazonaws.com",
+  "eventSource": "networkflowmonitor.amazonaws.com",
   "eventName": "GetQueryResultsMonitorTopContributors",
   "awsRegion": "us-east-1",
   "sourceIPAddress": "192.0.2.0",
@@ -1351,7 +1648,7 @@
     }
 },
   "eventTime": "2024-11-15T14:08:04Z",
-  "eventSource": "gamma-networkflowmonitor.amazonaws.com",
+  "eventSource": "networkflowmonitor.amazonaws.com",
   "eventName": "GetQueryResultsWorkloadInsightsTopContributorsData",
   "awsRegion": "us-east-1",
   "sourceIPAddress": "192.0.2.0",

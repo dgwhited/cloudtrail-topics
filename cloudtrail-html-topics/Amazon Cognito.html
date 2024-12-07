@@ -396,537 +396,572 @@
             Amazon Cognito logs the following requests to your managed login services as events in
           CloudTrail.
            </p>
-           <div class="table-container">
-            <div class="table-contents">
-             <table id="w117aac29c18c15c11c17b9">
-              <caption>
-               Managed login events in CloudTrail
-              </caption>
-              <thead>
-               <tr>
-                <th>
-                 Operation
-                </th>
-                <th>
-                 Description
-                </th>
-               </tr>
-              </thead>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Login_GET
-                </code>
-                ,
-                <code class="code">
-                 CognitoAuthentication
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user views or submits credentials to your
-                <a href="./login-endpoint.html">
-                 Login endpoint
-                </a>
-                .
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 OAuth2_Authorize_GET
-                </code>
-                ,
-                <code class="code">
-                 Beta_Authorize_GET
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user views your
-                <a href="./authorization-endpoint.html">
-                 Authorize endpoint
-                </a>
-                .
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 OAuth2Response_GET
-                </code>
-                ,
-                <code class="code">
-                 OAuth2Response_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits an IdP token to your
-                <code class="code">
-                 /oauth2/idpresponse
-                </code>
-                endpoint.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 SAML2Response_POST
-                </code>
-                ,
-                <code class="code">
-                 Beta_SAML2Response_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits an IdP SAML assertion to your
-                <code class="code">
-                 /saml2/idpresponse
-                </code>
-                endpoint.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Login_OIDC_SAML_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user enters a username at your
-                <a href="./login-endpoint.html">
-                 Login endpoint
-                </a>
-                and matches with an
-                <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-integrating-3rd-party-saml-providers.html">
-                 IdP identifier
-                </a>
-                .
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Token_POST
-                </code>
-                ,
-                <code class="code">
-                 Beta_Token_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits an authorization code to your
-                <a href="./token-endpoint.html">
-                 Token endpoint
-                </a>
-                .
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Signup_GET
-                </code>
-                ,
-                <code class="code">
-                 Signup_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits sign-up information to your
-                <code class="code">
-                 /signup
-                </code>
-                endpoint.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Confirm_GET
-                </code>
-                ,
-                <code class="code">
-                 Confirm_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a confirmation code in the hosted UI.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 ResendCode_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a request to resend a confirmation code in the hosted
-                  UI.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 ForgotPassword_GET
-                </code>
-                ,
-                <code class="code">
-                 ForgotPassword_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a request to reset their password to your
-                <code class="code">
-                 /forgotPassword
-                </code>
-                endpoint.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 ConfirmForgotPassword_GET
-                </code>
-                ,
-                <code class="code">
-                 ConfirmForgotPassword_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a code to your
-                <code class="code">
-                 /confirmForgotPassword
-                </code>
-                endpoint
-                  that confirms their
-                <code class="code">
-                 ForgotPassword
-                </code>
-                request.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 ResetPassword_GET
-                </code>
-                ,
-                <code class="code">
-                 ResetPassword_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a new password in the hosted UI.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Mfa_GET
-                </code>
-                ,
-                <code class="code">
-                 Mfa_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a multi-factor authentication (MFA) code in the hosted
-                  UI.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 MfaOption_GET
-                </code>
-                ,
-                <code class="code">
-                 MfaOption_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user chooses their preferred method for MFA in the hosted UI.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 MfaRegister_GET
-                </code>
-                ,
-                <code class="code">
-                 MfaRegister_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a multi-factor authentication (MFA) code in the hosted UI when
-                  registering the MFA.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Logout
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user signs out at your
-                <code class="code">
-                 /logout
-                </code>
-                endpoint.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 SAML2Logout_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user signs out at your
-                <code class="code">
-                 /saml2/logout
-                </code>
-                endpoint.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Error_GET
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user views an error page in the hosted UI.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 UserInfo_GET
-                </code>
-                ,
-                <code class="code">
-                 UserInfo_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user or IdP exchanges information with your
-                <a href="./userinfo-endpoint.html">
-                 userInfo endpoint
-                </a>
-                .
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Confirm_With_Link_GET
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a confirmation based on a link that Amazon Cognito sent in an email
-                  message.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 Event_Feedback_GET
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits feedback to Amazon Cognito about an
-                <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html">
-                 advanced security features
-                </a>
-                event.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 login_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits credentials to your
-                <a href="./login-endpoint.html">
-                 Login endpoint
-                </a>
-                .
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 login_continue_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user who has already signed in one time chooses to sign in again.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 selectChallenge_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user responds to an authentication challenge after they submit their
-                  username or credentials.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 confirmUser_GET
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user opens the link in a
-                <a href="./signing-up-users-in-your-app.html">
-                 confirmation or verification email message
-                </a>
-                .
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 mfa_back_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user chooses the
-                <b>
-                 Back
-                </b>
-                button after an MFA
-                  prompt.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 mfa_options_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user selects an MFA option.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 mfa_phone_register_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a phone number to register as a MFA factor. This operation
-                  causes Amazon Cognito to send an MFA code to their phone number.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 mfa_phone_verify_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits an MFA code sent to their phone number.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 mfa_phone_resendCode_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a request to resend a MFA code to their phone number.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 mfa_totp_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a TOTP MFA code.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 signup_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits information to your
-                <code class="code">
-                 /signup
-                </code>
-                managed login
-                  page.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 signup_confirm_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a confirmation code from an email or SMS message.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 verifyCode_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a one-time password (OTP) for passwordless
-                  authentication.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 passkeys_add_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user submits a request to register a new passkey credential.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 passkeys_add_GET
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user navigates to the page where they can register a passkey.
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <code class="code">
-                 login_passkey_POST
-                </code>
-               </td>
-               <td tabindex="-1">
-                A user signs in with a passkey.
-               </td>
-              </tr>
-             </table>
-            </div>
-           </div>
+           <awsdocs-tabs>
+            <dl style="display: none">
+             <dt>
+              Hosted UI (classic) events
+             </dt>
+             <dd tab-id="hosted-ui-(classic)-events">
+              <div class="table-container">
+               <div class="table-contents">
+                <table id="w117aac29c18c15c11c17b9b1b3b1">
+                 <caption>
+                  Hosted UI (classic) events in CloudTrail
+                 </caption>
+                 <thead>
+                  <tr>
+                   <th>
+                    Operation
+                   </th>
+                   <th>
+                    Description
+                   </th>
+                  </tr>
+                 </thead>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Login_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    CognitoAuthentication
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user views or submits credentials to your
+                   <a href="./login-endpoint.html">
+                    Login endpoint
+                   </a>
+                   .
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    OAuth2_Authorize_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    Beta_Authorize_GET
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user views your
+                   <a href="./authorization-endpoint.html">
+                    Authorize endpoint
+                   </a>
+                   .
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    OAuth2Response_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    OAuth2Response_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits an IdP token to your
+                   <code class="code">
+                    /oauth2/idpresponse
+                   </code>
+                   endpoint.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    SAML2Response_POST
+                   </code>
+                   ,
+                   <code class="code">
+                    Beta_SAML2Response_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits an IdP SAML assertion to your
+                   <code class="code">
+                    /saml2/idpresponse
+                   </code>
+                   endpoint.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Login_OIDC_SAML_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user enters a username at your
+                   <a href="./login-endpoint.html">
+                    Login endpoint
+                   </a>
+                   and matches with an
+                   <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-integrating-3rd-party-saml-providers.html">
+                    IdP identifier
+                   </a>
+                   .
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Token_POST
+                   </code>
+                   ,
+                   <code class="code">
+                    Beta_Token_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits an authorization code to your
+                   <a href="./token-endpoint.html">
+                    Token endpoint
+                   </a>
+                   .
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Signup_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    Signup_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits sign-up information to your
+                   <code class="code">
+                    /signup
+                   </code>
+                   endpoint.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Confirm_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    Confirm_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a confirmation code in the hosted UI.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    ResendCode_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a request to resend a confirmation code in the hosted
+                        UI.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    ForgotPassword_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    ForgotPassword_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a request to reset their password to your
+                   <code class="code">
+                    /forgotPassword
+                   </code>
+                   endpoint.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    ConfirmForgotPassword_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    ConfirmForgotPassword_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a code to your
+                   <code class="code">
+                    /confirmForgotPassword
+                   </code>
+                   endpoint that confirms their
+                   <code class="code">
+                    ForgotPassword
+                   </code>
+                   request.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    ResetPassword_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    ResetPassword_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a new password in the hosted UI.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Mfa_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    Mfa_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a multi-factor authentication (MFA) code in the hosted
+                        UI.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    MfaOption_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    MfaOption_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user chooses their preferred method for MFA in the hosted UI.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    MfaRegister_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    MfaRegister_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a multi-factor authentication (MFA) code in the hosted
+                        UI when registering the MFA.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Logout
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user signs out at your
+                   <code class="code">
+                    /logout
+                   </code>
+                   endpoint.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    SAML2Logout_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user signs out at your
+                   <code class="code">
+                    /saml2/logout
+                   </code>
+                   endpoint.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Error_GET
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user views an error page in the hosted UI.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    UserInfo_GET
+                   </code>
+                   ,
+                   <code class="code">
+                    UserInfo_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user or IdP exchanges information with your
+                   <a href="./userinfo-endpoint.html">
+                    userInfo endpoint
+                   </a>
+                   .
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Confirm_With_Link_GET
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a confirmation based on a link that Amazon Cognito sent in an
+                        email message.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    Event_Feedback_GET
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits feedback to Amazon Cognito about an
+                   <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html">
+                    advanced security features
+                   </a>
+                   event.
+                  </td>
+                 </tr>
+                </table>
+               </div>
+              </div>
+             </dd>
+             <dt>
+              Managed login events
+             </dt>
+             <dd tab-id="managed-login-events">
+              <div class="table-container">
+               <div class="table-contents">
+                <table id="w117aac29c18c15c11c17b9b3b3b1">
+                 <caption>
+                  Managed login events in CloudTrail
+                 </caption>
+                 <thead>
+                  <tr>
+                   <th>
+                    Operation
+                   </th>
+                   <th>
+                    Description
+                   </th>
+                  </tr>
+                 </thead>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    login_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits credentials to your
+                   <a href="./login-endpoint.html">
+                    Login endpoint
+                   </a>
+                   .
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    login_continue_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user who has already signed in one time chooses to sign in
+                        again.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    selectChallenge_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user responds to an authentication challenge after they submit their
+                        username or credentials.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    confirmUser_GET
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user opens the link in a
+                   <a href="./signing-up-users-in-your-app.html">
+                    confirmation or verification email message
+                   </a>
+                   .
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    mfa_back_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user chooses the
+                   <b>
+                    Back
+                   </b>
+                   button after an MFA
+                        prompt.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    mfa_options_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user selects an MFA option.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    mfa_phone_register_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a phone number to register as a MFA factor. This
+                        operation causes Amazon Cognito to send an MFA code to their phone number.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    mfa_phone_verify_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits an MFA code sent to their phone number.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    mfa_phone_resendCode_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a request to resend a MFA code to their phone
+                        number.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    mfa_totp_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a TOTP MFA code.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    signup_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits information to your
+                   <code class="code">
+                    /signup
+                   </code>
+                   managed login
+                        page.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    signup_confirm_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a confirmation code from an email or SMS
+                        message.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    verifyCode_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a one-time password (OTP) for passwordless
+                        authentication.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    passkeys_add_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user submits a request to register a new passkey credential.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    passkeys_add_GET
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user navigates to the page where they can register a passkey.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
+                    login_passkey_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   A user signs in with a passkey.
+                  </td>
+                 </tr>
+                </table>
+               </div>
+              </div>
+             </dd>
+            </dl>
+           </awsdocs-tabs>
            <div class="awsdocs-note">
             <div class="awsdocs-note-title">
              <awsui-icon name="status-info" variant="link">

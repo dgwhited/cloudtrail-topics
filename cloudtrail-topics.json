@@ -1175,6 +1175,12 @@
     "Support began": "08/14/2017",
     "Link": "https://docs.aws.amazon.com/migrationhub/latest/ug/logging-using-cloudtrail.html"
   },
+  "AWS Migration Hub Journeys": {
+    "AWS Service": "AWS Migration Hub Journeys",
+    "CloudTrail Topics": "Logging AWS Migration Hub Journeys API calls with AWS CloudTrail",
+    "Support began": "12/03/2024",
+    "Link": "https://docs.aws.amazon.com/mhj/latest/userguide/logging-using-cloudtrail.html"
+  },
   "AWS Network Firewall": {
     "AWS Service": "AWS Network Firewall",
     "CloudTrail Topics": "Logging calls to the AWS Network Firewall API with AWS CloudTrail",
@@ -1198,6 +1204,12 @@
     "CloudTrail Topics": "Logging AWS OpsWorks Stacks API Calls with AWS CloudTrail",
     "Support began": "06/04/2014",
     "Link": "https://docs.aws.amazon.com/opsworks/latest/userguide/monitoring-cloudtrail.html"
+  },
+  "Oracle Database@AWS": {
+    "AWS Service": "Oracle Database@AWS",
+    "CloudTrail Topics": "Logging Oracle Database@AWS API Calls with AWS CloudTrail",
+    "Support began": "12/01/2024",
+    "Link": "https://docs.aws.amazon.com/odb/latest/UserGuide/logging-using-cloudtrail.html"
   },
   "AWS Organizations": {
     "AWS Service": "AWS Organizations",
@@ -1288,6 +1300,12 @@
     "CloudTrail Topics": "Logging AWS Security Hub API Calls with AWS CloudTrail",
     "Support began": "11/27/2018",
     "Link": "https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-ct.html"
+  },
+  "AWS Security Incident Response": {
+    "AWS Service": "AWS Security Incident Response",
+    "CloudTrail Topics": "Logging AWS Security Incident Response API calls using AWS CloudTrail",
+    "Support began": "12/01/2024",
+    "Link": "https://docs.aws.amazon.com/security-ir/latest/userguide/logging-using-cloudtrail.html"
   },
   "AWS Security Token Service (AWS STS)": {
     "AWS Service": "AWS Security Token Service (AWS STS)",

@@ -533,9 +533,9 @@
     "Support began": "12/11/2014",
     "Link": "https://docs.aws.amazon.com/amazonglacier/latest/dev/audit-logging.html"
   },
-  "Amazon SageMaker": {
-    "AWS Service": "Amazon SageMaker",
-    "CloudTrail Topics": "Logging Amazon SageMaker API Calls with AWS CloudTrail",
+  "Amazon SageMaker AI": {
+    "AWS Service": "Amazon SageMaker AI",
+    "CloudTrail Topics": "Logging Amazon SageMaker AI API Calls with AWS CloudTrail",
     "Support began": "01/11/2018",
     "Link": "https://docs.aws.amazon.com/sagemaker/latest/dg/logging-using-cloudtrail.html"
   },

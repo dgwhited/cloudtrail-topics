@@ -1067,12 +1067,6 @@
     "Support began": "04/11/2016",
     "Link": "https://docs.aws.amazon.com/iot/latest/developerguide/monitoring_overview.html#iot-using-cloudtrail"
   },
-  "AWS IoT 1-Click": {
-    "AWS Service": "AWS IoT 1-Click",
-    "CloudTrail Topics": "Logging AWS IoT 1-Click API Calls with AWS CloudTrail",
-    "Support began": "05/14/2018",
-    "Link": "https://docs.aws.amazon.com/iot-1-click/latest/developerguide/logging-using-cloudtrail.html"
-  },
   "AWS IoT Analytics": {
     "AWS Service": "AWS IoT Analytics",
     "CloudTrail Topics": "Logging AWS IoT Analytics API calls with AWS CloudTrail",

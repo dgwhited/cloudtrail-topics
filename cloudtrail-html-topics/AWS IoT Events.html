@@ -3,44 +3,44 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging AWS IoT Events API calls with AWS CloudTrail - AWS IoT Events
+   Understanding AWS IoT Events log file entries - AWS IoT Events
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
-  <meta content="iotevents-using-cloudtrail" name="target_state"/>
-  <meta content="iotevents-using-cloudtrail" name="default_state"/>
+  <meta content="understanding-aws-iotevents-entries" name="target_state"/>
+  <meta content="understanding-aws-iotevents-entries" name="default_state"/>
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
-  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Using CloudTrail to monitor AWS IoT Events API calls." name="description"/>
+  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" rel="canonical"/>
+  <meta content="Understanding AWS IoT Events log entries in CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="AWS IoT Events" name="product"/>
   <meta content="Developer Guide" name="guide"/>
   <meta content="Describes how to use the service to monitor your equipment or device fleets for failures or changes in operation, and to trigger actions when such events occur." name="abstract"/>
   <meta content="en_us" name="guide-locale"/>
   <meta content="toc-contents.json" name="tocs"/>
-  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" rel="canonical"/>
-  <link href="https://docs.aws.amazon.com/id_id/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/id_id/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="en" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_cn/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_tw/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" hreflang="x-default" rel="alternative"/>
   <meta content="IoT Events" name="feedback-item"/>
   <meta content="AWS IoT Events" name="this_doc_product"/>
   <meta content="Developer Guide" name="this_doc_guide"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'iotevents'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="Developer Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging AWS IoT Events API calls with AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Understanding AWS IoT Events log file entries"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,15 +76,15 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging AWS IoT Events API calls with AWS CloudTrail - AWS IoT Events
+         Understanding AWS IoT Events log file entries - AWS IoT Events
         </title>
-        <meta content="/pdfs/iotevents/latest/developerguide/iotevents-dg.pdf#iotevents-using-cloudtrail" name="pdf"/>
+        <meta content="/pdfs/iotevents/latest/developerguide/iotevents-dg.pdf#understanding-aws-iotevents-entries" name="pdf"/>
         <meta content="aws-iot-events-doc-history.rss" name="rss"/>
         <meta content="https://repost.aws/tags/TANsxSwnClQ_Wfh-uklXi7hQ" name="forums"/>
-        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=IoT%20Events&amp;topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" name="feedback"/>
-        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" name="feedback-yes"/>
-        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" name="feedback-no"/>
-        <meta content="AWS IoT Events security,AWS IoT Events access control,AWS IoT Events IAM policies,AWS IoT Events encryption,AWS IoT Events compliance,AWS IoT Events monitoring,AWS IoT Events CloudWatch monitoring,AWS IoT Events CloudTrail monitoring,AWS IoT Events CloudTrail,AWS IoT Events API monitoring,AWS IoT Events audit logs" name="keywords"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=IoT%20Events&amp;topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" name="feedback-no"/>
+        <meta content="AWS IoT Events security,AWS IoT Events access control,AWS IoT Events IAM policies,AWS IoT Events encryption,AWS IoT Events compliance,AWS IoT Events monitoring,AWS IoT Events CloudWatch monitoring,AWS IoT Events CloudTrail monitoring,AWS IoT Events CloudTrail,AWS IoT Events API monitoring,AWS IoT Events audit logs,AWS IoT Events CloudTrail logs,AWS IoT Events log entries,AWS IoT Events API calls" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -124,7 +124,13 @@
         "@type" : "ListItem",
         "position" : 6,
         "name" : "Logging AWS IoT Events API calls with AWS CloudTrail",
-        "item" : "https://docs.aws.amazon.com/iotevents/latest/developerguide/monitoring_overview.html"
+        "item" : "https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-using-cloudtrail.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 7,
+        "name" : "Understanding AWS IoT Events log file entries",
+        "item" : "https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-using-cloudtrail.html"
       }
     ]
 }
@@ -133,7 +139,7 @@
        <body>
         <div id="main">
          <div style="display: none">
-          <a href="/pdfs/iotevents/latest/developerguide/iotevents-dg.pdf#iotevents-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          <a href="/pdfs/iotevents/latest/developerguide/iotevents-dg.pdf#understanding-aws-iotevents-entries" rel="noopener noreferrer" target="_blank" title="Open PDF">
           </a>
          </div>
          <div class="breadcrumb" id="breadcrumbs">
@@ -150,17 +156,13 @@
            Developer Guide
           </a>
          </div>
-         <div id="page-toc-src">
-          <a href="#aws-iotevents-info-in-cloudtrail">
-           AWS IoT Events information in CloudTrail
-          </a>
-         </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
-           <h1 class="topictitle" id="iotevents-using-cloudtrail">
-            Logging AWS IoT Events API calls with AWS CloudTrail
+           <h1 class="topictitle" id="understanding-aws-iotevents-entries">
+            Understanding AWS IoT Events log file
+          entries
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -169,94 +171,22 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            AWS IoT Events is integrated with AWS CloudTrail, a service that provides a record of actions taken by a
-      user, role, or an AWS service in AWS IoT Events. CloudTrail captures all API calls for AWS IoT Events as events,
-      including calls from the AWS IoT Events console and from code calls to the AWS IoT Events APIs.
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3
+        bucket that you specify. AWS CloudTrail log files contain one or more log entries. An event
+        represents a single request from any source and includes information about the requested
+        action, the date and time of the action, request parameters, and so on. CloudTrail log files are
+        not an ordered stack trace of the public API calls, so they don't appear in any specific
+        order.
            </p>
            <p>
-            If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3
-      bucket, including events for AWS IoT Events. If you don't configure a trail, you can still view the
-      most recent events in the CloudTrail console in
-            <b>
-             Event history
-            </b>
-            . Using the
-      information collected by CloudTrail, you can determine the request that was made to AWS IoT Events, the IP
-      address from which the request was made, who made the request, when it was made, and
-      additional details.
+            When CloudTrail logging is enabled in your AWS account, most API calls made to AWS IoT Events actions
+        are tracked in CloudTrail log files where they are written with other AWS service records. CloudTrail
+        determines when to create and write to a new file based on a time period and file
+        size.
            </p>
            <p>
-            To learn more about CloudTrail, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
-             AWS CloudTrail User Guide
-            </a>
-            .
-           </p>
-           <h2 id="aws-iotevents-info-in-cloudtrail">
-            AWS IoT Events information in CloudTrail
-           </h2>
-           <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs
-        in AWS IoT Events, that activity is recorded in a CloudTrail event with other AWS service events in
-            <b>
-             Event history
-            </b>
-            . You can view, search, and download recent events in
-        your AWS account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Working with CloudTrail Event
-          history
-            </a>
-            .
-           </p>
-           <p>
-            For an ongoing record of events in your AWS account, including events for AWS IoT Events,
-        create a trail. A trail enables CloudTrail to deliver log files to an Amazon S3 bucket. By default,
-        when you create a trail in the console, the trail applies to all AWS Regions. The trail
-        logs events from all Regions in the AWS partition and delivers the log files to the Amazon S3
-        bucket that you specify. Additionally, you can configure other AWS services to further
-        analyze and act on the event data collected in CloudTrail logs. For more information, see:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Creating a trail for your AWS account
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html">
-                CloudTrail
-              supported services and integrations
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
-                Configuring Amazon SNS notifications for CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail log files from multiple regions
-               </a>
-               and
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail log files from multiple accounts
-               </a>
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            Every event or log entry contains information about who generated the request. The
-        identity information helps you determine the following:
+            Every log entry contains information about who generated the request. The user identity
+        information in the log entry helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -279,18 +209,859 @@
             </ul>
            </div>
            <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail
-          userIdentity element
-            </a>
-            . AWS IoT Events actions are documented in the
-            <a href="https://docs.aws.amazon.com/iotevents/latest/apireference/Welcome.html">
-             AWS IoT Events API
-          reference
+            You can store your log files in your Amazon S3 bucket for as long as
+        you want, but you can also define Amazon S3 lifecycle rules to archive or delete log files
+        automatically. By default, your log files are encrypted with Amazon S3 server-side encryption
+        (SSE).
+           </p>
+           <p>
+            To be notified upon log file delivery, you can configure CloudTrail to publish Amazon SNS
+        notifications when new log files are delivered. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
+             Configuring Amazon SNS notifications for CloudTrail
             </a>
             .
            </p>
+           <p>
+            You can also aggregate AWS IoT Events log files from multiple AWS Regions and multiple AWS
+        accounts into a single Amazon S3 bucket.
+           </p>
+           <p>
+            For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
+             Receiving CloudTrail log files from multiple regions
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
+             Receiving CloudTrail log files from multiple accounts
+            </a>
+            .
+           </p>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              DescribeDetector action for CloudTrail" id="understanding-aws-iotevents-entries_DescribeDetector" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               DescribeDetector
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE",
+    "arn": "arn:aws:sts::123456789012:assumed-role/Admin/bertholt-brecht",
+    "accountId": "123456789012",
+    "accessKeyId": "access-key-id",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-08T18:53:58Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/Admin",
+        "accountId": "123456789012",
+        "userName": "Admin"
+      }
+    }
+  },
+  "eventTime": "2019-02-08T19:02:44Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "DescribeDetector",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-cli/1.15.65 Python/3.7.1 Darwin/16.7.0 botocore/1.10.65",
+  "requestParameters": <span>{</span>
+    "detectorModelName": "pressureThresholdEventDetector-brecht",
+    "keyValue": "1"
+  },
+  "responseElements": null,
+  "requestID": "00f41283-ea0f-4e85-959f-bee37454627a",
+  "eventID": "5eb0180d-052b-49d9-a289-0eb8d08d4c27",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              CreateDetectorModel action for CloudTrail" id="understanding-aws-iotevents-entries_CreateDetectorModel" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               CreateDetectorModel
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-Lambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEvents-RoleForIotEvents-ABC123DEF456/IotEvents-Lambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABC123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABC123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:54:43Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "CreateDetectorModel",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "detectorModelName": "myDetectorModel",
+    "key": "HIDDEN_DUE_TO_SECURITY_REASONS",
+    "roleArn": "arn:aws:iam::123456789012:role/events_action_execution_role"
+  },
+  "responseElements": null,
+  "requestID": "cecfbfa1-e452-4fa6-b86b-89a89f392b66",
+  "eventID": "8138d46b-50a3-4af0-9c5e-5af5ef75ea55",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example: CreateInput
+              action for CloudTrail" id="understanding-aws-iotevents-entries_CreateInput" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               CreateInput
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-Lambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABC123DEF456/IotEvents-Lambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABC123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABC123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:54:43Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "CreateInput",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "inputName": "batchputmessagedetectorupdated",
+    "inputDescription": "batchputmessagedetectorupdated"
+  },
+  "responseElements": null,
+  "requestID": "fb315af4-39e9-4114-94d1-89c9183394c1",
+  "eventID": "6d8cf67b-2a03-46e6-bbff-e113a7bded1e",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              DeleteDetectorModel action for CloudTrail" id="understanding-aws-iotevents-entries_DeleteDetectorModel" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               DeleteDetectorModel
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:54:11Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "DeleteDetectorModel",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "detectorModelName": "myDetectorModel"
+  },
+  "responseElements": null,
+  "requestID": "149064c1-4e24-4160-a5b2-1065e63ee2e4",
+  "eventID": "7669db89-dcc0-4c42-904b-f24b764dd808",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example: DeleteInput
+              action for CloudTrail" id="understanding-aws-iotevents-entries_DeleteDetectorModel" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               DeleteInput
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:54:38Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "DeleteInput",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "errorCode": "ResourceNotFoundException",
+  "errorMessage": "Input of name: NoSuchInput not found",
+  "requestParameters": <span>{</span>
+    "inputName": "NoSuchInput"
+  },
+  "responseElements": null,
+  "requestID": "ce6d28ac-5baf-423d-a5c3-afd009c967e3",
+  "eventID": "be0ef01d-1c28-48cd-895e-c3ff3172c08e",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              DescribeDetectorModel action for CloudTrail" id="understanding-aws-iotevents-entries_DescribeDetectorModel" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               DescribeDetectorModel
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AAKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:54:20Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "DescribeDetectorModel",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "detectorModelName": "myDetectorModel"
+  },
+  "responseElements": null,
+  "requestID": "18a11622-8193-49a9-85cb-1fa6d3929394",
+  "eventID": "1ad80ff8-3e2b-4073-ac38-9cb3385beb04",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              DescribeInput action for CloudTrail" id="understanding-aws-iotevents-entries_DescribeInput" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               DescribeInput
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AAKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:56:09Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "DescribeInput",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "inputName": "input_createinput"
+  },
+  "responseElements": null,
+  "requestID": "3af641fa-d8af-41c9-ba77-ac9c6260f8b8",
+  "eventID": "bc4e6cc0-55f7-45c1-b597-ec99aa14c81a",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              DescribeLoggingOptions action for CloudTrail" id="understanding-aws-iotevents-entries_DescribeLoggingOptions" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               DescribeLoggingOptions
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:53:23Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "DescribeLoggingOptions",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "b624b6c5-aa33-41d8-867b-025ec747ee8f",
+  "eventID": "9c7ce626-25c8-413a-96e7-92b823d6c850",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              ListDetectorModels action for CloudTrail" id="understanding-aws-iotevents-entries_ListDetectorModels" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               ListDetectorModels
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:53:23Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "ListDetectorModels",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "nextToken": "CkZEZXRlY3Rvck1vZGVsMl9saXN0ZGV0ZWN0b3Jtb2RlbHN0ZXN0X2VlOWJkZTk1YT",
+    "maxResults": 3
+  },
+  "responseElements": null,
+  "requestID": "6d70f262-da95-4bb5-94b4-c08369df75bb",
+  "eventID": "2d01a25c-d5c7-4233-99fe-ce1b8ec05516",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              ListDetectorModelVersions action for CloudTrail" id="understanding-aws-iotevents-entries_ListDetectorModelVersions" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               ListDetectorModelVersions
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:53:33Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "ListDetectorModelVersions",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "detectorModelName": "myDetectorModel",
+    "maxResults": 2
+  },
+  "responseElements": null,
+  "requestID": "ebecb277-6bd8-44ea-8abd-fbf40ac044ee",
+  "eventID": "fc6281a2-3fac-4e1e-98e0-ca6560b8b8be",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              ListDetectors action for CloudTrail" id="understanding-aws-iotevents-entries_ListDetectors" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               ListDetectors
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:53:54Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "ListDetectors",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "detectorModelName": "batchputmessagedetectorinstancecreated",
+    "stateName": "HIDDEN_DUE_TO_SECURITY_REASONS"
+  },
+  "responseElements": null,
+  "requestID": "4783666d-1e87-42a8-85f7-22d43068af94",
+  "eventID": "0d2b7e9b-afe6-4aef-afd2-a0bb1e9614a9",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example: ListInputs
+              action for CloudTrail" id="understanding-aws-iotevents-entries_ListInputs" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               ListInputs
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:53:57Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "ListInputs",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "nextToken": "CkhjYW5hcnlfdGVzdF9pbnB1dF9saXN0ZGV0ZWN0b3Jtb2RlbHN0ZXN0ZDU3OGZ",
+    "maxResults": 3
+  },
+  "responseElements": null,
+  "requestID": "dd6762a1-1f24-4e63-a986-5ea3938a03da",
+  "eventID": "c500f6d8-e271-4366-8f20-da4413752469",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              PutLoggingOptions action for CloudTrail" id="understanding-aws-iotevents-entries_PutLoggingOptions" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               PutLoggingOptions
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:56:43Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "PutLoggingOptions",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "loggingOptions": <span>{</span>
+      "roleArn": "arn:aws:iam::123456789012:role/logging__logging_role",
+      "level": "INFO",
+      "enabled": false
+    }
+  },
+  "responseElements": null,
+  "requestID": "df570e50-fb19-4636-9ec0-e150a94bc52c",
+  "eventID": "3247f928-26aa-471e-b669-e4a9e6fbc42c",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              UpdateDetectorModel action for CloudTrail" id="understanding-aws-iotevents-entries_UpdateDetectorModel" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               UpdateDetectorModel
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:55:51Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "UpdateDetectorModel",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "requestParameters": <span>{</span>
+    "detectorModelName": "myDetectorModel",
+    "roleArn": "arn:aws:iam::123456789012:role/Events_action_execution_role"
+  },
+  "responseElements": null,
+  "requestID": "add29860-c1c5-4091-9917-d2ef13c356cf",
+  "eventID": "7baa9a14-6a52-47dc-aea0-3cace05147c3",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example: UpdateInput
+              action for CloudTrail" id="understanding-aws-iotevents-entries_UpdateInput" variant="container">
+             <p>
+              The following example shows a CloudTrail log entry that demonstrates the
+              <code class="code">
+               UpdateInput
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AKIAI44QH8DHBEXAMPLE:IotEvents-EventsLambda",
+    "arn": "arn:aws:sts::123456789012:assumed-role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456/IotEvents-EventsLambda",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+    "sessionContext": <span>{</span>
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2019-02-07T22:22:30Z"
+      },
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/IotEventsLambda-RoleForIotEvents-ABCD123DEF456",
+        "accountId": "123456789012",
+        "userName": "IotEventsLambda-RoleForIotEvents-ABCD123DEF456"
+      }
+    }
+  },
+  "eventTime": "2019-02-07T23:53:00Z",
+  "eventSource": "iotevents.amazonaws.com",
+  "eventName": "UpdateInput",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.168.0.1",
+  "userAgent": "aws-internal/3",
+  "errorCode": "ResourceNotFoundException",
+  "errorMessage": "Input of name: NoSuchInput not found",
+  "requestParameters": <span>{</span>
+    "inputName": "NoSuchInput",
+    "inputDescription": "this is a description of an input"
+  },
+  "responseElements": null,
+  "requestID": "58d5d2bb-4110-4c56-896a-ee9156009f41",
+  "eventID": "c2df241a-fd53-4fd0-936c-ba309e5dc62d",
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "123456789012"
+} </code></pre>
+            </awsui-expandable-section>
+           </div>
+           <div class="collapsible" data-expand-section="_collapse_all_">
+            <awsui-expandable-section expanded="false" header="Example:
+              BatchPutMessage action for CloudTrail" id="understanding-aws-iotevents-entries_BatchPutMessage" variant="container">
+             <p>
+              AWS IoT Events can use a CloudTrail integration for data plane API logging. This example adds
+            details on data events through the
+              <code class="code">
+               BatchPutMessage
+              </code>
+              action.
+             </p>
+             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+            "eventVersion": "1.09",
+            "userIdentity": <span>{</span>
+                "type": "AssumedRole",
+                "principalId": "AKIAI44QH8DHBEXAMPLE:PrincipalId",
+                "arn": "arn:aws:sts::123456789012:assumed-role/my-iam-role/my-iam-role-entity",
+                "accountId": "123456789012",
+                "accessKeyId": "AKIAI44QH8DHBEXAMPLE",
+                "sessionContext": <span>{</span>
+                    "sessionIssuer": <span>{</span>
+                        "type": "Role",
+                        "principalId": "AKIAI44QH8DHBEXAMPLE",
+                        "arn": "arn:aws:iam::123456789012:role/my-iam-role",
+                        "accountId": "123456789012",
+                        "userName": "sample_user_name"
+                    },
+                    "attributes": <span>{</span>
+                        "creationDate": "2024-11-22T18:32:41Z",
+                        "mfaAuthenticated": "false"
+                    }
+                }
+            },
+            "eventTime": "2024-11-22T18:57:35Z",
+            "eventSource": "iotevents.amazonaws.com",
+            "eventName": "BatchPutMessage",
+            "awsRegion": "us-east-1",
+            "sourceIPAddress": "3.239.107.128",
+            "userAgent": "aws-internal/3",
+            "requestParameters": <span>{</span>
+                "messages": [
+                    <span>{</span>
+                        "messageId": "e306d827-b2e4-4439-9c86-411d4242a397",
+                        "payload": "HIDDEN_DUE_TO_SECURITY_REASONS",
+                        "inputName": "my_input_name"
+                    }
+                ]
+            },
+            "responseElements": <span>{</span>
+                "batchPutMessageErrorEntries": []
+            },
+            "requestID": "cefc6b63-9ccf-4e31-9177-4aec8e701bfe",
+            "eventID": "b994b52c-6011-4e3c-ad5f-e784e732fde0",
+            "readOnly": false,
+            "resources": [
+                <span>{</span>
+                    "accountId": "123456789012",
+                    "type": "AWS::IoTEvents::Input",
+                    "ARN": "arn:aws:iotevents:us-east-1:123456789012:input/my_input_name"
+                }
+            ],
+            "eventType": "AwsApiCall",
+            "managementEvent": false,
+            "recipientAccountId": "123456789012",
+            "eventCategory": "Data",
+            "tlsDetails": <span>{</span>
+                "tlsVersion": "TLSv1.3",
+                "cipherSuite": "TLS_AES_128_GCM_SHA256",
+                "clientProvidedHostHeader": "iotevents.us-east-1.amazonaws.com"
+            }
+        },</code></pre>
+            </awsui-expandable-section>
+           </div>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -322,12 +1093,11 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./monitoring-cloudwatch.html" id="previous">
-             Monitoring AWS IoT Events with Amazon CloudWatch
+            <div accesskey="p" class="prev-link" href="./iotevents-using-cloudtrail.html" id="previous">
+             Logging AWS IoT Events API calls with AWS CloudTrail
             </div>
-            <div accesskey="n" class="next-link" href="./understanding-aws-iotevents-entries.html" id="next">
-             Understanding AWS IoT Events log file
-          entries
+            <div accesskey="n" class="next-link" href="./iotevents-compliance.html" id="next">
+             Compliance validation
             </div>
            </div>
           </div>
@@ -346,7 +1116,7 @@
             If you've got a moment, please tell us what we did right so we can do more of it.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=IoT Events&amp;topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=IoT Events&amp;topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>
@@ -363,7 +1133,7 @@
             If you've got a moment, please tell us how we can make the documentation better.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=IoT Events&amp;topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/iotevents-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=IoT Events&amp;topic_url=https://docs.aws.amazon.com/en_us/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>

@@ -1075,9 +1075,9 @@
   },
   "AWS IoT Events": {
     "AWS Service": "AWS IoT Events",
-    "CloudTrail Topics": "Logging AWS IoT Events API Calls with AWS CloudTrail",
+    "CloudTrail Topics": "Understanding AWS IoT Events log file entries",
     "Support began": "06/11/2019",
-    "Link": "https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-using-cloudtrail.html"
+    "Link": "https://docs.aws.amazon.com/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html"
   },
   "AWS IoT Greengrass": {
     "AWS Service": "AWS IoT Greengrass",

@@ -185,10 +185,11 @@
             .
            </p>
            <p>
-            The following table summarizes the CloudTrail events of IAM Identity Center, their CloudTrail event sources, and matching APIs. 
-      Refer to the
+            The following table summarizes the CloudTrail events of IAM Identity Center, their CloudTrail event sources, and
+      matching APIs. Refer to the
             <a href="https://docs.aws.amazon.com/singlesignon/">
-             IAM Identity Center API references
+             IAM Identity Center API
+        references
             </a>
             to learn more about the APIs.
            </p>
@@ -202,8 +203,9 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              There's an additional group of CloudTrail events, referred to as Sign-in, which AWS emits for signing in to AWS as an IAM Identity Center user. These events have no matching public APIs, 
-      and therefore aren't listed in the API references.
+              There's an additional group of CloudTrail events, referred to as Sign-in, which AWS emits
+        for signing in to AWS as an IAM Identity Center user. These events have no matching public APIs, and
+        therefore aren't listed in the API references.
              </p>
             </div>
            </div>
@@ -238,7 +240,8 @@
                 </a>
                </td>
                <td tabindex="-1">
-                The IAM Identity Center APIs enable the management of permission sets, applications, trusted token issuers, account and application assignments, IAM Identity Center instances, and tags.
+                The IAM Identity Center APIs enable the management of permission sets, applications, trusted
+              token issuers, account and application assignments, IAM Identity Center instances, and tags.
                </td>
                <td tabindex="-1">
                 <code class="code">
@@ -258,7 +261,9 @@
                 </a>
                </td>
                <td tabindex="-1">
-                The Identity Store APIs enable the management of the life cycle of your workforce's users and groups, and the users' group memberships. Also, they support the management of users' MFA devices.
+                The Identity Store APIs enable the management of the life cycle of your workforce's
+              users and groups, and the users' group memberships. Also, they support the management
+              of users' MFA devices.
                </td>
                <td tabindex="-1">
                 <code class="code">
@@ -282,7 +287,8 @@
                 </a>
                </td>
                <td tabindex="-1">
-                The OIDC APIs support trusted identity propagation, and sign-in to AWS CLI and IDE toolkits as an already authenticated IAM Identity Center user.
+                The OIDC APIs support trusted identity propagation, and sign-in to AWS CLI and IDE
+              toolkits as an already authenticated IAM Identity Center user.
                </td>
                <td tabindex="-1">
                 <code class="code">
@@ -306,7 +312,8 @@
                 </a>
                </td>
                <td tabindex="-1">
-                The AWS access portal APIs support the operations of the AWS access portal and users getting account credentials through the AWS CLI.
+                The AWS access portal APIs support the operations of the AWS access portal and users getting
+              account credentials through the AWS CLI.
                </td>
                <td tabindex="-1">
                 <code class="code">
@@ -326,13 +333,17 @@
                 </a>
                </td>
                <td tabindex="-1">
-                The SCIM APIs support the provisioning of users, groups, and group memberships
-              through the SCIM protocol. SCIM APIs emit the same CloudTrail events that the Identity Store APIs
-              emit.
+                The SCIM APIs support the provisioning of users, groups, and group
+              memberships through the SCIM protocol. See
+                <a href="./scim-logging-using-cloudtrail.html">
+                 Logging IAM Identity Center SCIM API calls with
+          AWS CloudTrail
+                </a>
+                for more information.
                </td>
                <td tabindex="-1">
                 <code class="code">
-                 sso-directory.amazonaws.com
+                 identitystore-scim.amazonaws.com
                 </code>
                </td>
               </tr>
@@ -346,7 +357,8 @@
                 No public API
                </td>
                <td tabindex="-1">
-                AWS emits Sign-in CloudTrail events for user authentication and federation flows into IAM Identity Center.
+                AWS emits Sign-in CloudTrail events for user authentication and federation flows into
+              IAM Identity Center.
                </td>
                <td tabindex="-1">
                 <code class="code">
@@ -375,18 +387,19 @@
              <li>
               <a href="./scim-logging-using-cloudtrail.html">
                Logging IAM Identity Center SCIM API calls with
-        AWS CloudTrail
+          AWS CloudTrail
               </a>
              </li>
              <li>
               <a href="./eventbridge-integration.html">
-               Connect application components with Amazon EventBridge
+               Connect application components with
+          Amazon EventBridge
               </a>
              </li>
              <li>
               <a href="./logging-ad-sync-errors.html">
                Logging AD sync and configurable AD sync
-        errors
+          errors
               </a>
              </li>
             </ul>

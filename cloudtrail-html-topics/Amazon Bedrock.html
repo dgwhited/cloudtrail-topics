@@ -401,6 +401,39 @@
                resource type.
               </p>
              </li>
+             <li class="listitem">
+              <p>
+               To log
+               <code class="code">
+                RenderPrompt
+               </code>
+               calls, configure advanced event selectors to record data events for the
+               <code class="code">
+                AWS::Bedrock::Prompt
+               </code>
+               resource type.
+               <code class="code">
+                RenderPrompt
+               </code>
+               is a permission-only
+               <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonbedrock.html#amazonbedrock-actions-as-permissions">
+                action
+               </a>
+               that renders prompts, created using
+               <a href="./prompt-management.html">
+                Prompt management
+               </a>
+               , for model invocation (
+               <code class="code">
+                InvokeModel(WithResponseStream)
+               </code>
+               and
+               <code class="code">
+                Converse(Stream)
+               </code>
+               ).
+              </p>
+             </li>
             </ul>
            </div>
            <p>

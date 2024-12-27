@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  get-kernels:
+  get-cloudtrail:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

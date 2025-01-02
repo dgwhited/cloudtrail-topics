@@ -319,24 +319,6 @@
              <li class="listitem">
               <p>
                <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteMessage.html">
-                 DeleteMessage
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteMessageBatch.html">
-                 DeleteMessageBatch
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
                 <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteQueue.html">
                  DeleteQueue
                 </a>
@@ -364,35 +346,8 @@
              <li class="listitem">
               <p>
                <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ReceiveMessage.html">
-                 ReceiveMessage
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
                 <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_RemovePermission.html">
                  RemovePermission
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html">
-                 SendMessage
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessageBatch.html">
-                 SendMessageBatch
                 </a>
                </code>
               </p>
@@ -812,7 +767,7 @@
                <code class="code">
                 SetQueueAttributes
                </code>
-               :
+               .
               </p>
               <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
 	  "Records": [
@@ -867,8 +822,7 @@
                </code>
                .
               </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json">
-				<span>{</span>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.09",
   "userIdentity": <span>{</span>
     "type": "AssumedRole",
@@ -930,6 +884,95 @@
 			</code></pre>
              </dd>
              <dt>
+              SendMessageBatch
+             </dt>
+             <dd tab-id="sendmessagebatch">
+              <p>
+               The following example shows a CloudTrail data event for
+               <code class="code">
+                SendMessageBatch
+               </code>
+               .
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "EXAMPLE_PRINCIPAL_ID",
+    "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed/SessionName",
+    "accountId": "123456789012",
+    "accessKeyId": "ACCESS_KEY_ID",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed",
+        "accountId": "123456789012",
+        "userName": "RoleToBeAssumed"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2023-11-07T22:13:06Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2023-11-07T23:59:05Z",
+  "eventSource": "sqs.amazonaws.com",
+  "eventName": "SendMessageBatch",
+  "awsRegion": "ap-southeast-4",
+  "sourceIPAddress": "10.0.118.80",
+  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
+  "requestParameters": <span>{</span>
+    "delaySeconds": 0,
+    "entries": [
+      <span>{</span>
+        "id": "0",
+        "messageBody": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "messageAttributes": [
+          <span>{</span>
+            "name": "HIDDEN_DUE_TO_SECURITY_REASONS"
+          }
+        ],
+        "messageDeduplicationId": "MsgDedupIdSdk1027092b6-b6f6-41af-a084-e72d572a6d4b",
+        "messageGroupId": "MsgGroupIdSdk12"
+      }
+    ],
+    "queueUrl": "https://sqs.ap-southeast-4.amazonaws.com/123456789012/MyQueue"
+  },
+  "responseElements": <span>{</span>
+    "successful": [
+      <span>{</span>
+        "id": "0",
+        "messageId": "9048ab28-e38d-46da-b9fe-f70b3873f888",
+        "mD5OfMessageBody": "0f1a575a56eb5cf5072a8dedc585d2dd",
+        "mD5OfMessageAttributes": "6e1d6d5d774a05efe9df5eb000639db7",
+        "sequenceNumber": "18881790869375471872",
+        "mD5OfMessageSystemAttributes": "6f540b6e375dcda1aad2d4aaff28ebf8"
+      }
+    ]
+  },
+  "requestID": "b5a386a4-2d4a-5de3-9910-db60fcc368ee",
+  "eventID": "20f5ecbe-2b0b-4d0b-a6f7-365bc94c4ca5",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "ARN": "arn:aws:sqs:ap-southeast-4:123456789012:MyQueue",
+      "type": "AWS::SQS::Queue"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Data",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.2",
+    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+    "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
+  }
+}		</code></pre>
+             </dd>
+             <dt>
               ReceiveMessage
              </dt>
              <dd tab-id="receivemessage">
@@ -940,8 +983,7 @@
                </code>
                .
               </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json">
-				<span>{</span>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.09",
   "userIdentity": <span>{</span>
     "type": "AssumedRole",
@@ -997,6 +1039,71 @@
 			</code></pre>
              </dd>
              <dt>
+              DeleteMessage
+             </dt>
+             <dd tab-id="deletemessage">
+              <p>
+               The following example shows a CloudTrail data event for
+               <code class="code">
+                DeleteMessage
+               </code>
+               .
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "EXAMPLE_PRINCIPAL_ID",
+    "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed/SessionName",
+    "accountId": "123456789012",
+    "accessKeyId": "ACCESS_KEY_ID",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed",
+        "accountId": "123456789012",
+        "userName": "RoleToBeAssumed"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2023-11-07T22:13:06Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2023-11-07T23:58:42Z",
+  "eventSource": "sqs.amazonaws.com",
+  "eventName": "DeleteMessage",
+  "awsRegion": "ap-southeast-4",
+  "sourceIPAddress": "10.0.118.80",
+  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
+  "requestParameters": <span>{</span>
+    "receiptHandle": "AQEBfgYUKTy3dyOAewC4wI3lQZEB3oUDuv8M8FWhObnr3lqRsFBiZ57mmxO1/dWfdlvGgDW7sRSry6HHxWrNfHItQMUHtWX3a/vEjJ6sWC/5Mf36I/B2HBLCT2zGO/IZTywxFmUT4HUudWKcGpuZb/Kcl3Fom6hYU8PxxzPxLOKPtFwrVU+G2Spvf/Tbuyj27h5+AkNxfaAhu/dnvXnAJcDJErGsJTjSS1i6iRzFq+jg6K5Fw6T578QJZcx/ZLaCyohmj2HaOOktwhbqQc4j+2gKSfxrACgXCu6De5bCtwgtGdhMEh4DtVIQh88qGUCaofQ3t/eRBIvIFJIa61JCVNWSBqOtELEIfxaHpSvo0c1IEecKDt1IJ08Cij3euLFMIzmUot24IViZt8ntKVAZ6KBLlLedrVlxOhNVcsr7xBiYt28z7g/1WoV1yqc5sEUwfn1iM8C/WG0jfbqz3iBS1T1AD1zJKT7ICIA+edgaYJpOZw4=",
+    "queueUrl": "https://sqs.ap-southeast-4.amazonaws.com/123456789012/MyQueue"
+  },
+  "responseElements": null,
+  "requestID": "fbd23ff4-a107-536d-8fcb-623070754bc0",
+  "eventID": "9951fed7-365f-4046-bc71-e5bf065a9b47",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::SQS::Queue",
+      "ARN": "arn:aws:sqs:ap-southeast-4:123456789012:MyQueue"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Data",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.2",
+    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+    "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
               DeleteMessageBatch
              </dt>
              <dd tab-id="deletemessagebatch">
@@ -1007,8 +1114,7 @@
                </code>
                .
               </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json">
-				<span>{</span>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.09",
   "userIdentity": <span>{</span>
     "type": "AssumedRole",
@@ -1076,6 +1182,72 @@
 			</code></pre>
              </dd>
              <dt>
+              ChangeMessageVisibility
+             </dt>
+             <dd tab-id="changemessagevisibility">
+              <p>
+               The following example shows a CloudTrail data event for
+               <code class="code">
+                ChangeMessageVisibility
+               </code>
+               .
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "EXAMPLE_PRINCIPAL_ID",
+    "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed/SessionName",
+    "accountId": "123456789012",
+    "accessKeyId": "ACCESS_KEY_ID",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAI44QH8DHBEXAMPLE",
+        "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed",
+        "accountId": "123456789012",
+        "userName": "RoleToBeAssumed"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2023-11-07T22:13:06Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2023-11-07T23:59:24Z",
+  "eventSource": "sqs.amazonaws.com",
+  "eventName": "ChangeMessageVisibility",
+  "awsRegion": "ap-southeast-4",
+  "sourceIPAddress": "10.0.118.80",
+  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
+  "requestParameters": <span>{</span>
+    "queueUrl": "https://sqs.ap-southeast-4.amazonaws.com/123456789012/MyQueue",
+    "receiptHandle": "AQEBy+2qnmQQVxcXrEwN7t6dXkjGAllr5DuSpGlvHx9s/vwbwp+RIr3dD6vRvlsU/lteIulKHBs6DEIR7KL+J3mACfB+RRpRlWPlguiCdLKNKSVpdhkSBDDvkRHfycTHjuszGIebGdl+tYYjPrlz+DSePmpty0EdhqtorW1xAc0Xf0GZbt0FtkbRFK3ql5lETIHgthBCABoxuOCNvMElz9rYQ9m5OY30Z5YOZvQ/coPHYl+9HhNV/A6Fs+/d6mVx9v6TomTh5L03wXqtjA8b0gkGftclQh/tJBAxqY/S8YG9OKtY4NDP0SQBtYF/vCCsCq9+5fiUfiYyvtdHSlwP9AyRotenCGrUKaRFiRhxDm1D6up0UaBs2d8wgHdKFf/5mENTdeqrXQdZfwkFazW1a8ifWJm3YG3OURO+HzhfA9EJcdgWSS72WCMaerydsCxaX+E08B2ubL6oiafMYW4gK0GIRxYZ0+eeXKWy4TxkReW3j7k=",
+    "visibilityTimeout": 1272
+  },
+  "responseElements": null,
+  "requestID": "6fbefbde-55d9-5640-98d1-a61a84457f14",
+  "eventID": "72275c61-bfc0-4606-934b-a6b7397aef20",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::SQS::Queue",
+      "ARN": "arn:aws:sqs:ap-southeast-4:123456789012:MyQueue"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Data",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.2",
+    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+    "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
               ChangeMessageVisibilityBatch
              </dt>
              <dd tab-id="changemessagevisibilitybatch">
@@ -1086,8 +1258,7 @@
                </code>
                .
               </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json">
-				<span>{</span>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.09",
   "userIdentity": <span>{</span>
     "type": "AssumedRole",

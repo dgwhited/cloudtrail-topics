@@ -3,44 +3,44 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging Amazon SQS API calls using AWS CloudTrail - Amazon Simple Queue Service
+   Logging Amazon Simple Queue Service API calls using AWS CloudTrail - Amazon Simple Queue Service
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
-  <meta content="sqs-logging-using-cloudtrail" name="target_state"/>
-  <meta content="sqs-logging-using-cloudtrail" name="default_state"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
-  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Learn how to utilize AWS CloudTrail for logging Amazon SQS API calls and monitoring queue activity, ensuring compliance and enhancing security within their AWS environment." name="description"/>
+  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Learn how to use AWS CloudTrail to log and monitor Amazon SQS API operations." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon Simple Queue Service" name="product"/>
   <meta content="Developer Guide" name="guide"/>
   <meta content="Queue messages that one component in the application generates to be consumed by another component using Amazon SQS." name="abstract"/>
   <meta content="en_us" name="guide-locale"/>
   <meta content="toc-contents.json" name="tocs"/>
-  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" rel="canonical"/>
-  <link href="https://docs.aws.amazon.com/id_id/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/id_id/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/de_de/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/es_es/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/it_it/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/pt_br/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_cn/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/zh_tw/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
-  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
   <meta content="SQS" name="feedback-item"/>
   <meta content="Amazon Simple Queue Service" name="this_doc_product"/>
   <meta content="Developer Guide" name="this_doc_guide"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'sqs'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="Developer Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging Amazon SQS API calls using AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Amazon Simple Queue Service API calls using AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,15 +76,15 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging Amazon SQS API calls using AWS CloudTrail - Amazon Simple Queue Service
+         Logging Amazon Simple Queue Service API calls using AWS CloudTrail - Amazon Simple Queue Service
         </title>
-        <meta content="/pdfs/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dg.pdf#sqs-logging-using-cloudtrail" name="pdf"/>
+        <meta content="/pdfs/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dg.pdf#logging-using-cloudtrail" name="pdf"/>
         <meta content="recent-updates.rss" name="rss"/>
         <meta content="https://repost.aws/tags/TAA-iV52DNQ4a7bbpyH3s33Q" name="forums"/>
-        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SQS&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" name="feedback"/>
-        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" name="feedback-yes"/>
-        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" name="feedback-no"/>
-        <meta content="Amazon SQS security,Amazon SQS authentication and access control,Amazon SQS access policy language,Amazon SQS data protection,Amazon SQS security best practices,CloudTrail,CloudWatch,monitoring,logging,API,CloudTrail examples,Monitoring,CloudTrail management,CloudTrail events,Logging,Management events,Data events,API actions,,Log entry,add permission,create queue,delete queue,remove permission,set queue attributes,send message,receive message,deletemessagebatch,changemessagevisibilitybatch" name="keywords"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SQS&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="Amazon SQS security,Amazon SQS authentication and access control,Amazon SQS access policy language,Amazon SQS data protection,Amazon SQS security best practices,Amazon SQS logging,CloudTrail logs,CloudWatch alarms Amazon SQS,CloudTrail lake Amazon SQS,Amazon SQS monitoring tools,Amazon SQS CloudTrail,Amazon SQS data events,Amazon SQS api logging,CloudTrail Amazon SQS monitoring,Amazon SQS management events,Amazon SQS CloudTrail logging,CloudTrail advanced event selectors,Amazon SQS api monitoring,Amazon SQS event tracking,CloudTrail Amazon SQS logging,Amazon SQS control plane operations,Amazon SQS audit trail,Amazon SQS resource management,Amazon SQS event logging,Amazon SQS CloudTrail example,CloudTrail Amazon SQS event details,Amazon SQS listqueues operation,Amazon SQS api tracking" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -118,13 +118,13 @@
         "@type" : "ListItem",
         "position" : 5,
         "name" : "Logging and monitoring in Amazon SQS",
-        "item" : "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-monitoring.html"
+        "item" : "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-and-monitoring.html"
       },
       {
         "@type" : "ListItem",
         "position" : 6,
-        "name" : "Logging Amazon SQS API calls using AWS CloudTrail",
-        "item" : "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-monitoring.html"
+        "name" : "Logging Amazon Simple Queue Service API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-and-monitoring.html"
       }
     ]
 }
@@ -133,7 +133,7 @@
        <body>
         <div id="main">
          <div style="display: none">
-          <a href="/pdfs/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dg.pdf#sqs-logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          <a href="/pdfs/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dg.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
           </a>
          </div>
          <div class="breadcrumb" id="breadcrumbs">
@@ -151,31 +151,23 @@
           </a>
          </div>
          <div id="page-toc-src">
-          <a href="#sqs-information-in-cloud-trail">
-           Amazon SQS information in CloudTrail
+          <a href="#cloudtrail-data-events">
+           Amazon SQS data events in CloudTrail
           </a>
-          <a href="#management-events-in-cloud-trail">
-           Management events in CloudTrail
+          <a href="#cloudtrail-management-events">
+           Amazon SQS management events in CloudTrail
           </a>
-          <a href="#sqs-data-events-in-cloud-trail">
-           Data events in CloudTrail
-          </a>
-          <a href="#understanding-service-name-entries">
-           Examples: CloudTrail management
-					events for Amazon SQS
-          </a>
-          <a href="#example-sqs-data-events">
-           Examples: CloudTrail data events for
-					Amazon SQS
+          <a href="#cloudtrail-event-examples">
+           Amazon SQS event example
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
-           <h1 class="topictitle" id="sqs-logging-using-cloudtrail">
-            Logging Amazon SQS API calls using
-				AWS CloudTrail
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging Amazon Simple Queue Service API calls using
+      AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -184,284 +176,45 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon SQS is integrated with AWS CloudTrail to record the Amazon SQS calls from a user, role, or
-			AWS service. CloudTrail captures API calls related to Amazon SQS standard and FIFO queues as
-            <em>
-             events
-            </em>
-            , including interactions initiated through the Amazon SQS
-			console as well as programmatically via calls to the Amazon SQS APIs.
+            CloudTrail allows you to log and monitor Amazon SQS operations using two event types: data events and
+    management events. This makes it easy to track and audit Amazon SQS activity in your account.
            </p>
-           <div class="highlights" id="inline-topiclist">
-            <h6>
-             Topics
-            </h6>
-            <ul>
-             <li>
-              <a href="#sqs-information-in-cloud-trail">
-               Amazon SQS information in CloudTrail
-              </a>
-             </li>
-             <li>
-              <a href="#management-events-in-cloud-trail">
-               Management events in CloudTrail
-              </a>
-             </li>
-             <li>
-              <a href="#sqs-data-events-in-cloud-trail">
-               Data events in CloudTrail
-              </a>
-             </li>
-             <li>
-              <a href="#understanding-service-name-entries">
-               Examples: CloudTrail management
-					events for Amazon SQS
-              </a>
-             </li>
-             <li>
-              <a href="#example-sqs-data-events">
-               Examples: CloudTrail data events for
-					Amazon SQS
-              </a>
-             </li>
-            </ul>
-           </div>
-           <h2 id="sqs-information-in-cloud-trail">
-            Amazon SQS information in CloudTrail
+           <h2 id="cloudtrail-data-events">
+            Amazon SQS data events in CloudTrail
            </h2>
            <p>
-            CloudTrail is turned on by default when you create your AWS account. When a supported
-				Amazon SQS event activity occurs, it is recorded in a CloudTrail event, along with other AWS
-				service events, in the event history. You can view, search, and download recent
-				events for your AWS account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing Events with CloudTrail Event
-					History
-            </a>
-            in the
-            <em>
-             AWS CloudTrail User Guide
-            </em>
-            .
-           </p>
-           <p>
-            Amazon SQS APIs that call queue management operations, such as
-            <code class="code">
-             AddPermission
-            </code>
-            are categorized as management events and are logged
-				in CloudTrail by default. Amazon SQS APIs that are high volume operations performed on an
-				Amazon SQS queue, such as
-            <code class="code">
-             SendMessage
-            </code>
-            are categorized as data events and are
-				logged after you opt-in with CloudTrail.
-           </p>
-           <p>
-            Using the information that CloudTrail collects, you can identify a specific request to
-				an Amazon SQS API, the IP address or identity of the requester, and the date and time of
-				the request. If you configure a CloudTrail
-            <em>
-             trail
-            </em>
-            , you can
-				continuously deliver CloudTrail events to an Amazon S3 bucket with an optional delivery to
-				Amazon CloudWatch Logs and AWS EventBridge. If you do not configure a trail, you can only
-				view the event history of management events in events in the CloudTrail console. For more
-				information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-             Overview for Creating a Trail
-            </a>
-            in the
-            <em>
-             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
-              AWS CloudTrail User Guide
-             </a>
-            </em>
-            .
-           </p>
-           <h2 id="management-events-in-cloud-trail">
-            Management events in CloudTrail
-           </h2>
-           <p>
-            Amazon SQS logs the following API actions as management events:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_AddPermission.html">
-                 AddPermission
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_CancelMessageMoveTask.html">
-                 CancelMessageMoveTask
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_CreateQueue.html">
-                 CreateQueue
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteQueue.html">
-                 DeleteQueue
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ListMessageMoveTasks.html">
-                 ListMessageMoveTasks
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_PurgeQueue.html">
-                 PurgeQueue
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_RemovePermission.html">
-                 RemovePermission
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SetQueueAttributes.html">
-                 SetQueueAttributes
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_StartlMessageMoveTask.html">
-                 StartMessageMoveTask
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_TagQueue.html">
-                 TagQueue
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_UntagQueue.html">
-                 UntagQueue
-                </a>
-               </code>
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            The following Amazon SQS APIs are
-            <em>
-             not
-            </em>
-            supported for CloudTrail
-				logging:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_GetQueueAttributes.html">
-                 GetQueueAttributes
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_GetQueueUrl.html">
-                 GetQueueUrl
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ListDeadLetterSourceQueues.html">
-                 ListDeadLetterSourceQueues
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ListQueueTags.html">
-                 ListQueueTags
-                </a>
-               </code>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ListQueues.html">
-                 ListQueues
-                </a>
-               </code>
-              </p>
-             </li>
-            </ul>
-           </div>
-           <h2 id="sqs-data-events-in-cloud-trail">
-            Data events in CloudTrail
-           </h2>
-           <p>
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events.html">
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
              Data events
             </a>
-            provide information about the resource operations
-				performed on or in a resource, such as sending or receiving an Amazon SQS message to and
-				from an Amazon SQS queue. Data events are high-volume activities that CloudTrail does not log
-				by default. You can enable data events API action logging for your SQS queue by
-				using CloudTrail APIs. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
-             Logging data
-					events
+            provide information about the resource operations performed on or in a
+      resource (for example, sending messages to an Amazon SQS object). These are also known as data
+      plane operations. Data events are often high-volume activities. By default, CloudTrail doesnât log
+      data events. The CloudTrail
+            <b>
+             Event history
+            </b>
+            doesn't record data events.
+           </p>
+           <p>
+            Additional charges apply for data events. For more information about CloudTrail pricing, see
+            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+             <span>
+              AWS CloudTrail Pricing
+             </span>
+             <awsui-icon class="awsdocs-link-icon" name="external">
+             </awsui-icon>
+            </a>
+            .
+           </p>
+           <p>
+            You can log data events for the Amazon SQS resource types by using the CloudTrail console, AWS CLI,
+      or CloudTrail API operations. For more information about how to log data events, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-console">
+             Logging data events with the AWS Management Console
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-with-the-AWS-CLI">
+             Logging data events with the AWS Command Line Interface
             </a>
             in the
             <em>
@@ -470,28 +223,163 @@
             .
            </p>
            <p>
-            With CloudTrail, you can use advanced event selectors to decide which Amazon SQS API
-				activities are logged and recorded. To log Amazon SQS data events, you must include the
-				resource type
-            <code class="code">
-             AWS::SQS::Queue
-            </code>
-            . Once this is set, you can refine your
-				logging preferences further by selecting specific data events for recording, such as
-				using the
+            To log Amazon SQS data events with CloudTrail, you must use advanced event selectors to configure the
+      specific Amazon SQS resources or actions you want to log. Include the resource type
+            <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sqs-queue.html">
+             <code class="code">
+              AWS::SQS::Queue
+             </code>
+            </a>
+            to capture queue-related actions. You can refine
+      your logging preferences even further with using filters like
             <code class="code">
              eventName
             </code>
-            filter to track
-            <code class="code">
-             SendMessage
-            </code>
-            events.
-				For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html">
+            (such as
+            <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html">
              <code class="code">
-              AdvancedEventSelector
+              SendMessage
              </code>
+            </a>
+            events). For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html">
+             AdvancedEventSelector
+            </a>
+            in the
+            <em>
+             CloudTrail API
+      Reference
+            </em>
+            .
+           </p>
+           <div class="table-container" id="data-events-table">
+            <div class="table-contents disable-scroll">
+             <table id="w131aac36c13c25b5c11">
+              <thead>
+               <tr>
+                <th>
+                 Data event type (console)
+                </th>
+                <th>
+                 resources.type value
+                </th>
+                <th>
+                 Data APIs logged to CloudTrail
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 Amazon SQS queue
+                </b>
+               </td>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sqs-queue.html">
+                 <code class="code">
+                  AWS::SQS::Queue
+                 </code>
+                </a>
+               </td>
+               <td tabindex="-1">
+                <div class="itemizedlist">
+                 <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ChangeMessageVisibility.html">
+                     ChangeMessageVisibility
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ChangeMessageVisibilityBatch.html">
+                     ChangeMessageVisibilityBatch
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteMessage.html">
+                     DeleteMessage
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteMessageBatch.html">
+                     DeleteMessageBatch
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_GetQueueAttributes.html">
+                     GetQueueAttributes
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_GetQueueUrl.html">
+                     GetQueueUrl
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ListDeadLetterSourceQueues.html">
+                     ListDeadLetterSourceQueues
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ListQueues.html">
+                     ListQueues
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ListQueueTags.html">
+                     ListQueueTags
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ReceiveMessage.html">
+                     ReceiveMessage
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html">
+                     SendMessage
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessageBatch.html">
+                     SendMessageBatch
+                    </a>
+                   </p>
+                  </li>
+                 </ul>
+                </div>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <p>
+            Use advanced event selectors to filter fields and log only important events. For more
+      information about these fields, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
+             AdvancedFieldSelector
             </a>
             in the
             <em>
@@ -499,330 +387,118 @@
             </em>
             .
            </p>
+           <h2 id="cloudtrail-management-events">
+            Amazon SQS management events in CloudTrail
+           </h2>
            <p>
-            <b>
-             Amazon SQS data events:
-            </b>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
+            </a>
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
+           </p>
+           <p>
+            Amazon SQS logs the following control plane operations to CloudTrail as
+            <em>
+             management
+        events
+            </em>
+            .
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html">
-                 SendMessage
-                </a>
-               </code>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_AddPermission.html">
+                AddPermission
+               </a>
               </p>
              </li>
              <li class="listitem">
               <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessageBatch.html">
-                 SendMessageBatch
-                </a>
-               </code>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_CancelMessageMoveTask.html">
+                CancelMessageMoveTask
+               </a>
               </p>
              </li>
              <li class="listitem">
               <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ReceiveMessage.html">
-                 ReceiveMessage
-                </a>
-               </code>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_CreateQueue.html">
+                CreateQueue
+               </a>
               </p>
              </li>
              <li class="listitem">
               <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteMessage.html">
-                 DeleteMessage
-                </a>
-               </code>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteQueue.html">
+                DeleteQueue
+               </a>
               </p>
              </li>
              <li class="listitem">
               <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteMessageBatch.html">
-                 DeleteMessageBatch
-                </a>
-               </code>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ListMessageMoveTasks.html">
+                ListMessageMoveTasks
+               </a>
               </p>
              </li>
              <li class="listitem">
               <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ChangeMessageVisibility.html">
-                 ChangeMessageVisibility
-                </a>
-               </code>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_PurgeQueue.html">
+                PurgeQueue
+               </a>
               </p>
              </li>
              <li class="listitem">
               <p>
-               <code class="code">
-                <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ChangeMessageVisibilityBatch.html">
-                 ChangeMessageVisibilityBatch
-                </a>
-               </code>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_RemovePermission.html">
+                RemovePermission
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SetQueueAttributes.html">
+                SetQueueAttributes
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_StartlMessageMoveTask.html">
+                StartMessageMoveTask
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_TagQueue.html">
+                TagQueue
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_UntagQueue.html">
+                UntagQueue
+               </a>
               </p>
              </li>
             </ul>
            </div>
-           <p>
-            Additional charges apply for data events. For more information, see
-            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
-             <span>
-              AWS CloudTrail
-					Pricing
-             </span>
-             <awsui-icon class="awsdocs-link-icon" name="external">
-             </awsui-icon>
-            </a>
-            .
-           </p>
-           <h2 id="understanding-service-name-entries">
-            Examples: CloudTrail management
-					events for Amazon SQS
+           <h2 id="cloudtrail-event-examples">
+            Amazon SQS event example
            </h2>
            <p>
-            The following examples show CloudTrail log entries for supported APIs:
+            An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
            </p>
-           <awsdocs-tabs>
-            <dl style="display: none">
-             <dt>
-              AddPermission
-             </dt>
-             <dd tab-id="addpermission">
-              <p>
-               The following example shows a CloudTrail log entry for an
-               <code class="code">
-                AddPermission
-               </code>
-               API call.
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-	  "Records": [
-	    <span>{</span>
-	      "eventVersion": "1.06",
-	      "userIdentity": <span>{</span>
-	        "type": "IAMUser",
-	        "principalId": "AKIAI44QH8DHBEXAMPLE",
-	        "arn": "arn:aws:iam::123456789012:user/Alice",
-	        "accountId": "123456789012",
-	        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-	        "userName": "Alice"
-	      },
-	      "eventTime": "2018-06-28T22:23:46Z",
-	      "eventSource": "sqs.amazonaws.com",
-	      "eventName": "AddPermission",
-	      "awsRegion": "us-east-2",
-	      "sourceIPAddress": "203.0.113.0",
-	      "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0",
-	      "requestParameters": <span>{</span>
-	        "actions": [
-	          "SendMessage"
-	        ],
-	        "AWSAccountIds": [
-	          "123456789012"
-	        ],
-	        "label": "MyLabel",
-	        "queueUrl": "https://sqs.us-east-2.amazon.com/123456789012/MyQueue"
-	      },
-	      "responseElements": null,
-	      "requestID": "123abcde-f4gh-50ij-klmn-60o789012p30",
-	      "eventID": "0987g654-32f1-09e8-d765-c4f3fb2109fa"
-	    }
-	  ]
-	}</code></pre>
-             </dd>
-             <dt>
-              CreateQueue
-             </dt>
-             <dd tab-id="createqueue">
-              <p>
-               The following example shows a CloudTrail log entry for a
-               <code class="code">
-                CreateQueue
-               </code>
-               API call.
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-	  "Records": [
-	    <span>{</span>
-	      "eventVersion": "1.06",
-	      "userIdentity": <span>{</span>
-	        "type": "IAMUser",
-	        "principalId": "AKIAI44QH8DHBEXAMPLE",
-	        "arn": "arn:aws:iam::123456789012:user/Alejandro",
-	        "accountId": "123456789012",
-	        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-	        "userName": "Alejandro"
-	      },
-	      "eventTime": "2018-06-28T22:23:46Z",
-	      "eventSource": "sqs.amazonaws.com",
-	      "eventName": "CreateQueue",
-	      "awsRegion": "us-east-2",
-	      "sourceIPAddress": "203.0.113.1",
-	      "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0",
-	      "requestParameters": <span>{</span>
-	        "queueName": "MyQueue"
-	      },
-	      "responseElements": <span>{</span>
-	        "queueUrl": "https://sqs.us-east-2.amazon.com/123456789012/MyQueue"
-	      },
-	      "requestID": "123abcde-f4gh-50ij-klmn-60o789012p30",
-	      "eventID": "0987g654-32f1-09e8-d765-c4f3fb2109fa"
-	    }
-	  ]
-	}</code></pre>
-             </dd>
-             <dt>
-              DeleteQueue
-             </dt>
-             <dd tab-id="deletequeue">
-              <p>
-               The following example shows a CloudTrail log entry for a
-               <code class="code">
-                DeleteQueue
-               </code>
-               API call.
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-	  "Records": [
-	    <span>{</span>
-	      "eventVersion": "1.06",
-	      "userIdentity": <span>{</span>
-	        "type": "IAMUser",
-	        "principalId": "AKIAI44QH8DHBEXAMPLE",
-	        "arn": "arn:aws:iam::123456789012:user/Carlos",
-	        "accountId": "123456789012",
-	        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-	        "userName": "Carlos"
-	      },
-	      "eventTime": "2018-06-28T22:23:46Z",
-	      "eventSource": "sqs.amazonaws.com",
-	      "eventName": "DeleteQueue",
-	      "awsRegion": "us-east-2",
-	      "sourceIPAddress": "203.0.113.2",
-	      "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0",
-	      "requestParameters": <span>{</span>
-	        "queueUrl": "https://sqs.us-east-2.amazon.com/123456789012/MyQueue"
-	      },
-	      "responseElements": null,
-	      "requestID": "123abcde-f4gh-50ij-klmn-60o789012p30",
-	      "eventID": "0987g654-32f1-09e8-d765-c4f3fb2109fa"
-	    }
-	  ]
-	}</code></pre>
-             </dd>
-             <dt>
-              RemovePermission
-             </dt>
-             <dd tab-id="removepermission">
-              <p>
-               The following example shows a CloudTrail log entry for a
-               <code class="code">
-                RemovePermission
-               </code>
-               API call.
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-	  "Records": [
-	    <span>{</span>
-	      "eventVersion": "1.06",
-	      "userIdentity": <span>{</span>
-	        "type": "IAMUser",
-	        "principalId": "AKIAI44QH8DHBEXAMPLE",
-	        "arn": "arn:aws:iam::123456789012:user/Jane",
-	        "accountId": "123456789012",
-	        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-	        "userName": "Jane"
-	      },
-	      "eventTime": "2018-06-28T22:23:46Z",
-	      "eventSource": "sqs.amazonaws.com",
-	      "eventName": "RemovePermission",
-	      "awsRegion": "us-east-2",
-	      "sourceIPAddress": "203.0.113.3",
-	      "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0",
-	      "requestParameters": <span>{</span>
-	        "label": "label",
-	        "queueUrl": "https://sqs.us-east-2.amazon.com/123456789012/MyQueue"
-	      },
-	      "responseElements": null,
-	      "requestID": "123abcde-f4gh-50ij-klmn-60o789012p30",
-	      "eventID": "0987g654-32f1-09e8-d765-c4f3fb2109fa"
-	    }
-	  ]
-	}</code></pre>
-             </dd>
-             <dt>
-              SetQueueAttributes
-             </dt>
-             <dd tab-id="setqueueattributes">
-              <p>
-               The following example shows a CloudTrail log entry for
-               <code class="code">
-                SetQueueAttributes
-               </code>
-               .
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-	  "Records": [
-	    <span>{</span>
-	      "eventVersion": "1.06",
-	      "userIdentity": <span>{</span>
-	        "type": "IAMUser",
-	        "principalId": "AKIAI44QH8DHBEXAMPLE",
-	        "arn": "arn:aws:iam::123456789012:user/Maria",
-	        "accountId": "123456789012",
-	        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-	        "userName": "Maria"
-	      },
-	      "eventTime": "2018-06-28T22:23:46Z",
-	      "eventSource": "sqs.amazonaws.com",
-	      "eventName": "SetQueueAttributes",
-	      "awsRegion": "us-east-2",
-	      "sourceIPAddress": "203.0.113.4",
-	      "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0",
-	      "requestParameters": <span>{</span>
-	        "attributes": <span>{</span>
-	          "VisibilityTimeout": "100"
-	        },
-	        "queueUrl": "https://sqs.us-east-2.amazon.com/123456789012/MyQueue"
-	      },
-	      "responseElements": null,
-	      "requestID": "123abcde-f4gh-50ij-klmn-60o789012p30",
-	      "eventID": "0987g654-32f1-09e8-d765-c4f3fb2109fa"
-	    }
-	  ]
-	}</code></pre>
-             </dd>
-            </dl>
-           </awsdocs-tabs>
-           <h2 id="example-sqs-data-events">
-            Examples: CloudTrail data events for
-					Amazon SQS
-           </h2>
            <p>
-            The following are examples of CloudTrail events specific to Amazon SQS data event APIs:
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             SendMessage
+            </code>
+            operation.
            </p>
-           <awsdocs-tabs>
-            <dl style="display: none">
-             <dt>
-              SendMessage
-             </dt>
-             <dd tab-id="sendmessage">
-              <p>
-               The following example shows a CloudTrail data event for
-               <code class="code">
-                SendMessage
-               </code>
-               .
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
   "eventVersion": "1.09",
   "userIdentity": <span>{</span>
     "type": "AssumedRole",
@@ -880,454 +556,39 @@
     "tlsVersion": "TLSv1.2",
     "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
     "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
-  }
-			</code></pre>
-             </dd>
-             <dt>
-              SendMessageBatch
-             </dt>
-             <dd tab-id="sendmessagebatch">
-              <p>
-               The following example shows a CloudTrail data event for
-               <code class="code">
-                SendMessageBatch
-               </code>
-               .
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-  "eventVersion": "1.09",
-  "userIdentity": <span>{</span>
-    "type": "AssumedRole",
-    "principalId": "EXAMPLE_PRINCIPAL_ID",
-    "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed/SessionName",
-    "accountId": "123456789012",
-    "accessKeyId": "ACCESS_KEY_ID",
-    "sessionContext": <span>{</span>
-      "sessionIssuer": <span>{</span>
-        "type": "Role",
-        "principalId": "AKIAI44QH8DHBEXAMPLE",
-        "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed",
-        "accountId": "123456789012",
-        "userName": "RoleToBeAssumed"
-      },
-      "attributes": <span>{</span>
-        "creationDate": "2023-11-07T22:13:06Z",
-        "mfaAuthenticated": "false"
-      }
-    }
-  },
-  "eventTime": "2023-11-07T23:59:05Z",
-  "eventSource": "sqs.amazonaws.com",
-  "eventName": "SendMessageBatch",
-  "awsRegion": "ap-southeast-4",
-  "sourceIPAddress": "10.0.118.80",
-  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
-  "requestParameters": <span>{</span>
-    "delaySeconds": 0,
-    "entries": [
-      <span>{</span>
-        "id": "0",
-        "messageBody": "HIDDEN_DUE_TO_SECURITY_REASONS",
-        "messageAttributes": [
-          <span>{</span>
-            "name": "HIDDEN_DUE_TO_SECURITY_REASONS"
-          }
-        ],
-        "messageDeduplicationId": "MsgDedupIdSdk1027092b6-b6f6-41af-a084-e72d572a6d4b",
-        "messageGroupId": "MsgGroupIdSdk12"
-      }
-    ],
-    "queueUrl": "https://sqs.ap-southeast-4.amazonaws.com/123456789012/MyQueue"
-  },
-  "responseElements": <span>{</span>
-    "successful": [
-      <span>{</span>
-        "id": "0",
-        "messageId": "9048ab28-e38d-46da-b9fe-f70b3873f888",
-        "mD5OfMessageBody": "0f1a575a56eb5cf5072a8dedc585d2dd",
-        "mD5OfMessageAttributes": "6e1d6d5d774a05efe9df5eb000639db7",
-        "sequenceNumber": "18881790869375471872",
-        "mD5OfMessageSystemAttributes": "6f540b6e375dcda1aad2d4aaff28ebf8"
-      }
-    ]
-  },
-  "requestID": "b5a386a4-2d4a-5de3-9910-db60fcc368ee",
-  "eventID": "20f5ecbe-2b0b-4d0b-a6f7-365bc94c4ca5",
-  "readOnly": false,
-  "resources": [
-    <span>{</span>
-      "accountId": "123456789012",
-      "ARN": "arn:aws:sqs:ap-southeast-4:123456789012:MyQueue",
-      "type": "AWS::SQS::Queue"
-    }
-  ],
-  "eventType": "AwsApiCall",
-  "managementEvent": false,
-  "recipientAccountId": "123456789012",
-  "eventCategory": "Data",
-  "tlsDetails": <span>{</span>
-    "tlsVersion": "TLSv1.2",
-    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
-    "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
-  }
-}		</code></pre>
-             </dd>
-             <dt>
-              ReceiveMessage
-             </dt>
-             <dd tab-id="receivemessage">
-              <p>
-               The following example shows a CloudTrail data event for
-               <code class="code">
-                ReceiveMessage
-               </code>
-               .
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-  "eventVersion": "1.09",
-  "userIdentity": <span>{</span>
-    "type": "AssumedRole",
-    "principalId": "EXAMPLE_PRINCIPAL_ID",
-    "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed/SessionName",
-    "accountId": "123456789012",
-    "accessKeyId": "ACCESS_KEY_ID",
-    "sessionContext": <span>{</span>
-      "sessionIssuer": <span>{</span>
-        "type": "Role",
-        "principalId": "AKIAI44QH8DHBEXAMPLE",
-        "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed",
-        "accountId": "123456789012",
-        "userName": "RoleToBeAssumed"
-      },
-      "attributes": <span>{</span>
-        "creationDate": "2023-11-07T22:13:06Z",
-        "mfaAuthenticated": "false"
-      }
-    }
-  },
-  "eventTime": "2023-11-07T23:59:24Z",
-  "eventSource": "sqs.amazonaws.com",
-  "eventName": "ReceiveMessage",
-  "awsRegion": "ap-southeast-4",
-  "sourceIPAddress": "10.0.118.80",
-  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
-  "requestParameters": <span>{</span>
-    "queueUrl": "https://sqs.ap-southeast-4.amazonaws.com/123456789012/MyQueue",
-    "maxNumberOfMessages": 10
-  },
-  "responseElements": null,
-  "requestID": "8b4d4643-8f49-52cd-a6e8-1b875ed54b99",
-  "eventID": "f3f23ab7-b0a4-4b71-afc0-141209c49206",
-  "readOnly": true,
-  "resources": [
-    <span>{</span>
-      "accountId": "123456789012",
-      "type": "AWS::SQS::Queue",
-      "ARN": "arn:aws:sqs:ap-southeast-4:123456789012:MyQueue"
-    }
-  ],
-  "eventType": "AwsApiCall",
-  "managementEvent": false,
-  "recipientAccountId": "123456789012",
-  "eventCategory": "Data",
-  "tlsDetails": <span>{</span>
-    "tlsVersion": "TLSv1.2",
-    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
-    "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
-  }
-}
-			</code></pre>
-             </dd>
-             <dt>
-              DeleteMessage
-             </dt>
-             <dd tab-id="deletemessage">
-              <p>
-               The following example shows a CloudTrail data event for
-               <code class="code">
-                DeleteMessage
-               </code>
-               .
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-  "eventVersion": "1.09",
-  "userIdentity": <span>{</span>
-    "type": "AssumedRole",
-    "principalId": "EXAMPLE_PRINCIPAL_ID",
-    "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed/SessionName",
-    "accountId": "123456789012",
-    "accessKeyId": "ACCESS_KEY_ID",
-    "sessionContext": <span>{</span>
-      "sessionIssuer": <span>{</span>
-        "type": "Role",
-        "principalId": "AKIAI44QH8DHBEXAMPLE",
-        "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed",
-        "accountId": "123456789012",
-        "userName": "RoleToBeAssumed"
-      },
-      "attributes": <span>{</span>
-        "creationDate": "2023-11-07T22:13:06Z",
-        "mfaAuthenticated": "false"
-      }
-    }
-  },
-  "eventTime": "2023-11-07T23:58:42Z",
-  "eventSource": "sqs.amazonaws.com",
-  "eventName": "DeleteMessage",
-  "awsRegion": "ap-southeast-4",
-  "sourceIPAddress": "10.0.118.80",
-  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
-  "requestParameters": <span>{</span>
-    "receiptHandle": "AQEBfgYUKTy3dyOAewC4wI3lQZEB3oUDuv8M8FWhObnr3lqRsFBiZ57mmxO1/dWfdlvGgDW7sRSry6HHxWrNfHItQMUHtWX3a/vEjJ6sWC/5Mf36I/B2HBLCT2zGO/IZTywxFmUT4HUudWKcGpuZb/Kcl3Fom6hYU8PxxzPxLOKPtFwrVU+G2Spvf/Tbuyj27h5+AkNxfaAhu/dnvXnAJcDJErGsJTjSS1i6iRzFq+jg6K5Fw6T578QJZcx/ZLaCyohmj2HaOOktwhbqQc4j+2gKSfxrACgXCu6De5bCtwgtGdhMEh4DtVIQh88qGUCaofQ3t/eRBIvIFJIa61JCVNWSBqOtELEIfxaHpSvo0c1IEecKDt1IJ08Cij3euLFMIzmUot24IViZt8ntKVAZ6KBLlLedrVlxOhNVcsr7xBiYt28z7g/1WoV1yqc5sEUwfn1iM8C/WG0jfbqz3iBS1T1AD1zJKT7ICIA+edgaYJpOZw4=",
-    "queueUrl": "https://sqs.ap-southeast-4.amazonaws.com/123456789012/MyQueue"
-  },
-  "responseElements": null,
-  "requestID": "fbd23ff4-a107-536d-8fcb-623070754bc0",
-  "eventID": "9951fed7-365f-4046-bc71-e5bf065a9b47",
-  "readOnly": false,
-  "resources": [
-    <span>{</span>
-      "accountId": "123456789012",
-      "type": "AWS::SQS::Queue",
-      "ARN": "arn:aws:sqs:ap-southeast-4:123456789012:MyQueue"
-    }
-  ],
-  "eventType": "AwsApiCall",
-  "managementEvent": false,
-  "recipientAccountId": "123456789012",
-  "eventCategory": "Data",
-  "tlsDetails": <span>{</span>
-    "tlsVersion": "TLSv1.2",
-    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
-    "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
-  }
-}</code></pre>
-             </dd>
-             <dt>
-              DeleteMessageBatch
-             </dt>
-             <dd tab-id="deletemessagebatch">
-              <p>
-               The following example shows a CloudTrail data event for
-               <code class="code">
-                DeleteMessageBatch
-               </code>
-               .
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-  "eventVersion": "1.09",
-  "userIdentity": <span>{</span>
-    "type": "AssumedRole",
-    "principalId": "EXAMPLE_PRINCIPAL_ID",
-    "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed/SessionName",
-    "accountId": "123456789012",
-    "accessKeyId": "ACCESS_KEY_ID",
-    "sessionContext": <span>{</span>
-      "sessionIssuer": <span>{</span>
-        "type": "Role",
-        "principalId": "AKIAI44QH8DHBEXAMPLE",
-        "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed",
-        "accountId": "123456789012",
-        "userName": "RoleToBeAssumed"
-      },
-      "attributes": <span>{</span>
-        "creationDate": "2023-11-07T22:13:06Z",
-        "mfaAuthenticated": "false"
-      }
-    }
-  },
-  "eventTime": "2023-11-07T23:59:24Z",
-  "eventSource": "sqs.amazonaws.com",
-  "eventName": "DeleteMessageBatch",
-  "awsRegion": "ap-southeast-4",
-  "sourceIPAddress": "10.0.118.80",
-  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
-  "requestParameters": <span>{</span>
-    "queueUrl": "https://sqs.ap-southeast-4.amazonaws.com/123456789012/MyQueue",
-    "entries": [
-      <span>{</span>
-        "id": "0",
-        "receiptHandle": "AQEBefxM1O4zyZGF87DehbRbmri91w2W7mMdD0GrBjQa8e/hpb4RbXHPZ9tLBVleECbChQIE5NtaDuoZhZPOkTy0eN46EyRR4jXDzE3AlkbPlX1mA9f2fUuTrXx8aeCoCA3I3woNg3fXXAoo5ctLgci0Z/hlLS94tjAZqV2krc4BaC2pYgjyHWcW019HwIV8T/bjNMIeZoQwOM5V+o9vHPfewz5QGr5SKpDo7uE7Umyk5n5CJZvcn1efp/mrwtaCIb9M7cCQUYcZm2ZmZDnIO9XpGTAi3m2dQ0M83pnNh0nvDfpkHpoa+hX1TrUmxCupCWHJwA8HFJ1O/CCJsodMNFthLBA9S57dkBZCsw41G8jAmgQ0MkvZ0UL5mg0OFQQd1Yrw0zvthjCgiwdzn0yXoMzxIZMBxkY14E4nVVZ7N5XEMtMmgxsI1XF/h8oRk2C7gByzg2kYJ0LnUvLJFT8DQE28JZppEC9klvrdR/BWiPT7asc="
-      }
-    ]
-  },
-  "responseElements": <span>{</span>
-    "successful": [
-      <span>{</span>
-        "id": "0"
-      }
-    ],
-    "failed": []
-  },
-  "requestID": "fe423091-5642-5ba5-9256-6d5587de52f1",
-  "eventID": "88c8020d-d769-4985-8ecb-ee0b59acc418",
-  "readOnly": false,
-  "resources": [
-    <span>{</span>
-      "accountId": "123456789012",
-      "type": "AWS::SQS::Queue",
-      "ARN": "arn:aws:sqs:ap-southeast-4:123456789012:MyQueue"
-    }
-  ],
-  "eventType": "AwsApiCall",
-  "managementEvent": false,
-  "recipientAccountId": "123456789012",
-  "eventCategory": "Data",
-  "tlsDetails": <span>{</span>
-    "tlsVersion": "TLSv1.2",
-    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
-    "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
-  }
-}
-			</code></pre>
-             </dd>
-             <dt>
-              ChangeMessageVisibility
-             </dt>
-             <dd tab-id="changemessagevisibility">
-              <p>
-               The following example shows a CloudTrail data event for
-               <code class="code">
-                ChangeMessageVisibility
-               </code>
-               .
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-  "eventVersion": "1.09",
-  "userIdentity": <span>{</span>
-    "type": "AssumedRole",
-    "principalId": "EXAMPLE_PRINCIPAL_ID",
-    "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed/SessionName",
-    "accountId": "123456789012",
-    "accessKeyId": "ACCESS_KEY_ID",
-    "sessionContext": <span>{</span>
-      "sessionIssuer": <span>{</span>
-        "type": "Role",
-        "principalId": "AKIAI44QH8DHBEXAMPLE",
-        "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed",
-        "accountId": "123456789012",
-        "userName": "RoleToBeAssumed"
-      },
-      "attributes": <span>{</span>
-        "creationDate": "2023-11-07T22:13:06Z",
-        "mfaAuthenticated": "false"
-      }
-    }
-  },
-  "eventTime": "2023-11-07T23:59:24Z",
-  "eventSource": "sqs.amazonaws.com",
-  "eventName": "ChangeMessageVisibility",
-  "awsRegion": "ap-southeast-4",
-  "sourceIPAddress": "10.0.118.80",
-  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
-  "requestParameters": <span>{</span>
-    "queueUrl": "https://sqs.ap-southeast-4.amazonaws.com/123456789012/MyQueue",
-    "receiptHandle": "AQEBy+2qnmQQVxcXrEwN7t6dXkjGAllr5DuSpGlvHx9s/vwbwp+RIr3dD6vRvlsU/lteIulKHBs6DEIR7KL+J3mACfB+RRpRlWPlguiCdLKNKSVpdhkSBDDvkRHfycTHjuszGIebGdl+tYYjPrlz+DSePmpty0EdhqtorW1xAc0Xf0GZbt0FtkbRFK3ql5lETIHgthBCABoxuOCNvMElz9rYQ9m5OY30Z5YOZvQ/coPHYl+9HhNV/A6Fs+/d6mVx9v6TomTh5L03wXqtjA8b0gkGftclQh/tJBAxqY/S8YG9OKtY4NDP0SQBtYF/vCCsCq9+5fiUfiYyvtdHSlwP9AyRotenCGrUKaRFiRhxDm1D6up0UaBs2d8wgHdKFf/5mENTdeqrXQdZfwkFazW1a8ifWJm3YG3OURO+HzhfA9EJcdgWSS72WCMaerydsCxaX+E08B2ubL6oiafMYW4gK0GIRxYZ0+eeXKWy4TxkReW3j7k=",
-    "visibilityTimeout": 1272
-  },
-  "responseElements": null,
-  "requestID": "6fbefbde-55d9-5640-98d1-a61a84457f14",
-  "eventID": "72275c61-bfc0-4606-934b-a6b7397aef20",
-  "readOnly": false,
-  "resources": [
-    <span>{</span>
-      "accountId": "123456789012",
-      "type": "AWS::SQS::Queue",
-      "ARN": "arn:aws:sqs:ap-southeast-4:123456789012:MyQueue"
-    }
-  ],
-  "eventType": "AwsApiCall",
-  "managementEvent": false,
-  "recipientAccountId": "123456789012",
-  "eventCategory": "Data",
-  "tlsDetails": <span>{</span>
-    "tlsVersion": "TLSv1.2",
-    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
-    "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
-  }
-}</code></pre>
-             </dd>
-             <dt>
-              ChangeMessageVisibilityBatch
-             </dt>
-             <dd tab-id="changemessagevisibilitybatch">
-              <p>
-               The following example shows a CloudTrail data event for
-               <code class="code">
-                ChangeMessageVisibilityBatch
-               </code>
-               .
-              </p>
-              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-  "eventVersion": "1.09",
-  "userIdentity": <span>{</span>
-    "type": "AssumedRole",
-    "principalId": "EXAMPLE_PRINCIPAL_ID",
-    "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed/SessionName",
-    "accountId": "123456789012",
-    "accessKeyId": "ACCESS_KEY_ID",
-    "sessionContext": <span>{</span>
-      "sessionIssuer": <span>{</span>
-        "type": "Role",
-        "principalId": "AKIAI44QH8DHBEXAMPLE",
-        "arn": "arn:aws:sts::123456789012:assumed-role/RoleToBeAssumed",
-        "accountId": "123456789012",
-        "userName": "RoleToBeAssumed"
-      },
-      "attributes": <span>{</span>
-        "creationDate": "2023-11-07T22:13:06Z",
-        "mfaAuthenticated": "false"
-      }
-    }
-  },
-  "eventTime": "2023-11-07T23:59:01Z",
-  "eventSource": "sqs.amazonaws.com",
-  "eventName": "ChangeMessageVisibilityBatch",
-  "awsRegion": "ap-southeast-4",
-  "sourceIPAddress": "10.0.118.80",
-  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
-  "requestParameters": <span>{</span>
-    "visibilityTimeout": 0,
-    "entries": [
-      <span>{</span>
-        "id": "0",
-        "receiptHandle": "AQEB2M5cVYg5gslhWME6537hdjcaPnOYPA5M0W460TTb0DzPle631yPWm8qxd4O1hDj/B4ntTMnsgBTa95t14tNx7Vn96jKJ5rIoZ7iI8TRmkT1caKodKIPs8w9yndZq50c2FPQxtyH+2L3UHf/abV3szqVWXOLZR4PwX8zZkWVQGNCNnY2q2lGCG586F8QwvrOFYoXNwB8ymd1t77e1PDPknq1Io3JFuzkEsndkkETy4fV1QqVCSTR1izaTKF44f/l5PHX17nXxaC+DURVlMPXOuSFACGmWqAoyk50HKwGOjLQgpySL/TcnQXClvFq8kNXGwyVzJsbwHpOHxI7oce69vaD6DaWFP75d3hx+PJeG9pauQCKzVP3skt3Hw/zDC7YfKcALD3aCwMmeNDwT3w0BUG6XZdG5lYhtFtTQYV7YuS3i/Jh3HShGbtm07JKOEFiPkxv2+XNaAX3gFEpbng6zamTanfyMXCJIiglAEqiyWHQ=",
-        "visibilityTimeout": 2271
-      }
-    ],
-    "queueUrl": "https://sqs.ap-southeast-4.amazonaws.com/123456789012/MyQueue"
-  },
-  "responseElements": <span>{</span>
-    "successful": [
-      <span>{</span>
-        "id": "0"
-      }
-    ]
-  },
-  "requestID": "d49ab65f-9dc7-54b8-875c-eb9b4c42988b",
-  "eventID": "ca16c8c2-c4ba-4eb5-a54c-e650a10266d4",
-  "readOnly": false,
-  "resources": [
-    <span>{</span>
-      "accountId": "123456789012",
-      "type": "AWS::SQS::Queue",
-      "ARN": "arn:aws:sqs:ap-southeast-4:123456789012:MyQueue"
-    }
-  ],
-  "eventType": "AwsApiCall",
-  "managementEvent": false,
-  "recipientAccountId": "123456789012",
-  "eventCategory": "Data",
-  "tlsDetails": <span>{</span>
-    "tlsVersion": "TLSv1.2",
-    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
-    "clientProvidedHostHeader": "sqs.ap-southeast-4.amazonaws.com"
-  }
-}
-			</code></pre>
-             </dd>
-            </dl>
-           </awsdocs-tabs>
+  }    </code></pre>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              The
+              <code class="code">
+               ListQueues
+              </code>
+              operation is a unique case because it doesnât act on a
+        specific resource. As a result, the ARN field doesnât include a queue name and uses a
+        wildcard (*) instead.
+             </p>
+            </div>
+           </div>
+           <p>
+            For information about CloudTrail record contents, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail
+        record contents
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -1359,11 +620,11 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./sqs-logging-monitoring.html" id="previous">
+            <div accesskey="p" class="prev-link" href="./logging-and-monitoring.html" id="previous">
              Logging and monitoring
             </div>
-            <div accesskey="n" class="next-link" href="./sqs-monitoring-using-cloudwatch.html" id="next">
-             Monitoring queues using CloudWatch
+            <div accesskey="n" class="next-link" href="./monitoring-using-cloudwatch.html" id="next">
+             Monitoring queues
             </div>
            </div>
           </div>
@@ -1382,7 +643,7 @@
             If you've got a moment, please tell us what we did right so we can do more of it.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SQS&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SQS&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>
@@ -1399,7 +660,7 @@
             If you've got a moment, please tell us how we can make the documentation better.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SQS&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SQS&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>

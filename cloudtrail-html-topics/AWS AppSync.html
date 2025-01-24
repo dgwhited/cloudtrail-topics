@@ -325,8 +325,7 @@
              Data events
             </a>
             provide information about the resource operations performed on or in a
-      resource (for example, reading or writing to an Amazon S3
-      object). These are also known as data
+      resource (for example, reading or writing to an Amazon S3 object). These are also known as data
       plane operations. Data events are often high-volume activities. By default, CloudTrail doesnât log
       data events. The CloudTrail
             <b>
@@ -492,6 +491,30 @@
       these log files aren't an ordered stack trace of the public API calls, they don't appear in
       any specific order.
            </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              The
+              <code class="code">
+               requestID
+              </code>
+              isn't an authoritative unique ID for logs emitted from
+        AWS AppSync. The
+              <code class="code">
+               requestID
+              </code>
+              can be overwritten by the client. Therefore, you should
+        use caution when making decisions based on this information.
+             </p>
+            </div>
+           </div>
            <p>
             The following example CloudTrail log entry demonstrates the
             <code class="code">
@@ -618,7 +641,8 @@
   ]
 }</code></pre>
            <p>
-            The following example CloudTrail log entry demonstrates a successful GraphQL mutation authorized with a custom Lambda function authorizer.
+            The following example CloudTrail log entry demonstrates a successful GraphQL mutation authorized
+      with a custom Lambda function authorizer.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
   "eventVersion": "1.10",
@@ -658,11 +682,13 @@
     "eventCategory": "Data"
 }</code></pre>
            <p>
-            The following example CloudTrail log entry demonstrates a partially successful GraphQL operation authorized with a custom Lambda function authorizer. Note the
+            The following example CloudTrail log entry demonstrates a partially successful GraphQL operation
+      authorized with a custom Lambda function authorizer. Note the
             <code class="code">
              fieldAuthorizationResults.deniedFields
             </code>
-            property that specifies the denied fields.
+            property that specifies the denied
+      fields.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
   "eventVersion": "1.10",

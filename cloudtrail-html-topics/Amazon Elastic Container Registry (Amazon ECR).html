@@ -779,6 +779,24 @@
             for the event
                         name field.
            </p>
+           <p>
+            When you test a lifecycle policy preview, Amazon ECR generates a CloudTrail
+		    log entry with the event name field of
+            <code class="code">
+             DryRunEvent
+            </code>
+            , with the exact
+		    same structure as the
+            <code class="code">
+             PolicyExecutionEvent
+            </code>
+            . By changing the event
+		    name to
+            <code class="code">
+             DryRunEvent
+            </code>
+            , you can filter on dry run events instead.
+           </p>
            <div class="awsdocs-note awsdocs-important">
             <div class="awsdocs-note-title">
              <awsui-icon name="status-warning" variant="error">
@@ -863,6 +881,19 @@
                     "pushedAt": 1584042842000
                 },
                 "rulePriority": 1
+            }
+        ],
+        "lifecycleEventFailureDetails": [
+            <span>{</span>
+                "lifecycleEventImage": <span>{</span>
+                    "digest": "sha256:9117e1bc28cd20751e584b4ccd19b1178d14cf02d134b04ce6be0cc51bff762a",
+                    "tagStatus": "Untagged",
+                    "tagList": [],
+                    "pushedAt": 1584042844000
+                },
+                "rulePriority": 1,
+                "failureCode": "ImageReferencedByManifestList",
+                "failureReason": "Requested image referenced by manifest list: [sha256:4b27c83d44a18c31543039d9e8b2786043ec6c8d00804d5800c5148d6b6f65bc]"
             }
         ]
     }

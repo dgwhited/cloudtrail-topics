@@ -375,16 +375,7 @@
             <b>
              Event type
             </b>
-            list on the CloudTrail console. The
-            <b>
-             resources.type value
-            </b>
-            column shows the
-            <code class="code">
-             resources.type
-            </code>
-            value, which
-      you would specify when configuring advanced event selectors using the AWS CLI or CloudTrail APIs. The
+            list on the CloudTrail console.  The
             <b>
              APIs logged to CloudTrail
             </b>
@@ -400,9 +391,6 @@
                  Event type (console)
                 </th>
                 <th>
-                 resources.type value
-                </th>
-                <th>
                  APIs logged to CloudTrail
                 </th>
                </tr>
@@ -412,13 +400,6 @@
                 <b>
                  Event bus
                 </b>
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 <code class="code">
-                  AWS::Events::EventBus
-                 </code>
-                </code>
                </td>
                <td tabindex="-1">
                 <div class="itemizedlist">
@@ -439,11 +420,6 @@
                 <b>
                  Event bus rule
                 </b>
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 AWS::Events::Rule
-                </code>
                </td>
                <td tabindex="-1">
                 <div class="itemizedlist">
@@ -536,11 +512,6 @@
                 </b>
                </td>
                <td tabindex="-1">
-                <code class="code">
-                 AWS::Pipes::Pipe
-                </code>
-               </td>
-               <td tabindex="-1">
                 <div class="itemizedlist">
                  <ul class="itemizedlist">
                   <li class="listitem">
@@ -599,30 +570,6 @@
              </table>
             </div>
            </div>
-           <p>
-            You can configure advanced event selectors to filter on the
-            <code class="code">
-             eventName
-            </code>
-            ,
-            <code class="code">
-             readOnly
-            </code>
-            , and
-            <code class="code">
-             resources.ARN
-            </code>
-            fields to log only those events that
-      are important to you. For more information about these fields, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
-             AdvancedFieldSelector
-            </a>
-            in the
-            <em>
-             AWS CloudTrail API Reference
-            </em>
-            .
-           </p>
            <h2 id="cloudtrail-event-examples">
             EventBridge event examples
            </h2>

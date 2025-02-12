@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Log Amazon SageMaker API calls with AWS CloudTrail - Amazon SageMaker AI
+   Logging Amazon SageMaker AI API calls using AWS CloudTrail - Amazon SageMaker AI
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/sagemaker/latest/dg/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Learn about integrating Amazon SageMaker AI with AWS CloudTrail." name="description"/>
+  <meta content="Learn about logging Amazon SageMaker AI with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon SageMaker AI" name="product"/>
   <meta content="Developer Guide" name="guide"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'sagemaker'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="Developer Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Log Amazon SageMaker API calls with AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Amazon SageMaker AI API calls using AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,7 +76,7 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Log Amazon SageMaker API calls with AWS CloudTrail - Amazon SageMaker AI
+         Logging Amazon SageMaker AI API calls using AWS CloudTrail - Amazon SageMaker AI
         </title>
         <meta content="/pdfs/sagemaker/latest/dg/sagemaker-dg.pdf#logging-using-cloudtrail" name="pdf"/>
         <meta content="amazon-sagemaker-release-notes.rss" name="rss"/>
@@ -117,7 +117,7 @@
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "Log Amazon SageMaker API calls with AWS CloudTrail",
+        "name" : "Logging Amazon SageMaker AI API calls using AWS CloudTrail",
         "item" : "https://docs.aws.amazon.com/sagemaker/latest/dg/monitoring-overview.html"
       }
     ]
@@ -142,12 +142,18 @@
           </a>
          </div>
          <div id="page-toc-src">
-          <a href="#sagemaker-info-in-cloudtrail">
-           SageMaker AI Information in CloudTrail
+          <a href="#cloudtrail-data-events">
+           Amazon SageMaker AI data events in CloudTrail
+          </a>
+          <a href="#cloudtrail-management-events">
+           Amazon SageMaker AI management events in CloudTrail
           </a>
           <a href="#automatic-tuning-secondary">
            Operations Performed by Automatic Model
-          Tuning
+        Tuning
+          </a>
+          <a href="#understanding-sagemaker-entries">
+           Amazon SageMaker AI event examples
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -155,7 +161,8 @@
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="logging-using-cloudtrail">
-            Log Amazon SageMaker API calls with AWS CloudTrail
+            Logging Amazon SageMaker AI API calls using
+      AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -164,157 +171,37 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            Amazon SageMaker AI is integrated with AWS CloudTrail, a service that provides a record of actions taken by
-      a user, role, or an AWS service in SageMaker AI. CloudTrail captures all API calls for SageMaker AI, with the
-      exception of
-            <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html">
-             InvokeEndpoint
+            Amazon SageMaker AI is integrated with
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail
             </a>
-            and
-            <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpointAsync.html">
-             InvokeEndpointAsync
-            </a>
-            , as events. The calls captured include calls from the SageMaker AI
-      console and code calls to the SageMaker API operations. If you create a trail, you can enable
-      continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for SageMaker AI. If you don't
-      configure a trail, you can still view the most recent events in the CloudTrail console in
-            <b>
-             Event history
-            </b>
-            . Using the information collected by CloudTrail, you can
-      determine the request that was made to SageMaker AI, the IP address from which the request was made,
-      who made the request, when it was made, and additional details.
+            , a service that provides a record of actions taken by a user, role, or an
+    AWS service. CloudTrail captures all
+    API calls for Amazon SageMaker AI as events. The calls captured include calls from the Amazon SageMaker AI console
+    and code calls to the Amazon SageMaker AI API operations. Using the information collected by CloudTrail, you can
+    determine the request that was made to Amazon SageMaker AI, the IP address from which the request was
+    made, when it was made, and additional details.
            </p>
            <p>
-            To learn more about CloudTrail, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/">
-             AWS CloudTrail User Guide
-            </a>
-            .
-           </p>
-           <p>
-            For security purposes, you can monitor AWS CloudTrail logs to identify abnormal user activity. 
-      For more information about monitoring logs, see
-            <a href="./sagemaker-incident-response.html">
-             Logging and Monitoring
-            </a>
-            .
-           </p>
-           <h2 id="sagemaker-info-in-cloudtrail">
-            SageMaker AI Information in CloudTrail
-           </h2>
-           <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs
-        in Amazon SageMaker AI, that activity is recorded in a CloudTrail event along with other AWS service
-        events in
-            <b>
-             Event history
-            </b>
-            . You can view, search, and download recent
-        events in your AWS account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing Events with CloudTrail Event
-          History
-            </a>
-            .
-           </p>
-           <p>
-            For an ongoing record of events in your AWS account, including events for
-        Amazon SageMaker AI, create a trail. A
-            <em>
-             trail
-            </em>
-            enables CloudTrail to deliver log
-        files to an Amazon S3 bucket. By default, when you create a trail in the console, the trail
-        applies to all AWS Regions. The trail logs events from all Regions in the AWS partition
-        and delivers the log files to the Amazon S3 bucket that you specify. Additionally, you can
-        configure other AWS services to further analyze and act upon the event data collected in
-        CloudTrail logs. For more information, see the following:
+            Every event or log entry contains information about who generated the request. The identity
+    information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for
-              Creating a Trail
-               </a>
+               Whether the request was made with root user or user credentials.
               </p>
              </li>
              <li class="listitem">
               <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
-                CloudTrail Supported Services and Integrations
-               </a>
+               Whether the request was made on behalf of an IAM Identity Center user.
               </p>
              </li>
              <li class="listitem">
               <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
-                Configuring Amazon
-              SNS Notifications for CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail Log Files from Multiple Regions
-               </a>
-               and
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail
-              Log Files from Multiple Accounts
-               </a>
-              </p>
-             </li>
-            </ul>
-           </div>
-           <p>
-            All SageMaker AI actions, with the exception of
-            <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html">
-             InvokeEndpoint
-            </a>
-            and
-            <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpointAsync.html">
-             InvokeEndpointAsync
-            </a>
-            , are logged by CloudTrail and are documented in the
-            <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Operations.html">
-             <code class="code">
-              Operations
-             </code>
-            </a>
-            . For example, calls to the
-            <code class="code">
-             CreateTrainingJob
-            </code>
-            ,
-            <code class="code">
-             CreateEndpoint
-            </code>
-            and
-            <code class="code">
-             CreateNotebookInstance
-            </code>
-            actions generate
-        entries in the CloudTrail log files.
-           </p>
-           <p>
-            Every event or log entry contains information about who generated the request. The
-        identity information helps you determine the following:
-           </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               Whether the request was made with root or IAM user credentials.
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               Whether the request was made with temporary security credentials for a role or
-            federated user.
+               Whether the request was made with temporary security credentials for a role or federated
+        user.
               </p>
              </li>
              <li class="listitem">
@@ -325,38 +212,406 @@
             </ul>
            </div>
            <p>
-            For more information, see the
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity
-          Element
+            CloudTrail is active in your AWS account when you create the account and you automatically have
+    access to the CloudTrail
+            <b>
+             Event history
+            </b>
+            . The CloudTrail
+            <b>
+             Event
+      history
+            </b>
+            provides a viewable, searchable, downloadable, and immutable record of the
+    past 90 days of recorded management events in an AWS Region. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Working
+      with CloudTrail Event history
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            . There are no CloudTrail
+    charges for viewing the
+            <b>
+             Event history
+            </b>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account past 90 days, create a trail or a
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+             CloudTrail
+      Lake
+            </a>
+            event data store.
+           </p>
+           <div class="variablelist">
+            <dl>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail trails
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               A
+               <em>
+                trail
+               </em>
+               enables CloudTrail to deliver log files to an Amazon S3 bucket. All trails created using the AWS Management Console are multi-Region. You can create a single-Region or a multi-Region trail by using the AWS CLI. Creating a multi-Region trail is recommended because you capture activity in all AWS Regions in your account. If you create a single-Region trail, you can view only the events logged in the trail's AWS Region. For more information about trails, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Creating a trail for your AWS account
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html">
+                Creating a trail for an organization
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               You can deliver one copy of your ongoing management events to your Amazon S3 bucket at no charge from CloudTrail by creating a trail, however, there are Amazon S3 storage charges. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               . For information about Amazon S3 pricing, see
+               <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Amazon S3 Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail Lake event data stores
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               <em>
+                CloudTrail Lake
+               </em>
+               lets you run SQL-based queries on your events. CloudTrail Lake converts existing events in row-based JSON format to
+               <a href="https://orc.apache.org/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Apache ORC
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into
+               <em>
+                event data stores
+               </em>
+               , which are immutable collections of events based on criteria that you select by applying
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-concepts.html#adv-event-selectors">
+                advanced event selectors
+               </a>
+               . The selectors that you apply to an event data store control which events persist and are available for you to query. For more information about CloudTrail Lake, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+                Working with AWS CloudTrail Lake
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               CloudTrail Lake event data stores and queries incur costs. When you create an event data store, you choose the
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html#cloudtrail-lake-manage-costs-pricing-option">
+                pricing option
+               </a>
+               you want to use for the event data store. The pricing option determines the cost for ingesting and storing events, and the default and maximum retention period for the event data store. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+            </dl>
+           </div>
+           <p>
+            For security purposes, you can monitor CloudTrail logs to identify abnormal user activity.
+    For more information about monitoring logs, see
+            <a href="./sagemaker-incident-response.html">
+             Logging and Monitoring
+            </a>
+            .
+           </p>
+           <h2 id="cloudtrail-data-events">
+            Amazon SageMaker AI data events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            provide information about the resource operations performed on or in a
+      resource (for example, reading or writing to an Amazon S3
+      object). These are also known as data
+      plane operations. Data events are often high-volume activities. By default, CloudTrail doesnât log
+      data events. The CloudTrail
+            <b>
+             Event history
+            </b>
+            doesn't record data events.
+           </p>
+           <p>
+            Additional charges apply for data events. For more information about CloudTrail pricing, see
+            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+             <span>
+              AWS CloudTrail Pricing
+             </span>
+             <awsui-icon class="awsdocs-link-icon" name="external">
+             </awsui-icon>
+            </a>
+            .
+           </p>
+           <p>
+            You can log data events for various Amazon SageMaker AI resource types by using the CloudTrail console,
+      AWS CLI, or CloudTrail API operations. For more information about how to log data events, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-console">
+             Logging data events with the AWS Management Console
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-with-the-AWS-CLI">
+             Logging data events with the AWS Command Line Interface
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <p>
+            The following table lists the Amazon SageMaker AI resource types for which you can log data events.
+      The
+            <b>
+             Resource type (console)
+            </b>
+            column shows the value to
+      choose from the
+            <b>
+             Resource type
+            </b>
+            list on the CloudTrail console. The
+            <b>
+             resources.type value
+            </b>
+            column shows the
+            <code class="code">
+             resources.type
+            </code>
+            value, which you would specify when configuring advanced event selectors using the AWS CLI or
+      CloudTrail APIs. The
+            <b>
+             Data APIs logged to CloudTrail
+            </b>
+            column shows the API
+      calls logged to CloudTrail for the resource type.
+           </p>
+           <div class="table-container" id="data-events-table">
+            <div class="table-contents disable-scroll">
+             <table id="w611aac47c21c29c11">
+              <thead>
+               <tr>
+                <th>
+                 Resource type (console)
+                </th>
+                <th>
+                 resources.type value
+                </th>
+                <th>
+                 Data APIs logged to CloudTrail
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 SageMaker endpoint
+                </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::SageMaker::Endpoint
+                </code>
+               </td>
+               <td tabindex="-1">
+                <div class="itemizedlist">
+                 <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html">
+                     InvokeEndpoint
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpointAsync.html">
+                     InvokeEndpointAsync
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpointWithResponseStream.html">
+                     InvokeEndpointWithResponseStream
+                    </a>
+                   </p>
+                  </li>
+                 </ul>
+                </div>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              The
+              <code class="code">
+               InvokeEndpoint
+              </code>
+              and
+              <code class="code">
+               InvokeEndpointAsync
+              </code>
+              API calls don't log
+      the request parameters.
+             </p>
+            </div>
+           </div>
+           <p>
+            You can configure advanced event selectors to filter on the
+            <code class="code">
+             eventName
+            </code>
+            ,
+            <code class="code">
+             readOnly
+            </code>
+            , and
+            <code class="code">
+             resources.ARN
+            </code>
+            fields to log only those events that
+      are important to you. For more information about these fields, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
+             AdvancedFieldSelector
+            </a>
+            in the
+            <em>
+             AWS CloudTrail API Reference
+            </em>
+            .
+           </p>
+           <p>
+            The following example shows you how to log data events for an Amazon SageMaker endpoint. In this
+      example, you use the
+            <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/put-event-selectors.html">
+             put-event-selectors
+            </a>
+            AWS CLI command to add advanced event selectors that capture data events from your endpoint. You
+      should have an existing CloudTrail trail. Before running the command, you can also save the advanced
+      event selectors JSON object in a file like the following:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (Json)--><code class="Json">[
+  <span>{</span>
+    "FieldSelectors": [
+      <span>{</span>
+        "Field": "eventCategory",
+        "Equals": ["Data"]
+      },
+      <span>{</span>
+        "Field": "resources.ARN",
+        "Equals": ["arn:aws:sagemaker:us-east-1:111122223333:endpoint/<code class="replaceable">your-inference-endpoint-arn</code>"]
+      },
+      <span>{</span>
+        "Field": "resources.type",
+        "Equals": ["AWS::SageMaker::Endpoint"]
+      }
+    ]
+  }
+]</code></pre>
+           <p>
+            Then, you can run the following command to start logging data events from the endpoint.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (bash)--><code class="bash">aws cloudtrail put-event-selectors
+      --trail-name <code class="replaceable">your-trail-name</code>
+      --advanced-event-selectors=file://<code class="replaceable">advanced-event-selectors.json</code> # specify your previously created JSON file</code></pre>
+           <h2 id="cloudtrail-management-events">
+            Amazon SageMaker AI management events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
+            </a>
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
+           </p>
+           <p>
+            Amazon SageMaker AI logs all Amazon SageMaker AI control plane operations as management events. For a list
+      of the Amazon SageMaker AI control plane operations that Amazon SageMaker AI logs to CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference">
+             Amazon SageMaker AI API Reference
             </a>
             .
            </p>
            <h2 id="automatic-tuning-secondary">
             Operations Performed by Automatic Model
-          Tuning
+        Tuning
            </h2>
            <p>
             SageMaker AI supports logging non-API service events to your CloudTrail log files for automatic model
-        tuning jobs. These events are related to your tuning jobs but, are not the direct result of
-        a customer request to the public AWS API. For example, when you create a hyperparameter
-        tuning job by calling
+      tuning jobs. These events are related to your tuning jobs but, are not the direct result of
+      a customer request to the public AWS API. For example, when you create a hyperparameter
+      tuning job by calling
             <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateHyperParameterTuningJob.html">
              <code class="code">
               CreateHyperParameterTuningJob
              </code>
             </a>
             , SageMaker AI creates training jobs to evaluate
-        various combinations of hyperparameters to find the best result. Similarly, when you call
+      various combinations of hyperparameters to find the best result. Similarly, when you call
             <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StopHyperParameterTuningJob.html">
              <code class="code">
               StopHyperParameterTuningJob
              </code>
             </a>
             to stop a hyperparameter tuning job, SageMaker AI
-        might stop any of the associated running training jobs. Non-API events for your tuning jobs
-        are logged to CloudTrail to help you improve governance, compliance, and operational and risk
-        auditing of your AWS account.
+      might stop any of the associated running training jobs. Non-API events for your tuning jobs
+      are logged to CloudTrail to help you improve governance, compliance, and operational and risk
+      auditing of your AWS account.
            </p>
            <p>
             Log entries that result from non-API service events have an
@@ -371,6 +626,97 @@
             <code class="code">
              AwsApiCall
             </code>
+            .
+           </p>
+           <h2 id="understanding-sagemaker-entries">
+            Amazon SageMaker AI event examples
+           </h2>
+           <p>
+            An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
+           </p>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             CreateEndpoint
+            </code>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion":"1.05",
+    "userIdentity": <span>{</span>
+        "type":"IAMUser",
+        "principalId":"AIXDAYQEXAMPLEUMLYNGL",
+        "arn":"arn:aws:iam::123456789012:user/intern",
+        "accountId":"123456789012",
+        "accessKeyId":"ASXIAGXEXAMPLEQULKNXV",
+        "userName":"intern"
+    },
+    "eventTime":"2018-01-02T13:39:06Z",
+    "eventSource":"sagemaker.amazonaws.com",
+    "eventName":"CreateEndpoint",
+    "awsRegion":"us-west-2",
+    "sourceIPAddress":"127.0.0.1",
+    "userAgent":"USER_AGENT",
+    "requestParameters": <span>{</span>
+        "endpointName":"ExampleEndpoint",
+        "endpointConfigName":"ExampleEndpointConfig"
+    },
+    "responseElements": <span>{</span>
+        "endpointArn":"arn:aws:sagemaker:us-west-2:123456789012:endpoint/exampleendpoint"
+    },
+    "requestID":"6b1b42b9-EXAMPLE",
+    "eventID":"a6f85b21-EXAMPLE",
+    "eventType":"AwsApiCall",
+    "recipientAccountId":"444455556666"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             CreateModel
+            </code>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion":"1.05",
+    "userIdentity": <span>{</span>
+        "type":"IAMUser",
+        "principalId":"AIXDAYQEXAMPLEUMLYNGL",
+        "arn":"arn:aws:iam::123456789012:user/intern",
+        "accountId":"123456789012",
+        "accessKeyId":"ASXIAGXEXAMPLEQULKNXV",
+        "userName":"intern"
+    },
+    "eventTime":"2018-01-02T15:23:46Z",
+    "eventSource":"sagemaker.amazonaws.com",
+    "eventName":"CreateModel",
+    "awsRegion":"us-west-2",
+    "sourceIPAddress":"127.0.0.1",
+    "userAgent":"USER_AGENT",
+    "requestParameters": <span>{</span>
+        "modelName":"ExampleModel",
+        "primaryContainer": <span>{</span>
+            "image":"174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:latest"
+        },
+        "executionRoleArn":"arn:aws:iam::123456789012:role/EXAMPLEARN"
+    },
+    "responseElements": <span>{</span>
+        "modelArn":"arn:aws:sagemaker:us-west-2:123456789012:model/barkinghappy2018-01-02t15-23-32-275z-ivrdog"
+    },
+    "requestID":"417b8dab-EXAMPLE",
+    "eventID":"0f2b3e81-EXAMPLE",
+    "eventType":"AwsApiCall",
+    "recipientAccountId":"444455556666"
+}</code></pre>
+           <p>
+            For information about CloudTrail record contents, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail
+        record contents
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
             .
            </p>
            <awsdocs-copyright class="copyright-print">
@@ -407,8 +753,9 @@
             <div accesskey="p" class="prev-link" href="./logging-cloudwatch.html" id="previous">
              Logging with CloudWatch
             </div>
-            <div accesskey="n" class="next-link" href="./understanding-sagemaker-entries.html" id="next">
-             Understand SageMaker AI log file entries
+            <div accesskey="n" class="next-link" href="./monitor-user-access.html" id="next">
+             Monitor individual user resource access from SageMaker AI
+      Studio Classic with sourceIdentity
             </div>
            </div>
           </div>

@@ -155,7 +155,7 @@
            Understanding AWS Payment Cryptography Control Plane log file entries
           </a>
           <a href="#understanding-dataplane-entries">
-           Understanding AWS Payment Cryptography Data Plane log file entries
+           Understanding AWS Payment Cryptography Data plane log file entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -220,7 +220,7 @@
              </li>
              <li>
               <a href="#understanding-dataplane-entries">
-               Understanding AWS Payment Cryptography Data Plane log file entries
+               Understanding AWS Payment Cryptography Data plane log file entries
               </a>
              </li>
             </ul>
@@ -362,7 +362,7 @@
             </a>
             provide information about the resource operations
     performed on or in a resource, such as encrypting a payload or translating a pin. Data events are high-volume activities that CloudTrail does not log
-    by default. You can enable data events API action logging for AWS Payment Cryptography dataplane events by
+    by default. You can enable data events API action logging for AWS Payment Cryptography data plane events by
     using CloudTrail APIs or console. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
              Logging data
@@ -376,7 +376,7 @@
            </p>
            <p>
             With CloudTrail, you must use advanced event selectors to decide which AWS Payment Cryptography API
-    activities are logged and recorded. To log AWS Payment Cryptography dataplane events, you must include the
+    activities are logged and recorded. To log AWS Payment Cryptography data plane events, you must include the
     resource type
             <code class="code">
              AWS Payment Cryptography key
@@ -668,11 +668,11 @@
 }</code>
       </code></pre>
            <h2 id="understanding-dataplane-entries">
-            Understanding AWS Payment Cryptography Data Plane log file entries
+            Understanding AWS Payment Cryptography Data plane log file entries
            </h2>
            <p>
-            Dataplane events can optionally be configured and function similarly to Controlplane logs but are typically much higher volumes.  Given the sensitive nature of some inputs and outputs to AWS Payment Cryptography
-       dataplane operations, you may find certain fields with the message "*** Sensitive Data Redacted ***". This is not configurable and is intended to prevent sensitive data from appearing in logs or trails.
+            Data plane events can optionally be configured and function similarly to control plane logs but are typically much higher volumes.  Given the sensitive nature of some inputs and outputs to AWS Payment Cryptography
+       data plane operations, you may find certain fields with the message "*** Sensitive Data Redacted ***". This is not configurable and is intended to prevent sensitive data from appearing in logs or trails.
            </p>
            <p>
             The following example shows a CloudTrail log entry that demonstrates the AWS Payment Cryptography

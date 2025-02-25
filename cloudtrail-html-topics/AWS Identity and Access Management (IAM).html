@@ -1468,6 +1468,245 @@
   }
 }
 </code></pre>
+           <h3 id="stscloudtrailexample-assumerole-sts-global-endpoint">
+            Example AWS STS API
+          event using the global endpoint in CloudTrail log file
+           </h3>
+           <p>
+            Starting in early 2025, AWS is making changes to the AWS Security Token Service (AWS STS) global endpoint
+          (
+            <code class="code">
+             https://sts.amazonaws.com
+            </code>
+            ) to enhance its resiliency and performance. As
+        part of these changes, AWS STS will start including additional AWS CloudTrail log fields
+            <code class="code">
+             endpointType
+            </code>
+            and
+            <code class="code">
+             awsServingRegion
+            </code>
+            under the
+            <code class="code">
+             RequestDetails
+            </code>
+            element to log the serving AWS Region and endpoint type
+        being called under the
+            <code class="code">
+             addtionalEventData
+            </code>
+            element. The
+            <code class="code">
+             endpointType
+            </code>
+            field can have a value of
+            <code class="code">
+             global
+            </code>
+            or
+            <code class="code">
+             regional
+            </code>
+            to indicate the type of global endpoint that served the request. For
+        more information about the AWS STS global endpoint changes, see
+            <a href="./id_credentials_temp_region-endpoints.html">
+             AWS STS Regions and endpoints
+            </a>
+            .
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              AWS CloudTrail logs for requests made to the AWS STS global endpoint will be sent to the
+          US East (N. Virginia) Region. CloudTrail logs for requests served by AWS STS Regional endpoints will continue to
+          be logged to their respective Region in CloudTrail.
+             </p>
+            </div>
+           </div>
+           <p>
+            The following example shows a CloudTrail log entry for an AWS STS request made to the global
+        endpoint (
+            <code class="code">
+             https://sts.amazonaws.com
+            </code>
+            ) that originated from the Europe (Stockholm) Region -
+        eu-north-1. The
+            <code class="code">
+             endpointType
+            </code>
+            field value of
+            <code class="code">
+             global
+            </code>
+            indicates that
+        the AWS STS request was served by the global endpoint in the Europe (Stockholm) Region.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AROA123456789EXAMPLE:developer",
+        "arn": "arn:aws:sts::777788889999:assumed-role/Admin/developer",
+        "accountId": "777788889999",
+        "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AROA123456789EXAMPLE",
+                "arn": "arn:aws:iam::777788889999:role/Admin",
+                "accountId": "777788889999",
+                "userName": "Admin"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2025-02-12T21:44:28Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2025-02-12T22:16:48Z",
+    "eventSource": "sts.amazonaws.com",
+    "eventName": "AssumeRole",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.15.33 Python/3.11.8 Linux/5.10.233-204.894.amzn2int.x86_64 exe/x86_64.amzn.2 prompt/off command/sts.assume-role",
+    "requestParameters": <span>{</span>
+        "roleArn": "arn:aws:iam::777788889999:role/test-role",
+        "roleSessionName": "test-global-assume-role"
+    },
+    "responseElements": <span>{</span>
+        "credentials": <span>{</span>
+            "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+            "sessionToken": "<code class="replaceable">&lt;encoded session token blob&gt;</code>",
+            "expiration": "Feb 12, 2025, 11:16:48 PM"
+        },
+        "assumedRoleUser": <span>{</span>
+            "assumedRoleId": "AROA987654321EXAMPLE:test-global-assume-role",
+            "arn": "arn:aws:sts::777788889999:assumed-role/test-role/test-global-assume-role"
+        }
+    },
+    "additionalEventData": <span>{</span>
+        "RequestDetails": <span>{</span>
+            "awsServingRegion": "eu-north-1",
+            "endpointType": "global"
+        }
+    },
+    "requestID": "EXAMPLE7-2497-457a-9586-f21feEXAMPLE",
+    "eventID": "EXAMPLEc-3d26-4c3a-9c94-722a9EXAMPLE",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+            "accountId": "777788889999",
+            "type": "AWS::IAM::Role",
+            "ARN": "arn:aws:iam::777788889999:role/test-role"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "777788889999",
+    "eventCategory": "Management",
+    "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "sts-global.eu-north-1.amazonaws.com"
+    }
+}</code></pre>
+           <p>
+            For comparison, the following example shows a CloudTrail log entry for an AWS STS request made
+        to the Regional endpoint (
+            <code class="code">
+             https://sts.us-west-2.amazonaws.com
+            </code>
+            ) that was served
+        by the Regional endpoint in the Europe (Stockholm) Region - eu-north-1. The
+            <code class="code">
+             endpointType
+            </code>
+            field value of
+            <code class="code">
+             regional
+            </code>
+            indicates that the AWS STS request was served by the
+        global endpoint in the Europe (Stockholm) Region.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="nohighlight"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AROA123456789EXAMPLE:developer",
+        "arn": "arn:aws:sts::777788889999:assumed-role/Admin/developer",
+        "accountId": "777788889999",
+        "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AROA123456789EXAMPLE",
+                "arn": "arn:aws:iam::777788889999:role/Admin",
+                "accountId": "777788889999",
+                "userName": "Admin"
+            },
+            "webIdFederationData": <span>{</span>},
+            "attributes": <span>{</span>
+                "creationDate": "2025-02-12T21:44:28Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2025-02-12T22:16:30Z",
+    "eventSource": "sts.amazonaws.com",
+    "eventName": "AssumeRole",
+    "awsRegion": "eu-north-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "aws-cli/2.15.33 Python/3.11.8 Linux/5.10.233-204.894.amzn2int.x86_64 exe/x86_64.amzn.2 prompt/off command/sts.assume-role",
+    "requestParameters": <span>{</span>
+        "roleArn": "arn:aws:iam::777788889999:role/test-role",
+        "roleSessionName": "test-global-assume-role"
+    },
+    "responseElements": <span>{</span>
+        "credentials": <span>{</span>
+            "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+            "sessionToken": "<code class="replaceable">&lt;encoded session token blob&gt;</code>",
+            "expiration": "Feb 12, 2025, 11:16:30 PM"
+        },
+        "assumedRoleUser": <span>{</span>
+            "assumedRoleId": "AROA987654321EXAMPLE:test-global-assume-role",
+            "arn": "arn:aws:sts::777788889999:assumed-role/test-role/test-global-assume-role"
+        }
+    },
+    "additionalEventData": <span>{</span>
+        "RequestDetails": <span>{</span>
+            "endpointType": "regional",
+            "awsServingRegion": "eu-north-1"
+        }
+    },
+    "requestID": "EXAMPLEd-2116-4cd7-bd72-9f72fEXAMPLE",
+    "eventID": "EXAMPLEd-219a-48ed-bc54-00e3cEXAMPLE",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+            "accountId": "777788889999",
+            "type": "AWS::IAM::Role",
+            "ARN": "arn:aws:iam::777788889999:role/test-role"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "777788889999",
+    "eventCategory": "Management",
+    "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "sts.eu-north-1.amazonaws.com"
+    }
+}</code></pre>
            <h2 id="cloudtrail-integration_examples-signin">
             Example sign-in events in CloudTrail
         log

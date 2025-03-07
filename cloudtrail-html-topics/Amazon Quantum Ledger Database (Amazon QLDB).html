@@ -809,7 +809,7 @@
           "InclusiveStartTime": 1.561497687254E9,
           "name": "CloudtrailTest",
           "S3ExportConfiguration": <span>{</span>
-            "Bucket": "cloudtrailtests-123456789012-us-east-2",
+            "Bucket": "amzn-s3-demo-qldb-cloudtrail",
             "Prefix": "CloudtrailTestsJournalExport",
             "EncryptionConfiguration": <span>{</span>
               "ObjectEncryptionType": "SSE_S3"
@@ -826,7 +826,7 @@
         "eventType": "AwsApiCall",
         "recipientAccountId": "123456789012"
       },
-      "rawCloudtrailEvent": "<span>{</span>\"eventVersion\":\"1.05\",\"userIdentity\":<span>{</span>\"type\":\"AssumedRole\",\"principalId\":\"AKIAIOSFODNN7EXAMPLE:test-user\",\"arn\":\"arn:aws:sts::123456789012:assumed-role/Admin/test-user\",\"accountId\":\"123456789012\",\"accessKeyId\":\"AKIAI44QH8DHBEXAMPLE\",\"sessionContext\":<span>{</span>\"attributes\":<span>{</span>\"mfaAuthenticated\":\"false\",\"creationDate\":\"2019-06-25T21:21:25Z\"},\"sessionIssuer\":<span>{</span>\"type\":\"Role\",\"principalId\":\"AKIAIOSFODNN7EXAMPLE\",\"arn\":\"arn:aws:iam::123456789012:role/Admin\",\"accountId\":\"123456789012\",\"userName\":\"Admin\"}}},\"eventTime\":\"2019-06-25T21:21:56Z\",\"eventSource\":\"qldb.amazonaws.com\",\"eventName\":\"ExportJournalToS3\",\"awsRegion\":\"us-east-2\",\"sourceIPAddress\":\"192.0.2.01\",\"userAgent\":\"aws-internal/3 aws-sdk-java/1.11.575 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.202-b08 java/1.8.0_202 kotlin/1.3.21 vendor/Oracle_Corporation\",\"requestParameters\":<span>{</span>\"InclusiveStartTime\":1.561497687254E9,\"name\":\"CloudtrailTest\",\"S3ExportConfiguration\":<span>{</span>\"Bucket\":\"cloudtrailtests-123456789012-us-east-2\",\"Prefix\":\"CloudtrailTestsJournalExport\",\"EncryptionConfiguration\":<span>{</span>\"ObjectEncryptionType\":\"SSE_S3\"}},\"ExclusiveEndTime\":1.561497715795E9},\"responseElements\":<span>{</span>\"ExportId\":\"BabQhsmJRYDCGMnA2xYBDG\"},\"requestID\":\"423815f8-978f-11e9-afcf-55f7d0f3583d\",\"eventID\":\"1b5abdc4-52fa-435f-857e-8995ef7a19b7\",\"readOnly\":false,\"eventType\":\"AwsApiCall\",\"recipientAccountId\":\"123456789012\"}",
+      "rawCloudtrailEvent": "<span>{</span>\"eventVersion\":\"1.05\",\"userIdentity\":<span>{</span>\"type\":\"AssumedRole\",\"principalId\":\"AKIAIOSFODNN7EXAMPLE:test-user\",\"arn\":\"arn:aws:sts::123456789012:assumed-role/Admin/test-user\",\"accountId\":\"123456789012\",\"accessKeyId\":\"AKIAI44QH8DHBEXAMPLE\",\"sessionContext\":<span>{</span>\"attributes\":<span>{</span>\"mfaAuthenticated\":\"false\",\"creationDate\":\"2019-06-25T21:21:25Z\"},\"sessionIssuer\":<span>{</span>\"type\":\"Role\",\"principalId\":\"AKIAIOSFODNN7EXAMPLE\",\"arn\":\"arn:aws:iam::123456789012:role/Admin\",\"accountId\":\"123456789012\",\"userName\":\"Admin\"}}},\"eventTime\":\"2019-06-25T21:21:56Z\",\"eventSource\":\"qldb.amazonaws.com\",\"eventName\":\"ExportJournalToS3\",\"awsRegion\":\"us-east-2\",\"sourceIPAddress\":\"192.0.2.01\",\"userAgent\":\"aws-internal/3 aws-sdk-java/1.11.575 Mac_OS_X/10.13.6 Java_HotSpot(TM)_64-Bit_Server_VM/25.202-b08 java/1.8.0_202 kotlin/1.3.21 vendor/Oracle_Corporation\",\"requestParameters\":<span>{</span>\"InclusiveStartTime\":1.561497687254E9,\"name\":\"CloudtrailTest\",\"S3ExportConfiguration\":<span>{</span>\"Bucket\":\"amzn-s3-demo-qldb-cloudtrail\",\"Prefix\":\"CloudtrailTestsJournalExport\",\"EncryptionConfiguration\":<span>{</span>\"ObjectEncryptionType\":\"SSE_S3\"}},\"ExclusiveEndTime\":1.561497715795E9},\"responseElements\":<span>{</span>\"ExportId\":\"BabQhsmJRYDCGMnA2xYBDG\"},\"requestID\":\"423815f8-978f-11e9-afcf-55f7d0f3583d\",\"eventID\":\"1b5abdc4-52fa-435f-857e-8995ef7a19b7\",\"readOnly\":false,\"eventType\":\"AwsApiCall\",\"recipientAccountId\":\"123456789012\"}",
       "name": "ExportJournalToS3",
       "request": [
         "com.amazonaws.services.qldb.model.ExportJournalToS3Request",
@@ -837,7 +837,7 @@
           "inclusiveStartTime": 1561497687254,
           "exclusiveEndTime": 1561497715795,
           "s3ExportConfiguration": <span>{</span>
-            "bucket": "cloudtrailtests-123456789012-us-east-2",
+            "bucket": "amzn-s3-demo-qldb-cloudtrail",
             "prefix": "CloudtrailTestsJournalExport",
             "encryptionConfiguration": <span>{</span>
               "objectEncryptionType": "SSE_S3",

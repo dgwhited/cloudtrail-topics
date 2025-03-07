@@ -263,9 +263,9 @@
     "Support began": "11/28/2018",
     "Link": "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/logging-using-cloudtrail.html"
   },
-  "Amazon GameLift": {
-    "AWS Service": "Amazon GameLift",
-    "CloudTrail Topics": "Logging Amazon GameLift API Calls with AWS CloudTrail",
+  "Amazon GameLift Servers": {
+    "AWS Service": "Amazon GameLift Servers",
+    "CloudTrail Topics": "Logging Amazon GameLift Servers API Calls with AWS CloudTrail",
     "Support began": "01/27/2016",
     "Link": "https://docs.aws.amazon.com/gamelift/latest/developerguide/logging-using-cloudtrail.html"
   },
@@ -555,7 +555,7 @@
     "AWS Service": "Amazon Simple Notification Service (Amazon SNS)",
     "CloudTrail Topics": "Logging Amazon SNS API Calls using AWS CloudTrail",
     "Support began": "10/09/2014",
-    "Link": "https://docs.aws.amazon.com/sns/latest/dg/sns-logging-using-cloudtrail.html"
+    "Link": "https://docs.aws.amazon.com/sns/latest/dg/logging-using-cloudtrail.html"
   },
   "Amazon Simple Queue Service (Amazon SQS)": {
     "AWS Service": "Amazon Simple Queue Service (Amazon SQS)",
@@ -1132,6 +1132,12 @@
     "CloudTrail Topics": "Logging AWS Mainframe Modernization API calls using AWS CloudTrail",
     "Support began": "06/08/2022",
     "Link": "https://docs.aws.amazon.com/m2/latest/userguide/logging-using-cloudtrail.html"
+  },
+  "Managed integrations for AWS IoT Device Management": {
+    "AWS Service": "Managed integrations for AWS IoT Device Management",
+    "CloudTrail Topics": "Logging Managed integrations API calls using AWS CloudTrail",
+    "Support began": "03/03/2025",
+    "Link": "https://docs.aws.amazon.com/iotmanagedintegrations/latest/devguide/logging-using-cloudtrail.html"
   },
   "AWS Managed Services": {
     "AWS Service": "AWS Managed Services",

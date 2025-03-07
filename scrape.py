@@ -11,10 +11,15 @@ def get_cloudtrail_html(link):
     """
     Scrapes a webpage and returns it parsed by BeautifulSoup
     """
-
-    response = requests.get(link, allow_redirects=False)
-    soup = BeautifulSoup(response.content, "html.parser")
-    return soup
+    try:
+        # Allow redirects with a timeout
+        response = requests.get(link, allow_redirects=True, timeout=30)
+        response.raise_for_status()  # Raise exception for 4XX/5XX responses
+        soup = BeautifulSoup(response.content, "html.parser")
+        return soup
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching main page: {e}")
+        raise
 
 
 def parse_cloudtrail_html(soup):
@@ -83,13 +88,20 @@ def create_directory(directory):
 
 
 def scrape_and_save(url, directory, filename):
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    content = soup.prettify()
-    
-    filepath = os.path.join(directory, filename)
-    with open(filepath, 'w', encoding='utf-8') as file:
-        file.write(content)
+    try:
+        # Allow redirects but with a higher limit, and add a timeout
+        response = requests.get(url, allow_redirects=True, timeout=30)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        content = soup.prettify()
+        
+        filepath = os.path.join(directory, filename)
+        with open(filepath, 'w', encoding='utf-8') as file:
+            file.write(content)
+        print(f"Successfully saved {filename}")
+    except requests.exceptions.TooManyRedirects:
+        print(f"Error: Too many redirects for {url}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching {url}: {e}")
 
 
 def process_dictionary(data, directory):
@@ -98,8 +110,13 @@ def process_dictionary(data, directory):
     for item in data.values():
         url = item['Link']
         if url:
+            # Handle relative URLs by prepending the base domain if needed
+            if url.startswith('/'):
+                url = f"https://docs.aws.amazon.com{url}"
+            
             service_name = item['AWS Service']
-            filename = f"{service_name}.html"
+            # Clean filename to avoid invalid characters
+            filename = f"{service_name.replace('/', '-').replace(':', '-')}.html"
             
             scrape_and_save(url, directory, filename)
         else:

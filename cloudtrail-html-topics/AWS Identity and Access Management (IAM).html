@@ -417,6 +417,26 @@
             .
            </p>
            <p>
+            AWS CloudTrail logs will contain MFA information when the IAM user sign in with MFA. If
+        the IAM user assumes an IAM role, CloudTrail will also log
+            <code class="code">
+             mfaAuthenticated:
+          true
+            </code>
+            in the
+            <code class="code">
+             sessionContext
+            </code>
+            attributes for actions performed using
+        the assumed role. However, CloudTrail logging is separate from what IAM requires when API
+        calls are made with the assumed role's credentials. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+             CloudTrail
+          userIdentity Element
+            </a>
+            .
+           </p>
+           <p>
             For example, calls to the IAM
             <code class="code">
              CreateUser

@@ -442,8 +442,8 @@
              <li>
               <p>
                <a href="#cloudtrail-examples-create-repository-kms">
-                Example: AWS KMS
-                            CreateGrant API action when creating an Amazon ECR repository
+                Example: AWS KMSCreateGrant API action when creating an Amazon ECR
+                            repository
                </a>
               </p>
              </li>
@@ -545,13 +545,25 @@
 }</code></pre>
            <h4 id="cloudtrail-examples-create-repository-kms">
             Example: AWS KMS
-                            CreateGrant API action when creating an Amazon ECR repository
+            <code class="code">
+             CreateGrant
+            </code>
+            API action when creating an Amazon ECR
+                            repository
            </h4>
            <p>
             The following example shows a CloudTrail log entry that demonstrates the AWS KMS
-                        CreateGrant action when creating an Amazon ECR repository with KMS encryption
-                        enabled. For each repository that is created with KMS encryption is enabled,
-                        you should see two CreateGrant log entries in CloudTrail.
+            <code class="code">
+             CreateGrant
+            </code>
+            action when creating an Amazon ECR repository with
+                        KMS encryption enabled. For each repository that is created with KMS
+                        encryption is enabled, you should see two
+            <code class="code">
+             CreateGrant
+            </code>
+            log
+                        entries in CloudTrail.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
     "eventVersion": "1.05",

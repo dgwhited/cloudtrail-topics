@@ -298,7 +298,8 @@
               StartTranscriptionJob
              </code>
             </a>
-            operations generate entries in the CloudTrail log files.
+            operations generate entries in the CloudTrail log files. 
+       When CloudTrail logs Amazon Transcribe API operations, the CloudTrail log entry uses empty strings for sensitive information in the request and response parameters, such as Amazon S3 URI values.
            </p>
            <p>
             Every event or log entry contains information about who generated the request. This 
@@ -380,6 +381,20 @@
             API operations 
         create the following entry.
            </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              When CloudTrail logs Amazon Transcribe API operations, the CloudTrail log entry uses empty strings for sensitive information in the request and response parameters, such as Amazon S3 URI values.
+             </p>
+            </div>
+           </div>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
     "Records": [
         <span>{</span>
@@ -403,7 +418,7 @@
                 "languageCode": "<code class="replaceable">en-US</code>",
                 "transcriptionJobName": "<code class="replaceable">my-first-transcription-job</code>",
                 "media": <span>{</span>
-                    "mediaFileUri": "s3://<code class="replaceable">amzn-s3-demo-bucket</code>/<code class="replaceable">my-media-file</code>.<code class="replaceable">flac</code>"
+                    "mediaFileUri": ""
                 }
             },
             "responseElements": <span>{</span>
@@ -414,7 +429,7 @@
                     "transcriptionJobName": "<code class="replaceable">my-first-transcription-job</code>",
                     "languageCode": "<code class="replaceable">en-US</code>",
                     "media": <span>{</span>
-                        "mediaFileUri": "s3://<code class="replaceable">amzn-s3-demo-bucket</code>/<code class="replaceable">my-media-file</code>.<code class="replaceable">flac</code>"
+                        "mediaFileUri": ""
                     }
                 }
             },
@@ -453,10 +468,10 @@
                     "transcriptionJobName": "<code class="replaceable">my-first-transcription-job</code>",
                     "languageCode": "<code class="replaceable">en-US</code>",
                     "media": <span>{</span>
-                        "mediaFileUri": "s3://<code class="replaceable">amzn-s3-demo-bucket</code>/<code class="replaceable">my-media-file</code>.<code class="replaceable">flac</code>"
+                        "mediaFileUri": ""
                     },
                     "transcript": <span>{</span>
-                        "transcriptFileUri": "s3://<code class="replaceable">amzn-s3-demo-bucket</code>/<code class="replaceable">my-first-transcription-job</code>.json"
+                        "transcriptFileUri": ""
                     }
                 }
             },

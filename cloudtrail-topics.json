@@ -1137,7 +1137,7 @@
     "AWS Service": "Managed integrations for AWS IoT Device Management",
     "CloudTrail Topics": "Logging Managed integrations API calls using AWS CloudTrail",
     "Support began": "03/03/2025",
-    "Link": "https://docs.aws.amazon.com/iotmanagedintegrations/latest/devguide/logging-using-cloudtrail.html"
+    "Link": "https://docs.aws.amazon.com/iot-mi/latest/devguide/logging-using-cloudtrail.html"
   },
   "AWS Managed Services": {
     "AWS Service": "AWS Managed Services",

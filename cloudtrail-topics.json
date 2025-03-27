@@ -1331,9 +1331,9 @@
     "Support began": "02/08/2018",
     "Link": "https://docs.aws.amazon.com/waf/latest/developerguide/logging-using-cloudtrail.html#shield-info-in-cloudtrail"
   },
-  "AWS Snowball Edge": {
-    "AWS Service": "AWS Snowball Edge",
-    "CloudTrail Topics": "Logging AWS Snowball Edge API Calls with AWS CloudTrail",
+  "AWS Snowball Edge Edge": {
+    "AWS Service": "AWS Snowball Edge Edge",
+    "CloudTrail Topics": "Logging AWS Snowball Edge Edge API Calls with AWS CloudTrail",
     "Support began": "01/25/2019",
     "Link": "https://docs.aws.amazon.com/snowball/latest/developer-guide/logging-using-cloudtrail.html"
   },

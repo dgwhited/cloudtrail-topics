@@ -142,14 +142,8 @@
           </a>
          </div>
          <div id="page-toc-src">
-          <a href="#cloudtrail-data-events">
-           Data events in CloudTrail
-          </a>
           <a href="#cloudtrail-management-events">
            Management events in CloudTrail
-          </a>
-          <a href="#cloudtrail-event-examples">
-           Event examples
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -361,177 +355,6 @@
              </dd>
             </dl>
            </div>
-           <h2 id="cloudtrail-data-events">
-            Data events in CloudTrail
-           </h2>
-           <p>
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
-             Data events
-            </a>
-            provide information about the resource operations performed on or in a
-      resource (for example, reading or writing to an Amazon S3
-      object). These are also known as data
-      plane operations. Data events are often high-volume activities. By default, CloudTrail doesnât log
-      data events. The CloudTrail
-            <b>
-             Event history
-            </b>
-            doesn't record data events.
-           </p>
-           <p>
-            Additional charges apply for data events. For more information about CloudTrail pricing, see
-            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
-             <span>
-              AWS CloudTrail Pricing
-             </span>
-             <awsui-icon class="awsdocs-link-icon" name="external">
-             </awsui-icon>
-            </a>
-            .
-           </p>
-           <p>
-            You can log data events for the managed integrations resource types by using the CloudTrail console, AWS CLI,
-      or CloudTrail API operations. For more information about how to log data events, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-console">
-             Logging data events with the AWS Management Console
-            </a>
-            and
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-with-the-AWS-CLI">
-             Logging data events with the AWS Command Line Interface
-            </a>
-            in the
-            <em>
-             AWS CloudTrail User Guide
-            </em>
-            .
-           </p>
-           <p>
-            The following table lists the managed integrations resource types for which you can log data events.
-      The
-            <b>
-             Resource type (console)
-            </b>
-            column shows the value to
-      choose from the
-            <b>
-             Resource type
-            </b>
-            list on the CloudTrail console. The
-            <b>
-             resources.type value
-            </b>
-            column shows the
-            <code class="code">
-             resources.type
-            </code>
-            value, which you would specify when configuring advanced event selectors using the AWS CLI or
-      CloudTrail APIs. The
-            <b>
-             Data APIs logged to CloudTrail
-            </b>
-            column shows the API
-      calls logged to CloudTrail for the resource type.
-           </p>
-           <div class="table-container" id="data-events-table">
-            <div class="table-contents disable-scroll">
-             <table id="w64aac50c15c23c11">
-              <thead>
-               <tr>
-                <th>
-                 Resource type (console)
-                </th>
-                <th>
-                 resources.type value
-                </th>
-                <th>
-                 Data APIs logged to CloudTrail
-                </th>
-               </tr>
-              </thead>
-              <tr>
-               <td tabindex="-1">
-                <b>
-                 SNS topic
-                </b>
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 AWS::SNS::Topic
-                </code>
-               </td>
-               <td tabindex="-1">
-                <div class="itemizedlist">
-                 <ul class="itemizedlist">
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/sns/latest/api/API_Publish.html">
-                     Publish
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/sns/latest/api/API_PublishBatch.html">
-                     PublishBatch
-                    </a>
-                   </p>
-                  </li>
-                 </ul>
-                </div>
-               </td>
-              </tr>
-              <tr>
-               <td tabindex="-1">
-                <b>
-                 SNS platform endpoint
-                </b>
-               </td>
-               <td tabindex="-1">
-                <code class="code">
-                 AWS::SNS::PlatformEndpoint
-                </code>
-               </td>
-               <td tabindex="-1">
-                <div class="itemizedlist">
-                 <ul class="itemizedlist">
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/sns/latest/api/API_Publish.html">
-                     Publish
-                    </a>
-                   </p>
-                  </li>
-                 </ul>
-                </div>
-               </td>
-              </tr>
-             </table>
-            </div>
-           </div>
-           <p>
-            You can configure advanced event selectors to filter on the
-            <code class="code">
-             eventName
-            </code>
-            ,
-            <code class="code">
-             readOnly
-            </code>
-            , and
-            <code class="code">
-             resources.ARN
-            </code>
-            fields to log only those events that
-      are important to you. For more information about these fields, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
-             AdvancedFieldSelector
-            </a>
-            in the
-            <em>
-             AWS CloudTrail API Reference
-            </em>
-            .
-           </p>
            <h2 id="cloudtrail-management-events">
             Management events in CloudTrail
            </h2>
@@ -547,31 +370,6 @@
             <a href="https://docs.aws.amazon.com/iot-mi/latest/APIReference/">
              Managed integrations API Reference
             </a>
-            .
-           </p>
-           <h2 id="cloudtrail-event-examples">
-            Event examples
-           </h2>
-           <p>
-            An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
-           </p>
-           <p>
-            The following example shows a CloudTrail event that demonstrates the
-       operation.
-           </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON">
-       
-    </code></pre>
-           <p>
-            For information about CloudTrail record contents, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
-             CloudTrail
-      record contents
-            </a>
-            in the
-            <em>
-             AWS CloudTrail User Guide
-            </em>
             .
            </p>
            <awsdocs-copyright class="copyright-print">

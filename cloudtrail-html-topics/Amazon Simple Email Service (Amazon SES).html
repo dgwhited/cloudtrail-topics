@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/ses/latest/dg/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Amazon SES is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in Amazon SES. CloudTrail captures API calls for Amazon SES as events. The calls captured include calls from the Amazon SES console and code calls to the Amazon SES API operations. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Amazon SES. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in" name="description"/>
+  <meta content="Amazon SES is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in SES. CloudTrail captures API calls for SES as events. The calls captured include calls from the SES console and code calls to the SES API operations. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for SES. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in" name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon Simple Email Service" name="product"/>
   <meta content="Developer Guide" name="guide"/>
@@ -83,7 +83,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SES&amp;topic_url=https://docs.aws.amazon.com/en_us/ses/latest/dg/logging-using-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/ses/latest/dg/logging-using-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/ses/latest/dg/logging-using-cloudtrail.html" name="feedback-no"/>
-        <meta content="SES,Amazon SES,SES v2,Amazon Simple Email Service,email" name="keywords"/>
+        <meta content="SES,Amazon SES,SES v2,Amazon Simple Email Service,email,CloudTrail,data events,cross-account,logging,management events" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -148,10 +148,17 @@
          </div>
          <div id="page-toc-src">
           <a href="#service-name-info-in-cloudtrail">
-           Amazon SES Information in CloudTrail
+           SES information in CloudTrail
           </a>
-          <a href="#understanding-service-name-entries">
-           Example: Amazon SES Log File Entries
+          <a href="#ses-data-events-cloudtrail">
+           SES data events in
+        CloudTrail
+          </a>
+          <a href="#ct-log-delivery">
+           Log delivery scenarios
+          </a>
+          <a href="#ses-management-events">
+           SES management events
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -169,17 +176,18 @@
            </div>
            <p>
             Amazon SES is integrated with AWS CloudTrail, a service that provides a record of actions taken by a
-    user, role, or an AWS service in Amazon SES. CloudTrail captures API calls for Amazon SES as events. The calls
-    captured include calls from the Amazon SES console and code calls to the Amazon SES API operations. If you
-    create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including
-    events for Amazon SES. If you don't configure a trail, you can still view the most recent events in
-    the CloudTrail console in
+    user, role, or an AWS service in SES. CloudTrail captures API calls for SES as events.
+    The calls captured include calls from the SES console and code calls to the SES
+    API operations. If you create a trail, you can enable continuous delivery of CloudTrail events to an
+    Amazon S3 bucket, including events for SES. If you don't configure a trail, you can still view
+    the most recent events in the CloudTrail console in
             <b>
              Event history
             </b>
-            . Using the information collected by CloudTrail,
-    you can determine the request that was made to Amazon SES, the IP address from which the request was
-    made, who made the request, when it was made, and additional details.
+            . Using the
+    information collected by CloudTrail, you can determine the request that was made to SES, the IP
+    address from which the request was made, who made the request, when it was made, and additional
+    details.
            </p>
            <p>
             To learn more about CloudTrail, including how to configure and enable it, see the
@@ -189,12 +197,12 @@
             .
            </p>
            <h2 id="service-name-info-in-cloudtrail">
-            Amazon SES Information in CloudTrail
+            SES information in CloudTrail
            </h2>
            <p>
             CloudTrail is enabled on your AWS account when you create the account. When supported event
-      activity occurs in Amazon SES, that activity is recorded in a CloudTrail event along with other AWS
-      service events in
+      activity occurs in SES, that activity is recorded in a CloudTrail event along with other
+      AWS service events in
             <b>
              Event history
             </b>
@@ -207,17 +215,17 @@
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account, including events for Amazon SES, create
-      a trail. A
+            For an ongoing record of events in your AWS account, including events for SES,
+      create a trail. A
             <em>
              trail
             </em>
-            enables CloudTrail to deliver log files to an Amazon S3 bucket. By
-      default, when you create a trail in the console, the trail applies to all AWS Regions. The
-      trail logs events from all Regions in the AWS partition and delivers the log files to the
-      Amazon S3 bucket that you specify. Additionally, you can configure other AWS services to further
-      analyze and act upon the event data collected in CloudTrail logs. For more information, see the
-      following:
+            enables CloudTrail to deliver log files to an Amazon S3
+      bucket. By default, when you create a trail in the console, the trail applies to all
+      AWS Regions. The trail logs events from all Regions in the AWS partition and delivers the
+      log files to the Amazon S3 bucket that you specify. Additionally, you can configure other AWS
+      services to further analyze and act upon the event data collected in CloudTrail logs. For more
+      information, see the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -259,88 +267,6 @@
             </ul>
            </div>
            <p>
-            Amazon SES supports logging of all the actions listed in the
-            <a href="https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html">
-             SES API Reference
-            </a>
-            and
-            <a href="https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Operations.html">
-             SES API v2 Reference
-            </a>
-            as events in
-      CloudTrail log files, except for those listed in the note box below:
-           </p>
-           <div class="awsdocs-note">
-            <div class="awsdocs-note-title">
-             <awsui-icon name="status-info" variant="link">
-             </awsui-icon>
-             <h6>
-              Note
-             </h6>
-            </div>
-            <div class="awsdocs-note-text">
-             <p>
-              Amazon SES delivers
-              <em>
-               management events
-              </em>
-              to CloudTrail. Management events include
-        actions that are related to creating and managing resources within your AWS account. In
-        Amazon SES, management events include actions such as creating and deleting identities or receipt
-        rules.
-             </p>
-             <p>
-              Management events are different from
-              <em>
-               data events
-              </em>
-              . Data events are
-        events that are related to accessing and interacting with data within your AWS account. In
-        Amazon SES, data events include actions such as sending emails.
-             </p>
-             <p>
-              Because Amazon SES only delivers management events to CloudTrail, the following events
-              <b>
-               aren't
-              </b>
-              recorded in CloudTrail:
-             </p>
-             <div class="itemizedlist">
-              <ul class="itemizedlist">
-               <li class="listitem">
-                <p>
-                 SendEmail
-                </p>
-               </li>
-               <li class="listitem">
-                <p>
-                 SendRawEmail
-                </p>
-               </li>
-               <li class="listitem">
-                <p>
-                 SendTemplatedEmail
-                </p>
-               </li>
-               <li class="listitem">
-                <p>
-                 SendBulkTemplatedEmail
-                </p>
-               </li>
-              </ul>
-             </div>
-             <p>
-              You can use event publishing to record events related to email sending. For more
-        information, see
-              <a href="./monitor-using-event-publishing.html">
-               Monitor email sending using Amazon SES event
-            publishing
-              </a>
-              .
-             </p>
-            </div>
-           </div>
-           <p>
             Every event or log entry contains information about who generated the request. The
       identity information helps you determine the following:
            </p>
@@ -372,79 +298,508 @@
             </a>
             .
            </p>
-           <h2 id="understanding-service-name-entries">
-            Example: Amazon SES Log File Entries
+           <h2 id="ses-data-events-cloudtrail">
+            SES data events in CloudTrail
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
-      that you specify. CloudTrail log files contain one or more log entries. An event represents a single
-      request from any source and includes information about the requested action, the date and time
-      of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
-      the public API calls, so they don't appear in any specific order.
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            provide information about the resource operations performed on or in a
+      resource. These are also known as data plane operations. Data events are often high-volume
+      activities. By default, CloudTrail doesnât log data events. The CloudTrail event history doesn't record
+      data events.
            </p>
            <p>
-            The following example shows a CloudTrail log entry that demonstrates the
-            <code class="code">
-             DeleteIdentity
-            </code>
-            and
-            <code class="code">
-             VerifyEmailIdentity
-            </code>
-            actions.
+            Additional charges apply for data events. For more information about CloudTrail pricing, see
+            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+             <span>
+              AWS CloudTrail pricing
+             </span>
+             <awsui-icon class="awsdocs-link-icon" name="external">
+             </awsui-icon>
+            </a>
+            .
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-  "Records":[
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              Email sending activity via SES SMTP Interface is not logged to CloudTrail events. For
+        comprehensive activity logging, use the latest SES APIs in the
+              <a href="https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html">
+               SES API Reference
+              </a>
+              and
+              <a href="https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Operations.html">
+               SES API v2 Reference
+              </a>
+              .
+             </p>
+            </div>
+           </div>
+           <p>
+            The following table lists the SES resource types for which you can log data events.
+      The
+            <em>
+             Data event type (console)
+            </em>
+            column shows the value to choose from the
+            <b>
+             Data event type
+            </b>
+            list on the CloudTrail console. The
+            <em>
+             resources.type
+        value
+            </em>
+            column shows the
+            <code class="code">
+             resources.type
+            </code>
+            value, which you would specify
+      when configuring advanced event selectors using the column shows the AWS CLI or CloudTrail APIs. The
+            <em>
+             Data APIs logged to CloudTrail
+            </em>
+            column shows the API calls logged to CloudTrail for
+      the resource type.
+           </p>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w240aac49c22b7c21c13">
+              <caption>
+               SES resource types for data events
+              </caption>
+              <thead>
+               <tr>
+                <th>
+                 Data event type (console)
+                </th>
+                <th>
+                 resources.type value
+                </th>
+                <th>
+                 Data APIs logged to CloudTrail
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td style="vertical-align: middle;" tabindex="-1">
+                SES identity
+               </td>
+               <td style="vertical-align: middle;" tabindex="-1">
+                AWS::SES::EmailIdentity
+               </td>
+               <td rowspan="2" style="vertical-align: middle;" tabindex="-1">
+                <p>
+                 <b>
+                  SES:
+                 </b>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference/API_SendEmail.html">
+                  SendEmail
+                 </a>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference/API_SendRawEmail.html">
+                  SendRawEmail
+                 </a>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference/API_SendTemplatedEmail.html">
+                  SendTemplatedEmail
+                 </a>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference/API_SendBulkTemplatedEmail.html">
+                  SendBulkTemplatedEmail
+                 </a>
+                </p>
+                <p>
+                 <b>
+                  SES v2:
+                 </b>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendEmail.html">
+                  SendEmail
+                 </a>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendBulkEmail.html">
+                  SendBulkEmail
+                 </a>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td style="vertical-align: middle;" tabindex="-1">
+                SES configuration set
+               </td>
+               <td style="vertical-align: middle;" tabindex="-1">
+                <p>
+                 AWS::SES::ConfigurationSet
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td style="vertical-align: middle;" tabindex="-1">
+                SES template
+               </td>
+               <td style="vertical-align: middle;" tabindex="-1">
+                AWS::SES::Template
+               </td>
+               <td style="vertical-align: middle;" tabindex="-1">
+                <p>
+                 <b>
+                  SES:
+                 </b>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference/API_SendTemplatedEmail.html">
+                  SendTemplatedEmail
+                 </a>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference/API_SendBulkTemplatedEmail.html">
+                  SendBulkTemplatedEmail
+                 </a>
+                </p>
+                <p>
+                 <b>
+                  SES v2:
+                 </b>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendEmail.html">
+                  SendEmail
+                 </a>
+                </p>
+                <p>
+                 <a href="https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendBulkEmail.html">
+                  SendBulkEmail
+                 </a>
+                </p>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <p>
+            The following example shows how to log all data events for all SES email identities
+      by using the
+            <code class="code">
+             --advanced-event-selectors
+            </code>
+            parameter:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">aws cloudtrail put-event-selectors \
+--region Region \
+--trail-name TrailName \
+--advanced-event-selectors 
+'[
     <span>{</span>
-      "awsRegion":"us-west-2",
-      "eventID":"0ffa308d-1467-4259-8be3-c749753be325",
-      "eventName":"DeleteIdentity",
-      "eventSource":"ses.amazonaws.com",
-      "eventTime":"2018-02-02T21:34:50Z",
-      "eventType":"AwsApiCall",
-      "eventVersion":"1.02",
-      "recipientAccountId":"111122223333",
-      "requestID":"50b87bfe-ab23-11e4-9106-5b36376f9d12",
-      "requestParameters":<span>{</span>
-        "identity":"amazon.com"
-      },
-      "responseElements":null,
-      "sourceIPAddress":"192.0.2.0",
-      "userAgent":"aws-sdk-java/unknown-version",
-      "userIdentity":<span>{</span>
-        "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
-        "accountId":"111122223333",
-        "arn":"arn:aws:iam::111122223333:root",
-        "principalId":"111122223333",
-        "type":"Root"
-      }
-    },
-    <span>{</span>
-      "awsRegion":"us-west-2",
-      "eventID":"5613b0ff-d6c6-4526-9b53-a603a9231725",
-      "eventName":"VerifyEmailIdentity",
-      "eventSource":"ses.amazonaws.com",
-      "eventTime":"2018-02-04T01:05:33Z",
-      "eventType":"AwsApiCall",
-      "eventVersion":"1.02",
-      "recipientAccountId":"111122223333",
-      "requestID":"eb2ff803-ac09-11e4-8ff5-a56a3119e253",
-      "requestParameters":<span>{</span>
-        "emailAddress":"sender@example.com"
-      },
-      "responseElements":null,
-      "sourceIPAddress":"192.0.2.0",
-      "userAgent":"aws-sdk-java/unknown-version",
-      "userIdentity":<span>{</span>
-        "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
-        "accountId":"111122223333",
-        "arn":"arn:aws:iam::111122223333:root",
-        "principalId":"111122223333",
-        "type":"Root"
-      }
+        "Name": "Log SES data plane actions for all email identities",
+        "FieldSelectors": [
+        <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
+        <span>{</span> "Field": "resources.type", "Equals": ["AWS::SES::EmailIdentity"] }
+       ]
     }
-  ]
-}</code></pre>
+]'</code></pre>
+           <p>
+            You can further refine the advanced event selectors to filter on the
+            <code class="code">
+             eventName
+            </code>
+            ,
+            <code class="code">
+             readOnly
+            </code>
+            , and
+            <code class="code">
+             resources.ARN
+            </code>
+            fields to log
+      only those events that are important to you. For more information about these fields, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
+             AdvancedFieldSelector
+            </a>
+            in the
+            <em>
+             AWS CloudTrail API Reference
+            </em>
+            . For more examples on how to log data events see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+             Logging data events
+            </a>
+            for
+      trails.
+           </p>
+           <h2 id="ct-log-delivery">
+            CloudTrail log delivery scenarios for SES logging
+           </h2>
+           <p>
+            CloudTrail delivers logs based on such factors as account and resource ownership, identity type,
+      and region. The following matrix explains to whom and where the logs would be delivered to
+      based on specific combinations of these factors.
+           </p>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w240aac49c22b7c23b5">
+              <thead>
+               <tr>
+                <th>
+                 Scenario type
+                </th>
+                <th>
+                 Account roles
+                </th>
+                <th>
+                 Resources
+                </th>
+                <th>
+                 Request flow
+                </th>
+                <th>
+                 Log delivery
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td rowspan="2" style="vertical-align: middle;" tabindex="-1">
+                <b>
+                 Single cross-account
+                </b>
+               </td>
+               <td rowspan="2" style="vertical-align: middle;" tabindex="-1">
+                <p>
+                 AccountÂ A:
+                 <em>
+                  Â resourceÂ owner
+                 </em>
+                </p>
+                <p>
+                 AccountÂ B
+                 <em>
+                  :Â requester
+                 </em>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Email identity
+               </td>
+               <td tabindex="-1">
+                B â A's email identity
+               </td>
+               <td tabindex="-1">
+                Logs delivered to both A and B
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                Feedback forwarding email
+               </td>
+               <td tabindex="-1">
+                B â A's feedback email
+               </td>
+               <td tabindex="-1">
+                Logs delivered to both A and B
+               </td>
+              </tr>
+              <tr>
+               <td style="vertical-align: middle;" tabindex="-1">
+                <b>
+                 Multiple cross-account
+                </b>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 AccountÂ A:
+                 <em>
+                  Â feedbackÂ emailÂ owner
+                 </em>
+                </p>
+                <p>
+                 AccountÂ B:
+                 <em>
+                  Â emailÂ identityÂ owner
+                 </em>
+                </p>
+                <p>
+                 AccountÂ C:
+                 <em>
+                  Â requester
+                 </em>
+                </p>
+               </td>
+               <td style="vertical-align: middle;" tabindex="-1">
+                <p>
+                 Feedback email (A)
+                </p>
+                <p>
+                 Email identity (B)
+                </p>
+               </td>
+               <td style="vertical-align: middle;" tabindex="-1">
+                C â A's feedback email + B's email identity
+               </td>
+               <td style="vertical-align: middle;" tabindex="-1">
+                Logs delivered to A, B, and C
+               </td>
+              </tr>
+              <tr>
+               <td style="vertical-align: middle;" tabindex="-1">
+                <b>
+                 Global endpoint (Single account)
+                </b>
+               </td>
+               <td style="vertical-align: middle;" tabindex="-1">
+                AccountÂ A:
+                <em>
+                 Â ownerÂ &amp;Â requester
+                </em>
+               </td>
+               <td tabindex="-1">
+                Global endpoint (primary:Â
+                <em>
+                 euâwestâ1
+                </em>
+                &amp;
+                secondary:Â
+                <em>
+                 usâwestâ2
+                </em>
+                )
+               </td>
+               <td tabindex="-1">
+                A â Global endpoint
+               </td>
+               <td tabindex="-1">
+                Logs delivered to A in region that processed the request (either
+                <em>
+                 euâwestâ1
+                </em>
+                or
+                <em>
+                 usâwestâ2
+                </em>
+                )
+               </td>
+              </tr>
+              <tr>
+               <td style="vertical-align: middle;" tabindex="-1">
+                <b>
+                 Global endpoint (Cross-account)
+                </b>
+               </td>
+               <td style="vertical-align: middle;" tabindex="-1">
+                <p>
+                 AccountÂ A:
+                 <em>
+                  Â emailÂ identityÂ owner
+                 </em>
+                </p>
+                <p>
+                 AccountÂ B:
+                 <em>
+                  Â requester
+                 </em>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 Email identity (A)
+                </p>
+                <p>
+                 Global endpoint (B) (
+                 <em>
+                  euâwestâ1
+                 </em>
+                 &amp;
+                 <em>
+                  usâwestâ2
+                 </em>
+                 )
+                </p>
+               </td>
+               <td tabindex="-1">
+                B â A's email identity via Global endpoint
+               </td>
+               <td tabindex="-1">
+                Logs delivered to both A and B in region that processed the request (either
+                <em>
+                 euâwestâ1
+                </em>
+                or
+                <em>
+                 usâwestâ2
+                </em>
+                )
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <div class="itemizedlist">
+              <ul class="itemizedlist">
+               <li class="listitem">
+                <p>
+                 CloudTrail always delivers logs to the requester account.
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 Resource owners receive logs even if they didn't perform the operation.
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 For Global endpoints, both accounts need CloudTrail subscriptions in all configured regions.
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 During regional impairments, all logs appear in the healthy region.
+                </p>
+               </li>
+              </ul>
+             </div>
+            </div>
+           </div>
+           <h2 id="ses-management-events">
+            SES management events in CloudTrail
+           </h2>
+           <p>
+            SES delivers management events to CloudTrail. Management events include actions that are
+      related to creating and managing resources within your AWS account. In Amazon SES,
+      management events include actions such as creating and deleting identities or receipt rules.
+      For more information about SES API operations, see the
+            <a href="https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html">
+             SES API Reference
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_Operations.html">
+             SES API v2 Reference
+            </a>
+            .
+           </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -479,8 +834,8 @@
             <div accesskey="p" class="prev-link" href="./security-monitoring-overview.html" id="previous">
              Logging and monitoring
             </div>
-            <div accesskey="n" class="next-link" href="./compliance-validation.html" id="next">
-             Compliance validation
+            <div accesskey="n" class="next-link" href="./ses-log-file-entries.html" id="next">
+             SES log file entries
             </div>
            </div>
           </div>

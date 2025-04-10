@@ -83,7 +83,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SES&amp;topic_url=https://docs.aws.amazon.com/en_us/ses/latest/dg/logging-using-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/ses/latest/dg/logging-using-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/ses/latest/dg/logging-using-cloudtrail.html" name="feedback-no"/>
-        <meta content="SES,Amazon SES,SES v2,Amazon Simple Email Service,email,CloudTrail,data events,cross-account,logging,management events" name="keywords"/>
+        <meta content="SES,Amazon SES,SES v2,Amazon Simple Email Service,email,CloudTrail,data events,cross-account,logging,management events,log files" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -159,6 +159,9 @@
           </a>
           <a href="#ses-management-events">
            SES management events
+          </a>
+          <a href="#ses-log-file-entries">
+           CloudTrail log file entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -373,7 +376,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w240aac49c22b7c21c13">
+             <table id="w239aac49c22b7c21c13">
               <caption>
                SES resource types for data events
               </caption>
@@ -553,7 +556,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents">
-             <table id="w240aac49c22b7c23b5">
+             <table id="w239aac49c22b7c23b5">
               <thead>
                <tr>
                 <th>
@@ -800,6 +803,290 @@
             </a>
             .
            </p>
+           <h2 id="ses-log-file-entries">
+            CloudTrail log file entries for SES
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3
+      bucket that you specify. CloudTrail log files contain one or more log entries. An event represents a
+      single request from any source and includes information about the requested action, the date
+      and time of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack
+      trace of the public API calls, so they don't appear in any specific order.
+           </p>
+           <p>
+            The following examples demonstrate CloudTrail logs of these event types:
+           </p>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Event types
+            </h6>
+            <ul>
+             <li>
+              <p>
+               <a href="#DeleteIdentity">
+                DeleteIdentity
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#VerifyEmailIdentity">
+                VerifyEmailIdentity
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#SendEmail-with-simple-content">
+                SendEmail with simple content
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#SendEmail-with-templated-content">
+                SendEmail with templated content
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h3 id="DeleteIdentity">
+            DeleteIdentity
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+  "Records":[
+    <span>{</span>
+        "eventVersion": "1.11",
+        "userIdentity": <span>{</span>
+            "type": "AssumedRole",
+            "principalId": "AROA4DO2KAWIPZEXAMPLE:myUserName",
+            "arn": "arn:aws:sts::111122223333:assumed-role/users/myUserName",
+            "accountId": "111122223333",
+            "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+            "sessionContext": <span>{</span>
+                "sessionIssuer": <span>{</span>
+                    "type": "Role",
+                    "principalId": "AROA4DO2KAWIPZEXAMPLE",
+                    "arn": "arn:aws:iam::111122223333:role/admin-role",
+                    "accountId": "111122223333",
+                    "userName": "myUserName"
+                },
+                "attributes": <span>{</span>
+                    "creationDate": "2025-02-27T09:53:35Z",
+                    "mfaAuthenticated": "false"
+                }
+            }
+        },
+        "eventTime": "2025-02-27T09:54:31Z",
+        "eventSource": "ses.amazonaws.com",
+        "eventName": "DeleteIdentity",
+        "awsRegion": "us-east-1",
+        "sourceIPAddress": "192.0.2.0",
+        "userAgent": "aws-cli/2.23.4",
+        "requestParameters": <span>{</span>
+            "identity": "sender@example.com"
+        },
+        "responseElements": null,
+        "requestID": "50b87bfe-ab23-11e4-9106-5b36376f9d12",
+        "eventID": "0ffa308d-1467-4259-8be3-c749753be325",
+        "readOnly": false,
+        "eventType": "AwsApiCall",
+        "managementEvent": true,
+        "recipientAccountId": "111122223333",
+        "eventCategory": "Management",
+        "tlsDetails": <span>{</span>
+            "tlsVersion": "TLSv1.3",
+            "cipherSuite": "TLS_AES_128_GCM_SHA256",
+            "clientProvidedHostHeader": "email.us-east-1.amazonaws.com"
+        }
+    }
+  ]
+}</code></pre>
+           <h3 id="VerifyEmailIdentity">
+            VerifyEmailIdentity
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+  "Records":[
+    <span>{</span>
+        "eventVersion": "1.11",
+        "userIdentity": <span>{</span>
+            "type": "AssumedRole",
+            "principalId": "AROA4DO2KAWIPZEXAMPLE:myUserName",
+            "arn": "arn:aws:sts::111122223333:assumed-role/users/myUserName",
+            "accountId": "111122223333",
+            "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+            "sessionContext": <span>{</span>
+                "sessionIssuer": <span>{</span>
+                    "type": "Role",
+                    "principalId": "AROA4DO2KAWIPZEXAMPLE",
+                    "arn": "arn:aws:iam::111122223333:role/admin-role",
+                    "accountId": "111122223333",
+                    "userName": "myUserName"
+                },
+                "attributes": <span>{</span>
+                    "creationDate": "2025-02-27T09:53:35Z",
+                    "mfaAuthenticated": "false"
+                }
+            }
+        },
+        "eventTime": "2025-02-27T09:56:20Z",
+        "eventSource": "ses.amazonaws.com",
+        "eventName": "VerifyEmailIdentity",
+        "awsRegion": "us-east-1",
+        "sourceIPAddress": "192.0.2.0",
+        "userAgent": "aws-cli/2.23.4",
+        "requestParameters": <span>{</span>
+            "emailAddress": "sender@example.com"
+        },
+        "responseElements": null,
+        "requestID": "eb2ff803-ac09-11e4-8ff5-a56a3119e253",
+        "eventID": "5613b0ff-d6c6-4526-9b53-a603a9231725",
+        "readOnly": false,
+        "eventType": "AwsApiCall",
+        "managementEvent": true,
+        "recipientAccountId": "111122223333",
+        "eventCategory": "Management",
+        "tlsDetails": <span>{</span>
+            "tlsVersion": "TLSv1.3",
+            "cipherSuite": "TLS_AES_128_GCM_SHA256",
+            "clientProvidedHostHeader": "email.us-east-1.amazonaws.com"
+        }
+    }
+  ]
+}</code></pre>
+           <h3 id="SendEmail-with-simple-content">
+            SendEmail with simple content
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+  "Records":[<span>{</span>
+       "eventTime": "2025-01-24T11:43:00Z",
+        "eventSource": "ses.amazonaws.com",
+        "eventName": "SendEmail",
+        "awsRegion": "us-east-1",
+        "sourceIPAddress": "192.0.2.0",
+        "userAgent": "aws-cli/2.23.4 md/awscrt#0.23.4",
+        "requestParameters": <span>{</span>
+            "destination": <span>{</span>
+                "bccAddresses": ["recipients@example.com"],
+                "toAddresses": ["recipients@example.com"],
+                "ccAddresses": ["recipients@example.com"]
+            },
+            "message": <span>{</span>
+                "subject": <span>{</span>
+                    "charset": "UTF-8",
+                    "data": "Example subject"
+                },
+                "body": <span>{</span>
+                    "html": <span>{</span>
+                        "charset": "UTF-8",
+                        "data": "Example body html"
+                    },
+                    "text": <span>{</span>
+                        "charset": "UTF-8",
+                        "data": "Example body text"
+                    }
+                }
+            },
+            "source": "sender@example.com"
+        },
+        "responseElements": null,
+        "requestID": "ab2cc803-ac09-11d7-8bb8-a56a3119e476",
+        "eventID": "eb834e01-f168-435f-92c0-c36278378b6e",
+        "readOnly": true,
+        "resources": [<span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::SES::EmailIdentity",
+            "ARN": "arn:aws:ses:us-east-1:111122223333:identity/sender@example.com"
+        }],
+        "eventType": "AwsApiCall",
+        "managementEvent": false,
+        "recipientAccountId": "111122223333",
+        "eventCategory": "Data",
+        "tlsDetails": <span>{</span>
+            "tlsVersion": "TLSv1.3",
+            "cipherSuite": "TLS_AES_128_GCM_SHA256",
+            "clientProvidedHostHeader": "email.us-east-1.amazonaws.com"
+        }
+    }
+  ]
+}</code></pre>
+           <h3 id="SendEmail-with-templated-content">
+            SendEmail with templated content
+           </h3>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+        "eventVersion": "1.11",
+        "userIdentity": <span>{</span>
+            "type": "AssumedRole",
+            "principalId": "AROA4DO2KAWIPZEXAMPLE:myUserName",
+            "arn": "arn:aws:sts::111122223333:assumed-role/users/myUserName",
+            "accountId": "111122223333",
+            "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+            "sessionContext": <span>{</span>
+                "sessionIssuer": <span>{</span>
+                    "type": "Role",
+                    "principalId": "AROA4DO2KAWIPZEXAMPLE",
+                    "arn": "arn:aws:iam::111122223333:role/admin-role",
+                    "accountId": "111122223333",
+                    "userName": "admin-role"
+                },
+                "attributes": <span>{</span>
+                    "creationDate": "2025-03-05T18:51:06Z",
+                    "mfaAuthenticated": "false"
+                }
+            }
+        },
+        "eventTime": "2025-03-05T19:16:29Z",
+        "eventSource": "ses.amazonaws.com",
+        "eventName": "SendEmail",
+        "awsRegion": "us-east-1",
+        "sourceIPAddress": "192.0.2.0",
+        "userAgent": "aws-cli/2.23.4",
+        "requestParameters": <span>{</span>
+            "fromEmailAddress": "sender@example.com",
+            "destination": <span>{</span>
+                "toAddresses": ["recipients@example.com"],
+                "bccAddresses": ["recipients@example.com"],
+                "ccAddresses": ["recipients@example.com"]
+            },
+            "emailTags": [<span>{</span>
+                "value": "test",
+                "name": "campaign"
+            }, <span>{</span>
+                "value": "cli-test",
+                "name": "sender"
+            }],
+            "replyToAddresses": ["recipients@example.com"],
+            "content": <span>{</span>
+                "template": <span>{</span>
+                    "templateData": "Example template data",
+                    "templateName": "TestTemplate"
+                }
+            }
+        },
+        "responseElements": null,
+        "requestID": "50b87bfe-ab23-11e4-9106-5b36376f9d12",
+        "eventID": "0ffa308d-1467-4259-8be3-c749753be325",
+        "readOnly": true,
+        "resources": [<span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::SES::EmailIdentity",
+            "ARN": "arn:aws:ses:us-east-1:111122223333:identity/sender@example.com"
+        }, <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::SES::Template",
+            "ARN": "arn:aws:ses:us-east-1:111122223333:template/TestTemplate"
+        }],
+        "eventType": "AwsApiCall",
+        "managementEvent": false,
+        "recipientAccountId": "111122223333",
+        "eventCategory": "Data",
+        "tlsDetails": <span>{</span>
+            "tlsVersion": "TLSv1.3",
+            "cipherSuite": "TLS_AES_128_GCM_SHA256",
+            "clientProvidedHostHeader": "email.us-east-1.amazonaws.com"
+        }
+    }</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -834,8 +1121,8 @@
             <div accesskey="p" class="prev-link" href="./security-monitoring-overview.html" id="previous">
              Logging and monitoring
             </div>
-            <div accesskey="n" class="next-link" href="./ses-log-file-entries.html" id="next">
-             SES log file entries
+            <div accesskey="n" class="next-link" href="./compliance-validation.html" id="next">
+             Compliance validation
             </div>
            </div>
           </div>

@@ -970,11 +970,8 @@
             </ul>
            </div>
            <p>
-            Task metrics are divided into statistics between the replication host and the source
-            endpoint, and statistics between the replication host and the target endpoint. You can
-            determine the total statistic for a task by adding two related statistics together. For
-            example, you can determine the total latency, or replica lag, for a task by combining
-            the
+            Task metrics are divided into statistics for the replication host and the source endpoint,
+        as well as for the replication host and the target endpoint. The
             <b>
              CDCLatencySource
             </b>
@@ -982,7 +979,27 @@
             <b>
              CDCLatencyTarget
             </b>
-            values.
+            can be
+        used to identify the cause of latency in a task by comparing these related statistics. For
+        example, if the
+            <b>
+             CDCLatencySource
+            </b>
+            value is nearly the same as the
+            <b>
+             CDCLatencyTarget
+            </b>
+            value, you should first check the source side.
+        However, if the
+            <b>
+             CDCLatencyTarget
+            </b>
+            is higher than the
+            <b>
+             CDCLatencySource
+            </b>
+            , you should focus on checking the target side
+        latency.
            </p>
            <p>
             Task metric values can be influenced by current activity on your source database. For

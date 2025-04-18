@@ -872,7 +872,7 @@
            <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
     "eventVersion": "1.09",
     "userIdentity": <span>{</span>
-        "accountId": "123456789012",
+        "accountId": "<code class="replaceable">account-id</code>",
         "invokedBy": "states.amazonaws.com"
     },
     "eventTime": "2024-05-01T01:23:45Z",
@@ -887,14 +887,14 @@
     "readOnly": false,
     "resources": [
         <span>{</span>
-            "accountId": "123456789012",
+            "accountId": "<code class="replaceable">account-id</code>",
             "type": "AWS::StepFunctions::StateMachine",
-            "ARN": "arn:aws:states:us-east-1:123456789012:stateMachine:ExampleStateMachine"
+            "ARN": "arn:aws:states:<code class="replaceable">region</code>:<code class="replaceable">account-id</code>:stateMachine:ExampleStateMachine"
         }
     ],
     "eventType": "AwsServiceEvent",
     "managementEvent": false,
-    "recipientAccountId": "123456789012",
+    "recipientAccountId": "<code class="replaceable">account-id</code>",
     "serviceEventDetails": <span>{</span>
         "httpMethod": "GET",
         "httpEndpoint": "https://example.com"
@@ -917,21 +917,21 @@
     "userIdentity": <span>{</span>
         "type": "IAMUser",
         "principalId": "AIDAJYDLDBVBI4EXAMPLE",
-        "arn": "arn:aws:iam::123456789012:user/test-user",
-        "accountId": "123456789012",
+        "arn": "arn:aws:iam::<code class="replaceable">account-id</code>:user/test-user",
+        "accountId": "<code class="replaceable">account-id</code>",
         "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
         "userName": "test-user"
     },
     "eventTime": "2024-05-01T01:23:45Z",
     "eventSource": "states.amazonaws.com",
     "eventName": "CreateStateMachine",
-    "awsRegion": "us-east-1",
+    "awsRegion": "<code class="replaceable">region</code>",
     "sourceIPAddress": "<code class="replaceable">AWS Internal</code>",
     "userAgent": "<code class="replaceable">AWS Internal</code>",
     "requestParameters": <span>{</span>
         "name": "MyStateMachine",
         "definition": "HIDDEN_DUE_TO_SECURITY_REASONS",
-        "roleArn": "arn:aws:iam::123456789012:role/MyStateMachineRole",
+        "roleArn": "arn:aws:iam::<code class="replaceable">account-id</code>:role/MyStateMachineRole",
         "type": "STANDARD",
         "loggingConfiguration": <span>{</span>
             "level": "OFF",
@@ -944,7 +944,7 @@
         "publish": false
     },
     "responseElements": <span>{</span>
-        "stateMachineArn": "arn:aws:states:us-east-1:123456789012:stateMachine:MyStateMachine",
+        "stateMachineArn": "arn:aws:states:<code class="replaceable">region</code>:<code class="replaceable">account-id</code>:stateMachine:MyStateMachine",
         "creationDate": "May 1, 2024 1:23:45 AM"
     },
     "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLEaaaaa",
@@ -952,7 +952,7 @@
     "readOnly": false,
     "eventType": "AwsApiCall",
     "managementEvent": true,
-    "recipientAccountId": "123456789012",
+    "recipientAccountId": "<code class="replaceable">account-id</code>",
     "eventCategory": "Management"
 }</code></pre>
            <p>

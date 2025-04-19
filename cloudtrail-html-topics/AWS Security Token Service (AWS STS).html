@@ -417,22 +417,22 @@
             .
            </p>
            <p>
-            AWS CloudTrail logs will contain MFA information when the IAM user sign in with MFA. If
-        the IAM user assumes an IAM role, CloudTrail will also log
+            AWS CloudTrail logs will contain MFA information when the IAM user sign in with MFA. If the
+      IAM user assumes an IAM role, CloudTrail will also log
             <code class="code">
-             mfaAuthenticated:
-          true
+             mfaAuthenticated: true
             </code>
-            in the
+            in
+      the
             <code class="code">
              sessionContext
             </code>
-            attributes for actions performed using
-        the assumed role. However, CloudTrail logging is separate from what IAM requires when API
-        calls are made with the assumed role's credentials. For more information, see
+            attributes for actions performed using the assumed role.
+      However, CloudTrail logging is separate from what IAM requires when API calls are made with the
+      assumed role's credentials. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
              CloudTrail
-          userIdentity Element
+        userIdentity Element
             </a>
             .
            </p>
@@ -1511,13 +1511,12 @@
           event using the global endpoint in CloudTrail log file
            </h3>
            <p>
-            Starting in early 2025, AWS is making changes to the AWS Security Token Service (AWS STS) global endpoint
+            For requests to the AWS Security Token Service (AWS STS) global endpoint
           (
             <code class="code">
              https://sts.amazonaws.com
             </code>
-            ) to enhance its resiliency and performance. As
-        part of these changes, AWS STS will start including additional AWS CloudTrail log fields
+            ), AWS STS includes additional AWS CloudTrail log fields:
             <code class="code">
              endpointType
             </code>
@@ -1525,16 +1524,15 @@
             <code class="code">
              awsServingRegion
             </code>
-            under the
-            <code class="code">
-             RequestDetails
-            </code>
-            element to log the serving AWS Region and endpoint type
-        being called under the
+            . These fields appear under the
             <code class="code">
              addtionalEventData
             </code>
-            element. The
+            <code class="code">
+             RequestDetails
+            </code>
+            element to log the serving AWS Region and endpoint type being
+        called. The
             <code class="code">
              endpointType
             </code>

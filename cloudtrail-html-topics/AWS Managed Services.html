@@ -425,70 +425,21 @@
              Linux
             </strong>
            </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               /var/log/amazon/ssm/amazon-ssm-agent.log
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/amazon/ssm/errors.log
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/audit/audit.log
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/cloud-init-output.log
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/cloud-init.log
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/cron
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/maillog
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/messages
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/secure
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/spooler
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/yum.log
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               /var/log/zypper.log
-              </p>
-             </li>
-            </ul>
-           </div>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">/var/log/amazon/ssm/amazon-ssm-agent.log
+/var/log/amazon/ssm/errors.log
+/var/log/audit/audit.log
+/var/log/auth.log
+/var/log/cloud-init-output.log
+/var/log/cron
+/var/log/dnf.log
+/var/log/dpkg.log
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+/var/log/syslog
+/var/log/yum.log
+/var/log/zypper.log</code></pre>
            <p>
             For more information, see
             <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html">
@@ -502,30 +453,10 @@
              Windows
             </strong>
            </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               C:\\ProgramData\\Amazon\\SSM\\Logs\\amazon-ssm-agent.log
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               C:\\ProgramData\\Amazon\\SSM\\Logs\\amazon-cloudwatch-agent.log
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               C:\\ProgramData\\Amazon\\SSM\\Logs\\errors.log
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               C:\\cfn\\log\\cfn-init.log
-              </p>
-             </li>
-            </ul>
-           </div>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">C:\\ProgramData\\Amazon\\SSM\\Logs\\amazon-ssm-agent.log
+C:\\ProgramData\\Amazon\\SSM\\Logs\\amazon-cloudwatch-agent.log
+C:\\ProgramData\\Amazon\\SSM\\Logs\\errors.log
+C:\\cfn\\log\\cfn-init.log</code></pre>
            <p>
             For more information, see
             <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/QuickStartWindows2016.html#send_logs_to_cwl_json">

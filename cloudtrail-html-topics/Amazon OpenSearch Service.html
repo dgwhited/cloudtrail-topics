@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-cloudtrailauditing.html" rel="canonical"/>
-  <meta content="Amazon OpenSearch Service integrates with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in OpenSearch Service. CloudTrail captures all configuration API calls for OpenSearch Service as events." name="description"/>
+  <meta content="Track and audit configuration changes in Amazon OpenSearch Service by monitoring API calls with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon OpenSearch Service" name="product"/>
   <meta content="Developer Guide" name="guide"/>
@@ -190,13 +190,12 @@
               <code class="code">
                GetUpgradeStatus
               </code>
-              . CloudTrail
-      doesn't capture calls to the
+              . CloudTrail doesn't capture calls to
+      the
               <a href="./supported-operations.html">
                OpenSearch APIs
               </a>
-              , such
-      as
+              , such as
               <code class="code">
                _search
               </code>
@@ -213,17 +212,16 @@
             </div>
            </div>
            <p>
-            The captured calls include calls from the OpenSearch Service console, AWS CLI, or an AWS SDK. If
-      you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket,
-      including events for OpenSearch Service. If you don't configure a trail, you can still view the most
-      recent events on the CloudTrail console in
+            The captured calls include calls from the OpenSearch Service console, AWS CLI, or an AWS SDK. If you
+    create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including
+    events for OpenSearch Service. If you don't configure a trail, you can still view the most recent events on
+    the CloudTrail console in
             <b>
              Event history
             </b>
-            . Using the
-      information collected by CloudTrail, you can determine the request that was made to OpenSearch Service, the
-      IP address from which the request was made, who made the request, when it was made, and
-      additional details.
+            . Using the information collected by CloudTrail,
+    you can determine the request that was made to OpenSearch Service, the IP address from which the request was
+    made, who made the request, when it was made, and additional details.
            </p>
            <p>
             To learn more about CloudTrail, see the
@@ -236,8 +234,8 @@
             Amazon OpenSearch Service information in CloudTrail
            </h2>
            <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs
-      in OpenSearch Service, that activity is recorded in a CloudTrail event along with other AWS service events in
+            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
+      OpenSearch Service, that activity is recorded in a CloudTrail event along with other AWS service events in
             <b>
              Event history
             </b>
@@ -250,13 +248,13 @@
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account account, including events for
-      OpenSearch Service, create a trail. A
+            For an ongoing record of events in your AWS account account, including events for OpenSearch Service,
+      create a trail. A
             <em>
              trail
             </em>
-            enables CloudTrail to deliver log files to an
-      Amazon S3 bucket. By default, when you create a trail in the console, the trail applies to all
+            enables CloudTrail to deliver log files to an Amazon S3
+      bucket. By default, when you create a trail in the console, the trail applies to all
       AWS Regions. The trail logs events from all Regions in the AWS partition
       and delivers the log files to the Amazon S3 bucket that you specify. Additionally, you can
       configure other AWS services to further analyze and act upon the event data collected in
@@ -267,8 +265,8 @@
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Creating a
-              trail for your AWS account
+                Creating a trail
+            for your AWS account
                </a>
               </p>
              </li>
@@ -282,8 +280,8 @@
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
-                Configuring Amazon
-            SNS notifications for CloudTrail
+                Configuring Amazon SNS
+            notifications for CloudTrail
                </a>
               </p>
              </li>
@@ -304,26 +302,26 @@
            <p>
             All OpenSearch Service configuration API actions are logged by CloudTrail and are documented in the
             <a href="https://docs.aws.amazon.com/opensearch-service/latest/APIReference/Welcome.html">
-             Amazon OpenSearch Service API Reference
+             Amazon
+        OpenSearch Service API Reference
             </a>
             .
            </p>
            <p>
             Every event or log entry contains information about who generated the request. The
-         identity information helps you determine the following:
+      identity information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               Whether the request was made with root or AWS Identity and Access Management (IAM) user
-               credentials
+               Whether the request was made with root or AWS Identity and Access Management (IAM) user credentials
               </p>
              </li>
              <li class="listitem">
               <p>
-               Whether the request was made with temporary security credentials for a
-               role or federated user
+               Whether the request was made with temporary security credentials for a role or
+          federated user
               </p>
              </li>
              <li class="listitem">
@@ -336,8 +334,8 @@
            <p>
             For more information, see the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail
-         userIdentity Element
+             CloudTrail userIdentity
+        Element
             </a>
             .
            </p>
@@ -346,12 +344,11 @@
         entries
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3
-         bucket that you specify. CloudTrail log files contain one or more log entries. An event
-         represents a single request from any source and includes information about the
-         requested action, the date and time of the action, request parameters, and so on.
-         CloudTrail log files aren't an ordered stack trace of the public API calls, so they don't
-         appear in any specific order.
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
+      that you specify. CloudTrail log files contain one or more log entries. An event represents a single
+      request from any source and includes information about the requested action, the date and time
+      of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
+      the public API calls, so they don't appear in any specific order.
            </p>
            <p>
             The following example shows a CloudTrail log entry that demonstrates the

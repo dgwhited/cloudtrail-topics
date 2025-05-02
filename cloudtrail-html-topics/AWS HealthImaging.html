@@ -289,29 +289,30 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              AWS HealthImaging supports two types of CloudTrail events â management events and data events.
-              <em>
-               Management events
-              </em>
-              are the general events that every AWS service
-        generates, including HealthImaging. By default, logging is applied to management events for every
-        HealthImaging API call that has it enabled.
-              <em>
-               Data events
-              </em>
-              are billable and
-        generally reserved for APIs that have high transactions per second (tps), so you can opt out
-        of having CloudTrail logs for cost purposes.
+              AWS HealthImaging supports two types of CloudTrail events â
+              <b>
+               management
+          events
+              </b>
+              and
+              <b>
+               data events
+              </b>
+              . Management events are
+        the general events that every AWS service generates, including HealthImaging. By default, logging
+        is applied to management events for every HealthImaging API call that has it enabled. Data events
+        are billable and generally reserved for APIs that have high transactions per second (tps),
+        so you can opt out of having CloudTrail logs for cost purposes.
              </p>
              <p>
-              With HealthImaging, all API actions listed in the
+              With HealthImaging, all native API actions listed in the
               <a href="https://docs.aws.amazon.com/healthimaging/latest/APIReference/">
                <em>
                 AWS HealthImaging API Reference
                </em>
               </a>
-              are considered management events with
-        the exception of
+              are classified as management events
+        with the exception of
               <a href="https://docs.aws.amazon.com/healthimaging/latest/APIReference/API_GetImageFrame.html">
                <code class="code">
                 GetImageFrame
@@ -323,6 +324,23 @@
               </code>
               action is onboarded
         with CloudTrail as a data event and therefore must be enabled. For more information, see
+              <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+               Logging data
+          events
+              </a>
+              in the
+              <em>
+               AWS CloudTrail User Guide
+              </em>
+              .
+             </p>
+             <p>
+              DICOMweb WADO-RS API actions are classified as data events in CloudTrail, therefore, you must
+        opt-in to them. For more information, see
+              <a href="./dicomweb-retrieve.html">
+               Retrieving DICOM data from HealthImaging
+              </a>
+              and
               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
                Logging data
           events

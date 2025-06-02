@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging AWS Control Catalog API calls using AWS CloudTrail - AWS Control Catalog
+   Logging Control Catalog API calls using AWS CloudTrail - AWS Control Catalog
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/controlcatalog/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Learn about logging AWS Control Catalog with AWS CloudTrail." name="description"/>
+  <meta content="Learn about logging Control Catalog with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="AWS Control Catalog" name="product"/>
   <meta content="Security Information" name="guide"/>
@@ -60,7 +60,7 @@
   <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'controltower'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="Security Information"/>
-  <meta id="panorama-serviceConsolePage" value="Logging AWS Control Catalog API calls using AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Control Catalog API calls using AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -76,7 +76,7 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging AWS Control Catalog API calls using AWS CloudTrail - AWS Control Catalog
+         Logging Control Catalog API calls using AWS CloudTrail - AWS Control Catalog
         </title>
         <meta content="/pdfs/controlcatalog/latest/userguide/controlcatalog-ug.pdf#logging-using-cloudtrail" name="pdf"/>
         <meta content="controlcatalog-ug.rss" name="rss"/>
@@ -117,7 +117,7 @@
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "Logging AWS Control Catalog API calls using AWS CloudTrail",
+        "name" : "Logging Control Catalog API calls using AWS CloudTrail",
         "item" : "https://docs.aws.amazon.com/controlcatalog/latest/userguide/monitoring-overview.html"
       }
     ]
@@ -143,10 +143,10 @@
          </div>
          <div id="page-toc-src">
           <a href="#service-name-info-in-cloudtrail">
-           AWS Control Catalog information in CloudTrail
+           Control Catalog information in CloudTrail
           </a>
           <a href="#understanding-service-name-entries">
-           Understanding AWS Control Catalog log file entries
+           Understanding Control Catalog log file entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -154,7 +154,7 @@
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="logging-using-cloudtrail">
-            Logging AWS Control Catalog API calls using AWS CloudTrail
+            Logging Control Catalog API calls using AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -163,18 +163,18 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            AWS Control Catalog is integrated with AWS CloudTrail, a service that provides a record of actions 
-    taken by a user, role, or an AWS service in AWS Control Catalog. CloudTrail captures all API calls for
-    AWS Control Catalog as events. The calls captured include calls from the AWS Control Catalog console and
-    code calls to the AWS Control Catalog API operations. If you create a trail, you can enable
-    continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS Control Catalog. If 
+            As part of AWS Control Tower Control Catalog is integrated with AWS CloudTrail, a service that provides a record of actions 
+    taken by a user, role, or an AWS service.. CloudTrail captures all API calls for
+    Control Catalog as events. The calls captured include calls directly from the AWS Control Tower console such as to enable or disable a control, and
+    code calls to the Control Catalog API operations. If you create a trail, you can enable
+    continuous delivery of CloudTrail events to an Amazon S3 bucket, including events that pertain to the controls in Control Catalog. If 
     you don't configure a trail, you can still view the most recent events in the CloudTrail console 
     in
             <b>
              Event history
             </b>
             .  Using the information collected by CloudTrail, you can
-    determine the request that was made to AWS Control Catalog, the IP address from which the request
+    determine the request that was made to Control Catalog (by means of AWS Control Tower), the IP address from which the request
     was made, who made the request, when it was made, and additional details.
            </p>
            <p>
@@ -185,11 +185,11 @@
             .
            </p>
            <h2 id="service-name-info-in-cloudtrail">
-            AWS Control Catalog information in CloudTrail
+            Control Catalog information in CloudTrail
            </h2>
            <p>
             CloudTrail is enabled on your AWS account when you create the account. When activity occurs 
-      in AWS Control Catalog, that activity is recorded in a CloudTrail event along with other AWS service events
+      in Control Catalog, that activity is recorded in a CloudTrail event along with other AWS service events
       in
             <b>
              Event history
@@ -203,7 +203,7 @@
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account, including events for AWS Control Catalog,
+            For an ongoing record of events in your AWS account, including events for Control Catalog,
       create a trail. A
             <em>
              trail
@@ -254,9 +254,9 @@
             </ul>
            </div>
            <p>
-            All AWS Control Catalog actions are logged by CloudTrail and are documented in the
+            All Control Catalog actions are logged by CloudTrail and are documented in the
             <a href="https://docs.aws.amazon.com/controlcatalog/latest/APIReference/Welcome.html">
-             AWS Control Catalog API Reference.
+             Control Catalog API Reference.
             </a>
             . For
       example, calls to the
@@ -306,7 +306,7 @@
             .
            </p>
            <h2 id="understanding-service-name-entries">
-            Understanding AWS Control Catalog log file entries
+            Understanding Control Catalog log file entries
            </h2>
            <p>
             A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket

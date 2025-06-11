@@ -393,7 +393,7 @@
       in the target account's CloudTrail.
            </p>
            <p>
-            You can use the logged information to map calls made by a federated user with an assumed
+            You can use the logged information to map calls made by an OIDC or SAML federated principal with an assumed
       role back to the originating external federated caller. In the case of
             <code class="code">
              AssumeRole
@@ -405,7 +405,7 @@
             </code>
             section of the JSON data in the
       CloudTrail log entry contains the information that you need to map the AssumeRole*
-      request with a specific federated user. For more information, see
+      request with a specific session principal. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
              CloudTrail userIdentity
         Element
@@ -484,7 +484,7 @@
            </h2>
            <p>
             CloudTrail logs sign-in events to the AWS Management Console, the AWS discussion forums, and AWS Marketplace. CloudTrail
-      logs successful and failed sign-in attempts for IAM users and federated users.
+      logs successful and failed sign-in attempts for IAM users, SAML and OIDC federated principals, and AWS STS federated user principals.
            </p>
            <p>
             To view sample CloudTrail events for successful and unsuccessful root user sign-ins, see

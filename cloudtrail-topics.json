@@ -1181,6 +1181,12 @@
     "Support began": "12/03/2024",
     "Link": "https://docs.aws.amazon.com/mhj/latest/userguide/logging-using-cloudtrail.html"
   },
+  "Multi-party approval": {
+    "AWS Service": "Multi-party approval",
+    "CloudTrail Topics": "Logging Multi-party approval API calls using AWS CloudTrail",
+    "Support began": "06/17/2025",
+    "Link": "https://docs.aws.amazon.com/mpa/latest/userguide/logging-using-cloudtrail.html"
+  },
   "AWS Network Firewall": {
     "AWS Service": "AWS Network Firewall",
     "CloudTrail Topics": "Logging calls to the AWS Network Firewall API with AWS CloudTrail",

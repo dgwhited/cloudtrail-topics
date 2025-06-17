@@ -1,0 +1,4390 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Logging Multi-party approval API calls using AWS CloudTrail - Multi-party approval
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/mpa/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Learn about logging Multi-party approval with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Multi-party approval" name="product"/>
+  <meta content="User Guide" name="guide"/>
+  <meta content="Learn about Multi-party approval, which allows you to protect a predefined list of operations through a distributed approval process." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/mpa/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/mpa/latest/userguide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="Multi-party approval" name="feedback-item"/>
+  <meta content="Multi-party approval" name="this_doc_product"/>
+  <meta content="User Guide" name="this_doc_guide"/>
+  <script defer="" src="/assets/r/awsdocs-doc-page.2.0.0.js?version=2021.12.02">
+  </script>
+  <link href="/assets/r/awsdocs-doc-page.2.0.0.css?version=2021.12.02" rel="stylesheet"/>
+  <script async="" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'mpa'}" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="User Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging Multi-party approval API calls using AWS CloudTrail"/>
+ </head>
+ <body class="awsdocs awsui">
+  <div class="awsdocs-container">
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging Multi-party approval API calls using AWS CloudTrail - Multi-party approval
+        </title>
+        <meta content="/pdfs/mpa/latest/userguide/mpa-ug.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="mpa-ug.rss" name="rss"/>
+        <meta content="https://repost.aws/" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Multi-party%20approval&amp;topic_url=https://docs.aws.amazon.com/en_us/mpa/latest/userguide/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/mpa/latest/userguide/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/mpa/latest/userguide/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="Multi-party approval" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Multi-party approval",
+        "item" : "https://docs.aws.amazon.com/mpa/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/mpa/latest/userguide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Monitoring Multi-party approval",
+        "item" : "https://docs.aws.amazon.com/mpa/latest/userguide/monitoring-overview.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging Multi-party approval API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/mpa/latest/userguide/monitoring-overview.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/mpa/latest/userguide/mpa-ug.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/mpa/index.html">
+           Multi-party approval
+          </a>
+          <a href="what-is.html">
+           User Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#cloudtrail-management-events">
+           Multi-party approval management events in CloudTrail
+          </a>
+          <a href="#cloudtrail-event-examples">
+           Multi-party approval event examples
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging Multi-party approval API calls using
+      AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            Multi-party approval works with
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail
+            </a>
+            , a service that provides a record of actions taken by a user, role, or an
+    AWS service. CloudTrail captures all
+    API calls for Multi-party approval as events. The calls captured include calls from the Multi-party approval console
+    and code calls to the Multi-party approval API operations. Using the information collected by CloudTrail, you can
+    determine the request that was made to Multi-party approval, the IP address from which the request was
+    made, when it was made, and additional details.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The identity
+    information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root user or user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made on behalf of an IAM Identity Center user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or federated
+        user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            CloudTrail is active in your AWS account when you create the account and you automatically have
+    access to the CloudTrail
+            <b>
+             Event history
+            </b>
+            . The CloudTrail
+            <b>
+             Event
+      history
+            </b>
+            provides a viewable, searchable, downloadable, and immutable record of the
+    past 90 days of recorded management events in an AWS Region. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Working
+      with CloudTrail Event history
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            . There are no CloudTrail
+    charges for viewing the
+            <b>
+             Event history
+            </b>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account past 90 days, create a trail or a
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+             CloudTrail
+      Lake
+            </a>
+            event data store.
+           </p>
+           <div class="variablelist">
+            <dl>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail trails
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               A
+               <em>
+                trail
+               </em>
+               enables CloudTrail to deliver log files to an Amazon S3 bucket. All trails created using the AWS Management Console are multi-Region. You can create a single-Region or a multi-Region trail by using the AWS CLI. Creating a multi-Region trail is recommended because you capture activity in all AWS Regions in your account. If you create a single-Region trail, you can view only the events logged in the trail's AWS Region. For more information about trails, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Creating a trail for your AWS account
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html">
+                Creating a trail for an organization
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               You can deliver one copy of your ongoing management events to your Amazon S3 bucket at no charge from CloudTrail by creating a trail, however, there are Amazon S3 storage charges. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               . For information about Amazon S3 pricing, see
+               <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Amazon S3 Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail Lake event data stores
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               <em>
+                CloudTrail Lake
+               </em>
+               lets you run SQL-based queries on your events. CloudTrail Lake converts existing events in row-based JSON format to
+               <a href="https://orc.apache.org/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Apache ORC
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into
+               <em>
+                event data stores
+               </em>
+               , which are immutable collections of events based on criteria that you select by applying
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-concepts.html#adv-event-selectors">
+                advanced event selectors
+               </a>
+               . The selectors that you apply to an event data store control which events persist and are available for you to query. For more information about CloudTrail Lake, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+                Working with AWS CloudTrail Lake
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               CloudTrail Lake event data stores and queries incur costs. When you create an event data store, you choose the
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html#cloudtrail-lake-manage-costs-pricing-option">
+                pricing option
+               </a>
+               you want to use for the event data store. The pricing option determines the cost for ingesting and storing events, and the default and maximum retention period for the event data store. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+            </dl>
+           </div>
+           <h2 id="cloudtrail-management-events">
+            Multi-party approval management events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
+            </a>
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
+           </p>
+           <p>
+            Multi-party approval logs all Multi-party approval control plane operations as management events. For a list
+      of the Multi-party approval control plane operations that Multi-party approval logs to CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/muqlti-party approval/latest/APIReference/">
+             Multi-party approval API Reference
+            </a>
+            .
+           </p>
+           <h2 id="cloudtrail-event-examples">
+            Multi-party approval event examples
+           </h2>
+           <p>
+            An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
+           </p>
+           <p>
+            <b>
+             Asynchronous events
+            </b>
+           </p>
+           <p>
+            The following tabbed list displays some examples for approval teams.
+           </p>
+           <awsdocs-tabs>
+            <dl style="display: none">
+             <dt>
+              ASYNC_DELETION_APPROVAL_FAILURE [DELETE]
+             </dt>
+             <dd tab-id="async_deletion_approval_failure-[delete]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous deletion approval failure:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "[default]",
+    "userIdentity": <span>{</span>
+        "accountId": "[MPA Team owner account]",
+        "invokedBy": "mpa.amazonaws.com"
+    },
+    "eventTime": "2021-01-14T01:41:59Z",
+    "eventSource": "mpa.amazonaws.com",
+    "eventName": "TeamDeletionApprovalFailure",
+    "awsRegion": "[team region]",
+    "sourceIPAddress": "AWS Internal",
+    "userAgent": "AWS Internal",
+    "requestParameters": null,
+    "responseElements": null,
+    "eventID": "a24b3967-ddad-417f-9b22-2332b918db06",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::MPA::Team",
+            "ARN": "arn:aws:mpa:[team ARN]"
+        }
+    ],
+    "eventType": "AwsServiceEvent",
+    "recipientAccountId": "[MPA Team owner account]",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "ACTIVE",
+        "teamStatusCode": "DELETE_FAILED_APPROVAL",
+        "updateSessionId": "[session ID]"
+    },
+    "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_DELETION_APPROVAL_SUCCESS [DELETE]
+             </dt>
+             <dd tab-id="async_deletion_approval_success-[delete]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous deletion approval success:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamDeletionApprovalSuccess",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "DELETED",
+        "updateSessionId": "[session ID]"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_UPDATE_ACTIVATION_FAILURE [UPDATE]
+             </dt>
+             <dd tab-id="async_update_activation_failure-[update]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous update activation failure:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamUpdateActivationFailure",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "ACTIVE",
+        "teamStatusCode": "UPDATE_FAILED_ACTIVATION"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_UPDATE_ACTIVATION_SUCCESS [UPDATE]
+             </dt>
+             <dd tab-id="async_update_activation_success-[update]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous update activation success:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamUpdateActivationSuccess",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "ACTIVE"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_UPDATE_APPROVAL_FAILURE [UPDATE]
+             </dt>
+             <dd tab-id="async_update_approval_failure-[update]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous update approval failure:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamUpdateApprovalFailure",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "ACTIVE",
+        "teamStatusCode": "UPDATE_FAILED_ACTIVATION",
+        "updateSessionId": "[session ID]"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_UPDATE_APPROVAL_SUCCESS [UPDATE]
+             </dt>
+             <dd tab-id="async_update_approval_success-[update]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous update approval success:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamUpdateApprovalSuccess",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "ACTIVE",
+        "teamStatusCode": "UPDATE_PENDING_ACTIVATION",
+        "updateSessionId": "[session ID]"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_VALIDATION_FAILURE [UPDATE]
+             </dt>
+             <dd tab-id="async_validation_failure-[update]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous validation failure during an update:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamUpdateValidationFailure",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "ACTIVE",
+        "teamStatusCode": "UPDATE_FAILED_VALIDATION"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_VALIDATION_SUCCESS [UPDATE]
+             </dt>
+             <dd tab-id="async_validation_success-[update]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous validation success during an update:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamUpdateValidationSuccess",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "ACTIVE",
+        "teamStatusCode": "UPDATE_PENDING_APPROVAL",
+        "updateSessionId": "[session ID]"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_ACTIVATION_SUCCESS [CREATE]
+             </dt>
+             <dd tab-id="async_activation_success-[create]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous activation success during creation:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamCreationActivationSuccess",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "ACTIVE"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_ACTIVATION_FAILURE [CREATE]
+             </dt>
+             <dd tab-id="async_activation_failure-[create]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous activation failure during creation:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamCreationActivationFailure",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "INACTIVE",
+        "teamStatusCode": "FAILED_ACTIVATION"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_VALIDATION_FAILURE [CREATE]
+             </dt>
+             <dd tab-id="async_validation_failure-[create]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous validation failure during creation:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamCreationValidationFailure",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "INACTIVE",
+        "teamStatusCode": "FAILED_VALIDATION"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_VALIDATION_SUCCESS [CREATE]
+             </dt>
+             <dd tab-id="async_validation_success-[create]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous validation success during creation:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "TeamCreationValidationSuccess",
+    "serviceEventDetails": <span>{</span>
+        "teamStatus": "PENDING",
+        "teamStatusCode": "PENDING_ACTIVATION"
+    }
+}</code></pre>
+             </dd>
+            </dl>
+           </awsdocs-tabs>
+           <p>
+            The following tabbed list displays some examples for approval sessions.
+           </p>
+           <awsdocs-tabs>
+            <dl style="display: none">
+             <dt>
+              ASYNC_EXPIRED [EXPIRATION]
+             </dt>
+             <dd tab-id="async_expired-[expiration]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous session expiration:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "[default]",
+    "userIdentity": <span>{</span>
+        "accountId": "[MPA Team owner account]",
+        "invokedBy": "mpa.amazonaws.com"
+    },
+    "eventTime": "2021-01-14T01:41:59Z",
+    "eventSource": "mpa.amazonaws.com",
+    "eventName": "SessionExpiration",
+    "awsRegion": "[team region]",
+    "sourceIPAddress": "AWS Internal",
+    "userAgent": "AWS Internal",
+    "requestParameters": null,
+    "responseElements": null,
+    "eventID": "a24b3967-ddad-417f-9b22-2332b918db06",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::MPA::Session",
+            "ARN": "arn:aws:mpa:[Session ARN]"
+        }
+    ],
+    "eventType": "AwsServiceEvent",
+    "recipientAccountId": "[MPA Team owner account]",
+    "serviceEventDetails": <span>{</span>
+        "sessionStatus": "FAILED",
+        "sessionStatusCode": "EXPIRED",
+        "approvedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "rejectedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "noParticipationBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],..."
+    },
+    "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_CANCELLED_TEAM_CONFIGURATION_CHANGED [CANCELATION]
+             </dt>
+             <dd tab-id="async_cancelled_team_configuration_changed-[cancelation]">
+              <p>
+               The following example shows a CloudTrail event for a session cancellation due to team configuration changes:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "SessionCancellation",
+    "serviceEventDetails": <span>{</span>
+        "sessionStatus": "CANCELLED",
+        "sessionStatusCode": "CONFIGURATION_CHANGED",
+        "approvedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "rejectedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "noParticipationBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],..."
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_CANCELLED_TEAM_DELETED [CANCELATION]
+             </dt>
+             <dd tab-id="async_cancelled_team_deleted-[cancelation]">
+              <p>
+               The following example shows a CloudTrail event for a session cancellation due to team deletion:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "SessionCancellation",
+    "serviceEventDetails": <span>{</span>
+        "sessionStatus": "CANCELLED",
+        "sessionStatusCode": "TEAM_DELETED",
+        "approvedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "rejectedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "noParticipationBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],..."
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_CANCELLED_BY_USER [CANCELATION]
+             </dt>
+             <dd tab-id="async_cancelled_by_user-[cancelation]">
+              <p>
+               The following example shows a CloudTrail event for a user-initiated session cancellation:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "SessionCancellation",
+    "serviceEventDetails": <span>{</span>
+        "sessionStatus": "CANCELLED",
+        "sessionStatusCode": "CANCELLED_BY_USER",
+        "approvedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "rejectedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "noParticipationBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],..."
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_VALIDATION_SUCCESS [VALIDATION]
+             </dt>
+             <dd tab-id="async_validation_success-[validation]">
+              <p>
+               The following example shows a CloudTrail event for an asynchronous validation success:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "SessionValidationSuccess",
+    "serviceEventDetails": <span>{</span>
+        "sessionStatus": "PENDING"
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_SESSION_APPROVED [APPROVAL]
+             </dt>
+             <dd tab-id="async_session_approved-[approval]">
+              <p>
+               The following example shows a CloudTrail event for an approved session:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "SessionApproved",
+    "serviceEventDetails": <span>{</span>
+        "sessionStatus": "APPROVED",
+        "approvedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "rejectedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "noParticipationBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],..."
+    }
+}</code></pre>
+             </dd>
+             <dt>
+              ASYNC_SESSION_REJECTED [REJECTION]
+             </dt>
+             <dd tab-id="async_session_rejected-[rejection]">
+              <p>
+               The following example shows a CloudTrail event for a rejected session:
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventName": "SessionApproved",
+    "serviceEventDetails": <span>{</span>
+        "sessionStatus": "FAILED",
+        "sessionStatusCode": "REJECTED",
+        "approvedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "rejectedBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],...",
+        "noParticipationBy": "[identityStoreArn/userId1],[identityStoreArn/userId2],..."
+    }
+}</code></pre>
+             </dd>
+            </dl>
+           </awsdocs-tabs>
+           <p>
+            <b>
+             Events
+            </b>
+           </p>
+           <p>
+            The following tabbed list displays some examples for standard success flow.
+           </p>
+           <awsdocs-tabs>
+            <dl style="display: none">
+             <dt>
+              CancelSession (Success)
+             </dt>
+             <dd tab-id="cancelsession-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                CancelSession
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole", 
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:07:31Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:07:31Z",
+  "eventSource": "multi-party-approval.amazonaws.com", 
+  "eventName": "CancelSession",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "sessionArn": "arn:aws:mpa:us-east-1:111122223333:session/ExampleTest-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333", 
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTest-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    },
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::Session",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:session/ExampleTest-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222" 
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              CreateApprovalTeam (Success)
+             </dt>
+             <dd tab-id="createapprovalteam-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                CreateApprovalTeam
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:04:23Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:04:23Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "CreateApprovalTeam",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "clientToken": "vGjlhLiwFPAaBsQ",
+    "approvalStrategy": <span>{</span>
+      "mofN": <span>{</span>
+        "minApprovalsRequired": 2
+      }
+    },
+    "approvers": [
+      <span>{</span>
+        "primaryIdentityId": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "primaryIdentitySourceArn": "arn:aws:mpa:us-east-1:111122223333:identity-source/IamIdentityCenter"
+      },
+      <span>{</span>
+        "primaryIdentityId": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+        "primaryIdentitySourceArn": "arn:aws:mpa:us-east-1:111122223333:identity-source/IamIdentityCenter"
+      }
+    ],
+    "description": "HIDDEN_DUE_TO_SECURITY_REASONS",
+    "policies": [
+      <span>{</span>
+        "policyArn": "arn:aws:mpa:::aws:policy/backup.amazonaws.com/CreateRestoreAccessVault/$DEFAULT"
+      }
+    ],
+    "name": "CloudtrailTest",
+    "tags": "HIDDEN_DUE_TO_SECURITY_REASONS"
+  },
+  "responseElements": <span>{</span>
+    "creationTime": "Mar 11, 2025, 12:04:23 AM",
+    "arn": "arn:aws:mpa:us-east-1:111122223333:approval-team/CloudtrailTest-a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+    "name": "CloudtrailTest",
+    "versionId": "1741651463452"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/CloudtrailTest-a1b2c3d4-5678-90ab-cdef-EXAMPLE33333"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              CreateIdentitySource (Success)
+             </dt>
+             <dd tab-id="createidentitysource-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                CreateIdentitySource
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-06T20:40:03Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-06T20:40:05Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "CreateIdentitySource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "identitySourceParameters": <span>{</span>
+      "iamIdentityCenter": <span>{</span>
+        "instanceArn": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8i",
+        "region": "us-east-1"
+      }
+    },
+    "clientToken": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+  },
+  "responseElements": <span>{</span>
+    "identitySourceType": "IAM_IDENTITY_CENTER",
+    "identitySourceArn": "arn:aws:mpa:us-east-1:111122223333:identity-source/IamIdentityCenter",
+    "creationTime": "Mar 6, 2025, 8:40:05 PM"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              DeleteIdentitySource (Success)
+             </dt>
+             <dd tab-id="deleteidentitysource-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                DeleteIdentitySource
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T16:21:31Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T16:27:00Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "DeleteIdentitySource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-cli/2.15.13 Python/3.11.6 Darwin/24.3.0",
+  "requestParameters": <span>{</span>
+    "identitySourceArn": "arn:aws:mpa:us-east-1:111122223333:identity-source/IamIdentityCenter"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::IdentitySource",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:identity-source/IamIdentityCenter"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              DeleteInactiveApprovalTeamVersion (Success)
+             </dt>
+             <dd tab-id="deleteinactiveapprovalteamversion-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                DeleteInactiveApprovalTeamVersion
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:04:14Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:06:54Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "DeleteInactiveApprovalTeamVersion",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "arn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleApprovalTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "versionId": "1741651519207"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleApprovalTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              DeleteResourcePolicy (Success)
+             </dt>
+             <dd tab-id="deleteresourcepolicy-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                DeleteResourcePolicy
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T17:28:00Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T18:01:49Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "DeleteResourcePolicy",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-cli/2.15.13 Python/3.11.6 Darwin/24.3.0",
+  "requestParameters": <span>{</span>
+    "resourceArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "policyName": "ExamplePolicy",
+    "policyType": "AWS_MANAGED"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetApprovalTeam (Success)
+             </dt>
+             <dd tab-id="getapprovalteam-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                GetApprovalTeam
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:04:14Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:06:33Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetApprovalTeam",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "arn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetIdentitySource (Success)
+             </dt>
+             <dd tab-id="getidentitysource-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                GetIdentitySource
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:04:14Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:05:19Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetIdentitySource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "identitySourceArn": "arn:aws:mpa:us-east-1:111122223333:identity-source/IamIdentityCenter"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::IdentitySource",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:identity-source/IamIdentityCenter"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetPolicyVersion (Success)
+             </dt>
+             <dd tab-id="getpolicyversion-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                GetPolicyVersion
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:05:38Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:05:38Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetPolicyVersion",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "policyVersionArn": "arn:aws:mpa:::aws:policy/backup.amazonaws.com/CreateRestoreAccessVault/1"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetResourcePolicy (Success)
+             </dt>
+             <dd tab-id="getresourcepolicy-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                GetResourcePolicy
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:05:38Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:05:38Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetResourcePolicy",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "resourceArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "policyType": "AWS_MANAGED",
+    "policyName": "ExamplePolicy"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetSession (Success)
+             </dt>
+             <dd tab-id="getsession-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                GetSession
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:04:14Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:04:23Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetSession",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "sessionArn": "arn:aws:mpa:us-east-1:111122223333:session/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    },
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::Session",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:session/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListApprovalTeams (Success)
+             </dt>
+             <dd tab-id="listapprovalteams-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                ListApprovalTeams
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:04:14Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:04:14Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListApprovalTeams",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "maxResults": 1
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE66666",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListIdentitySources (Success)
+             </dt>
+             <dd tab-id="listidentitysources-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                ListIdentitySources
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-10T23:59:07Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-10T23:59:09Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListIdentitySources",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListPolicies (Success)
+             </dt>
+             <dd tab-id="listpolicies-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                ListPolicies
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:05:38Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:05:38Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListPolicies",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListPolicyVersions (Success)
+             </dt>
+             <dd tab-id="listpolicyversions-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                ListPolicyVersions
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:06:06Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:06:06Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListPolicyVersions",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "policyArn": "arn:aws:mpa:::aws:policy/backup.amazonaws.com/CreateRestoreAccessVault"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListResourcePolicies (Success)
+             </dt>
+             <dd tab-id="listresourcepolicies-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                ListResourcePolicies
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-09T18:42:04Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-09T18:42:04Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListResourcePolicies",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "resourceArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "type": "AWS::IAM::PolicyVersion",
+      "ARN": "arn:aws:mpa:::aws:policy/backup.amazonaws.com/CreateRestoreAccessVault/1"
+    },
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListSessions (Success)
+             </dt>
+             <dd tab-id="listsessions-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                ListSessions
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:04:14Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:04:14Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListSessions",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "approvalTeamArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "maxResults": 100,
+    "filters": [
+      <span>{</span>
+        "fieldName": "InitiationTime",
+        "operator": "GTE",
+        "value": "2025-03-11T00:04:14.495844317Z"
+      }
+    ]
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "readOnly": true,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListTagsForResource (Success)
+             </dt>
+             <dd tab-id="listtagsforresource-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                ListTagsForResource
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:05:00Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:05:00Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListTagsForResource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "resourceArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              PutResourcePolicy (Success)
+             </dt>
+             <dd tab-id="putresourcepolicy-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                PutResourcePolicy
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T17:28:00Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T18:01:22Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "PutResourcePolicy",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-cli/2.15.13 Python/3.11.6 Darwin/24.3.0",
+  "requestParameters": <span>{</span>
+    "resourceArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "policyDocument": "<span>{</span>}",
+    "policyType": "AWS_MANAGED",
+    "policyName": "ExamplePolicy"
+  },
+  "responseElements": <span>{</span>
+    "resourceArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              StartActiveApprovalTeamDeletion (Success)
+             </dt>
+             <dd tab-id="startactiveapprovalteamdeletion-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                StartActiveApprovalTeamDeletion
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:08:55Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:08:55Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "StartActiveApprovalTeamDeletion",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "arn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+  },
+  "responseElements": <span>{</span>
+    "deletionStartTime": "Mar 11, 2025, 12:08:55 AM"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              StartSession (Success)
+             </dt>
+             <dd tab-id="startsession-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                StartSession
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-07T16:37:51Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-07T16:37:51Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "StartSession",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "sessionId": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "initiationTime": "Mar 7, 2025, 4:37:51 PM",
+    "deduplicationToken": "a1b2c3d4e5f6g7h8",
+    "approvalTeamArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+    "durationMinutes": 60,
+    "actionName": "example:action",
+    "description": "HIDDEN_DUE_TO_SECURITY_REASONS",
+    "protectedResourceArn": "arn:aws:ec2:us-east-1:111122223333:vpc/vpc-a1b2c3d4e5f6g7h8i",
+    "metadata": "HIDDEN_DUE_TO_SECURITY_REASONS",
+    "requesterRegion": "us-east-1",
+    "requesterComment": "HIDDEN_DUE_TO_SECURITY_REASONS"
+  },
+  "responseElements": <span>{</span>
+    "arn": "arn:aws:mpa:us-east-1:111122223333:session/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE22222/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE22222"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              TagResource (Success)
+             </dt>
+             <dd tab-id="tagresource-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                TagResource
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:04:23Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:04:23Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "TagResource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "resourceArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "tags": "HIDDEN_DUE_TO_SECURITY_REASONS"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE66666",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              UntagResource (Success)
+             </dt>
+             <dd tab-id="untagresource-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                UntagResource
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:04:31Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:04:31Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "UntagResource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "resourceArn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "tagKeys": "HIDDEN_DUE_TO_SECURITY_REASONS"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              UpdateApprovalTeam (Success)
+             </dt>
+             <dd tab-id="updateapprovalteam-(success)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                UpdateApprovalTeam
+               </code>
+               operation.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-11T00:06:34Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-11T00:06:34Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "UpdateApprovalTeam",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.30.32 Linux/5.10.233-224.894.amzn2.x86_64",
+  "requestParameters": <span>{</span>
+    "arn": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+  },
+  "responseElements": <span>{</span>
+    "versionId": "1234567890123"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::MPA::ApprovalTeam",
+      "ARN": "arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+            </dl>
+           </awsdocs-tabs>
+           <p>
+            The following tabbed list displays some examples the access denied flow.
+           </p>
+           <awsdocs-tabs>
+            <dl style="display: none">
+             <dt>
+              CreateIdentitySource (Error)
+             </dt>
+             <dd tab-id="createidentitysource-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                CreateIdentitySource
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T01:09:56Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T01:09:56Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "CreateIdentitySource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:CreateIdentitySource on resource: arn:aws:mpa:us-east-1:111122223333:identity-source/IamIdentityCenter because no identity-based policy allows the mpa:CreateIdentitySource action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetIdentitySource (Error)
+             </dt>
+             <dd tab-id="getidentitysource-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                GetIdentitySource
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:55:50Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:55:50Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetIdentitySource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:GetIdentitySource on resource: arn:aws:mpa:us-east-1:111122223333:identity-source/IamIdentityCenter because no identity-based policy allows the mpa:GetIdentitySource action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              DeleteIdentitySource (Error)
+             </dt>
+             <dd tab-id="deleteidentitysource-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                DeleteIdentitySource
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:53:56Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:53:56Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "DeleteIdentitySource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:DeleteIdentitySource on resource: arn:aws:mpa:us-east-1:111122223333:identity-source/DummyIdentityCenter because no identity-based policy allows the mpa:DeleteIdentitySource action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListIdentitySources (Error)
+             </dt>
+             <dd tab-id="listidentitysources-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                ListIdentitySources
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:55:50Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:55:50Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListIdentitySources",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:ListIdentitySources on resource: arn:aws:mpa:us-east-1:111122223333:identity-source/* because no identity-based policy allows the mpa:ListIdentitySources action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              CreateApprovalTeam (Error)
+             </dt>
+             <dd tab-id="createapprovalteam-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                CreateApprovalTeam
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:56:18Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:56:18Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "CreateApprovalTeam",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:CreateApprovalTeam on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 because no identity-based policy allows the mpa:CreateApprovalTeam action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              UpdateApprovalTeam (Error)
+             </dt>
+             <dd tab-id="updateapprovalteam-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                UpdateApprovalTeam
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:53:06Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:55:09Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "UpdateApprovalTeam",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:UpdateApprovalTeam on resource: arn:aws:mpa:us-east-1:000000000000:approval-team/example-group because no resource-based policy allows the mpa:UpdateApprovalTeam action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetApprovalTeam (Error)
+             </dt>
+             <dd tab-id="getapprovalteam-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                GetApprovalTeam
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:56:18Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:56:18Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetApprovalTeam",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:GetApprovalTeam on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 because no identity-based policy allows the mpa:GetApprovalTeam action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListApprovalTeams (Error)
+             </dt>
+             <dd tab-id="listapprovalteams-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                ListApprovalTeams
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:54:25Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:54:25Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListApprovalTeams",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:ListApprovalTeams on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/* because no identity-based policy allows the mpa:ListApprovalTeams action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              StartActiveApprovalTeamDeletion (Error)
+             </dt>
+             <dd tab-id="startactiveapprovalteamdeletion-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                StartActiveApprovalTeamDeletion
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:53:06Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:53:54Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "StartActiveApprovalTeamDeletion",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:StartActiveApprovalTeamDeletion on resource: arn:aws:mpa:us-east-1:000000000000:approval-team/example-group because no resource-based policy allows the mpa:StartActiveApprovalTeamDeletion action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              DeleteInactiveApprovalTeamVersion (Error)
+             </dt>
+             <dd tab-id="deleteinactiveapprovalteamversion-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                DeleteInactiveApprovalTeamVersion
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:56:18Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:56:18Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "DeleteInactiveApprovalTeamVersion",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:DeleteInactiveApprovalTeamVersion on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/example-group because no identity-based policy allows the mpa:DeleteInactiveApprovalTeamVersion action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetSession (Error)
+             </dt>
+             <dd tab-id="getsession-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                GetSession
+               </code>
+               operation due to an explicit deny in an identity-based policy.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:53:16Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:53:16Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetSession",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:GetSession on resource: arn:aws:mpa:us-east-1:111122223333:session/ExampleSession-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222 with an explicit deny in an identity-based policy",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListSessions (Error)
+             </dt>
+             <dd tab-id="listsessions-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                ListSessions
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:55:21Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:55:21Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListSessions",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:ListSessions on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 because no identity-based policy allows the mpa:ListSessions action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE66666",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              CancelSession (Error)
+             </dt>
+             <dd tab-id="cancelsession-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                CancelSession
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:57:05Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:57:05Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "CancelSession",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:CancelSession on resource: arn:aws:mpa:us-east-1:111122223333:session/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222 because no identity-based policy allows the mpa:CancelSession action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              StartSession (Error)
+             </dt>
+             <dd tab-id="startsession-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                StartSession
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:53:07Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:53:10Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "StartSession",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:StartSession on resource: arn:aws:mpa:us-east-1:000000000000:approval-team/example-group because no resource-based policy allows the mpa:StartSession action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE66666",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetPolicyVersion (Error)
+             </dt>
+             <dd tab-id="getpolicyversion-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                GetPolicyVersion
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:54:25Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:54:25Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetPolicyVersion",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:GetPolicyVersion on resource: arn:aws:mpa:::aws:policy/backup.amazonaws.com/CreateRestoreAccessVault/1 because no identity-based policy allows the mpa:GetPolicyVersion action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListPolicies (Error)
+             </dt>
+             <dd tab-id="listpolicies-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                ListPolicies
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:54:53Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:54:53Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListPolicies",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:ListPolicies on resource: arn:aws:mpa:::aws:policy/* because no identity-based policy allows the mpa:ListPolicies action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListPolicyVersions (Error)
+             </dt>
+             <dd tab-id="listpolicyversions-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                ListPolicyVersions
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:54:53Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:54:53Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListPolicyVersions",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:ListPolicyVersions on resource: arn:aws:mpa:::aws:policy/backup.amazonaws.com/CreateRestoreAccessVault because no identity-based policy allows the mpa:ListPolicyVersions action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListResourcePolicies (Error)
+             </dt>
+             <dd tab-id="listresourcepolicies-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                ListResourcePolicies
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:55:21Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:55:21Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListResourcePolicies",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:ListResourcePolicies on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 because no identity-based policy allows the mpa:ListResourcePolicies action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              GetResourcePolicy (Error)
+             </dt>
+             <dd tab-id="getresourcepolicy-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                GetResourcePolicy
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T01:08:49Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T01:08:50Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "GetPolicyVersion",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:GetPolicyVersion on resource: arn:aws:mpa:::aws:policy/backup.amazonaws.com/CreateRestoreAccessVault/1 because no identity-based policy allows the mpa:GetPolicyVersion action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              PutResourcePolicy (Error)
+             </dt>
+             <dd tab-id="putresourcepolicy-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                PutResourcePolicy
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:54:25Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:54:25Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "PutResourcePolicy",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:PutResourcePolicy on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 because no identity-based policy allows the mpa:PutResourcePolicy action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              DeleteResourcePolicy (Error)
+             </dt>
+             <dd tab-id="deleteresourcepolicy-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                DeleteResourcePolicy
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:53:56Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:53:56Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "DeleteResourcePolicy",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:DeleteResourcePolicy on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 because no identity-based policy allows the mpa:DeleteResourcePolicy action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              ListTagsForResource (Error)
+             </dt>
+             <dd tab-id="listtagsforresource-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                ListTagsForResource
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:57:23Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:57:23Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "ListTagsForResource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:ListTagsForResource on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 because no identity-based policy allows the mpa:ListTagsForResource action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              TagResource (Error)
+             </dt>
+             <dd tab-id="tagresource-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                TagResource
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:55:50Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:55:50Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "TagResource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:TagResource on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 because no identity-based policy allows the mpa:TagResource action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE66666",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+             <dt>
+              UntagResource (Error)
+             </dt>
+             <dd tab-id="untagresource-(error)">
+              <p>
+               The following example shows a CloudTrail event that demonstrates an unsuccessful
+               <code class="code">
+                UntagResource
+               </code>
+               operation due to insufficient permissions.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-03-22T00:56:56Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2025-03-22T00:56:56Z",
+  "eventSource": "multi-party-approval.amazonaws.com",
+  "eventName": "UntagResource",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-sdk-java/2.31.4 Linux/5.10.234-225.910.amzn2.x86_64",
+  "errorCode": "AccessDenied",
+  "errorMessage": "User: arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa is not authorized to perform: mpa:UntagResource on resource: arn:aws:mpa:us-east-1:111122223333:approval-team/ExampleTeam-a1b2c3d4-5678-90ab-cdef-EXAMPLE11111 because no identity-based policy allows the mpa:UntagResource action",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE77777",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE88888",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "multi-party-approval.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+             </dd>
+            </dl>
+           </awsdocs-tabs>
+           <p>
+            The following tabbed list displays some examples for the Multi-party approval integration with AWS IAM Identity Center.
+           </p>
+           <awsdocs-tabs>
+            <dl style="display: none">
+             <dt>
+              CreateApplication
+             </dt>
+             <dd tab-id="createapplication">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                CreateApplication
+               </code>
+               operation for the Multi-party approval integration with IAM Identity Center.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-02-18T19:56:17Z",
+        "mfaAuthenticated": "false"
+      }
+    },
+    "invokedBy": "AWS Internal"
+  },
+  "eventTime": "2025-02-18T19:56:28Z",
+  "eventSource": "sso.amazonaws.com",
+  "eventName": "CreateApplication",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "AWS Internal",
+  "userAgent": "AWS Internal",
+  "requestParameters": <span>{</span>
+    "instanceArn": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8",
+    "applicationProviderArn": "arn:aws:sso::aws:applicationProvider/app-EXAMPLE11111/WIP",
+    "name": "Multi-party Approval",
+    "description": "Multi-party Approval",
+    "portalOptions": <span>{</span>
+      "signInOptions": <span>{</span>
+        "origin": "APPLICATION",
+        "applicationUrl": "https://example-id.alpha-mpa-portal.us-east-1.on.aws/"
+      },
+      "visibility": "ENABLED"
+    },
+    "status": "ENABLED",
+    "clientToken": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222"
+  },
+  "responseElements": <span>{</span>
+    "applicationArn": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Instance",
+      "ARN": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              DescribeInstance
+             </dt>
+             <dd tab-id="describeinstance">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                DescribeInstance
+               </code>
+               operation for the Multi-party approval integration with IAM Identity Center.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-02-18T19:56:17Z",
+        "mfaAuthenticated": "false"
+      }
+    },
+    "invokedBy": "AWS Internal"
+  },
+  "eventTime": "2025-02-18T19:56:27Z",
+  "eventSource": "sso.amazonaws.com",
+  "eventName": "DescribeInstance",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "AWS Internal",
+  "userAgent": "AWS Internal",
+  "requestParameters": <span>{</span>
+    "instanceArn": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              PutApplicationAuthenticationMethod
+             </dt>
+             <dd tab-id="putapplicationauthenticationmethod">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                PutApplicationAuthenticationMethod
+               </code>
+               operation for the Multi-party approval integration with IAM Identity Center.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-02-18T19:56:17Z",
+        "mfaAuthenticated": "false"
+      }
+    },
+    "invokedBy": "AWS Internal"
+  },
+  "eventTime": "2025-02-18T19:56:28Z",
+  "eventSource": "sso.amazonaws.com",
+  "eventName": "PutApplicationAuthenticationMethod",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "AWS Internal",
+  "userAgent": "AWS Internal",
+  "requestParameters": <span>{</span>
+    "applicationArn": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8",
+    "authenticationMethodType": "IAM",
+    "authenticationMethod": <span>{</span>
+      "iam": <span>{</span>
+        "actorPolicy": <span>{</span>
+          "Version": "2012-10-17",
+          "Statement": [
+            <span>{</span>
+              "Effect": "Allow",
+              "Principal": <span>{</span>
+                "Service": [
+                  "us-east-1.alpha.mpa.awsfluffy.aws.internal",
+                  "test.awsagora.aws.internal",
+                  "developer.awsagora.aws.internal"
+                ]
+              },
+              "Action": [
+                "sso-oauth:CreateTokenWithIAM",
+                "sso-oauth:IntrospectTokenWithIAM",
+                "sso-oauth:RevokeTokenWithIAM"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Instance",
+      "ARN": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8"
+    },
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Application",
+      "ARN": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              DescribeInstance
+             </dt>
+             <dd tab-id="describeinstance">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                DescribeInstance
+               </code>
+               operation for the Multi-party approval integration with IAM Identity Center.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-02-18T19:56:17Z",
+        "mfaAuthenticated": "false"
+      }
+    },
+    "invokedBy": "AWS Internal"
+  },
+  "eventTime": "2025-02-18T19:56:27Z",
+  "eventSource": "sso.amazonaws.com",
+  "eventName": "DescribeInstance",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "AWS Internal",
+  "userAgent": "AWS Internal",
+  "requestParameters": <span>{</span>
+    "instanceArn": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": true,
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              PutApplicationAuthenticationMethod
+             </dt>
+             <dd tab-id="putapplicationauthenticationmethod">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                PutApplicationAuthenticationMethod
+               </code>
+               operation for the Multi-party approval integration with IAM Identity Center.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-02-18T19:56:17Z",
+        "mfaAuthenticated": "false"
+      }
+    },
+    "invokedBy": "AWS Internal"
+  },
+  "eventTime": "2025-02-18T19:56:28Z",
+  "eventSource": "sso.amazonaws.com",
+  "eventName": "PutApplicationAuthenticationMethod",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "AWS Internal",
+  "userAgent": "AWS Internal",
+  "requestParameters": <span>{</span>
+    "applicationArn": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8",
+    "authenticationMethodType": "IAM",
+    "authenticationMethod": <span>{</span>
+      "iam": <span>{</span>
+        "actorPolicy": <span>{</span>
+          "Version": "2012-10-17",
+          "Statement": [
+            <span>{</span>
+              "Effect": "Allow",
+              "Principal": <span>{</span>
+                "Service": [
+                  "us-east-1.alpha.mpa.awsfluffy.aws.internal",
+                  "test.awsagora.aws.internal",
+                  "developer.awsagora.aws.internal"
+                ]
+              },
+              "Action": [
+                "sso-oauth:CreateTokenWithIAM",
+                "sso-oauth:IntrospectTokenWithIAM",
+                "sso-oauth:RevokeTokenWithIAM"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Instance",
+      "ARN": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8"
+    },
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Application",
+      "ARN": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              PutApplicationGrant
+             </dt>
+             <dd tab-id="putapplicationgrant">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                PutApplicationGrant
+               </code>
+               operation for the Multi-party approval integration with IAM Identity Center.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-02-18T19:56:17Z",
+        "mfaAuthenticated": "false"
+      }
+    },
+    "invokedBy": "AWS Internal"
+  },
+  "eventTime": "2025-02-18T19:56:29Z",
+  "eventSource": "sso.amazonaws.com",
+  "eventName": "PutApplicationGrant",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "AWS Internal",
+  "userAgent": "AWS Internal",
+  "requestParameters": <span>{</span>
+    "applicationArn": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8",
+    "grantType": "refresh_token",
+    "grant": <span>{</span>
+      "refreshToken": <span>{</span>}
+    }
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Instance",
+      "ARN": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8"
+    },
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Application",
+      "ARN": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              PutApplicationAccessScope
+             </dt>
+             <dd tab-id="putapplicationaccessscope">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                PutApplicationAccessScope
+               </code>
+               operation for the Multi-party approval integration with IAM Identity Center.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-02-18T19:56:17Z",
+        "mfaAuthenticated": "false"
+      }
+    },
+    "invokedBy": "AWS Internal"
+  },
+  "eventTime": "2025-02-18T19:56:29Z",
+  "eventSource": "sso.amazonaws.com",
+  "eventName": "PutApplicationAccessScope",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "AWS Internal",
+  "userAgent": "AWS Internal",
+  "requestParameters": <span>{</span>
+    "scope": "mpa_test:test",
+    "applicationArn": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8"
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Instance",
+      "ARN": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8"
+    },
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Application",
+      "ARN": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              PutApplicationAssignmentConfiguration
+             </dt>
+             <dd tab-id="putapplicationassignmentconfiguration">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                PutApplicationAssignmentConfiguration
+               </code>
+               operation for the Multi-party approval integration with IAM Identity Center.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:ExampleRole-mpa",
+    "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleRole-mpa",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIA1234567890EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+        "accountId": "111122223333",
+        "userName": "ExampleRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2025-02-18T19:56:17Z",
+        "mfaAuthenticated": "false"
+      }
+    },
+    "invokedBy": "AWS Internal"
+  },
+  "eventTime": "2025-02-18T19:56:28Z",
+  "eventSource": "sso.amazonaws.com",
+  "eventName": "PutApplicationAssignmentConfiguration",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "AWS Internal",
+  "userAgent": "AWS Internal",
+  "requestParameters": <span>{</span>
+    "applicationArn": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8",
+    "assignmentRequired": false
+  },
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Instance",
+      "ARN": "arn:aws:sso:::instance/ssoins-a1b2c3d4e5f6g7h8"
+    },
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::SSO::Application",
+      "ARN": "arn:aws:sso::111122223333:application/ssoins-a1b2c3d4e5f6g7h8/apl-a1b2c3d4e5f6g7h8"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management"
+}</code></pre>
+             </dd>
+             <dt>
+              Authenticate
+             </dt>
+             <dd tab-id="authenticate">
+              <p>
+               The following example shows a CloudTrail event that demonstrates the
+               <code class="code">
+                Authenticate
+               </code>
+               operation for the Multi-party approval integration with IAM Identity Center.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.10",
+  "userIdentity": <span>{</span>
+    "type": "Unknown",
+    "principalId": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "accountId": "111122223333",
+    "userName": "************************************************************",
+    "onBehalfOf": <span>{</span>
+      "userId": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+      "identityStoreArn": "arn:aws:identitystore::111122223333:identitystore/d-a1b2c3d4e5"
+    },
+    "credentialId": "us-east-1-a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6"
+  },
+  "eventTime": "2025-02-18T19:57:36Z",
+  "eventSource": "sso.amazonaws.com",
+  "eventName": "Authenticate",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0",
+  "requestParameters": null,
+  "responseElements": null,
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+  "readOnly": false,
+  "eventType": "AwsServiceEvent",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management"
+}</code></pre>
+             </dd>
+            </dl>
+           </awsdocs-tabs>
+           <p>
+            For information about CloudTrail record contents, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail
+      record contents
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./monitoring-overview.html" id="previous">
+             Monitoring
+            </div>
+            <div accesskey="n" class="next-link" href="./monitoring-cloudwatch.html" id="next">
+             Monitoring with CloudWatch
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Multi-party approval&amp;topic_url=https://docs.aws.amazon.com/en_us/mpa/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Multi-party approval&amp;topic_url=https://docs.aws.amazon.com/en_us/mpa/latest/userguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
+      </div>
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
+     </div>
+    </div>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
+  </div>
+ </body>
+</html>

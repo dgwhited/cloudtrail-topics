@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/workdocs/latest/adminguide/cloudtrail_logging.html" rel="canonical"/>
-  <meta content="Learn how to use CloudTrail to log Amazon WorkDocs API calls." name="description"/>
+  <meta content="Learn how to use CloudTrail to log WorkDocs API calls." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon WorkDocs" name="product"/>
   <meta content="Administration Guide" name="guide"/>
@@ -76,7 +76,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=WDDocs&amp;topic_url=https://docs.aws.amazon.com/en_us/workdocs/latest/adminguide/cloudtrail_logging.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/workdocs/latest/adminguide/cloudtrail_logging.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/workdocs/latest/adminguide/cloudtrail_logging.html" name="feedback-no"/>
-        <meta content="Amazon WorkDocs,admin control panel,Amazon WorkDocs administrator guide,Amazon WorkDocs domain" name="keywords"/>
+        <meta content="Amazon WorkDocs,WorkDocs,admin control panel,WorkDocs administrator guide,WorkDocs domain" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -141,11 +141,11 @@
          </div>
          <div id="page-toc-src">
           <a href="#service-name-info-in-cloudtrail">
-           Amazon WorkDocs information in
+           WorkDocs information in
             CloudTrail
           </a>
           <a href="#understanding-service-name-entries">
-           Understanding Amazon WorkDocs log file entries
+           Understanding WorkDocs log file entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -160,7 +160,7 @@
              : New customer sign-ups and account upgrades are no longer available for Amazon WorkDocs. Learn about migration steps here:
              <a href="https://aws.amazon.com/blogs/business-productivity/how-to-migrate-content-from-amazon-workdocs" rel="noopener noreferrer" target="_blank">
               <span>
-               How to migrate data from Amazon WorkDocs
+               How to migrate data from WorkDocs
               </span>
               <awsui-icon class="awsdocs-link-icon" name="external">
               </awsui-icon>
@@ -179,12 +179,12 @@
            </div>
            <p>
             You can use AWS CloudTrail; to log Amazon WorkDocs API calls. CloudTrail provides a record of actions taken
-            by a user, role, or an AWS service in Amazon WorkDocs. CloudTrail captures all API calls for Amazon WorkDocs as events, including calls from 
-            the Amazon WorkDocs console and from code calls to the Amazon WorkDocs APIs.
+            by a user, role, or an AWS service in WorkDocs. CloudTrail captures all API calls for WorkDocs as events, including calls from 
+            the WorkDocs console and from code calls to the WorkDocs APIs.
            </p>
            <p>
             If you create a trail, you can enable
-            continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Amazon WorkDocs. If you don't create a trail, 
+            continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for WorkDocs. If you don't create a trail, 
             you can still view the most recent events in the CloudTrail console in
             <b>
              Event
@@ -204,12 +204,12 @@
             .
            </p>
            <h2 id="service-name-info-in-cloudtrail">
-            Amazon WorkDocs information in
+            WorkDocs information in
             CloudTrail
            </h2>
            <p>
             CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
-                Amazon WorkDocs, that activity is recorded in a CloudTrail event along with other AWS service
+                WorkDocs, that activity is recorded in a CloudTrail event along with other AWS service
                 events in
             <b>
              Event history
@@ -223,7 +223,7 @@
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account, including events for Amazon WorkDocs,
+            For an ongoing record of events in your AWS account, including events for WorkDocs,
                 create a trail. A trail enables CloudTrail to deliver log files to an Amazon S3 bucket. By default, when
                 you create a trail in the console, the trail applies to all regions. The trail logs events
                 from all regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you
@@ -270,7 +270,7 @@
             </ul>
            </div>
            <p>
-            All Amazon WorkDocs actions are logged by CloudTrail and are documented in the
+            All WorkDocs actions are logged by CloudTrail and are documented in the
             <a href="https://docs.aws.amazon.com/workdocs/latest/APIReference/">
              Amazon WorkDocs API Reference
             </a>
@@ -321,7 +321,7 @@
             .
            </p>
            <h2 id="understanding-service-name-entries">
-            Understanding Amazon WorkDocs log file entries
+            Understanding WorkDocs log file entries
            </h2>
            <p>
             A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
@@ -331,10 +331,10 @@
                 the public API calls, so they do not appear in any specific order.
            </p>
            <p>
-            Amazon WorkDocs generates different types of CloudTrail entries , those from the
+            WorkDocs generates different types of CloudTrail entries , those from the
                 control plane and those from the data plane. The important difference between the
                 two is that the user identity for control plane entries is an IAM user. The user
-                identity for data plane entries is the Amazon WorkDocs directory user.
+                identity for data plane entries is the WorkDocs directory user.
            </p>
            <div class="awsdocs-note">
             <div class="awsdocs-note-title">
@@ -355,7 +355,7 @@
                 These show up as HIDDEN_DUE_TO_SECURITY_REASONS in the CloudTrail logs. These show up as HIDDEN_DUE_TO_SECURITY_REASONS in the CloudTrail logs.
            </p>
            <p>
-            The following example shows two CloudTrail log entries for Amazon WorkDocs: the first record is for a
+            The following example shows two CloudTrail log entries for WorkDocs: the first record is for a
                 control plane action and the second is for a data plane action.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="nohighlight"><span>{</span>

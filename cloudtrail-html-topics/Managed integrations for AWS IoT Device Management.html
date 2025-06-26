@@ -145,19 +145,6 @@
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
-           <awsui-alert class="awsdocs-page-banner awsui-util-mb-l">
-            <p>
-             Managed integrations for AWS IoT Device Management is in preview release and is subject to change. For access, contact us from the
-             <a href="https://console.aws.amazon.com/iot/home#/managed-integrations/intro" rel="noopener noreferrer" target="_blank">
-              <span>
-               managed integrations console
-              </span>
-              <awsui-icon class="awsdocs-link-icon" name="external">
-              </awsui-icon>
-             </a>
-             .
-            </p>
-           </awsui-alert>
            <h1 class="topictitle" id="logging-using-cloudtrail">
             Logging Managed integrations API calls using
       AWS CloudTrail
@@ -360,13 +347,170 @@
             provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
            </p>
            <p>
-            Managed integrations logs all managed integrations control plane operations as management events. For a list
-      of the Managed integrations control plane operations that managed integrations logs to CloudTrail, see the
-            <a href="https://docs.aws.amazon.com/iot-mi/latest/APIReference/">
-             Managed integrations API Reference
-            </a>
+            Managed integrations logs the following managed integrations control plane operations to CloudTrail as
+            <em>
+             management events
+            </em>
             .
            </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                CreateCloudConnector
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                UpdateCloudConnector
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                GetCloudConnector
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                DeleteCloudConnector
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListCloudConnectors
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                CreateConnectorDestination
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                UpdateConnectorDestination
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                GetConnectorDestination
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                DeleteConnectorDestination
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListConnectorDestinations
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                CreateAccountAssociation
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                UpdateAccountAssociation
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                GetAccountAssociation
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                DeleteAccountAssociation
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListAccountAssociations
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                StartAccountAssociationRefresh
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListManagedThingAccountAssociations
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                RegisterAccountAssociation
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                DeregisterAccountAssociation
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                SendConnectorEvent
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListDeviceDiscoveries
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListDiscoveredDevices
+               </code>
+              </p>
+             </li>
+            </ul>
+           </div>
            <h2 id="cloudtrail-event-examples">
             Event examples
            </h2>
@@ -374,9 +518,9 @@
             An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
            </p>
            <p>
-            The following example shows a CloudTrail event that demonstrates the
+            The following example shows a CloudTrail event that demonstrates a successful
             <code class="code">
-             StartDeviceDiscovery
+             CreateCloudConnector
             </code>
             API operation.
            </p>
@@ -384,44 +528,50 @@
             <b>
              Successful CloudTrail event with the
              <code class="code">
-              StartDeviceDiscovery
+              CreateCloudConnector
              </code>
              API
-        operation.
+      operation.
             </b>
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON">
-<span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
     "eventVersion": "1.09",
     "userIdentity": <span>{</span>
         "type": "AssumedRole",
-        "principalId": "AROA47CRX4JX4AEXAMPLE",
-        "arn": "arn:aws:sts::123456789012:assumed-role/Admin/EXAMPLE",
-        "accountId": "222222222222",
-        "accessKeyId": "access-key-id",
+        "principalId": "EXAMPLE",
+        "arn": "arn:aws:sts::111122223333:assumed-role/Admin/EXAMPLE",
+        "accountId": "111122223333",
+        "accessKeyId": "EXAMPLEKYSBQSCGRIC",
         "sessionContext": <span>{</span>
             "sessionIssuer": <span>{</span>
                 "type": "Role",
-                "principalId": "AROA47CRX4JXUNEXAMPLE",
-                "arn": "arn:aws:iam::123456789012:role/Admin",
-                "accountId": "222222222222",
+                "principalId": "AROAZOZQFKYSFZVB2J2GN",
+                "arn": "arn:aws:iam::111122223333:role/Admin",
+                "accountId": "111122223333",
                 "userName": "Admin"
             },
             "attributes": <span>{</span>
-                "creationDate": "2025-02-26T20:04:25Z",
+                "creationDate": "2025-06-05T18:26:16Z",
                 "mfaAuthenticated": "false"
             }
         }
     },
-    "eventTime": "2025-02-26T20:11:33Z",
-    "eventSource": "gamma-iotmanagedintegrations.amazonaws.com",
-    "eventName": "StartDeviceDiscovery",
+    "eventTime": "2025-06-05T18:30:40Z",
+    "eventSource": "iotmanagedintegrations.amazonaws.com",
+    "eventName": "CreateCloudConnector",
     "awsRegion": "us-east-1",
-    "sourceIPAddress": "15.248.7.123",
-    "userAgent": "aws-sdk-java/2.30.21 md/io#sync md/http#Apache ua/2.1 os/Mac_OS_X#15.3.1 lang/java#17.0.13 md/OpenJDK_64-Bit_Server_VM#17.0.13+11-LTS md/vendor#Amazon.com_Inc. md/en_US cfg/auth-source#stat m/D,N",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "PostmanRuntime/7.44.0",
     "requestParameters": <span>{</span>
-        "DiscoveryType": "ZIGBEE",
-        "ControllerIdentifier": "554a1e3f7c884e67a21e0cabac3a48e3"
+        "EndpointType": "LAMBDA",
+        "Description": "Manual testing for C2C CT Validation",
+        "ClientToken": "abc7460",
+        "EndpointConfig": <span>{</span>
+            "lambda": <span>{</span>
+                "arn": "arn:aws:lambda:us-east-1:111122223333:function:LightweightMockConnector7460"
+            }
+        },
+        "Name": "EdenManualTestCloudConnector"
     },
     "responseElements": <span>{</span>
         "X-Frame-Options": "DENY",
@@ -431,76 +581,74 @@
         "X-Content-Type-Options": "nosniff",
         "Content-Security-Policy": "upgrade-insecure-requests; default-src 'none'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'",
         "Pragma": "no-cache",
-        "Id": "717023e159264ec5ba97293e4d884d3a",
-        "StartedAt": 1740600693.789,
-        "Arn": "arn:aws:iotmanagedintegrations::123456789012:device-discovery/717023e159264ec5ba97293e4d884d3a"
+        "Id": "f7e633e719404c4a933596b4d0cc276e",
+        "Arn": "arn:aws:iotmanagedintegrations:us-east-1:111122223333:cloud-connector/EXAMPLE404c4a933596b4d0cc276e"
     },
-    "requestID": "29aa09b9-ad0e-42dc-8b7f-565a1a56c020",
-    "eventID": "d8d0a6ab-b729-4aa5-8af0-9f605ee90d0f",
+    "requestID": "c0071fd1-b8e0-400a-bcc0-EXAMPLE9e4",
+    "eventID": "95b318ea-2f63-4183-9c22-EXAMPLE3e",
     "readOnly": false,
     "eventType": "AwsApiCall",
     "managementEvent": true,
-    "recipientAccountId": "123456789012",
+    "recipientAccountId": "111122223333",
     "eventCategory": "Management"
-}
-    </code></pre>
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail event that demonstrates a successful
+            <code class="code">
+             ListDiscoveredDevices
+            </code>
+            API operation.
+           </p>
            <p>
             <b>
-             Access denied CloudTrail event with the
+             Successful CloudTrail event with the
              <code class="code">
-              StartDeviceDiscovery
+              ListDiscoveredDevices
              </code>
-             API operation.
+             API
+        operation.
             </b>
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON">
-<span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
     "eventVersion": "1.09",
     "userIdentity": <span>{</span>
         "type": "AssumedRole",
-        "principalId": "AROA47CRX4JX4AEXAMPLE",
-        "arn": "arn:aws:sts::123456789012:assumaDMINed-role/EXAMPLEExplicitDenyRole/EXAMPLE",
-        "accountId": "222222222222",
-        "accessKeyId": "access-key-id",
+        "principalId": "EZAMPLE",
+        "arn": "arn:aws:sts::444455556666:assumed-role/Admin/EXAMPLE",
+        "accountId": "444455556666",
+        "accessKeyId": "EXAMPLERJ26PYMH",
         "sessionContext": <span>{</span>
             "sessionIssuer": <span>{</span>
                 "type": "Role",
-                "principalId": "AROA47CRX4JXUNEXAMPLE",
-                "arn": "arn:aws:iam::123456789012:role/EXAMPLEExplicitDenyRole",
-                "accountId": "222222222222",
-                "userName": "EXAMPLEExplicitDenyRole"
+                "principalId": "EXAMPLE",
+                "arn": "arn:aws:iam::444455556666:role/Admin",
+                "accountId": "444455556666",
+                "userName": "Admin"
             },
             "attributes": <span>{</span>
-                "creationDate": "2025-02-27T21:36:55Z",
+                "creationDate": "2025-06-10T23:37:31Z",
                 "mfaAuthenticated": "false"
             }
-        },
-        "invokedBy": "AWS Internal"
+        }
     },
-    "eventTime": "2025-02-27T21:37:01Z",
-    "eventSource": "gamma-iotmanagedintegrations.amazonaws.com",
-    "eventName": "StartDeviceDiscovery",
+    "eventTime": "2025-06-10T23:38:07Z",
+    "eventSource": "iotmanagedintegrations.amazonaws.com",
+    "eventName": "ListDiscoveredDevices",
     "awsRegion": "us-east-1",
-    "sourceIPAddress": "AWS Internal",
-    "userAgent": "AWS Internal",
-    "errorCode": "AccessDenied",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "EXAMPLE-runtime/2.4.0",
     "requestParameters": <span>{</span>
-        "DiscoveryType": "CLOUD",
-        "ClientToken": "ClientToken",
-        "ConnectorAssociationIdentifier": "ConnectorAssociation"
+        "Identifier": "EXAMPLE4f268483a17d8060f014"
     },
-    "responseElements": <span>{</span>
-        "message": "User: arn:aws:sts::123456789012:assumed-role/EXAMPLEExplicitDenyRole/EXAMPLE is not authorized to perform: iotmanagedintegrations:StartDeviceDiscovery on resource: arn:aws:iotmanagedintegrations:us-east-1:123456789012:/device-discoveries with an explicit deny"
-    },
-    "requestID": "5eabd798-d79c-4d76-a5dd-115be230d77a",
-    "eventID": "cc75660c-f628-462a-9e6e-83dab40c5246",
-    "readOnly": false,
+    "responseElements": null,
+    "requestID": "27ae1f61-e2e6-43e4-bf17-EXAMPLEa568",
+    "eventID": "34734e81-76a8-49a4-9641-EXAMPLE28ed",
+    "readOnly": true,
     "eventType": "AwsApiCall",
     "managementEvent": true,
-    "recipientAccountId": "123456789012",
+    "recipientAccountId": "444455556666",
     "eventCategory": "Management"
-}
-    </code></pre>
+}</code></pre>
            <p>
             For information about CloudTrail record contents, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">

@@ -710,15 +710,27 @@
             CloudWatch data events in CloudTrail
            </h2>
            <p>
-            CloudTrail can capture API activities related to the CloudWatch data plane operations
+            CloudTrail can capture API activities related to the CloudWatch data plane operations on metrics
             <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html">
              GetMetricData
             </a>
-            and
+            ,
             <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricWidgetImage.html">
              GetMetricWidgetImage
             </a>
-            .
+            ,
+            <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutMetricData.html">
+             PutMetricData
+            </a>
+            ,
+            <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html">
+             GetMetricStatistics
+            </a>
+            , and
+            <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html">
+             ListMetrics
+            </a>
+            APIs.
            </p>
            <p>
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
@@ -767,15 +779,26 @@
                 data events in CloudTrail, filtering by resource allows you to have more control over what you log and pay for.
            </p>
            <p>
-            Using the information that CloudTrail collects, you can identify a specific request to the CloudWatch GetMetricData or 
-            GetMetricWidgetImage APIs, the IP address of the requester, the requester's identity, and the date and time of the 
+            Using the information that CloudTrail collects, you can identify any of the metric APIs, the IP address of the requester, the requester's identity, and the date and time of the 
             request. Logging the
             <b>
              GetMetricData
             </b>
-            and
+            ,
             <b>
              GetMetricWidgetImage
+            </b>
+            ,
+            <b>
+             PutMetricData
+            </b>
+            ,
+            <b>
+             GetMetricStatistics
+            </b>
+            , and
+            <b>
+             ListMetrics
             </b>
             APIs using CloudTrail helps you enable operational and 
             risk auditing, governance, and compliance of your AWS account.
@@ -898,6 +921,74 @@
         "clientProvidedHostHeader": "monitoring.us-east-1.amazonaws.com"
     }
 }</code></pre>
+           <p>
+            The following is an example of a CloudTrail event for a
+            <b>
+             PutMetricData
+            </b>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+      "eventVersion": "1.11",
+      "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "111122223333:<code class="replaceable">example</code>.amazon.com",
+        "arn": "arn:aws:sts::111122223333:assumed-role/cloudwatch.full.access/<code class="replaceable">example</code>.amazon.com",
+        "accountId": "111122223333",
+        "accessKeyId": "EXAMPLE1234567890",
+        "sessionContext": <span>{</span>
+          "sessionIssuer": <span>{</span>
+            "type": "Role",
+            "principalId": "AROA3FLD4LJVPWYJ6BCNM",
+            "arn": "arn:aws:iam::111122223333:role/cloudwatch.full.access",
+            "accountId": "111122223333",
+            "userName": "cloudwatch.full.access"
+          },
+          "attributes": <span>{</span>
+            "creationDate": "2025-06-19T23:19:50Z",
+            "mfaAuthenticated": "false"
+          }
+        }
+      },
+      "eventTime": "2025-06-19T23:51:04Z",
+      "eventSource": "monitoring.amazonaws.com",
+      "eventName": "PutMetricData",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "AWS Internal",
+      "userAgent": "AWS Internal",
+      "requestParameters": <span>{</span>
+        "namespace": "CloudTrailTests",
+        "metricData": [
+          <span>{</span>
+            "metricName": "CloudTrailPutMetricDataTest",
+            "dimensions": [
+              <span>{</span>
+                "name": "TestDimName",
+                "value": "TestDimValue"
+              }
+            ]
+          }
+        ]
+      },
+      "responseElements": null,
+      "requestID": "877db913-2620-4929-97f3-f3c93c6f689b",
+      "eventID": "0c0c4516-75f4-4b27-8a83-213821a96a2b",
+      "readOnly": false,
+      "resources": [
+        <span>{</span>
+          "type": "AWS::CloudWatch::Metric"
+        }
+      ],
+      "eventType": "AwsApiCall",
+      "managementEvent": false,
+      "recipientAccountId": "111122223333",
+      "eventCategory": "Data",
+      "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "monitoring.us-east-1.amazonaws.com"
+      }
+    }</code></pre>
            <h2 id="cwl_query-generation-cloudtrail">
             Query generation information in CloudTrail
            </h2>

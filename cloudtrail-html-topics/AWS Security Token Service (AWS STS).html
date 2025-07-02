@@ -955,7 +955,7 @@
            <p>
             The IAM user named
             <code class="code">
-             JohnDoe
+             John
             </code>
             in account 777788889999 calls the
         AWS STS
@@ -971,7 +971,7 @@
         equal to their user name when assuming the role. The user passes in the source identity
         value of
             <code class="code">
-             JohnDoe
+             John
             </code>
             .
            </p>
@@ -980,10 +980,10 @@
   "userIdentity": <span>{</span>
     "type": "IAMUser",
     "principalId": "AIDAQRSTUVWXYZEXAMPLE",
-    "arn": "arn:aws:iam::777788889999:user/JohnDoe",
+    "arn": "arn:aws:iam::777788889999:user/John",
     "accountId": "777788889999",
     "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-    "userName": "JohnDoe"
+    "userName": "John"
   },
   "eventTime": "2014-07-18T15:07:39Z",
   "eventSource": "sts.amazonaws.com",
@@ -993,8 +993,8 @@
   "userAgent": "aws-cli/1.11.10 Python/2.7.8 Linux/3.2.45-0.6.wd.865.49.315.metal1.x86_64 botocore/1.4.67",
   "requestParameters": <span>{</span>
     "roleArn": "arn:aws:iam::111122223333:role/EC2-dev",
-    "roleSessionName": "JohnDoe-EC2-dev",
-    "sourceIdentity": "JohnDoe",<span>
+    "roleSessionName": "John-EC2-dev",
+    "sourceIdentity": "John",<span>
     "serialNumber": "arn:aws:iam::777788889999:mfa"</span>
   },
   "responseElements": <span>{</span>
@@ -1004,10 +1004,10 @@
       "expiration": "Jul 18, 2023, 4:07:39 PM"
       },
     "assumedRoleUser": <span>{</span>
-      "assumedRoleId": "AIDAQRSTUVWXYZEXAMPLE:JohnDoe-EC2-dev",
-      "arn": "arn:aws:sts::111122223333:assumed-role/EC2-dev/JohnDoe-EC2-dev"
+      "assumedRoleId": "AIDAQRSTUVWXYZEXAMPLE:John-EC2-dev",
+      "arn": "arn:aws:sts::111122223333:assumed-role/EC2-dev/John-EC2-dev"
     },
-  "sourceIdentity": "JohnDoe"
+  "sourceIdentity": "John"
   },
   "resources": [
     <span>{</span>
@@ -1041,8 +1041,8 @@
   "userAgent": "aws-cli/1.11.10 Python/2.7.8 Linux/3.2.45-0.6.wd.865.49.315.metal1.x86_64 botocore/1.4.67",
   "requestParameters": <span>{</span>   
     "roleArn": "arn:aws:iam::111122223333:role/EC2-dev",
-    "roleSessionName": "JohnDoe-EC2-dev",
-    "sourceIdentity": "JohnDoe", <span> 
+    "roleSessionName": "John-EC2-dev",
+    "sourceIdentity": "John", <span> 
     "serialNumber": "arn:aws:iam::777788889999:mfa"</span>
   }, 
   "responseElements": <span>{</span>
@@ -1052,10 +1052,10 @@
       "expiration": "Jul 18, 2014, 4:07:39 PM"     
     },   
     "assumedRoleUser": <span>{</span>     
-      "assumedRoleId": "AIDAQRSTUVWXYZEXAMPLE:JohnDoe-EC2-dev",     
-      "arn": "arn:aws:sts::111122223333:assumed-role/EC2-dev/JohnDoe-EC2-dev"   
+      "assumedRoleId": "AIDAQRSTUVWXYZEXAMPLE:John-EC2-dev",     
+      "arn": "arn:aws:sts::111122223333:assumed-role/EC2-dev/John-EC2-dev"   
       },
-  "sourceIdentity": "JohnDoe"
+  "sourceIdentity": "John"
   },
   "requestID": "4EXAMPLE-0e8d-11e4-96e4-e55c0EXAMPLE",
   "sharedEventID": "bEXAMPLE-efea-4a70-b951-19a88EXAMPLE",
@@ -1069,7 +1069,7 @@
             The following example shows a CloudTrail log entry for a request made by John Doe in account
         111111111111. John previously used his
             <code class="code">
-             JohnDoe
+             John
             </code>
             user to assume the
             <code class="code">
@@ -1087,7 +1087,7 @@
             . The source identity that he set
         when he assumed the
             <code class="code">
-             JohnDoe1
+             John1
             </code>
             role persists in the request to assume
             <code class="code">
@@ -1126,7 +1126,7 @@
     "userIdentity": <span>{</span>
         "type": "AssumedRole",
         "principalId": "AROAIN5ATK5U7KEXAMPLE:JohnRole1",
-        "arn": "arn:aws:sts::111111111111:assumed-role/JohnDoe/JohnRole1",
+        "arn": "arn:aws:sts::111111111111:assumed-role/John/JohnRole1",
         "accountId": "111111111111",
         "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
         "sessionContext": <span>{</span>
@@ -1139,9 +1139,9 @@
                "principalId": "AROAIN5ATK5U7KEXAMPLE",
                 "arn": "arn:aws:iam::111111111111:role/JohnRole1",
                 "accountId": "111111111111",
-                "userName": "JohnDoe"
+                "userName": "John"
             },
-            "sourceIdentity": "JohnDoe"
+            "sourceIdentity": "John"
         }
     },
     "eventTime": "2019-10-02T22:12:29Z",
@@ -1166,7 +1166,7 @@
         ],
         "roleArn": "arn:aws:iam::111111111111:role/JohnRole2",
         "roleSessionName": "Role2WithTags",
-        "sourceIdentity": "JohnDoe",
+        "sourceIdentity": "John",
         "transitiveTagKeys": [
             "Email",
             "CostCenter"
@@ -1183,7 +1183,7 @@
             "assumedRoleId": "AROAIFR7WHDTSOYQYHFUE:Role2WithTags",
             "arn": "arn:aws:sts::111111111111:assumed-role/test-role/Role2WithTags"
         },
-    "sourceIdentity": "JohnDoe"
+    "sourceIdentity": "John"
     },
     "requestID": "b96b0e4e-e561-11e9-8b3f-7b396EXAMPLE",
     "eventID": "1917948f-3042-46ec-98e2-62865EXAMPLE",
@@ -1759,9 +1759,9 @@
   "userIdentity": <span>{</span>
     "type": "IAMUser",
     "principalId": "AIDACKCEVSQ6C2EXAMPLE",
-    "arn":"arn:aws:iam::111122223333:user/JohnDoe",
+    "arn":"arn:aws:iam::111122223333:user/John",
     "accountId": "111122223333",
-    "userName": "JohnDoe"
+    "userName": "John"
   },
   "eventTime": "2014-07-16T15:49:27Z",
   "eventSource": "signin.amazonaws.com",

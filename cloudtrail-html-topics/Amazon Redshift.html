@@ -1054,7 +1054,22 @@
             are placeholders for your own values.
                     Also specify the associated actions and resources in the bucket policy.
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+           <awsdocs-tabs>
+            <dl style="display: none">
+             <dt>
+              JSON
+             </dt>
+             <dd tab-id="json">
+              <div class="variablelist">
+               <dl>
+                <dt>
+                 <b>
+                  <span class="term">
+                  </span>
+                 </b>
+                </dt>
+                <dd>
+                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><code class="userinput"><span>{</span>
     "Version": "2012-10-17",
     "Statement": [
         <span>{</span>
@@ -1073,7 +1088,14 @@
             ]
         }
     ]
-}</code></pre>
+}</code>
+</code></pre>
+                </dd>
+               </dl>
+              </div>
+             </dd>
+            </dl>
+           </awsdocs-tabs>
            <p>
             The following example is a bucket policy for the US East (N. Virginia) Region and a bucket
                     named
@@ -1082,7 +1104,22 @@
             </code>
             .
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+           <awsdocs-tabs>
+            <dl style="display: none">
+             <dt>
+              JSON
+             </dt>
+             <dd tab-id="json">
+              <div class="variablelist">
+               <dl>
+                <dt>
+                 <b>
+                  <span class="term">
+                  </span>
+                 </b>
+                </dt>
+                <dd>
+                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><code class="userinput"><span>{</span>
     "Version": "2008-10-17",
     "Statement": [
         <span>{</span>
@@ -1101,7 +1138,14 @@
             ]
         }
     ]
-}</code></pre>
+}</code>
+</code></pre>
+                </dd>
+               </dl>
+              </div>
+             </dd>
+            </dl>
+           </awsdocs-tabs>
            <p>
             Regions that aren't enabled by default, also known as "opt-in" Regions,
                     require a Region-specific service principal name. For these, the

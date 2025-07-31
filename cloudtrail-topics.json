@@ -269,6 +269,12 @@
     "Support began": "01/27/2016",
     "Link": "https://docs.aws.amazon.com/gamelift/latest/developerguide/logging-using-cloudtrail.html"
   },
+  "Amazon GameLift Streams": {
+    "AWS Service": "Amazon GameLift Streams",
+    "CloudTrail Topics": "Logging Amazon GameLift Streams API calls using AWS CloudTrail",
+    "Support began": "03/05/2025",
+    "Link": "https://docs.aws.amazon.com/gameliftstreams/latest/developerguide/logging-using-cloudtrail.html"
+  },
   "Amazon GuardDuty": {
     "AWS Service": "Amazon GuardDuty",
     "CloudTrail Topics": "Logging Amazon GuardDuty API Calls with AWS CloudTrail",

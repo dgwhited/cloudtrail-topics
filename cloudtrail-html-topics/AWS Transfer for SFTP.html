@@ -75,7 +75,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=transfer&amp;topic_url=https://docs.aws.amazon.com/en_us/transfer/latest/userguide/cloudtrail-logging.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/transfer/latest/userguide/cloudtrail-logging.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/transfer/latest/userguide/cloudtrail-logging.html" name="feedback-no"/>
-        <meta content="logging trails, logging for AWS account" name="keywords"/>
+        <meta content="logging trails, logging for AWS account,S3 data events,object-level logging,file operations,data access logs,S3 object access,onBehalfOf" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -132,6 +132,9 @@
           </a>
           <a href="#create-server-ct-example">
            Example log entry for creating a server
+          </a>
+          <a href="#data-access-log-examples">
+           Data access logs
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -341,6 +344,13 @@
                </a>
               </p>
              </li>
+             <li>
+              <p>
+               <a href="#data-access-log-examples">
+                Data access log examples
+               </a>
+              </p>
+             </li>
             </ul>
            </div>
            <h2 id="monitoring-enable-cloudtrail">
@@ -402,6 +412,105 @@
              </p>
             </div>
            </div>
+           <h3 id="enable-s3-data-events">
+            Enabling Amazon S3 data events
+           </h3>
+           <p>
+            To track file operations performed through AWS Transfer Family on your Amazon S3 buckets, you need to enable data events for those buckets. Data events provide object-level API activity and are particularly useful for tracking file uploads, downloads, and other operations performed by AWS Transfer Family users.
+           </p>
+           <p>
+            To enable Amazon S3 data events for your AWS Transfer Family server:
+           </p>
+           <div class="orderedlist">
+            <ol>
+             <li>
+              <p>
+               Open the CloudTrail console at
+               <a href="https://console.aws.amazon.com/cloudtrail/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 https://console.aws.amazon.com/cloudtrail/
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </li>
+             <li>
+              <p>
+               In the navigation pane, choose
+               <b>
+                Trails
+               </b>
+               , and then select an existing trail or create a new one.
+              </p>
+             </li>
+             <li>
+              <p>
+               Under
+               <b>
+                Data events
+               </b>
+               , choose
+               <b>
+                Edit
+               </b>
+               .
+              </p>
+             </li>
+             <li>
+              <p>
+               For
+               <b>
+                Data event type
+               </b>
+               , select
+               <b>
+                S3
+               </b>
+               .
+              </p>
+             </li>
+             <li>
+              <p>
+               Choose the Amazon S3 buckets to log data events for. You can log data events for all buckets or specify individual buckets.
+              </p>
+             </li>
+             <li>
+              <p>
+               Choose whether to log
+               <b>
+                Read
+               </b>
+               events,
+               <b>
+                Write
+               </b>
+               events, or both.
+              </p>
+             </li>
+             <li>
+              <p>
+               Choose
+               <b>
+                Save changes
+               </b>
+               .
+              </p>
+             </li>
+            </ol>
+           </div>
+           <p>
+            After enabling data events, you can access these logs in the Amazon S3 bucket configured for your CloudTrail trail. The logs include details such as the user who performed the action, the action timestamp, the specific object affected, and the
+            <code class="code">
+             onBehalfOf
+            </code>
+            field that helps trace the
+            <code class="code">
+             userId
+            </code>
+            for actions performed through AWS Transfer Family.
+           </p>
            <h2 id="create-server-ct-example">
             Example log entry for creating a server
            </h2>
@@ -473,6 +582,251 @@
     },
     "sessionCredentialFromConsole": "true"
 }</code></pre>
+           <h2 id="data-access-log-examples">
+            Data access log examples
+           </h2>
+           <p>
+            When you enable Amazon S3 data events for your CloudTrail trail, you can track file operations performed through AWS Transfer Family. These logs help you monitor who accessed what data, when, and how.
+           </p>
+           <h3 id="successful-data-access-example">
+            Example log entry for successful data access
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a successful file download operation through AWS Transfer Family.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLEID:TransferSessionUser",
+        "arn": "arn:aws:sts::123456789012:assumed-role/TransferS3AccessRole/TransferSessionUser",
+        "accountId": "123456789012",
+        "accessKeyId": "ASIAEXAMPLEKEY",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AROAEXAMPLEID",
+                "arn": "arn:aws:iam::123456789012:role/TransferS3AccessRole",
+                "accountId": "123456789012",
+                "userName": "TransferS3AccessRole"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2025-07-15T16:12:05Z",
+                "mfaAuthenticated": "true"
+            }
+        },
+        "invokedBy": "transfer.amazonaws.com"
+    },
+    "eventTime": "2025-07-15T16:15:22Z",
+    "eventSource": "s3.amazonaws.com",
+    "eventName": "GetObject",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "transfer.amazonaws.com",
+    "userAgent": "transfer.amazonaws.com",
+    "requestParameters": <span>{</span>
+        "bucketName": "my-transfer-bucket",
+        "key": "users/john.doe/reports/quarterly-report-2025-Q2.pdf",
+        "Host": "my-transfer-bucket.s3.amazonaws.com",
+        "x-amz-request-payer": "requester"
+    },
+    "responseElements": null,
+    "additionalEventData": <span>{</span>
+        "SignatureVersion": "SigV4",
+        "CipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+        "bytesTransferredIn": 0,
+        "bytesTransferredOut": 2458732,
+        "x-amz-id-2": "EXAMPLE123456789+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ="
+    },
+    "requestID": "EXAMPLE123456789",
+    "eventID": "example12-3456-7890-abcd-ef1234567890",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+            "type": "AWS::S3::Object",
+            "ARN": "arn:aws:s3:::my-transfer-bucket/users/john.doe/reports/quarterly-report-2025-Q2.pdf"
+        },
+        <span>{</span>
+            "accountId": "123456789012",
+            "type": "AWS::S3::Bucket",
+            "ARN": "arn:aws:s3:::my-transfer-bucket"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Data",
+    "requestParameters": <span>{</span>
+        "x-amz-onBehalfOf": "john.doe.sessionid@s-abcd1234efgh5678"
+    }
+}</code></pre>
+           <p>
+            In this example, note the following important fields:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                eventName
+               </code>
+               : Indicates the S3 API operation that was performed (GetObject for a file download).
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                requestParameters.bucketName
+               </code>
+               and
+               <code class="code">
+                requestParameters.key
+               </code>
+               : Show which S3 object was accessed.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                additionalEventData.bytesTransferredOut
+               </code>
+               : Shows the size of the downloaded file in bytes.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                requestParameters.x-amz-onBehalfOf
+               </code>
+               : Contains the AWS Transfer Family username and session ID, allowing you to trace which AWS Transfer Family user performed the action.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            The
+            <code class="code">
+             x-amz-onBehalfOf
+            </code>
+            field is particularly important as it links the S3 API call back to the specific AWS Transfer Family user who initiated the action. This field follows the format
+            <code class="code">
+             username.sessionid@server-id
+            </code>
+            , where:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                username
+               </code>
+               is the AWS Transfer Family username.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                sessionid
+               </code>
+               is a unique identifier for the user's session.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                server-id
+               </code>
+               is the ID of the AWS Transfer Family server.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h3 id="data-access-operations">
+            Common data access operations
+           </h3>
+           <p>
+            When monitoring data access through AWS Transfer Family, you'll typically see the following S3 API operations in your CloudTrail logs:
+           </p>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="w77ab1c33c33b7b5">
+              <caption>
+               Common S3 operations in AWS Transfer Family logs
+              </caption>
+              <thead>
+               <tr>
+                <th>
+                 S3 API Operation
+                </th>
+                <th>
+                 AWS Transfer Family Action
+                </th>
+                <th>
+                 Description
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                GetObject
+               </td>
+               <td tabindex="-1">
+                File download
+               </td>
+               <td tabindex="-1">
+                User downloaded a file from the server
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                PutObject
+               </td>
+               <td tabindex="-1">
+                File upload
+               </td>
+               <td tabindex="-1">
+                User uploaded a file to the server
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                DeleteObject
+               </td>
+               <td tabindex="-1">
+                File deletion
+               </td>
+               <td tabindex="-1">
+                User deleted a file from the server
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                ListObjects or ListObjectsV2
+               </td>
+               <td tabindex="-1">
+                Directory listing
+               </td>
+               <td tabindex="-1">
+                User listed files in a directory
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                CopyObject
+               </td>
+               <td tabindex="-1">
+                File copy
+               </td>
+               <td tabindex="-1">
+                User copied a file within the server
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <p>
+            By monitoring these operations in your CloudTrail logs, you can track all file activities performed through your AWS Transfer Family server, helping you meet compliance requirements and detect unauthorized access.
+           </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

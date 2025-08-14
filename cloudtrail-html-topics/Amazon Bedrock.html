@@ -299,7 +299,7 @@
             provide information about the resource operations performed on or in a resource (for example, reading or writing to an Amazon S3 object). These are also known as data plane operations. Data events are often high-volume activities that CloudTrail doesnât log by default.
            </p>
            <p>
-            Amazon Bedrock  logs
+            Amazon Bedrock  logs some
             <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_Operations_Amazon_Bedrock_Runtime.html">
              Amazon Bedrock Runtime API operations
             </a>
@@ -315,15 +315,38 @@
             <code class="code">
              Converse
             </code>
-            , and
+            ,
             <code class="code">
              ConverseStream
+            </code>
+            , and
+            <code class="code">
+             ListAsyncInvokes
             </code>
             ) as
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
              management events
             </a>
             .
+           </p>
+           <p>
+            Amazon Bedrock logs other
+            <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_Operations_Amazon_Bedrock_Runtime.html">
+             Amazon Bedrock Runtime API operations
+            </a>
+            (such as
+            <code class="code">
+             InvokeModelWithBidirectionalStream
+            </code>
+            ,
+            <code class="code">
+             GetAsyncInvoke
+            </code>
+            ,  and
+            <code class="code">
+             StartAsyncInvokes
+            </code>
+            ) as data events.
            </p>
            <p>
             Amazon Bedrock logs all
@@ -338,11 +361,7 @@
             <code class="code">
              InvokeInlineAgent
             </code>
-            ) actions to CloudTrail as
-            <em>
-             data events
-            </em>
-            .
+            ) actions to CloudTrail as data events.
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -370,6 +389,46 @@
                 AWS::Bedrock::InlineAgent
                </code>
                resource type.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               To log
+               <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModelWithBidirectionalStream.html">
+                InvokeModelWithBidirectionalStream
+               </a>
+               calls, 
+          configure advanced event selectors to record data events for the
+               <code class="code">
+                AWS::Bedrock::Model
+               </code>
+               resource type and
+               <code class="code">
+                AWS:Bedrock::AsyncInvoke
+               </code>
+               .
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               To log
+               <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_GetAsyncInvoke.html">
+                GetAsyncInvoke
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_StartAsyncInvoke.html">
+                StartAsyncInvoke
+               </a>
+               calls, configure advanced event selectors 
+          to record data events for the
+               <code class="code">
+                AWS::Bedrock::Model
+               </code>
+               resource type and
+               <code class="code">
+                AWS:Bedrock::AsyncInvoke
+               </code>
+               .
               </p>
              </li>
              <li class="listitem">

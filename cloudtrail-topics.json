@@ -627,7 +627,7 @@
     "AWS Service": "Amazon WorkDocs",
     "CloudTrail Topics": "Logging Amazon WorkDocs API Calls By Using AWS CloudTrail",
     "Support began": "08/27/2014",
-    "Link": "https://docs.aws.amazon.com/workdocs/latest/adminguide/cloudtrail_logging.html"
+    "Link": ""
   },
   "Amazon WorkMail": {
     "AWS Service": "Amazon WorkMail",
@@ -1203,19 +1203,19 @@
     "AWS Service": "AWS OpsWorks for Chef Automate",
     "CloudTrail Topics": "Logging AWS OpsWorks for Chef Automate API Calls with AWS CloudTrail",
     "Support began": "07/16/2018",
-    "Link": "https://docs.aws.amazon.com/opsworks/latest/userguide/logging-opsca-using-cloudtrail.html"
+    "Link": ""
   },
   "AWS OpsWorks for Puppet Enterprise": {
     "AWS Service": "AWS OpsWorks for Puppet Enterprise",
     "CloudTrail Topics": "Logging OpsWorks for Puppet Enterprise API Calls with AWS CloudTrail",
     "Support began": "07/16/2018",
-    "Link": "https://docs.aws.amazon.com/opsworks/latest/userguide/logging-opspup-using-cloudtrail.html"
+    "Link": ""
   },
   "AWS OpsWorks Stacks": {
     "AWS Service": "AWS OpsWorks Stacks",
     "CloudTrail Topics": "Logging AWS OpsWorks Stacks API Calls with AWS CloudTrail",
     "Support began": "06/04/2014",
-    "Link": "https://docs.aws.amazon.com/opsworks/latest/userguide/monitoring-cloudtrail.html"
+    "Link": ""
   },
   "Oracle Database@AWS": {
     "AWS Service": "Oracle Database@AWS",

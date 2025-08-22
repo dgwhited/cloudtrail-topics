@@ -1,0 +1,25 @@
+name: Update Dependencies
+on:
+  schedule:
+    - cron: '0 10 * * 1'  # Every Monday at 10 AM UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+      
+      - name: Update GitHub Actions
+        uses: dgwhited/github-actions-tag-2-sha@v1
+        with:
+          files: '.github/workflows/*.yml'
+          mode: 'update-to-latest'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e
+        with:
+          title: 'Update GitHub Actions to latest releases'
+          body: 'Automated update of GitHub Actions dependencies'
+          branch: 'update-actions'

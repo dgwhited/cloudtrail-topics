@@ -441,45 +441,45 @@
     AWSServiceRoleForAmazonElasticFileSystem service-linked role.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
-Â Â Â  "eventVersion": "1.05",
-Â Â Â  "userIdentity": <span>{</span>
-Â Â Â Â Â Â Â  "type": "IAMUser",
-Â Â Â Â Â Â Â  "principalId": "111122223333",
-Â Â Â Â Â Â Â  "arn": "arn:aws:iam::111122223333:user/user1",
-Â Â Â Â Â Â Â  "accountId": "111122223333",
-Â Â Â Â Â Â Â  "accessKeyId": "A111122223333",
-Â Â Â Â Â Â Â  "userName": "user1",
-Â Â Â Â Â Â Â  "sessionContext": <span>{</span>
-Â Â Â Â Â Â Â Â Â Â Â  "attributes": <span>{</span>
-Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  "mfaAuthenticated": "false",
-Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  "creationDate": "2019-10-23T22:45:41Z"
-Â Â Â Â Â Â Â Â Â Â Â  }
-Â Â Â Â Â Â Â  },
-Â Â Â Â Â Â Â  "invokedBy": "elasticfilesystem.amazonaws.comâ
-Â Â Â  },
-Â Â Â  "eventTime": "2019-10-23T22:45:41Z",
-Â Â Â  "eventSource": "iam.amazonaws.com",
-Â Â Â  "eventName": "CreateServiceLinkedRole",
-Â Â Â  "awsRegion": "us-east-1",
-Â Â Â  "sourceIPAddress": "192.0.2.0",
-Â Â Â  "userAgent": "user_agent",
-Â Â Â  "requestParameters": <span>{</span>
-Â Â Â Â Â Â Â  "aWSServiceName": "elasticfilesystem.amazonaws.comâ
-Â Â Â  },
-Â Â Â  "responseElements": <span>{</span>
-Â Â Â Â Â Â Â  "role": <span>{</span>
-Â Â Â Â Â Â Â Â Â Â Â  "assumeRolePolicyDocument": "111122223333-10-111122223333Statement111122223333Action111122223333AssumeRole111122223333Effect%22%3A%20%22Allow%22%2C%20%22Principal%22%3A%20%7B%22Service%22%3A%20%5B%22 elasticfilesystem.amazonaws.com%22%5D%7D%7D%5D%7D",
-Â Â Â Â Â Â Â Â Â Â Â  "arn": "arn:aws:iam::111122223333:role/aws-service-role/elasticfilesystem.amazonaws.com/AWSServiceRoleForAmazonElasticFileSystem",
-Â Â Â Â Â Â Â Â Â Â Â  "roleId": "111122223333",
-Â Â Â Â Â Â Â Â Â Â Â  "createDate": "Oct 23, 2019 10:45:41 PM",
-Â Â Â Â Â Â Â Â Â Â Â  "roleName": "AWSServiceRoleForAmazonElasticFileSystem",
-Â Â Â Â Â Â Â Â Â Â Â  "path": "/aws-service-role/elasticfilesystem.amazonaws.com/â
-Â Â Â Â Â Â Â  }
-Â Â Â  },
-Â Â Â  "requestID": "11111111-2222-3333-4444-abcdef123456",
-Â Â Â  "eventID": "11111111-2222-3333-4444-abcdef123456",
-Â Â Â  "eventType": "AwsApiCall",
-Â Â Â  "recipientAccountId": "111122223333"
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "111122223333",
+        "arn": "arn:aws:iam::111122223333:user/user1",
+        "accountId": "111122223333",
+        "accessKeyId": "A111122223333",
+        "userName": "user1",
+        "sessionContext": <span>{</span>
+            "attributes": <span>{</span>
+                "mfaAuthenticated": "false",
+                "creationDate": "2019-10-23T22:45:41Z"
+            }
+        },
+        "invokedBy": "elasticfilesystem.amazonaws.comâ
+    },
+    "eventTime": "2019-10-23T22:45:41Z",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "CreateServiceLinkedRole",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.0",
+    "userAgent": "user_agent",
+    "requestParameters": <span>{</span>
+        "aWSServiceName": "elasticfilesystem.amazonaws.comâ
+    },
+    "responseElements": <span>{</span>
+        "role": <span>{</span>
+            "assumeRolePolicyDocument": "111122223333-10-111122223333Statement111122223333Action111122223333AssumeRole111122223333Effect%22%3A%20%22Allow%22%2C%20%22Principal%22%3A%20%7B%22Service%22%3A%20%5B%22 elasticfilesystem.amazonaws.com%22%5D%7D%7D%5D%7D",
+            "arn": "arn:aws:iam::111122223333:role/aws-service-role/elasticfilesystem.amazonaws.com/AWSServiceRoleForAmazonElasticFileSystem",
+            "roleId": "111122223333",
+            "createDate": "Oct 23, 2019 10:45:41 PM",
+            "roleName": "AWSServiceRoleForAmazonElasticFileSystem",
+            "path": "/aws-service-role/elasticfilesystem.amazonaws.com/â
+        }
+    },
+    "requestID": "11111111-2222-3333-4444-abcdef123456",
+    "eventID": "11111111-2222-3333-4444-abcdef123456",
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "111122223333"
 }
 </code></pre>
            <p>

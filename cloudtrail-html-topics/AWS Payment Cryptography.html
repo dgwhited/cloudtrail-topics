@@ -144,10 +144,12 @@
            Data events in CloudTrail
           </a>
           <a href="#understanding-controlplane-entries">
-           Understanding AWS Payment Cryptography Control Plane log file entries
+           Understanding AWS Payment Cryptography Control Plane log
+        file entries
           </a>
           <a href="#understanding-dataplane-entries">
-           Understanding AWS Payment Cryptography Data plane log file entries
+           Understanding AWS Payment Cryptography Data plane log file
+        entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -164,19 +166,19 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            AWS Payment Cryptography is integrated with AWS CloudTrail, a service that provides a record of actions 
-    taken by a user, role, or an AWS service in AWS Payment Cryptography. CloudTrail captures all API calls for
-    AWS Payment Cryptography as events. The calls captured include calls from the console and
-    code calls to the API operations. If you create a trail, you can enable
-    continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS Payment Cryptography. If 
-    you don't configure a trail, you can still view the most recent management (Control Plane) events in the CloudTrail console 
-    in
+            AWS Payment Cryptography is integrated with AWS CloudTrail, a service that provides a record of actions
+      taken by a user, role, or an AWS service in AWS Payment Cryptography. CloudTrail captures all API calls for
+      AWS Payment Cryptography as events. The calls captured include calls from the console and code calls to the
+      API operations. If you create a trail, you can enable continuous delivery of CloudTrail events to an
+      Amazon S3 bucket, including events for AWS Payment Cryptography. If you don't configure a trail, you can still
+      view the most recent management (Control Plane) events in the CloudTrail console in
             <b>
-             Event history
+             Event
+        history
             </b>
-            . Using the information collected by CloudTrail, you can
-    determine the request that was made to AWS Payment Cryptography, the IP address from which the request
-    was made, who made the request, when it was made, and additional details.
+            . Using the information collected by CloudTrail, you can determine the request
+      that was made to AWS Payment Cryptography, the IP address from which the request was made, who made the
+      request, when it was made, and additional details.
            </p>
            <p>
             To learn more about CloudTrail, see the
@@ -214,14 +216,16 @@
              <li>
               <p>
                <a href="#understanding-controlplane-entries">
-                Understanding AWS Payment Cryptography Control Plane log file entries
+                Understanding AWS Payment Cryptography Control Plane log
+        file entries
                </a>
               </p>
              </li>
              <li>
               <p>
                <a href="#understanding-dataplane-entries">
-                Understanding AWS Payment Cryptography Data plane log file entries
+                Understanding AWS Payment Cryptography Data plane log file
+        entries
                </a>
               </p>
              </li>
@@ -231,14 +235,13 @@
             AWS Payment Cryptography information in CloudTrail
            </h2>
            <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs 
-      in AWS Payment Cryptography, that activity is recorded in a CloudTrail event along with other AWS service events
-      in
+            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
+      AWS Payment Cryptography, that activity is recorded in a CloudTrail event along with other AWS service events in
             <b>
              Event history
             </b>
-            . You can view, search, and download recent events in 
-      your AWS account. For more information, see
+            . You can view, search, and download recent events in your
+      AWS account. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
              Viewing Events with CloudTrail Event History
             </a>
@@ -250,18 +253,20 @@
             <em>
              trail
             </em>
-            enables CloudTrail to deliver log files to an Amazon S3 bucket. 
-      By default, when you create a trail in the console, the trail applies to all AWS Regions. The trail 
-      logs events from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket 
-      that you specify. Additionally, you can configure other AWS services to further analyze and act
-      upon the event data collected in CloudTrail logs. For more information, see the following:
+            enables CloudTrail to deliver log files to an Amazon S3
+      bucket. By default, when you create a trail in the console, the trail applies to all AWS
+      Regions. The trail logs events from all Regions in the AWS partition and delivers the log
+      files to the Amazon S3 bucket that you specify. Additionally, you can configure other AWS
+      services to further analyze and act upon the event data collected in CloudTrail logs. For more
+      information, see the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for creating a trail
+                Overview for
+            creating a trail
                </a>
               </p>
              </li>
@@ -275,23 +280,22 @@
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
-                Configuring Amazon SNS notifications for CloudTrail
+                Configuring Amazon SNS
+            notifications for CloudTrail
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail log files from
-          multiple Regions
+                Receiving CloudTrail log files from multiple Regions
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail log files from
-          multiple accounts
+                Receiving CloudTrail log files from multiple accounts
                </a>
               </p>
              </li>
@@ -324,7 +328,8 @@
            <p>
             For more information, see the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity element
+             CloudTrail userIdentity
+        element
             </a>
             .
            </p>
@@ -352,8 +357,8 @@
             <a href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_TagResource.html">
              TagResource
             </a>
-            , 
-           and all other control plane operations.
+            , and
+      all other control plane operations.
            </p>
            <h2 id="data-events-in-cloud-trail">
             Data events in CloudTrail
@@ -362,13 +367,13 @@
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events.html">
              Data events
             </a>
-            provide information about the resource operations
-    performed on or in a resource, such as encrypting a payload or translating a pin. Data events are high-volume activities that CloudTrail does not log
-    by default. You can enable data events API action logging for AWS Payment Cryptography data plane events by
-    using CloudTrail APIs or console. For more information, see
+            provide information about the resource operations performed on or in a
+      resource, such as encrypting a payload or translating a pin. Data events are high-volume
+      activities that CloudTrail does not log by default. You can enable data events API action logging
+      for AWS Payment Cryptography data plane events by using CloudTrail APIs or console. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
              Logging data
-      events
+        events
             </a>
             in the
             <em>
@@ -377,9 +382,9 @@
             .
            </p>
            <p>
-            With CloudTrail, you must use advanced event selectors to decide which AWS Payment Cryptography API
-    activities are logged and recorded. To log AWS Payment Cryptography data plane events, you must include the
-    resource type
+            With CloudTrail, you must use advanced event selectors to decide which AWS Payment Cryptography API activities
+      are logged and recorded. To log AWS Payment Cryptography data plane events, you must include the resource
+      type
             <code class="code">
              AWS Payment Cryptography key
             </code>
@@ -387,9 +392,9 @@
             <code class="code">
              AWS Payment Cryptography alias
             </code>
-            . Once this is set, you can refine your
-    logging preferences further by selecting specific data events for recording, such as
-    using the
+            . Once this is set, you can
+      refine your logging preferences further by selecting specific data events for recording, such
+      as using the
             <code class="code">
              eventName
             </code>
@@ -397,8 +402,8 @@
             <code class="code">
              EncryptData
             </code>
-            events.
-    For more information, see
+            events. For more
+      information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html">
              <code class="code">
               AdvancedEventSelector
@@ -420,7 +425,8 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              To subscribe to AWS Payment Cryptography data events, you must utilize advanced event selectors.  We recommend subscribing to key and alias events to ensure that you receive all events.
+              To subscribe to AWS Payment Cryptography data events, you must utilize advanced event selectors. We
+        recommend subscribing to key and alias events to ensure that you receive all events.
              </p>
             </div>
            </div>
@@ -536,8 +542,7 @@
             Additional charges apply for data events. For more information, see
             <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
              <span>
-              AWS CloudTrail
-      Pricing
+              AWS CloudTrail Pricing
              </span>
              <awsui-icon class="awsdocs-link-icon" name="external">
              </awsui-icon>
@@ -545,7 +550,8 @@
             .
            </p>
            <h2 id="understanding-controlplane-entries">
-            Understanding AWS Payment Cryptography Control Plane log file entries
+            Understanding AWS Payment Cryptography Control Plane log
+        file entries
            </h2>
            <p>
             A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
@@ -669,12 +675,45 @@
   }
 }</code>
       </code></pre>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates the AWS Payment Cryptography
+      enabling Multi-Region key replication.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="nohighlight"><code class="computeroutput" copy="false"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "accountId": "111122223333",
+        "invokedBy": "payment-cryptography.amazonaws.com"
+    },
+    "eventTime": "2025-08-15T17:50:41Z",
+    "eventSource": "payment-cryptography.amazonaws.com",
+    "eventName": "SynchronizeMultiRegionKey",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "payment-cryptography.amazonaws.com",
+    "userAgent": "payment-cryptography.amazonaws.com",
+    "requestParameters": null,
+    "responseElements": null,
+    "eventID": "55c0fcbc-5b2e-4bd2-a976-99305be6e6fc",
+    "readOnly": false,
+    "eventType": "AwsServiceEvent",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333",
+    "serviceEventDetails": <span>{</span>
+        "keyArn": "arn:aws:payment-cryptography:us-east-1:111122223333:key/key-id",
+        "replicationRegion": "us-east-2"
+    },
+    "eventCategory": "Management"
+}</code></code></pre>
            <h2 id="understanding-dataplane-entries">
-            Understanding AWS Payment Cryptography Data plane log file entries
+            Understanding AWS Payment Cryptography Data plane log file
+        entries
            </h2>
            <p>
-            Data plane events can optionally be configured and function similarly to control plane logs but are typically much higher volumes.  Given the sensitive nature of some inputs and outputs to AWS Payment Cryptography
-       data plane operations, you may find certain fields with the message "*** Sensitive Data Redacted ***". This is not configurable and is intended to prevent sensitive data from appearing in logs or trails.
+            Data plane events can optionally be configured and function similarly to control plane
+      logs but are typically much higher volumes. Given the sensitive nature of some inputs and
+      outputs to AWS Payment Cryptography data plane operations, you may find certain fields with the message "***
+      Sensitive Data Redacted ***". This is not configurable and is intended to prevent sensitive
+      data from appearing in logs or trails.
            </p>
            <p>
             The following example shows a CloudTrail log entry that demonstrates the AWS Payment Cryptography

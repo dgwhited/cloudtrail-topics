@@ -179,15 +179,10 @@
             Broker logs
            </h2>
            <p>
-            Broker logs enable you to troubleshoot your Apache Kafka applications and to analyze
-            their communications with your MSK cluster. You can configure your new or
-            existing MSK cluster to deliver INFO-level broker logs to one or more of the
-            following types of destination resources: a CloudWatch log group, an S3 bucket, a Firehose
-            delivery stream. Through Firehose you can then deliver the log data from your delivery
-            stream to OpenSearch Service. You must create a destination resource before you configure your cluster
-            to deliver broker logs to it. Amazon MSK doesn't create these destination resources for you
-            if they don't already exist. For information about these three types of destination
-            resources and how to create them, see the following documentation:
+            Broker logs enable you to troubleshoot your Apache Kafka applications and to analyze their communications with your MSK cluster. You can configure your new or existing MSK cluster to deliver INFO-level broker logs to one or more of the following types of destination resources: a CloudWatch log group, an S3 bucket, a Firehose delivery stream. Through Firehose you can then deliver the log data from your delivery stream to OpenSearch Service.
+           </p>
+           <p>
+            You must create a destination resource before you configure your cluster to deliver broker logs to it. Amazon MSK doesn't create these destination resources for you if they don't already exist. For information about these three types of destination resources and how to create them, see the following documentation:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -317,10 +312,38 @@
             <code class="code">
              logging-info
             </code>
-            parameter and
-                pass to it a JSON structure like the following example. In this JSON, all three
-                destination types are optional.
+            parameter and pass to it a JSON structure like the following example. In this JSON, all three destination types are optional.
            </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              You must set the
+              <code class="code">
+               LogDeliveryEnabled
+              </code>
+              tag to
+              <code class="code">
+               true
+              </code>
+              on Firehose streams to set up log delivery. The service-linked role that AWS creates for CloudWatch logs uses this tag to grant permission for all Firehose delivery streams. If you remove this tag, the service-linked role won't be able to deliver logs to the Firehose stream. To see an example of an IAM policy that shows the permissions that the service-linked role includes, see
+              <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-infrastructure-V2-Firehose.html">
+               IAM roles used for resource permissions
+              </a>
+              in the
+              <em>
+               Amazon CloudWatch User Guide
+              </em>
+              .
+             </p>
+            </div>
+           </div>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
   "BrokerLogs": <span>{</span>
     "S3": <span>{</span>

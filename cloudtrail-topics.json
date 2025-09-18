@@ -483,7 +483,7 @@
     "AWS Service": "Amazon Quantum Ledger Database (Amazon QLDB)",
     "CloudTrail Topics": "Logging Amazon QLDB API Calls with AWS CloudTrail",
     "Support began": "09/10/2019",
-    "Link": "https://docs.aws.amazon.com/qldb/latest/developerguide/logging-using-cloudtrail.html"
+    "Link": ""
   },
   "Amazon QuickSight": {
     "AWS Service": "Amazon QuickSight",
@@ -765,7 +765,7 @@
     "AWS Service": "AWS BugBust",
     "CloudTrail Topics": "Logging BugBust API calls using CloudTrail",
     "Support began": "06/24/2021",
-    "Link": "https://docs.aws.amazon.com/codeguru/latest/bugbust-ug/logging-using-cloudtrail.html"
+    "Link": ""
   },
   "AWS Certificate Manager": {
     "AWS Service": "AWS Certificate Manager",
@@ -1299,7 +1299,7 @@
     "AWS Service": "AWS RoboMaker",
     "CloudTrail Topics": "Logging AWS RoboMaker API Calls with AWS CloudTrail",
     "Support began": "01/16/2019",
-    "Link": "https://docs.aws.amazon.com/robomaker/latest/dg/logging-using-cloudtrail.html"
+    "Link": ""
   },
   "AWS Secrets Manager": {
     "AWS Service": "AWS Secrets Manager",

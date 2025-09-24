@@ -191,7 +191,7 @@
             </ul>
            </div>
            <p>
-            CloudTrail is active in your AWS account when you create the account and you automatically have
+            CloudTrail is active in your AWS account when you create the account, and you automatically have
     access to the CloudTrail
             <b>
              Event history
@@ -205,7 +205,7 @@
     past 90 days of recorded management events in an AWS Region. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
              Working
-      with CloudTrail Event history
+      with CloudTrail event history
             </a>
             in the
             <em>
@@ -219,8 +219,8 @@
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account past 90 days, create a trail or a CloudTrail
-    Lake event data store.
+            For an ongoing record of events in your AWS account for the past 90 days, create a trail
+    or a CloudTrail Lake event data store.
            </p>
            <div class="variablelist">
             <dl>
@@ -394,6 +394,42 @@
             </em>
             .
            </p>
+           <div class="highlights" id="inline-topiclist">
+            <h6>
+             Examples
+            </h6>
+            <ul>
+             <li>
+              <p>
+               <a href="#logging-ct-events-example-listfindings">
+                Listing findings
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#logging-ct-events-example-getsdoccurrences">
+                Retrieving sensitive data
+          samples for a finding
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#logging-ct-events-example-deleteinvitations">
+                Deleting a membership invitation
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#logging-ct-events-example-disablemacie">
+                Disabling Macie
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
            <h3 id="logging-ct-events-example-listfindings">
             Example: Listing findings
            </h3>
@@ -421,12 +457,12 @@
         "userName": "Mary_Major",
         "sessionContext":<span>{</span>
             "attributes": <span>{</span>
-                "creationdate": "2023-11-14T15:49:57Z",
+                "creationdate": "2024-11-14T15:49:57Z",
                 "mfaAuthenticated": "false"
             }
         }
     },
-    "eventTime": "2023-11-14T16:09:56Z",
+    "eventTime": "2024-11-14T16:09:56Z",
     "eventSource": "macie2.amazonaws.com",
     "eventName": "ListFindings",
     "awsRegion": "us-east-1",
@@ -469,22 +505,22 @@
            </h3>
            <p>
             This example shows CloudTrail events for retrieving and revealing samples of sensitive data
-        that Amazon Macie reported in a finding. In this example, an AWS Identity and Access Management (IAM) user
-          (
+        that Amazon Macie reported in a finding. In this example, an IAM user (
             <code class="code">
              JohnDoe
             </code>
-            ) used the Amazon Macie console to retrieve and reveal sensitive data
-        samples. The user's account is configured to assume an IAM role (
+            )
+        used the Amazon Macie console to retrieve and reveal sensitive data samples. The user's account
+        is configured to assume an IAM role (
             <code class="code">
              MacieReveal
             </code>
-            )
-        to retrieve and reveal sensitive data samples from affected Amazon Simple Storage Service (Amazon S3) objects.
+            ) to retrieve and reveal
+        sensitive data samples from affected Amazon Simple Storage Service (Amazon S3) objects.
            </p>
            <p>
             The following event shows details about the user's request to retrieve and reveal
-        sensitive data samples by performing the Amazon Macie
+        sensitive data samples by using the Amazon Macie
             <a href="https://docs.aws.amazon.com/macie/latest/APIReference/findings-findingid-reveal.html">
              GetSensitiveDataOccurrences
             </a>
@@ -508,12 +544,12 @@
             },
             "webIdFederationData": <span>{</span>},
             "attributes": <span>{</span>
-                "creationDate": "2023-12-12T14:40:23Z",
+                "creationDate": "2024-12-12T14:40:23Z",
                 "mfaAuthenticated": "false"
             }
         }
     },
-    "eventTime": "2023-12-12T17:04:47Z",
+    "eventTime": "2024-12-12T17:04:47Z",
     "eventSource": "macie2.amazonaws.com",
     "eventName": "GetSensitiveDataOccurrences",
     "awsRegion": "us-east-1",
@@ -537,7 +573,7 @@
             <code class="code">
              MacieReveal
             </code>
-            ) by performing the AWS Security Token Service (AWS STS)
+            ) by using the AWS Security Token Service (AWS STS)
             <a href="https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html">
              AssumeRole
             </a>
@@ -549,7 +585,7 @@
         "type": "AWSService",
         "invokedBy": "reveal-samples.macie.amazonaws.com"
     },
-    "eventTime": "2023-12-12T17:04:47Z",
+    "eventTime": "2024-12-12T17:04:47Z",
     "eventSource": "sts.amazonaws.com",
     "eventName": "AssumeRole",
     "awsRegion": "us-east-1",
@@ -565,7 +601,7 @@
             "sessionToken": "XXYYaz...
 EXAMPLE_SESSION_TOKEN
 XXyYaZAz",
-            "expiration": "Dec 12, 2023, 6:04:47 PM"
+            "expiration": "Dec 12, 2024, 6:04:47 PM"
         },
         "assumedRoleUser": <span>{</span>
             "assumedRoleId": "AROAXOTKAROCSNEXAMPLE:RevealCrossAccount",
@@ -587,18 +623,155 @@ XXyYaZAz",
     "recipientAccountId": "111122223333",
     "eventCategory": "Management"
 }</code></pre>
+           <h3 id="logging-ct-events-example-deleteinvitations">
+            Example: Deleting a membership invitation
+           </h3>
            <p>
-            For information about the contents of CloudTrail events, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
-             CloudTrail
-        record contents
+            The following example shows a CloudTrail event for the Amazon Macie
+            <a href="https://docs.aws.amazon.com/macie/latest/APIReference/invitations-delete.html">
+             DeleteInvitations
             </a>
-            in the
-            <em>
-             AWS CloudTrail User Guide
-            </em>
+            operation. In this example, Macie logged an event in the delegated Macie administrator account for an
+        organization when a member disassociated their account from the administrator's account and
+        deleted the administrator's invitation to join the organization. In the example, the account
+        ID for the administrator's AWS account is
+            <code class="code">
+             777788889999
+            </code>
+            . The account
+        ID for the member account is
+            <code class="code">
+             111122223333
+            </code>
             .
            </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type": "AWSAccount",
+        "accountId": "111122223333",
+        "invokedBy": "macie2.amazonaws.com"
+    },
+    "eventTime": "2025-09-20T18:44:58Z",
+    "eventSource": "macie2.amazonaws.com",
+    "eventName": "MacieMemberUpdated",
+    "awsRegion": "us-east-2",
+    "sourceIPAddress": "macie2.amazonaws.com",
+    "userAgent": "macie2.amazonaws.com",
+    "requestParameters": null,
+    "responseElements": null,
+    "eventID": "2f08152c-66b9-35f8-8a10-6fe1bexample",
+    "readOnly": false,
+    "resources": [<span>{</span>
+        "accountId": "777788889999",
+        "type": "AWS::Macie::Member",
+        "ARN": "arn:aws:macie2:us-east-2:777788889999:member/111122223333"
+    }],
+    "eventType": "AwsServiceEvent",
+    "managementEvent": true,
+    "recipientAccountId": "777788889999",
+    "sharedEventID": "2bff2ad0-f233-48c6-8720-ca9dbexample",
+    "serviceEventDetails": <span>{</span>
+        "memberAccount": "111122223333",
+        "memberResourceStatus": "DELETED",
+        "apiOperation": "DeleteInvitations"
+    },
+    "eventCategory": "Management"
+}</code></pre>
+           <h3 id="logging-ct-events-example-disablemacie">
+            Example: Disabling Macie
+           </h3>
+           <p>
+            This example shows CloudTrail events for disabling Amazon Macie for an AWS account. In this
+        example, an IAM user (
+            <code class="code">
+             JohnDoe
+            </code>
+            ) disabled Macie for their account. Macie then
+        cancelled and deleted all sensitive data discovery jobs for the account, in addition to deleting other
+        Macie resources and data for the account.
+           </p>
+           <p>
+            The following event shows details about the user's request to disable Macie for their
+        account by using the Amazon Macie
+            <a href="https://docs.aws.amazon.com/macie/latest/APIReference/macie.html">
+             DisableMacie
+            </a>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AROAXYKJR2G5JXEXAMPLE:JohnDoe",
+        "arn": "arn:aws:sts::123456789012:assumed-role/Admin/JohnDoe",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AROAXYKJR2G5JXEXAMPLE",
+                "arn": "arn:aws:iam::123456789012:role/Admin",
+                "accountId": "123456789012",
+                "userName": "Admin"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2025-09-18T21:54:42Z",
+                "mfaAuthenticated": "true"
+            }
+        }
+    },
+    "eventTime": "2025-09-18T21:57:06Z",
+    "eventSource": "macie2.amazonaws.com",
+    "eventName": "DisableMacie",
+    "awsRegion": "us-east-2",
+    "sourceIPAddress": "198.51.100.1",
+    "userAgent": "aws-cli/2.17.9 md/awscrt#0.20.11 ua/2.0 os/macos#24.4.0 md/arch#x86_64 lang/python#3.11.8 md/pyimpl#CPython cfg/retry-mode#standard md/installer#exe md/prompt#off md/command#macie2.disable-macie",
+    "requestParameters": null,
+    "responseElements": null,
+    "requestID": "941d1d6c-c1b2-4db5-845f-1250cexample",
+    "eventID": "06554dba-417b-4a65-90b8-4e5d5example",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Management"
+}</code></pre>
+           <p>
+            The next event shows details about Macie then cancelling and deleting one of the
+        sensitive data discovery jobs for the account.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type": "Root",
+        "accountId": "123456789012",
+        "invokedBy": "macie2.amazonaws.com"
+    },
+    "eventTime": "2025-09-18T21:57:18Z",
+    "eventSource": "macie2.amazonaws.com",
+    "eventName": "MacieClassificationJobCancelled",
+    "awsRegion": "us-east-2",
+    "sourceIPAddress": "macie2.amazonaws.com",
+    "userAgent": "macie2.amazonaws.com",
+    "requestParameters": null,
+    "responseElements": null,
+    "eventID": "df39ea1d-cd4e-4130-8cd5-cd33cexample",
+    "readOnly": false,
+    "resources": [<span>{</span>
+        "accountId": "123456789012",
+        "type": "AWS::Macie::ClassificationJob",
+        "ARN": "arn:aws:macie2:us-east-2:123456789012:classification-job/f252cbe854ae0a1a47d8304f4example"
+    }],
+    "eventType": "AwsServiceEvent",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "serviceEventDetails": <span>{</span>
+        "macieStatus": "DISABLED",
+        "classificationJobStatus": "CANCELLED"
+    },
+    "eventCategory": "Management"
+}</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

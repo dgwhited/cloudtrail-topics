@@ -138,7 +138,8 @@
            AWS B2B Data Interchange information in CloudTrail
           </a>
           <a href="#understanding-service-name-entries">
-           Understanding AWS B2B Data Interchange log file entries
+           Understanding AWS B2B Data Interchange log file
+                entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -155,19 +156,18 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            AWS B2B Data Interchange is integrated with AWS CloudTrail, a service that provides a record of actions 
-    taken by a user, role, or an AWS service in AWS B2B Data Interchange. CloudTrail captures all API calls for
-    AWS B2B Data Interchange as events. The calls captured include calls from the AWS B2B Data Interchange console and
-    code calls to the AWS B2B Data Interchange API operations. If you create a trail, you can enable
-    continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS B2B Data Interchange. If 
-    you don't configure a trail, you can still view the most recent events in the CloudTrail console 
-    in
+            AWS B2B Data Interchange is integrated with AWS CloudTrail, a service that provides a record of actions
+        taken by a user, role, or an AWS service in AWS B2B Data Interchange. CloudTrail captures all API calls for
+        AWS B2B Data Interchange as events. The calls captured include calls from the AWS B2B Data Interchange console and code
+        calls to the AWS B2B Data Interchange API operations. If you create a trail, you can enable continuous
+        delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS B2B Data Interchange. If you don't
+        configure a trail, you can still view the most recent events in the CloudTrail console in
             <b>
              Event history
             </b>
-            .  Using the information collected by CloudTrail, you can
-    determine the request that was made to AWS B2B Data Interchange, the IP address from which the request
-    was made, who made the request, when it was made, and additional details.
+            . Using the information collected by CloudTrail, you can
+        determine the request that was made to AWS B2B Data Interchange, the IP address from which the request was
+        made, who made the request, when it was made, and additional details.
            </p>
            <p>
             To learn more about CloudTrail, see the
@@ -180,31 +180,31 @@
             AWS B2B Data Interchange information in CloudTrail
            </h2>
            <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs 
-      in AWS B2B Data Interchange, that activity is recorded in a CloudTrail event along with other AWS service events
-      in
+            CloudTrail is enabled on your AWS account when you create the account. When activity
+            occurs in AWS B2B Data Interchange, that activity is recorded in a CloudTrail event along with other AWS
+            service events in
             <b>
              Event history
             </b>
-            . You can view, search, and download recent events in 
-      your AWS account. For more information, see
+            . You can view, search, and download
+            recent events in your AWS account. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing events with CloudTrail Event
-        history
+             Viewing events with CloudTrail Event history
             </a>
             .
            </p>
            <p>
             For an ongoing record of events in your AWS account, including events for AWS B2B Data Interchange,
-      create a trail. A
+            create a trail. A
             <em>
              trail
             </em>
-            enables CloudTrail to deliver log files to an Amazon S3 bucket. 
-      By default, when you create a trail in the console, the trail applies to all AWS Regions. The trail 
-      logs events from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket 
-      that you specify. Additionally, you can configure other AWS services to further analyze and act
-      upon the event data collected in CloudTrail logs. For more information, see the following:
+            enables CloudTrail to deliver log files to an
+            Amazon S3 bucket. By default, when you create a trail in the console, the trail applies to
+            all AWS Regions. The trail logs events from all Regions in the AWS partition and
+            delivers the log files to the Amazon S3 bucket that you specify. Additionally, you can
+            configure other AWS services to further analyze and act upon the event data collected
+            in CloudTrail logs. For more information, see the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -225,21 +225,20 @@
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
-                Configuring Amazon SNS notifications
-          for CloudTrail
+                Configuring Amazon SNS notifications for
+                    CloudTrail
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail log
-          files from multiple regions
+                Receiving CloudTrail log files from multiple regions
                </a>
                and
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail log
-            files from multiple accounts
+                Receiving CloudTrail log files from multiple
+                    accounts
                </a>
               </p>
              </li>
@@ -254,19 +253,20 @@
            </p>
            <p>
             Every event or log entry contains information about who generated the request. The
-      identity information helps you determine the following:
+            identity information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               Whether the request was made with root or AWS Identity and Access Management (IAM) user credentials.
+               Whether the request was made with root or AWS Identity and Access Management (IAM) user
+                    credentials.
               </p>
              </li>
              <li class="listitem">
               <p>
                Whether the request was made with temporary security credentials for a role or
-          federated user.
+                    federated user.
               </p>
              </li>
              <li class="listitem">
@@ -279,20 +279,21 @@
            <p>
             For more information, see the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity
-      element
+             CloudTrail userIdentity element
             </a>
             .
            </p>
            <h2 id="understanding-service-name-entries">
-            Understanding AWS B2B Data Interchange log file entries
+            Understanding AWS B2B Data Interchange log file
+                entries
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
-      that you specify. CloudTrail log files contain one or more log entries. An event represents a single
-      request from any source and includes information about the requested action, the date and time
-      of the action, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of
-      the public API calls, so they don't appear in any specific order.
+            A trail is a configuration that enables delivery of events as log files to an Amazon S3
+            bucket that you specify. CloudTrail log files contain one or more log entries. An event
+            represents a single request from any source and includes information about the requested
+            action, the date and time of the action, request parameters, and so on. CloudTrail log files
+            aren't an ordered stack trace of the public API calls, so they don't appear in any
+            specific order.
            </p>
            <p>
             This is an example log entry for creating a trading capability.
@@ -428,8 +429,8 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./monitoring-cloudwatch.html" id="previous">
-             Monitoring with CloudWatch
+            <div accesskey="p" class="prev-link" href="./monitoring-processed-pairs.html" id="previous">
+             Processed input-output pairs
             </div>
             <div accesskey="n" class="next-link" href="./creating-resources-with-cloudformation.html" id="next">
              AWS CloudFormation resources

@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Viewing audit logs in AWS CloudTrail - Amazon Managed Workflows for Apache Airflow
+   Accessing audit logs in AWS CloudTrail - Amazon Managed Workflows for Apache Airflow
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -52,7 +52,7 @@
   <script data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'mwaa'}" defer="" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="User Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Viewing audit logs in AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Accessing audit logs in AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -68,7 +68,7 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Viewing audit logs in AWS CloudTrail - Amazon Managed Workflows for Apache Airflow
+         Accessing audit logs in AWS CloudTrail - Amazon Managed Workflows for Apache Airflow
         </title>
         <meta content="/pdfs/mwaa/latest/userguide/amazon-mwaa-user-guide.pdf#monitoring-cloudtrail" name="pdf"/>
         <meta content="amazon-mwaa-user-guide.rss" name="rss"/>
@@ -108,7 +108,7 @@
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "Viewing audit logs in AWS CloudTrail",
+        "name" : "Accessing audit logs in AWS CloudTrail",
         "item" : "https://docs.aws.amazon.com/mwaa/latest/userguide/cw-metrics.html"
       }
     ]
@@ -137,7 +137,7 @@
            Creating a trail in CloudTrail
           </a>
           <a href="#monitoring-cloudtrail-view">
-           Viewing events with CloudTrail Event History
+           Accessing events with CloudTrail Event History
           </a>
           <a href="#monitoring-cloudtrail-logs-ex">
            Example trail for CreateEnvironment
@@ -151,7 +151,7 @@
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="monitoring-cloudtrail">
-            Viewing audit logs in AWS CloudTrail
+            Accessing audit logs in AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -161,8 +161,8 @@
            </div>
            <p>
             AWS CloudTrail is enabled on your AWS account when you create it. CloudTrail logs the activity taken by an IAM entity or an AWS service, such as Amazon Managed Workflows for Apache Airflow, which is recorded as a CloudTrail event.
-      You can view, search, and download the past 90 days of event history in the CloudTrail console. CloudTrail captures all events on the Amazon MWAA console and all calls to Amazon MWAA APIs. It doesn't capture read-only actions,
-      such as
+		You can view, search, and download the past 90 days of event history in the CloudTrail console. CloudTrail captures all events on the Amazon MWAA console and all calls to Amazon MWAA APIs. It doesn't capture read-only actions,
+		such as
             <code class="code">
              GetEnvironment
             </code>
@@ -187,7 +187,7 @@
              <li>
               <p>
                <a href="./monitoring-cloudtrail.html#monitoring-cloudtrail-view">
-                Viewing events with CloudTrail Event History
+                Accessing events with CloudTrail Event History
                </a>
               </p>
              </li>
@@ -211,19 +211,19 @@
             Creating a trail in CloudTrail
            </h2>
            <p>
-            You need to create a trail to view an ongoing record of events in your AWS account, including events for Amazon MWAA. A trail enables CloudTrail to deliver log files to an Amazon S3 bucket. If you do not create a trail, you can still view available event history in the CloudTrail console. For example, using the information collected by CloudTrail, you can determine the request that was made to Amazon MWAA, the IP address from which the request was made, who made the request, when it was made, and additional details. To learn more, refer to the
+            You need to create a trail to access an ongoing record of events in your AWS account, including events for Amazon MWAA. A trail enables CloudTrail to deliver log files to an Amazon S3 bucket. If you don't create a trail, you can still access available event history in the CloudTrail console. For example, using the information collected by CloudTrail, you can determine the request that was made to Amazon MWAA, the IP address from which the request was made, who made the request, when it was made, and additional details. To learn more, refer to the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
              Creating a trail for your AWS account
             </a>
             .
            </p>
            <h2 id="monitoring-cloudtrail-view">
-            Viewing events with CloudTrail Event History
+            Accessing events with CloudTrail Event History
            </h2>
            <p>
-            You can troubleshoot operational and security incidents over the past 90 days in the CloudTrail console by viewing event history. For example, you can view events related to the creation, modification, or deletion of resources (such as IAM users or other AWS resources) in your AWS account on a per-region basis. To learn more, refer to the
+            You can troubleshoot operational and security incidents over the past 90 days in the CloudTrail console by viewing event history. For example, you can access events related to the creation, modification, or deletion of resources (such as IAM users or other AWS resources) in your AWS account on a per-region basis. To learn more, refer to the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing Events with CloudTrail Event History
+             Accessing Events with CloudTrail Event History
             </a>
             .
            </p>
@@ -272,7 +272,7 @@
             A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket that you specify.
            </p>
            <p>
-            CloudTrail log files contain one or more log entries. An event represents a single request from any source and includes information about the requested action, such as the date and time of the action, or request parameters. CloudTrail log files are not an ordered stack trace of the public API calls, and don't appear in any specific order. The following example is a log entry for the
+            CloudTrail log files contain one or more log entries. An event represents a single request from any source and includes information about the requested action, such as the date and time of the action, or request parameters. CloudTrail log files are not an ordered stack trace of the public API calls, and aren't listed in any specific order. The following example is a log entry for the
             <code class="code">
              CreateEnvironment
             </code>
@@ -283,60 +283,60 @@
             have been redacted for privacy.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-    "eventVersion": "1.05",
-    "userIdentity": <span>{</span>
-        "type": "AssumedRole",
-        "principalId": "00123456ABC7DEF8HIJK",
-        "arn": "arn:aws:sts::012345678901:assumed-role/root/myuser",
-        "accountId": "012345678901",
-        "accessKeyId": "",
-        "sessionContext": <span>{</span>
-            "sessionIssuer": <span>{</span>
-                "type": "Role",
-                "principalId": "00123456ABC7DEF8HIJK",
-                "arn": "arn:aws:iam::012345678901:role/user",
-                "accountId": "012345678901",
-                "userName": "user"
-            },
-            "webIdFederationData": <span>{</span>},
-            "attributes": <span>{</span>
-                "mfaAuthenticated": "false",
-                "creationDate": "2020-10-07T15:51:52Z"
-            }
-        }
-    },
-    "eventTime": "2020-10-07T15:52:58Z",
-    "eventSource": "airflow.amazonaws.com",
-    "eventName": "CreateEnvironment",
-    "awsRegion": "us-west-2",
-    "sourceIPAddress": "205.251.233.178",
-    "userAgent": "PostmanRuntime/7.26.5",
-    "errorCode": "AccessDenied",
-    "requestParameters": <span>{</span>
-        "SourceBucketArn": "arn:aws:s3:::my-bucket",
-        "ExecutionRoleArn": "arn:aws:iam::012345678901:role/AirflowTaskRole",
-        "AirflowConfigurationOptions": "***",
-        "DagS3Path": "sample_dag.py",
-        "NetworkConfiguration": <span>{</span>
-            "SecurityGroupIds": [
-                "sg-01234567890123456"
-            ],
-            "SubnetIds": [
-                "subnet-01234567890123456",
-                "subnet-65432112345665431"
-            ]
-        },
-        "Name": "test-cloudtrail"
-    },
-    "responseElements": <span>{</span>
-        "message": "Access denied."
-    },
-    "requestID": "RequestID",
-    "eventID": "EventID",
-    "readOnly": false,
-    "eventType": "AwsApiCall",
-    "recipientAccountId": "012345678901"
-}</code></pre>
+			"eventVersion": "1.05",
+			"userIdentity": <span>{</span>
+			"type": "AssumedRole",
+			"principalId": "00123456ABC7DEF8HIJK",
+			"arn": "arn:aws:sts::012345678901:assumed-role/root/myuser",
+			"accountId": "012345678901",
+			"accessKeyId": "",
+			"sessionContext": <span>{</span>
+			"sessionIssuer": <span>{</span>
+			"type": "Role",
+			"principalId": "00123456ABC7DEF8HIJK",
+			"arn": "arn:aws:iam::012345678901:role/user",
+			"accountId": "012345678901",
+			"userName": "user"
+			},
+			"webIdFederationData": <span>{</span>},
+			"attributes": <span>{</span>
+			"mfaAuthenticated": "false",
+			"creationDate": "2020-10-07T15:51:52Z"
+			}
+			}
+			},
+			"eventTime": "2020-10-07T15:52:58Z",
+			"eventSource": "airflow.amazonaws.com",
+			"eventName": "CreateEnvironment",
+			"awsRegion": "us-west-2",
+			"sourceIPAddress": "205.251.233.178",
+			"userAgent": "PostmanRuntime/7.26.5",
+			"errorCode": "AccessDenied",
+			"requestParameters": <span>{</span>
+			"SourceBucketArn": "arn:aws:s3:::my-bucket",
+			"ExecutionRoleArn": "arn:aws:iam::012345678901:role/AirflowTaskRole",
+			"AirflowConfigurationOptions": "***",
+			"DagS3Path": "sample_dag.py",
+			"NetworkConfiguration": <span>{</span>
+			"SecurityGroupIds": [
+			"sg-01234567890123456"
+			],
+			"SubnetIds": [
+			"subnet-01234567890123456",
+			"subnet-65432112345665431"
+			]
+			},
+			"Name": "test-cloudtrail"
+			},
+			"responseElements": <span>{</span>
+			"message": "Access denied."
+			},
+			"requestID": "RequestID",
+			"eventID": "EventID",
+			"readOnly": false,
+			"eventType": "AwsApiCall",
+			"recipientAccountId": "012345678901"
+			}</code></pre>
            <h2 id="monitoring-cloudtrail-next-up">
             What's next?
            </h2>
@@ -397,7 +397,7 @@
              Overview
             </div>
             <div accesskey="n" class="next-link" href="./monitoring-airflow.html" id="next">
-             Viewing Airflow logs
+             Accessing Airflow logs
             </div>
            </div>
           </div>

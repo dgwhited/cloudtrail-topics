@@ -283,60 +283,60 @@
             have been redacted for privacy.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
-			"eventVersion": "1.05",
-			"userIdentity": <span>{</span>
-			"type": "AssumedRole",
-			"principalId": "00123456ABC7DEF8HIJK",
-			"arn": "arn:aws:sts::012345678901:assumed-role/root/myuser",
-			"accountId": "012345678901",
-			"accessKeyId": "",
-			"sessionContext": <span>{</span>
-			"sessionIssuer": <span>{</span>
-			"type": "Role",
-			"principalId": "00123456ABC7DEF8HIJK",
-			"arn": "arn:aws:iam::012345678901:role/user",
-			"accountId": "012345678901",
-			"userName": "user"
-			},
-			"webIdFederationData": <span>{</span>},
-			"attributes": <span>{</span>
-			"mfaAuthenticated": "false",
-			"creationDate": "2020-10-07T15:51:52Z"
-			}
-			}
-			},
-			"eventTime": "2020-10-07T15:52:58Z",
-			"eventSource": "airflow.amazonaws.com",
-			"eventName": "CreateEnvironment",
-			"awsRegion": "us-west-2",
-			"sourceIPAddress": "205.251.233.178",
-			"userAgent": "PostmanRuntime/7.26.5",
-			"errorCode": "AccessDenied",
-			"requestParameters": <span>{</span>
-			"SourceBucketArn": "arn:aws:s3:::my-bucket",
-			"ExecutionRoleArn": "arn:aws:iam::012345678901:role/AirflowTaskRole",
-			"AirflowConfigurationOptions": "***",
-			"DagS3Path": "sample_dag.py",
-			"NetworkConfiguration": <span>{</span>
-			"SecurityGroupIds": [
-			"sg-01234567890123456"
-			],
-			"SubnetIds": [
-			"subnet-01234567890123456",
-			"subnet-65432112345665431"
-			]
-			},
-			"Name": "test-cloudtrail"
-			},
-			"responseElements": <span>{</span>
-			"message": "Access denied."
-			},
-			"requestID": "RequestID",
-			"eventID": "EventID",
-			"readOnly": false,
-			"eventType": "AwsApiCall",
-			"recipientAccountId": "012345678901"
-			}</code></pre>
+  "eventVersion": "1.05",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "00123456ABC7DEF8HIJK",
+    "arn": "arn:aws:sts::012345678901:assumed-role/root/myuser",
+    "accountId": "012345678901",
+    "accessKeyId": "",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "00123456ABC7DEF8HIJK",
+        "arn": "arn:aws:iam::012345678901:role/user",
+        "accountId": "012345678901",
+        "userName": "user"
+      },
+      "webIdFederationData": <span>{</span>},
+      "attributes": <span>{</span>
+        "mfaAuthenticated": "false",
+        "creationDate": "2020-10-07T15:51:52Z"
+      }
+    }
+  },
+  "eventTime": "2020-10-07T15:52:58Z",
+  "eventSource": "airflow.amazonaws.com",
+  "eventName": "CreateEnvironment",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "205.251.233.178",
+  "userAgent": "PostmanRuntime/7.26.5",
+  "errorCode": "AccessDenied",
+  "requestParameters": <span>{</span>
+    "SourceBucketArn": "arn:aws:s3:::my-bucket",
+    "ExecutionRoleArn": "arn:aws:iam::012345678901:role/AirflowTaskRole",
+    "AirflowConfigurationOptions": "***",
+    "DagS3Path": "sample_dag.py",
+    "NetworkConfiguration": <span>{</span>
+      "SecurityGroupIds": [
+      "sg-01234567890123456"
+      ],
+      "SubnetIds": [
+        "subnet-01234567890123456",
+        "subnet-65432112345665431"
+      ]
+    },
+    "Name": "test-cloudtrail"
+  },
+  "responseElements": <span>{</span>
+    "message": "Access denied."
+  },
+  "requestID": "RequestID",
+  "eventID": "EventID",
+  "readOnly": false,
+  "eventType": "AwsApiCall",
+  "recipientAccountId": "012345678901"
+}</code></pre>
            <h2 id="monitoring-cloudtrail-next-up">
             What's next?
            </h2>

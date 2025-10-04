@@ -533,9 +533,9 @@
     "Support began": "Management events: 09/01/2015 Data events: 11/21/2016",
     "Link": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/cloudtrail-logging.html"
   },
-  "Amazon S3 Glacier": {
-    "AWS Service": "Amazon S3 Glacier",
-    "CloudTrail Topics": "Logging S3 Glacier API Calls By Using AWS CloudTrail",
+  "Amazon Glacier": {
+    "AWS Service": "Amazon Glacier",
+    "CloudTrail Topics": "Logging Amazon Glacier API Calls By Using AWS CloudTrail",
     "Support began": "12/11/2014",
     "Link": "https://docs.aws.amazon.com/amazonglacier/latest/dev/audit-logging.html"
   },

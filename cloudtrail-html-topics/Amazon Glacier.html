@@ -12,11 +12,11 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/amazonglacier/latest/dev/audit-logging.html" rel="canonical"/>
-  <meta content="Learn about logging Glacier with AWS CloudTrail." name="description"/>
+  <meta content="Learn about logging Amazon Glacier with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon Glacier" name="product"/>
   <meta content="Developer Guide" name="guide"/>
-  <meta content='Amazon Glacier (Glacier) provides a low-cost storage service optimized for durable storage with security features for data archiving and backup of infrequently used data, or "cold data." The Amazon Glacier Developer Guide explains how to use the Glacier web service to create, configure, and manage vaults and archives using both the AWS Management Console and the Glacier API.' name="abstract"/>
+  <meta content='Amazon Glacier (Amazon Glacier) provides a low-cost storage service optimized for durable storage with security features for data archiving and backup of infrequently used data, or "cold data." The Amazon Glacier Developer Guide explains how to use the Amazon Glacier web service to create, configure, and manage vaults and archives using both the AWS Management Console and the Amazon Glacier API.' name="abstract"/>
   <meta content="en_us" name="guide-locale"/>
   <meta content="toc-contents.json" name="tocs"/>
   <link href="https://docs.aws.amazon.com/amazonglacier/latest/dev/audit-logging.html" rel="canonical"/>
@@ -77,7 +77,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=S3&amp;topic_url=https://docs.aws.amazon.com/en_us/amazonglacier/latest/dev/audit-logging.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/amazonglacier/latest/dev/audit-logging.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/amazonglacier/latest/dev/audit-logging.html" name="feedback-no"/>
-        <meta content="Amazon S3 Glacier,glacier vault,glacier archive" name="keywords"/>
+        <meta content="Amazon Glacier,glacier vault,glacier archive" name="keywords"/>
         <script type="application/ld+json">
          {
     "@context" : "https://schema.org",
@@ -92,7 +92,7 @@
       {
         "@type" : "ListItem",
         "position" : 2,
-        "name" : "Amazon S3 Glacier",
+        "name" : "Amazon Glacier",
         "item" : "https://docs.aws.amazon.com/glacier/index.html"
       },
       {
@@ -122,7 +122,7 @@
            Documentation
           </a>
           <a href="/glacier/index.html">
-           Amazon S3 Glacier
+           Amazon Glacier
           </a>
           <a href="introduction.html">
            Developer Guide
@@ -144,40 +144,38 @@
            <awsui-alert class="awsdocs-page-banner awsui-util-mb-l">
             <p>
              <b>
-              This page is only for existing customers of the Glacier service using Vaults and the original REST API from 2012.
+              This page is only for existing customers of the Amazon Glacier service using Vaults and the original REST API from 2012.
              </b>
             </p>
             <p>
-             If you're looking for archival storage solutions we suggest using the Glacier storage classes in Amazon S3,
-             <b>
-              S3 Glacier Instant Retrieval
-             </b>
-             ,
-             <b>
-              S3 Glacier Flexible Retrieval
-             </b>
-             , and
-             <b>
-              S3 Glacier Deep Archive
-             </b>
-             . To learn more about these storage options, see
+             If you're looking for archival storage solutions, we recommend using the Amazon Glacier storage classes in Amazon S3, S3 Glacier Instant Retrieval, S3 Glacier Flexible Retrieval, and S3 Glacier Deep Archive. To learn more about these storage options, see
              <a href="https://aws.amazon.com/s3/storage-classes/glacier/" rel="noopener noreferrer" target="_blank">
               <span>
-               Glacier storage classes
+               Amazon Glacier storage classes
               </span>
               <awsui-icon class="awsdocs-link-icon" name="external">
               </awsui-icon>
              </a>
-             and
-             <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes">
-              Long-term data storage using Glacier storage classes
+             .
+            </p>
+            <p>
+             Amazon Glacier (original standalone vault-based service) will no longer accept new customers starting December 15, 2025, with no impact to existing customers. Amazon Glacier is a standalone service with its own APIs that stores data in vaults and is distinct from Amazon S3 and the Amazon S3 Glacier storage classes. Your existing data will remain secure and accessible in Amazon Glacier indefinitely. No migration is required. For low-cost, long-term archival storage, AWS recommends the
+             <a href="https://aws.amazon.com/s3/storage-classes/glacier/" rel="noopener noreferrer" target="_blank">
+              <span>
+               Amazon S3 Glacier storage classes
+              </span>
+              <awsui-icon class="awsdocs-link-icon" name="external">
+              </awsui-icon>
              </a>
-             in the
-             <em>
-              Amazon S3 User
-					Guide
-             </em>
-             . These storage classes use the Amazon S3 API, are available in all regions, and can be managed within the Amazon S3 console. They offer features like Storage Cost Analysis, Storage Lens, advanced optional encryption features, and more.
+             , which deliver a superior customer experience with S3 bucket-based APIs, full AWS Region availability, lower costs, and AWS service integration. If you want enhanced capabilities, consider migrating to Amazon S3 Glacier storage classes by using our
+             <a href="https://aws.amazon.com/solutions/guidance/data-transfer-from-amazon-s3-glacier-vaults-to-amazon-s3/" rel="noopener noreferrer" target="_blank">
+              <span>
+               AWS Solutions Guidance for transferring data from Amazon Glacier vaults to Amazon S3 Glacier storage classes
+              </span>
+              <awsui-icon class="awsdocs-link-icon" name="external">
+              </awsui-icon>
+             </a>
+             .
             </p>
            </awsui-alert>
            <h1 class="topictitle" id="audit-logging">
@@ -192,17 +190,17 @@
            <p>
            </p>
            <p>
-            Amazon Glacier (Glacier) is integrated with AWS CloudTrail, a service that provides a record of actions taken by a
-        user, role, or an AWS service in Glacier. CloudTrail captures all API calls for Glacier as events,
-        including calls from the Glacier console and from code calls to the Glacier APIs. If you create a
+            Amazon Glacier (Amazon Glacier) is integrated with AWS CloudTrail, a service that provides a record of actions taken by a
+        user, role, or an AWS service in Amazon Glacier. CloudTrail captures all API calls for Amazon Glacier as events,
+        including calls from the Amazon Glacier console and from code calls to the Amazon Glacier APIs. If you create a
         trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events
-        for Glacier. If you don't configure a trail, you can still view the most recent events in the
+        for Amazon Glacier. If you don't configure a trail, you can still view the most recent events in the
         CloudTrail console in
             <b>
              Event history
             </b>
             . Using the information collected by CloudTrail,
-        you can determine the request that was made to Glacier, the IP address from which the request
+        you can determine the request that was made to Amazon Glacier, the IP address from which the request
         was made, who made the request, when it was made, and additional details.
            </p>
            <p>
@@ -217,7 +215,7 @@
            </h2>
            <p>
             CloudTrail is enabled on your AWS account when you create the account. When activity
-            occurs in Glacier, that activity is recorded in a CloudTrail event along with other AWS service
+            occurs in Amazon Glacier, that activity is recorded in a CloudTrail event along with other AWS service
             events in
             <b>
              Event history
@@ -231,7 +229,7 @@
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account, including events for Glacier,
+            For an ongoing record of events in your AWS account, including events for Amazon Glacier,
             create a trail. A trail enables CloudTrail to deliver log files to an Amazon S3 bucket. By default,
             when you create a trail in the console, the trail applies to all AWS Regions. The trail logs
             events from all AWS Regions in the AWS partition and delivers the log files to the Amazon S3
@@ -277,7 +275,7 @@
             </ul>
            </div>
            <p>
-            All Glacier actions are logged by CloudTrail and are documented in the
+            All Amazon Glacier actions are logged by CloudTrail and are documented in the
             <a href="./amazon-glacier-api.html">
              API Reference for Amazon Glacier
             </a>

@@ -1,57 +1,1339 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html ng-app="AWSDocsPageApp" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-  <meta content="hLU7AwdG+3iNmKu10kH5wweL2vTF1q8my+2MWWtMJ2A=" name="verify-v1"/>
-  <meta content="page-not-found" name="page-name"/>
-  <meta content="/assets/" name="assets_root"/>
-  <meta content="errorPage" name="page-type">
-   <title>
-    Amazon Web Services Documentation
-   </title>
-  </meta>
+  <title>
+   Logging AWS SNS API calls using AWS CloudTrail - Amazon Simple Notification Service
+  </title>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="/assets" name="assets_root"/>
+  <meta content="logging-using-cloudtrail" name="target_state"/>
+  <meta content="logging-using-cloudtrail" name="default_state"/>
+  <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
+  <link href="https://docs.aws.amazon.com/sns/latest/dg/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Learn about logging AWS SNS with AWS CloudTrail." name="description"/>
+  <meta content="IAD" name="deployment_region"/>
+  <meta content="Amazon Simple Notification Service" name="product"/>
+  <meta content="Developer Guide" name="guide"/>
+  <meta content="Coordinate and manage the delivery or sending of messages to subscribing endpoints or clients using Amazon SNS." name="abstract"/>
+  <meta content="en_us" name="guide-locale"/>
+  <meta content="toc-contents.json" name="tocs"/>
+  <link href="https://docs.aws.amazon.com/sns/latest/dg/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/sns/latest/dg/logging-using-cloudtrail.html" hreflang="id-id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/id_id/sns/latest/dg/logging-using-cloudtrail.html" hreflang="id" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/sns/latest/dg/logging-using-cloudtrail.html" hreflang="de-de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/de_de/sns/latest/dg/logging-using-cloudtrail.html" hreflang="de" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/sns/latest/dg/logging-using-cloudtrail.html" hreflang="en-us" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/sns/latest/dg/logging-using-cloudtrail.html" hreflang="en" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/sns/latest/dg/logging-using-cloudtrail.html" hreflang="es-es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/es_es/sns/latest/dg/logging-using-cloudtrail.html" hreflang="es" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/sns/latest/dg/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/sns/latest/dg/logging-using-cloudtrail.html" hreflang="fr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/sns/latest/dg/logging-using-cloudtrail.html" hreflang="it-it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/it_it/sns/latest/dg/logging-using-cloudtrail.html" hreflang="it" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/sns/latest/dg/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/sns/latest/dg/logging-using-cloudtrail.html" hreflang="ja" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/sns/latest/dg/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/sns/latest/dg/logging-using-cloudtrail.html" hreflang="ko" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/sns/latest/dg/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/pt_br/sns/latest/dg/logging-using-cloudtrail.html" hreflang="pt" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/sns/latest/dg/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/sns/latest/dg/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternative"/>
+  <link href="https://docs.aws.amazon.com/sns/latest/dg/logging-using-cloudtrail.html" hreflang="x-default" rel="alternative"/>
+  <meta content="SNS" name="feedback-item"/>
+  <meta content="Amazon Simple Notification Service" name="this_doc_product"/>
+  <meta content="Developer Guide" name="this_doc_guide"/>
+  <head xmlns="http://www.w3.org/1999/xhtml">
+   <script defer="" src="/assets/r/awsdocs-doc-page.2.0.0.js">
+   </script>
+   <link href="/assets/r/awsdocs-doc-page.2.0.0.css" rel="stylesheet"/>
+  </head>
+  <script data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'sns'}" defer="" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
+  </script>
+  <meta id="panorama-serviceSubSection" value="Developer Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging AWS SNS API calls using AWS CloudTrail"/>
  </head>
- <body class="awsdocs awsui" ng-csp="no-unsafe-eval">
+ <body class="awsdocs awsui">
   <div class="awsdocs-container">
-   <awsdocs-generic-header>
-   </awsdocs-generic-header>
-   <div class="awsdocs-content-container awsui-util-ml-l awsui-util-mr-l">
-    <div class="awsui-util-pl-l awsui-util-pr-l">
-     <h1>
-      Looking for Something?
-     </h1>
-     <div>
-      We're sorry. The web address you entered is not a functioning page on our site. Try one of the following
-        links
-        to find the information you're looking for:
-      <div>
-       <ul>
-        <li>
-         <a href="http://aws.amazon.com">
-          Amazon Web Services Home Page
-         </a>
-         : Product information for all our web
-            services.
-        </li>
-        <li>
-         <a href="http://aws.amazon.com/resources">
-          Resource Center
-         </a>
-         : Documentation, code samples, and other
-            resources
-            for building applications on Amazon Web Services.
-        </li>
-       </ul>
+   <awsdocs-header>
+   </awsdocs-header>
+   <awsui-app-layout class="awsui-util-no-gutters" header-selector="awsdocs-header" id="app-layout" navigation-change="$ctrl.onNavChange($event)" navigation-hide="false" navigation-open="$ctrl.navOpen" navigation-width="$ctrl.navWidth" ng-controller="ContentController as $ctrl" tools-change="$ctrl.onToolsChange($event)" tools-hide="$ctrl.hideTools" tools-open="$ctrl.toolsOpen" tools-width="$ctrl.toolsWidth">
+    <div dom-region="navigation" id="guide-toc">
+     <awsdocs-toc>
+     </awsdocs-toc>
+    </div>
+    <div dom-region="content" id="main-column" tabindex="-1">
+     <awsdocs-view class="awsdocs-view">
+      <div id="awsdocs-content">
+       <head>
+        <title>
+         Logging AWS SNS API calls using AWS CloudTrail - Amazon Simple Notification Service
+        </title>
+        <meta content="/pdfs/sns/latest/dg/sns-dg.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="recent-updates.rss" name="rss"/>
+        <meta content="https://repost.aws/tags/TAyateCXj5QMiBTHtJZlF3Gw" name="forums"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SNS&amp;topic_url=https://docs.aws.amazon.com/en_us/sns/latest/dg/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/sns/latest/dg/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/sns/latest/dg/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="Amazon SNS security,Data protection,Access control,Logging and monitoring,Amazon SNS best practices,CloudTrail integration,Amazon SNS logging,API monitoring,Security auditing,Amazon SNS events" name="keywords"/>
+        <script type="application/ld+json">
+         {
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "Amazon Simple Notification Service",
+        "item" : "https://docs.aws.amazon.com/sns/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "Developer Guide",
+        "item" : "https://docs.aws.amazon.com/sns/latest/dg"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Amazon SNS security",
+        "item" : "https://docs.aws.amazon.com/sns/latest/dg/sns-security.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging and monitoring in Amazon SNS",
+        "item" : "https://docs.aws.amazon.com/sns/latest/dg/sns-logging-monitoring.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
+        "name" : "Logging AWS SNS API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/sns/latest/dg/sns-logging-monitoring.html"
+      }
+    ]
+}
+        </script>
+       </head>
+       <body>
+        <div id="main">
+         <div style="display: none">
+          <a href="/pdfs/sns/latest/dg/sns-dg.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          </a>
+         </div>
+         <div class="breadcrumb" id="breadcrumbs">
+          <a href="/index.html">
+           Documentation
+          </a>
+          <a href="/sns/index.html">
+           Amazon Simple Notification Service
+          </a>
+          <a href="welcome.html">
+           Developer Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#cloudtrail-data-events">
+           SNS data events in CloudTrail
+          </a>
+          <a href="#cloudtrail-management-events">
+           SNS management events in CloudTrail
+          </a>
+          <a href="#cloudtrail-event-examples">
+           SNS event examples
+          </a>
+         </div>
+         <div class="awsui-util-container" id="main-content">
+          <div id="main-col-body">
+           <awsdocs-language-banner data-service="$ctrl.pageService">
+           </awsdocs-language-banner>
+           <h1 class="topictitle" id="logging-using-cloudtrail">
+            Logging AWS SNS API calls using
+      AWS CloudTrail
+           </h1>
+           <div class="awsdocs-page-header-container">
+            <awsdocs-page-header>
+            </awsdocs-page-header>
+            <awsdocs-filter-selector id="awsdocs-filter-selector">
+            </awsdocs-filter-selector>
+           </div>
+           <p>
+            AWS SNS is integrated with
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail
+            </a>
+            , a service
+    that provides a record of actions taken by a user, role, or an AWS service. CloudTrail captures
+    all
+    API calls for SNS as events. The calls captured include calls from the SNS console
+    and code calls to the SNS API operations. Using the information collected by CloudTrail, you can
+    determine the request that was made to SNS, the IP address from which the request was
+    made, when it was made, and additional details.
+           </p>
+           <p>
+            Every event or log entry contains information about who generated the request. The identity
+    information helps you determine the following:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               Whether the request was made with root user or user credentials.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made on behalf of an IAM Identity Center user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role or federated
+        user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made by another AWS service.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            CloudTrail is active in your AWS account when you create the account and you automatically have
+    access to the CloudTrail
+            <b>
+             Event history
+            </b>
+            . The CloudTrail
+            <b>
+             Event
+      history
+            </b>
+            provides a viewable, searchable, downloadable, and immutable record of the
+    past 90 days of recorded management events in an AWS Region. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Working
+      with CloudTrail Event history
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            . There are no CloudTrail
+    charges for viewing the
+            <b>
+             Event history
+            </b>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account past 90 days, create a trail or a
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+             CloudTrail
+      Lake
+            </a>
+            event data store.
+           </p>
+           <div class="variablelist">
+            <dl>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail trails
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               A
+               <em>
+                trail
+               </em>
+               enables CloudTrail to deliver log files to an Amazon S3 bucket. All trails created using the AWS Management Console are multi-Region. You can create a single-Region or a multi-Region trail by using the AWS CLI. Creating a multi-Region trail is recommended because you capture activity in all AWS Regions in your account. If you create a single-Region trail, you can view only the events logged in the trail's AWS Region. For more information about trails, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Creating a trail for your AWS account
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html">
+                Creating a trail for an organization
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               You can deliver one copy of your ongoing management events to your Amazon S3 bucket at no charge from CloudTrail by creating a trail, however, there are Amazon S3 storage charges. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               . For information about Amazon S3 pricing, see
+               <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Amazon S3 Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail Lake event data stores
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               <em>
+                CloudTrail Lake
+               </em>
+               lets you run SQL-based queries on your events. CloudTrail Lake converts existing events in row-based JSON format to
+               <a href="https://orc.apache.org/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Apache ORC
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into
+               <em>
+                event data stores
+               </em>
+               , which are immutable collections of events based on criteria that you select by applying
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-concepts.html#adv-event-selectors">
+                advanced event selectors
+               </a>
+               . The selectors that you apply to an event data store control which events persist and are available for you to query. For more information about CloudTrail Lake, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+                Working with AWS CloudTrail Lake
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               CloudTrail Lake event data stores and queries incur costs. When you create an event data store, you choose the
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html#cloudtrail-lake-manage-costs-pricing-option">
+                pricing option
+               </a>
+               you want to use for the event data store. The pricing option determines the cost for ingesting and storing events, and the default and maximum retention period for the event data store. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+            </dl>
+           </div>
+           <h2 id="cloudtrail-data-events">
+            SNS data events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            provide information about the resource operations performed on or in a
+      resource (for example, reading or writing to an Amazon S3
+      object). These are also known as data
+      plane operations. Data events are often high-volume activities. By default, CloudTrail doesnât log
+      data events. The CloudTrail
+            <b>
+             Event history
+            </b>
+            doesn't record data events.
+           </p>
+           <p>
+            Additional charges apply for data events. For more information about CloudTrail pricing, see
+            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+             <span>
+              AWS CloudTrail Pricing
+             </span>
+             <awsui-icon class="awsdocs-link-icon" name="external">
+             </awsui-icon>
+            </a>
+            .
+           </p>
+           <p>
+            You can log data events for the SNS resource types by using the CloudTrail console, AWS CLI,
+      or CloudTrail API operations. For more information about how to log data events, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-console">
+             Logging data events with the AWS Management Console
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-with-the-AWS-CLI">
+             Logging data events with the AWS Command Line Interface
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <p>
+            The following table lists the SNS resource types for which you can log data events.
+      The
+            <b>
+             Data event type (console)
+            </b>
+            column shows the value to
+      choose from the
+            <b>
+             Data event type
+            </b>
+            list on the CloudTrail console. The
+            <b>
+             resources.type value
+            </b>
+            column shows the
+            <code class="code">
+             resources.type
+            </code>
+            value, which you would specify when configuring advanced event selectors using the AWS CLI or
+      CloudTrail APIs. The
+            <b>
+             Data APIs logged to CloudTrail
+            </b>
+            column shows the API
+      calls logged to CloudTrail for the resource type.
+           </p>
+           <div class="table-container" id="data-events-table">
+            <div class="table-contents disable-scroll">
+             <table id="w152aac29c19b9c23c11">
+              <thead>
+               <tr>
+                <th>
+                 Data event type (console)
+                </th>
+                <th>
+                 resources.type value
+                </th>
+                <th>
+                 Data APIs logged to CloudTrail
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 SNS topic
+                </b>
+               </td>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topic.html">
+                 <code class="code">
+                  AWS::SNS::Topic
+                 </code>
+                </a>
+               </td>
+               <td tabindex="-1">
+                <div class="itemizedlist">
+                 <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sns/latest/api/API_Publish.html">
+                     <code class="code">
+                      Publish
+                     </code>
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sns/latest/api/API_PublishBatch.html">
+                     <code class="code">
+                      PublishBatch
+                     </code>
+                    </a>
+                   </p>
+                  </li>
+                 </ul>
+                </div>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 SNS platform endpoint
+                </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::SNS::PlatformEndpoint
+                </code>
+               </td>
+               <td tabindex="-1">
+                <div class="itemizedlist">
+                 <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sns/latest/api/API_Publish.html">
+                     Publish
+                    </a>
+                   </p>
+                   <p>
+                    For additional details, see
+                    <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html">
+                     <code class="code">
+                      AdvancedEventSelector
+                     </code>
+                    </a>
+                    in the AWS CloudTrail API Reference.
+                   </p>
+                  </li>
+                 </ul>
+                </div>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              SNS resource type
+              <code class="code">
+               AWS::SNS::PhoneNumber
+              </code>
+              is not logged by CloudTrail.
+             </p>
+            </div>
+           </div>
+           <p>
+            You can configure advanced event selectors to filter on the
+            <code class="code">
+             eventName
+            </code>
+            ,
+            <code class="code">
+             readOnly
+            </code>
+            , and
+            <code class="code">
+             resources.ARN
+            </code>
+            fields to log only those events that
+      are important to you. For more information about these fields, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
+             AdvancedFieldSelector
+            </a>
+            in the
+            <em>
+             AWS CloudTrail API Reference
+            </em>
+            .
+           </p>
+           <p>
+            For information about logging data events, see Logging data events with the AWS Management Console and
+      Logging data events with the AWS CLI in the CloudTrail User Guide.
+           </p>
+           <h2 id="cloudtrail-management-events">
+            SNS management events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
+            </a>
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
+           </p>
+           <p>
+            AWS SNS logs the following SNS control plane operations to CloudTrail as
+            <em>
+             management events
+            </em>
+            .
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_AddPermission.html">
+                 AddPermission
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_CheckIfPhoneNumberIsOptedOut.html">
+                 CheckIfPhoneNumberIsOptedOut
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ConfirmSubscription.html">
+                 ConfirmSubscription
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html">
+                 CreatePlatformApplication
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformEndpoint.html">
+                 CreatePlatformEndpoint
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_CreateSMSSandboxPhoneNumber.html">
+                 CreateSMSSandboxPhoneNumber
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">
+                 CreateTopic
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_DeleteEndpoint.html">
+                 DeleteEndpoint
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_DeletePlatformApplication.html">
+                 DeletePlatformApplication
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_DeleteSMSSandboxPhoneNumber.html">
+                 DeleteSMSSandboxPhoneNumber
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_DeleteTopic.html">
+                 DeleteTopic
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_GetDataProtectionPolicy.html">
+                 GetDataProtectionPolicy
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_GetEndpointAttributes.html">
+                 GetEndpointAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_GetPlatformApplicationAttributes.html">
+                 GetPlatformApplicationAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_GetSMSAttributes.html">
+                 GetSMSAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_GetSMSSandboxAccountStatus.html">
+                 GetSMSSandboxAccountStatus
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_GetSubscriptionAttributes.html">
+                 GetSubscriptionAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_GetTopicAttributes.html">
+                 GetTopicAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ListEndpointsByPlatformApplication.html">
+                 ListEndpointsByPlatformApplication
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ListOriginationNumbers.html">
+                 ListOriginationNumbers
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ListPhoneNumbersOptedOut.html">
+                 ListPhoneNumbersOptedOut
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ListPlatformApplications.html">
+                 ListPlatformApplications
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ListSMSSandboxPhoneNumbers.html">
+                 ListSMSSandboxPhoneNumbers
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ListSubscriptions.html">
+                 ListSubscriptions
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ListSubscriptionsByTopic.html">
+                 ListSubscriptionsByTopic
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ListTagsForResource.html">
+                 ListTagsForResource
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_ListTopics.html">
+                 ListTopics
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_OptInPhoneNumber.html">
+                 OptInPhoneNumber
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_PutDataProtectionPolicy.html">
+                 PutDataProtectionPolicy
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_RemovePermission.html">
+                 RemovePermission
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html">
+                 SetEndpointAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html">
+                 SetPlatformApplicationAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html">
+                 SetSMSAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_SetSubscriptionAttributes.html">
+                 SetSubscriptionAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_SetTopicAttributes.html">
+                 SetTopicAttributes
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">
+                 Subscribe
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_TagResource.html">
+                 TagResource
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_Unsubscribe.html">
+                 Unsubscribe
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_UntagResource.html">
+                 UntagResource
+                </a>
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                <a href="https://docs.aws.amazon.com/sns/latest/api/API_VerifySMSSandboxPhoneNumber.html">
+                 VerifySMSSandboxPhoneNumber
+                </a>
+               </code>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              When you are not logged in to Amazon Web Services (unauthenticated mode) and either the
+              <a href="https://docs.aws.amazon.com/sns/latest/api/API_ConfirmSubscription.html">
+               <code class="code">
+                ConfirmSubscription
+               </code>
+              </a>
+              or
+              <a href="https://docs.aws.amazon.com/sns/latest/api/API_Unsubscribe.html">
+               <code class="code">
+                Unsubscribe
+               </code>
+              </a>
+              actions
+        are invoked, then they will not be logged to CloudTrail. Such as, when you choose the provided
+        link in an email notification to confirm a pending subscription to a topic, the
+              <code class="code">
+               ConfirmSubscription
+              </code>
+              action is invoked in unauthenticated mode. In this
+        example, the
+              <code class="code">
+               ConfirmSubscription
+              </code>
+              action would not be logged to CloudTrail.
+             </p>
+            </div>
+           </div>
+           <h2 id="cloudtrail-event-examples">
+            SNS event examples
+           </h2>
+           <p>
+            An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
+           </p>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <b>
+             <code class="code">
+              ListTopics
+             </code>
+            </b>
+            ,
+            <code class="code">
+             <b>
+              CreateTopic
+             </b>
+            </code>
+            , and
+            <code class="code">
+             <b>
+              DeleteTopic
+             </b>
+            </code>
+            actions.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "Records": [
+    <span>{</span>
+      "eventVersion": "1.02",
+      "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "userName": "Bob",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:user/Bob",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+      },
+      "eventTime": "2014-09-30T00:00:00Z",
+      "eventSource": "sns.amazonaws.com",
+      "eventName": "ListTopics",
+      "awsRegion": "us-west-2",
+      "sourceIPAddress": "127.0.0.1",
+      "userAgent": "aws-sdk-java/unknown-version",
+      "requestParameters": <span>{</span>
+        "nextToken": "ABCDEF1234567890EXAMPLE=="
+      },
+      "responseElements": null,
+      "requestID": "example1-b9bb-50fa-abdb-80f274981d60",
+      "eventID": "example0-09a3-47d6-a810-c5f9fd2534fe",
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "123456789012"
+    },
+    <span>{</span>
+      "eventVersion": "1.02",
+      "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "userName": "Bob",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:user/Bob",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+      },
+      "eventTime": "2014-09-30T00:00:00Z",
+      "eventSource": "sns.amazonaws.com",
+      "eventName": "CreateTopic",
+      "awsRegion": "us-west-2",
+      "sourceIPAddress": "127.0.0.1",
+      "userAgent": "aws-sdk-java/unknown-version",
+      "requestParameters": <span>{</span>
+        "name": "hello"
+      },
+      "responseElements": <span>{</span>
+        "topicArn": "arn:aws:sns:us-west-2:123456789012:hello-topic"
+      },
+      "requestID": "example7-5cd3-5323-8a00-f1889011fee9",
+      "eventID": "examplec-4f2f-4625-8378-130ac89660b1",
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "123456789012"
+    },
+    <span>{</span>
+      "eventVersion": "1.02",
+      "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "userName": "Bob",
+        "principalId": "EX_PRINCIPAL_ID",
+        "arn": "arn:aws:iam::123456789012:user/Bob",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+      },
+      "eventTime": "2014-09-30T00:00:00Z",
+      "eventSource": "sns.amazonaws.com",
+      "eventName": "DeleteTopic",
+      "awsRegion": "us-west-2",
+      "sourceIPAddress": "127.0.0.1",
+      "userAgent": "aws-sdk-java/unknown-version",
+      "requestParameters": <span>{</span>
+        "topicArn": "arn:aws:sns:us-west-2:123456789012:hello-topic"
+      },
+      "responseElements": null,
+      "requestID": "example5-4faa-51d5-aab2-803a8294388d",
+      "eventID": "example8-6443-4b4d-abfd-1b867280d964",
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "123456789012"
+    }
+  ]
+}   </code></pre>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             <b>
+              Publish
+             </b>
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "EX_PRINCIPAL_ID",
+    "arn": "arn:aws:iam::123456789012:user/Bob",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAIOSFODNN7EXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/Admin",
+        "accountId": "123456789012",
+        "userName": "ExampleUser"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2023-08-21T16:44:05Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2023-08-21T16:48:37Z",
+  "eventSource": "sns.amazonaws.com",
+  "eventName": "Publish",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
+  "requestParameters": <span>{</span>
+    "topicArn": "arn:aws:sns:us-east-1:123456789012:ExampleSNSTopic",
+    "message": "HIDDEN_DUE_TO_SECURITY_REASONS",
+    "subject": "HIDDEN_DUE_TO_SECURITY_REASONS",
+    "messageStructure": "json",
+    "messageAttributes": "HIDDEN_DUE_TO_SECURITY_REASONS"
+  },
+  "responseElements": <span>{</span>
+    "messageId": "0787cd1e-d92b-521c-a8b4-90434e8ef840"
+  },
+  "requestID": "0a8ab208-11bf-5e01-bd2d-ef55861b545d",
+  "eventID": "bb3496d4-5252-4660-9c28-3c6aebdb21c0",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::SNS::Topic",
+      "ARN": "arn:aws:sns:us-east-1:123456789012:ExampleSNSTopic"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Data",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.2",
+    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+    "clientProvidedHostHeader": "sns.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             <b>
+              PublishBatch
+             </b>
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "EX_PRINCIPAL_ID",
+    "arn": "arn:aws:iam::123456789012:user/Bob",
+    "accountId": "123456789012",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AKIAIOSFODNN7EXAMPLE",
+        "arn": "arn:aws:iam::123456789012:role/Admin",
+        "accountId": "123456789012",
+        "userName": "ExampleUser"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2023-08-21T19:20:49Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2023-08-21T19:22:01Z",
+  "eventSource": "sns.amazonaws.com",
+  "eventName": "PublishBatch",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.0",
+  "userAgent": "aws-cli/1.29.16 md/Botocore#1.31.16 ua/2.0 os/linux#5.4.250-173.369.amzn2int.x86_64 md/arch#x86_64 lang/python#3.8.17 md/pyimpl#CPython cfg/retry-mode#legacy botocore/1.31.16",
+  "requestParameters": <span>{</span>
+    "topicArn": "arn:aws:sns:us-east-1:123456789012:ExampleSNSTopic",
+    "publishBatchRequestEntries": [
+      <span>{</span>
+        "id": "1",
+        "message": "HIDDEN_DUE_TO_SECURITY_REASONS"
+      },
+      <span>{</span>
+        "id": "2",
+        "message": "HIDDEN_DUE_TO_SECURITY_REASONS"
+      }
+    ]
+  },
+  "responseElements": <span>{</span>
+    "successful": [
+      <span>{</span>
+        "id": "1",
+        "messageId": "30d68101-a64a-5573-9e10-dc5c1dd3af2f"
+      },
+      <span>{</span>
+        "id": "2",
+        "messageId": "c0aa0c5c-561d-5455-b6c4-5101ed84de09"
+      }
+    ],
+    "failed": []
+  },
+  "requestID": "e2cdf7f3-1b35-58ad-ac9e-aaaea0ace2f1",
+  "eventID": "10da9a14-0154-4ab6-b3a5-1825b229a7ed",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "123456789012",
+      "type": "AWS::SNS::Topic",
+      "ARN": "arn:aws:sns:us-east-1:123456789012:ExampleSNSTopic"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "123456789012",
+  "eventCategory": "Data",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.2",
+    "cipherSuite": "ECDHE-RSA-AES128-GCM-SHA256",
+    "clientProvidedHostHeader": "sns.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+           <p>
+            For information about CloudTrail record contents, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail
+        record contents
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <awsdocs-copyright class="copyright-print">
+           </awsdocs-copyright>
+           <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
+           </awsdocs-thumb-feedback>
+          </div>
+          <noscript>
+           <div>
+            <div>
+             <div>
+              <div id="js_error_message">
+               <p>
+                <img alt="Warning" src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png"/>
+                <strong>
+                 Javascript is disabled or is unavailable in your browser.
+                </strong>
+               </p>
+               <p>
+                To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.
+               </p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </noscript>
+          <div class="awsui-util-font-size-0" id="main-col-footer">
+           <div id="doc-conventions">
+            <a href="/general/latest/gr/docconventions.html" target="_top">
+             Document Conventions
+            </a>
+           </div>
+           <div class="prev-next">
+            <div accesskey="p" class="prev-link" href="./sns-logging-monitoring.html" id="previous">
+             Logging and monitoring
+            </div>
+            <div accesskey="n" class="next-link" href="./sns-monitoring-using-cloudwatch.html" id="next">
+             Monitoring topics using CloudWatch
+            </div>
+           </div>
+          </div>
+          <awsdocs-page-utilities>
+          </awsdocs-page-utilities>
+         </div>
+         <div id="quick-feedback-yes" style="display: none;">
+          <div class="title">
+           Did this page help you? - Yes
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know we're doing a good job!
+           </p>
+           <p>
+            If you've got a moment, please tell us what we did right so we can do more of it.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SNS&amp;topic_url=https://docs.aws.amazon.com/en_us/sns/latest/dg/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+         <div id="quick-feedback-no" style="display: none;">
+          <div class="title">
+           Did this page help you? - No
+          </div>
+          <div class="content">
+           <p>
+            Thanks for letting us know this page needs work. We're sorry we let you down.
+           </p>
+           <p>
+            If you've got a moment, please tell us how we can make the documentation better.
+           </p>
+           <p>
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SNS&amp;topic_url=https://docs.aws.amazon.com/en_us/sns/latest/dg/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            </awsui-button>
+           </p>
+          </div>
+         </div>
+        </div>
+       </body>
       </div>
-     </div>
-     <div>
-      -The Amazon Web Services Documentation Team
+     </awsdocs-view>
+     <div class="page-loading-indicator" id="page-loading-indicator">
+      <awsui-spinner size="large">
+      </awsui-spinner>
      </div>
     </div>
-   </div>
-   <awsdocs-generic-footer>
-   </awsdocs-generic-footer>
+    <div dom-region="tools" id="tools-panel">
+     <awsdocs-tools-panel id="awsdocs-tools-panel">
+     </awsdocs-tools-panel>
+    </div>
+   </awsui-app-layout>
+   <awsdocs-cookie-banner class="doc-cookie-banner">
+   </awsdocs-cookie-banner>
   </div>
  </body>
 </html>

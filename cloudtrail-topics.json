@@ -11,9 +11,9 @@
     "Support began": "04/22/2020",
     "Link": "https://docs.aws.amazon.com/appflow/latest/userguide/appflow-cloudtrail-logs.html"
   },
-  "Amazon AppStream 2.0": {
-    "AWS Service": "Amazon AppStream 2.0",
-    "CloudTrail Topics": "Logging Amazon AppStream 2.0 API Calls with AWS CloudTrail",
+  "Amazon WorkSpaces Applications": {
+    "AWS Service": "Amazon WorkSpaces Applications",
+    "CloudTrail Topics": "Logging Amazon WorkSpaces Applications API Calls with AWS CloudTrail",
     "Support began": "04/25/2019",
     "Link": "https://docs.aws.amazon.com/appstream2/latest/developerguide/logging-using-cloudtrail.html"
   },

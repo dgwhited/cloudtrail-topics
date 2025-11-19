@@ -324,7 +324,11 @@
              BatchGetImage
             </code>
             sections are
-                generated. When OCI clients that support the OCI 1.1
+                generated. When you archive or restore an image
+            <code class="code">
+             UpdateImageStorageClass
+            </code>
+            section is generated. When OCI clients that support the OCI 1.1
                 specification fetch the list of referrers, or reference artifacts, for an image
                 using the Referrers API, a
             <code class="code">
@@ -460,6 +464,22 @@
               <p>
                <a href="#cloudtrail-examples-lcp">
                 Example: Image lifecycle policy
+                            action
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#cloudtrail-examples-image-archive">
+                Example: Image archival
+                            action
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#cloudtrail-examples-image-restore">
+                Example: Image restore
                             action
                </a>
               </p>
@@ -915,6 +935,235 @@
             }
         ]
     }
+}</code></pre>
+           <h4 id="cloudtrail-examples-image-archive">
+            Example: Image archival
+                            action
+           </h4>
+           <p>
+            The following example shows a CloudTrail log entry that demonstrates an image
+                        being archived using the
+            <code class="code">
+             UpdateImageStorageClass
+            </code>
+            action with
+            <code class="code">
+             targetStorageClass
+            </code>
+            set to
+            <code class="code">
+             ARCHIVE
+            </code>
+            .
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE:account_name",
+        "arn": "arn:aws:sts::123456789012:user/Mary_Major",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+		"userName": "Mary_Major",
+		"sessionContext": <span>{</span>
+			"attributes": <span>{</span>
+				"mfaAuthenticated": "false",
+				"creationDate": "2019-04-15T16:42:14Z"
+			}
+		}
+	},
+	"eventTime": "2019-04-15T16:45:00Z",
+	"eventSource": "ecr.amazonaws.com",
+	"eventName": "UpdateImageStorageClass",
+	"awsRegion": "us-east-2",
+	"sourceIPAddress": "AWS Internal",
+	"userAgent": "AWS Internal",
+	"requestParameters": <span>{</span>
+		"repositoryName": "testrepo",
+		"imageId": <span>{</span>
+			"imageDigest": "sha256:98c8b060c21d9adbb6b8c41b916e95e6307102786973ab93a41e8b86d1fc6d3e"
+		},
+		"targetStorageClass": "ARCHIVE",
+		"registryId": "123456789012"
+	},
+	"responseElements": <span>{</span>
+		"image": <span>{</span>
+			"registryId": "123456789012",
+			"repositoryName": "testrepo",
+			"imageId": <span>{</span>
+				"imageDigest": "sha256:98c8b060c21d9adbb6b8c41b916e95e6307102786973ab93a41e8b86d1fc6d3e"
+			},
+			"imageStatus": "ARCHIVED"
+		}
+	},
+	"requestID": "cf044b7d-EXAMPLE",
+	"eventID": "2bfd4ee2-EXAMPLE",
+	"readOnly": false,
+	"resources": [<span>{</span>
+		"ARN": "arn:aws:ecr:us-east-2:123456789012:repository/testrepo",
+		"accountId": "123456789012"
+	}],
+	"eventType": "AwsApiCall",
+	"managementEvent": true,
+	"recipientAccountId": "123456789012",
+	"eventCategory": "Management"
+}</code></pre>
+           <h4 id="cloudtrail-examples-image-restore">
+            Example: Image restore
+                            action
+           </h4>
+           <p>
+            The following examples show CloudTrail log entries that demonstrate an image
+                        being restored. When you restore an archived image, two events are
+                        generated:
+           </p>
+           <div class="orderedlist">
+            <ol>
+             <li>
+              <p>
+               An API call event when the restore is initiated
+              </p>
+             </li>
+             <li>
+              <p>
+               A service event when the asynchronous restore operation
+                                completes
+              </p>
+             </li>
+            </ol>
+           </div>
+           <p>
+            <b>
+             API call event (restore initiation)
+            </b>
+           </p>
+           <p>
+            The following example shows the initial API call to restore an image using
+                        the
+            <code class="code">
+             UpdateImageStorageClass
+            </code>
+            action with
+            <code class="code">
+             targetStorageClass
+            </code>
+            set to
+            <code class="code">
+             STANDARD
+            </code>
+            . The
+                        response shows the image status as
+            <code class="code">
+             ACTIVATING
+            </code>
+            .
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE:account_name",
+        "arn": "arn:aws:sts::123456789012:user/Mary_Major",
+        "accountId": "123456789012",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+		"userName": "Mary_Major",
+		"sessionContext": <span>{</span>
+			"attributes": <span>{</span>
+				"mfaAuthenticated": "false",
+				"creationDate": "2019-04-15T16:42:14Z"
+			}
+		}
+	},
+	"eventTime": "2019-04-15T16:45:00Z",
+	"eventSource": "ecr.amazonaws.com",
+	"eventName": "UpdateImageStorageClass",
+	"awsRegion": "us-east-2",
+	"sourceIPAddress": "AWS Internal",
+	"userAgent": "AWS Internal",
+	"requestParameters": <span>{</span>
+		"repositoryName": "testrepo",
+		"imageId": <span>{</span>
+			"imageDigest": "sha256:98c8b060c21d9adbb6b8c41b916e95e6307102786973ab93a41e8b86d1fc6d3e"
+		},
+		"targetStorageClass": "STANDARD",
+		"registryId": "123456789012"
+	},
+	"responseElements": <span>{</span>
+		"image": <span>{</span>
+			"registryId": "123456789012",
+			"repositoryName": "testrepo",
+			"imageId": <span>{</span>
+				"imageDigest": "sha256:98c8b060c21d9adbb6b8c41b916e95e6307102786973ab93a41e8b86d1fc6d3e"
+			},
+			"imageStatus": "ACTIVATING"
+		}
+	},
+	"requestID": "cf044b7d-EXAMPLE",
+	"eventID": "2bfd4ee2-EXAMPLE",
+	"readOnly": false,
+	"resources": [<span>{</span>
+		"ARN": "arn:aws:ecr:us-east-2:123456789012:repository/testrepo",
+		"accountId": "123456789012"
+	}],
+	"eventType": "AwsApiCall",
+	"managementEvent": true,
+	"recipientAccountId": "123456789012",
+	"eventCategory": "Management"
+}</code></pre>
+           <p>
+            <b>
+             Service event (restore completion)
+            </b>
+           </p>
+           <p>
+            The following example shows the service event generated when the
+                        asynchronous restore operation completes. This event type can be located by
+                        filtering for
+            <code class="code">
+             ImageActivationEvent
+            </code>
+            for the event name field.
+                        The
+            <code class="code">
+             serviceEventDetails
+            </code>
+            section contains the restore result and
+                        final image status.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "accountId": "123456789012",
+        "invokedBy": "AWS Internal"
+    },
+    "eventTime": "2020-03-12T20:22:12Z",
+    "eventSource": "ecr.amazonaws.com",
+    "eventName": "ImageActivationEvent",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "AWS Internal",
+    "userAgent": "AWS Internal",
+    "requestParameters": null,
+    "responseElements": null,
+    "eventID": "9354dd7f-EXAMPLE",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+            "ARN": "arn:aws:ecr:us-west-2:123456789012:repository/testrepo",
+            "accountId": "123456789012",
+            "type": "AWS::ECR::Repository"
+        }
+    ],
+    "eventType": "AwsServiceEvent",
+    "managementEvent": true,
+    "recipientAccountId": "123456789012",
+    "serviceEventDetails": <span>{</span>
+        "repositoryName": "testrepo",
+        "imageDigest": "sha256:98c8b060c21d9adbb6b8c41b916e95e6307102786973ab93a41e8b86d1fc6d3e",
+        "targetStorageClass": "STANDARD",
+        "result": "SUCCESS",
+        "imageStatus": "ACTIVE"
+    },
+    "eventCategory": "Management"
 }</code></pre>
            <h4 id="cloudtrail-examples-image-referrers-action">
             Example: Image

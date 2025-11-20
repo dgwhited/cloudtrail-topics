@@ -422,7 +422,7 @@
             attributes for actions performed using the assumed role.
       However, CloudTrail logging is separate from what IAM requires when API calls are made with the
       assumed role's credentials. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
+            <a href="https://docs.aws.amazon.com//awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
              CloudTrail
         userIdentity Element
             </a>
@@ -475,7 +475,7 @@
             Logging user sign-in events
            </h2>
            <p>
-            CloudTrail logs sign-in events to the AWS Management Console, the AWS discussion forums, and AWS Marketplace. CloudTrail
+            CloudTrail logs sign-in events to the the console, local development tools like AWS CLI and SDKs, the AWS discussion forums, and AWS Marketplace. CloudTrail
       logs successful and failed sign-in attempts for IAM users, SAML and OIDC federated principals, and AWS STS federated user principals.
            </p>
            <p>
@@ -570,7 +570,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents disable-scroll">
-             <table id="w467aac31c32c20c17b9">
+             <table id="w470aac21c21c11c17b9">
               <thead>
                <tr>
                 <th>
@@ -760,7 +760,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents disable-scroll">
-             <table id="w467aac31c32c20c17c15">
+             <table id="w470aac21c21c11c17c15">
               <thead>
                <tr>
                 <th>
@@ -933,7 +933,7 @@
              JaneDoe
             </code>
             on July 15, 2014 at 9:40 PM
-        (UTC). In this case, the request originated in the AWS Management Console, as you can tell from the
+        (UTC). In this case, the request originated in the the console, as you can tell from the
             <code class="code">
              userAgent
             </code>
@@ -1781,6 +1781,116 @@
   "eventID": "3fcfb182-98f8-4744-bd45-10a395ab61cb"
 }</code></pre>
            <p>
+            The following example shows a CloudTrail log entry for a successful authorization code request.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (json)--><code class="json">
+<span>{</span>
+"eventVersion": "1.11",
+"userIdentity": <span>{</span>
+"type": "AssumedRole",
+"principalId": "AROATJHQDX737YZP72NTF:thesjain-Isengard",
+"arn": "arn:aws:sts::225989345271:assumed-role/Admin/thesjain-Isengard",
+"accountId": "225989345271",
+"sessionContext": <span>{</span>
+"sessionIssuer": <span>{</span>
+"type": "Role",
+"principalId": "AROATJHQDX737YZP72NTF",
+"arn": "arn:aws:iam::225989345271:role/Admin",
+"accountId": "225989345271",
+"userName": "Admin"
+},
+"attributes": <span>{</span>
+"creationDate": "2025-11-17T22:50:14Z",
+"mfaAuthenticated": "false"
+}
+}
+},
+"eventTime": "2025-11-17T22:51:32Z",
+"eventSource": "signin.amazonaws.com",
+"eventName": "AuthorizeOAuth2Access",
+"awsRegion": "us-east-1",
+"sourceIPAddress": "52.94.133.136",
+"userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+"requestParameters": <span>{</span>
+"scope": "openid",
+"redirect_uri": "http://127.0.0.1:53037/oauth/callback",
+"code_challenge_method": "SHA-256",
+"client_id": "arn:aws:signin:::devtools/same-device"
+},
+"responseElements": null,
+"additionalEventData": <span>{</span>
+"success": "true",
+"x-amzn-vpce-id": ""
+},
+"requestID": "e2854c76-1cba-4360-9fd1-5037b591466b",
+"eventID": "59e1720d-3deb-44ff-933d-6828be2a860a",
+"readOnly": true,
+"eventType": "AwsApiCall",
+"managementEvent": true,
+"recipientAccountId": "225989345271",
+"eventCategory": "Management",
+"tlsDetails": <span>{</span>
+"tlsVersion": "TLSv1.3",
+"cipherSuite": "TLS_AES_128_GCM_SHA256",
+"clientProvidedHostHeader": "us-east-1.signin.aws.amazon.com"
+}
+}
+
+              </code></pre>
+           <p>
+            The following example shows a CloudTrail log entry for a successful OAuth2 token creation request.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"></div><!--DEBUG: cli (json)--><code class="json">
+<span>{</span>
+"eventVersion": "1.11",
+"userIdentity": <span>{</span>
+"type": "AssumedRole",
+"principalId": "AROATJHQDX737YZP72NTF:jacobjoj-Isengard",
+"arn": "arn:aws:sts::225989345271:assumed-role/Admin/jacobjoj-Isengard",
+"accountId": "225989345271",
+"sessionContext": <span>{</span>
+"sessionIssuer": <span>{</span>
+"type": "Role",
+"principalId": "AROATJHQDX737YZP72NTF",
+"arn": "arn:aws:iam::225989345271:role/Admin",
+"accountId": "225989345271",
+"userName": "Admin"
+},
+"attributes": <span>{</span>
+"creationDate": "2025-11-18T20:38:10Z",
+"mfaAuthenticated": "false"
+}
+}
+},
+"eventTime": "2025-11-18T20:38:44Z",
+"eventSource": "signin.amazonaws.com",
+"eventName": "CreateOAuth2Token",
+"awsRegion": "us-east-1",
+"sourceIPAddress": "15.248.6.6",
+"userAgent": "aws-cli/2.32.0 md/awscrt#0.28.4 ua/2.1 os/macos#24.6.0 md/arch#arm64 lang/python#3.13.9 md/pyimpl#CPython m/b,AA,Z,E cfg/retry-mode#standard md/installer#exe sid/35033f4ca1bd md/prompt#off md/command#login",
+"requestParameters": <span>{</span>
+"client_id": "arn:aws:signin:::devtools/same-device"
+},
+"responseElements": null,
+"additionalEventData": <span>{</span>
+"success": "true",
+"x-amzn-vpce-id": ""
+},
+"requestID": "94562943-c85b-4dc1-bf72-43b0fd42d6de",
+"eventID": "0b338fac-6a10-4740-b34d-1bb6923e799e",
+"readOnly": true,
+"eventType": "AwsApiCall",
+"managementEvent": true,
+"recipientAccountId": "225989345271",
+"eventCategory": "Management",
+"tlsDetails": <span>{</span>
+"tlsVersion": "TLSv1.3",
+"cipherSuite": "TLS_AES_128_GCM_SHA256",
+"clientProvidedHostHeader": "us-east-1.signin.aws.amazon.com"
+}
+}
+      </code></pre>
+           <p>
             For more details about the information contained in CloudTrail log files, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/eventreference.html">
              CloudTrail Event Reference
@@ -1923,7 +2033,7 @@
       most cases, it is not necessary for an IAM role to assume itself. AWS recommends updating
       your processes, code, or configurations to remove this behavior or updating your role trust
       policies to explicitly allow for this behavior. For more information, see
-            <a href="https://aws.amazon.com/blogs/security/announcing-an-update-to-iam-role-trust-policy-behavior/" rel="noopener noreferrer" target="_blank">
+            <a href="https://aws.amazon.com/blogs//security/announcing-an-update-to-iam-role-trust-policy-behavior/" rel="noopener noreferrer" target="_blank">
              <span>
               Announcing an update
         to IAM role trust policy behavior

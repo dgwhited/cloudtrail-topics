@@ -157,7 +157,7 @@
   },
   "Amazon EC2 Auto Scaling": {
     "AWS Service": "Amazon EC2 Auto Scaling",
-    "CloudTrail Topics": "Logging Auto Scaling API Calls By Using CloudTrail",
+    "CloudTrail Topics": "Logging Amazon EC2 Auto Scaling API Calls By Using CloudTrail",
     "Support began": "07/16/2014",
     "Link": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/logging-using-cloudtrail.html"
   },
@@ -911,15 +911,15 @@
     "Support began": "03/08/2014",
     "Link": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/logging_dc_api_calls.html"
   },
-  "AWS Directory Service": {
-    "AWS Service": "AWS Directory Service",
-    "CloudTrail Topics": "Logging AWS Directory Service API Calls by Using CloudTrail",
+  "Directory Service": {
+    "AWS Service": "Directory Service",
+    "CloudTrail Topics": "Logging Directory Service API Calls by Using CloudTrail",
     "Support began": "05/14/2015",
     "Link": "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/logging-using-cloudtrail-ads.html"
   },
-  "AWS Directory Service Data": {
-    "AWS Service": "AWS Directory Service Data",
-    "CloudTrail Topics": "Logging AWS Directory Service Data API calls using AWS CloudTrail",
+  "Directory Service Data": {
+    "AWS Service": "Directory Service Data",
+    "CloudTrail Topics": "Logging Directory Service Data API calls using AWS CloudTrail",
     "Support began": "09/18/2024",
     "Link": "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/logging-using-cloudtrail.html"
   },

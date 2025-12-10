@@ -1307,9 +1307,9 @@
     "Support began": "04/05/2018",
     "Link": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail"
   },
-  "AWS Security Hub": {
-    "AWS Service": "AWS Security Hub",
-    "CloudTrail Topics": "Logging AWS Security Hub API Calls with AWS CloudTrail",
+  "AWS Security Hub CSPM": {
+    "AWS Service": "AWS Security Hub CSPM",
+    "CloudTrail Topics": "Logging AWS Security Hub CSPM API Calls with AWS CloudTrail",
     "Support began": "11/27/2018",
     "Link": "https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-ct.html"
   },

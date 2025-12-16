@@ -157,7 +157,7 @@
   },
   "Amazon EC2 Auto Scaling": {
     "AWS Service": "Amazon EC2 Auto Scaling",
-    "CloudTrail Topics": "Logging Amazon EC2 Auto Scaling API Calls By Using CloudTrail",
+    "CloudTrail Topics": "Logging Auto Scaling API Calls By Using CloudTrail",
     "Support began": "07/16/2014",
     "Link": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/logging-using-cloudtrail.html"
   },

@@ -135,13 +135,13 @@
          </div>
          <div id="page-toc-src">
           <a href="#cloudtrail-management-events">
-           Amazon EC2 Auto Scaling management events in CloudTrail
+           Auto Scaling management events in CloudTrail
           </a>
           <a href="#understanding-service-name-entries">
-           Amazon EC2 Auto Scaling event examples
+           Auto Scaling event examples
           </a>
           <a href="#remove-action-cloudtrail-log">
-           Amazon EC2 Auto Scaling RemoveAction calls on
+           Auto Scaling RemoveAction calls on
                 CloudWatch
           </a>
          </div>
@@ -164,10 +164,10 @@
              AWS CloudTrail
             </a>
             , a service that provides a record of actions taken by a user, role, or an
-        AWS service. CloudTrail captures API calls for Amazon EC2 Auto Scaling as events.
+        AWS service. CloudTrail captures API calls for Auto Scaling as events.
          The calls captured include calls from the AWS Management Console
-        and code calls to the Amazon EC2 Auto Scaling API operations. Using the information collected by CloudTrail, you can
-        determine the request that was made to Amazon EC2 Auto Scaling, the IP address from which the request was
+        and code calls to the Auto Scaling API operations. Using the information collected by CloudTrail, you can
+        determine the request that was made to Auto Scaling, the IP address from which the request was
         made, when it was made, and additional details.
            </p>
            <p>
@@ -282,7 +282,7 @@
             </dl>
            </div>
            <h2 id="cloudtrail-management-events">
-            Amazon EC2 Auto Scaling management events in CloudTrail
+            Auto Scaling management events in CloudTrail
            </h2>
            <p>
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
@@ -291,15 +291,15 @@
             provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
            </p>
            <p>
-            Amazon EC2 Auto Scaling logs all Amazon EC2 Auto Scaling control plane operations as management events. For a list
-            of the Amazon EC2 Auto Scaling control plane operations that Amazon EC2 Auto Scaling logs to CloudTrail, see the
+            Amazon EC2 Auto Scaling logs all Auto Scaling control plane operations as management events. For a list
+            of the Amazon EC2 Auto Scaling control plane operations that Auto Scaling logs to CloudTrail, see the
             <a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.html">
              Amazon EC2 Auto Scaling API Reference
             </a>
             .
            </p>
            <h2 id="understanding-service-name-entries">
-            Amazon EC2 Auto Scaling event examples
+            Auto Scaling event examples
            </h2>
            <p>
             An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
@@ -375,16 +375,16 @@
             .
            </p>
            <h2 id="remove-action-cloudtrail-log">
-            Amazon EC2 Auto Scaling RemoveAction calls on
+            Auto Scaling RemoveAction calls on
                 CloudWatch
            </h2>
            <p>
-            Your AWS CloudTrail log might show that Amazon EC2 Auto Scaling calls the CloudWatch
+            Your AWS CloudTrail log might show that Auto Scaling calls the CloudWatch
             <code class="code">
              RemoveAction
             </code>
             API
-            when Amazon EC2 Auto Scaling instructs CloudWatch to remove the automatic scaling action from an alarm. This
+            when Auto Scaling instructs CloudWatch to remove the automatic scaling action from an alarm. This
             could happen if you deregister a scalable target, delete a scaling policy, or if an
             alarm invokes a nonexistent scaling policy.
            </p>
@@ -420,7 +420,7 @@
            </div>
            <div class="prev-next">
             <div accesskey="p" class="prev-link" href="./enable-as-instance-metrics.html" id="previous">
-             Configure monitoring for Amazon EC2 Auto Scaling
+             Configure monitoring for Auto Scaling
                 instances
             </div>
             <div accesskey="n" class="next-link" href="./ec2-auto-scaling-sns-notifications.html" id="next">

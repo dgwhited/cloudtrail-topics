@@ -218,6 +218,31 @@
     "end-date": "[ODCR End Date]"
   }
 }</code></pre>
+           <h6>
+            Capacity Reservation Instance Interruption Warning
+           </h6>
+           <p>
+            The following example shows an event for EC2 Capacity Reservation Instance Interruption Warning.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "version": "0",
+    "id": "12345678-1234-1234-1234-123456789012",
+    "detail_type": "EC2 Capacity Reservation Instance Interruption Warning",
+    "source": "aws.ec2",
+    "account": "[Customer Account ID]",
+    "time": "[Current time]",
+    "region": "[Region]",
+    "resources": [
+        "[Instance ARN]"
+    ],
+    "detail": <span>{</span>
+        "instance-id": "[Instance ID]",
+        "instance-action": "terminate",
+        "instance-termination-time": "[Current time]",
+        "availability-zone-id": "[Availability Zone ID]",
+        "instance-lifecycle": "capacity-block"
+    }
+}</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

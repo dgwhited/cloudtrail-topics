@@ -141,38 +141,31 @@
          </div>
          <div id="page-toc-src">
           <a href="#iam-info-in-cloudtrail">
-           IAM and AWS STS information in
-        CloudTrail
+           IAM and AWS STS information in CloudTrail
           </a>
           <a href="#cloudtrail-integration_apis">
            Logging IAM and AWS STS API requests
           </a>
           <a href="#cloudtrail-integration_api-other-services">
-           Logging API requests to other
-        AWS services
+           Logging API requests to other AWS services
           </a>
           <a href="#cloudtrail-integration_signin-users">
            Logging user sign-in events
           </a>
           <a href="#cloudtrail-integration_signin-tempcreds">
-           Logging sign-in events for temporary
-        credentials
+           Logging sign-in events for temporary credentials
           </a>
           <a href="#cloudtrail-integration_examples-iam-api">
-           Example IAM API events in CloudTrail
-        log
+           Example IAM API events in CloudTrail log
           </a>
           <a href="#cloudtrail-integration_examples-sts-api">
-           Example AWS STS API events in CloudTrail
-        log
+           Example AWS STS API events in CloudTrail log
           </a>
           <a href="#cloudtrail-integration_examples-signin">
-           Example sign-in events in CloudTrail
-        log
+           Example sign-in events in CloudTrail log
           </a>
           <a href="#cloudtrail-integration_role-trust-behavior">
-           IAM role trust policy
-        behavior
+           IAM role trust policy behavior
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -180,8 +173,7 @@
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="cloudtrail-integration">
-            Logging IAM and AWS STS API calls
-      with AWS CloudTrail
+            Logging IAM and AWS STS API calls with AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -219,8 +211,7 @@
              <li>
               <p>
                <a href="#iam-info-in-cloudtrail">
-                IAM and AWS STS information in
-        CloudTrail
+                IAM and AWS STS information in CloudTrail
                </a>
               </p>
              </li>
@@ -234,8 +225,7 @@
              <li>
               <p>
                <a href="#cloudtrail-integration_api-other-services">
-                Logging API requests to other
-        AWS services
+                Logging API requests to other AWS services
                </a>
               </p>
              </li>
@@ -249,48 +239,42 @@
              <li>
               <p>
                <a href="#cloudtrail-integration_signin-tempcreds">
-                Logging sign-in events for temporary
-        credentials
+                Logging sign-in events for temporary credentials
                </a>
               </p>
              </li>
              <li>
               <p>
                <a href="#cloudtrail-integration_examples-iam-api">
-                Example IAM API events in CloudTrail
-        log
+                Example IAM API events in CloudTrail log
                </a>
               </p>
              </li>
              <li>
               <p>
                <a href="#cloudtrail-integration_examples-sts-api">
-                Example AWS STS API events in CloudTrail
-        log
+                Example AWS STS API events in CloudTrail log
                </a>
               </p>
              </li>
              <li>
               <p>
                <a href="#cloudtrail-integration_examples-signin">
-                Example sign-in events in CloudTrail
-        log
+                Example sign-in events in CloudTrail log
                </a>
               </p>
              </li>
              <li>
               <p>
                <a href="#cloudtrail-integration_role-trust-behavior">
-                IAM role trust policy
-        behavior
+                IAM role trust policy behavior
                </a>
               </p>
              </li>
             </ul>
            </div>
            <h2 id="iam-info-in-cloudtrail">
-            IAM and AWS STS information in
-        CloudTrail
+            IAM and AWS STS information in CloudTrail
            </h2>
            <p>
             CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
@@ -447,8 +431,7 @@
             Examples for this type of log entry are presented later in this topic.
            </p>
            <h2 id="cloudtrail-integration_api-other-services">
-            Logging API requests to other
-        AWS services
+            Logging API requests to other AWS services
            </h2>
            <p>
             Authenticated requests to other AWS service API operations are logged by CloudTrail, and these
@@ -503,8 +486,7 @@
             . For an example of this,
       see
             <a href="#hiddensecurity">
-             Example sign-in failure event caused by incorrect user
-          name
+             Example sign-in failure event caused by incorrect user name
             </a>
             , later in this topic. The
       user name text is obscured because such failures might be caused by user errors. Logging these
@@ -532,8 +514,7 @@
             </ul>
            </div>
            <h2 id="cloudtrail-integration_signin-tempcreds">
-            Logging sign-in events for temporary
-        credentials
+            Logging sign-in events for temporary credentials
            </h2>
            <p>
             When a principal requests temporary credentials, the principal type determines how CloudTrail
@@ -844,8 +825,7 @@
             </div>
            </div>
            <h2 id="cloudtrail-integration_examples-iam-api">
-            Example IAM API events in CloudTrail
-        log
+            Example IAM API events in CloudTrail log
            </h2>
            <p>
             CloudTrail log files contain events that are formatted using JSON. An API event represents a
@@ -853,8 +833,7 @@
       parameters, and the date and time of the action.
            </p>
            <h3 id="cloudtrail-integration-iam-api-events">
-            Example IAM API event in CloudTrail log
-          file
+            Example IAM API event in CloudTrail log file
            </h3>
            <p>
             <span id="cloudtrail-integration-understanding-records">
@@ -940,8 +919,7 @@
             element.
            </p>
            <h2 id="cloudtrail-integration_examples-sts-api">
-            Example AWS STS API events in CloudTrail
-        log
+            Example AWS STS API events in CloudTrail log
            </h2>
            <p>
             CloudTrail log files contain events that are formatted using JSON. An API event represents a
@@ -949,8 +927,7 @@
       parameters, and the date and time of the action.
            </p>
            <h3 id="stscloudtrailexample">
-            Example cross-account AWS STS API events in CloudTrail
-          log files
+            Example cross-account AWS STS API events in CloudTrail log files
            </h3>
            <p>
             The IAM user named
@@ -1062,8 +1039,7 @@
   "eventID": "dEXAMPLE-ac7f-466c-a608-4ac8dEXAMPLE"
 }</code></pre>
            <h3 id="stscloudtrailexample-assumerole">
-            Example AWS STS role chaining API event
-          in CloudTrail log file
+            Example AWS STS role chaining API event in CloudTrail log file
            </h3>
            <p>
             The following example shows a CloudTrail log entry for a request made by John Doe in account
@@ -1111,8 +1087,7 @@
             </code>
             . For more information about source identity, see
             <a href="./id_credentials_temp_control-access_monitor.html">
-             Monitor and control actions
-            taken with assumed roles
+             Monitor and control actions taken with assumed roles
             </a>
             . For more information about
         transitive keys in role chains, see
@@ -1199,8 +1174,7 @@
 }
 </code></pre>
            <h3 id="stscloudtrailexample_service">
-            Example AWS service AWS STS API event in
-          CloudTrail log file
+            Example AWS service AWS STS API event in CloudTrail log file
            </h3>
            <p>
             The following example shows a CloudTrail log entry for a request made by an AWS service
@@ -1245,8 +1219,7 @@
   "recipientAccountId": "777788889999"
 }</code></pre>
            <h3 id="stscloudtrailexample_saml">
-            Example SAML AWS STS API event in CloudTrail log
-          file
+            Example SAML AWS STS API event in CloudTrail log file
            </h3>
            <p>
             The following example shows a CloudTrail log entry for a request made for the AWS STS
@@ -1368,8 +1341,7 @@
     }
 }</code></pre>
            <h3 id="stscloudtrailexample_web-identity">
-            Example OIDC AWS STS API event in
-          CloudTrail log file
+            Example OIDC AWS STS API event in CloudTrail log file
            </h3>
            <p>
             The following example shows a CloudTrail log entry for a request made for the AWS STS
@@ -1502,8 +1474,7 @@
 }
 </code></pre>
            <h3 id="stscloudtrailexample-assumerole-sts-global-endpoint">
-            Example AWS STS API
-          event using the global endpoint in CloudTrail log file
+            Example AWS STS API event using the global endpoint in CloudTrail log file
            </h3>
            <p>
             For requests to the AWS Security Token Service (AWS STS) global endpoint
@@ -1739,8 +1710,7 @@
     }
 }</code></pre>
            <h2 id="cloudtrail-integration_examples-signin">
-            Example sign-in events in CloudTrail
-        log
+            Example sign-in events in CloudTrail log
            </h2>
            <p>
             CloudTrail log files contain events that are formatted using JSON. A sign-in event represents a
@@ -1748,8 +1718,7 @@
       the date and time of the action.
            </p>
            <h3 id="cloudtrail-integration-signin-success">
-            Example sign-in success event in
-          CloudTrail log file
+            Example sign-in success event in CloudTrail log file
            </h3>
            <p>
             The following example shows a CloudTrail log entry for a successful sign-in event.
@@ -1902,8 +1871,7 @@
             .
            </p>
            <h3 id="cloudtrail-integration-signin-failure">
-            Example sign-in failure event in
-          CloudTrail log file
+            Example sign-in failure event in CloudTrail log file
            </h3>
            <p>
             The following example shows a CloudTrail log entry for a failed sign-in event.
@@ -1958,8 +1926,7 @@
         PM (UTC) on July 8, 2014.
            </p>
            <h3 id="hiddensecurity">
-            Example sign-in failure event caused by incorrect user
-          name
+            Example sign-in failure event caused by incorrect user name
            </h3>
            <p>
             The following example shows a CloudTrail log entry for an unsuccessful sign-in event caused by
@@ -2003,8 +1970,7 @@
   "recipientAccountId": "123456789012"
 }</code></pre>
            <h2 id="cloudtrail-integration_role-trust-behavior">
-            IAM role trust policy
-        behavior
+            IAM role trust policy behavior
            </h2>
            <p>
             On September 21st, 2022, AWS made changes to IAM role trust policy behavior to require

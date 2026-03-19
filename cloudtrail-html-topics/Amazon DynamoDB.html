@@ -845,6 +845,71 @@
              </li>
             </ul>
            </div>
+           <div class="awsdocs-note awsdocs-important">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-warning" variant="error">
+             </awsui-icon>
+             <h6>
+              Important
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              When you log
+              <code class="code">
+               GetRecords
+              </code>
+              data events, you might see
+              <code class="code">
+               GetRecords
+              </code>
+              calls from DynamoDB internal operations, such as global tables replication. Although you are not charged by DynamoDB for these
+              <code class="code">
+               GetRecords
+              </code>
+              calls, you are charged by CloudTrail for the data event logs. This might result in unexpected CloudTrail charges.
+             </p>
+             <p>
+              To avoid unexpected CloudTrail charges, do one of the following:
+             </p>
+             <div class="itemizedlist">
+              <ul class="itemizedlist">
+               <li class="listitem">
+                <p>
+                 Use the
+                 <b>
+                  Exclude AWS service-initiated events
+                 </b>
+                 log selector template.
+                </p>
+               </li>
+               <li class="listitem">
+                <p>
+                 Add an advanced event selector filter with
+                 <code class="code">
+                  userIdentity.arn
+                 </code>
+                 set to
+                 <code class="code">
+                  NotStartsWith
+                 </code>
+                 <code class="code">
+                  AWSServiceRoleFor
+                 </code>
+                 .
+                </p>
+               </li>
+              </ul>
+             </div>
+             <p>
+              For more information, see
+              <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+               Logging data events
+              </a>
+              in the AWS CloudTrail User Guide.
+             </p>
+            </div>
+           </div>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

@@ -390,6 +390,185 @@
 ...
 }
     </code></pre>
+           <h3 id="source-identity-cloudtrail">
+            Tracing data access in CloudTrail with Lake Formation
+           </h3>
+           <p>
+            Lake Formation issues temporary, scoped-down credentials to query enginesâsuch as , Amazon EMR, and AWS Glueâfor accessing table data locations in Amazon S3. Lake Formation uses the IAM role that you specify when you
+            <a href="https://docs.aws.amazon.com/lake-formation/latest/dg/register-location.html">
+             register a data location
+            </a>
+            with Lake Formation for vending these credentials.
+           </p>
+           <h4 id="source-identity-cloudtrail-change">
+            Change in CloudTrail logging behavior (February 2026)
+           </h4>
+           <p>
+            <b>
+             Before February 2026
+            </b>
+            , when a query engine made an
+            <code class="code">
+             s3:GetObject
+            </code>
+            call to fetch query data, CloudTrail logs displayed the Lake Formation registration IAM role as the principal.
+           </p>
+           <p>
+            <b>
+             Starting in February 2026
+            </b>
+            , CloudTrail logs for
+            <code class="code">
+             s3:GetObject
+            </code>
+            calls also include the
+            <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-prefixes">
+             IAM unique identifier
+            </a>
+            (beginning with
+            <code class="code">
+             AROA
+            </code>
+            ) of the IAM role that initiated the query. This identifier corresponds to the IAM role that initiated the  query, Amazon EMR job, or AWS Glue ETL job.
+           </p>
+           <h4 id="source-identity-cloudtrail-tracing">
+            Tracing data access from query initiation to Amazon S3
+           </h4>
+           <p>
+            Each
+            <code class="code">
+             s3:GetObject
+            </code>
+            call in CloudTrail corresponds to a
+            <code class="code">
+             lakeformation:GetDataAccess
+            </code>
+            call. You can use the IAM role identifier that is present in both log entries to trace the caller's IAM role from query initiation through to data access in Amazon S3.
+           </p>
+           <p>
+            To enable the information of source identity in the Amazon S3 data events CloudTrail logs, follow the below steps. For enabling Amazon S3 data events in CloudTrail, refer
+            <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-cloudtrail-logging-for-s3.html">
+             Enabling CloudTrail event logging for Amazon S3 buckets and objects
+            </a>
+            .
+           </p>
+           <div class="awsdocs-note awsdocs-important">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-warning" variant="error">
+             </awsui-icon>
+             <h6>
+              Important
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              Enabling Amazon S3 data events in CloudTrail incurs additional charges.
+             </p>
+            </div>
+           </div>
+           <div class="procedure">
+            <h6>
+             To enable source identity tracking in CloudTrail logs
+            </h6>
+            <ol>
+             <li>
+              <p>
+               Using , run the
+               <code class="code">
+                get-data-lake-settings
+               </code>
+               command. In the response, edit the
+               <code class="code">
+                Parameters
+               </code>
+               field to add
+               <code class="code">
+                "SET_SOURCE_IDENTITY": "TRUE"
+               </code>
+               .
+              </p>
+              <p>
+               Run the
+               <code class="code">
+                put-data-lake-settings
+               </code>
+               command.
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="">"Parameters": <span>{</span>
+    "CROSS_ACCOUNT_VERSION": "4",
+    "SET_SOURCE_IDENTITY": "TRUE"
+},</code></pre>
+             </li>
+             <li>
+              <p>
+               In the trust policy of the IAM role used to register your Amazon S3 data location with Lake Formation, add
+               <code class="code">
+                sts:SetSourceIdentity
+               </code>
+               :
+              </p>
+              <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+    "Version": "2012-10-17",		 	 	 
+    "Statement": [
+        <span>{</span>
+            "Effect": "Allow",
+            "Principal": <span>{</span>
+                "Service": [
+                    "lakeformation.amazonaws.com"
+                ]
+            },
+            "Action": [
+                "sts:AssumeRole",
+                "sts:SetSourceIdentity"
+            ]
+        }
+    ]
+}</code></pre>
+             </li>
+            </ol>
+           </div>
+           <p>
+            The following log shows the source identity information in an example
+            <code class="code">
+             s3:GetObject
+            </code>
+            CloudTrail log.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json">"sessionContext": <span>{</span>
+    "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA2EXAMPLEXYZ3AB6CDKLM",
+        "arn": "arn:aws:iam::111122223333:role/LFRegistrationRole",
+        "accountId": "111122223333",
+        "userName": "LFRegistrationRole"
+    },
+    "sourceIdentity": "V2.111122223333.AROA3EXAMPLEPQR7ST9UVWXY"
+},
+"invokedBy": "glue.amazonaws.com"</code></pre>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              See Also
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <div class="itemizedlist">
+              <ul class="itemizedlist">
+               <li class="listitem">
+                <p>
+                 For information about tracking IAM Identity Center user context in CloudTrail logs, see
+                 <a href="./identity-center-integration.html">
+                  Integrating IAM Identity Center
+                 </a>
+                 .
+                </p>
+               </li>
+              </ul>
+             </div>
+            </div>
+           </div>
            <h6>
             Amazon Redshift federated catalog access monitoring
            </h6>

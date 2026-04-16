@@ -143,8 +143,14 @@
           <a href="#cloudtrail-management-events">
            Management events
           </a>
+          <a href="#cloudtrail-data-events">
+           Data events
+          </a>
           <a href="#cloudtrail-event-examples">
-           Event examples
+           Management event examples
+          </a>
+          <a href="#cloudtrail-data-event-examples">
+           Data event examples
           </a>
           <a href="#cloudtrail-event-pipe-examples">
            Events for Pipe actions
@@ -355,56 +361,132 @@
             provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
            </p>
            <p>
-            Amazon EventBridge logs all EventBridge control plane operations as management events. For a list
-      of the Amazon EventBridge control plane operations that EventBridge logs to CloudTrail, see the
-            <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/Welcome.html">
+            All Amazon EventBridge API operations except
+            <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutEvents.html">
+             PutEvents
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutPartnerEvents.html">
+             PutPartnerEvents
+            </a>
+            are control plane operations. For a complete list, see
+            <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Operations.html">
+             Actions
+            </a>
+            in the
+            <em>
              Amazon EventBridge API Reference
+            </em>
+            . For example management events, see
+            <a href="#cloudtrail-event-examples">
+             EventBridge management event examples
+            </a>
+            .
+           </p>
+           <h2 id="cloudtrail-data-events">
+            EventBridge data events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
+             Data events
+            </a>
+            provide information about the resource operations performed on or in a
+      resource (for example, publishing events to an event bus). These are also known as data
+      plane operations. Data events are often high-volume activities. By default, CloudTrail doesn't log
+      data events. The CloudTrail
+            <b>
+             Event history
+            </b>
+            doesn't record data events.
+           </p>
+           <p>
+            Additional charges apply for data events. For more information about CloudTrail pricing, see
+            <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+             <span>
+              AWS CloudTrail Pricing
+             </span>
+             <awsui-icon class="awsdocs-link-icon" name="external">
+             </awsui-icon>
             </a>
             .
            </p>
            <p>
-            The following table lists the EventBridge resource types for which you can log events. The
+            You can log data events for the EventBridge resource types by using the CloudTrail console, AWS CLI,
+      or CloudTrail API operations. For more information about how to log data events, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-console">
+             Logging data events with the AWS Management Console
+            </a>
+            and
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-with-the-AWS-CLI">
+             Logging data events with the AWS Command Line Interface
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
+           <p>
+            The following table lists the EventBridge resource types for which you can log data events.
+      The
             <b>
-             Event type (console)
+             Resource type (console)
             </b>
-            column shows the value to choose from
-      the
+            column shows the value to
+      choose from the
             <b>
-             Event type
+             Resource type
             </b>
-            list on the CloudTrail console.  The
+            list on the CloudTrail console. The
             <b>
-             APIs logged to CloudTrail
+             resources.type value
             </b>
-            column shows the API calls logged to
-      CloudTrail for the resource type.
+            column shows the
+            <code class="code">
+             resources.type
+            </code>
+            value, which you would specify when configuring advanced event selectors using the AWS CLI or
+      CloudTrail APIs. The
+            <b>
+             Data APIs logged to CloudTrail
+            </b>
+            column shows the API
+      calls logged to CloudTrail for the resource type.
            </p>
            <div class="table-container" id="data-events-table">
             <div class="table-contents disable-scroll">
-             <table id="w113aac35c22c15b9">
+             <table id="w113aac35c22c17c11">
               <thead>
                <tr>
                 <th>
-                 Event type (console)
+                 Resource type (console)
                 </th>
                 <th>
-                 APIs logged to CloudTrail
+                 resources.type value
+                </th>
+                <th>
+                 Data APIs logged to CloudTrail
                 </th>
                </tr>
               </thead>
               <tr>
                <td tabindex="-1">
                 <b>
-                 Event bus
+                 EventBridge event bus
                 </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::Events::EventBus
+                </code>
                </td>
                <td tabindex="-1">
                 <div class="itemizedlist">
                  <ul class="itemizedlist">
                   <li class="listitem">
                    <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeRule.html">
-                     DescribeEventBus
+                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutEvents.html">
+                     PutEvents
                     </a>
                    </p>
                   </li>
@@ -415,86 +497,21 @@
               <tr>
                <td tabindex="-1">
                 <b>
-                 Event bus rule
+                 EventBridge partner event source
                 </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::Events::EventSource
+                </code>
                </td>
                <td tabindex="-1">
                 <div class="itemizedlist">
                  <ul class="itemizedlist">
                   <li class="listitem">
                    <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeleteRule.html">
-                     DeleteRule
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeRule.html">
-                     DescribeRule
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DisableRule.html">
-                     DisableRule
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EnableRule.html">
-                     EnableRule
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListRuleNamesByTarget.html">
-                     ListRuleNamesByTarget
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListRules.html">
-                     ListRules
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListTargetsByRule.html">
-                     ListTargetsByRule
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutRule.html">
-                     PutRule
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutTargets.html">
-                     PutTargets
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RemoveTargets.html">
-                     RemoveTargets
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_TestEventPattern.html">
-                     TestEventPattern
+                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutPartnerEvents.html">
+                     PutPartnerEvents
                     </a>
                    </p>
                   </li>
@@ -505,59 +522,32 @@
               <tr>
                <td tabindex="-1">
                 <b>
-                 Pipe
+                 EventBridge endpoint
                 </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::Events::Endpoint
+                </code>
                </td>
                <td tabindex="-1">
                 <div class="itemizedlist">
                  <ul class="itemizedlist">
                   <li class="listitem">
                    <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/pipes-reference/API_CreatePipe.html">
-                     CreatePipe
+                    <a href="https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutEvents.html">
+                     PutEvents
                     </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/pipes-reference/API_DeletePipe.html">
-                     DeletePipe
+                    (when using a
+                    <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html">
+                     global endpoint
                     </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/pipes-reference/API_DescribePipe.html">
-                     DescribePipe
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/pipes-reference/API_ListPipes.html">
-                     ListPipes
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/pipes-reference/API_StartPipe.html">
-                     StartPipe
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/pipes-reference/API_StopPipe.html">
-                     StopPipe
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/eventbridge/latest/pipes-reference/API_UpdatePipe.html">
-                     UpdatePipe
-                    </a>
+                    ;
+                    successful calls only, not populated on
+                    <code class="code">
+                     AccessDenied
+                    </code>
+                    )
                    </p>
                   </li>
                  </ul>
@@ -567,8 +557,73 @@
              </table>
             </div>
            </div>
+           <p>
+            You can configure advanced event selectors to filter on the
+            <code class="code">
+             eventName
+            </code>
+            ,
+            <code class="code">
+             readOnly
+            </code>
+            , and
+            <code class="code">
+             resources.ARN
+            </code>
+            fields to log only those events that
+      are important to you. For more information about these fields, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
+             AdvancedFieldSelector
+            </a>
+            in the
+            <em>
+             AWS CloudTrail API Reference
+            </em>
+            .
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              Data events are delivered only to the AWS account of the API caller. If you send events
+        to a cross-account event bus, the resource owner's account does not receive a CloudTrail data event.
+             </p>
+            </div>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              The
+              <code class="code">
+               detail
+              </code>
+              field in event entries is redacted in CloudTrail data event logs to
+        protect sensitive data.
+             </p>
+            </div>
+           </div>
+           <p>
+            For examples of data events that EventBridge logs to CloudTrail, see
+            <a href="#cloudtrail-data-event-examples">
+             EventBridge data event examples
+            </a>
+            .
+           </p>
            <h2 id="cloudtrail-event-examples">
-            EventBridge event examples
+            EventBridge management event examples
            </h2>
            <p>
             An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
@@ -629,6 +684,246 @@
             </em>
             .
            </p>
+           <h2 id="cloudtrail-data-event-examples">
+            EventBridge data event examples
+           </h2>
+           <p>
+            The following example shows a CloudTrail data event for a successful
+            <code class="code">
+             PutEvents
+            </code>
+            call.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.11",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA3XFRBF23EXAMPLE:johndoe-session",
+    "arn": "arn:aws:sts::111122223333:assumed-role/MyRole/johndoe-session",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA3XFRBF23EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/MyRole",
+        "accountId": "111122223333",
+        "userName": "MyRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2026-03-07T00:49:09Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2026-03-07T00:51:07Z",
+  "eventSource": "events.amazonaws.com",
+  "eventName": "PutEvents",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.1",
+  "userAgent": "aws-cli/2.33.13",
+  "requestParameters": <span>{</span>
+    "entries": [
+      <span>{</span>
+        "source": "my-application",
+        "detailType": "MyDetailType",
+        "detail": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "eventBusName": "default"
+      }
+    ]
+  },
+  "responseElements": <span>{</span>
+    "failedEntryCount": 0,
+    "entries": [
+      <span>{</span>
+        "eventId": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111"
+      }
+    ]
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "type": "AWS::Events::EventBus",
+      "ARN": "arn:aws:events:us-east-1:111122223333:event-bus/default"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "apiVersion": "2015-10-07",
+  "managementEvent": false,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Data",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "events.us-east-1.amazonaws.com"
+  }
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail data event for a
+            <code class="code">
+             PutEvents
+            </code>
+            call using a
+            <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html">
+             global endpoint
+            </a>
+            .
+      Note the additional
+            <code class="code">
+             AWS::Events::Endpoint
+            </code>
+            resource in the
+            <code class="code">
+             resources
+            </code>
+            array.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.11",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA3XFRBF23EXAMPLE:johndoe-session",
+    "arn": "arn:aws:sts::111122223333:assumed-role/MyRole/johndoe-session",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA3XFRBF23EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/MyRole",
+        "accountId": "111122223333",
+        "userName": "MyRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2026-03-07T00:49:09Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2026-03-07T00:51:06Z",
+  "eventSource": "events.amazonaws.com",
+  "eventName": "PutEvents",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.1",
+  "userAgent": "aws-cli/2.33.13",
+  "requestParameters": <span>{</span>
+    "entries": [
+      <span>{</span>
+        "source": "my-application",
+        "detailType": "MyDetailType",
+        "detail": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "eventBusName": "default"
+      }
+    ],
+    "endpointId": "abc1234567.us-east-1"
+  },
+  "responseElements": <span>{</span>
+    "failedEntryCount": 0,
+    "entries": [
+      <span>{</span>
+        "eventId": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444"
+      }
+    ]
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE55555",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE66666",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "type": "AWS::Events::EventBus",
+      "ARN": "arn:aws:events:us-east-1:111122223333:event-bus/default"
+    },
+    <span>{</span>
+      "type": "AWS::Events::Endpoint",
+      "ARN": "arn:aws:events:us-east-1:111122223333:endpoint/MyGlobalEndpoint"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "apiVersion": "2015-10-07",
+  "managementEvent": false,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Data",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "abc1234567.us-east-1.endpoint.events.amazonaws.com"
+  }
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail data event for a successful
+            <code class="code">
+             PutPartnerEvents
+            </code>
+            call.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.11",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA3XFRBF23EXAMPLE:partner-session",
+    "arn": "arn:aws:sts::111122223333:assumed-role/PartnerRole/partner-session",
+    "accountId": "111122223333",
+    "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA3XFRBF23EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/PartnerRole",
+        "accountId": "111122223333",
+        "userName": "PartnerRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2026-03-07T00:49:09Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2026-03-07T00:51:07Z",
+  "eventSource": "events.amazonaws.com",
+  "eventName": "PutPartnerEvents",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.1",
+  "userAgent": "aws-cli/2.33.13",
+  "requestParameters": <span>{</span>
+    "entries": [
+      <span>{</span>
+        "time": "Mar 7, 2026, 12:51:07 AM",
+        "source": "aws.partner/example.com/my-integration",
+        "detailType": "MyDetailType",
+        "detail": "HIDDEN_DUE_TO_SECURITY_REASONS"
+      }
+    ]
+  },
+  "responseElements": <span>{</span>
+    "failedEntryCount": 0,
+    "entries": [
+      <span>{</span>
+        "eventId": "a1b2c3d4-5678-90ab-cdef-EXAMPLE77777"
+      }
+    ]
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE88888",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE99999",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "type": "AWS::Events::EventSource",
+      "ARN": "arn:aws:events:us-east-1::event-source/aws.partner/example.com/my-integration"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "apiVersion": "2015-10-07",
+  "managementEvent": false,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Data",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "events.us-east-1.amazonaws.com"
+  }
+}</code></pre>
            <h2 id="cloudtrail-event-pipe-examples">
             CloudTrail log entries for actions taken by EventBridge Pipes
            </h2>

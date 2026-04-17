@@ -551,6 +551,12 @@
     "Support began": "05/30/2023",
     "Link": "https://docs.aws.amazon.com/security-lake/latest/userguide/securitylake-cloudtrail.html"
   },
+  "AWS Security Agent": {
+    "AWS Service": "AWS Security Agent",
+    "CloudTrail Topics": "Logging AWS Security Agent API calls using CloudTrail",
+    "Support began": "03/18/2025",
+    "Link": "https://docs.aws.amazon.com/securityagent/latest/userguide/logging-cloudtrail.html"
+  },
   "Amazon Simple Email Service (Amazon SES)": {
     "AWS Service": "Amazon Simple Email Service (Amazon SES)",
     "CloudTrail Topics": "Logging Amazon SES API Calls By Using AWS CloudTrail",

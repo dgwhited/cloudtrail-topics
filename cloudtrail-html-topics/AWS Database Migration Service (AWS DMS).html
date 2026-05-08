@@ -1761,6 +1761,18 @@
                                     events compared to the last time it read from the source. When this
                                     happens, the task resets the CDCSourceLatency to 0.
                 </p>
+                <p>
+                 CDC latency spikes can be expected during periods of heavy
+                                    source database activity, such as batch processing,
+                                    maintenance operations, or large transactions. Temporary
+                                    latency increases are normal operational behavior and do not
+                                    necessarily indicate a service issue. If sustained high
+                                    latency is observed, review the factors described in
+                 <a href="./CHAP_BestPractices.html#CHAP_BestPractices.OnGoingReplication">
+                  Ongoing replication
+                 </a>
+                 .
+                </p>
                </td>
               </tr>
               <tr>

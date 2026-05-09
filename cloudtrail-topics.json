@@ -107,8 +107,8 @@
     "Support began": "11/27/2018",
     "Link": "https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-cloudtrail.html"
   },
-  "Amazon Connect": {
-    "AWS Service": "Amazon Connect",
+  "Amazon Connect Customer": {
+    "AWS Service": "Amazon Connect Customer",
     "CloudTrail Topics": "Logging Amazon Connect API Calls with AWS CloudTrail",
     "Support began": "12/11/2019",
     "Link": "https://docs.aws.amazon.com/connect/latest/adminguide/logging-using-cloudtrail.html"

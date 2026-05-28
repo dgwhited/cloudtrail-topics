@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging AWS Service Catalog API Calls with AWS CloudTrail - AWS Service Catalog
+   Logging AWS Service Catalog API calls using AWS CloudTrail - AWS Service Catalog
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -11,38 +11,39 @@
   <meta content="logging-using-cloudtrail" name="default_state"/>
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
-  <link href="https://docs.aws.amazon.com/servicecatalog/latest/dg/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="CloudTrail is enabled on your AWS account when you create the account. When activity occurs in AWS Service Catalog, that activity is recorded in a CloudTrail event along with other AWS service events in Event history . You can view, search, and download recent events in your AWS account. For more information, see" name="description"/>
+  <link href="https://docs.aws.amazon.com/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <meta content="Learn about logging AWS Service Catalog with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="AWS Service Catalog" name="product"/>
-  <meta content="Developer Guide" name="guide"/>
+  <meta content="Administrator Guide" name="guide"/>
+  <meta content="AWS Service Catalog enables organizations to create and manage catalogs of IT services that are approved for use on AWS. These IT services can include everything from virtual machine images, servers, software, databases, and more to complete multi-tier application architectures." name="abstract"/>
   <meta content="en_us" name="guide-locale"/>
   <meta content="toc-contents.json" name="tocs"/>
-  <link href="https://docs.aws.amazon.com/servicecatalog/latest/dg/logging-using-cloudtrail.html" rel="canonical"/>
-  <link href="https://docs.aws.amazon.com/id_id/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="id-id" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/id_id/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="id" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/de_de/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="de-de" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/de_de/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="de" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="en-us" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="en" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/es_es/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="es-es" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/es_es/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="es" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/fr_fr/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="fr" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/it_it/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="it-it" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/it_it/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="it" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/ja_jp/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="ja" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/ko_kr/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="ko" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/pt_br/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/pt_br/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="pt" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/zh_cn/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/zh_tw/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternate"/>
-  <link href="https://docs.aws.amazon.com/servicecatalog/latest/dg/logging-using-cloudtrail.html" hreflang="x-default" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" rel="canonical"/>
+  <link href="https://docs.aws.amazon.com/id_id/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="id-id" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/id_id/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="id" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/de_de/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="de-de" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/de_de/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="de" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="en-us" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="en" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/es_es/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="es-es" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/es_es/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="es" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="fr-fr" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/fr_fr/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="fr" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/it_it/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="it-it" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/it_it/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="it" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="ja-jp" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/ja_jp/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="ja" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="ko-kr" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/ko_kr/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="ko" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/pt_br/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="pt-br" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/pt_br/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="pt" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/zh_cn/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="zh-cn" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/zh_tw/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternate"/>
+  <link href="https://docs.aws.amazon.com/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternate"/>
   <meta content="Service Catalog" name="feedback-item"/>
   <meta content="AWS Service Catalog" name="this_doc_product"/>
-  <meta content="Developer Guide" name="this_doc_guide"/>
+  <meta content="Administrator Guide" name="this_doc_guide"/>
   <head xmlns="http://www.w3.org/1999/xhtml">
    <script defer="" src="/assets/r/awsdocs-doc-page.2.0.0.js">
    </script>
@@ -50,8 +51,8 @@
   </head>
   <script data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'servicecatalog'}" defer="" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
-  <meta id="panorama-serviceSubSection" value="Developer Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging AWS Service Catalog API Calls with AWS CloudTrail"/>
+  <meta id="panorama-serviceSubSection" value="Administrator Guide"/>
+  <meta id="panorama-serviceConsolePage" value="Logging AWS Service Catalog API calls using AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -72,13 +73,14 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging AWS Service Catalog API Calls with AWS CloudTrail - AWS Service Catalog
+         Logging AWS Service Catalog API calls using AWS CloudTrail - AWS Service Catalog
         </title>
-        <meta content="/pdfs/servicecatalog/latest/dg/service-catalog-dg.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="/pdfs/servicecatalog/latest/adminguide/service-catalog-ag.pdf#logging-using-cloudtrail" name="pdf"/>
+        <meta content="aws-service-catalog-release-notes.rss" name="rss"/>
         <meta content="https://repost.aws/tags/TAG08wb2QBSaGcgC5rDmZgyA" name="forums"/>
-        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Service%20Catalog&amp;topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/dg/logging-using-cloudtrail.html" name="feedback"/>
-        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/dg/logging-using-cloudtrail.html" name="feedback-yes"/>
-        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/dg/logging-using-cloudtrail.html" name="feedback-no"/>
+        <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Service%20Catalog&amp;topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" name="feedback"/>
+        <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" name="feedback-yes"/>
+        <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" name="feedback-no"/>
         <link href="logging-using-cloudtrail.md" rel="alternate" title="Markdown version" type="text/markdown"/>
         <script type="application/ld+json">
          {
@@ -100,14 +102,20 @@
       {
         "@type" : "ListItem",
         "position" : 3,
-        "name" : "Developer Guide",
-        "item" : "https://docs.aws.amazon.com/servicecatalog/latest/dg"
+        "name" : "Administrator Guide",
+        "item" : "https://docs.aws.amazon.com/servicecatalog/latest/adminguide"
       },
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Logging AWS Service Catalog API Calls with AWS CloudTrail",
-        "item" : "https://docs.aws.amazon.com/servicecatalog/latest/dg/logging-using-cloudtrail.html"
+        "name" : "Monitoring in AWS Service Catalog",
+        "item" : "https://docs.aws.amazon.com/servicecatalog/latest/adminguide/service-catalog-monitoring.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging AWS Service Catalog API calls using AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/servicecatalog/latest/adminguide/service-catalog-monitoring.html"
       }
     ]
 }
@@ -116,7 +124,7 @@
        <body>
         <div id="main">
          <div style="display: none">
-          <a href="/pdfs/servicecatalog/latest/dg/service-catalog-dg.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
+          <a href="/pdfs/servicecatalog/latest/adminguide/service-catalog-ag.pdf#logging-using-cloudtrail" rel="noopener noreferrer" target="_blank" title="Open PDF">
           </a>
          </div>
          <div class="breadcrumb" id="breadcrumbs">
@@ -126,8 +134,16 @@
           <a href="/servicecatalog/index.html">
            AWS Service Catalog
           </a>
-          <a href="what-is-service-catalog.html">
-           Developer Guide
+          <a href="introduction.html">
+           Administrator Guide
+          </a>
+         </div>
+         <div id="page-toc-src">
+          <a href="#service-name-info-in-cloudtrail">
+           AWS Service Catalog information in CloudTrail
+          </a>
+          <a href="#understanding-service-name-entries">
+           Understanding AWS Service Catalog log file entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -135,7 +151,7 @@
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="logging-using-cloudtrail">
-            Logging AWS Service Catalog API Calls with AWS CloudTrail
+            Logging AWS Service Catalog API calls using AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -144,110 +160,132 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
-        AWS Service Catalog, that activity is recorded in a CloudTrail event along with other AWS service
-        events in
-            <b>
-             Event history
-            </b>
-            . You can view, search, and download recent events 
-        in your AWS account. For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events">
-             Viewing Events with CloudTrail Event History.
-            </a>
+            AWS Service Catalog is integrated with AWS CloudTrail, a service that provides a record of
+        actions taken by a user, role, or an AWS service in AWS Service Catalog. CloudTrail captures all API calls for
+        AWS Service Catalog as events. The calls captured include calls from the AWS Service Catalog
+        console and code calls to the AWS Service Catalog API operations. If you create a trail, you
+        can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS Service Catalog. If you don't configure a trail, you can still view the most recent events
+        in the CloudTrail console in Event history. Using the information collected by CloudTrail, you can
+        determine the request that was made to AWS Service Catalog, the IP address from which the
+        request was made, who made the request, when it was made, and additional details.
            </p>
            <p>
-            For an ongoing record of events in your AWS account, including events for AWS Service Catalog,
-        create a trail. A
+            To learn more about CloudTrail, see the
+            <a href="https://docs.aws.amazon.com/servicecatalog/latest/adminguide/logging-using-cloudtrail.html">
+             AWS CloudTrail
+            User Guide.
+            </a>
+           </p>
+           <h2 id="service-name-info-in-cloudtrail">
+            AWS Service Catalog information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail is enabled on your AWS account when you create it. When
+            activity occurs in AWS Service Catalog, that activity is recorded in a CloudTrail event
+            along with other AWS service events in Event history. You can view, search, and
+            download recent events in your AWS account. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Viewing events with CloudTrail Event history
+            </a>
+            .
+           </p>
+           <p>
+            For an ongoing record of events in your AWS account, including
+            events for AWS Service Catalog, create a trail. A
             <em>
              trail
             </em>
-            enables CloudTrail to deliver log files to an Amazon S3 bucket. 
-        By default, when you create a trail in the console, the trail applies to all AWS Regions. The trail logs events
-        from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you
-        specify.  Additionally, you can configure other AWS services to further analyze and act upon
-        the event data collected in CloudTrail logs. For more information, see the following:
+            enables CloudTrail to deliver log files to an Amazon S3 bucket. By default, when you create a trail in the
+            console, the trail applies to all AWS Regions. The trail logs events from all Regions in
+            the AWS partition and delivers the log files to the Amazon S3 bucket that you specify.
+            Additionally, you can configure other AWS services to further analyze and act upon the
+            event data collected in CloudTrail logs. For more information, see the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for Creating a Trail
+                Overview for creating a trail
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
-                CloudTrail Supported Services and Integrations
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html">
+                AWS CloudTrail supported services and
+                    integrations
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
-                Configuring Amazon SNS Notifications
-                for CloudTrail
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/configure-sns-notifications-for-cloudtrail.html">
+                Configuring Amazon SNS notifications for
+                        AWS CloudTrail
                </a>
               </p>
              </li>
              <li class="listitem">
               <p>
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail Log
-                Files from Multiple Regions
+                Receiving AWS CloudTraillog files from multiple
+                        regions
                </a>
                and
                <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail Log
-                    Files from Multiple Accounts
+                Receiving AWS CloudTrail log files from multiple
+                        accounts
                </a>
               </p>
              </li>
             </ul>
            </div>
            <p>
-            All AWS Service Catalog actions are logged by CloudTrail and are documented in the
-            <a href="https://docs.aws.amazon.com/servicecatalog/latest/dg/">
-             Service Catalog Developer Guide
+            CloudTrail
+            <a href="https://docs.aws.amazon.com/servicecatalog/latest/dg/logging-using-cloudtrail.html">
+             logs
             </a>
-            . For example, calls to the
+            all AWS Service Catalog actions. For example, calls to the
             <code class="code">
-             SearchProducts
+             <a href="https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreatePortfolio.html">
+              CreatePortfolio
+             </a>
             </code>
             ,
             <code class="code">
-             ListLaunchPaths
+             <a href="https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreateProduct.html">
+              CreateProduct
+             </a>
             </code>
             and
             <code class="code">
-             ListLaunchPaths
+             <a href="https://docs.aws.amazon.com/servicecatalog/latest/dg/API_UpdateProvisionedProduct.html">
+              UpdateProvisionedProduct
+             </a>
             </code>
-            actions generate
-        entries in the CloudTrail log files.
+            actions generate entries in the CloudTrail log files.
            </p>
            <p>
-            Every event or log entry contains information about who generated the
-        request. The identity information helps you determine whether:
+            Every event or log entry contains information about who generated the request. The
+            identity information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               Root or AWS Identity and Access Management (IAM) user credentials made the
-                request.
+               Whether the request was made with root or AWS Identity and Access Management (IAM) user credentials.
               </p>
              </li>
              <li class="listitem">
               <p>
-               Temporary security credentials for a role or federated user made
-                the request.
+               Whether the request was made with temporary security credentials for a role or
+                    federated user.
               </p>
              </li>
              <li class="listitem">
               <p>
-               Another AWS service made the request.
+               Whether the request was made by another AWS service.
               </p>
              </li>
             </ul>
@@ -255,11 +293,62 @@
            <p>
             For more information, see the
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail userIdentity
-        Element
+             CloudTrail userIdentity element
             </a>
             .
            </p>
+           <h2 id="understanding-service-name-entries">
+            Understanding AWS Service Catalog log file entries
+           </h2>
+           <p>
+            A trail is a configuration that enables delivery of events as log
+            files to an Amazon S3 bucket that you specify. CloudTrail log files contain one or more log
+            entries. An event represents a single request from any source and includes information
+            about the requested action, the date and time of the action, request parameters, and so
+            on. CloudTrail log files aren't an ordered stack trace of the public API calls, so they
+            don't appear in any specific order. The following example shows an CloudTrail log entry
+            that demonstrates the
+            <code class="code">
+             CreateApplication
+            </code>
+            API.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span>
+    "eventVersion": "1.05",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "account",
+        "arn": "arn:aws:iam::12345789012:user/dev-haw",
+        "accountId": "12345789012",
+        "accessKeyId": "keyId",
+        "userName": "dev-haw"
+    },
+    "eventTime": "2020-09-23T21:07:58Z",
+    "eventSource": "servicecatalog-appregistry.amazonaws.com",
+    "eventName": "CreateApplication",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "205.251.233.48",
+    "userAgent": "aws-cli/1.18.140 Python/3.6.11 Linux/4.9.217-0.1.ac.205.84.332.metal1.x86_64 botocore/1.17.63",
+    "requestParameters": <span>{</span>
+        "name": "hawTestCT",
+        "clientToken": "6f36d650-a086-47cf-810a-fbfab2f8ad33"
+    },
+    "responseElements": <span>{</span>
+        "application": <span>{</span>
+            "applicationArn": "arn:aws:servicecatalog:us-east-1:12345789012:application/app-02ocuq2cie2328pv64ya78e22f",
+            "applicationId": "app-02ocuq2cie2328pv64ya78e22f",
+            "creationTime": 1600895277.775,
+            "lastUpdateTime": 1600895277.775,
+            "name": "hawTestCT",
+            "tags": <span>{</span>}
+        }
+    },
+    "requestID": "1b6ad353-3b06-421b-bcb4-00075a782762",
+    "eventID": "0a2ca224-cdfd-4c4b-a4ed-163218ff5e2d",
+    "readOnly": false,
+    "eventType": "AwsApiCall",
+    "recipientAccountId": "12345789012"
+}</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">
@@ -291,8 +380,11 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./API_app-registry_TagQueryConfiguration.html" id="previous">
-             TagQueryConfiguration
+            <div accesskey="p" class="prev-link" href="./viewing-cloudwatch-metrics.html" id="previous">
+             Viewing AWS Service Catalog Metrics
+            </div>
+            <div accesskey="n" class="next-link" href="./console-branding.html" id="next">
+             Console branding
             </div>
            </div>
           </div>
@@ -311,7 +403,7 @@
             If you've got a moment, please tell us what we did right so we can do more of it.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Service Catalog&amp;topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/dg/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Service Catalog&amp;topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>
@@ -328,7 +420,7 @@
             If you've got a moment, please tell us how we can make the documentation better.
            </p>
            <p>
-            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Service Catalog&amp;topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/dg/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
+            <awsui-button click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Service Catalog&amp;topic_url=https://docs.aws.amazon.com/en_us/servicecatalog/latest/adminguide/logging-using-cloudtrail.html" id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback">
             </awsui-button>
            </p>
           </div>

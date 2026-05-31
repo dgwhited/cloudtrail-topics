@@ -122,7 +122,7 @@
       {
         "@type" : "ListItem",
         "position" : 6,
-        "name" : "Monitoring the performance of Amazon Bedrock",
+        "name" : "Monitor the bedrock-runtime endpoint",
         "item" : "https://docs.aws.amazon.com/bedrock/latest/userguide/monitoring.html"
       },
       {
@@ -186,6 +186,41 @@
     code calls to the Amazon Bedrock API operations. If you create a trail, you can enable
     continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for Amazon Bedrock.
            </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              This page describes CloudTrail logging for the
+              <code class="code">
+               bedrock-runtime.
+               <code class="replaceable">
+                region
+               </code>
+               .amazonaws.com
+              </code>
+              endpoint. If your
+      application calls the
+              <code class="code">
+               bedrock-mantle.
+               <code class="replaceable">
+                region
+               </code>
+               .api.aws
+              </code>
+              endpoint, see
+              <a href="./logging-cloudtrail-mantle.html">
+               Monitor bedrock-mantle API calls using CloudTrail
+              </a>
+              instead.
+             </p>
+            </div>
+           </div>
            <p>
             If you don't configure a trail, you can still view the most recent events in the CloudTrail console 
     in
@@ -836,11 +871,11 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./monitoring-eventbridge-create-rule-ex.html" id="previous">
-             [Example] Create a rule to handle Amazon Bedrock state change events
+            <div accesskey="p" class="prev-link" href="./monitoring-runtime-metrics.html" id="previous">
+             CloudWatch metrics
             </div>
-            <div accesskey="n" class="next-link" href="./tagging.html" id="next">
-             Tagging resources
+            <div accesskey="n" class="next-link" href="./monitoring-mantle.html" id="next">
+             Monitor bedrock-mantle
             </div>
            </div>
           </div>

@@ -429,7 +429,7 @@
            </p>
            <div class="table-container" id="data-events-table">
             <div class="table-contents disable-scroll">
-             <table id="w717aac45c16c17c11">
+             <table id="w718aac45c16c17c11">
               <thead>
                <tr>
                 <th>
@@ -482,6 +482,52 @@
                 </div>
                </td>
               </tr>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 SageMaker jobs
+                </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::SageMaker::Job
+                </code>
+               </td>
+               <td tabindex="-1">
+                <div class="itemizedlist">
+                 <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_ChatCompletions.html">
+                     ChatCompletions
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_CompleteRollout.html">
+                     CompleteRollout
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_Sample.html">
+                     Sample
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_SampleWithResponseStream.html">
+                     SampleWithResponseStream
+                    </a>
+                   </p>
+                  </li>
+                 </ul>
+                </div>
+               </td>
+              </tr>
              </table>
             </div>
            </div>
@@ -499,12 +545,19 @@
               <code class="code">
                InvokeEndpoint
               </code>
-              and
+              ,
               <code class="code">
                InvokeEndpointAsync
               </code>
-              API calls don't log
-      the request parameters.
+              ,
+              <code class="code">
+               Sample
+              </code>
+              , and
+              <code class="code">
+               SampleWithResponseStream
+              </code>
+              API calls don't log the request parameters.
              </p>
             </div>
            </div>
@@ -533,7 +586,7 @@
             .
            </p>
            <p>
-            The following example shows you how to log data events for an Amazon SageMaker endpoint. In this
+            The following example shows you how to log data events for an Amazon SageMaker endpoint and an Amazon SageMaker job. In this
       example, you use the
             <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/put-event-selectors.html">
              put-event-selectors
@@ -556,6 +609,22 @@
       <span>{</span>
         "Field": "resources.type",
         "Equals": ["AWS::SageMaker::Endpoint"]
+      }
+    ]
+  },
+  <span>{</span>
+    "FieldSelectors": [
+      <span>{</span>
+        "Field": "eventCategory",
+        "Equals": ["Data"]
+      },
+      <span>{</span>
+        "Field": "resources.ARN",
+        "Equals": ["arn:aws:sagemaker:us-east-1:111122223333:job/<code class="replaceable">your-job-arn</code>"]
+      },
+      <span>{</span>
+        "Field": "resources.type",
+        "Equals": ["AWS::SageMaker::Job"]
       }
     ]
   }
@@ -701,6 +770,165 @@
     "eventID":"0f2b3e81-EXAMPLE",
     "eventType":"AwsApiCall",
     "recipientAccountId":"444455556666"
+}</code></pre>
+           <p>
+            The following examples show CloudTrail data events for SageMaker AI jobs. Note that
+            <code class="code">
+             ChatCompletions
+            </code>
+            calls are transformed into
+            <code class="code">
+             Sample
+            </code>
+            and
+            <code class="code">
+             SampleWithResponseStream
+            </code>
+            calls in the CloudTrail logs.
+           </p>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             CompleteRollout
+            </code>
+            operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type":"IAMUser",
+        "principalId":"AIXDAYQEXAMPLEUMLYNGL",
+        "arn":"arn:aws:iam::123456789012:user/intern",
+        "accountId":"123456789012",
+        "accessKeyId":"ASXIAGXEXAMPLEQULKNXV",
+        "userName":"intern"
+    },
+    "eventTime": "2024-01-15T02:07:50Z",
+    "eventSource": "sagemaker.amazonaws.com",
+    "eventName": "CompleteRollout",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress":"127.0.0.1",
+    "userAgent":"USER_AGENT",
+    "requestParameters": <span>{</span>
+        "jobArn": "arn:aws:sagemaker:us-west-2:123456789012:job/<code class="replaceable">my-job-name</code>",
+        "trajectoryId": "<code class="replaceable">my-trajectory-id</code>",
+        "status": "ready"
+    },
+    "responseElements": null,
+    "requestID": "d9278f6e-EXAMPLE",
+    "eventID": "6cbd2cde-EXAMPLE",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "123456789012",
+            "type": "AWS::SageMaker::Job",
+            "ARN": "arn:aws:sagemaker:us-west-2:123456789012:job/AgentRFT/<code class="replaceable">my-job-name</code>"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "444455556666",
+    "eventCategory": "Data"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             Sample
+            </code>
+            operation. This event is also logged when
+            <code class="code">
+             ChatCompletions
+            </code>
+            is called with a non-streaming response.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type":"IAMUser",
+        "principalId":"AIXDAYQEXAMPLEUMLYNGL",
+        "arn":"arn:aws:iam::123456789012:user/intern",
+        "accountId":"123456789012",
+        "accessKeyId":"ASXIAGXEXAMPLEQULKNXV",
+        "userName":"intern"
+    },
+    "eventTime": "2024-01-15T02:07:35Z",
+    "eventSource": "sagemaker.amazonaws.com",
+    "eventName": "Sample",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress":"127.0.0.1",
+    "userAgent": "USER_AGENT",
+    "requestParameters": <span>{</span>
+        "body": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "jobArn": "arn:aws:sagemaker:us-west-2:123456789012:job/AgentRFT/<code class="replaceable">my-job-name</code>",
+        "trajectoryId": "<code class="replaceable">my-trajectory-id</code>"
+    },
+    "responseElements": <span>{</span>
+        "body": "HIDDEN_DUE_TO_SECURITY_REASONS"
+    },
+    "requestID": "ab32a279-EXAMPLE",
+    "eventID": "56cd262e-EXAMPLE",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "123456789012",
+            "type": "AWS::SageMaker::Job",
+            "ARN": "arn:aws:sagemaker:us-west-2:123456789012:job/AgentRFT/<code class="replaceable">my-job-name</code>"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "444455556666",
+    "eventCategory": "Data"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             SampleWithResponseStream
+            </code>
+            operation. This event is also logged when
+            <code class="code">
+             ChatCompletions
+            </code>
+            is called with a streaming response.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type":"IAMUser",
+        "principalId":"AIXDAYQEXAMPLEUMLYNGL",
+        "arn":"arn:aws:iam::123456789012:user/intern",
+        "accountId":"123456789012",
+        "accessKeyId":"ASXIAGXEXAMPLEQULKNXV",
+        "userName":"intern"
+    },
+    "eventTime": "2024-01-15T02:07:47Z",
+    "eventSource": "sagemaker.amazonaws.com",
+    "eventName": "SampleWithResponseStream",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress":"127.0.0.1",
+    "userAgent": "USER_AGENT",
+    "requestParameters": <span>{</span>
+        "trajectoryId": "<code class="replaceable">my-trajectory-id</code>",
+        "jobArn": "arn:aws:sagemaker:us-west-2:123456789012:job/AgentRFT/<code class="replaceable">my-job-name</code>",
+        "body": "HIDDEN_DUE_TO_SECURITY_REASONS"
+    },
+    "responseElements": <span>{</span>
+        "body": "HIDDEN_DUE_TO_SECURITY_REASONS"
+    },
+    "requestID": "02c72dac-EXAMPLE",
+    "eventID": "8dcc5ebb-EXAMPLE",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "123456789012",
+            "type": "AWS::SageMaker::Job",
+            "ARN": "arn:aws:sagemaker:us-west-2:123456789012:job/AgentRFT/<code class="replaceable">my-job-name</code>"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "444455556666",
+    "eventCategory": "Data"
 }</code></pre>
            <p>
             For information about CloudTrail record contents, see

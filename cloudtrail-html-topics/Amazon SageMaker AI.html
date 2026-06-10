@@ -498,28 +498,21 @@
                  <ul class="itemizedlist">
                   <li class="listitem">
                    <p>
-                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_ChatCompletions.html">
-                     ChatCompletions
-                    </a>
-                   </p>
-                  </li>
-                  <li class="listitem">
-                   <p>
-                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_CompleteRollout.html">
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_job_runtime_CompleteRollout.html">
                      CompleteRollout
                     </a>
                    </p>
                   </li>
                   <li class="listitem">
                    <p>
-                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_Sample.html">
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_job_runtime_Sample.html">
                      Sample
                     </a>
                    </p>
                   </li>
                   <li class="listitem">
                    <p>
-                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_SampleWithResponseStream.html">
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_job_runtime_SampleWithResponseStream.html">
                      SampleWithResponseStream
                     </a>
                    </p>
@@ -772,19 +765,7 @@
     "recipientAccountId":"444455556666"
 }</code></pre>
            <p>
-            The following examples show CloudTrail data events for SageMaker AI jobs. Note that
-            <code class="code">
-             ChatCompletions
-            </code>
-            calls are transformed into
-            <code class="code">
-             Sample
-            </code>
-            and
-            <code class="code">
-             SampleWithResponseStream
-            </code>
-            calls in the CloudTrail logs.
+            The following examples show CloudTrail data events for SageMaker AI jobs.
            </p>
            <p>
             The following example shows a CloudTrail event that demonstrates the
@@ -835,11 +816,7 @@
             <code class="code">
              Sample
             </code>
-            operation. This event is also logged when
-            <code class="code">
-             ChatCompletions
-            </code>
-            is called with a non-streaming response.
+            operation.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
     "eventVersion": "1.11",
@@ -885,11 +862,7 @@
             <code class="code">
              SampleWithResponseStream
             </code>
-            operation. This event is also logged when
-            <code class="code">
-             ChatCompletions
-            </code>
-            is called with a streaming response.
+            operation.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
     "eventVersion": "1.11",

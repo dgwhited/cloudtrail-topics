@@ -146,6 +146,12 @@
           <a href="#understanding-service-name-entries">
            Understanding AWS CloudHSM log file entries
           </a>
+          <a href="#cloudtrail-management-events">
+           AWS CloudHSM management events in CloudTrail
+          </a>
+          <a href="#cloudtrail-service-events">
+           AWS CloudHSM service events in CloudTrail
+          </a>
          </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
@@ -378,6 +384,134 @@
     "eventType": "AwsApiCall",
     "recipientAccountId": "111122223333"
 }</code></pre>
+           <h2 id="cloudtrail-management-events">
+            AWS CloudHSM management events in CloudTrail
+           </h2>
+           <p>
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
+            </a>
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
+           </p>
+           <p>
+            AWS CloudHSM logs all control plane operations as management events. For a list of the AWS CloudHSM
+      control plane operations that AWS CloudHSM logs to CloudTrail, see
+            <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_Operations.html">
+             Actions
+            </a>
+            in the
+            <em>
+             AWS CloudHSM API Reference
+            </em>
+            .
+           </p>
+           <h2 id="cloudtrail-service-events">
+            AWS CloudHSM service events in CloudTrail
+           </h2>
+           <p>
+            AWS CloudHSM logs service events to CloudTrail when the service performs actions on your resources
+      automatically. These events may not be triggered directly by a call to a public AWS CloudHSM API. For
+      these events, the
+            <code class="code">
+             eventType
+            </code>
+            field is
+            <code class="code">
+             AwsServiceEvent
+            </code>
+            .
+           </p>
+           <p>
+            The following are the service events that AWS CloudHSM logs to CloudTrail.
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                DeleteBackup
+               </code>
+               â Logged when AWS CloudHSM automatically deletes a backup based on
+          your backup retention policy.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                BackupDeletedPermanently
+               </code>
+               â Logged when a PENDING_DELETION backup is
+          permanently purged and can no longer be restored.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                MigrationStart
+               </code>
+               â Logged when an HSM type migration begins for a
+          cluster.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                MigrationEnd
+               </code>
+               â Logged when an HSM type migration completes for a
+          cluster.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                RollbackStart
+               </code>
+               â Logged when an HSM type migration rollback begins for a
+          cluster.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                RollbackEnd
+               </code>
+               â Logged when an HSM type migration rollback completes for a
+          cluster.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            You can identify AWS CloudHSM service events in CloudTrail logs by the following attribute
+      values:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                eventSource
+               </code>
+               :
+               <code class="code">
+                cloudhsm.amazonaws.com
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                eventType
+               </code>
+               :
+               <code class="code">
+                AwsServiceEvent
+               </code>
+              </p>
+             </li>
+            </ul>
+           </div>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

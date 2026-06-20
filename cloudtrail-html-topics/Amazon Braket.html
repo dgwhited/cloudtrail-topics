@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging your quantum tasks with CloudTrail - Amazon Braket
+   Logging your Braket actions with CloudTrail - Amazon Braket
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -52,7 +52,7 @@
   <script data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'braket'}" defer="" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="Developer Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging your quantum tasks with CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Logging your Braket actions with CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -73,7 +73,7 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging your quantum tasks with CloudTrail - Amazon Braket
+         Logging your Braket actions with CloudTrail - Amazon Braket
         </title>
         <meta content="/pdfs/braket/latest/developerguide/braket-developer-guide.pdf#braket-ctlogs" name="pdf"/>
         <meta content="https://repost.aws/tags/TAhMWeHkpfSMSCxIFNqcqYog" name="forums"/>
@@ -114,7 +114,7 @@
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "Logging your quantum tasks with CloudTrail",
+        "name" : "Logging your Braket actions with CloudTrail",
         "item" : "https://docs.aws.amazon.com/braket/latest/developerguide/braket-monitor-tasks.html"
       }
     ]
@@ -145,13 +145,16 @@
           <a href="#understanding-braket-entries">
            Understanding Amazon Braket log file entries
           </a>
+          <a href="#braket-ct-spending-limits">
+           Monitor spending limit changes with CloudTrail events
+          </a>
          </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
            <h1 class="topictitle" id="braket-ctlogs">
-            Logging your quantum tasks with CloudTrail
+            Logging your Braket actions with CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -196,6 +199,13 @@
               <p>
                <a href="#understanding-braket-entries">
                 Understanding Amazon Braket log file entries
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#braket-ct-spending-limits">
+                Monitor spending limit changes with CloudTrail events
                </a>
               </p>
              </li>
@@ -405,6 +415,30 @@
   "eventType": "AwsApiCall",
   "recipientAccountId": "foobar"
 }</code></pre>
+           <h2 id="braket-ct-spending-limits">
+            Monitor spending limit changes with CloudTrail events
+           </h2>
+           <p>
+            You can use EventBridge to receive CloudTrail events when spending limit resources are created, updated,
+    or deleted. This allows you to track changes to your spending limits. To filter for
+    spending limit operations, use the following event pattern in EventBridge:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+  "source": ["aws.braket"],
+  "detail-type": ["AWS API Call via CloudTrail"],
+  "detail": <span>{</span>
+    "eventSource": ["braket.amazonaws.com"],
+    "eventName": [
+      "CreateSpendingLimit",
+      "UpdateSpendingLimit",
+      "DeleteSpendingLimit"
+    ]
+  }
+}</code></pre>
+           <p>
+            This event pattern matches CloudTrail events for any write operations against your spending limits,
+    enabling you to audit and monitor changes to your cost control settings.
+           </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

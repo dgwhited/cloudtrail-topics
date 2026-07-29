@@ -142,11 +142,17 @@
           <a href="#monitoring-cloudtrail-create">
            Creating a trail in CloudTrail
           </a>
+          <a href="#monitoring-cloudtrail-invoke-rest-api">
+           Logging data plane events
+          </a>
           <a href="#monitoring-cloudtrail-view">
            Accessing events with CloudTrail Event History
           </a>
           <a href="#monitoring-cloudtrail-logs-ex">
            Example trail for CreateEnvironment
+          </a>
+          <a href="#monitoring-cloudtrail-logs-invoke-rest-api">
+           InvokeRestApi log entry example
           </a>
           <a href="#monitoring-cloudtrail-next-up">
            What's next?
@@ -192,6 +198,13 @@
              </li>
              <li>
               <p>
+               <a href="./monitoring-cloudtrail.html#monitoring-cloudtrail-invoke-rest-api">
+                Logging data plane events
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
                <a href="./monitoring-cloudtrail.html#monitoring-cloudtrail-view">
                 Accessing events with CloudTrail Event History
                </a>
@@ -201,6 +214,13 @@
               <p>
                <a href="./monitoring-cloudtrail.html#monitoring-cloudtrail-logs-ex">
                 Example trail for CreateEnvironment
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="./monitoring-cloudtrail.html#monitoring-cloudtrail-logs-invoke-rest-api">
+                InvokeRestApi log entry example
                </a>
               </p>
              </li>
@@ -223,6 +243,127 @@
             </a>
             .
            </p>
+           <h2 id="monitoring-cloudtrail-invoke-rest-api">
+            Logging data plane events
+           </h2>
+           <p>
+            The following Amazon MWAA API actions are data plane events:
+            <code class="code">
+             InvokeRestApi
+            </code>
+            ,
+            <code class="code">
+             CreateWebLoginToken
+            </code>
+            , and
+            <code class="code">
+             CreateCliToken
+            </code>
+            . Unlike management events, AWS CloudTrail does not log data events by default, and they do not appear in CloudTrail Event History. You must configure a trail that explicitly includes data events. Additional charges apply. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
+             Logging data events
+            </a>
+            in the AWS CloudTrail User Guide.
+           </p>
+           <div class="procedure">
+            <h6>
+             To log data plane events
+            </h6>
+            <ol>
+             <li>
+              <p>
+               Open the CloudTrail console.
+              </p>
+             </li>
+             <li>
+              <p>
+               In the navigation pane, choose
+               <b>
+                Trails
+               </b>
+               , and then choose
+               <b>
+                Create trail
+               </b>
+               .
+              </p>
+             </li>
+             <li>
+              <p>
+               Enter a trail name and configure an Amazon S3 bucket for log files.
+              </p>
+             </li>
+             <li>
+              <p>
+               On the
+               <b>
+                Choose log events
+               </b>
+               page, select
+               <b>
+                Data events
+               </b>
+               .
+              </p>
+             </li>
+             <li>
+              <p>
+               Under
+               <b>
+                Data event type
+               </b>
+               , choose
+               <b>
+                Managed Apache Airflow
+               </b>
+               .
+              </p>
+             </li>
+             <li>
+              <p>
+               Review your settings and choose
+               <b>
+                Create trail
+               </b>
+               .
+              </p>
+             </li>
+            </ol>
+           </div>
+           <p>
+            After the trail is active, CloudTrail delivers data plane events such as
+            <code class="code">
+             InvokeRestApi
+            </code>
+            ,
+            <code class="code">
+             CreateWebLoginToken
+            </code>
+            , and
+            <code class="code">
+             CreateCliToken
+            </code>
+            to your Amazon S3 bucket within approximately 15 minutes. If you configured Amazon CloudWatch Logs, use the following filter pattern to find these events:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span> ($.eventName = "InvokeRestApi") || ($.eventName = "CreateWebLoginToken") || ($.eventName = "CreateCliToken") }</code></pre>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Response payload is not logged
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              CloudTrail redacts the
+              <code class="code">
+               RestApiResponse
+              </code>
+              field in log entries. CloudTrail records the call and its status code but does not log the response payload.
+             </p>
+            </div>
+           </div>
            <h2 id="monitoring-cloudtrail-view">
             Accessing events with CloudTrail Event History
            </h2>
@@ -342,6 +483,86 @@
   "readOnly": false,
   "eventType": "AwsApiCall",
   "recipientAccountId": "012345678901"
+}</code></pre>
+           <h2 id="monitoring-cloudtrail-logs-invoke-rest-api">
+            InvokeRestApi log entry example
+           </h2>
+           <p>
+            The following is a complete log entry example for the
+            <code class="code">
+             InvokeRestApi
+            </code>
+            action. CloudTrail redacts the
+            <code class="code">
+             RestApiResponse
+            </code>
+            field.
+           </p>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Use temporary credentials in production
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              This example shows temporary credentials from an assumed role, which is the recommended approach. For production workloads, use temporary credentials from  or AWS Security Token Service (AWS STS) instead of long-term access keys.
+             </p>
+            </div>
+           </div>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+  "eventVersion": "1.09",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "00123456ABC7DEF8HIJK:MySession",
+    "arn": "arn:aws:sts::012345678901:assumed-role/MyRole/MySession",
+    "accountId": "012345678901",
+    "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "00123456ABC7DEF8HIJK",
+        "arn": "arn:aws:iam::012345678901:role/MyRole",
+        "accountId": "012345678901",
+        "userName": "MyRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2024-01-20T12:00:00Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2024-01-20T12:15:00Z",
+  "eventSource": "airflow.amazonaws.com",
+  "eventName": "InvokeRestApi",
+  "awsRegion": "us-west-2",
+  "sourceIPAddress": "203.0.113.10",
+  "userAgent": "Boto3/1.28.0 Python/3.11.0",
+  "requestParameters": <span>{</span>
+    "Name": "MyAirflowEnvironment",
+    "Path": "/dags",
+    "Method": "GET"
+  },
+  "responseElements": <span>{</span>
+    "RestApiStatusCode": 200,
+    "RestApiResponse": "***"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "012345678901",
+      "type": "AWS::MWAA::Environment",
+      "ARN": "arn:aws:airflow:us-west-2:012345678901:environment/MyAirflowEnvironment"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "012345678901",
+  "eventCategory": "Data"
 }</code></pre>
            <h2 id="monitoring-cloudtrail-next-up">
             What's next?

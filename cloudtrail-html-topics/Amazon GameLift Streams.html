@@ -410,7 +410,7 @@
            </p>
            <div class="table-container" id="data-events-table">
             <div class="table-contents disable-scroll">
-             <table id="w118aac23c10c15c11">
+             <table id="w120aac23c10c15c11">
               <thead>
                <tr>
                 <th>
@@ -438,6 +438,27 @@
                <td tabindex="-1">
                 <div class="itemizedlist">
                  <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_CreateStreamUrl.html">
+                     CreateStreamUrl
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_GetStreamUrl.html">
+                     GetStreamUrl
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_RevokeStreamUrl.html">
+                     RevokeStreamUrl
+                    </a>
+                   </p>
+                  </li>
                   <li class="listitem">
                    <p>
                     <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_StartStreamSession.html">
@@ -479,6 +500,13 @@
                   </li>
                   <li class="listitem">
                    <p>
+                    <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_CreateStreamUrl.html">
+                     CreateStreamUrl
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
                     <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_ExportStreamSessionFiles.html">
                      ExportStreamSessionFiles
                     </a>
@@ -493,6 +521,13 @@
                   </li>
                   <li class="listitem">
                    <p>
+                    <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_GetStreamUrl.html">
+                     GetStreamUrl
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
                     <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_ListStreamSessions.html">
                      ListStreamSessions
                     </a>
@@ -502,6 +537,20 @@
                    <p>
                     <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_ListStreamSessionsByAccount.html">
                      ListStreamSessionsByAccount
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_ListStreamUrls.html">
+                     ListStreamUrls
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_RevokeStreamUrl.html">
+                     RevokeStreamUrl
                     </a>
                    </p>
                   </li>
@@ -526,6 +575,39 @@
              </table>
             </div>
            </div>
+           <p>
+            CloudTrail logs the stream URL API operations (
+            <code class="code">
+             CreateStreamUrl
+            </code>
+            ,
+            <code class="code">
+             GetStreamUrl
+            </code>
+            ,
+            <code class="code">
+             ListStreamUrls
+            </code>
+            , and
+            <code class="code">
+             RevokeStreamUrl
+            </code>
+            ) as data events, the same way it logs other stream session operations. When an end user activates a stream URL
+            to start a stream session, Amazon GameLift Streams handles that activation on the end user's behalf so it does not log the activation as a customer API
+            call. Your auditable record of stream URL activity is the
+            <code class="code">
+             CreateStreamUrl
+            </code>
+            call that created the stream URL and the
+            <code class="code">
+             RevokeStreamUrl
+            </code>
+            call that revoked it. To see the sessions started from a stream URL, use
+            <code class="code">
+             GetStreamUrl
+            </code>
+            .
+           </p>
            <p>
             You can configure advanced event selectors to filter on the
             <code class="code">

@@ -1368,7 +1368,7 @@
             operation.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
-    "eventVersion": "0",
+    "eventVersion": "1.11",
     "userIdentity": <span>{</span>
         "type": "AssumedRole",
         "principalId": "EXAMPLE-PrincipalID:EXAMPLE-Session",
@@ -1402,7 +1402,7 @@
         "X-Amz-Client-Token": "12abc12a-1234-1abc-123a-1a11bc1111a",
         "description": "example-description",
         "tags": <span>{</span>
-            "purpose_1": "e2e"
+            "purpose_1": "e2e",
             "purpose_2": "tag_test"
         }
     },
@@ -1414,9 +1414,9 @@
     "readOnly": false,
     "eventType": "AwsApiCall",
     "managementEvent": true,
-    "recipientAccountId": "111122223333"
-    "eventCategory": "Management",
-}  
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Management"
+}
     </code></pre>
            <p>
             The JSON example shows the AWS Region, IP address, and other

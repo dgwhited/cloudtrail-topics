@@ -12,7 +12,7 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/msk/latest/developerguide/msk-logging.html" rel="canonical"/>
-  <meta content="You can deliver Apache Kafka broker logs to one or more of the following destination types: Amazon CloudWatch Logs, Amazon S3, Amazon Data Firehose. You can also log Amazon MSK API calls with AWS CloudTrail." name="description"/>
+  <meta content="Amazon MSK supports broker and authorizer logs on Standard and Express brokers. You can deliver these logs to one or more of the following destination types: Amazon CloudWatch Logs, Amazon S3, Amazon Data Firehose. You can also log Amazon MSK API calls with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
   <meta content="Amazon Managed Streaming for Apache Kafka" name="product"/>
   <meta content="Developer Guide" name="guide"/>
@@ -149,6 +149,9 @@
           <a href="#broker-logs">
            Broker logs
           </a>
+          <a href="#authorizer-logs">
+           Authorizer logs
+          </a>
          </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
@@ -164,31 +167,11 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            You can deliver Apache Kafka broker logs to one or more of the following destination
+            Amazon MSK supports broker and authorizer logs on Standard and Express brokers. You can deliver these logs to one or more of the following destination
         types: Amazon CloudWatch Logs, Amazon S3, Amazon Data Firehose. You can also log Amazon MSK API calls with AWS CloudTrail.
            </p>
-           <div class="awsdocs-note">
-            <div class="awsdocs-note-title">
-             <awsui-icon name="status-info" variant="link">
-             </awsui-icon>
-             <h6>
-              Note
-             </h6>
-            </div>
-            <div class="awsdocs-note-text">
-             <p>
-              Broker logs are available on both MSK Standard and Express brokers.
-             </p>
-            </div>
-           </div>
-           <h2 id="broker-logs">
-            Broker logs
-           </h2>
            <p>
-            Broker logs enable you to troubleshoot your Apache Kafka applications and to analyze their communications with your MSK cluster. You can configure your new or existing MSK cluster to deliver INFO-level broker logs to one or more of the following types of destination resources: a CloudWatch log group, an S3 bucket, a Firehose delivery stream. Through Firehose you can then deliver the log data from your delivery stream to OpenSearch Service.
-           </p>
-           <p>
-            You must create a destination resource before you configure your cluster to deliver broker logs to it. Amazon MSK doesn't create these destination resources for you if they don't already exist. For information about these three types of destination resources and how to create them, see the following documentation:
+            You must create a destination resource before you configure your cluster to deliver logs to it. Amazon MSK doesn't create these destination resources for you if they don't already exist. For information about these three types of destination resources and how to create them, see the following documentation:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -215,91 +198,11 @@
              </li>
             </ul>
            </div>
-           <h3 id="broker-logs-perms">
-            Required permissions
-           </h3>
+           <h2 id="broker-logs">
+            Broker logs
+           </h2>
            <p>
-            To configure a destination for Amazon MSK broker logs, the IAM identity that you use
-                for Amazon MSK actions must have the permissions described in the
-            <a href="./security-iam-awsmanpol-AmazonMSKFullAccess.html">
-             AWS managed policy: AmazonMSKFullAccess
-            </a>
-            policy.
-           </p>
-           <p>
-            To stream broker logs to an S3 bucket, you also need the
-            <code class="code">
-             s3:PutBucketPolicy
-            </code>
-            permission. For information about S3 bucket
-                policies, see
-            <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html">
-             How Do I Add an S3 Bucket Policy?
-            </a>
-            in the Amazon S3 User Guide. For
-                information about IAM policies in general, see
-            <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">
-             Access
-                    Management
-            </a>
-            in the IAM User Guide.
-           </p>
-           <h3 id="sse-kms-buckets">
-            Required KMS key policy for use with SSE-KMS buckets
-           </h3>
-           <p>
-            If you enabled server-side encryption for your S3 bucket using AWS KMS-managed keys (SSE-KMS) with a customer managed key, 
-                add the following to the key policy for your KMS key so that Amazon MSK can write broker files to the bucket.
-           </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
-  "Sid": "Allow Amazon MSK to use the key.",
-  "Effect": "Allow",
-  "Principal": <span>{</span>
-    "Service": [
-      "delivery.logs.amazonaws.com"
-    ]
-  },
-  "Action": [
-    "kms:Encrypt",
-    "kms:Decrypt",
-    "kms:ReEncrypt*",
-    "kms:GenerateDataKey*",
-    "kms:DescribeKey"
-  ],
-  "Resource": "*"
-}</code></pre>
-           <h3 id="broker-logs-console">
-            Configure broker logs using the AWS Management Console
-           </h3>
-           <p>
-            If you are creating a new cluster, look for the
-            <b>
-             Broker log
-                    delivery
-            </b>
-            heading in the
-            <b>
-             Monitoring
-            </b>
-            section. You
-                can specify the destinations to which you want Amazon MSK to deliver your broker logs.
-           </p>
-           <p>
-            For an existing cluster, choose the cluster from your list of clusters, then
-                choose the
-            <b>
-             Properties
-            </b>
-            tab. Scroll down to the
-            <b>
-             Log delivery
-            </b>
-            section and then choose its
-            <b>
-             Edit
-            </b>
-            button. You can specify the destinations to which
-                you want Amazon MSK to deliver your broker logs.
+            Broker logs enable you to troubleshoot your Apache Kafka applications and to analyze their communications with your MSK cluster. You can configure your new or existing MSK cluster to deliver INFO-level broker logs to one or more of the following types of destination resources: a CloudWatch log group, an S3 bucket, a Firehose delivery stream. Through Firehose you can then deliver the log data from your delivery stream to OpenSearch Service.
            </p>
            <h3 id="broker-logs-cli">
             Configure broker logs using the AWS CLI
@@ -400,7 +303,7 @@
                INFO
               </code>
               level logs to the specified 
-            destinations. However for Standard brokers, users of Apache Kafka 2.4.X and later can dynamically set the broker log level to any of the
+            destinations. However for Standard and Express brokers, users of Apache Kafka 2.4.X and later can dynamically set the broker log level to any of the
               <a href="https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/Level.html" rel="noopener noreferrer" target="_blank">
                <span>
                 log4j log levels
@@ -445,6 +348,155 @@
              </p>
             </div>
            </div>
+           <h2 id="authorizer-logs">
+            Authorizer logs
+           </h2>
+           <p>
+            Authorizer logs capture authorization decisions made by your MSK cluster. You can use these logs to monitor client access patterns and troubleshoot authorization issues. You can configure your MSK cluster to deliver authorizer logs to one or more of the following types of destination resources: a CloudWatch log group, an S3 bucket, a Firehose delivery stream.
+           </p>
+           <h3 id="authorizer-logs-cli">
+            Configure authorizer logs using the AWS CLI
+           </h3>
+           <p>
+            When you use the
+            <code class="code">
+             create-cluster
+            </code>
+            or the
+            <code class="code">
+             update-monitoring
+            </code>
+            commands, you can optionally specify the
+            <code class="code">
+             logging-info
+            </code>
+            parameter and pass to it a JSON structure like the following example. In this JSON, all three destination types are optional.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "AuthorizerLogs": <span>{</span>
+    "S3": <span>{</span>
+      "Bucket": "amzn-s3-demo-bucket",
+      "Prefix": "ExamplePrefix",
+      "Enabled": true
+    },
+    "Firehose": <span>{</span>
+      "DeliveryStream": "ExampleDeliveryStreamName",
+      "Enabled": true
+    },
+    "CloudWatchLogs": <span>{</span>
+      "Enabled": true,
+      "LogGroup": "ExampleLogGroupName"
+    }
+  }
+}</code></pre>
+           <h3 id="authorizer-logs-api">
+            Configure authorizer logs using the API
+           </h3>
+           <p>
+            You can specify the optional
+            <code class="code">
+             loggingInfo
+            </code>
+            structure in the JSON that you pass to the
+            <a href="https://docs.aws.amazon.com/msk/1.0/apireference/clusters.html#CreateCluster">
+             CreateCluster
+            </a>
+            or
+            <a href="https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn-monitoring.html#UpdateMonitoring">
+             UpdateMonitoring
+            </a>
+            operations.
+           </p>
+           <h3 id="broker-logs-perms">
+            Required permissions
+           </h3>
+           <p>
+            To configure a destination for Amazon MSK logs, the IAM identity that you use
+                for Amazon MSK actions must have the permissions described in the
+            <a href="./security-iam-awsmanpol-AmazonMSKFullAccess.html">
+             AWS managed policy: AmazonMSKFullAccess
+            </a>
+            policy.
+           </p>
+           <p>
+            To stream logs to an S3 bucket, you also need the
+            <code class="code">
+             s3:PutBucketPolicy
+            </code>
+            permission. For information about S3 bucket
+                policies, see
+            <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html">
+             How Do I Add an S3 Bucket Policy?
+            </a>
+            in the Amazon S3 User Guide. For
+                information about IAM policies in general, see
+            <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">
+             Access
+                    Management
+            </a>
+            in the IAM User Guide.
+           </p>
+           <h3 id="sse-kms-buckets">
+            Required KMS key policy for use with SSE-KMS buckets
+           </h3>
+           <p>
+            If you enabled server-side encryption for your S3 bucket using AWS KMS-managed keys (SSE-KMS) with a customer managed key, 
+                add the following to the key policy for your KMS key so that Amazon MSK can write logs to the bucket.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "Sid": "Allow Amazon MSK to use the key.",
+  "Effect": "Allow",
+  "Principal": <span>{</span>
+    "Service": [
+      "delivery.logs.amazonaws.com"
+    ]
+  },
+  "Action": [
+    "kms:Encrypt",
+    "kms:Decrypt",
+    "kms:ReEncrypt*",
+    "kms:GenerateDataKey*",
+    "kms:DescribeKey"
+  ],
+  "Resource": "*"
+}</code></pre>
+           <h3 id="broker-logs-console">
+            Configure logs using the AWS Management Console
+           </h3>
+           <p>
+            If you are creating a new cluster, look for the
+            <b>
+             Broker log
+                    delivery
+            </b>
+            or
+            <b>
+             Authorizer log delivery
+            </b>
+            heading in the
+            <b>
+             Monitoring
+            </b>
+            section. You
+                can specify the destinations to which you want Amazon MSK to deliver your logs.
+           </p>
+           <p>
+            For an existing cluster, choose the cluster from your list of clusters, then
+                choose the
+            <b>
+             Properties
+            </b>
+            tab. Scroll down to the
+            <b>
+             Log delivery
+            </b>
+            section and then choose its
+            <b>
+             Edit
+            </b>
+            button. You can specify the destinations to which
+                you want Amazon MSK to deliver your logs.
+           </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

@@ -1079,12 +1079,6 @@
     "Support began": "04/11/2016",
     "Link": "https://docs.aws.amazon.com/iot/latest/developerguide/monitoring_overview.html#iot-using-cloudtrail"
   },
-  "AWS IoT Events": {
-    "AWS Service": "AWS IoT Events",
-    "CloudTrail Topics": "Understanding AWS IoT Events log file entries",
-    "Support began": "06/11/2019",
-    "Link": "https://docs.aws.amazon.com/iotevents/latest/developerguide/understanding-aws-iotevents-entries.html"
-  },
   "AWS IoT Greengrass": {
     "AWS Service": "AWS IoT Greengrass",
     "CloudTrail Topics": "Logging AWS IoT Greengrass API Calls with AWS CloudTrail",

@@ -359,8 +359,22 @@
              </li>
              <li>
               <p>
+               <a href="#understanding-verified-permissions-entries-isauthorizedwithtoken">
+                IsAuthorizedWithToken
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
                <a href="#understanding-verified-permissions-entries-batchisauthorized">
                 BatchIsAuthorized
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#understanding-verified-permissions-entries-batchisauthorizedwithtoken">
+                BatchIsAuthorizedWithToken
                </a>
               </p>
              </li>
@@ -474,6 +488,14 @@
            <h3 id="understanding-verified-permissions-entries-isauthorized">
             IsAuthorized
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for an
+            <code class="code">
+             IsAuthorized
+            </code>
+            API
+        call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
     "eventVersion": "1.08",
     "userIdentity": <span>{</span>
@@ -523,9 +545,75 @@
     "recipientAccountId": "123456789012",
     "eventCategory": "Data"
 }</code></pre>
+           <h3 id="understanding-verified-permissions-entries-isauthorizedwithtoken">
+            IsAuthorizedWithToken
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry for an
+            <code class="code">
+             IsAuthorizedWithToken
+            </code>
+            API call:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+		"type": "AssumedRole",
+		"principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+		"arn": "arn:aws:iam::123456789012:role/ExampleRole",
+		"accountId": "123456789012",
+		"accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+    },
+    "eventTime": "2023-11-20T22:55:03Z",
+    "eventSource": "verifiedpermissions.amazonaws.com",
+    "eventName": "IsAuthorizedWithToken",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+    "userAgent": "aws-cli/2.11.18 Python/3.11.3 Linux/5.4.241-160.348.amzn2int.x86_64 exe/x86_64.amzn.2 prompt/off command/verifiedpermissions.is-authorized-with-token",
+    "requestParameters": <span>{</span>
+        "policyStoreId": "PSEXAMPLEabcdefg111111",
+        "resource": <span>{</span>
+            "entityType": "PhotoFlash::Photo",
+            "entityId": "VacationPhoto94.jpg"
+        },
+        "action": <span>{</span>
+            "actionType": "PhotoFlash::Action",
+            "actionId": "ViewPhoto"
+        }
+    },
+    "responseElements": null,
+    "additionalEventData": <span>{</span>
+        "decision": "ALLOW",
+        "principal": <span>{</span>
+            "entityType": "PhotoFlash::User",
+            "entityId": "us-east-1_EXAMPLE|<code class="replaceable">EXAMPLE_SUBJECT_ID</code>"
+        }
+    },
+    "requestID": "346c4b6a-d12f-46b6-bc06-6c857bd3b28e",
+    "eventID": "8a4fed32-9605-45dd-a09a-5ebbf0715bbc",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+		  "accountId": "123456789012",
+		  "type": "AWS::VerifiedPermissions::PolicyStore",
+		  "ARN": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Data"
+}</code></pre>
            <h3 id="understanding-verified-permissions-entries-batchisauthorized">
             BatchIsAuthorized
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             BatchIsAuthorized
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
     "eventVersion": "1.08",
     "userIdentity": <span>{</span>
@@ -628,9 +716,116 @@
     "recipientAccountId": "123456789012",
     "eventCategory": "Data"
 }</code></pre>
+           <h3 id="understanding-verified-permissions-entries-batchisauthorizedwithtoken">
+            BatchIsAuthorizedWithToken
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             BatchIsAuthorizedWithToken
+            </code>
+            API call:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "userIdentity": <span>{</span>
+		"type": "AssumedRole",
+		"principalId": "<code class="replaceable">EXAMPLE_PRINCIPAL_ID</code>",
+		"arn": "arn:aws:iam::123456789012:role/ExampleRole",
+		"accountId": "123456789012",
+		"accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+    },
+    "eventTime": "2023-11-20T23:02:33Z",
+    "eventSource": "verifiedpermissions.amazonaws.com",
+    "eventName": "BatchIsAuthorizedWithToken",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress": "<code class="replaceable">203.0.113.0</code>",
+    "userAgent": "aws-cli/2.11.18 Python/3.11.3 Linux/5.4.241-160.348.amzn2int.x86_64 exe/x86_64.amzn.2 prompt/off command/verifiedpermissions.batch-is-authorized-with-token",
+    "requestParameters": <span>{</span>
+        "policyStoreId": "PSEXAMPLEabcdefg111111",
+        "requests": [
+            <span>{</span>
+                "action": <span>{</span>
+                    "actionType": "PhotoFlash::Action",
+                    "actionId": "ViewPhoto"
+                },
+                "resource": <span>{</span>
+                    "entityType": "PhotoFlash::Photo",
+                    "entityId": "VacationPhoto94.jpg"
+                }
+            },
+            <span>{</span>
+                "action": <span>{</span>
+                    "actionType": "PhotoFlash::Action",
+                    "actionId": "DeletePhoto"
+                },
+                "resource": <span>{</span>
+                    "entityType": "PhotoFlash::Photo",
+                    "entityId": "VacationPhoto94.jpg"
+                }
+            }
+        ]
+    },
+    "responseElements": null,
+    "additionalEventData": <span>{</span>
+        "principal": <span>{</span>
+            "entityType": "PhotoFlash::User",
+            "entityId": "us-east-1_EXAMPLE|<code class="replaceable">EXAMPLE_SUBJECT_ID</code>"
+        },
+        "results": [
+            <span>{</span>
+                "request": <span>{</span>
+                    "action": <span>{</span>
+                        "actionType": "PhotoFlash::Action",
+                        "actionId": "ViewPhoto"
+                    },
+                    "resource": <span>{</span>
+                        "entityType": "PhotoFlash::Photo",
+                        "entityId": "VacationPhoto94.jpg"
+                    }
+                },
+                "decision": "ALLOW"
+            },
+            <span>{</span>
+                "request": <span>{</span>
+                    "action": <span>{</span>
+                        "actionType": "PhotoFlash::Action",
+                        "actionId": "DeletePhoto"
+                    },
+                    "resource": <span>{</span>
+                        "entityType": "PhotoFlash::Photo",
+                        "entityId": "VacationPhoto94.jpg"
+                    }
+                },
+                "decision": "DENY"
+            }
+        ]
+    },
+    "requestID": "c67aa1d9-9fd7-45ad-9a23-e8f9f6dd66c8",
+    "eventID": "5ed90624-a4f7-4ef6-a07a-0e6486d30fbe",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+		  "accountId": "123456789012",
+		  "type": "AWS::VerifiedPermissions::PolicyStore",
+		  "ARN": "arn:aws:verifiedpermissions::123456789012:policy-store/PSEXAMPLEabcdefg111111"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Data"
+}</code></pre>
            <h3 id="understanding-verified-permissions-entries-createpolicystore">
             CreatePolicyStore
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             CreatePolicyStore
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -669,6 +864,13 @@
            <h3 id="understanding-verified-permissions-entries-listpolicystores">
             ListPolicyStores
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             ListPolicyStores
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -699,6 +901,13 @@
            <h3 id="understanding-verified-permissions-entries-deletepolicystore">
             DeletePolicyStore
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             DeletePolicyStore
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -736,6 +945,14 @@
            <h3 id="understanding-verified-permissions-entries-putschema">
             PutSchema
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             PutSchema
+            </code>
+            API
+        call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -778,6 +995,14 @@
            <h3 id="understanding-verified-permissions-entries-getschema">
             GetSchema
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             GetSchema
+            </code>
+            API
+        call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -815,6 +1040,13 @@
            <h3 id="understanding-verified-permissions-entries-createpolicytemplate">
             CreatePolicyTemplate
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             CreatePolicyTemplate
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -857,6 +1089,13 @@
            <h3 id="understanding-verified-permissions-entries-deletepolicytemplate">
             DeletePolicyTemplate
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             DeletePolicyTemplate
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -895,6 +1134,14 @@
            <h3 id="understanding-verified-permissions-entries-createpolicy">
             CreatePolicy
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             CreatePolicy
+            </code>
+            API
+        call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -947,6 +1194,14 @@
            <h3 id="understanding-verified-permissions-entries-getpolicy">
             GetPolicy
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             GetPolicy
+            </code>
+            API
+        call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -985,6 +1240,13 @@
            <h3 id="understanding-verified-permissions-entries-createidentitysource">
             CreateIdentitySource
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             CreateIdentitySource
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -1034,6 +1296,13 @@
            <h3 id="understanding-verified-permissions-entries-getidentitysource">
             GetIdentitySource
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             GetIdentitySource
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -1072,6 +1341,13 @@
            <h3 id="understanding-verified-permissions-entries-listidentitysources">
             ListIdentitySources
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             ListIdentitySources
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>
@@ -1109,6 +1385,13 @@
            <h3 id="understanding-verified-permissions-entries-deleteidentitysource">
             DeleteIdentitySource
            </h3>
+           <p>
+            The following example shows a CloudTrail log entry for a
+            <code class="code">
+             DeleteIdentitySource
+            </code>
+            API call:
+           </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
   "eventVersion": "1.08",
   "userIdentity": <span>{</span>

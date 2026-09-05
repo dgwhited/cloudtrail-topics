@@ -548,6 +548,20 @@
                ).
               </p>
              </li>
+             <li class="listitem">
+              <p>
+               To log
+               <code class="code">
+                ApplyGuardrail
+               </code>
+               calls, including guardrail evaluations made during
+          model invocation, configure advanced event selectors to record data events for the
+               <code class="code">
+                AWS::Bedrock::Guardrail
+               </code>
+               resource type.
+              </p>
+             </li>
             </ul>
            </div>
            <p>
@@ -590,9 +604,13 @@
             <code class="code">
              AWS::Bedrock::KnowledgeBase
             </code>
-            , or
+            ,
             <code class="code">
              AWS::Bedrock::FlowAlias
+            </code>
+            , or
+            <code class="code">
+             AWS::Bedrock::Guardrail
             </code>
             and set the
             <code class="code">
@@ -634,7 +652,7 @@
       <span>{</span> "Field": "eventCategory", "Equals": ["Data"] },
       <span>{</span> "Field": "resources.type", "Equals": ["AWS::Bedrock::FlowAlias"] }
     ]
-  }
+  },
   <span>{</span>
     "Name": "Log all data events on a guardrail in Amazon Bedrock.",
     "FieldSelectors": [
@@ -840,6 +858,149 @@
         "clientProvidedHostHeader": "bedrock-runtime.us-west-2.amazonaws.com"
     }
 }</code></pre>
+           <p>
+            The following example shows the fields relevant to an
+            <code class="code">
+             ApplyGuardrail
+            </code>
+            data
+      event for a model invocation evaluated by both a guardrail supplied in the request and a
+      guardrail enforced by an organization. Standard CloudTrail identity and network fields are omitted
+      from the example.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.08",
+    "eventTime": "2026-08-20T16:57:41Z",
+    "eventSource": "bedrock.amazonaws.com",
+    "eventName": "ApplyGuardrail",
+    "awsRegion": "us-east-1",
+    "requestParameters": <span>{</span>
+        "guardrailVersion": "1",
+        "guardrailIdentifier": "abcd1234efgh",
+        "source": "INPUT"
+    },
+    "responseElements": <span>{</span>
+        "action": "GUARDRAIL_INTERVENED",
+        "assessments": [
+            <span>{</span>
+                "contentPolicy": <span>{</span>
+                    "filters": [
+                        <span>{</span>
+                            "type": "VIOLENCE",
+                            "confidence": "HIGH",
+                            "action": "BLOCKED",
+                            "detected": true
+                        }
+                    ]
+                }
+            },
+            <span>{</span>
+                "sensitiveInformationPolicy": <span>{</span>
+                    "piiEntities": [
+                        <span>{</span>
+                            "type": "EMAIL",
+                            "action": "BLOCKED",
+                            "detected": true
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+    "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Data",
+    "resources": [
+        <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::Bedrock::Guardrail",
+            "ARN": "arn:aws:bedrock:us-east-1:111122223333:guardrail/abcd1234efgh"
+        },
+        <span>{</span>
+            "accountId": "444455556666",
+            "type": "AWS::Bedrock::Guardrail",
+            "ARN": "arn:aws:bedrock:us-east-1:444455556666:guardrail/wxyz5678lmno"
+        }
+    ]
+}</code></pre>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              When an invocation is evaluated by more than one guardrail, the
+              <code class="code">
+               assessments
+              </code>
+              list contains one entry for each guardrail that evaluated the
+        content.
+              <b>
+               The order of entries isn't guaranteed, and the CloudTrail event
+          doesn't identify which guardrail produced each assessment.
+              </b>
+              Don't use an
+        assessment's position to attribute it to a specific guardrail or to an entry in the
+              <code class="code">
+               resources
+              </code>
+              list. The event has no per-assessment guardrail identifier or other
+        attribution field.
+             </p>
+             <p>
+              The
+              <code class="code">
+               action
+              </code>
+              field reports the combined result across the applicable
+        guardrails. The
+              <code class="code">
+               resources
+              </code>
+              list identifies the guardrail resources that were in
+        scope, and each
+              <code class="code">
+               accountId
+              </code>
+              identifies the owner of that resource. When available,
+        use the guardrail trace for guardrail-specific assessment details. For more information, see
+              <a href="./guardrails-test.html">
+               Test your guardrail
+              </a>
+              .
+             </p>
+             <p>
+              When no guardrail is supplied in the invocation request and one or more enforced
+        guardrails apply, the
+              <code class="code">
+               guardrailIdentifier
+              </code>
+              and
+              <code class="code">
+               guardrailVersion
+              </code>
+              request parameters in the data event are
+              <code class="code">
+               ENFORCED
+              </code>
+              . This value is a marker and
+        isn't a guardrail identifier or version. If one enforced guardrail applies, the single
+              <code class="code">
+               assessments
+              </code>
+              entry belongs to that guardrail. If multiple enforced guardrails
+        apply, the same ordering and attribution limitations apply.
+             </p>
+            </div>
+           </div>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

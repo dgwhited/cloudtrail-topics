@@ -994,7 +994,9 @@
       "assumedRoleId": "AIDAQRSTUVWXYZEXAMPLE:John-EC2-dev",
       "arn": "arn:aws:sts::111122223333:assumed-role/EC2-dev/John-EC2-dev"
     },
-  "sourceIdentity": "John"
+    "sourceIdentity": "John",
+    "sessionTokenSize": 1428,
+    "sessionTokenUtilization": 34
   },
   "resources": [
     <span>{</span>
@@ -1042,7 +1044,9 @@
       "assumedRoleId": "AIDAQRSTUVWXYZEXAMPLE:John-EC2-dev",     
       "arn": "arn:aws:sts::111122223333:assumed-role/EC2-dev/John-EC2-dev"   
       },
-  "sourceIdentity": "John"
+    "sourceIdentity": "John",
+    "sessionTokenSize": 1428,
+    "sessionTokenUtilization": 34
   },
   "requestID": "4EXAMPLE-0e8d-11e4-96e4-e55c0EXAMPLE",
   "sharedEventID": "bEXAMPLE-efea-4a70-b951-19a88EXAMPLE",
@@ -1168,7 +1172,9 @@
             "assumedRoleId": "AROAIFR7WHDTSOYQYHFUE:Role2WithTags",
             "arn": "arn:aws:sts::111111111111:assumed-role/test-role/Role2WithTags"
         },
-    "sourceIdentity": "John"
+        "sourceIdentity": "John",
+        "sessionTokenSize": 1652,
+        "sessionTokenUtilization": 40
     },
     "requestID": "b96b0e4e-e561-11e9-8b3f-7b396EXAMPLE",
     "eventID": "1917948f-3042-46ec-98e2-62865EXAMPLE",
@@ -1317,7 +1323,9 @@
             "assumedRoleId": "AROAD35QRSTUVWEXAMPLE:MyAssignedRoleSessionName",
             "arn": "arn:aws:sts::444455556666:assumed-role/SAMLTestRoleShibboleth/MyAssignedRoleSessionName"
         },
-        "packedPolicySize": 1,
+        "packedPolicySize": 34,
+        "sessionTokenSize": 1428,
+        "sessionTokenUtilization": 34,
         "subject": "SamlExample",
         "subjectType": "transient",
         "issuer": "https://server.example.com/idp/shibboleth",
@@ -1457,7 +1465,9 @@
       "arn": "arn:aws:sts::444455556666:assumed-role/FederatedWebIdentityRole/<code class="replaceable">&lt;assigned role session name&gt;</code>"
     },
     "provider": "arn:aws:iam::444455556666:oidc-provider/<code class="replaceable">&lt;issuer url of OIDC provider&gt;</code>",
-    "audience": "<code class="replaceable">&lt;id of application&gt;</code>"
+    "audience": "<code class="replaceable">&lt;id of application&gt;</code>",
+    "sessionTokenSize": 1536,
+    "sessionTokenUtilization": 37
   },
   "additionalEventData": <span>{</span>
     "identityProviderConnectionVerificationMethod": "IAMTrustStore"
@@ -1603,7 +1613,9 @@
         "assumedRoleUser": <span>{</span>
             "assumedRoleId": "AROA987654321EXAMPLE:test-global-assume-role",
             "arn": "arn:aws:sts::777788889999:assumed-role/test-role/test-global-assume-role"
-        }
+        },
+        "sessionTokenSize": 1096,
+        "sessionTokenUtilization": 26
     },
     "additionalEventData": <span>{</span>
         "RequestDetails": <span>{</span>
@@ -1691,7 +1703,9 @@
         "assumedRoleUser": <span>{</span>
             "assumedRoleId": "AROA987654321EXAMPLE:test-global-assume-role",
             "arn": "arn:aws:sts::777788889999:assumed-role/test-role/test-global-assume-role"
-        }
+        },
+        "sessionTokenSize": 1096,
+        "sessionTokenUtilization": 26
     },
     "additionalEventData": <span>{</span>
         "RequestDetails": <span>{</span>

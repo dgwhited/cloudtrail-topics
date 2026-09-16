@@ -18,7 +18,7 @@
               if (myPage == null || myPage.length == 0) {
                  myPage = myDefaultPage;
               } else {
-                 var docfile = myPage.match(/[^=\;\/?:\s]+\.html/);
+                 var docfile = myPage.match(/[^=\;\/?:\\\s]+\.html/);
                  if (docfile == null) {
        				myPage = myDefaultPage;
     	     		 } else {

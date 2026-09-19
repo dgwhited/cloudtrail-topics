@@ -170,21 +170,21 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            AWS SNS is integrated with
+            AWS SNS integrates with
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
              AWS CloudTrail
             </a>
-            , a service
-    that provides a record of actions taken by a user, role, or an AWS service. CloudTrail captures
+            . CloudTrail
+    provides a record of actions taken by a user, role, or an AWS service. CloudTrail captures
     all
     API calls for SNS as events. The calls captured include calls from the SNS console
-    and code calls to the SNS API operations. Using the information collected by CloudTrail, you can
-    determine the request that was made to SNS, the IP address from which the request was
-    made, when it was made, and additional details.
+    and code calls to the SNS API operations. You can use the information collected by CloudTrail to
+    determine the request that was made to SNS. You can also find the IP address from which the request was
+    made, when it was made, and other details.
            </p>
            <p>
-            Every event or log entry contains information about who generated the request. The identity
-    information helps you determine the following:
+            Every event or log entry shows who made the request. The identity
+    details help you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
@@ -212,7 +212,7 @@
             </ul>
            </div>
            <p>
-            CloudTrail is active in your AWS account when you create the account and you automatically have
+            CloudTrail is active in your AWS account when you create the account. You automatically have
     access to the CloudTrail
             <b>
              Event history
@@ -382,7 +382,7 @@
            </p>
            <p>
             You can log data events for the SNS resource types by using the CloudTrail console, AWS CLI,
-      or CloudTrail API operations. For more information about how to log data events, see
+      or CloudTrail API operations. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events-console">
              Logging data events with the AWS Management Console
             </a>
@@ -415,7 +415,7 @@
             <code class="code">
              resources.type
             </code>
-            value, which you would specify when configuring advanced event selectors using the AWS CLI or
+            value for configuring advanced event selectors using the AWS CLI or
       CloudTrail APIs. The
             <b>
              Data APIs logged to CloudTrail
@@ -425,7 +425,7 @@
            </p>
            <div class="table-container" id="data-events-table">
             <div class="table-contents disable-scroll">
-             <table id="w172aac30c20b8c15c11">
+             <table id="w174aac30c20b8c15c11">
               <thead>
                <tr>
                 <th>
@@ -545,7 +545,7 @@
             <code class="code">
              resources.ARN
             </code>
-            fields to log only those events that
+            fields. This lets you log only events that
       are important to you. For more information about these fields, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
              AdvancedFieldSelector
@@ -950,7 +950,7 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              When you are not logged in to Amazon Web Services (unauthenticated mode) and either the
+              When you aren't logged in to Amazon Web Services (unauthenticated mode), CloudTrail does not log the
               <a href="https://docs.aws.amazon.com/sns/latest/api/API_ConfirmSubscription.html">
                <code class="code">
                 ConfirmSubscription
@@ -962,9 +962,8 @@
                 Unsubscribe
                </code>
               </a>
-              actions
-        are invoked, then they will not be logged to CloudTrail. Such as, when you choose the provided
-        link in an email notification to confirm a pending subscription to a topic, the
+              actions. For example, when you choose the provided
+        link in an email notification to confirm a pending subscription, the
               <code class="code">
                ConfirmSubscription
               </code>
@@ -973,7 +972,7 @@
               <code class="code">
                ConfirmSubscription
               </code>
-              action would not be logged to CloudTrail.
+              action is not logged to CloudTrail.
              </p>
             </div>
            </div>

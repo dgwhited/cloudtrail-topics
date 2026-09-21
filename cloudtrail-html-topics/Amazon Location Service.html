@@ -14,18 +14,33 @@
         var myDefaultPage = "what-is.html";
            	var myPage = document.location.search.substr(1);
            	var myHash = document.location.hash;
-        
-              if (myPage == null || myPage.length == 0) {
-                 myPage = myDefaultPage;
-              } else {
-                 var docfile = myPage.match(/[^=\;\/?:\\\s]+\.html/);
-                 if (docfile == null) {
-       				myPage = myDefaultPage;
-    	     		 } else {
-                    myPage = docfile + myHash;
+
+              // Allowlist a single .html file name in this directory, optionally
+              // followed by further query parameters. Anything else falls back to
+              // the default page. The raw value is validated: location.search is
+              // not percent decoded, so %5C and similar never become separators.
+              //
+              // Percent escapes are allowed only for bytes 0x80 and above, which is
+              // what a browser sends for a non ASCII file name: the Well-Architected
+              // Maori lens ships 8 pages whose names contain U+0101, sent as %C4%81.
+              // Keeping the escape to high bytes leaves every ASCII escape rejected
+              // right here, so %5C, %2F, %3A and %00 never reach the URL parser.
+              var docfile = /^((?:[A-Za-z0-9._~-]|%[89A-Fa-f][0-9A-Fa-f])+\.html)(?:&|$)/.exec(myPage);
+              var target = docfile ? docfile[1] : myDefaultPage;
+
+              // Defense in depth: ask the URL parser where the value actually
+              // resolves rather than predicting it, and reject anything that
+              // leaves this origin or this directory.
+              if (typeof URL === "function") {
+                 var dir = new URL(".", document.location.href);
+                 var to = new URL(target + myHash, dir);
+                 if (to.origin !== dir.origin || to.pathname.indexOf(dir.pathname) !== 0) {
+                    to = new URL(myDefaultPage, dir);
                  }
+                 self.location.replace(to.href);
+              } else {
+                 self.location.replace(target + myHash);
               }
-              self.location.replace(myPage);
     -->
   </script>
  </head>

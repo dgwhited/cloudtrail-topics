@@ -203,12 +203,6 @@
     "Support began": "06/05/2018",
     "Link": "https://docs.aws.amazon.com/eks/latest/userguide/logging-using-cloudtrail.html"
   },
-  "Amazon Elastic Transcoder": {
-    "AWS Service": "Amazon Elastic Transcoder",
-    "CloudTrail Topics": "Logging Amazon Elastic Transcoder API Calls with AWS CloudTrail",
-    "Support began": "10/27/2014",
-    "Link": "https://docs.aws.amazon.com/elastictranscoder/latest/developerguide/logging-using-cloudtrail.html"
-  },
   "Amazon ElastiCache": {
     "AWS Service": "Amazon ElastiCache",
     "CloudTrail Topics": "Logging Amazon ElastiCache API Calls Using AWS CloudTrail",
@@ -364,12 +358,6 @@
     "CloudTrail Topics": "Viewing Amazon Lookout for Metrics API activity in AWS CloudTrail",
     "Support began": "12/08/2020",
     "Link": "https://docs.aws.amazon.com/lookoutmetrics/latest/dev/monitoring-cloudtrail.html"
-  },
-  "Amazon Lookout for Vision": {
-    "AWS Service": "Amazon Lookout for Vision",
-    "CloudTrail Topics": "Logging Amazon Lookout for Vision calls with AWS CloudTrail",
-    "Support began": "12/01/2020",
-    "Link": "https://docs.aws.amazon.com/lookout-for-vision/latest/developer-guide/logging-using-cloudtrail.html"
   },
   "Amazon Machine Learning": {
     "AWS Service": "Amazon Machine Learning",
@@ -964,12 +952,6 @@
     "CloudTrail Topics": "Logging AWS Elemental MediaPackage API Calls with AWS CloudTrail",
     "Support began": "12/21/2018",
     "Link": "https://docs.aws.amazon.com/mediapackage/latest/ug/logging-using-cloudtrail.html"
-  },
-  "AWS Elemental MediaStore": {
-    "AWS Service": "AWS Elemental MediaStore",
-    "CloudTrail Topics": "Logging AWS Elemental MediaStore API Calls with CloudTrail",
-    "Support began": "11/27/2017",
-    "Link": "https://docs.aws.amazon.com/mediastore/latest/ug/monitoring-service-info-in-cloudtrail.html"
   },
   "AWS Elemental MediaTailor": {
     "AWS Service": "AWS Elemental MediaTailor",

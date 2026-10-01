@@ -3,7 +3,7 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>
-   Logging AWS WA Tool API calls with AWS CloudTrail - AWS Well-Architected Tool
+   Logging AWS Well-Architected API calls with AWS CloudTrail - AWS Well-Architected
   </title>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="/assets" name="assets_root"/>
@@ -12,11 +12,11 @@
   <link href="/assets/images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/ico"/>
   <link href="https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
-  <meta content="Learn about logging AWS WA Tool with AWS CloudTrail." name="description"/>
+  <meta content="Learn about logging AWS Well-Architected with AWS CloudTrail." name="description"/>
   <meta content="IAD" name="deployment_region"/>
-  <meta content="AWS Well-Architected Tool" name="product"/>
+  <meta content="AWS Well-Architected" name="product"/>
   <meta content="User Guide" name="guide"/>
-  <meta content="Provides an overview of AWS Well-Architected Tool and includes instructions for measuring your workloads and tracking improvements to them over time." name="abstract"/>
+  <meta content="Provides an overview of AWS Well-Architected Tool and the AWS Well-Architected Agent and includes instructions for measuring your workloads, tracking improvements to them over time, and exploring AI-powered optimization recommendations." name="abstract"/>
   <meta content="en_us" name="guide-locale"/>
   <meta content="toc-contents.json" name="tocs"/>
   <link href="https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html" rel="canonical"/>
@@ -42,7 +42,7 @@
   <link href="https://docs.aws.amazon.com/zh_tw/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="zh-tw" rel="alternate"/>
   <link href="https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html" hreflang="x-default" rel="alternate"/>
   <meta content="897c6ffe-3c12-4691-9c85-dc23b20eabd4" name="feedback-folder"/>
-  <meta content="AWS Well-Architected Tool" name="this_doc_product"/>
+  <meta content="AWS Well-Architected" name="this_doc_product"/>
   <meta content="User Guide" name="this_doc_guide"/>
   <head xmlns="http://www.w3.org/1999/xhtml">
    <script defer="" src="/assets/r/awsdocs-doc-page.2.0.0.js">
@@ -52,7 +52,7 @@
   <script data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'wellarchitected'}" defer="" id="awsc-panorama-bundle" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" type="text/javascript">
   </script>
   <meta id="panorama-serviceSubSection" value="User Guide"/>
-  <meta id="panorama-serviceConsolePage" value="Logging AWS WA Tool API calls with AWS CloudTrail"/>
+  <meta id="panorama-serviceConsolePage" value="Logging AWS Well-Architected API calls with AWS CloudTrail"/>
  </head>
  <body class="awsdocs awsui">
   <div class="awsdocs-container">
@@ -73,7 +73,7 @@
       <div id="awsdocs-content">
        <head>
         <title>
-         Logging AWS WA Tool API calls with AWS CloudTrail - AWS Well-Architected Tool
+         Logging AWS Well-Architected API calls with AWS CloudTrail - AWS Well-Architected
         </title>
         <meta content="/pdfs/wellarchitected/latest/userguide/wellarchitected-ug.pdf#logging-using-cloudtrail" name="pdf"/>
         <meta content="wellarchitected-ug.rss" name="rss"/>
@@ -108,8 +108,14 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Logging AWS WA Tool API calls with AWS CloudTrail",
-        "item" : "https://docs.aws.amazon.com/wellarchitected/latest/userguide/logging-using-cloudtrail.html"
+        "name" : "Security in AWS Well-Architected",
+        "item" : "https://docs.aws.amazon.com/wellarchitected/latest/userguide/wa-security.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Logging AWS Well-Architected API calls with AWS CloudTrail",
+        "item" : "https://docs.aws.amazon.com/wellarchitected/latest/userguide/wa-security.html"
       }
     ]
 }
@@ -128,24 +134,29 @@
           <a href="/wellarchitected/index.html">
            AWS Well-Architected
           </a>
-          <a href="intro.html">
+          <a href="well-architected.html">
            User Guide
           </a>
          </div>
          <div id="page-toc-src">
           <a href="#wat-info-in-cloudtrail">
-           AWS WA Tool information in CloudTrail
+           AWS Well-Architected information in CloudTrail
           </a>
           <a href="#understanding-wat-entries">
-           Understanding AWS WA Tool log file entries
+           Understanding AWS Well-Architected log file entries
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
            <awsdocs-language-banner data-service="$ctrl.pageService">
            </awsdocs-language-banner>
+           <awsui-alert class="awsdocs-page-banner awsui-util-mb-l">
+            <p>
+             AWS Well-Architected Agent is in preview release and is subject to change.
+            </p>
+           </awsui-alert>
            <h1 class="topictitle" id="logging-using-cloudtrail">
-            Logging AWS WA Tool API calls with AWS CloudTrail
+            Logging AWS Well-Architected API calls with AWS CloudTrail
            </h1>
            <div class="awsdocs-page-header-container">
             <awsdocs-page-header>
@@ -154,18 +165,18 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            AWS Well-Architected Tool is integrated with AWS CloudTrail, a service that provides a record of actions taken
-    by a user, role, or an AWS service in AWS WA Tool. CloudTrail captures all API calls for
-    AWS WA Tool as events. The calls captured include calls from the AWS WA Tool console and
-    code calls to the AWS WA Tool API operations. If you create a trail, you can enable
-    continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS WA Tool. If you don't 
+            AWS Well-Architected is integrated with AWS CloudTrail, a service that provides a record of actions taken
+    by a user, role, or an AWS service in AWS Well-Architected. CloudTrail captures all API calls for
+    AWS Well-Architected as events. The calls captured include calls from the AWS Well-Architected console and
+    code calls to the AWS Well-Architected API operations. If you create a trail, you can enable
+    continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS Well-Architected. If you don't 
     configure a trail, you can still view the most recent events in the CloudTrail console in
             <b>
              Event
       history
             </b>
             .  Using the information collected by CloudTrail,
-    you can determine the request that was made to AWS WA Tool, the IP address from which the
+    you can determine the request that was made to AWS Well-Architected, the IP address from which the
     request was made, who made the request, when it was made, and additional details.
            </p>
            <p>
@@ -176,11 +187,11 @@
             .
            </p>
            <h2 id="wat-info-in-cloudtrail">
-            AWS WA Tool information in CloudTrail
+            AWS Well-Architected information in CloudTrail
            </h2>
            <p>
             CloudTrail is enabled on your AWS account when you create the account. When activity occurs in
-      AWS WA Tool, that activity is recorded in a CloudTrail event along with other AWS service
+      AWS Well-Architected, that activity is recorded in a CloudTrail event along with other AWS service
       events in
             <b>
              Event history
@@ -194,7 +205,7 @@
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account, including events for AWS WA Tool,
+            For an ongoing record of events in your AWS account, including events for AWS Well-Architected,
       create a trail. A
             <em>
              trail
@@ -245,9 +256,9 @@
             </ul>
            </div>
            <p>
-            All AWS WA Tool actions are logged by CloudTrail and are documented in
-            <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awswell-architectedtool.html#awswell-architectedtool-actions-as-permissions">
-             Actions Defined by AWS Well-Architected Tool
+            All AWS Well-Architected actions are logged by CloudTrail and are documented in
+            <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awswell-architectedtool.html#awswell-architectedtool-actions-as-permissions">
+             Actions Defined by AWS Well-Architected
             </a>
             . For example, calls to the
             <code class="code">
@@ -297,7 +308,7 @@
             .
            </p>
            <h2 id="understanding-wat-entries">
-            Understanding AWS WA Tool log file entries
+            Understanding AWS Well-Architected log file entries
            </h2>
            <p>
             A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket
@@ -399,11 +410,11 @@
             </a>
            </div>
            <div class="prev-next">
-            <div accesskey="p" class="prev-link" href="./tagging.html" id="previous">
-             Tagging your resources
+            <div accesskey="p" class="prev-link" href="./cross-service-confused-deputy-prevention.html" id="previous">
+             Cross-service confused deputy prevention
             </div>
-            <div accesskey="n" class="next-link" href="./eventbridge.html" id="next">
-             EventBridge
+            <div accesskey="n" class="next-link" href="./wa-api-actions.html" id="next">
+             API actions
             </div>
            </div>
           </div>

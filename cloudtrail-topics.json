@@ -281,12 +281,6 @@
     "Support began": "11/29/2021",
     "Link": "https://docs.aws.amazon.com/inspector/latest/user/logging-using-cloudtrail.html"
   },
-  "Amazon Inspector Classic": {
-    "AWS Service": "Amazon Inspector Classic",
-    "CloudTrail Topics": "Logging Amazon Inspector Classic API calls with AWS CloudTrail",
-    "Support began": "04/20/2016",
-    "Link": "https://docs.aws.amazon.com/inspector/v1/userguide/logging-using-cloudtrail.html"
-  },
   "Amazon Inspector Scan": {
     "AWS Service": "Amazon Inspector Scan",
     "CloudTrail Topics": "Amazon Inspector Scan information in CloudTrail",

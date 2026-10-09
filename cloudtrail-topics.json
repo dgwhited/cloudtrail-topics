@@ -1205,12 +1205,6 @@
     "Support began": "02/04/2020",
     "Link": "https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html"
   },
-  "AWS Panorama": {
-    "AWS Service": "AWS Panorama",
-    "CloudTrail Topics": "AWS Panorama API Reference",
-    "Support began": "10/20/2021",
-    "Link": "https://docs.aws.amazon.com/panorama/latest/api/API_Operations.html"
-  },
   "AWS Payment Cryptography": {
     "AWS Service": "AWS Payment Cryptography",
     "CloudTrail Topics": "Logging AWS Payment Cryptography API calls using AWS CloudTrail",

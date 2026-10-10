@@ -383,6 +383,33 @@
             </a>
             .
            </p>
+           <p>
+            CloudTrail records Custom Event Bus API calls with the event source
+            <code class="code">
+             eventsv2.amazonaws.com
+            </code>
+            .
+            <code class="code">
+             PutEvents
+            </code>
+            and
+            <code class="code">
+             PutRawEvents
+            </code>
+            publish
+      events to a bus. Every other Custom Event Bus API operation is a management event.
+           </p>
+           <p>
+            For a complete list of Custom Event Bus API operations, see
+            <a href="https://docs.aws.amazon.com/eventbridgev2/latest/APIReference/API_Operations.html">
+             Actions
+            </a>
+            in the
+            <em>
+             Custom Event Bus API Reference
+            </em>
+            .
+           </p>
            <h2 id="cloudtrail-data-events">
             EventBridge data events in CloudTrail
            </h2>
@@ -851,6 +878,76 @@
   "eventType":"AwsApiCall",
   "apiVersion":"2015-10-07",
   "recipientAccountId":"123456789012"
+}</code></pre>
+           <p>
+            In a successful Custom Event Bus
+            <code class="code">
+             PutResourcePolicy
+            </code>
+            call, the
+            <code class="code">
+             requestParameters
+            </code>
+            field holds the policy document as the caller submitted it. The
+      following example shows a CloudTrail event for such a call:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+  "eventVersion": "1.11",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA3XFRBF23EXAMPLE:johndoe-session",
+    "arn": "arn:aws:sts::111122223333:assumed-role/MyRole/johndoe-session",
+    "accountId": "111122223333",
+    "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA3XFRBF23EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:role/MyRole",
+        "accountId": "111122223333",
+        "userName": "MyRole"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2026-09-28T16:13:38Z",
+        "mfaAuthenticated": "false"
+      }
+    }
+  },
+  "eventTime": "2026-09-28T16:13:43Z",
+  "eventSource": "eventsv2.amazonaws.com",
+  "eventName": "PutResourcePolicy",
+  "awsRegion": "us-east-1",
+  "sourceIPAddress": "192.0.2.1",
+  "userAgent": "aws-cli/2.37.3",
+  "requestParameters": <span>{</span>
+    "resourceArn": "arn:aws:events:us-east-1:111122223333:event-busv2/orders/EXAMPLE1234567890abcdef",
+    "policyDocument": "<span>{</span>\"Version\":\"2012-10-17\",\"Statement\":[<span>{</span>\"Sid\":\"AllowPartnerAccountToSubscribe\",\"Effect\":\"Allow\",\"Principal\":<span>{</span>\"AWS\":\"arn:aws:iam::444455556666:root\"},\"Action\":[\"events:CreateSubscriber\",\"events:DescribeEventBus\"],\"Resource\":\"arn:aws:events:us-east-1:111122223333:event-busv2/orders/EXAMPLE1234567890abcdef\"}]}",
+    "policyName": "default"
+  },
+  "responseElements": <span>{</span>
+    "resourceArn": "arn:aws:events:us-east-1:111122223333:event-busv2/orders/EXAMPLE1234567890abcdef",
+    "policyName": "default",
+    "revisionId": "a1b2c3d4-5678-90ab-cdef-EXAMPLEaaaaa"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLEbbbbb",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLEccccc",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "111122223333",
+      "type": "AWS::EventsV2::EventBus",
+      "ARN": "arn:aws:events:us-east-1:111122223333:event-busv2/orders/EXAMPLE1234567890abcdef"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": true,
+  "recipientAccountId": "111122223333",
+  "eventCategory": "Management",
+  "tlsDetails": <span>{</span>
+    "tlsVersion": "TLSv1.3",
+    "cipherSuite": "TLS_AES_128_GCM_SHA256",
+    "clientProvidedHostHeader": "111122223333.eventsv2.us-east-1.amazonaws.com"
+  }
 }</code></pre>
            <p>
             For information about CloudTrail record contents, see

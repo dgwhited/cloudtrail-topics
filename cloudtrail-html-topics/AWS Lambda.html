@@ -81,7 +81,7 @@
         <meta content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Lambda&amp;topic_url=https://docs.aws.amazon.com/en_us/lambda/latest/dg/logging-using-cloudtrail.html" name="feedback"/>
         <meta content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/lambda/latest/dg/logging-using-cloudtrail.html" name="feedback-yes"/>
         <meta content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/lambda/latest/dg/logging-using-cloudtrail.html" name="feedback-no"/>
-        <meta content="Lambda,AWS Lambda,serverless,serverless applications,cloud computing,compute,function,High Availability" name="keywords"/>
+        <meta content="Lambda,AWS Lambda,serverless,serverless applications,cloud computing,compute,function,Event Function,High Availability" name="keywords"/>
         <link href="logging-using-cloudtrail.md" rel="alternate" title="Markdown version" type="text/markdown"/>
         <script type="application/ld+json">
          {
@@ -109,13 +109,13 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "AWS Lambda Functions",
+        "name" : "AWS Lambda Event Functions (formerly Lambda functions)",
         "item" : "https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions-chapter.html"
       },
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "Monitoring, debugging, and troubleshooting Lambda functions",
+        "name" : "Monitoring, debugging, and troubleshooting Lambda Event Functions",
         "item" : "https://docs.aws.amazon.com/lambda/latest/dg/lambda-monitoring.html"
       },
       {
@@ -444,7 +444,7 @@
            </p>
            <div class="table-container" id="data-events-table">
             <div class="table-contents disable-scroll">
-             <table id="w336aab9c37c22c15c13">
+             <table id="w347aab9c37c22c15c13">
               <thead>
                <tr>
                 <th>
@@ -495,7 +495,7 @@
             </code>
             fields to log only those events that
       are important to you. The following example is the JSON view of a data event configuration
-      that logs events for a specific function only. For more information about these fields, see
+      that logs events for a specific Event Function only. For more information about these fields, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
              AdvancedFieldSelector
             </a>
@@ -1101,7 +1101,7 @@
              </dt>
              <dd>
               <p>
-               The function attached to the event source does not exist.
+               The Event Function attached to the event source does not exist.
               </p>
              </dd>
              <dt>
@@ -1115,7 +1115,7 @@
              </dt>
              <dd>
               <p>
-               A Region name provided to the event source or function is invalid.
+               A Region name provided to the event source or Event Function is invalid.
               </p>
              </dd>
              <dt>
@@ -1143,7 +1143,7 @@
              </dt>
              <dd>
               <p>
-               The function code does not compile, has encountered an unrecoverable exception, or a bad deployment has occurred.
+               The Event Function code does not compile, has encountered an unrecoverable exception, or a bad deployment has occurred.
               </p>
              </dd>
             </dl>

@@ -880,7 +880,8 @@
             CloudWatch data events in CloudTrail
            </h2>
            <p>
-            CloudTrail can capture API activities related to the CloudWatch data plane operations on metrics
+            CloudTrail captures API activities for two groups of CloudWatch data plane operations. The first
+            group is the metric data-plane APIs:
             <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html">
              GetMetricData
             </a>
@@ -900,8 +901,174 @@
             <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html">
              ListMetrics
             </a>
-            APIs.
+            . The second group is the Prometheus-compatible query
+            APIs for Prometheus Query Language (PromQL):
+            <code class="code">
+             QueryMetrics
+            </code>
+            ,
+            <code class="code">
+             GetSeries
+            </code>
+            , and
+            <code class="code">
+             GetLabels
+            </code>
+            . For more information about these
+            APIs, see
+            <a href="./CloudWatch-PromQL-APIs.html">
+             Prometheus-compatible APIs
+            </a>
+            .
            </p>
+           <p>
+            CloudTrail logs each data event under one of two CloudWatch data resource types, as shown in the
+            following table.
+           </p>
+           <div class="table-container">
+            <div class="table-contents disable-scroll">
+             <table id="w645aac45c21b6">
+              <thead>
+               <tr>
+                <th>
+                 Data event
+                </th>
+                <th>
+                 Data resource type
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetMetricData
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AWS::CloudWatch::Metric
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetMetricWidgetImage
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AWS::CloudWatch::Metric
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  PutMetricData
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AWS::CloudWatch::Metric
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetMetricStatistics
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AWS::CloudWatch::Metric
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListMetrics
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AWS::CloudWatch::Metric
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  QueryMetrics
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AWS::CloudWatch::Dataset
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetSeries
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AWS::CloudWatch::Dataset
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetLabels
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AWS::CloudWatch::Dataset
+                 </code>
+                </p>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
            <div class="awsdocs-note">
             <div class="awsdocs-note-title">
              <awsui-icon name="status-info" variant="link">
@@ -912,8 +1079,36 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              PromQL queries are not supported for CloudTrail data events. Only the CloudWatch APIs
-                listed above can be logged as data events in CloudTrail.
+              CloudTrail records
+              <code class="code">
+               QueryMetrics
+              </code>
+              ,
+              <code class="code">
+               GetSeries
+              </code>
+              , and
+              <code class="code">
+               GetLabels
+              </code>
+              query requests with
+              <code class="code">
+               readOnly
+              </code>
+              set to
+              <code class="code">
+               true
+              </code>
+              and an
+              <code class="code">
+               eventSource
+              </code>
+              of
+              <code class="code">
+               monitoring.amazonaws.com
+              </code>
+              . To log PromQL query requests, enable data
+                events for the CloudWatch dataset resource type.
              </p>
             </div>
            </div>
@@ -964,29 +1159,10 @@
                 data events in CloudTrail, filtering by resource allows you to have more control over what you log and pay for.
            </p>
            <p>
-            Using the information that CloudTrail collects, you can identify any of the metric APIs, the IP address of the requester, the requester's identity, and the date and time of the 
-            request. Logging the
-            <b>
-             GetMetricData
-            </b>
-            ,
-            <b>
-             GetMetricWidgetImage
-            </b>
-            ,
-            <b>
-             PutMetricData
-            </b>
-            ,
-            <b>
-             GetMetricStatistics
-            </b>
-            , and
-            <b>
-             ListMetrics
-            </b>
-            APIs using CloudTrail helps you enable operational and 
-            risk auditing, governance, and compliance of your AWS account.
+            Using the information that CloudTrail collects, you can identify the API request, the IP
+            address of the requester, the requester's identity, and the date and time of the
+            request. Logging these data events with CloudTrail helps you enable operational and risk
+            auditing, governance, and compliance of your AWS account.
            </p>
            <div class="awsdocs-note">
             <div class="awsdocs-note-title">
@@ -1174,6 +1350,50 @@
         "clientProvidedHostHeader": "monitoring.us-east-1.amazonaws.com"
       }
     }</code></pre>
+           <p>
+            The following is an example of a CloudTrail event for a
+            <b>
+             QueryMetrics
+            </b>
+            (PromQL) operation.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:user/janedoe",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "userName": "janedoe"
+    },
+    "eventTime": "2026-06-05T19:37:25Z",
+    "eventSource": "monitoring.amazonaws.com",
+    "eventName": "QueryMetrics",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.7",
+    "userAgent": "awscurl/0.36",
+    "requestParameters": <span>{</span>
+        "path": "/api/v1/query",
+        "query": "sum(<span>{</span>\"http.server.active_requests\"})"
+    },
+    "responseElements": null,
+    "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+    "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+    "readOnly": true,
+    "resources": [<span>{</span>
+        "type": "AWS::CloudWatch::Dataset"
+    }],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Data",
+    "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "monitoring.us-east-1.amazonaws.com"
+    }
+}</code></pre>
            <h2 id="cwl_query-generation-cloudtrail">
             Query generation information in CloudTrail
            </h2>

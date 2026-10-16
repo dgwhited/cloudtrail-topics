@@ -174,15 +174,15 @@
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
              AWS CloudTrail
             </a>
-            , a service that provides a record of actions taken by a user, role, or an
-    AWS service. CloudTrail captures all
-    API calls for EventBridge as events. The calls captured include calls from the EventBridge console
-    and code calls to the EventBridge API operations. Using the information collected by CloudTrail, you can
-    determine the request that was made to EventBridge, the IP address from which the request was
-    made, when it was made, and additional details.
+            . CloudTrail records the actions taken by a user, role, or an
+    AWS service. It captures all
+    API calls for EventBridge as events. These include calls from the EventBridge console
+    and calls to the EventBridge API operations. The information that CloudTrail collects shows you
+    the request that was made to EventBridge, the source IP address, the time of the request, and
+    more.
            </p>
            <p>
-            Every event or log entry contains information about who generated the request. The identity
+            Every event or log entry contains information about who generated the request. This identity
     information helps you determine the following:
            </p>
            <div class="itemizedlist">
@@ -211,17 +211,17 @@
             </ul>
            </div>
            <p>
-            CloudTrail is active in your AWS account when you create the account and you automatically have
+            CloudTrail is active in your AWS account when you create the account. You automatically have
     access to the CloudTrail
             <b>
              Event history
             </b>
-            . The CloudTrail
+            .
             <b>
              Event
       history
             </b>
-            provides a viewable, searchable, downloadable, and immutable record of the
+            gives you a viewable, searchable, downloadable, and immutable record of the
     past 90 days of recorded management events in an AWS Region. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
              Working
@@ -417,9 +417,9 @@
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#logging-data-events">
              Data events
             </a>
-            provide information about the resource operations performed on or in a
-      resource (for example, publishing events to an event bus). These are also known as data
-      plane operations. Data events are often high-volume activities. By default, CloudTrail doesn't log
+            show you the resource operations performed on or in a
+      resource. An example is publishing events to an event bus. These are also known as data
+      plane operations, and they are often high-volume activities. By default, CloudTrail doesn't log
       data events. The CloudTrail
             <b>
              Event history
@@ -472,13 +472,13 @@
             <code class="code">
              resources.type
             </code>
-            value, which you would specify when configuring advanced event selectors using the AWS CLI or
+            value. You specify this value when you configure advanced event selectors with the AWS CLI or
       CloudTrail APIs. The
             <b>
              Data APIs logged to CloudTrail
             </b>
             column shows the API
-      calls logged to CloudTrail for the resource type.
+      calls that CloudTrail logs for the resource type.
            </p>
            <div class="table-container" id="data-events-table">
             <div class="table-contents disable-scroll">
@@ -600,8 +600,8 @@
             <code class="code">
              resources.ARN
             </code>
-            fields to log only those events that
-      are important to you. For more information about these fields, see
+            fields. This way, you log only the
+      events that are important to you. For more information about these fields, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedFieldSelector.html">
              AdvancedFieldSelector
             </a>
@@ -660,12 +660,13 @@
             calls
            </h5>
            <p>
-            When an account that you granted permission to via a resource policy calls
+            You can use a resource policy to grant another account permission to your bus. When
+            that account calls
             <code class="code">
              PutEvents
             </code>
-            to your bus, only the caller's account receives the CloudTrail data
-            event. Your account (the bus owner) does not.
+            to your bus, only the caller's account
+            receives the CloudTrail data event. Your account (the bus owner) does not.
            </p>
            <h5 id="cloudtrail-data-event-putevents-bus-to-bus">
             Bus-to-bus forwarding
@@ -723,8 +724,8 @@
                  <code class="code">
                   PutEvents
                  </code>
-                 on the destination Region. This makes the rule owner's account the effective
-                      API caller. Same-Region forwarding does not generate an additional data
+                 in the destination Region. This makes the rule owner's account the API
+                      caller. Same-Region forwarding does not generate an additional data
                       event.
                 </p>
                </td>
@@ -751,17 +752,16 @@
             </div>
             <div class="awsdocs-note-text">
              <p>
-              For cross-Region forwarding, the original
+              For cross-Region forwarding, CloudTrail records the original
               <code class="code">
                PutEvents
               </code>
-              call and the
-              forwarding
+              call and the forwarding
               <code class="code">
                PutEvents
               </code>
-              call are recorded as separate CloudTrail data events in
-              their respective Regions. To capture both, ensure that CloudTrail is configured to log
+              call as separate data events in
+              their respective Regions. To capture both, make sure that CloudTrail logs
               data events in both Regions.
              </p>
             </div>
@@ -771,8 +771,11 @@
            </h5>
            <p>
             When you use a global endpoint with event replication enabled, EventBridge creates a
-            managed rule that forwards events cross-Region to the secondary bus. This is a
-            cross-Region bus-to-bus forwarding scenario, so the same rules from the table above
+            managed rule. This rule forwards events cross-Region to the secondary bus. This is a
+            cross-Region bus-to-bus forwarding scenario, so the same rules described in
+            <a href="#cloudtrail-data-event-putevents-bus-to-bus">
+             Bus-to-bus forwarding
+            </a>
             apply:
            </p>
            <div class="itemizedlist">
@@ -789,13 +792,14 @@
              </li>
              <li class="listitem">
               <p>
-               Secondary Region: Because you own the managed rule and the IAM role used to
-                replicate events, your account receives a data event for the replication
+               Secondary Region: Your account owns the managed rule and the IAM role that
+                replicates events. As a result, your account receives a data event for the
+                replication
                <code class="code">
                 PutEvents
                </code>
-               call. The event includes only the event bus ARN. The
-                endpoint resource ARN is not included.
+               call. This event includes only the event bus
+                ARN. It does not include the endpoint resource ARN.
               </p>
              </li>
             </ul>
@@ -1211,8 +1215,9 @@
             CloudTrail log entries for actions taken by EventBridge Pipes
            </h2>
            <p>
-            EventBridge Pipes assumes the provided IAM role when reading events from sources, invoking enrichments, or invoking targets. For CloudTrail entries related to actions taken in your 
-      account on all enrichments, targets, and Amazon SQS, Kinesis, and DynamoDB sources, the
+            EventBridge Pipes assumes the provided IAM role when it reads events from sources, invokes enrichments, or invokes targets. 
+      Some CloudTrail entries cover actions taken in your account on all enrichments, targets, and Amazon SQS, Kinesis, and DynamoDB sources. 
+      For these entries, the
             <code class="code">
              sourceIPAddress
             </code>
@@ -1220,7 +1225,7 @@
             <code class="code">
              invokedBy
             </code>
-            fields will include
+            fields include
             <code class="code">
              pipes.amazonaws.com
             </code>
@@ -1277,8 +1282,8 @@
             <code class="code">
              sourceIPAddress
             </code>
-            field of the CloudTrail log entries will have a dynamic IP address  and shouldn't be 
-      relied upon for any integration or event categorization. In addition, these entries won't have the
+            field of the CloudTrail log entries has a dynamic IP address. 
+      Don't rely on this field for any integration or event categorization. These entries also don't have the
             <code class="code">
              invokedBy
             </code>

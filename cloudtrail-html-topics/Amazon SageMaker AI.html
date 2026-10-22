@@ -429,7 +429,7 @@
            </p>
            <div class="table-container" id="data-events-table">
             <div class="table-contents disable-scroll">
-             <table id="w755aac45c18c17c11">
+             <table id="w758aac45c18c17c11">
               <thead>
                <tr>
                 <th>
@@ -521,6 +521,66 @@
                 </div>
                </td>
               </tr>
+              <tr>
+               <td tabindex="-1">
+                <b>
+                 SageMaker training sessions
+                </b>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 AWS::SageMaker::TrainingSession
+                </code>
+               </td>
+               <td tabindex="-1">
+                <div class="itemizedlist">
+                 <ul class="itemizedlist">
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_training_session_runtime_ExecuteTrainingOperation.html">
+                     ExecuteTrainingOperation
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_training_session_runtime_GetTrainingOperationResult.html">
+                     GetTrainingOperationResult
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_training_session_runtime_ExecuteSamplingOperation.html">
+                     ExecuteSamplingOperation
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_training_session_runtime_GetSamplingOperationResult.html">
+                     GetSamplingOperationResult
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_training_session_runtime_SampleTrainingSession.html">
+                     SampleTrainingSession
+                    </a>
+                   </p>
+                  </li>
+                  <li class="listitem">
+                   <p>
+                    <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_training_session_runtime_SampleTrainingSessionWithResponseStream.html">
+                     SampleTrainingSessionWithResponseStream
+                    </a>
+                   </p>
+                  </li>
+                 </ul>
+                </div>
+               </td>
+              </tr>
              </table>
             </div>
            </div>
@@ -550,7 +610,53 @@
               <code class="code">
                SampleWithResponseStream
               </code>
-              API calls don't log the request parameters.
+              API calls don't log the request parameters. The
+              <code class="code">
+               ExecuteTrainingOperation
+              </code>
+              ,
+              <code class="code">
+               ExecuteSamplingOperation
+              </code>
+              ,
+              <code class="code">
+               GetTrainingOperationResult
+              </code>
+              ,
+              <code class="code">
+               GetSamplingOperationResult
+              </code>
+              ,
+              <code class="code">
+               SampleTrainingSession
+              </code>
+              , and
+              <code class="code">
+               SampleTrainingSessionWithResponseStream
+              </code>
+              API calls redact the
+      request body and response body, including the
+              <code class="code">
+               operationConfig
+              </code>
+              ,
+              <code class="code">
+               prompt
+              </code>
+              ,
+              <code class="code">
+               samplingParams
+              </code>
+              , and
+              <code class="code">
+               operationResult
+              </code>
+              fields, and log them as
+              <code class="code">
+               HIDDEN_DUE_TO_SECURITY_REASONS
+              </code>
+              . Identifiers such as the training session name, sequence number,
+      and operation ID are logged.
              </p>
             </div>
            </div>
@@ -579,7 +685,7 @@
             .
            </p>
            <p>
-            The following example shows you how to log data events for an Amazon SageMaker endpoint and an Amazon SageMaker job. In this
+            The following example shows you how to log data events for an Amazon SageMaker endpoint, an Amazon SageMaker job, and an Amazon SageMaker training session. In this
       example, you use the
             <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/put-event-selectors.html">
              put-event-selectors
@@ -618,6 +724,22 @@
       <span>{</span>
         "Field": "resources.type",
         "Equals": ["AWS::SageMaker::Job"]
+      }
+    ]
+  },
+  <span>{</span>
+    "FieldSelectors": [
+      <span>{</span>
+        "Field": "eventCategory",
+        "Equals": ["Data"]
+      },
+      <span>{</span>
+        "Field": "resources.ARN",
+        "Equals": ["arn:aws:sagemaker:us-east-1:111122223333:training-session/<code class="code" copy="true"><code class="replaceable">my-training-session</code></code>"]
+      },
+      <span>{</span>
+        "Field": "resources.type",
+        "Equals": ["AWS::SageMaker::TrainingSession"]
       }
     ]
   }
@@ -915,6 +1037,106 @@
             </em>
             .
            </p>
+           <p>
+            The following example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             ExecuteTrainingOperation
+            </code>
+            operation on a training session. The
+            <code class="code">
+             operationConfig
+            </code>
+            request parameter is redacted and logged as
+            <code class="code">
+             HIDDEN_DUE_TO_SECURITY_REASONS
+            </code>
+            .
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type":"IAMUser",
+        "principalId":"AIXDAYQEXAMPLEUMLYNGL",
+        "arn":"arn:aws:iam::123456789012:user/intern",
+        "accountId":"123456789012",
+        "accessKeyId":"ASXIAGXEXAMPLEQULKNXV",
+        "userName":"intern"
+    },
+    "eventTime": "2026-07-16T21:35:36Z",
+    "eventSource": "sagemaker.amazonaws.com",
+    "eventName": "ExecuteTrainingOperation",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress":"192.0.2.1",
+    "userAgent":"USER_AGENT",
+    "requestParameters": <span>{</span>
+        "sequenceNumber": 1,
+        "operationConfig": "HIDDEN_DUE_TO_SECURITY_REASONS",
+        "trainingSessionName": "<code class="replaceable">my-training-session</code>"
+    },
+    "responseElements": <span>{</span>
+        "operationId": "<code class="replaceable">my-training-session</code>-123456789012-us-west-2-dfc0d9ae-EXAMPLE-1"
+    },
+    "requestID": "d21d3319-EXAMPLE",
+    "eventID": "14d1c2b9-EXAMPLE",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "123456789012",
+            "type": "AWS::SageMaker::TrainingSession",
+            "ARN": "arn:aws:sagemaker:us-west-2:123456789012:training-session/<code class="replaceable">my-training-session</code>"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Data",
+    "tlsDetails": <span>{</span>
+        "clientProvidedHostHeader": "training-session-runtime.sagemaker.us-west-2.api.aws"
+    }
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail event that demonstrates a
+            <code class="code">
+             SampleTrainingSessionWithResponseStream
+            </code>
+            call that was denied.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (JSON)--><code class="JSON"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type":"IAMUser",
+        "principalId":"AIXDAYQEXAMPLEUMLYNGL",
+        "arn":"arn:aws:iam::123456789012:user/intern",
+        "accountId":"123456789012",
+        "accessKeyId":"ASXIAGXEXAMPLEQULKNXV",
+        "userName":"intern"
+    },
+    "eventTime": "2026-07-25T17:25:30Z",
+    "eventSource": "sagemaker.amazonaws.com",
+    "eventName": "SampleTrainingSessionWithResponseStream",
+    "awsRegion": "us-west-2",
+    "sourceIPAddress":"192.0.2.1",
+    "userAgent":"USER_AGENT",
+    "errorCode": "AccessDenied",
+    "errorMessage": "User: arn:aws:iam::123456789012:user/intern is not authorized to perform: sagemaker:SampleTrainingSessionWithResponseStream on resource: arn:aws:sagemaker:us-west-2:123456789012:training-session/<code class="replaceable">my-training-session</code>",
+    "requestID": "bf0ca70c-EXAMPLE",
+    "eventID": "594e2082-EXAMPLE",
+    "readOnly": true,
+    "resources": [
+        <span>{</span>
+            "accountId": "123456789012",
+            "type": "AWS::SageMaker::TrainingSession",
+            "ARN": "arn:aws:sagemaker:us-west-2:123456789012:training-session/<code class="replaceable">my-training-session</code>"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "123456789012",
+    "eventCategory": "Data",
+    "tlsDetails": <span>{</span>
+        "clientProvidedHostHeader": "training-session-runtime.sagemaker.us-west-2.api.aws"
+    }
+}</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

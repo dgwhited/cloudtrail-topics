@@ -927,7 +927,7 @@
            </p>
            <div class="table-container">
             <div class="table-contents disable-scroll">
-             <table id="w645aac45c21b6">
+             <table id="w651aac45c21b6">
               <thead>
                <tr>
                 <th>
@@ -982,6 +982,23 @@
                 <p>
                  <code class="code">
                   AWS::CloudWatch::Metric
+                 </code>
+                </p>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  PutMetricData
+                 </code>
+                 (metrics sent through the OpenTelemetry Protocol (OTLP) endpoint)
+                </p>
+               </td>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  AWS::CloudWatch::Dataset
                  </code>
                 </p>
                </td>
@@ -1109,6 +1126,45 @@
               </code>
               . To log PromQL query requests, enable data
                 events for the CloudWatch dataset resource type.
+             </p>
+            </div>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <h6>
+              Note
+             </h6>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              Metrics that you send to CloudWatch through the OpenTelemetry Protocol (OTLP) endpoint
+                are recorded as
+              <code class="code">
+               PutMetricData
+              </code>
+              data events under the
+              <code class="code">
+               AWS::CloudWatch::Dataset
+              </code>
+              resource type (not
+              <code class="code">
+               AWS::CloudWatch::Metric
+              </code>
+              ). These events include an
+              <code class="code">
+               additionalEventData
+              </code>
+              field with the value
+              <code class="code">
+               <span>
+                {
+               </span>
+               "protocol": "OTLP"}
+              </code>
+              . To log these OTLP metric ingestion events, enable
+                data events for the CloudWatch dataset resource type.
              </p>
             </div>
            </div>
@@ -1350,6 +1406,65 @@
         "clientProvidedHostHeader": "monitoring.us-east-1.amazonaws.com"
       }
     }</code></pre>
+           <p>
+            The following is an example of a CloudTrail event for a
+            <b>
+             PutMetricData
+            </b>
+            operation for metrics that were sent using the OpenTelemetry Protocol (OTLP).
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLEID:i-EXAMPLE0123456789",
+        "arn": "arn:aws:sts::111122223333:assumed-role/CloudWatchAgentServerRole/i-EXAMPLE0123456789",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AROAEXAMPLEID",
+                "arn": "arn:aws:iam::111122223333:role/CloudWatchAgentServerRole",
+                "accountId": "111122223333",
+                "userName": "CloudWatchAgentServerRole"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2026-10-19T11:11:36Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2026-10-19T12:40:24Z",
+    "eventSource": "monitoring.amazonaws.com",
+    "eventName": "PutMetricData",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.1",
+    "userAgent": "CWAgent/1.300073.0 (go1.26; linux; amd64) inputs:(otlp) aws-sdk-go-v2/1.36.3",
+    "requestParameters": null,
+    "responseElements": null,
+    "additionalEventData": <span>{</span>
+        "protocol": "OTLP"
+    },
+    "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "type": "AWS::CloudWatch::Dataset",
+            "ARN": "arn:aws:cloudwatch:us-east-1:111122223333:dataset/default"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": false,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Data",
+    "tlsDetails": <span>{</span>
+        "tlsVersion": "TLSv1.3",
+        "cipherSuite": "TLS_AES_128_GCM_SHA256",
+        "clientProvidedHostHeader": "monitoring.us-east-1.amazonaws.com"
+    }
+}</code></pre>
            <p>
             The following is an example of a CloudTrail event for a
             <b>

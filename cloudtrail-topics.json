@@ -467,8 +467,8 @@
     "Support began": "09/10/2019",
     "Link": ""
   },
-  "Amazon Quick": {
-    "AWS Service": "Amazon Quick",
+  "AWS Quick": {
+    "AWS Service": "AWS Quick",
     "CloudTrail Topics": "Logging Operations with CloudTrail",
     "Support began": "04/28/2017",
     "Link": "https://docs.aws.amazon.com/quick/latest/userguide/logging-using-cloudtrail.html"

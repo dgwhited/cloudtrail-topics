@@ -525,6 +525,33 @@
                  <tr>
                   <td tabindex="-1">
                    <code class="code">
+                    Register_POST
+                   </code>
+                  </td>
+                  <td tabindex="-1">
+                   An application submits a request to the
+                   <a href="./cognito-user-pools-dynamic-client-registration.html">
+                    dynamic client
+                          registration
+                   </a>
+                   endpoint,
+                   <code class="code">
+                    /oauth2/register
+                   </code>
+                   , including
+                        requests that Amazon Cognito rejects. When a request passes basic validation, the
+                   <code class="code">
+                    additionalEventData
+                   </code>
+                   element records the submitted client
+                        metadata and the registration mode. When registration succeeds, it also
+                        records the ID of the new app client. Requests that your web ACL blocks
+                        don't produce an event.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td tabindex="-1">
+                   <code class="code">
                     Signup_GET
                    </code>
                    ,

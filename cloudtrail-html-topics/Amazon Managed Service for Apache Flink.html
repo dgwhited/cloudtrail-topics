@@ -143,6 +143,9 @@
           <a href="#understanding-service-name-entries">
            Understand Managed Service for Apache Flink log file entries
           </a>
+          <a href="#logging-using-cloudtrail-audit-snapshot-operations">
+           Audit enhanced snapshot operations across an account
+          </a>
          </div>
          <div class="awsui-util-container" id="main-content">
           <div id="main-col-body">
@@ -269,6 +272,85 @@
             entries in the CloudTrail log files.
            </p>
            <p>
+            CloudTrail also logs the following enhanced snapshot API actions:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_CreateSnapshot.html">
+                <code class="code">
+                 CreateSnapshot
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_DescribeSnapshot.html">
+                <code class="code">
+                 DescribeSnapshot
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_ListSnapshots.html">
+                <code class="code">
+                 ListSnapshots
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_DeleteSnapshot.html">
+                <code class="code">
+                 DeleteSnapshot
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_ImportSnapshot.html">
+                <code class="code">
+                 ImportSnapshot
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_ExportSnapshot.html">
+                <code class="code">
+                 ExportSnapshot
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_DescribeSnapshotOperation.html">
+                <code class="code">
+                 DescribeSnapshotOperation
+                </code>
+               </a>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_ListSnapshotOperations.html">
+                <code class="code">
+                 ListSnapshotOperations
+                </code>
+               </a>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
             Every event or log entry contains information about who generated the request. The
             identity information helps you determine the following:
            </p>
@@ -328,55 +410,55 @@
             "userIdentity": <span>{</span>
                 "type": "IAMUser",
                 "principalId": "EX_PRINCIPAL_ID",
-                "arn": "arn:aws:iam::012345678910:user/Alice",
-                "accountId": "012345678910",
+                "arn": "arn:aws:iam::111122223333:user/MaryMajor",
+                "accountId": "111122223333",
                 "accessKeyId": "EXAMPLE_KEY_ID",
-                "userName": "Alice"
+                "userName": "MaryMajor"
             },
             "eventTime": "2019-03-07T01:19:47Z",
-            "eventSource": "kinesisanlaytics.amazonaws.com",
+            "eventSource": "kinesisanalytics.amazonaws.com",
             "eventName": "AddApplicationCloudWatchLoggingOption",
             "awsRegion": "us-east-1",
-            "sourceIPAddress": "127.0.0.1",
+            "sourceIPAddress": "<code class="replaceable">source-ip-address</code>",
             "userAgent": "aws-sdk-java/unknown-version Linux/x.xx",
             "requestParameters": <span>{</span>
                 "applicationName": "cloudtrail-test",
                 "currentApplicationVersionId": 1,
                 "cloudWatchLoggingOption": <span>{</span>
-                    "logStreamARN": "arn:aws:logs:us-east-1:012345678910:log-group:cloudtrail-test:log-stream:flink-cloudwatch"
+                    "logStreamARN": "arn:aws:logs:us-east-1:111122223333:log-group:cloudtrail-test:log-stream:flink-cloudwatch"
                 }
             },
             "responseElements": <span>{</span>
                 "cloudWatchLoggingOptionDescriptions": [
                     <span>{</span>
                         "cloudWatchLoggingOptionId": "2.1",
-                        "logStreamARN": "arn:aws:logs:us-east-1:012345678910:log-group:cloudtrail-test:log-stream:flink-cloudwatch"
+                        "logStreamARN": "arn:aws:logs:us-east-1:111122223333:log-group:cloudtrail-test:log-stream:flink-cloudwatch"
                     }
                 ],
                 "applicationVersionId": 2,
-                "applicationARN": "arn:aws:kinesisanalyticsus-east-1:012345678910:application/cloudtrail-test"
+                "applicationARN": "arn:aws:kinesisanalytics:us-east-1:111122223333:application/cloudtrail-test"
             },
             "requestID": "18dfb315-4077-11e9-afd3-67f7af21e34f",
             "eventID": "d3c9e467-db1d-4cab-a628-c21258385124",
             "eventType": "AwsApiCall",
             "apiVersion": "2018-05-23",
-            "recipientAccountId": "012345678910"
+            "recipientAccountId": "111122223333"
         },
         <span>{</span>
             "eventVersion": "1.05",
             "userIdentity": <span>{</span>
                 "type": "IAMUser",
                 "principalId": "EX_PRINCIPAL_ID",
-                "arn": "arn:aws:iam::012345678910:user/Alice",
-                "accountId": "012345678910",
+                "arn": "arn:aws:iam::111122223333:user/MaryMajor",
+                "accountId": "111122223333",
                 "accessKeyId": "EXAMPLE_KEY_ID",
-                "userName": "Alice"
+                "userName": "MaryMajor"
             },
             "eventTime": "2019-03-12T02:40:48Z",
-            "eventSource": "kinesisanlaytics.amazonaws.com",
+            "eventSource": "kinesisanalytics.amazonaws.com",
             "eventName": "DescribeApplication",
             "awsRegion": "us-east-1",
-            "sourceIPAddress": "127.0.0.1",
+            "sourceIPAddress": "<code class="replaceable">source-ip-address</code>",
             "userAgent": "aws-sdk-java/unknown-version Linux/x.xx",
             "requestParameters": <span>{</span>
                 "applicationName": "sample-app"
@@ -386,11 +468,208 @@
             "eventID": "90ffe8e4-9e47-48c9-84e1-4f2d427d98a5",
             "eventType": "AwsApiCall",
             "apiVersion": "2018-05-23",
-            "recipientAccountId": "012345678910"
+            "recipientAccountId": "111122223333"
         }
     ]
 }
 </code></pre>
+           <p>
+            The following example shows a CloudTrail log entry for the
+            <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_CreateSnapshot.html">
+             <code class="code">
+              CreateSnapshot
+             </code>
+            </a>
+            action. The
+            <code class="code">
+             resources
+            </code>
+            field lists the ARN of the application and the ARN
+            of the enhanced snapshot.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.09",
+    "userIdentity": <span>{</span>
+        "type": "IAMUser",
+        "principalId": "AIDACKCEVSQ6C2EXAMPLE",
+        "arn": "arn:aws:iam::111122223333:user/MaryMajor",
+        "accountId": "111122223333",
+        "userName": "MaryMajor"
+    },
+    "eventTime": "2026-10-01T12:00:00Z",
+    "eventSource": "kinesisanalytics.amazonaws.com",
+    "eventName": "CreateSnapshot",
+    "awsRegion": "aa-example-1",
+    "sourceIPAddress": "<code class="replaceable">source-ip-address</code>",
+    "userAgent": "aws-cli/2.0.0",
+    "requestParameters": <span>{</span>
+        "applicationName": "MyApplication",
+        "snapshotName": "MyApplication-snapshot-1"
+    },
+    "responseElements": <span>{</span>
+        "snapshotArn": "arn:aws:kinesisanalytics:aa-example-1:111122223333:snapshot/MyApplication-snapshot-1",
+        "snapshotStatus": "CREATING",
+        "snapshotOperationId": "a1B2c3D4e5F6",
+        "snapshotOperationStatus": "IN_PROGRESS"
+    },
+    "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::KinesisAnalyticsV2::Application",
+            "ARN": "arn:aws:kinesisanalytics:aa-example-1:111122223333:application/MyApplication"
+        },
+        <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::KinesisAnalyticsV2::Snapshot",
+            "ARN": "arn:aws:kinesisanalytics:aa-example-1:111122223333:snapshot/MyApplication-snapshot-1"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "apiVersion": "2018-05-23",
+    "recipientAccountId": "111122223333"
+}
+</code></pre>
+           <p>
+            The following rules apply to CloudTrail events for enhanced snapshot actions:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               CloudTrail logs all enhanced snapshot actions as management events, which are control plane API calls.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               For
+               <code class="code">
+                DescribeSnapshot
+               </code>
+               ,
+               <code class="code">
+                ListSnapshots
+               </code>
+               ,
+               <code class="code">
+                DescribeSnapshotOperation
+               </code>
+               , and
+               <code class="code">
+                ListSnapshotOperations
+               </code>
+               ,
+               <code class="code">
+                responseElements
+               </code>
+               is null.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListSnapshots
+               </code>
+               events have no
+               <code class="code">
+                resources
+               </code>
+               field.
+                For the other enhanced snapshot actions,
+               <code class="code">
+                resources
+               </code>
+               lists the ARN of the
+                enhanced snapshot. For
+               <code class="code">
+                CreateSnapshot
+               </code>
+               ,
+               <code class="code">
+                resources
+               </code>
+               also lists
+                the ARN of the application.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               CloudTrail logs the full request parameters. Do not put sensitive data in the
+                snapshot description or in tags.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <h2 id="logging-using-cloudtrail-audit-snapshot-operations">
+            Audit enhanced snapshot operations across an account
+           </h2>
+           <p>
+            Use CloudTrail and the enhanced snapshot operation records together to audit enhanced
+            snapshot activity:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <b>
+                CloudTrail
+               </b>
+               : CloudTrail keeps the account-level history of
+                    the enhanced snapshot API calls. Each event shows the caller, the time, and the
+                    request.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <b>
+                Operation records
+               </b>
+               :
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_DescribeSnapshotOperation.html">
+                <code class="code">
+                 DescribeSnapshotOperation
+                </code>
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/managed-service-for-apache-flink/latest/apiv2/API_ListSnapshotOperations.html">
+                <code class="code">
+                 ListSnapshotOperations
+                </code>
+               </a>
+               return the record of each
+                    operation for 90 days after the operation ends.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            Managed Service for Apache Flink creates a system snapshot without an API call from you. A system snapshot
+            does not create a CloudTrail event of its own. CloudTrail logs only the
+            <code class="code">
+             UpdateApplication
+            </code>
+            or
+            <code class="code">
+             StopApplication
+            </code>
+            call that starts the
+            system snapshot. In enhanced snapshot mode, to trace a system snapshot
+            that succeeded, call
+            <code class="code">
+             ListSnapshotOperations
+            </code>
+            and find the
+            <code class="code">
+             SystemCreateSnapshot
+            </code>
+            operation. For more information, see
+            <a href="./snapshots-monitor-operations.html#snapshots-monitor-operations-cloudtrail">
+             Operations that CloudTrail does not log
+            </a>
+            .
+           </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

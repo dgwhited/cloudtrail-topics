@@ -391,9 +391,9 @@
             <div class="awsdocs-note-title">
              <awsui-icon name="status-info" variant="link">
              </awsui-icon>
-             <div class="awsdocs-block-title">
+             <h6>
               Note
-             </div>
+             </h6>
             </div>
             <div class="awsdocs-note-text">
              <p>
@@ -406,35 +406,9 @@
             CloudTrail tracking with Amazon S3 SOAP API calls
            </h2>
            <p>
-            CloudTrail tracks Amazon S3 SOAP API calls. Amazon S3 SOAP support over HTTP is deprecated, but it
-                is still available over HTTPS. For more information about Amazon S3 SOAP support, see
-            <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/APISoap.html">
-             Appendix:
-                    SOAP API
-            </a>
-            in the
-            <em>
-             Amazon S3 API Reference
-            </em>
-            .
-           </p>
-           <div class="awsdocs-note awsdocs-important">
-            <div class="awsdocs-note-title">
-             <awsui-icon name="status-warning" variant="error">
-             </awsui-icon>
-             <div class="awsdocs-block-title">
-              Important
-             </div>
-            </div>
-            <div class="awsdocs-note-text">
-             <p>
-              Newer Amazon S3 features are not supported for SOAP. We recommend that you use
-                    either the REST API or the AWS SDKs.
-             </p>
-            </div>
-           </div>
-           <p>
-            The following table shows Amazon S3 SOAP actions tracked by CloudTrail logging.
+            SOAP API support is discontinued. CloudTrail logs from before SOAP API support was
+                discontinued can include Amazon S3 SOAP API calls. The following table shows the CloudTrail
+                event name for each Amazon S3 SOAP action.
            </p>
            <div class="table-container">
             <div class="table-contents">
@@ -452,9 +426,7 @@
               <tr>
                <td tabindex="-1">
                 <p>
-                 <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/SOAPListAllMyBuckets.html">
-                  ListAllMyBuckets
-                 </a>
+                 ListAllMyBuckets
                 </p>
                </td>
                <td tabindex="-1">
@@ -466,9 +438,7 @@
               <tr>
                <td tabindex="-1">
                 <p>
-                 <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/SOAPCreateBucket.html">
-                  CreateBucket
-                 </a>
+                 CreateBucket
                 </p>
                </td>
                <td tabindex="-1">
@@ -480,9 +450,7 @@
               <tr>
                <td tabindex="-1">
                 <p>
-                 <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/SOAPDeleteBucket.html">
-                  DeleteBucket
-                 </a>
+                 DeleteBucket
                 </p>
                </td>
                <td tabindex="-1">
@@ -494,9 +462,7 @@
               <tr>
                <td tabindex="-1">
                 <p>
-                 <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/SOAPGetBucketAccessControlPolicy.html">
-                  GetBucketAccessControlPolicy
-                 </a>
+                 GetBucketAccessControlPolicy
                 </p>
                </td>
                <td tabindex="-1">
@@ -508,9 +474,7 @@
               <tr>
                <td tabindex="-1">
                 <p>
-                 <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/SOAPSetBucketAccessControlPolicy.html">
-                  SetBucketAccessControlPolicy
-                 </a>
+                 SetBucketAccessControlPolicy
                 </p>
                </td>
                <td tabindex="-1">
@@ -522,9 +486,7 @@
               <tr>
                <td tabindex="-1">
                 <p>
-                 <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/SOAPGetBucketLoggingStatus.html">
-                  GetBucketLoggingStatus
-                 </a>
+                 GetBucketLoggingStatus
                 </p>
                </td>
                <td tabindex="-1">
@@ -536,9 +498,7 @@
               <tr>
                <td tabindex="-1">
                 <p>
-                 <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/SOAPSetBucketLoggingStatus.html">
-                  SetBucketLoggingStatus
-                 </a>
+                 SetBucketLoggingStatus
                 </p>
                </td>
                <td tabindex="-1">
@@ -554,9 +514,9 @@
             For more information about CloudTrail and Amazon S3, see the following topics:
            </p>
            <div class="highlights">
-            <h2 class="awsdocs-topiclist-title">
+            <h6>
              Topics
-            </h2>
+            </h6>
             <ul>
              <li>
               <p>

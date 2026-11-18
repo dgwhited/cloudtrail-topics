@@ -275,7 +275,9 @@
              EnableSharingWithAwsOrganization
             </code>
             actions generate entries in the CloudTrail
-            log files.
+            log files. AWS RAM also logs management events when associations of principals,
+            resources, permissions, or sources with resource shares are successfully completed or
+            removed.
            </p>
            <p>
             Every event or log entry contains information that helps you determine who made the
@@ -330,22 +332,35 @@
             <code class="code">
              CreateResourceShare
             </code>
-            action.
+            action. In this example, the caller uses temporary credentials from a role session. We
+            recommend temporary credentials over long-term access keys.
            </p>
            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
     "eventVersion": "1.05",
     "userIdentity": <span>{</span>
-        "type": "IAMUser",
-        "principalId": "NOPIOSFODNN7EXAMPLE",
-        "arn": "arn:aws:iam::111122223333:user/admin",
+        "type": "AssumedRole",
+        "principalId": "AROA123456789EXAMPLE:ResourceShareManager-session",
+        "arn": "arn:aws:sts::111122223333:assumed-role/ResourceShareManager/ResourceShareManager-session",
         "accountId": "111122223333",
-        "accessKeyId": "BCDIOSFODNN7EXAMPLE",
-        "userName": "admin"
+        "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AROA123456789EXAMPLE",
+                "arn": "arn:aws:iam::111122223333:role/ResourceShareManager",
+                "accountId": "111122223333",
+                "userName": "ResourceShareManager"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2018-11-03T04:10:05Z",
+                "mfaAuthenticated": "false"
+            }
+        }
     },
     "eventTime": "2018-11-03T04:23:19Z",
     "eventSource": "ram.amazonaws.com",
     "eventName": "CreateResourceShare",
-    "awsRegion": "us-east-1",
+    "awsRegion": "aa-example-1",
     "sourceIPAddress": "192.0.1.0",
     "userAgent": "aws-cli/1.16.2 Python/2.7.10 Darwin/16.7.0 botocore/1.11.2",
     "requestParameters": <span>{</span>
@@ -356,7 +371,7 @@
             "allowExternalPrincipals": true,
             "name": "foo",
             "owningAccountId": "111122223333",
-            "resourceShareArn": "arn:aws:ram:us-east-1:111122223333:resource-share/EXAMPLE0-1234-abcd-1212-987656789098",
+            "resourceShareArn": "arn:aws:ram:aa-example-1:111122223333:resource-share/EXAMPLE0-1234-abcd-1212-987656789098",
             "status": "ACTIVE"
         }
     },
@@ -365,6 +380,94 @@
     "readOnly": false,
     "eventType": "AwsApiCall",
     "recipientAccountId": "111122223333"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail log entry for the
+            <code class="code">
+             CreateResourceShareAssociation
+            </code>
+            management event. AWS RAM emits
+            this event when an association of a principal, resource, permission, or source with a
+            resource share is successfully completed.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "accountId": "111122223333",
+        "invokedBy": "ram.amazonaws.com"
+    },
+    "eventTime": "2026-06-10T15:25:55Z",
+    "eventSource": "ram.amazonaws.com",
+    "eventName": "CreateResourceShareAssociation",
+    "awsRegion": "aa-example-1",
+    "sourceIPAddress": "ram.amazonaws.com",
+    "userAgent": "ram.amazonaws.com",
+    "requestParameters": null,
+    "responseElements": null,
+    "additionalEventData": <span>{</span>
+        "AssociatedPrincipal": "444455556666",
+        "AssociationMetadata": <span>{</span>
+            "AssociationType": "AWS::RAM::PrincipalAssociation",
+            "AssociationId": "arn:aws:ram:aa-example-1:111122223333:resource-share/EXAMPLE0-1234-abcd-1212-987656789098|444455556666"
+        }
+    },
+    "eventID": "EXAMPLE2-1234-abcd-hijk-543234565434",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::RAM::ResourceShare",
+            "ARN": "arn:aws:ram:aa-example-1:111122223333:resource-share/EXAMPLE0-1234-abcd-1212-987656789098"
+        }
+    ],
+    "eventType": "AwsServiceEvent",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Management"
+}</code></pre>
+           <p>
+            The following example shows a CloudTrail log entry for the
+            <code class="code">
+             RemoveResourceShareAssociation
+            </code>
+            management event. AWS RAM emits
+            this event when an association of a principal, resource, permission, or source with a
+            resource share is successfully removed.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "accountId": "111122223333",
+        "invokedBy": "ram.amazonaws.com"
+    },
+    "eventTime": "2026-06-18T19:54:24Z",
+    "eventSource": "ram.amazonaws.com",
+    "eventName": "RemoveResourceShareAssociation",
+    "awsRegion": "aa-example-1",
+    "sourceIPAddress": "ram.amazonaws.com",
+    "userAgent": "ram.amazonaws.com",
+    "requestParameters": null,
+    "responseElements": null,
+    "additionalEventData": <span>{</span>
+        "DisassociatedPrincipal": "444455556666",
+        "AssociationMetadata": <span>{</span>
+            "AssociationId": "arn:aws:ram:aa-example-1:111122223333:resource-share/EXAMPLE0-1234-abcd-1212-987656789098|444455556666",
+            "AssociationType": "AWS::RAM::PrincipalAssociation"
+        }
+    },
+    "eventID": "EXAMPLE1-abcd-1234-hijk-543234565434",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::RAM::ResourceShare",
+            "ARN": "arn:aws:ram:aa-example-1:111122223333:resource-share/EXAMPLE0-1234-abcd-1212-987656789098"
+        }
+    ],
+    "eventType": "AwsServiceEvent",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Management"
 }</code></pre>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>

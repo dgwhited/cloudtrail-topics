@@ -255,15 +255,34 @@
             <code class="code">
              CreateWebLoginToken
             </code>
-            , and
+            ,
             <code class="code">
              CreateCliToken
+            </code>
+            , and
+            <code class="code">
+             CheckAuthorization
             </code>
             . Unlike management events, AWS CloudTrail does not log data events by default, and they do not appear in CloudTrail Event History. You must configure a trail that explicitly includes data events. Additional charges apply. For more information, see
             <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html">
              Logging data events
             </a>
             in the AWS CloudTrail User Guide.
+           </p>
+           <p>
+            Amazon MWAA calls
+            <code class="code">
+             CheckAuthorization
+            </code>
+            in environments that have IAM Identity Center integration enabled. When a user performs an action in the Apache Airflow UI, Amazon MWAA uses the user's Permission Set credentials to check whether the action is allowed. Each
+            <code class="code">
+             CheckAuthorization
+            </code>
+            event identifies the individual user, the Apache Airflow resource and action, and the authorization decision. Amazon MWAA caches decisions for a short time, so not every Apache Airflow UI action produces an event. For more information, see
+            <a href="./identity-center-integration.html">
+             Using IAM Identity Center with Amazon Managed Workflows for Apache Airflow
+            </a>
+            .
            </p>
            <div class="procedure">
             <h6 class="awsdocs-block-title">
@@ -339,13 +358,17 @@
             <code class="code">
              CreateWebLoginToken
             </code>
-            , and
+            ,
             <code class="code">
              CreateCliToken
             </code>
+            , and
+            <code class="code">
+             CheckAuthorization
+            </code>
             to your Amazon S3 bucket within approximately 15 minutes. If you configured Amazon CloudWatch Logs, use the following filter pattern to find these events:
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span> ($.eventName = "InvokeRestApi") || ($.eventName = "CreateWebLoginToken") || ($.eventName = "CreateCliToken") }</code></pre>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span> ($.eventName = "InvokeRestApi") || ($.eventName = "CreateWebLoginToken") || ($.eventName = "CreateCliToken") || ($.eventName = "CheckAuthorization") }</code></pre>
            <div class="awsdocs-note">
             <div class="awsdocs-note-title">
              <awsui-icon name="status-info" variant="link">
@@ -364,6 +387,189 @@
              </p>
             </div>
            </div>
+           <p>
+            To find the activity of a specific IAM Identity Center user, filter
+            <code class="code">
+             CheckAuthorization
+            </code>
+            events on the role session name, which is the user's IAM Identity Center user name. The following filter pattern matches events for the user
+            <code class="replaceable">
+             mary_major
+            </code>
+            :
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span> ($.eventName = "CheckAuthorization") &amp;&amp; ($.userIdentity.arn = %AWSReservedSSO_.*/mary_major$%) }</code></pre>
+           <p>
+            The following example is a
+            <code class="code">
+             CheckAuthorization
+            </code>
+            log entry for an authorization check that Amazon MWAA made for an IAM Identity Center user. The user
+            <code class="replaceable">
+             mary_major
+            </code>
+            signed in with the
+            <code class="replaceable">
+             AirflowDataEngineer
+            </code>
+            Permission Set, and the Apache Airflow UI checked whether the user can read a DAG. The following elements identify the caller and the request:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                userIdentity
+               </code>
+               shows the
+               <code class="code">
+                AWSReservedSSO_*
+               </code>
+               role that IAM Identity Center created for the Permission Set. The role session name is the user's IAM Identity Center user name.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                onBehalfOf
+               </code>
+               identifies the IAM Identity Center user and the identity store on whose behalf the request was made. It can also include the IAM Identity Center instance.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                requestParameters
+               </code>
+               shows the Apache Airflow resource and action that Amazon MWAA checked. Optional elements, such as
+               <code class="code">
+                ResourceId
+               </code>
+               ,
+               <code class="code">
+                DagAccessEntity
+               </code>
+               , and
+               <code class="code">
+                TeamNames
+               </code>
+               , appear only when the check includes them.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                sourceIPAddress
+               </code>
+               and
+               <code class="code">
+                userAgent
+               </code>
+               belong to the Amazon MWAA web server that makes the call, not to the user's browser. The source IP address is the web server's NAT gateway IP address, and the user agent is the web server's HTTP client.
+              </p>
+             </li>
+            </ul>
+           </div>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+  "eventVersion": "1.11",
+  "userIdentity": <span>{</span>
+    "type": "AssumedRole",
+    "principalId": "AROA123456789EXAMPLE:<code class="replaceable">mary_major</code>",
+    "arn": "arn:aws:sts::<code class="replaceable">123456789012</code>:assumed-role/AWSReservedSSO_<code class="replaceable">AirflowDataEngineer</code>_<code class="replaceable">0123456789abcdef</code>/<code class="replaceable">mary_major</code>",
+    "accountId": "<code class="replaceable">123456789012</code>",
+    "accessKeyId": "<code class="replaceable">access-key-id</code>",
+    "sessionContext": <span>{</span>
+      "sessionIssuer": <span>{</span>
+        "type": "Role",
+        "principalId": "AROA123456789EXAMPLE",
+        "arn": "arn:aws:iam::<code class="replaceable">123456789012</code>:role/aws-reserved/sso.amazonaws.com/<code class="replaceable">us-east-1</code>/AWSReservedSSO_<code class="replaceable">AirflowDataEngineer</code>_<code class="replaceable">0123456789abcdef</code>",
+        "accountId": "<code class="replaceable">123456789012</code>",
+        "userName": "AWSReservedSSO_<code class="replaceable">AirflowDataEngineer</code>_<code class="replaceable">0123456789abcdef</code>"
+      },
+      "attributes": <span>{</span>
+        "creationDate": "2026-11-12T16:20:41Z",
+        "mfaAuthenticated": "false"
+      }
+    },
+    "onBehalfOf": <span>{</span>
+      "userId": "<code class="replaceable">idc-user-id</code>",
+      "identityStoreArn": "arn:aws:identitystore::<code class="replaceable">idc-account-id</code>:identitystore/<code class="replaceable">d-1234567890</code>",
+      "identityCenterInstanceArn": "arn:aws:sso:::instance/<code class="replaceable">ssoins-instanceid</code>"
+    }
+  },
+  "eventTime": "2026-11-12T16:21:05Z",
+  "eventSource": "airflow.amazonaws.com",
+  "eventName": "CheckAuthorization",
+  "awsRegion": "<code class="replaceable">us-east-1</code>",
+  "sourceIPAddress": "<code class="replaceable">source-ip-address</code>",
+  "userAgent": "python-requests/<code class="replaceable">version</code>",
+  "requestParameters": <span>{</span>
+    "Name": "<code class="replaceable">my-env</code>",
+    "ResourceType": "DAG",
+    "ResourceAction": "GET",
+    "ResourceId": "<code class="replaceable">example_dag</code>",
+    "TeamNames": [
+      "<code class="replaceable">data-eng</code>"
+    ]
+  },
+  "responseElements": <span>{</span>
+    "Access-Control-Expose-Headers": "x-amzn-RequestId,x-amzn-ErrorType",
+    "Decision": "ALLOW"
+  },
+  "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+  "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+  "readOnly": false,
+  "resources": [
+    <span>{</span>
+      "accountId": "<code class="replaceable">123456789012</code>",
+      "type": "AWS::MWAA::Environment",
+      "ARN": "arn:aws:airflow:<code class="replaceable">us-east-1</code>:<code class="replaceable">123456789012</code>:environment/<code class="replaceable">my-env</code>"
+    }
+  ],
+  "eventType": "AwsApiCall",
+  "managementEvent": false,
+  "recipientAccountId": "<code class="replaceable">123456789012</code>",
+  "eventCategory": "Data"
+}</code></pre>
+           <p>
+            If the user's Permission Set doesn't allow the action, CloudTrail records the call as denied. A denied
+            <code class="code">
+             CheckAuthorization
+            </code>
+            event doesn't contain
+            <code class="code">
+             Decision
+            </code>
+            . Instead, it contains an
+            <code class="code">
+             errorCode
+            </code>
+            element, and the
+            <code class="code">
+             responseElements
+            </code>
+            element contains the IAM error message. The following example shows the elements that differ from the previous example:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+  "eventName": "CheckAuthorization",
+  "errorCode": "AccessDenied",
+  "requestParameters": <span>{</span>
+    "Name": "<code class="replaceable">my-env</code>",
+    "ResourceType": "DAG",
+    "ResourceAction": "GET",
+    "TeamNames": [
+      "<code class="replaceable">data-eng</code>"
+    ]
+  },
+  "responseElements": <span>{</span>
+    "Access-Control-Expose-Headers": "x-amzn-errortype,x-amzn-requestid,x-amzn-trace-id",
+    "message": "User: arn:aws:sts::<code class="replaceable">123456789012</code>:assumed-role/AWSReservedSSO_<code class="replaceable">AirflowDataEngineer</code>_<code class="replaceable">0123456789abcdef</code>/<code class="replaceable">mary_major</code> is not authorized to perform: airflow:AccessAirflowResource on resource: arn:aws:airflow:<code class="replaceable">us-east-1</code>:<code class="replaceable">123456789012</code>:environment/<code class="replaceable">my-env</code> because no identity-based policy allows the airflow:AccessAirflowResource action"
+  }
+}</code></pre>
+           <p>
+            To find denied authorization checks, use the following filter pattern:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class=""><span>{</span> ($.eventName = "CheckAuthorization") &amp;&amp; ($.errorCode = "AccessDenied") }</code></pre>
            <h2 id="monitoring-cloudtrail-view">
             Accessing events with CloudTrail Event History
            </h2>
@@ -538,7 +744,7 @@
   "eventSource": "airflow.amazonaws.com",
   "eventName": "InvokeRestApi",
   "awsRegion": "us-west-2",
-  "sourceIPAddress": "203.0.113.10",
+  "sourceIPAddress": "<code class="replaceable">source-ip-address</code>",
   "userAgent": "Boto3/1.28.0 Python/3.11.0",
   "requestParameters": <span>{</span>
     "Name": "MyAirflowEnvironment",

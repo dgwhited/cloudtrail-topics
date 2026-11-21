@@ -2460,6 +2460,292 @@
              </table>
             </div>
            </div>
+           <h3 id="mon-cloudtrail">
+            Data Hub information in AWS CloudTrail
+           </h3>
+           <p>
+            Data Hub calls appear in CloudTrail under the event source
+            <code class="code">
+             bcm-data-hub.amazonaws.com
+            </code>
+            as management events, at no additional charge.
+        Submitting and cancelling a query are write events, so a trail that excludes read-only events
+        still records every query. Each event records the identity, the time, and the source address.
+        Events for creating, reading, listing, updating, and tagging datasets carry the dataset ARN,
+        and
+            <code class="code">
+             DeleteDataset
+            </code>
+            events record only the resource type.
+            <code class="code">
+             StartQueryExecution
+            </code>
+            and
+            <code class="code">
+             CancelQueryExecution
+            </code>
+            events name the query
+        execution. Other query events name no resource. The SQL is redacted from the event, and the
+        agent states the SQL alongside the answer. A dataset name and its tags do appear in events, so keep
+        confidential information out of both.
+           </p>
+           <p>
+            Agents share a role, so AWS FinOps Agent stamps the asking user's IAM unique identifier
+        onto the session as
+            <code class="code">
+             sourceIdentity
+            </code>
+            . To find every action one user initiated,
+        filter on
+            <code class="code">
+             userIdentity.sessionContext.sourceIdentity
+            </code>
+            . A single-account agent's
+        events land in its own account. An organization-wide agent's events land in the management
+        account, even when the agent runs in a delegated administrator account, because the agent reads
+        through
+            <code class="code">
+             AWSServiceRoleForFinOpsAgent
+            </code>
+            . To keep events beyond the CloudTrail event
+        history period, or to deliver them to Amazon S3, create a trail.
+           </p>
+           <h4 id="mon-cloudtrail-events">
+            Data Hub CloudTrail events
+           </h4>
+           <p>
+            This section shows a full list of the CloudTrail events for the Data Hub feature, from
+          the AWS Billing console and from AWS FinOps Agent. These CloudTrail events use
+            <code class="code">
+             bcm-data-hub.amazonaws.com
+            </code>
+            .
+           </p>
+           <div class="table-container">
+            <div class="table-contents">
+             <table id="d0e7">
+              <thead>
+               <tr>
+                <th>
+                 Event name
+                </th>
+                <th>
+                 Definition
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CreateDataset
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the creation of a dataset and the attachment of the account's primary
+                  billing view.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UpdateDataset
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs a change to a dataset's name.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  DeleteDataset
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the deletion of a dataset.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListDatasets
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval and listing of datasets.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetDataset
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of a dataset's details, including its name, schema, and
+                  status.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetDatasetSchema
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of a dataset schema.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  StartQueryExecution
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the submission of a read-only SQL query. The SQL is redacted from the
+                  event.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetQueryExecution
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the access of a query execution's state.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  GetQueryExecutionResults
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval of the rows a query returned.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  CancelQueryExecution
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs a request to stop a running query.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListQueryExecutions
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the retrieval and listing of query executions.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  TagResource
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the tagging of a dataset.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  UntagResource
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the deletion of tags from a dataset.
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <p>
+                 <code class="code">
+                  ListTagsForResource
+                 </code>
+                </p>
+               </td>
+               <td tabindex="-1">
+                Logs the list of tags associated with a dataset.
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <div class="awsdocs-note">
+            <div class="awsdocs-note-title">
+             <awsui-icon name="status-info" variant="link">
+             </awsui-icon>
+             <div class="awsdocs-block-title">
+              Note
+             </div>
+            </div>
+            <div class="awsdocs-note-text">
+             <p>
+              Submitting and cancelling a query are write events, so a trail that excludes read-only
+            events still records every query. Events for creating, reading, listing, updating, and
+            tagging datasets carry the dataset ARN, and
+              <code class="code">
+               DeleteDataset
+              </code>
+              events record only
+            the resource type.
+              <code class="code">
+               StartQueryExecution
+              </code>
+              and
+              <code class="code">
+               CancelQueryExecution
+              </code>
+              events name the query execution they act on, and
+              <code class="code">
+               GetQueryExecution
+              </code>
+              and
+              <code class="code">
+               GetQueryExecutionResults
+              </code>
+              events name no resource. A dataset name and its tags
+            appear in events, so keep confidential information out of both.
+             </p>
+            </div>
+           </div>
            <h2 id="service-name-info-in-cloudtrail">
             Billing and Cost Management information in CloudTrail
            </h2>

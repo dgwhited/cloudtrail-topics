@@ -147,10 +147,10 @@
          </div>
          <div id="page-toc-src">
           <a href="#deployment-information-in-cloudtrail">
-           AWS Marketplace Deployment Service information in CloudTrail
+           Deployment Service management events in CloudTrail
           </a>
           <a href="#deployment-understanding-log-entries">
-           Understanding AWS Marketplace log file entries
+           Deployment Service event examples
           </a>
          </div>
          <div class="awsui-util-container" id="main-content">
@@ -176,115 +176,45 @@
             </awsdocs-filter-selector>
            </div>
            <p>
-            The AWS Marketplace Deployment Service is integrated with AWS CloudTrail, a service that provides a
-            record of actions taken by a user, role, or an AWS service.
-           </p>
-           <p>
-            If you create a trail, you can enable continuous delivery of CloudTrail events to an
-            Amazon Simple Storage Service (Amazon S3) bucket. If you don't configure a trail, you can still view the most
-            recent events in the CloudTrail console in
-            <b>
-             Event history
-            </b>
-            . Using the
-            information collected by CloudTrail, you can determine the request, the IP address from which
-            the request was made, who made the request, when it was made, and additional
-            details.
-           </p>
-           <h2 id="deployment-information-in-cloudtrail">
-            AWS Marketplace Deployment Service information in CloudTrail
-           </h2>
-           <p>
-            CloudTrail is enabled on your AWS account when you create the account. When activity
-                occurs in the AWS Marketplace Deployment Service, that activity is recorded in a CloudTrail event
-                along with other AWS service events in
-            <b>
-             Event history
-            </b>
-            . You can
-                view, search, and download recent events in your AWS account. For more
-                information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
-             Viewing Events
-                    with CloudTrail Event History
+            The AWS Marketplace Deployment Service is integrated with
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">
+             AWS CloudTrail
             </a>
-            in the
-            <em>
-             AWS CloudTrail User Guide
-            </em>
+            , a
+            service that provides a record of actions taken by a user, role, or an AWS service.
+            CloudTrail captures calls to the Deployment API operations as events. These include calls
+            that publish deployment parameters and calls that start and read deployment
+            configuration jobs. For more information, see
+            <a href="#deployment-information-in-cloudtrail">
+             Deployment Service management events in CloudTrail
+            </a>
             .
            </p>
            <p>
-            For an ongoing record of events in your AWS account, create a trail. A trail
-                enables CloudTrail to deliver log files to an Amazon S3 bucket. By default, when you create a
-                trail in the console, the trail applies to all AWS Regions. The trail logs events
-                from all AWS Regions in the AWS partition and delivers the log files to the Amazon S3
-                bucket that you specify. Additionally, you can configure other AWS services to
-                further analyze and act upon the event data collected in CloudTrail logs. For more
-                information, see:
+            With the information that CloudTrail collects, you can determine the request that was made
+            to the Deployment Service, the IP address it came from, when it was made, and additional
+            details.
            </p>
-           <div class="itemizedlist">
-            <ul class="itemizedlist">
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
-                Overview for Creating a Trail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations">
-                CloudTrail Supported Services and Integrations
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html">
-                Configuring
-                            Amazon SNS Notifications for CloudTrail
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html">
-                Receiving CloudTrail Log Files from Multiple Regions
-               </a>
-              </p>
-             </li>
-             <li class="listitem">
-              <p>
-               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html">
-                Receiving CloudTrail Log Files from Multiple Accounts
-               </a>
-              </p>
-             </li>
-            </ul>
-           </div>
            <p>
-            All Deployment Service actions are logged by CloudTrail and are documented in this API
-                reference. For example, calls to the
-            <code class="code">
-             PutDeploymentParameter
-            </code>
-            API action
-                generates entries in the CloudTrail log files. Every event or log entry contains
-                information about who generated the request. The identity information helps you
-                determine the following:
+            Every event or log entry contains information about who generated the request. The
+            identity information helps you determine the following:
            </p>
            <div class="itemizedlist">
             <ul class="itemizedlist">
              <li class="listitem">
               <p>
-               Whether the request was made with root or user credentials.
+               Whether the request was made with root user or user credentials.
               </p>
              </li>
              <li class="listitem">
               <p>
-               Whether the request was made with temporary security credentials for a
-                        role or federated user.
+               Whether the request was made on behalf of an IAM Identity Center user.
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               Whether the request was made with temporary security credentials for a role
+                    or federated user.
               </p>
              </li>
              <li class="listitem">
@@ -295,53 +225,300 @@
             </ul>
            </div>
            <p>
-            For more information, see
-            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html">
-             CloudTrail
-                    userIdentity Element
+            CloudTrail is active in your AWS account when you create the account and you
+            automatically have access to the CloudTrail
+            <b>
+             Event history
+            </b>
+            . The
+            <b>
+             Event history
+            </b>
+            provides a record of the past 90 days of
+            management events in an AWS Region. This record is viewable, searchable,
+            downloadable, and immutable. For more information, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html">
+             Working with CloudTrail event history
             </a>
             in the
             <em>
              AWS CloudTrail User Guide
             </em>
+            . There are no CloudTrail charges for viewing the
+            <b>
+             Event history
+            </b>
             .
            </p>
-           <h2 id="deployment-understanding-log-entries">
-            Understanding AWS Marketplace log file entries
+           <p>
+            For an ongoing record of events in your AWS account past 90 days, create a trail
+            or a
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+             CloudTrail Lake
+            </a>
+            event
+            data store.
+           </p>
+           <div class="variablelist">
+            <dl>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail trails
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               A
+               <em>
+                trail
+               </em>
+               enables CloudTrail to deliver log files to an Amazon S3 bucket. All trails created using the AWS Management Console are multi-Region. You can create a single-Region or a multi-Region trail by using the AWS CLI. Creating a multi-Region trail is recommended because you capture activity in all AWS Regions in your account. If you create a single-Region trail, you can view only the events logged in the trail's AWS Region. For more information about trails, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html">
+                Creating a trail for your AWS account
+               </a>
+               and
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/creating-trail-organization.html">
+                Creating a trail for an organization
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               You can deliver one copy of your ongoing management events to your Amazon S3 bucket at no charge from CloudTrail by creating a trail, however, there are Amazon S3 storage charges. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               . For information about Amazon S3 pricing, see
+               <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Amazon S3 Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+             <dt>
+              <b>
+               <span class="term">
+                CloudTrail Lake event data stores
+               </span>
+              </b>
+             </dt>
+             <dd>
+              <p>
+               <em>
+                CloudTrail Lake
+               </em>
+               lets you run SQL-based queries on your events. CloudTrail Lake converts existing events in row-based JSON format to
+               <a href="https://orc.apache.org/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 Apache ORC
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               format. ORC is a columnar storage format that is optimized for fast retrieval of data. Events are aggregated into
+               <em>
+                event data stores
+               </em>
+               , which are immutable collections of events based on criteria that you select by applying
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-concepts.html#adv-event-selectors">
+                advanced event selectors
+               </a>
+               . The selectors that you apply to an event data store control which events persist and are available for you to query. For more information about CloudTrail Lake, see
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake.html">
+                Working with AWS CloudTrail Lake
+               </a>
+               in the
+               <em>
+                AWS CloudTrail User Guide
+               </em>
+               .
+              </p>
+              <p>
+               CloudTrail Lake event data stores and queries incur costs. When you create an event data store, you choose the
+               <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html#cloudtrail-lake-manage-costs-pricing-option">
+                pricing option
+               </a>
+               you want to use for the event data store. The pricing option determines the cost for ingesting and storing events, and the default and maximum retention period for the event data store. For more information about CloudTrail pricing, see
+               <a href="https://aws.amazon.com/cloudtrail/pricing/" rel="noopener noreferrer" target="_blank">
+                <span>
+                 AWS CloudTrail Pricing
+                </span>
+                <awsui-icon class="awsdocs-link-icon" name="external">
+                </awsui-icon>
+               </a>
+               .
+              </p>
+             </dd>
+            </dl>
+           </div>
+           <h2 id="deployment-information-in-cloudtrail">
+            Deployment Service management events in CloudTrail
            </h2>
            <p>
-            A trail is a configuration that enables delivery of events as log files to an Amazon S3
-                bucket that you specify. CloudTrail log files contain one or more log entries. An event
-                represents a single request from any source and includes information about the
-                requested action, the date and time of the action, request parameters, and so on.
-                CloudTrail log files are not an ordered stack trace of the public API calls, so they do
-                not appear in any specific order.
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events">
+             Management events
+            </a>
+            provide information about management operations that are performed on resources in your AWS account. These are also known as control plane operations. By default, CloudTrail logs management events.
            </p>
-           <div class="awsdocs-note">
-            <div class="awsdocs-note-title">
-             <awsui-icon name="status-info" variant="link">
-             </awsui-icon>
-             <div class="awsdocs-block-title">
-              Note
-             </div>
-            </div>
-            <div class="awsdocs-note-text">
-             <p>
-              These examples have been formatted for improved readability. In a CloudTrail log
-                    file, all entries and events are concatenated into a single line. In addition,
-                    this example has been limited to a single Deployment Service entry. In a real
-                    CloudTrail log file, you see entries and events from multiple AWS services.
-             </p>
+           <p>
+            The AWS Marketplace Deployment Service logs the following Deployment API operations to CloudTrail
+                as management events. The event source is
+            <code class="code">
+             deployment-marketplace.amazonaws.com
+            </code>
+            . The
+            <code class="code">
+             readOnly
+            </code>
+            column shows the value of the
+            <code class="code">
+             readOnly
+            </code>
+            field
+                in each event, which you can use to filter events in a trail or event data
+                store.
+           </p>
+           <div class="table-container" id="deployment-cloudtrail-management-events-table">
+            <div class="table-contents">
+             <table id="d0e1">
+              <thead>
+               <tr>
+                <th>
+                 Operation
+                </th>
+                <th>
+                 <code class="code">
+                  readOnly
+                 </code>
+                </th>
+               </tr>
+              </thead>
+              <tr>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/marketplace/latest/APIReference/API_marketplace-deployment_GetDeploymentConfiguration.html">
+                 GetDeploymentConfiguration
+                </a>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 true
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/marketplace/latest/APIReference/API_marketplace-deployment_GetDeploymentConfigurationJob.html">
+                 GetDeploymentConfigurationJob
+                </a>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 true
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/marketplace/latest/APIReference/API_marketplace-deployment_ListDeploymentConfigurationJobs.html">
+                 ListDeploymentConfigurationJobs
+                </a>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 true
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/marketplace/latest/APIReference/API_marketplace-deployment_ListTagsForResource.html">
+                 ListTagsForResource
+                </a>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 true
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/marketplace/latest/APIReference/API_marketplace-deployment_PutDeploymentParameter.html">
+                 PutDeploymentParameter
+                </a>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 false
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/marketplace/latest/APIReference/API_marketplace-deployment_StartDeploymentConfigurationJob.html">
+                 StartDeploymentConfigurationJob
+                </a>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 false
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/marketplace/latest/APIReference/API_marketplace-deployment_TagResource.html">
+                 TagResource
+                </a>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 false
+                </code>
+               </td>
+              </tr>
+              <tr>
+               <td tabindex="-1">
+                <a href="https://docs.aws.amazon.com/marketplace/latest/APIReference/API_marketplace-deployment_UntagResource.html">
+                 UntagResource
+                </a>
+               </td>
+               <td tabindex="-1">
+                <code class="code">
+                 false
+                </code>
+               </td>
+              </tr>
+             </table>
             </div>
            </div>
+           <h2 id="deployment-understanding-log-entries">
+            Deployment Service event examples
+           </h2>
            <p>
-            The following example shows a Deployment Service log entry that demonstrates the
+            An event represents a single request from any source and includes information about the requested API operation, the date and time of the operation, request parameters, and so on. CloudTrail log files aren't an ordered stack trace of the public API calls, so events don't appear in any specific order.
+           </p>
+           <p>
+            The following JSON example shows a CloudTrail event that demonstrates the
             <code class="code">
              PutDeploymentParameter
             </code>
-            action:
+            operation:
            </p>
-           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli ()--><code class="nohighlight"><span>{</span>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
     "eventVersion": "1.08",
     "userIdentity": <span>{</span>
         "type": "Unknown",
@@ -354,7 +531,7 @@
     "eventSource": "deployment-marketplace.amazonaws.com",
     "eventName": "PutDeploymentParameter",
     "awsRegion": "us-east-1",
-    "sourceIPAddress": "192.0.2.0",
+    "sourceIPAddress": "192.0.2.1",
     "userAgent": "aws-sdk-java/2.20.162 Mac_OS_X/13.5.2 OpenJDK_64-Bit_Server_VM/18.0.1+10-FR Java/18.0.1 vendor/Amazon.com_Inc. io/sync http/UrlConnection cfg/retry-mode/legacy",
     "requestParameters": <span>{</span>
         "productId": "prod-fEXAMPLE-cb3e-4e21-86fd-6b3EXAMPLEd1",
@@ -366,7 +543,6 @@
             "secretString": "***"
         },
         "expirationDate": "2023-11-30T03:02:26.779241Z"
-        }
     },
     "responseElements": <span>{</span>
         "agreementId": "agmt-fEXAMPLE-cb3e-4e21-86fd-6b3EXAMPLEd1",
@@ -381,6 +557,92 @@
     "recipientAccountId": "123456789010",
     "eventCategory": "Management"
 }</code></pre>
+           <p>
+            The following JSON example shows a CloudTrail event that demonstrates the
+            <code class="code">
+             StartDeploymentConfigurationJob
+            </code>
+            operation:
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AROA123456789EXAMPLE:ExampleSession",
+        "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/ExampleSession",
+        "accountId": "111122223333",
+        "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AROA123456789EXAMPLE",
+                "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+                "accountId": "111122223333",
+                "userName": "ExampleRole"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2026-11-19T21:18:19Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2026-11-19T21:20:31Z",
+    "eventSource": "deployment-marketplace.amazonaws.com",
+    "eventName": "StartDeploymentConfigurationJob",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "192.0.2.1",
+    "userAgent": "aws-cli/2.31.0 Python/3.13.7 Linux/6.1.0 exe/x86_64.amzn.2023",
+    "requestParameters": <span>{</span>
+        "catalog": "AWSMarketplace",
+        "productId": "prod-EXAMPLEa1b2c3",
+        "deliveryOptionType": "data-as-a-service",
+        "configuration": <span>{</span>
+            "dataAsAService": <span>{</span>
+                "fulfillmentUrl": "https://example.com/register"
+            }
+        },
+        "clientToken": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "tags": <span>{</span>
+            "Team": "Data"
+        }
+    },
+    "responseElements": <span>{</span>
+        "jobId": "a1b2c3d4567890abcdef0123456789ab",
+        "status": "IN_PROGRESS",
+        "configuration": <span>{</span>
+            "dataAsAService": <span>{</span>
+                "fulfillmentUrl": "https://example.com/register"
+            }
+        },
+        "createdAt": "2026-11-19T21:20:31.073529832Z"
+    },
+    "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE33333",
+    "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE44444",
+    "readOnly": false,
+    "resources": [
+        <span>{</span>
+            "accountId": "111122223333",
+            "type": "AWS::Marketplace::DeploymentConfiguration",
+            "ARN": "arn:aws:aws-marketplace:us-east-1:111122223333:DeploymentConfiguration:catalogs/AWSMarketplace/products/prod-EXAMPLEa1b2c3/delivery-options/data-as-a-service"
+        }
+    ],
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Management"
+}</code></pre>
+           <p>
+            For information about CloudTrail record contents, see
+            <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html">
+             CloudTrail record contents for management, data, and network activity
+                    events
+            </a>
+            in the
+            <em>
+             AWS CloudTrail User Guide
+            </em>
+            .
+           </p>
            <awsdocs-copyright class="copyright-print">
            </awsdocs-copyright>
            <awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}">

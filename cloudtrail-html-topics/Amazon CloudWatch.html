@@ -140,6 +140,9 @@
           <a href="#CloudWatch-data-plane-events">
            CloudWatch data events in CloudTrail
           </a>
+          <a href="#cw_recommendations_info_in_ct">
+           CloudWatch Recommendations information in CloudTrail
+          </a>
           <a href="#cwl_query-generation-cloudtrail">
            Query generation information in CloudTrail
           </a>
@@ -406,6 +409,13 @@
               <p>
                <a href="#CloudWatch-data-plane-events">
                 CloudWatch data events in CloudTrail
+               </a>
+              </p>
+             </li>
+             <li>
+              <p>
+               <a href="#cw_recommendations_info_in_ct">
+                CloudWatch Recommendations information in CloudTrail
                </a>
               </p>
              </li>
@@ -1536,6 +1546,156 @@
         "cipherSuite": "TLS_AES_128_GCM_SHA256",
         "clientProvidedHostHeader": "monitoring.us-east-1.amazonaws.com"
     }
+}</code></pre>
+           <h2 id="cw_recommendations_info_in_ct">
+            CloudWatch Recommendations information in CloudTrail
+           </h2>
+           <p>
+            CloudTrail logs the CloudWatch Recommendations operations as management events under the
+            <code class="code">
+             monitoring.amazonaws.com
+            </code>
+            event source, the same event source as the other
+            CloudWatch API operations. CloudTrail logs the following actions:
+           </p>
+           <div class="itemizedlist">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <p>
+               <code class="code">
+                StartMonitoringAssessment
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                GetMonitoringAssessment
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListMonitoringAssessments
+               </code>
+              </p>
+             </li>
+             <li class="listitem">
+              <p>
+               <code class="code">
+                ListMonitoringAssessmentResults
+               </code>
+              </p>
+             </li>
+            </ul>
+           </div>
+           <p>
+            All four are read-only events (
+            <code class="code">
+             "readOnly": true
+            </code>
+            ). An assessment is not
+            a resource with an ARN, so the events don't include a
+            <code class="code">
+             resources
+            </code>
+            field.
+            CloudTrail logs denied requests with their error code, so you can see who tried an operation
+            that they weren't authorized to perform.
+           </p>
+           <p>
+            An assessment reads your alarms and metrics with the forward access session of the
+            principal that called
+            <code class="code">
+             StartMonitoringAssessment
+            </code>
+            . CloudTrail logs those reads,
+            such as
+            <code class="code">
+             DescribeAlarms
+            </code>
+            , as separate events in your account. Their
+            <code class="code">
+             userIdentity
+            </code>
+            element identifies that principal, and their
+            <code class="code">
+             invokedBy
+            </code>
+            ,
+            <code class="code">
+             sourceIPAddress
+            </code>
+            , and
+            <code class="code">
+             userAgent
+            </code>
+            fields
+            show
+            <code class="code">
+             AWS Internal
+            </code>
+            . For more information, see
+            <a href="./permissions-reference-cw.html#cw-recommendations-permissions-assessment-reads">
+             How CloudWatch Recommendations reads your account
+            </a>
+            .
+           </p>
+           <h3 id="understanding-CloudWatch-Recommendations-entries-in-CloudTrail">
+            Example: CloudWatch Recommendations log file entry
+           </h3>
+           <p>
+            The following example shows a CloudTrail log entry for the
+            <code class="code">
+             StartMonitoringAssessment
+            </code>
+            action.
+           </p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><!--DEBUG: cli (json)--><code class="json"><span>{</span>
+    "eventVersion": "1.11",
+    "userIdentity": <span>{</span>
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLEID:example-session",
+        "arn": "arn:aws:sts::111122223333:assumed-role/ExampleRole/example-session",
+        "accountId": "111122223333",
+        "accessKeyId": "ASIAIOSFODNN7EXAMPLE",
+        "sessionContext": <span>{</span>
+            "sessionIssuer": <span>{</span>
+                "type": "Role",
+                "principalId": "AROAEXAMPLEID",
+                "arn": "arn:aws:iam::111122223333:role/ExampleRole",
+                "accountId": "111122223333",
+                "userName": "ExampleRole"
+            },
+            "attributes": <span>{</span>
+                "creationDate": "2026-11-20T16:20:08Z",
+                "mfaAuthenticated": "false"
+            }
+        }
+    },
+    "eventTime": "2026-11-20T16:21:10Z",
+    "eventSource": "monitoring.amazonaws.com",
+    "eventName": "StartMonitoringAssessment",
+    "awsRegion": "us-east-2",
+    "sourceIPAddress": "192.0.2.1",
+    "userAgent": "aws-sdk-java/2.x",
+    "requestParameters": <span>{</span>
+        "retentionInDays": 30,
+        "scope": <span>{</span>
+            "predefinedScope": <span>{</span>
+                "type": "AcceleratedComputeInsights"
+            }
+        }
+    },
+    "responseElements": null,
+    "requestID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+    "eventID": "a1b2c3d4-5678-90ab-cdef-EXAMPLE22222",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "managementEvent": true,
+    "recipientAccountId": "111122223333",
+    "eventCategory": "Management"
 }</code></pre>
            <h2 id="cwl_query-generation-cloudtrail">
             Query generation information in CloudTrail
